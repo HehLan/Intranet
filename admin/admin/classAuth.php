@@ -22,6 +22,7 @@ class Auth {
      *      si l'utilisateur a level :
      *          1 = super-admin
      *          2 = admin
+	 *			4 = team-leader
      *          5 = membre
      ***************************************************************************/
     static function isAllow($levelPage){

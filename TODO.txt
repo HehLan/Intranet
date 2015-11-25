@@ -1,0 +1,10 @@
+Elements à revoir dans la structure de l'intranet hehlan pour extraire le css, js, html
+
+/
+admin
+ajax
+common
+css
+img
+js
+templates
