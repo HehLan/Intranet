@@ -8,3 +8,8 @@ css
 img
 js
 templates
+
+
+
+- Resolve the encoding problem => import or rewrite database entries in SQL file from workbench ?
+- Clean and comment code in order to better understand it.
