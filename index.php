@@ -40,15 +40,10 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<meta http-equiv="Content-Type" charset="utf-8">
-		<title>HEHLan</title>
-		<META NAME="robots" CONTENT="none">
+		<?php require_once('includes/_meta.html'); ?> 
 		
-		<link rel="icon" href="img/logoheh.ico" >
-		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/getXhr.js"></script>
-
 		<script type="text/javascript">
 			function news_toggle(idn)
 			{
@@ -110,61 +105,8 @@
 
 	<body style="background-color: #000;">
 
-		<div id="header">
-			<div id="banner">
-				<a href="index.php">
-					<img src="img/logoheh.png" alt="HEHLan" width="250px">
-				</a>
-			</div>
-			<div id="login">
-				<?php
-					if($con)
-					{
-						echo 'Bienvenue à toi '.$_SESSION['login'].', <a href="common/deco.php">se déconnecter</a><br>';
-						$sql = "SELECT DISTINCT m.id_match, m.heure, t.nomTournoi 
-								FROM (
-									matchs as m,
-									tournoi as t,
-									matchs_joueurs as mj,
-									matchs_equipes as me,
-									equipes_joueur as ej)
-								WHERE
-								t.id_tournoi=m.id_tournoi AND 
-								(
-									(mj.id_joueur=:idj AND m.id_match=mj.id_match)
-									OR
-									(ej.id_joueur=:idj AND me.id_equipe=ej.id_equipes AND m.id_match=me.id_match)
-								)
-								AND m.heure>NOW()
-								ORDER BY m.heure
-								LIMIT 0,3";
-						$query = $connexion->prepare($sql);
-						$query->bindValue('idj', $_SESSION['id_joueur'], PDO::PARAM_INT);
-						if($query->execute())
-						{
-							$next_matches= $query->fetchAll(PDO::FETCH_ASSOC);
-						}
-						else
-						{
-							echo 'ERREUR SQL NEXT MATCHES';
-							exit;
-						}	
-						$first = true;
-						foreach($next_matches as $next_match)
-						{
-							if($first)
-								echo '<strong>Prochains matchs</strong><br>';
-							echo get_jour_de_la_semaine($next_match['heure']).' '.get_heure($next_match['heure']).' '.$next_match['nomTournoi'].'<br>';
-							$first = false;
-						}
-					}
-				?>
-			</div>	     
-		</div>
-		
-		<div id="navigation">
-			<?php require_once('common/menuTop.php'); ?>        
-		</div>
+		<?php require_once('includes/_header.php'); ?>   
+		<?php require_once('includes/_nav.php'); ?>   
 		
 		<div id="container">
 
@@ -251,7 +193,7 @@
 			
 		</div>
 		
-		<?php require_once('includes/_footer.php'); ?>
+		<?php require_once('includes/_footer.html'); ?>
 		
 		<?php
 			if ($chat)

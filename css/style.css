@@ -1,13 +1,14 @@
 body {
   background: url("../img/bgAdmin.jpg");
+  background-color: #000;
   width: 100%;
-  height: 100%;
   margin: auto;
+  margin-top: -15px;
   padding: 0;
   font-size: 12px;
   font-family: Calibri, Arial, Times, serif;  
   color: #ffffff;
-  overflow:hidden;
+  /*overflow: hidden;*/
 }
 a,
 a:visited,
@@ -43,7 +44,6 @@ li {
 ################################*/
 #header {
   width: 100%;
-  /*border: 1px solid red;*/
   margin: auto;
   padding: 0;
   height: 100px;
@@ -62,10 +62,11 @@ li {
   left: 20px;
 }
 #header #login {
-position: relative;
-  width: 30%;
-  float: right;
-  height: 100%;
+	margin-top: 10px;
+	width: 25%;
+	float: right;
+	height: 100%;
+	position: relative;
 }
 /*##############################
 ####        NAVIGATION          ###
@@ -108,47 +109,45 @@ position: relative;
 #### CONTENU!!!!       ###
 ############################*/
 #container{
+/*
  position			: fixed;
  left				: 0;
 right				: 0;
 top : 0;
-bottom				: 98px;
+bottom				: 98px;*/
 width:100%;
-margin-top:152px;
-overflow:auto;
+/*margin-top:152px;*/
+/*overflow:auto;*/
 }
 #container #contenu{
 position:relative;
 padding:10px;
 }
+
+
 /*##########################
 #### NEWS      ###
 ############################*/
-#container #bloc_news{
-position:relative;
-padding:10px;
-width:50%;
-
+#container #bloc_news {
+	margin-left: 20px;
+	padding: 10px;
+	width: 48%;
 }
-#container #bloc_news .une_news{
-position:relative;
-padding:5px;
-width:95%;
-background-color:#111111;
-margin-bottom:10px;
-margin-top:10px;
+#container #bloc_news .une_news {
+	padding: 5px;
+	width: 100%;
+	background-color: #111111;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
-#container #bloc_news .titre_news{
-position:relative;
-padding-top:5px;
-padding-bottom:5px;
-width:100%;
-background-color:#000000;
-margin-bottom:5px;
-overflow-x:hidden;
-font-weight:bold;
-font-size:16px;
-cursor:pointer;
+#container #bloc_news .titre_news {
+	padding: 10px;
+	width: 98%;
+	background-color: #000000;
+	margin-bottom: 5px;
+	overflow-x:hidden;
+	font-size:16px;
+	cursor:pointer;
 }
 #container #bloc_news .titre_news:hover{
 color:#ff9900;
@@ -236,19 +235,111 @@ overflow:hidden;
 #container #bloc_chat #bloc_chat_send #bloc_chat_message {
 	width:75%;
 }
+
+
+ a:hover /* Apparence au survol des liens */
+{
+text-decoration: underline;
+color: green;
+cursor:pointer;
+}   
+a.ClassPseudo{
+display: block;
+}
+a.ClassEquipe{
+display: block;
+}
+
+/*INFO-BULLE*/
+.tooltip
+{
+  position: relative;
+  background-color:;
+  cursor: help;
+  display: block;
+  text-decoration: none;
+  color: #222;
+  outline: none;
+  font-size: medium;
+ z-index: 998;  
+}
+
+.tooltip span
+{
+  visibility: hidden;
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  z-index: 999;
+  width: 230px;
+  margin-left: -127px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  opacity: .9;
+  background-color: #ddd;
+  background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  text-shadow: 0 3px  grey);
+}
+
+.tooltip:hover
+{
+  border: 0; /* IE6 fix */
+}
+
+.tooltip:hover span
+{
+  visibility: visible;
+  background-color:#ff0000;
+}
+
+.tooltip span:before,
+.tooltip span:after
+{
+  content: "";
+  position: absolute;
+  z-index: 1000;
+  bottom: -7px;
+  left: 50%;
+  margin-left: -8px;
+  border-top: 8px solid #ddd;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 0;
+  
+}
+
+.tooltip span:before
+{
+  border-top-color: #ccc;
+  bottom: -8px;
+}
+
+
+
 /*##########################
 #### LE FOOTER!!!!       ###
 ############################*/
 #footer {
+/*
   width: 100%;
   position			: fixed;
 	bottom				: 0;
 	left				: 0;
-	right				: 0;
+	right				: 0;*/
 
-  clear:both;
-  height: 90px;
+  /*clear:both;*/
+  height: 125px;
   margin: 0 auto;
+  margin-top: 90px;
   border-top: 8px solid #151515;
   background-color:#000000;
 }
@@ -258,6 +349,7 @@ overflow:hidden;
   float: left;
   background: none;
   margin: 1px;
+  margin-left: 25px;
   text-align: left;
   
 }
@@ -265,7 +357,7 @@ overflow:hidden;
   margin-top: 45px;
 }
 #footer #nothinghere {
-  width: 33%;
+  width: 30%;
   height: 100%;
   float: left;
   margin: 1px;
