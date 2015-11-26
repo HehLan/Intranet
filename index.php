@@ -103,7 +103,7 @@
 
 	</head>
 
-	<body style="background-color: #000;">
+	<body>
 
 		<?php require_once('includes/_header.php'); ?>   
 		<?php require_once('includes/_nav.php'); ?>   

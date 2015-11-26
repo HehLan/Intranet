@@ -139,6 +139,8 @@ padding:10px;
 	background-color: #111111;
 	margin-bottom: 10px;
 	margin-top: 10px;
+	border: 1px solid #353535;
+	border-radius: 3px;
 }
 #container #bloc_news .titre_news {
 	padding: 10px;
@@ -179,8 +181,8 @@ color:#999999;
 #container #bloc_chat{
  position			: fixed;
 right				: 30px;
-top : 0;
-bottom				: 98px;
+top : 20px;
+bottom				: 150px;
 width:44%;
 margin-top:152px;
 padding:10px;
@@ -337,7 +339,7 @@ display: block;
 	right				: 0;*/
 
   /*clear:both;*/
-  height: 125px;
+  height: 114px;
   margin: 0 auto;
   margin-top: 90px;
   border-top: 8px solid #151515;
@@ -350,8 +352,7 @@ display: block;
   background: none;
   margin: 1px;
   margin-left: 25px;
-  text-align: left;
-  
+  text-align: left;  
 }
 #footer #about p {
   margin-top: 45px;
