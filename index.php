@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	session_start();
 	require_once('common/connect.php');
 	require_once('common/utils.php');
@@ -37,8 +37,8 @@
 	}
 ?>
 
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 	<head>
 		<?php require_once('includes/_meta.html'); ?> 
 		
@@ -103,14 +103,15 @@
 
 	</head>
 
-	<body>
+	<body role="document">
 
 		<?php require_once('includes/_header.php'); ?>   
 		<?php require_once('includes/_nav.php'); ?>   
 		
-		<div id="container">
+		<div id="container" class="container-fluid">
 
-			<div id="bloc_news">
+			<div class="row">
+				<div id="bloc_news" class="col-lg-6 col-xs-12">
 				<?php			
 					//SQL query to select all news
 					$sql = "SELECT * FROM news WHERE invisible=0 ORDER BY quand DESC";
@@ -140,9 +141,9 @@
 					else
 						echo 'ERREUR NEWS SQL';
 				?>				
-			</div>	
+				</div>	
 			
-			<div id="bloc_chat">
+				<div id="bloc_chat" class="col-lg-6 col-xs-12">
 				<?php
 					if($con)
 					{
@@ -189,6 +190,7 @@
 							</div>';
 					}
 				?>
+				</div>
 			</div>
 			
 		</div>

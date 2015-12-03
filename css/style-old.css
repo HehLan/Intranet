@@ -1,23 +1,29 @@
 body {
-	background: url("../img/bgAdmin.jpg");
-	background-color: #000;
-	font-size: 12px;
-	font-family: Calibri, Arial, Times, serif;  
-	color: #ffffff;
+  background: url("../img/bgAdmin.jpg");
+  background-color: #000;
+  /*Not use with bootstrap*/
+  /*width: 100%;*/
+  /*margin: auto;*/
+  /*margin-top: -15px;*/
+  /*padding: 0;*/
+  font-size: 12px;
+  font-family: Calibri, Arial, Times, serif;  
+  color: #ffffff;
+  /*overflow: hidden;*/
 }
 a,
 a:visited,
 a:focus,
 a:active {
-	text-decoration: none;
-	color: #ff9900;
-	font-weight: bold;  
+  text-decoration: none;
+  color:#ff9900;
+	font-weight:bold;  
 }
 a:hover{
-	color: #ff5500;
+	color:#ff5500;
 }
 img {
-	border: none;
+  border: none;
 }
 h1,
 h2,
@@ -25,64 +31,99 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0;
-	padding: 5px;
+  margin: 0;
+  padding: 5px;
 }
-
-
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
 
 /*##############################
 ####        HEADER           ###
 ################################*/
 #header {
-	height: 100px;
-	background-color:#000000;
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  height: 100px;
+  background-color:#000000;
 }
 #header #banner {
-	height: 100%;
+  width: 70%;
+  height:100%;
+  float: left;
+  position: relative;
 }
 #header #banner img {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
 }
 #header #login {
-	padding-top: 10px;
+	margin-top: 10px;
+	width: 25%;
 	float: right;
 	height: 100%;
+	position: relative;
 }
-
-
 /*##############################
 ####        NAVIGATION          ###
 ################################*/
 #navigation {
-	background: transparent url("../img/bg_menu.png") repeat-x top left;
+  width: 100%;
+  margin: auto;
+  margin-top: 0px;
+  background: transparent url("../img/bg_menu.png") repeat-x top left;
+  height: 90px;
+  height: 50px;
 }
 
 #navigation  li {
-	list-style: none;
+  list-style: none;
+  display: block;
+  float: left;
+  height: 50px;
 }
 #navigation  li a {
-	line-height: 45px;
-	width: auto;
-	text-decoration: none;
-	color: #DDD;
-	text-transform: uppercase;
-	font-family: Calibri, Arial, Times, serif;
-	font-weight: bold;
-	padding: 0 25px;
-	font-size: 1.3em;
-	text-shadow: 1px 1px 1px #353535;
+  display: block;
+  height: 50px;
+  line-height: 45px;
+  width: auto;
+  text-decoration: none;
+  color: #DDD;
+  text-transform: uppercase;
+  font-family: Calibri, Arial, Times, serif;
+  font-weight: bold;
+  padding: 0 25px;
+  font-size: 1.3em;
+  text-shadow: 1px 1px 1px #353535;
 }
 #navigation  li a:hover,
 #navigation  li a.active {
-	color: #fff;
-	background: transparent url("../img/nav_hover.png") top center repeat-x;
+  color: #fff;
+  background: transparent url("../img/nav_hover.png") top center repeat-x;
 }
-
-
+/*##########################
+#### CONTENU!!!!       ###
+############################*/
+#container{
+/*
+ position			: fixed;
+ left				: 0;
+right				: 0;
+top : 0;
+bottom				: 98px;*/
+/*width:100%;*/
+/*margin-top:152px;*/
+/*overflow:auto;*/
+}
+#container #contenu{
+/*position:relative;
+padding:10px;*/
+}
 
 
 /*##########################
@@ -95,6 +136,7 @@ h6 {
 }
 #container #bloc_news .une_news {
 	padding: 5px;
+	width: 100%;
 	background-color: #111111;
 	margin-bottom: 10px;
 	margin-top: 10px;
@@ -138,20 +180,29 @@ color:#999999;
 ####CHAT      ###
 ############################*/
 #container #bloc_chat{
-	overflow: hidden;
+ position			: fixed;
+right				: 30px;
+top : 20px;
+bottom				: 150px;
+width:44%;
+margin-top:152px;
+padding:10px;
+overflow:hidden;
 }
 #container #bloc_chat #bloc_chat_titre{
+	position:relative;
 	height:5%;
 	width:90%;
-	display: inline-block;
+	overflow:hidden;
 	padding:4px;
 	font-size: 18px;
 	font-weight:bold;
 }
 #container #bloc_chat #bloc_chat_texte{
-	height:500px;
+	position:relative;
+	float:left;
+	height:80%;
 	width:75%;
-	display: inline-block;
 	overflow-y:auto;
 	overflow-x:hidden;
 	background-color:#000000;
@@ -166,7 +217,7 @@ color:#999999;
 #container #bloc_chat #bloc_chat_users{
 	position:relative;
 	float:right;
-	height:500px;
+	height:80%;
 	width:20%;
 	overflow-y:auto;
 	overflow-x:hidden;

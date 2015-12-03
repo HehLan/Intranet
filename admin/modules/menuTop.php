@@ -1,6 +1,20 @@
-<?php
+<nav id="navigation" class="navbar navbar-inverse" role="navigation" >
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+			
 
-echo            '<ul>
+				<?php 
+
+					echo'
                     <li><a href="../index.php">Accueil</a></li>
                     <li><a href="news.php">news</a></li>
 					<li><a href="joueurs.php">Joueurs</a></li>
@@ -8,5 +22,13 @@ echo            '<ul>
                     <li><a href="index.php">Équipes</a></li>                    
                     <li><a href="inscriptions.php">Inscriptions</a></li>
 					<li><a href="tournois.php">Tournois</a></li>';
+					
+				?>
+			</ul>
+		</div>
+	</div>
+</nav>
 
-echo'           </ul>';
+
+
+

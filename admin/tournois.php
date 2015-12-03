@@ -16,12 +16,7 @@ if(!$con)
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" charset="utf-8">
-	<title>HEHLan</title>
-	<META NAME="robots" CONTENT="none">
-	
-	<link rel="icon" href="../img/logoheh.ico" >
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
+	<?php require_once('includes/_meta.html'); ?> 
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/getXhr.js"></script>
     <script type="text/javascript">
@@ -66,28 +61,9 @@ if(!$con)
 
 <body style="background-color: #000;">
 
- 	<div id="header">
-		<div id="banner">
-		    <a href="index.php">
-		    <img src="img/logoheh.png" alt="HEHLan" width="250px">
-		    </a>
-		</div>
-		<div id="login">
-			<?php
-				if($con)
-				{
-					echo 'Bienvenu à toi '.$_SESSION['login'].', <a href="../common/deco.php">se déconnecter</a><br>';
-					
-				}
-			?>
-		</div>	     
- 	</div>
- 	
-    <div id="navigation">
-	<?php
-		require_once('modules/menuTop.php');
-    ?>        
-    </div>
+ 	<?php require_once('includes/_header.php'); ?>
+	<?php require_once('modules/menuTop.php'); ?>  
+	
 	<div id="container">
 		<div id="contenu">
 			<?php
