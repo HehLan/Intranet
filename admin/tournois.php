@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 require_once('modules/connect.php');
 require_once('../common/utils.php');
@@ -14,9 +14,9 @@ if(!$con)
 } 
 ?>
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-	<?php require_once('includes/_meta.html'); ?> 
+	<?php require_once('../includes/_meta.php'); ?> 
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/getXhr.js"></script>
     <script type="text/javascript">
@@ -59,9 +59,9 @@ if(!$con)
 	</script>
 </head>
 
-<body style="background-color: #000;">
+<body role="document">
 
- 	<?php require_once('includes/_header.php'); ?>
+ 	<?php require_once('../includes/_header.php'); ?>
 	<?php require_once('modules/menuTop.php'); ?>  
 	
 	<div id="container">
@@ -205,7 +205,7 @@ if(!$con)
 	
 	</div>
     
-	<?php require_once('../includes/_footer.html'); ?>
+	<?php require_once('../includes/_footer.php'); ?>
 	
 	
 	<div id="shadowing"></div>

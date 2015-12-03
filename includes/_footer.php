@@ -1,4 +1,4 @@
-﻿<footer id="footer">
+<footer id="footer">
 	<div id="about">
 		<p>HEHLan All Rights Reserved 'Copyright' 2016</p>
 	</div>

@@ -57,13 +57,11 @@ $req2->execute();
 // On affiche le resultat
 $donneesJT = $req2->fetchAll();
 ?>
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-	<?php require_once('includes/_meta.html'); ?> 
-    <link rel="stylesheet" href="css/jquery-ui.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui2.css" type="text/css">
-    <link rel="stylesheet" href="css/tournois.css" type="text/css">
+	<?php require_once('../includes/_meta.php'); ?> 
+    
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/getXhr.js"></script>
@@ -118,9 +116,9 @@ $donneesJT = $req2->fetchAll();
 </script>  
 </head>
 
-<body style="background-color: #000;">
+<body role="document">
 
- 	<?php require_once('includes/_header.php'); ?>
+ 	<?php require_once('../includes/_header.php'); ?>
 	<?php require_once('modules/menuTop.php'); ?>  
 	
 	<div id="container">
@@ -191,7 +189,7 @@ $donneesJT = $req2->fetchAll();
 	
 	</div>
     
-	<?php require_once('../includes/_footer.html'); ?>
+	<?php require_once('../includes/_footer.php'); ?>
 
 </body>
 </html>

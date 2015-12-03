@@ -27,7 +27,6 @@
 						
 					if(isset($_SESSION['id_joueur']))
 						echo '<li><a href="ModifProfil.php">Mon profil</a></li>';
-
 					if(isset($_SESSION['level']))
 					{
 						if($_SESSION['level'] == 1)
@@ -39,5 +38,7 @@
 		</div>
 	</div>			
 </nav>
+
+
 
 

@@ -97,15 +97,15 @@ foreach($groupes as $groupe)
 */
 ?>
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-	<?php require_once('includes/_meta.html'); ?>  
+	<?php require_once('includes/_meta.php'); ?>  
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="js/getXhr.js"></script>
 	<script type="text/javascript" src="js/jquery.gracket.js"></script>
 </head>
 
-<body style="background-color: #000;">
+<body>
 
  	<?php require_once('includes/_header.php'); ?>   
 	<?php require_once('includes/_nav.php'); ?>   
@@ -545,7 +545,7 @@ foreach($groupes as $groupe)
 		
 	</div>
 	
-    <?php require_once('includes/_footer.html'); ?>
+    <?php require_once('includes/_footer.php'); ?>
 
 </body>
 </html>

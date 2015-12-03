@@ -1,3 +1,7 @@
+<?php
+	//IMPORTANT: Path of the project on your desktop
+	$path = "/Intranet"
+?>
 <title>HEHLan</title>
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" charset="utf-8">
@@ -21,18 +25,21 @@
 <meta name="location" content="Mons, BELGIUM" />
 <meta name="geo.region" content="BE-WHT" />
 <meta name="geo.placename" content="Mons, Hainaut" />
-<link rel="shortcut icon" href="img/logoheh.ico" />
-<link rel="icon" href="img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<link rel="stylesheet" type="text/css" href="css/profil.css" />
-<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="shortcut icon" href="<?php echo $path; ?>/img/logoheh.ico" />
+<link rel="icon" href="<?php echo $path; ?>/img/logoheh.ico" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/profil.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/jquery-ui2.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/joueurs.css" >
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/tournois.css" >
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/equipes.css" >
 
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="<?php echo $path; ?>/js/jquery.js"></script>
+<script src="<?php echo $path; ?>/js/bootstrap.js"></script>
+<script src="<?php echo $path; ?>/js/jquery-2.1.4.min.js"></script>
+<script src="<?php echo $path; ?>/js/bootstrap.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,5 +52,6 @@
 <!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+
 
 

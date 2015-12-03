@@ -72,10 +72,10 @@ foreach($groupes as $groupe)
 	}
 }
 ?>
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-	<?php require_once('includes/_meta.html'); ?> 
+	<?php require_once('../includes/_meta.php'); ?> 
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/getXhr.js"></script>
     <script type="text/javascript">
@@ -116,9 +116,9 @@ foreach($groupes as $groupe)
 	</script>
 </head>
 
-<body style="background-color: #000;">
+<body role="document">
 
- 	<?php require_once('includes/_header.php'); ?>
+ 	<?php require_once('../includes/_header.php'); ?>
 	<?php require_once('modules/menuTop.php'); ?>  
 	
 	<div id="container">
@@ -357,7 +357,7 @@ foreach($groupes as $groupe)
 	
 	</div>
     
-	<?php require_once('../includes/_footer.html'); ?>
+	<?php require_once('../includes/_footer.php'); ?>
 	
 	
 	<div id="shadowing"></div>

@@ -18,13 +18,11 @@ $query="SELECT id_joueur, pseudo FROM joueurs ORDER BY pseudo";
 $requete_preparee=$connexion->prepare($query);
 $requete_preparee->execute();
 ?>
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-	<?php require_once('includes/_meta.html'); ?> 
-    <link rel="stylesheet" href="css/jquery-ui.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui2.css" type="text/css">
-    <link rel="stylesheet" href="css/joueurs.css" type="text/css">
+	<?php require_once('../includes/_meta.php'); ?> 
+
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/getXhr.js"></script>
@@ -41,7 +39,7 @@ $requete_preparee->execute();
                 url: "admin/listeDesTournoisDuJoueur.php",
                 data: "id_joueur="+$(this).attr("value"),
                 success : function(contenu,etat){ 
-                    $('#listeTournoisInscritDuJoueur').html(contenu);
+                    $('#listeTournoisInscritDuJoueur').php(contenu);
                 }
             });
             $.ajax({ 
@@ -49,7 +47,7 @@ $requete_preparee->execute();
                 url: "admin/equipesDuJoueur.php",
                 data: "id_joueur="+$(this).attr("value"),
                 success : function(contenu,etat){ 
-                    $('#EquipesDuJoueurAdmin').html(contenu);
+                    $('#EquipesDuJoueurAdmin').php(contenu);
                 }
             });
             
@@ -85,7 +83,7 @@ $requete_preparee->execute();
                 url: "admin/insertEquipeDuJoueur.php",
                 data: id,
                 success : function(contenu,etat){ 
-                    $( "#infoEquipeAdmin" ).html(contenu);
+                    $( "#infoEquipeAdmin" ).php(contenu);
                     $( "#infoEquipeAdmin" ).dialog({ buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); location.reload(); } } ] });
                     $( "#infoEquipeAdmin" ).dialog( "open" );
                 }
@@ -111,7 +109,7 @@ $requete_preparee->execute();
                 url: "admin/insertTournoiJoueur.php",
                 data: id,
                 success : function(contenu,etat){ 
-                    $( "#infoEquipeAdmin" ).html(contenu);
+                    $( "#infoEquipeAdmin" ).php(contenu);
                     $( "#infoEquipeAdmin" ).dialog({ buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); location.reload(); } } ] });
                     $( "#infoEquipeAdmin" ).dialog( "open" );
                 }
@@ -121,9 +119,9 @@ $requete_preparee->execute();
 </script>  
 </head>
 
-<body style="background-color: #000;">
+<body role="document">
 
- 	<?php require_once('includes/_header.php'); ?>
+ 	<?php require_once('../includes/_header.php'); ?>
 	<?php require_once('modules/menuTop.php'); ?>  
 	
 	<div id="container">
@@ -187,11 +185,14 @@ $requete_preparee->execute();
 </div>
 		</div>	
 	</div>
-    <div id="footer">
-        <div id="about"><p>HEHLan All Rights Reserved 'Copyright' 2014</p></div>
-        <div id="nothinghere"><img src="img/logo3.png" alt="CEHECOFH"></div>
-        <div id="social"><a href="http://www.heh.be" target="_blank"><img src="img/logo4.png" alt="HeH" border="0"></a></div>
-    </div>
+    
+	
+	<!-- gap to have the footer in the bottom of the window -->
+	<div style="height: 450px;">
+	
+	</div>
+    
+	<?php require_once('../includes/_footer.php'); ?>
 
 </body>
 </html>

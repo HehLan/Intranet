@@ -100,7 +100,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<?php require_once('includes/_meta.html'); ?>   
+		<?php require_once('includes/_meta.php'); ?>   
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/getXhr.js"></script>
 	</head>
@@ -379,7 +379,7 @@
 			
 		</div>
 	
-    <?php require_once('includes/_footer.html'); ?>
+    <?php require_once('includes/_footer.php'); ?>
 
 	</body>
 </html>

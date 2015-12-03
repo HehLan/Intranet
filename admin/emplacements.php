@@ -13,10 +13,10 @@ if(!$con)
  header('Location: ../index.php');
 } 
 ?>
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-	<?php require_once('includes/_meta.html'); ?> 
+	<?php require_once('../includes/_meta.php'); ?> 
 	
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/jquery-ui.js"></script>
@@ -38,7 +38,7 @@ $(document).ready(function()
 	data: "id_emplacement="+valeur,
 	success : function(contenu,etat)
             { 
-	    $("#dialogInfo_joueur").html(contenu);
+	    $("#dialogInfo_joueur").php(contenu);
             }
         });
    });
@@ -61,8 +61,8 @@ $(document).ready(function()
 	    data: "id_equipes="+valeur,
 	    success : function(contenu,etat)
                     { 
-		    $( "#dialogEquipe_Emplacement" ).html(contenu);
-                    $( "#dialogInfo_equipe" ).html(contenu);
+		    $( "#dialogEquipe_Emplacement" ).php(contenu);
+                    $( "#dialogInfo_equipe" ).php(contenu);
                     }          
 		
             });  
@@ -109,7 +109,7 @@ padding:5px;
 
 <body role="document">
 
- 	<?php require_once('includes/_header.php'); ?>
+ 	<?php require_once('../includes/_header.php'); ?>
 	<?php require_once('modules/menuTop.php'); ?>        
 
 	<div id="container">
@@ -293,7 +293,7 @@ padding:5px;
 	
 	</div>
     
-	<?php require_once('../includes/_footer.html'); ?>
+	<?php require_once('../includes/_footer.php'); ?>
 	
 </body>
 </html>

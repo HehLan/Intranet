@@ -1,7 +1,10 @@
-﻿<header id="header" class="row" >
+<header id="header" class="row" >
 	<div id="banner" class="col-lg-9 col-sm-9 col-xs-12" >
 		<a href="index.php">
-		    <img src="img/logoheh.png" alt="HEHLan" width="250px">
+			<!-- en local -->
+		    <img src="/Intranet/img/logoheh.png" alt="HEHLan" width="250px">
+			<!-- sur le serveur -->
+		    <!-- <img src="/img/logoheh.png" alt="HEHLan" width="250px"> -->
 		</a>
 	</div>
 	<div id="login" class="col-lg-3 col-sm-3 col-xs-12" style="margin-bottom: -10px" >

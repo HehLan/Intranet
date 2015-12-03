@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 require_once('modules/connect.php');
 require_once('../common/utils.php');
@@ -18,14 +18,11 @@ $query="SELECT id_equipes, nom FROM equipes ORDER BY nom";
 $requete_preparee=$connexion->prepare($query);
 $requete_preparee->execute();
 ?>
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-	<?php require_once('includes/_meta.html'); ?> 
+	<?php require_once('../includes/_meta.php'); ?> 
 	
-    <link rel="stylesheet" href="css/jquery-ui.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui2.css" type="text/css">
-    <link rel="stylesheet" href="css/equipes.css" type="text/css">
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/jquery-ui.js"></script>
     <script type="text/javascript" src="../js/getXhr.js"></script>
@@ -37,7 +34,7 @@ $requete_preparee->execute();
             
             $('#submitNewPlayerInTeam').show();
             $(".EquipeAdmin").css({background: "none"});
-            $('#InfoJoueurEquipes').html('');
+            $('#InfoJoueurEquipes').php('');
             $(".EquipeJoueurAdmin").css({background: "none"});
             
             $( this ).css({background: "rgba(0,0,255,0.2)"});
@@ -46,7 +43,7 @@ $requete_preparee->execute();
                 url: "admin/listeJoueursEquipe.php",
                 data: "id_equipe="+$(this).attr("value"),
                 success : function(contenu,etat){ 
-                    $('#listeEquipeJoueurAdmin').html(contenu);
+                    $('#listeEquipeJoueurAdmin').php(contenu);
                 }
             });
         });
@@ -58,7 +55,7 @@ $requete_preparee->execute();
                 url: "admin/InfoJoueurAdmin.php",
                 data: "id_joueur="+$(this).attr("value"),
                 success : function(contenu,etat){ 
-                    $('#InfoJoueurEquipes').html(contenu);
+                    $('#InfoJoueurEquipes').php(contenu);
                 }
             });
         });
@@ -77,7 +74,7 @@ $requete_preparee->execute();
                 url: "admin/chargerListeJoueurs.php",
                 data: "id_joueur="+$(this).attr("value"),
                 success : function(contenu,etat){ 
-                    $('#infoEquipeAdmin').html(contenu);
+                    $('#infoEquipeAdmin').php(contenu);
                 }
             });
         });
@@ -88,7 +85,7 @@ $requete_preparee->execute();
                 url: "admin/equipesDuJoueur.php",
                 data: "id_joueur="+$("#SelectJoueur option:selected").val(),
                 success : function(contenu,etat){ 
-                    $('#infoEquipeAdmin').html(contenu);
+                    $('#infoEquipeAdmin').php(contenu);
                 }
             });
         });
@@ -112,7 +109,7 @@ $requete_preparee->execute();
                 url: "admin/insertEquipeDuJoueur.php",
                 data: id,
                 success : function(contenu,etat){ 
-                    $( "#infoEquipeAdmin" ).html(contenu);
+                    $( "#infoEquipeAdmin" ).php(contenu);
                     $( "#infoEquipeAdmin" ).dialog({ buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); location.reload(); } } ] });
                     $( "#infoEquipeAdmin" ).dialog( "open" );
                 }
@@ -210,7 +207,7 @@ $requete_preparee->execute();
             }
             
             if (valid) {
-                $("#erreurNewTeamAdmin").html("Vérification en cours...");
+                $("#erreurNewTeamAdmin").php("Vérification en cours...");
                 $("#erreurNewTeamAdmin").css({color: "#00f"});
                 var id="Team="+$("#Team").val();
                 id+="&TagTeam="+$("#TagTeam").val();
@@ -220,13 +217,13 @@ $requete_preparee->execute();
                     url: "admin/insertNewEquipe.php",
                     data:id,
                     success : function(contenu,etat){ 
-                        $("#erreurNewTeamAdmin").html(contenu);
+                        $("#erreurNewTeamAdmin").php(contenu);
                         $("#erreurNewTeamAdmin").dialog( "open" );
                     }
                 });
             }
             else {
-                $("#erreurNewTeamAdmin").html(erreur);
+                $("#erreurNewTeamAdmin").php(erreur);
                 $("#erreurNewTeamAdmin").css({color: "#f00"});
             }
         });
@@ -237,7 +234,7 @@ $requete_preparee->execute();
                 url: "admin/check-Team.php",
                 data:"Team="+$('#Team').val(),
                 success : function(contenu,etat){ 
-                    $("#pseudoboxTeam").html(contenu);
+                    $("#pseudoboxTeam").php(contenu);
                 }
             
             });
@@ -248,7 +245,7 @@ $requete_preparee->execute();
                 url: "admin/check-Team.php",
                 data:"TagTeam="+$('#TagTeam').val(),
                 success : function(contenu,etat){ 
-                    $("#pseudoboxTagTeam").html(contenu);
+                    $("#pseudoboxTagTeam").php(contenu);
                 }
             
             });
@@ -258,9 +255,9 @@ $requete_preparee->execute();
 </script>  
 </head>
 
-<body style="background-color: #000;">
+<body role="document">
 
- 	<?php require_once('includes/_header.php'); ?>
+ 	<?php require_once('../includes/_header.php'); ?>
 	<?php require_once('modules/menuTop.php'); ?>  
 	
 	<div id="container">
@@ -350,11 +347,14 @@ $requete_preparee->execute();
 		
 		</div>	
 	</div>
-    <div id="footer">
-        <div id="about"><p>HEHLan All Rights Reserved 'Copyright' 2014</p></div>
-        <div id="nothinghere"><img src="img/logo3.png" alt="CEHECOFH"></div>
-        <div id="social"><a href="http://www.heh.be" target="_blank"><img src="img/logo4.png" alt="HeH" border="0"></a></div>
-    </div>
+	
+	
+    <!-- gap to have the footer in the bottom of the window -->
+	<div style="height: 450px;">
+	
+	</div>
+    
+	<?php require_once('../includes/_footer.php'); ?>
 
 </body>
 </html>

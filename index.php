@@ -42,7 +42,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php require_once('includes/_meta.html'); ?> 
+		<?php require_once('includes/_meta.php'); ?> 
 		
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/getXhr.js"></script>
@@ -197,7 +197,7 @@
 			
 		</div>
 		
-		<?php require_once('includes/_footer.html'); ?>
+		<?php require_once('includes/_footer.php'); ?>
 		
 		<?php
 			if ($chat)
