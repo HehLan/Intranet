@@ -40,7 +40,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<?php require_once('includes/_meta.php'); ?> 
 		
@@ -56,7 +56,8 @@
 		
 		<?php	
 			if($con)
-			{ 
+			{ 			
+				
 				$duree_chat = '2000';
 				$duree_chat_users = '20000';
 			
@@ -98,7 +99,7 @@
 						echo 'ERREUR SQL duree_chat_users';				
 				
 				
-					require_once('assets/js/chat.php'); 
+					require_once('assets/ajax/chat.php'); 
 				}
 			}
 		?>
@@ -114,6 +115,7 @@
 
 			<div class="row">
 				<div id="bloc_news" class="col-lg-6 col-xs-12">
+				<h3>News</h3>
 				<?php			
 					//SQL query to select all news
 					$sql = "SELECT * FROM news WHERE invisible=0 ORDER BY quand DESC";
@@ -149,7 +151,7 @@
 				<?php
 					if($con)
 					{
-						echo '<div id="bloc_chat_titre">HEHLan Chat</div>';
+						echo '<h3>HEHLan Chat</h3>';
 						if($chat)
 						{
 							echo '
@@ -172,16 +174,16 @@
 					else
 					{
 						echo '
-							<div id="bloc_chat_titre">Connectez vous pour accèder au Chat :</div>	
+							<div id="bloc_chat_titre">Connectez vous pour accèder au Chat et à votre profil :</div>	
 							<div id="bloc_connexion">
 								<form method="POST">
-									<table style="border:0px">
+									<table>
 										<tr>
-											<td><strong>Login</strong></td>
+											<td><label><strong>Login</strong></label></td>
 											<td><input type="text" name="login" /></td>
 										</tr>
 										<tr>
-											<td><strong>Password</strong></td>
+											<td><label><strong>Password</strong></label></td>
 											<td><input type="password" name="pwd" /></td>
 										</tr>
 										<tr>
@@ -198,7 +200,6 @@
 		</div>
 		
 		<?php require_once('includes/_footer.php'); ?>
-		
 		<?php
 			if ($chat)
 			{

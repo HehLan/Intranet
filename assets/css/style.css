@@ -25,38 +25,30 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0;
-	padding: 5px;
+	color: #D1D1D1;
 }
 
 
-
-/*##############################
-####        HEADER           ###
-################################*/
+/*----------------------------------------------------------------------*/
+/*						HEADER											*/
+/*----------------------------------------------------------------------*/
 #header {
-	height: 100px;
+	display: block;
+	padding-bottom: 10px;
 	background-color:#000000;
 }
-#header #banner {
-	height: 100%;
+#logo {
+	padding-left: 40px;
 }
-#header #banner img {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 20px;
-}
-#header #login {
+#login {
 	padding-top: 10px;
 	float: right;
-	height: 100%;
 }
 
 
-/*##############################
-####        NAVIGATION          ###
-################################*/
+/*----------------------------------------------------------------------*/
+/*						NAVIGATION										*/
+/*----------------------------------------------------------------------*/
 #navigation {
 	background: transparent url("../img/bg_menu.png") repeat-x top left;
 }
@@ -83,16 +75,9 @@ h6 {
 }
 
 
-
-
-/*##########################
-#### NEWS      ###
-############################*/
-#container #bloc_news {
-	/*margin-left: 20px;
-	padding: 10px;
-	width: 48%;*/
-}
+/*----------------------------------------------------------------------*/
+/*						NEWS											*/
+/*----------------------------------------------------------------------*/
 #container #bloc_news .une_news {
 	padding: 5px;
 	background-color: #111111;
@@ -103,60 +88,50 @@ h6 {
 }
 #container #bloc_news .titre_news {
 	padding: 10px;
-	width: 98%;
 	background-color: #000000;
 	margin-bottom: 5px;
-	overflow-x:hidden;
-	font-size:16px;
-	cursor:pointer;
+	overflow-x: hidden;
+	font-size: 14px;
+	cursor: pointer;
+	color: #D1D1D1;
 }
 #container #bloc_news .titre_news:hover{
-color:#ff9900;
+	color: #ff9900;
 }
 #container #bloc_news .contenu_news{
-position:relative;
-width:100%;
-padding-bottom:10px;
-overflow-x:hidden;
-font-size:12px;
-display:none;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	overflow-x: hidden;
+	font-size: 13px;
+	display: none;
 }
 #container #bloc_news .date_news{
-float:right;
-margin-top:0px;
-margin-right:0px;
-padding-top:5px;
-padding-bottom:5px;
-background-color:#000000;
-font-size:10px;
-color:#999999;
+	float: right;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 10px;
+	color: #999999;
 }
 
 
 
-/*##########################
-####CHAT      ###
-############################*/
-#container #bloc_chat{
+/*----------------------------------------------------------------------*/
+/*						CHAT											*/
+/*----------------------------------------------------------------------*/
+#bloc_chat{
 	overflow: hidden;
 }
-#container #bloc_chat #bloc_chat_titre{
-	height:5%;
-	width:90%;
+#bloc_chat_texte{
+	height: 550px;
+	width: 74%;
 	display: inline-block;
-	padding:4px;
-	font-size: 18px;
-	font-weight:bold;
-}
-#container #bloc_chat #bloc_chat_texte{
-	height:500px;
-	width:75%;
-	display: inline-block;
-	overflow-y:auto;
-	overflow-x:hidden;
-	background-color:#000000;
-	padding:4px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: #000000;
+	padding: 4px;
 	font-size: 14px;
+	border: 1px solid #353535;
+	border-radius: 3px;
 }
 #container #bloc_chat #bloc_chat_texte .chatqui{
 	font-size: 12px;
@@ -164,29 +139,36 @@ color:#999999;
 }
 
 #container #bloc_chat #bloc_chat_users{
-	position:relative;
-	float:right;
-	height:500px;
-	width:20%;
-	overflow-y:auto;
-	overflow-x:hidden;
-	background-color:#000000;
-	padding:4px;
+	height: 550px;
+	width: 24%;
+	display: inline-block;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: #000000;
+	padding: 5px;
 	color: #AAAAAA;
+	border: 1px solid #353535;
+	border-radius: 3px;
 }
 #container #bloc_chat #bloc_chat_users strong{
 	color: #FFFFFF;
 }
 #container #bloc_chat #bloc_chat_send{
-	position:relative;
-	clear:both;
-	width:98%;
-	height:10%;
-	padding-top:10px;
+	position: relative;
+	clear: both;
+	width: 98%;
+	height: 10%;
+	padding-top: 10px;
 }
 #container #bloc_chat #bloc_chat_send #bloc_chat_message {
-	width:75%;
+	width: 75%;
 }
+
+
+
+
+
+/**** PLAYER ***/
 
 
  a:hover /* Apparence au survol des liens */
@@ -277,56 +259,44 @@ display: block;
 
 
 
-/*##########################
-#### LE FOOTER!!!!       ###
-############################*/
+/*----------------------------------------------------------------------*/
+/*						FOOTER											*/
+/*----------------------------------------------------------------------*/
 #footer {
-/*
-  width: 100%;
-  position			: fixed;
-	bottom				: 0;
-	left				: 0;
-	right				: 0;*/
+	margin-top: 50px;
+	border-top: 8px solid #151515;
+	background-color: #000000;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+#footer #copyright {
+	text-align: center;
+	margin-bottom: 5px;
+}
+#footer #copyright p {
+	padding-top: 30px;
+}
+#footer #ceheh {
+	text-align: center;
+	margin-bottom: 5px;
+}
+#footer #ceheh img {
+	vertical-align: center;
+}
+#footer #campus_technique {
+	text-align: center;
+	margin-bottom: 5px;
+}
+#footer #campus_technique img {
+	margin-top: 5px;
+}
 
-  /*clear:both;*/
-  height: 114px;
-  margin: 0 auto;
-  margin-top: 90px;
-  border-top: 8px solid #151515;
-  background-color:#000000;
-}
-#footer #about {
-  width: 33%;
-  height: 100%;
-  float: left;
-  background: none;
-  margin: 1px;
-  margin-left: 25px;
-  text-align: left;  
-}
-#footer #about p {
-  margin-top: 45px;
-}
-#footer #nothinghere {
-  width: 30%;
-  height: 100%;
-  float: left;
-  margin: 1px;
-  text-align: center;
-}
-#footer #nothinghere img {
-  margin-top: 5px;
-}
-#footer #social {
-  width: 33%;
-  height: 100%;
-  float: left;
-  margin: 1px;
-  text-align: right;
-}
-#footer #social img {
-  margin-top: 5px;
-}
+
+
+
+
+
+
 /*##########################
 #### LES POOLS       ###
 ############################*/

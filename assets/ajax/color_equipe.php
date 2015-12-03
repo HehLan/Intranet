@@ -3,7 +3,7 @@
 
 $id_equipes=$_POST['id_equipes'];
 
-require_once('../common/connect.php');
+require_once('../../common/connect.php');
 $query="SELECT j.pseudo, empl.id_emplacement, e.nom
 FROM `equipes_joueur` AS `ej` , `joueurs` AS `j` , `equipes` AS `e` , `emplacement` AS `empl`
 WHERE ej.id_joueur = j.id_joueur

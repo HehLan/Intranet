@@ -18,9 +18,9 @@ if(!$con)
 <head>
 	<?php require_once('../includes/_meta.php'); ?> 
 	
-    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/jquery-ui.js"></script>
-    <script type="text/javascript" src="../js/getXhr.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/getXhr.js"></script>
     <script type="text/javascript">
 $(document).ready(function()
 {
@@ -121,7 +121,7 @@ padding:5px;
             font-size:10px;
 			border-width: 1px;
 			border-style: solid;">
-				<img class="photo" src="../img/plan.jpg" width="100%" height="100%" >
+				<img class="photo" src="<?php echo $path; ?>/assets/img/plan.jpg" width="100%" height="100%" >
 			<?php
 				$query="SELECT * FROM emplacement where id_emplacement!=0";
 				$requete_preparee=$connexion->prepare($query);

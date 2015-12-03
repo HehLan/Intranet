@@ -41,63 +41,63 @@
 <html>
 	<head>
 		<?php require_once('includes/_meta.php'); ?>	
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/getXhr.js"></script>
-		<script type="text/javascript" src="js/jquery-ui.js"></script>
-		<script type="text/javascript" src="js/joueur.js"></script>
+		<script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery.js"></script>
+		<script type="text/javascript" src="<?php echo $path; ?>/assets/js/getXhr.js"></script>
+		<script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery-ui.js"></script>
+		<script type="text/javascript" src="<?php echo $path; ?>/assets/js/joueur.js"></script>
 	</head>
 
-<body style="background-color: #000;">
+	<body role="document">
 
- 	<?php require_once('includes/_header.php'); ?>   
-	<?php require_once('includes/_nav.php'); ?>   
+		<?php require_once('includes/_header.php'); ?>   
+		<?php require_once('includes/_nav.php'); ?>   
 
 	
-	<div id="container">
-		<div id="contenu">
-		<?php
-		//---------------------------------------PLAN
-		echo '	
+		<div id="container">
+			<div id="contenu">
+				<?php
+					//---------------------------------------PLAN
+					echo '	
 
-			<div style="position: relative;
-						float:right; 
-						height: 90%;
-						width:80%;
-						font-size:10px;
-						border-width: 1px;
-						border-style: solid;">
+						<div style="position: relative;
+							float:right; 
+							height: 90%;
+							width:80%;
+							font-size:10px;
+							border-width: 1px;
+							border-style: solid;">
 						
-				<img class="photo" src="img/plan.jpg" width="100%" height="100%" >';
+						<img class="photo" src="'.$path.'/assets/img/plan.jpg" width="100%" height="100%" >';
 
                               
-				//------------------- DESSIN DES TABLES
-				$query="SELECT * FROM emplacement where id_emplacement!=0";
-				$requete_preparee=$connexion->prepare($query);
-				$requete_preparee->execute();
-				while($emplacements=$requete_preparee->fetch(PDO::FETCH_ASSOC)) 
-				{
-					echo "<div class='place' onclick='Click(this)' id=";
-					echo $emplacements['id_emplacement'];
-					echo " style='";
-					echo "position:absolute";
-					echo ";";
-					echo "top:";
-					echo $emplacements['top'];
-					echo "%";
-					echo ";";
-					echo "left:";
-					echo $emplacements['xy_left'];
-					echo "%";
-					echo ";";
-					echo "width:";
-					echo $emplacements['width'];
-					echo "%;height:";
-					echo $emplacements['height'];
-					echo "%;border:0.1em solid #000;text-align:center;color:#000000;'>";
-					echo $emplacements['numero'];
-					echo "</div>";
-				}  
-				//----------------------				
+					//------------------- DESSIN DES TABLES
+					$sql = "SELECT * FROM emplacement where id_emplacement != 0";
+					$query = $connexion->prepare($sql);
+					$query->execute();
+					while($emplacements=$query->fetch(PDO::FETCH_ASSOC)) 
+					{
+						echo "<div class='place' onclick='Click(this)' id=";
+						echo $emplacements['id_emplacement'];
+						echo " style='";
+						echo "position:absolute";
+						echo ";";
+						echo "top:";
+						echo $emplacements['top'];
+						echo "%";
+						echo ";";
+						echo "left:";
+						echo $emplacements['xy_left'];
+						echo "%";
+						echo ";";
+						echo "width:";
+						echo $emplacements['width'];
+						echo "%;height:";
+						echo $emplacements['height'];
+						echo "%;border:0.1em solid #000;text-align:center;color:#000000;'>";
+						echo $emplacements['numero'];
+						echo "</div>";
+					}  
+					//----------------------				
 
 				//---------------création des vignetes
 				$query1="SELECT * FROM emplacement,joueurs where joueurs.id_emplacement=emplacement.id_emplacement and emplacement.id_emplacement!=0";
@@ -203,10 +203,10 @@ echo '
 
 						// Selection des équipes		
 
-						$query="SELECT id_equipes,nom from equipes ORDER BY nom ASC ";
-						$requete_preparee=$connexion->prepare($query);
-						$requete_preparee->execute();
-						while($equipes=$requete_preparee->fetch(PDO::FETCH_ASSOC)) 
+						$sql = "SELECT id_equipes,nom from equipes ORDER BY nom ASC ";
+						$query = $connexion->prepare($sql);
+						$query->execute();
+						while($equipes=$query->fetch(PDO::FETCH_ASSOC)) 
 						{
 							echo "<a class='ClassEquipe' value='";
 							echo $equipes['id_equipes'];
@@ -229,6 +229,8 @@ echo '					</div>
 		
 		
 	</div>
+	
+	<div style="height: 4500px;"></div>
     <?php require_once('includes/_footer.php'); ?>
 
 </body>

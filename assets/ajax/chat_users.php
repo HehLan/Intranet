@@ -1,5 +1,5 @@
 <?php
-require_once('../common/connect.php');
+require_once('../../common/connect.php');
 
 if(isset($_POST['id']))
 {
