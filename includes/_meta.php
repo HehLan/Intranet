@@ -1,9 +1,10 @@
 <?php
-	//IMPORTANT: Path of the project on your desktop
+	//IMPORTANT: Path of the project on your desktop from "www" directory
 	$path = "/Intranet"
 ?>
 <title>HEHLan</title>
 <meta charset="utf-8" />
+
 <meta http-equiv="Content-Type" charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Pragma" content="no-cache" />
@@ -12,6 +13,7 @@
 <meta http-equiv="imagetoolbar" content="no" />
 <meta http-equiv="expires" content="never" />
 <meta http-equiv="window-target" content="_top" />
+
 <meta name="viewport" content="width=device-width, initial-scale="1.0" />
 <meta name="robots" content="none">
 <meta name="rating" content="general" />	
@@ -25,21 +27,22 @@
 <meta name="location" content="Mons, BELGIUM" />
 <meta name="geo.region" content="BE-WHT" />
 <meta name="geo.placename" content="Mons, Hainaut" />
-<link rel="shortcut icon" href="<?php echo $path; ?>/img/logoheh.ico" />
-<link rel="icon" href="<?php echo $path; ?>/img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/style.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/profil.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/css/equipes.css" >
 
-<script src="<?php echo $path; ?>/js/jquery.js"></script>
-<script src="<?php echo $path; ?>/js/bootstrap.js"></script>
-<script src="<?php echo $path; ?>/js/jquery-2.1.4.min.js"></script>
-<script src="<?php echo $path; ?>/js/bootstrap.min.js"></script>
+<link rel="shortcut icon" href="<?php echo $path; ?>/assets/img/logoheh.ico" />
+<link rel="icon" href="<?php echo $path; ?>/assets/img/logoheh.ico" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/assets/css/profil.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/assets/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/assets/css/jquery-ui2.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/assets/css/joueurs.css" >
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/assets/css/tournois.css" >
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/assets/css/equipes.css" >
+
+<script src="<?php echo $path; ?>/assets/js/jquery.js"></script>
+<script src="<?php echo $path; ?>/assets/js/bootstrap.js"></script>
+<script src="<?php echo $path; ?>/assets/js/jquery-2.1.4.min.js"></script>
+<script src="<?php echo $path; ?>/assets/js/bootstrap.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

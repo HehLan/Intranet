@@ -101,8 +101,8 @@
 <html>
 	<head>
 		<?php require_once('includes/_meta.php'); ?>   
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/getXhr.js"></script>
+		<script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery.js"></script>
+		<script type="text/javascript" src="<?php echo $path; ?>/assets/js/getXhr.js"></script>
 	</head>
 
 	<body>

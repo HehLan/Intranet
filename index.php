@@ -44,8 +44,8 @@
 	<head>
 		<?php require_once('includes/_meta.php'); ?> 
 		
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/getXhr.js"></script>
+		<script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery.js"></script>
+		<script type="text/javascript" src="<?php echo $path; ?>/assets/js/getXhr.js"></script>
 		<script type="text/javascript">
 			function news_toggle(idn)
 			{
@@ -98,7 +98,7 @@
 						echo 'ERREUR SQL duree_chat_users';				
 				
 				
-					require_once('js/chat.php'); 
+					require_once('assets/js/chat.php'); 
 				}
 			}
 		?>

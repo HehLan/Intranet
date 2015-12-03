@@ -82,7 +82,7 @@ if(!$con)
 						<strong>Titre</strong>
 					</td>
 					<td>
-						<input type="text" name="titre" size="50" value="'.phpspecialchars($news['titre']).'">
+						<input type="text" name="titre" size="50" value="'.htmlspecialchars($news['titre']).'">
 						<input type="submit" value="modifier">';
 			if($news['invisible']==0) echo '<a href="news_effacer.php?invisible=1&id_news='.$news['id_news'].'">Masquer</a>';
 			else echo '<a href="news_effacer.php?invisible=0&id_news='.$news['id_news'].'">Dé-Masquer</a>';

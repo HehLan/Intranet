@@ -82,13 +82,13 @@ $pseudoJeux='';
 <html>
 <head>
 	<?php require_once('includes/_meta.php'); ?>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.js"></script>	
-    <script type="text/javascript" src="js/getXhr.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>
-    <script type="text/javascript" src="js/less.js"></script>
-    <script type="text/javascript" src="js/jquery.media.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery-ui.js"></script>	
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/getXhr.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/main.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/menu.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/less.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery.media.js"></script>
 </head>
 
 <body style="background-color: #000;">

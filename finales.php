@@ -100,9 +100,9 @@ foreach($groupes as $groupe)
 <html>
 <head>
 	<?php require_once('includes/_meta.php'); ?>  
-	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/getXhr.js"></script>
-	<script type="text/javascript" src="js/jquery.gracket.js"></script>
+	<script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="<?php echo $path; ?>/assets/js/getXhr.js"></script>
+	<script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery.gracket.js"></script>
 </head>
 
 <body>
