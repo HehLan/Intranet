@@ -15,7 +15,6 @@
 				<li><a href="joueurs.php">Joueurs</a></li>
 
 				<?php 
-
 					//SQL Query to select all tournament names
 					$sql = "SELECT id_tournoi, nomTournoi FROM tournoi";
 					$query = $connexion->prepare($sql);
@@ -38,6 +37,7 @@
 				?>
 			</ul>
 		</div>
-	</div>
+	</div>			
 </nav>
+
 

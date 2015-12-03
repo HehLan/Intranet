@@ -5,11 +5,13 @@
 	
 	$con = false;
 	$chat = false;
+
 	if(isset($_SESSION['id_joueur']))
 	{
-		if(($_SESSION['id_joueur']!=0))
+		if(($_SESSION['id_joueur'] != 0))
 			$con = true;
 	}
+
 	if(!$con)
 	{
 		if(isset($_POST['login']) && isset($_POST['pwd']))
