@@ -4,7 +4,7 @@
 		    <img src="img/logoheh.png" alt="HEHLan" width="250px">
 		</a>
 	</div>
-	<div id="login">
+	<div id="login" style="margin-bottom: -10px">
 		<?php
 			if($con)
 			{
@@ -30,6 +30,7 @@
 						LIMIT 0,3";
 				$query = $connexion->prepare($sql);
 				$query->bindValue('idj', $_SESSION['id_joueur'], PDO::PARAM_INT);
+
 				if($query->execute())
 					$next_matches= $query->fetchAll(PDO::FETCH_ASSOC);
 				else
@@ -37,7 +38,9 @@
 					echo 'ERREUR SQL NEXT MATCHES';
 					exit;
 				}	
+
 				$first = true;
+
 				foreach($next_matches as $next_match)
 				{
 					if($first)
