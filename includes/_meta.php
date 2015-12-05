@@ -1,6 +1,6 @@
 <?php
 	//IMPORTANT: Path of the project on your desktop from "www" directory
-	$path = "/Intranet"
+	$path = "/hehlan"
 ?>
 <title>HEHLan</title>
 <meta charset="utf-8" />
@@ -40,7 +40,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $path; ?>/assets/css/equipes.css" >
 
 <script src="<?php echo $path; ?>/assets/js/jquery.js"></script>
-<script src="<?php echo $path; ?>/assets/js/bootstrap.js"></script>
+<script src="<?php echo $path; ?>/assets/js/bootstrap.min.js"></script>
 <script src="<?php echo $path; ?>/assets/js/jquery-2.1.4.min.js"></script>
 <script src="<?php echo $path; ?>/assets/js/bootstrap.min.js"></script>
 

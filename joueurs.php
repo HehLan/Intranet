@@ -71,9 +71,13 @@
 
                               
 					//------------------- DESSIN DES TABLES
-					$sql = "SELECT * FROM emplacement where id_emplacement != 0";
+					$sql = "SELECT emplacement.id_emplacement AS id_emplacement, top, xy_left, width, height, numero, joueurs.id_joueur AS id_joueur
+							FROM emplacement 
+							LEFT JOIN joueurs ON emplacement.id_emplacement=joueurs.id_emplacement
+							where emplacement.id_emplacement != 0";
 					$query = $connexion->prepare($sql);
 					$query->execute();
+
 					while($emplacements=$query->fetch(PDO::FETCH_ASSOC)) 
 					{
 						echo "<div class='place' onclick='Click(this)' id=";
@@ -93,7 +97,10 @@
 						echo $emplacements['width'];
 						echo "%;height:";
 						echo $emplacements['height'];
-						echo "%;border:0.1em solid #000;text-align:center;color:#000000;'>";
+						echo "%;border:0.1em solid #000;text-align:center;color:#000000;";
+						echo ($emplacements['id_joueur']!=0)?"background:#337ab7;":"background:initial;";
+						echo "'>";
+						//var_dump($emplacements);
 						echo $emplacements['numero'];
 						echo "</div>";
 					}  
@@ -105,7 +112,7 @@
 				$requete_preparee1->execute();
 				while($emplacements1=$requete_preparee1->fetch(PDO::FETCH_ASSOC)) 
 				{
-					echo "<div class='tooltip' style='position:absolute;top:".$emplacements1['top']."%;left:".$emplacements1['xy_left']."%;width:".$emplacements1['width']."%;height:".$emplacements1['height']."%;border:0.1em solid ;text-align:center;'>";
+					echo "<div class='tooltip' style='position:absolute;top:".$emplacements1['top']."%;left:".$emplacements1['xy_left']."%;width:".$emplacements1['width']."%;height:".$emplacements1['height']."%;text-align:center;'>";
 					echo "<span>pseudo : <strong>".$emplacements1['pseudo']."</strong><br>Equipe : ";
 					$id_joueur=$emplacements1['id_joueur'];
 
