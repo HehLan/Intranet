@@ -100,7 +100,6 @@
 						echo "%;border:0.1em solid #000;text-align:center;color:#000000;";
 						echo ($emplacements['id_joueur']!=0)?"background:#337ab7;":"background:initial;";
 						echo "'>";
-						//var_dump($emplacements);
 						echo $emplacements['numero'];
 						echo "</div>";
 					}  

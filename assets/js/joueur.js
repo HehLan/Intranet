@@ -34,7 +34,7 @@ alerte apparait lors du clic sur l'emplacement
 $('div').delegate('.ClassPseudo','click',function(e)
     {
     $('.place').css({background : "none"});
-    $('#'+$(this).attr("value")).css({background : 'rgba(0, 119, 193, 0.8)'});
+    $('#'+$(this).attr("value")).css({background : '#337ab7'});
      });
 
         
@@ -45,11 +45,11 @@ $('div').delegate('.ClassPseudo','click',function(e)
             $('.place').css({background : "none"});
                 $.ajax({ 
 		    type: "POST", 
-		    url: "ajax/color_equipe.php",
+		    url: "assets/ajax/color_equipe.php",
 		    data: "id_equipes="+valeur,
 		    success : function(contenu,etat)
-                        { 
-			$( "#dialogEquipe_Emplacement" ).html(contenu);
+                        {
+						$( "#dialogEquipe_Emplacement" ).html(contenu);
                         }
 		
                     });

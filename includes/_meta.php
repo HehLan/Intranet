@@ -42,7 +42,6 @@
 <script src="<?php echo $path; ?>/assets/js/jquery.js"></script>
 <script src="<?php echo $path; ?>/assets/js/bootstrap.min.js"></script>
 <script src="<?php echo $path; ?>/assets/js/jquery-2.1.4.min.js"></script>
-<script src="<?php echo $path; ?>/assets/js/bootstrap.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

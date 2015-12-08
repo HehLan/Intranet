@@ -19,7 +19,7 @@ echo "<script type='text/javascript'>";
 while($emplacements=$requete_preparee->fetch()) 
 
 {
-    echo "$('#".$emplacements['id_emplacement']."').css({background : '#ffaca3'});"; 
+    echo "$('#".$emplacements['id_emplacement']."').css({background : '#337ab7'});"; 
    
 }
 echo "$('#dialogInfo_equipe').css({display:'block'});";
