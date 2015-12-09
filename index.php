@@ -10,7 +10,7 @@
 	{
 		if(($_SESSION['id_joueur'] != 0))
 			$con = true;
-	}
+	} 
 
 	if(!$con)
 	{

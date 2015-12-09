@@ -143,12 +143,8 @@ $pseudoJeux='';
 		    <div id="infoChgtMDP" style="border: none"></div>
 		    <input id="submitChgtMDP" type="button" value="Valider le nouveau mot de passe">
 		</fieldset>
-		    
-		
-		
-
-		
 	</fieldset>
+	
 	<fieldset>
 		<legend>Jeux</legend>
 		
