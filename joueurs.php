@@ -33,9 +33,7 @@
 		else header('Location: index.php');
 		
 	}*/
-	
 ?>
-
 
 <!DOCTYPE HTML>
 <html>
@@ -51,12 +49,10 @@
 
  	<?php require_once('includes/_header.php'); ?>   
 	<?php require_once('includes/_nav.php'); ?>   
-
 	
 	<div id="container">
 		<div id="contenu">
 		<?php
-		//---------------------------------------PLAN
 		echo '	
 
 			<div style="position: relative;
@@ -97,7 +93,6 @@
 					echo $emplacements['numero'];
 					echo "</div>";
 				}  
-				//----------------------				
 
 				//---------------création des vignetes
 				$query1="SELECT * FROM emplacement,joueurs where joueurs.id_emplacement=emplacement.id_emplacement and emplacement.id_emplacement!=0";
@@ -135,7 +130,6 @@
 					echo "</span></a>";
 					echo "</div>";
 				}
-				//-----------------------------------		
 	echo '	</div>';
 		//-------------------------------- FIN PLAN
 		
@@ -186,7 +180,7 @@
 							echo"</a>";		
 						}
 
-echo '
+	echo '
 					</div>    
 				</div>
 
@@ -218,16 +212,15 @@ echo '
 							echo "</a>";		
 						}
 
-echo '
+	echo '
 					</div>
 				</div>
 				
 				<div id="dialogEquipe_Emplacement" style="display:none;"></div>
 				<div id="dialogPseudo_Emplacement" style="display:none;"></div>
-			</div>';
-//--------------------------------
-		
-	?>	
+			</div>'; 
+		?>	
+
 		</div>
 	</div>
 
