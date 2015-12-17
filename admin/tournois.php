@@ -91,6 +91,7 @@ if(!$con)
 						<th>Gérer les finales</th>
 						<th>Looser 1</th>
 						<th>Looser 2</th>
+						<th>Supprimer</th>
 					</tr>';	
 			foreach($tournois as $tournoi)
 			{
@@ -192,7 +193,11 @@ if(!$con)
 						{
 								if(inscrits_en_finale($connexion,$tournoi['id_tournoi'],$tournoi['joueurParTeam'],3)) echo '<a href="finales.php?id_tournoi='.$tournoi['id_tournoi'].'&looser=3">Scores</a>';
 						}							
-						echo '</td>
+						echo '
+						</td>
+						<td>
+							<button type="button" />
+						</td>
 					</tr>';
 			}
 			
