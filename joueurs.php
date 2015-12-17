@@ -53,21 +53,12 @@
 		<?php require_once('includes/_nav.php'); ?>   
 
 	
-		<div id="container">
-			<div id="contenu">
-				<?php
-					//---------------------------------------PLAN
-					echo '	
-
-						<div style="position: relative;
-							float:right; 
-							height: 90%;
-							width:80%;
-							font-size:10px;
-							border-width: 1px;
-							border-style: solid;">
-						
-						<img class="photo" src="'.$path.'/assets/img/plan.jpg" width="100%" height="100%" >';
+		<div class="container-fluid" id="container">
+			<div class="row" id="contenu">
+				<div class="map_cafetaria" class="col-lg-9 col-xs-12">
+					<?php
+						echo'
+							<img class="photo_cafetaria" src="'.$path.'/assets/img/plan.jpg">';
 
                               
 					//------------------- DESSIN DES TABLES
@@ -141,103 +132,93 @@
 					echo "</span></a>";
 					echo "</div>";
 				}
+				?>
 				//-----------------------------------		
-	echo '	</div>';
-		//-------------------------------- FIN PLAN
 		
+	
 		
-		//------------------------------LISTING
-	echo '	<div id="tabs" style="position: relative;float: left;width:18%; border:solid 1px black;" >
-				<div style="float:left;width:50%">
-					<a href="#" onclick="show_tab(1);" style="font-size:16px;font-weight:bold;">Joueur</a>
-				</div>	
-				<div style="float:right;width:50%">
-					<a href="#" onclick="show_tab(2);" style="font-size:16px;font-weight:bold;">Equipe</a>
-				</div>
-
-				<div id="tabs-1">
-
-  
-					<!-- FONCTION RECHERCHER JOUEUR -->
-					<!--debut du formulaire-->
-					<p>
-						<label for="recherche_joueur">Rechercher un pseudo :</label>
-						<input type="text" name="recherche_joueur" id="recherche_joueur" />
-					</p>
-					<!--fin du formulaire-->
- 
-					<!--preparation de l\'affichage des resultats-->
-					<div id="results" style="display: none"><strong>Pas de résultat</strong></div>
-
-					<div id="liste_joueur">
-
-						<u>Liste des joueurs :</u><br>';
-
-						// Selection des pseudos			
-						
-						$query="SELECT id_emplacement,pseudo FROM joueurs ORDER BY pseudo ASC ";
-						$requete_preparee=$connexion->prepare($query);
-						$requete_preparee->execute();
-						while($joueurs=$requete_preparee->fetch(PDO::FETCH_ASSOC)) 
-						{
-							echo "<a class='ClassPseudo' value='";
-							echo $joueurs['id_emplacement'];
-							echo "'>";
-							echo $joueurs["pseudo"];
-							echo"</a>";		
-						}
-
-echo '
-					</div>    
-				</div>
-
-				<!-- ONGLET EQUIPE -->
-				<div id="tabs-2" style="display:none;">
-					<!-- FONCTION RECHERCHER Equipe -->
-					<!--debut du formulaire-->
-					<p>
-						<label for="recherche_equipe">Rechercher une équipe :</label>
-						<input type="text" name="recherche_equipe" id="recherche_equipe" />
-					</p>
-					<!--fin du formulaire-->
-					
-					<div id="results_equipe" style="display: none"><strong>Pas de résultat</strong></div>
-				 
-					<div id="liste_equipe">
-						<u>Liste des Equipes :</u><br>
-						<div class="liste_equipe">';
-
-						// Selection des équipes		
-
-						$sql = "SELECT id_equipes,nom from equipes ORDER BY nom ASC ";
-						$query = $connexion->prepare($sql);
-						$query->execute();
-						while($equipes=$query->fetch(PDO::FETCH_ASSOC)) 
-						{
-							echo "<a class='ClassEquipe' value='";
-							echo $equipes['id_equipes'];
-							echo "'>";
-							echo $equipes["nom"];
-							echo "</a>";		
-						}
-
-echo '					</div>
+			<div id="tabs" class="col-lg-2 col-xs-12">
+				<div class="row">
+					<div class="col-lg-6 col-xs-6">
+						<a href="#" onclick="show_tab(1);">Joueur</a>
+					</div>	
+					<div class="col-lg-6 col-xs-6">
+						<a href="#" onclick="show_tab(2);">Equipe</a>
 					</div>
+					<div id="tabs-1">
+						<!-- FONCTION RECHERCHER JOUEUR -->
+						<!--debut du formulaire-->
+						<p>
+							<label for="recherche_joueur">Rechercher un pseudo :</label>
+							<input type="text" name="recherche_joueur" id="recherche_joueur" />
+						</p>
+						<!--fin du formulaire-->
+
+						<!--preparation de l\'affichage des resultats-->
+						<div id="results" style="display: none">
+							<strong>Pas de résultat</strong>
+						</div>
+						<div id="liste_joueur">
+							<u>Liste des joueurs :</u><br>';
+							<?php
+							// Selection des pseudos			
+							
+							$query="SELECT id_emplacement,pseudo FROM joueurs ORDER BY pseudo ASC ";
+							$requete_preparee=$connexion->prepare($query);
+							$requete_preparee->execute();
+							while($joueurs=$requete_preparee->fetch(PDO::FETCH_ASSOC)) 
+							{
+								echo "<a class='ClassPseudo' value='";
+								echo $joueurs['id_emplacement'];
+								echo "'>";
+								echo $joueurs["pseudo"];
+								echo"</a>";		
+							}
+							?>
+						</div>    
+					</div>
+
+					<!-- ONGLET EQUIPE -->
+					<div id="tabs-2" style="display:none;">
+						<!-- FONCTION RECHERCHER Equipe -->
+						<!--debut du formulaire-->
+						<p>
+							<label for="recherche_equipe">Rechercher une équipe :</label>
+							<input type="text" name="recherche_equipe" id="recherche_equipe" />
+						</p>
+						<!--fin du formulaire-->
+						
+						<div id="results_equipe" style="display: none"><strong>Pas de résultat</strong></div>
+					 
+						<div id="liste_equipe">
+							<u>Liste des Equipes :</u><br>
+							<div class="liste_equipe">';
+								<?php
+								// Selection des équipes		
+
+								$sql = "SELECT id_equipes,nom from equipes ORDER BY nom ASC ";
+								$query = $connexion->prepare($sql);
+								$query->execute();
+								while($equipes=$query->fetch(PDO::FETCH_ASSOC)) 
+								{
+									echo "<a class='ClassEquipe' value='";
+									echo $equipes['id_equipes'];
+									echo "'>";
+									echo $equipes["nom"];
+									echo "</a>";		
+								}
+								?>
+							</div>
+						</div>
+					</div>
+						
+					<div id="dialogEquipe_Emplacement" style="display:none;"></div>
+					<div id="dialogPseudo_Emplacement" style="display:none;"></div>
 				</div>
-				
-				<div id="dialogEquipe_Emplacement" style="display:none;"></div>
-				<div id="dialogPseudo_Emplacement" style="display:none;"></div>
-			</div>';
-//--------------------------------
-		
-	?>	
+			</div>
 		</div>
 		
-		
-	</div>
-	
-	<div style="height: 4500px;"></div>
-    <?php require_once('includes/_footer.php'); ?>
-
-</body>
+		<div style="height: 4500px;"></div>
+		<?php require_once('includes/_footer.php'); ?>
+	</body>
 </html>
