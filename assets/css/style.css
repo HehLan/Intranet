@@ -274,7 +274,59 @@ a.ClassEquipe{
   bottom: -8px;
 }
 
+#liste_joueur
+{
+	overflow: auto;
+	height: 550px;
+}
 
+#liste_joueur li
+{
+	display: block;
+}
+
+#liste_joueur li:before
+{
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 9px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+    color: #CCCCCC;
+}
+
+#liste_joueur li:hover
+{
+    color: orange;
+}
+
+#liste_joueur li a:hover
+{
+	text-decoration: none;
+	color: orange;
+	cursor: pointer;
+}
+
+#liste_equipe
+{
+	overflow: auto;
+	height: 550px;
+}
+
+#liste_equipe li:hover
+{
+	color: orange;
+	cursor: pointer;
+}
+
+#liste_equipe li a:hover
+{
+	text-decoration: none;
+	color: orange;
+	cursor: pointer;
+}
 
 /*----------------------------------------------------------------------*/
 /*						FOOTER											*/
