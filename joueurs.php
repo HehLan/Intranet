@@ -171,13 +171,7 @@
 								$prepared_statement->execute();
 								while($joueurs = $prepared_statement->fetch(PDO::FETCH_ASSOC)) 
 								{
-									echo '<li>';
-									echo "<a class='ClassPseudo' value='";
-									echo $joueurs['id_emplacement'];
-									echo "'>";
-									echo $joueurs["pseudo"];
-									echo"</a>";	
-									echo '</li>';
+									echo "<li><a class='ClassPseudo' value='".$joueurs['id_emplacement']."'>".$joueurs['pseudo']."</a></li>";
 								}
 							?>
 						</ul>    
@@ -206,13 +200,7 @@
 									$query->execute();
 									while($equipes=$query->fetch(PDO::FETCH_ASSOC)) 
 									{
-										echo '<li>';
-										echo "<a class='ClassEquipe' value='";
-										echo $equipes['id_equipes'];
-										echo "'>";
-										echo $equipes["nom"];
-										echo "</a>";
-										echo '</li>';
+										echo "<li><a class='ClassEquipe' value='".$equipes['id_equipes']."'>".$equipes['nom']."</a></li>";
 									}
 								?>
 							</ul>

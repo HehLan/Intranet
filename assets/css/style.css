@@ -326,16 +326,19 @@ a.ClassEquipe
 	border-top-color: #ccc;
 	bottom: -8px;
 }
-#liste_joueur
+#liste_joueur,
+#liste_equipe
 {
 	overflow: auto;
 	height: 550px;
 }
-#liste_joueur li
+#liste_joueur li,
+#liste_equipe li
 {
 	display: block;
 }
-#liste_joueur li:before
+#liste_joueur li:before,
+#liste_equipe li:before
 {
     /*Using a Bootstrap glyphicon as the bullet point*/
     content: "\e080";
