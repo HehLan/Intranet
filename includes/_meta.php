@@ -1,6 +1,6 @@
 <?php
 	//IMPORTANT: Path of the project on your desktop from "www" directory
-	$path = "/Intranet"
+	$path = "/hehlan"
 ?>
 <title>HEHLan</title>
 <meta charset="utf-8" />

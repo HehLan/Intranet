@@ -17,8 +17,8 @@ if(!$con)
 <html>
 <head>
 	<?php require_once('../includes/_meta.php'); ?> 
-    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/getXhr.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.js"></script>
+    <script type="text/javascript" src="../assets/js/getXhr.js"></script>
     <script type="text/javascript">
 	/*function go_groupes(id)
 	{
@@ -56,6 +56,14 @@ if(!$con)
 		document.getElementById('div_popup3').style.visibility='hidden';		
 	}
 	
+	function erase_tournoi(var idt)
+	{
+		var r = confirm("Voulez-vous vraiment supprimer le tournoi ayant l'id "+idt+" ?");
+		if (r==true)
+		{
+			
+		}
+	}
 	</script>
 </head>
 
@@ -196,7 +204,7 @@ if(!$con)
 						echo '
 						</td>
 						<td>
-							<button type="button" />
+							<a href="tournois_management.php?del='.$tournoi['id_tournoi'].'"><img src="../assets/img/cross_red.png" alt="Supprimer" />
 						</td>
 					</tr>';
 			}
