@@ -155,13 +155,15 @@
 						if($chat)
 						{
 							echo '
-								<div id="bloc_chat_texte"></div>
-								<div id="bloc_chat_users">
-									<strong>Connectés :</strong><br>				
-								</div>
-								<div id="bloc_chat_send">
-									<input type="text" name="message" id="bloc_chat_message" />
-									<input type="button" value="Envoyer" id="bloc_chat_bouton" onclick="ecrire();" />
+								<div id="bloc_chat_box">
+									<div id="bloc_chat_texte"></div>
+									<div id="bloc_chat_users">
+										<strong>Connectés :</strong><br>				
+									</div>
+									<div id="bloc_chat_send">
+										<input type="text" name="message" id="bloc_chat_message" />
+										<input type="button" value="Envoyer" id="bloc_chat_bouton" onclick="ecrire();" />
+									</div>
 								</div>';
 						}
 						else				
@@ -174,10 +176,10 @@
 					else
 					{
 						echo '
-							<div id="bloc_chat_titre">Connectez vous pour accèder au Chat et à votre profil :</div>	
+							<h3 id="bloc_chat_titre">Connexion</h3>	
 							<div id="bloc_connexion">
-								<form method="POST">
-									<table>
+								<form method="POST" id="bloc_connexion_form">
+									<table id="bloc_connexion_table">
 										<tr>
 											<td><label><strong>Login</strong></label></td>
 											<td><input type="text" name="login" /></td>

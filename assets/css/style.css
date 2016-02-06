@@ -35,6 +35,17 @@ h6 {
 	color: #D1D1D1;
 }
 
+input
+{
+	background-color: #000;
+	color: #fff;
+	margin: 0 5px;
+	border: 1px solid #353535;
+	border-radius: 3px;
+	padding: 0 15px;
+	font-size: 14px;
+	font-family: Calibri, Arial, Times;
+}
 
 /*----------------------------------------------------------------------*/
 /*						HEADER											*/
@@ -44,6 +55,7 @@ h6 {
 	display: block;
 	padding-bottom: 10px;
 	background-color:#000000;
+	height: 100px;
 }
 #logo 
 {
@@ -139,8 +151,39 @@ h6 {
 #bloc_chat
 {
 	overflow: hidden;
-	background-color: #111;
 	padding: 0 15px;
+}
+#bloc_connexion
+{
+	padding: 5px;
+	background-color: #111111;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border: 1px solid #353535;
+	border-radius: 3px;
+}
+#bloc_connexion_form
+{
+	background-color: #000000;
+    color: #d1d1d1;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 5px;
+    overflow-x: hidden;
+    padding: 10px;
+}
+#bloc_connexion_table
+{
+	width: 100%;
+}
+#bloc_chat_box
+{
+	background-color: #111111;
+    border: 1px solid #353535;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
 }
 #bloc_chat_texte
 {
@@ -201,6 +244,7 @@ h6 {
 	margin: 0 5px;
 	border: 1px solid #353535;
 	border-radius: 3px;
+	padding: 0 15px;
 }
 ::-webkit-scrollbar
 {

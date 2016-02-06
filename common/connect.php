@@ -4,7 +4,7 @@
 	$port = 3306;
 	$bdd = "hehlanbd";
 	$user = "root";
-	$pwd = "";
+	$pwd = "1234";
 
 	try
 	{
