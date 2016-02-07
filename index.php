@@ -2,9 +2,20 @@
 	session_start();
 	require_once('common/connect.php');
 	require_once('common/utils.php');
+	require_once('includes/_meta.php');
+	require_once('common/getNextMatches.php');
+	require_once('common/getNavTournois.php');
+	require_once('common/getNewsList.php');
+	require_once('lib/smarty/Smarty.class.php');
 	
 	$con = false;
 	$chat = false;
+	$smarty = new Smarty;
+
+	//$smarty->force_compile = true;
+	$smarty->debugging = false;
+	$smarty->caching = false;
+	$smarty->cache_lifetime = 120;
 
 	if(isset($_SESSION['id_joueur']))
 	{
@@ -37,24 +48,6 @@
 				echo 'ERREUR LOGIN SQL';
 		}		
 	}
-?>
-
-<!DOCTYPE html>
-<html lang="fr">
-	<head>
-		<?php require_once('includes/_meta.php'); ?> 
-		
-		<script type="text/javascript" src="<?php echo $path; ?>/assets/js/jquery.js"></script>
-		<script type="text/javascript" src="<?php echo $path; ?>/assets/js/getXhr.js"></script>
-		<script type="text/javascript">
-			function news_toggle(idn)
-			{
-				var nom='#contenu_news_'+idn;
-				$(nom).toggle();
-			}
-		</script>
-		
-		<?php	
 			if($con)
 			{ 			
 				
@@ -102,123 +95,13 @@
 					require_once('assets/ajax/chat.php'); 
 				}
 			}
-		?>
-
-	</head>
-
-	<body role="document">
-
-		<?php require_once('includes/_header.php'); ?>   
-		<?php require_once('includes/_nav.php'); ?>   
+		// send to the template
+		$smarty->assign("con", $con);
+		$smarty->assign("chat", $chat);
+		$smarty->assign("SESSION", $_SESSION);
+		$smarty->assign("next_matches", getNextMatches());
+		$smarty->assign("navTournois", getNavTournois());
+		$smarty->assign("newsList", getNewsList());
 		
-		<div id="container" class="container-fluid">
-
-			<div class="row">
-				<div id="bloc_news" class="col-lg-6 col-xs-12">
-				<h3>News</h3>
-				<?php			
-					//SQL query to select all news
-					$sql = "SELECT * FROM news WHERE invisible=0 ORDER BY quand DESC";
-					$query = $connexion->prepare($sql);
-			
-					if($query->execute())
-					{
-						while( $news = $query->fetch(PDO::FETCH_ASSOC) )
-						{
-							$titre = $news['titre'];
-							$texte = nl2br($news['texte']);
-							$quand = get_jour_de_la_semaine($news['quand']).' à '.get_heure($news['quand']);
-							$id_news = $news['id_news'];
-							echo '<div class="une_news" id="bloc_news_'.$id_news.'">
-									<div class="titre_news" id="titre_news_'.$id_news.'" onclick="news_toggle('.$id_news.');">
-										'.$titre.'
-											<div class="date_news" id="footer_news_'.$id_news.'">
-										'.$quand.'
-									</div>
-									</div>
-									<div class="contenu_news" id="contenu_news_'.$id_news.'">
-									'.$texte.'
-									</div>
-								</div>';
-						}
-					}
-					else
-						echo 'ERREUR NEWS SQL';
-				?>				
-				</div>	
-			
-				<div id="bloc_chat" class="col-lg-6 col-xs-12">
-				<?php
-					if($con)
-					{
-						echo '<h3>HEHLan Chat</h3>';
-						if($chat)
-						{
-							echo '
-								<div id="bloc_chat_box">
-									<div id="bloc_chat_texte"></div>
-									<div id="bloc_chat_users">
-										<strong>Connectés :</strong><br>				
-									</div>
-									<div id="bloc_chat_send">
-										<input type="text" name="message" id="bloc_chat_message" />
-										<input type="button" value="Envoyer" id="bloc_chat_bouton" onclick="ecrire();" />
-									</div>
-								</div>';
-						}
-						else				
-						{
-							echo '<div id="bloc_chat_texte">			
-									<strong>Sorry les gars ... le chat est désactivé :o/</strong>
-								</div>';
-						}
-					}
-					else
-					{
-						echo '
-							<h3 id="bloc_chat_titre">Connexion</h3>	
-							<div id="bloc_connexion">
-								<form method="POST" id="bloc_connexion_form">
-									<table id="bloc_connexion_table">
-										<tr>
-											<td><label><strong>Login</strong></label></td>
-											<td><input type="text" name="login" /></td>
-										</tr>
-										<tr>
-											<td><label><strong>Password</strong></label></td>
-											<td><input type="password" name="pwd" /></td>
-										</tr>
-										<tr>
-											<td colspan="2"><input type="submit" value="Connexion" /></td>						
-										</tr>					
-									</table>
-								</form>
-							</div>';
-					}
-				?>
-				</div>
-			</div>
-			
-		</div>
-		
-		<?php require_once('includes/_footer.php'); ?>
-		<?php
-			if ($chat)
-			{
-				echo '<script type="text/javascript">
-						$("#bloc_chat_message").keyup(function(event)
-						{
-							if(event.keyCode == 13)
-							{
-								$("#bloc_chat_bouton").click();
-							}
-						});
-				
-						afficher(0);
-						users();
-		
-					</script>';
-			}
-		?>
-	</body>
-</html>
+		$smarty->display('templates/default/index.tpl');
+?>
