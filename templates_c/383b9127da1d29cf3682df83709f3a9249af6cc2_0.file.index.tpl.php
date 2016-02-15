@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-02-15 14:57:49
+/* Smarty version 3.1.29, created on 2016-02-15 20:56:16
   from "E:\wamp\www\Intranet\templates\default\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56c1d95d1df844_42136881',
+  'unifunc' => 'content_56c22d6066ccd8_11177944',
   'file_dependency' => 
   array (
     '383b9127da1d29cf3682df83709f3a9249af6cc2' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\templates\\default\\index.tpl',
-      1 => 1455544585,
+      1 => 1455564048,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56c1d95d1df844_42136881 ($_smarty_tpl) {
+function content_56c22d6066ccd8_11177944 ($_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/default/paths.conf", null, 0);
 ?>
 
@@ -47,7 +47,6 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/
 		<?php echo '</script'; ?>
 >
 	</head>
-
 	<body role="document">
 		<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'SESSION'=>$_smarty_tpl->tpl_vars['SESSION']->value,'next_matches'=>$_smarty_tpl->tpl_vars['next_matches']->value), 0, true);
 ?>
@@ -56,7 +55,6 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/
 ?>
 
 		<div id="container" class="container-fluid">
-
 			<div class="row">
 				<div id="bloc_news" class="col-lg-6 col-xs-12">
 					<h3>News</h3>
@@ -75,15 +73,15 @@ for ($__section_sec1_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_s
 );">
 								<?php echo $_smarty_tpl->tpl_vars['newsList']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['titre'];?>
 
-									<div class="date_news" id="footer_news_<?php echo $_smarty_tpl->tpl_vars['newsList']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['id_news'];?>
+								<div class="date_news" id="footer_news_<?php echo $_smarty_tpl->tpl_vars['newsList']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['id_news'];?>
 ">
-								<?php echo $_smarty_tpl->tpl_vars['newsList']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['quand'];?>
+									<?php echo $_smarty_tpl->tpl_vars['newsList']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['quand'];?>
 
-							</div>
+								</div>
 							</div>
 							<div class="contenu_news" id="contenu_news_<?php echo $_smarty_tpl->tpl_vars['newsList']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['id_news'];?>
 ">
-							<?php echo $_smarty_tpl->tpl_vars['newsList']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['texte'];?>
+								<?php echo $_smarty_tpl->tpl_vars['newsList']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['texte'];?>
 
 							</div>
 						</div>
@@ -94,8 +92,7 @@ if ($__section_sec1_0_saved) {
 $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_0_saved;
 }
 ?>
-				</div>	
-		
+				</div>		
 				<div id="bloc_chat" class="col-lg-6 col-xs-12">
 					<?php if ($_smarty_tpl->tpl_vars['con']->value) {?>
 						<h3>HEHLan Chat</h3>
@@ -136,8 +133,7 @@ $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_0_saved;
 						</div>
 					<?php }?>
 				</div>
-			</div>
-			
+			</div>			
 		</div>
 		<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
@@ -155,7 +151,6 @@ $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_0_saved;
 		
 				afficher(0);
 				users();
-
 			<?php echo '</script'; ?>
 >
 		<?php }?>

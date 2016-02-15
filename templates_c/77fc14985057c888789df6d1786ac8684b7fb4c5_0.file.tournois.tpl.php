@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-02-15 15:17:21
+/* Smarty version 3.1.29, created on 2016-02-15 18:38:28
   from "E:\wamp\www\Intranet\templates\default\tournois.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56c1ddf1518612_76672424',
+  'unifunc' => 'content_56c20d140fe7a1_49168410',
   'file_dependency' => 
   array (
     '77fc14985057c888789df6d1786ac8684b7fb4c5' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\templates\\default\\tournois.tpl',
-      1 => 1455544585,
+      1 => 1455557906,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56c1ddf1518612_76672424 ($_smarty_tpl) {
+function content_56c20d140fe7a1_49168410 ($_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/default/paths.conf", null, 0);
 ?>
 
@@ -38,15 +38,12 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/
 /assets/js/getXhr.js"><?php echo '</script'; ?>
 >
 	</head>
-
 	<body>
 		<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'SESSION'=>$_smarty_tpl->tpl_vars['SESSION']->value,'next_matches'=>$_smarty_tpl->tpl_vars['next_matches']->value), 0, true);
 ?>
 
 		<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'SESSION'=>$_smarty_tpl->tpl_vars['SESSION']->value,'navTournois'=>$_smarty_tpl->tpl_vars['navTournois']->value), 0, true);
 ?>
-
-	
 	
 		<div class="container-fluid" id="container">
 			<div class="row" id="contenu">
@@ -59,8 +56,8 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/
 
 					</h1>
 					<?php if ($_smarty_tpl->tpl_vars['tournoi']->value['id_tournoi'] != 2) {?>
-						Cliquez ici pour voir les <a href="finales.php?id=<?php echo $_smarty_tpl->tpl_vars['tournoi']->value['id_tournoi'];?>
-">FINALES DES PGM'S (gold)</a><br>
+						<p>Cliquez ici pour voir les <a href="finales.php?id=<?php echo $_smarty_tpl->tpl_vars['tournoi']->value['id_tournoi'];?>
+">FINALES DES PGM'S (gold)</a></p><br>
 						<?php if ($_smarty_tpl->tpl_vars['nbr_lb2']->value > 0) {?> Cliquez ici pour voir les <a href="finales.php?id=<?php echo $_smarty_tpl->tpl_vars['tournoi']->value['id_tournoi'];?>
 &lb=2">FINALES DES LOSERS (silver)</a><br><?php }?>
 						<?php if ($_smarty_tpl->tpl_vars['nbr_lb3']->value > 0) {?> Cliquez ici pour voir les <a href="finales.php?id=<?php echo $_smarty_tpl->tpl_vars['tournoi']->value['id_tournoi'];?>
@@ -79,8 +76,7 @@ for ($__section_groupe_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section
 							<div class="row table_pool_row">
 								<table class="col-lg-12 table_pool">
 									<tr>
-										<th class="th_title_pool" colspan="<?php echo count($_smarty_tpl->tpl_vars['nbrteam']->value)+2;?>
-"> 
+										<th class="th_title_pool"> 
 											<?php echo $_smarty_tpl->tpl_vars['groupes']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_groupe']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_groupe']->value['index'] : null)]['nom_groupe'];?>
 
 										</th>

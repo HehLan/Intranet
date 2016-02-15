@@ -13,12 +13,10 @@
 			}
 		</script>
 	</head>
-
 	<body role="document">
 		{include file="{#templatePath#}header.tpl" con=$con SESSION=$SESSION next_matches=$next_matches}
 		{include file="{#templatePath#}nav.tpl"  con=$con SESSION=$SESSION navTournois=$navTournois}
 		<div id="container" class="container-fluid">
-
 			<div class="row">
 				<div id="bloc_news" class="col-lg-6 col-xs-12">
 					<h3>News</h3>
@@ -26,17 +24,16 @@
 						<div class="une_news" id="bloc_news_{$newsList[sec1].id_news}">
 							<div class="titre_news" id="titre_news_{$newsList[sec1].id_news}" onclick="news_toggle({$newsList[sec1].id_news});">
 								{$newsList[sec1].titre}
-									<div class="date_news" id="footer_news_{$newsList[sec1].id_news}">
-								{$newsList[sec1].quand}
-							</div>
+								<div class="date_news" id="footer_news_{$newsList[sec1].id_news}">
+									{$newsList[sec1].quand}
+								</div>
 							</div>
 							<div class="contenu_news" id="contenu_news_{$newsList[sec1].id_news}">
-							{$newsList[sec1].texte}
+								{$newsList[sec1].texte}
 							</div>
 						</div>
 					{/section}
-				</div>	
-		
+				</div>		
 				<div id="bloc_chat" class="col-lg-6 col-xs-12">
 					{if $con}
 						<h3>HEHLan Chat</h3>
@@ -77,8 +74,7 @@
 						</div>
 					{/if}
 				</div>
-			</div>
-			
+			</div>			
 		</div>
 		{include file="{#templatePath#}footer.tpl"}
 		{if $chat}
@@ -93,7 +89,6 @@
 		
 				afficher(0);
 				users();
-
 			</script>
 		{/if}
 	</body>

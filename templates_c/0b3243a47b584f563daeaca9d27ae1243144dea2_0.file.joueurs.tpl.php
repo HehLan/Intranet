@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-02-15 15:17:09
+/* Smarty version 3.1.29, created on 2016-02-15 20:56:09
   from "E:\wamp\www\Intranet\templates\default\joueurs.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56c1dde5d765a4_60417873',
+  'unifunc' => 'content_56c22d590be074_99574422',
   'file_dependency' => 
   array (
     '0b3243a47b584f563daeaca9d27ae1243144dea2' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\templates\\default\\joueurs.tpl',
-      1 => 1455544585,
+      1 => 1455566165,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56c1dde5d765a4_60417873 ($_smarty_tpl) {
+function content_56c22d590be074_99574422 ($_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/default/paths.conf", null, 0);
 ?>
 
@@ -225,10 +225,10 @@ $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_3_saved;
 					<div id="dialogPseudo_Emplacement" style="display:none;"></div>
 				</div>
 			</div>
-			<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+		</div>
+		<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?>
 
-		</div>		
 	</body>
 </html><?php }
 }

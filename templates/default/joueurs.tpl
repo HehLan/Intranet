@@ -113,7 +113,7 @@
 					<div id="dialogPseudo_Emplacement" style="display:none;"></div>
 				</div>
 			</div>
-			{include file="{#templatePath#}footer.tpl"}
-		</div>		
+		</div>
+		{include file="{#templatePath#}footer.tpl"}
 	</body>
 </html>

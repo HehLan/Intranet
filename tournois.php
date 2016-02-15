@@ -7,8 +7,8 @@
 	require_once('lib/smarty/Smarty.class.php');
 
 	$con = false;
+	$nbrteam = 0;
 	$smarty = new Smarty;
-
 	//$smarty->force_compile = true;
 	$smarty->debugging = true;
 	$smarty->caching = false;
@@ -23,12 +23,12 @@
 	//The tournament id is get from the url which is get by the href of navigation tabs
 	$id_tournoi = 1;
 	if(isset($_GET['id']))
-		$id_tournoi=$_GET['id'];
+		$id_tournoi = $_GET['id'];
 
 	//SQL Query to select data of the tournament
-	$sql = "SELECT * FROM tournoi WHERE id_tournoi=:id";
+	$sql = 'SELECT * FROM tournoi WHERE id_tournoi=:id';
 	$query = $connexion->prepare($sql);
-	$query->bindValue('id', $id_tournoi, PDO::PARAM_INT);
+	$query->bindValue(':id', $id_tournoi, PDO::PARAM_INT);
 	if($query->execute())
 		$tournoi = $query->fetch(PDO::FETCH_ASSOC);
 	else
@@ -38,10 +38,10 @@
 	}
 
 	//SQL Query to select pools for this tournament
-	$groupes='';
-	$sql = "SELECT * FROM groupes_pool WHERE id_tournoi=:id";
+	$groupes = '';
+	$sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id';
 	$query = $connexion->prepare($sql);
-	$query->bindValue('id', $id_tournoi, PDO::PARAM_INT);
+	$query->bindValue(':id', $id_tournoi, PDO::PARAM_INT);
 	if($query->execute())
 		$groupes = $query->fetchAll(PDO::FETCH_ASSOC);
 	else
@@ -56,9 +56,11 @@
 	{
 		if($jpt > 1)
 		{
-			$sql = "SELECT e.id_equipes as id, e.nom as nom FROM equipes as e, equipes_groupes as g WHERE g.id_groupe=:idg and e.id_equipes=g.id_equipe";
+			$sql = 'SELECT e.id_equipes AS id, e.nom AS nom
+					FROM equipes AS e, equipes_groupes AS g
+					WHERE g.id_groupe=:idg AND e.id_equipes=g.id_equipe';
 			$query = $connexion->prepare($sql);
-			$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
+			$query->bindValue(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
 			if($query->execute())
 				$participants[$groupe['id_groupe']] = $query->fetchAll(PDO::FETCH_ASSOC);
 			else
@@ -69,9 +71,11 @@
 		}
 		else
 		{
-			$sql = "SELECT j.id_joueur as id, j.pseudo as nom FROM joueurs as j, joueurs_groupes as g WHERE g.id_groupe=:idg and j.id_joueur=g.id_joueur";
+			$sql = 'SELECT j.id_joueur AS id, j.pseudo AS nom
+					FROM joueurs AS j, joueurs_groupes AS g
+					WHERE g.id_groupe=:idg AND j.id_joueur=g.id_joueur';
 			$query = $connexion->prepare($sql);
-			$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
+			$query->bindValue(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
 			if($query->execute())
 				$participants[$groupe['id_groupe']] = $query->fetchAll(PDO::FETCH_ASSOC);
 			else
@@ -85,9 +89,11 @@
 	$nbr_lb3 = 0;
 	
 	//SQL Query to count the number of matchs for a tournament and a looser bracket of 2
-	$sql = "SELECT COUNT(*) as nbr FROM matchs WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=2";
+	$sql = 'SELECT COUNT(*) AS nbr
+			FROM matchs
+			WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=2';
 	$query = $connexion->prepare($sql);
-	$query->bindValue('idt', $id_tournoi, PDO::PARAM_INT);
+	$query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
 	if(!$query->execute())
 	{
 		echo 'ERREUR SQL COUNT LB2';
@@ -100,9 +106,11 @@
 	}
 	
 	//SQL Query to count the number of matchs for a tournament and a looser bracket of 3
-	$sql  = "SELECT COUNT(*) as nbr FROM matchs WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=3";
+	$sql  = 'SELECT COUNT(*) AS nbr
+			 FROM matchs
+			 WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=3';
 	$query = $connexion->prepare($sql);
-	$query->bindValue('idt', $id_tournoi, PDO::PARAM_INT);
+	$query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
 	if(!$query->execute())
 	{
 		echo 'ERREUR SQL COUNT LB3';
@@ -295,6 +303,7 @@
 	$smarty->assign("tournoi", $tournoi);
 	$smarty->assign("nbr_lb2", $nbr_lb2);
 	$smarty->assign("nbr_lb3", $nbr_lb3);
+	$smarty->assign("nbrteam", $nbrteam);
 	$smarty->assign("jpt", $jpt);
 	$smarty->assign("groupes", $groupes);
 	

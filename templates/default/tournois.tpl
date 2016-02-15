@@ -6,12 +6,9 @@
 		<script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
 		<script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
 	</head>
-
 	<body>
 		{include file="{#templatePath#}header.tpl" con=$con SESSION=$SESSION next_matches=$next_matches}
-		{include file="{#templatePath#}nav.tpl"  con=$con SESSION=$SESSION navTournois=$navTournois}
-	
-	
+		{include file="{#templatePath#}nav.tpl"  con=$con SESSION=$SESSION navTournois=$navTournois}	
 		<div class="container-fluid" id="container">
 			<div class="row" id="contenu">
 				<div class="col-lg-offset-1 col-lg-10">
@@ -22,7 +19,7 @@
 						{$tournoi.nomTournoi}
 					</h1>
 					{if $tournoi.id_tournoi != 2}
-						Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}">FINALES DES PGM'S (gold)</a><br>
+						<p>Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}">FINALES DES PGM'S (gold)</a></p><br>
 						{if $nbr_lb2>0} Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=2">FINALES DES LOSERS (silver)</a><br>{/if}
 						{if $nbr_lb3>0} Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=3">FINALES DES NOOBS (bronze)</a><br>{/if}
 					{/if}
@@ -32,7 +29,7 @@
 							<div class="row table_pool_row">
 								<table class="col-lg-12 table_pool">
 									<tr>
-										<th class="th_title_pool" colspan="{$nbrteam|@count +2}"> 
+										<th class="th_title_pool"> 
 											{$groupes[groupe].nom_groupe}
 										</th>
 										{section name=sec1 loop=$groupes[groupe].teams}
