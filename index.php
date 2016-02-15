@@ -1,8 +1,7 @@
 <?php
 	session_start();
-	require_once('common/connect.php');
-	require_once('common/utils.php');
-	require_once('includes/_meta.php');
+	require_once('common/connect.php');	// connection to database
+	require_once('common/utils.php');	// get some utility functions
 	require_once('common/getNextMatches.php');
 	require_once('common/getNavTournois.php');
 	require_once('common/getNewsList.php');
