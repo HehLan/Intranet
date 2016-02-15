@@ -2,7 +2,6 @@
 	session_start();
 	require_once('common/connect.php');
 	require_once('common/utils.php');
-	require_once('includes/_meta.php');
 	require_once('common/getNextMatches.php');
 	require_once('common/getNavTournois.php');
 	require_once('lib/smarty/Smarty.class.php');

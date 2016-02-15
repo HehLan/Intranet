@@ -10,7 +10,6 @@
 	$con = false;
 	$chat = false;
 	$smarty = new Smarty;
-
 	//$smarty->force_compile = true;
 	$smarty->debugging = false;
 	$smarty->caching = false;
@@ -27,10 +26,10 @@
 		if(isset($_POST['login']) && isset($_POST['pwd']))
 		{
 			//SQL Query to select the connected player 
-			$sql = "SELECT id_joueur,level FROM joueurs WHERE pseudo=:login and password=:pwd";
+			$sql = 'SELECT id_joueur,level FROM joueurs WHERE pseudo=:login and password=:pwd';
 			$query = $connexion->prepare($sql);
-			$query->bindValue('login', $_POST['login'], PDO::PARAM_STR);
-			$query->bindValue('pwd', sha1($_POST['pwd']), PDO::PARAM_STR);
+			$query->bindValue(':login', $_POST['login'], PDO::PARAM_STR);
+			$query->bindValue(':pwd', sha1($_POST['pwd']), PDO::PARAM_STR);
 			if($query->execute())
 			{
 				$data = $query->fetch(PDO::FETCH_ASSOC);
@@ -47,60 +46,58 @@
 				echo 'ERREUR LOGIN SQL';
 		}		
 	}
-			if($con)
-			{ 			
-				
-				$duree_chat = '2000';
-				$duree_chat_users = '20000';
-			
-				//SQL Query to test if chat is activated
-				$sql = "SELECT valeur FROM variables WHERE nom='chat_on'";
-				$query = $connexion->prepare($sql);
-				if($query->execute())
-				{
-					$data = $query->fetch(PDO::FETCH_ASSOC);
-					if($data['valeur'] == 1)
-						$chat = true;
-				}
-				else
-					echo 'ERREUR SQL duree_chat';
+	
+	if($con)
+	{	
+		$duree_chat = '2000';
+		$duree_chat_users = '20000';
+	
+		//SQL Query to test if chat is activated
+		$sql = "SELECT valeur FROM variables WHERE nom='chat_on'";
+		$query = $connexion->prepare($sql);
+		if($query->execute())
+		{
+			$data = $query->fetch(PDO::FETCH_ASSOC);
+			if($data['valeur'] == 1)
+				$chat = true;
+		}
+		else
+			echo 'ERREUR SQL duree_chat';
 
-				//Active chat 
-				if($chat) 
-				{
-					//SQL query to get chat timing for AJAX
-					$sql = "SELECT valeur FROM variables WHERE nom='duree_chat'";
-					$query = $connexion->prepare($sql);
-					if($query->execute())
-					{
-						$data = $query->fetch(PDO::FETCH_ASSOC);
-						$duree_chat = $data['valeur'];
-					}
-					else
-						echo 'ERREUR SQL duree_chat';	
-				
-					//SQL query to get chat timing for AJAX
-					$sql = "SELECT valeur FROM variables WHERE nom='duree_chat_users'";
-					$query = $connexion->prepare($sql);
-					if($query->execute())
-					{
-						$data = $query->fetch(PDO::FETCH_ASSOC);
-						$duree_chat_users = $data['valeur'];
-					}
-					else
-						echo 'ERREUR SQL duree_chat_users';				
-				
-				
-					require_once('assets/ajax/chat.php'); 
-				}
+		//Active chat 
+		if($chat) 
+		{
+			//SQL query to get chat timing for AJAX
+			$sql = "SELECT valeur FROM variables WHERE nom='duree_chat'";
+			$query = $connexion->prepare($sql);
+			if($query->execute())
+			{
+				$data = $query->fetch(PDO::FETCH_ASSOC);
+				$duree_chat = $data['valeur'];
 			}
-		// send to the template
-		$smarty->assign("con", $con);
-		$smarty->assign("chat", $chat);
-		$smarty->assign("SESSION", $_SESSION);
-		$smarty->assign("next_matches", getNextMatches());
-		$smarty->assign("navTournois", getNavTournois());
-		$smarty->assign("newsList", getNewsList());
+			else
+				echo 'ERREUR SQL duree_chat';	
 		
-		$smarty->display('templates/default/index.tpl');
+			//SQL query to get chat timing for AJAX
+			$sql = "SELECT valeur FROM variables WHERE nom='duree_chat_users'";
+			$query = $connexion->prepare($sql);
+			if($query->execute())
+			{
+				$data = $query->fetch(PDO::FETCH_ASSOC);
+				$duree_chat_users = $data['valeur'];
+			}
+			else
+				echo 'ERREUR SQL duree_chat_users';			
+		
+			require_once('assets/ajax/chat.php'); 
+		}
+	}
+
+	$smarty->assign("con", $con);
+	$smarty->assign("chat", $chat);
+	$smarty->assign("SESSION", $_SESSION);
+	$smarty->assign("next_matches", getNextMatches());
+	$smarty->assign("navTournois", getNavTournois());
+	$smarty->assign("newsList", getNewsList());	
+	$smarty->display('templates/default/index.tpl');
 ?>
