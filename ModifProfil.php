@@ -70,8 +70,6 @@ $joueur = $query->fetch();
 $pseudoJeux = '';
 
 
-
-
 // Selecting player profile information	
 $sql = 'SELECT * FROM joueurs WHERE id_joueur = :id_player';
 $query = $connexion->prepare($sql);
@@ -80,12 +78,7 @@ $query->execute();
 $joueur = $query->fetch(PDO::FETCH_OBJ);
 
 
-
-
-
-
 $smarty->assign("con", $con);
-$smarty->assign("SESSION", $_SESSION);
 $smarty->assign("next_matches", getNextMatches());
 $smarty->assign("navTournois", getNavTournois());
 $smarty->assign("joueur", $joueur);

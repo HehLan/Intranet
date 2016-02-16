@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-02-16 23:28:41
+/* Smarty version 3.1.29, created on 2016-02-17 00:33:49
   from "E:\wamp\www\Intranet\templates\default\joueurs.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56c3a2991a68a5_49316403',
+  'unifunc' => 'content_56c3b1dd6d7e16_38384703',
   'file_dependency' => 
   array (
     '0b3243a47b584f563daeaca9d27ae1243144dea2' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\templates\\default\\joueurs.tpl',
-      1 => 1455657382,
+      1 => 1455665626,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56c3a2991a68a5_49316403 ($_smarty_tpl) {
+function content_56c3b1dd6d7e16_38384703 ($_smarty_tpl) {
 ?>
 
 <?php
@@ -51,10 +51,10 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, 'templates/
     </head>
 
     <body role="document">
-        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'SESSION'=>$_smarty_tpl->tpl_vars['SESSION']->value,'next_matches'=>$_smarty_tpl->tpl_vars['next_matches']->value), 0, true);
+        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'next_matches'=>$_smarty_tpl->tpl_vars['next_matches']->value), 0, true);
 ?>
 
-        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'SESSION'=>$_smarty_tpl->tpl_vars['SESSION']->value,'navTournois'=>$_smarty_tpl->tpl_vars['navTournois']->value), 0, true);
+        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'navTournois'=>$_smarty_tpl->tpl_vars['navTournois']->value), 0, true);
 ?>
 
         <div class="container-fluid" id="container">
@@ -157,34 +157,71 @@ $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_1_saved;
                         <!-- Result Displaying -->
                         <div id="results" style="display: none">
                             <strong>Pas de résultat</strong>
-                        </div>
-
-                        <u>Liste des joueurs :</u>
-                        <br>
-                        <ul id="liste_joueur">
-                            <?php
-$__section_sec1_2_saved = isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1'] : false;
-$__section_sec1_2_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['joueurs']->value) ? count($_loop) : max(0, (int) $_loop));
-$__section_sec1_2_total = $__section_sec1_2_loop;
-$_smarty_tpl->tpl_vars['__smarty_section_sec1'] = new Smarty_Variable(array());
-if ($__section_sec1_2_total != 0) {
-for ($__section_sec1_2_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] = 0; $__section_sec1_2_iteration <= $__section_sec1_2_total; $__section_sec1_2_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']++){
+                        </div>                       
+             
+                        
+                        <!-- Player List -->
+                        <?php
+$_from = $_smarty_tpl->tpl_vars['joueurs']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_playerLoop_0_saved = isset($_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop'] : false;
+$__foreach_playerLoop_0_saved_item = isset($_smarty_tpl->tpl_vars['joueur']) ? $_smarty_tpl->tpl_vars['joueur'] : false;
+$__foreach_playerLoop_0_total = $_smarty_tpl->smarty->ext->_foreach->count($_from);
+$_smarty_tpl->tpl_vars['joueur'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop'] = new Smarty_Variable(array('index' => -1));
+$__foreach_playerLoop_0_first = true;
+$__foreach_playerLoop_0_iteration=0;
+$_smarty_tpl->tpl_vars['joueur']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['joueur']->value) {
+$_smarty_tpl->tpl_vars['joueur']->_loop = true;
+$__foreach_playerLoop_0_iteration++;
+$_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['index']++;
+$_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['first'] = $__foreach_playerLoop_0_first;
+$_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['last'] = $__foreach_playerLoop_0_iteration == $__foreach_playerLoop_0_total;
+$__foreach_playerLoop_0_first = false;
+$__foreach_playerLoop_0_saved_local_item = $_smarty_tpl->tpl_vars['joueur'];
 ?>
-                                <li>
-                                    <a class='ClassPseudo' value='<?php echo $_smarty_tpl->tpl_vars['joueurs']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['id_emplacement'];?>
-'>
-                                        <?php echo $_smarty_tpl->tpl_vars['joueurs']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['pseudo'];?>
-
-                                    </a>
-                                </li>
-                            <?php
+                            <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['first']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['first'] : null)) {?>
+                                <u>Liste des joueurs :</u>
+                                <br>
+                                <ul id="liste_joueur">
+                            <?php }?>
+                            <?php if ($_smarty_tpl->tpl_vars['joueur']->value['pseudo']) {?>
+                            <li>
+                                <a class='ClassPseudo' 
+                                    <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['index'] : null)%2 == 0) {?>
+                                        style='background-color:#212121'                                                                        
+                                    <?php } else { ?>
+                                        style='background-color:#262626'
+                                    <?php }?>
+                                    value='<?php echo $_smarty_tpl->tpl_vars['joueur']->value['id_emplacement'];?>
+'><?php echo $_smarty_tpl->tpl_vars['joueur']->value['pseudo'];?>
+</a>
+                            </li>
+                            <?php }?>
+                            <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['last']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['last'] : null)) {?>
+                                </ul>
+                            <?php }?> 
+                        <?php
+$_smarty_tpl->tpl_vars['joueur'] = $__foreach_playerLoop_0_saved_local_item;
 }
+if (!$_smarty_tpl->tpl_vars['joueur']->_loop) {
+?>
+                            <p>No players !</p>
+                        <?php
 }
-if ($__section_sec1_2_saved) {
-$_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_2_saved;
+if ($__foreach_playerLoop_0_saved) {
+$_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop'] = $__foreach_playerLoop_0_saved;
+}
+if ($__foreach_playerLoop_0_saved_item) {
+$_smarty_tpl->tpl_vars['joueur'] = $__foreach_playerLoop_0_saved_item;
 }
 ?>
-                        </ul>    
+                        
+                        
+                        
                     </div>
 
                     <!-- Team Tab -->
@@ -204,12 +241,12 @@ $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_2_saved;
                             <br>
                             <ul id="liste_equipe">
                                 <?php
-$__section_sec1_3_saved = isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1'] : false;
-$__section_sec1_3_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['equipes']->value) ? count($_loop) : max(0, (int) $_loop));
-$__section_sec1_3_total = $__section_sec1_3_loop;
+$__section_sec1_2_saved = isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1'] : false;
+$__section_sec1_2_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['equipes']->value) ? count($_loop) : max(0, (int) $_loop));
+$__section_sec1_2_total = $__section_sec1_2_loop;
 $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = new Smarty_Variable(array());
-if ($__section_sec1_3_total != 0) {
-for ($__section_sec1_3_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] = 0; $__section_sec1_3_iteration <= $__section_sec1_3_total; $__section_sec1_3_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']++){
+if ($__section_sec1_2_total != 0) {
+for ($__section_sec1_2_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] = 0; $__section_sec1_2_iteration <= $__section_sec1_2_total; $__section_sec1_2_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']++){
 ?>
                                     <li><a class='ClassEquipe' value='<?php echo $_smarty_tpl->tpl_vars['equipes']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['id_equipes'];?>
 '><?php echo $_smarty_tpl->tpl_vars['equipes']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_sec1']->value['index'] : null)]['nom'];?>
@@ -217,8 +254,8 @@ for ($__section_sec1_3_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_s
                                     <?php
 }
 }
-if ($__section_sec1_3_saved) {
-$_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_3_saved;
+if ($__section_sec1_2_saved) {
+$_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_2_saved;
 }
 ?>
                             </ul>

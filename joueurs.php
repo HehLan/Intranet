@@ -76,14 +76,14 @@ $sql = 'SELECT id_emplacement, pseudo
         ORDER BY pseudo ASC';
 $query = $connexion->prepare($sql);
 $query->execute();
-$joueurs = array();
+$joueursArray = array();
 while ($joueur = $query->fetch(PDO::FETCH_ASSOC)) {
-    $joueurs[] = $joueur;
+    $joueursArray[] = $joueur;
 }
 
 // Selection des équipes	
-$sql = 'SELECT id_equipes,nom'
-        . 'FROM equipes ORDER BY nom ASC';
+$sql = 'SELECT id_equipes,nom
+        FROM equipes ORDER BY nom ASC';
 $query = $connexion->prepare($sql);
 $query->execute();
 $equipes = array();
@@ -93,12 +93,11 @@ while ($equipe = $query->fetch(PDO::FETCH_ASSOC)) {
 
 // Applying Template
 $smarty->assign("con", $con);
-$smarty->assign("SESSION", $_SESSION);
 $smarty->assign("next_matches", getNextMatches());
 $smarty->assign("navTournois", getNavTournois());
 $smarty->assign("emplacements", $emplacements);
 $smarty->assign("emplacements1", $emplacements1);
-$smarty->assign("joueurs", $joueurs);
+$smarty->assign("joueurs", $joueursArray);
 $smarty->assign("equipes", $equipes);
 $smarty->display('templates/default/joueurs.tpl');
 ?>

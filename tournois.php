@@ -10,7 +10,6 @@ require_once('class/Smarty_HEHLan.class.php');
 $con = false;
 $nbrteam = 0;
 $smarty = new Smarty_HEHLan();
-require_once('class/Smarty_HEHLan.class.php');
 
 
 if (isset($_SESSION['id_joueur'])) {
@@ -250,12 +249,10 @@ foreach ($groupes as $itGroupe => $groupe) {
     }
 }
 
-// Transfer to template
+// Applying Template
 $smarty->assign("con", $con);
-$smarty->assign("SESSION", $_SESSION);
 $smarty->assign("next_matches", getNextMatches());
 $smarty->assign("navTournois", getNavTournois());
-
 $smarty->assign("tournoi", $tournoi);
 $smarty->assign("nbr_lb2", $nbr_lb2);
 $smarty->assign("nbr_lb3", $nbr_lb3);

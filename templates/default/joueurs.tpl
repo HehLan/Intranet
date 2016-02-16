@@ -11,8 +11,8 @@
     </head>
 
     <body role="document">
-        {include file="{#templatePath#}header.tpl" con=$con SESSION=$SESSION next_matches=$next_matches}
-        {include file="{#templatePath#}nav.tpl"  con=$con SESSION=$SESSION navTournois=$navTournois}
+        {include file="{#templatePath#}header.tpl" con=$con next_matches=$next_matches}
+        {include file="{#templatePath#}nav.tpl"  con=$con navTournois=$navTournois}
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">
                 <div class="col-lg-offset-1 col-lg-8 col-xs-12 map_cafetaria">
@@ -73,19 +73,33 @@
                         <!-- Result Displaying -->
                         <div id="results" style="display: none">
                             <strong>Pas de résultat</strong>
-                        </div>
-
-                        <u>Liste des joueurs :</u>
-                        <br>
-                        <ul id="liste_joueur">
-                            {section name=sec1 loop=$joueurs}
-                                <li>
-                                    <a class='ClassPseudo' value='{$joueurs[sec1].id_emplacement}'>
-                                        {$joueurs[sec1].pseudo}
-                                    </a>
-                                </li>
-                            {/section}
-                        </ul>    
+                        </div>                       
+             
+                        
+                        <!-- Player List -->
+                        {foreach name=playerLoop from=$joueurs item=joueur}
+                            {if $smarty.foreach.playerLoop.first}
+                                <u>Liste des joueurs :</u>
+                                <br>
+                                <ul id="liste_joueur">
+                            {/if}
+                            <li>
+                                <a class='ClassPseudo' 
+                                    {if $smarty.foreach.playerLoop.index % 2 == 0}
+                                        style='background-color:#212121'                                                                        
+                                    {else}
+                                        style='background-color:#262626'
+                                    {/if}
+                                    value='{$joueur.id_emplacement}'>{$joueur.pseudo}</a>
+                            </li>
+                            {if $smarty.foreach.playerLoop.last}
+                                </ul>
+                            {/if} 
+                        {foreachelse}
+                            <p>No players !</p>
+                        {/foreach}               
+                        
+                        
                     </div>
 
                     <!-- Team Tab -->

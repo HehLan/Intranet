@@ -11,8 +11,8 @@
     </head>
 
     <body role="document">	
-        {include file="{#templatePath#}header.tpl" con=$con SESSION=$SESSION next_matches=$next_matches}
-        {include file="{#templatePath#}nav.tpl"  con=$con SESSION=$SESSION navTournois=$navTournois}
+        {include file="{#templatePath#}header.tpl" con=$con next_matches=$next_matches}
+        {include file="{#templatePath#}nav.tpl"  con=$con navTournois=$navTournois}
 
         <?php require_once('modules/menuTop.php'); ?>
 

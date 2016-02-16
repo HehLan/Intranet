@@ -11,7 +11,8 @@
             <p>Bienvenue {$smarty.session.login}, <a href="common/deco.php">se déconnecter</a></p>
         {else}
             <p>Bienvenue, <a href="#">se connecter</a></p>
-        {/if}               
+        {/if}
+        <p>IP: {$smarty.server.REMOTE_ADDR}.</p>
         {if $con & isset($next_matches) & !empty($next_matches)}
             <strong>Prochains matchs</strong><br>
             {section name=sec1 loop=$next_matches}
