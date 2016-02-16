@@ -1,18 +1,19 @@
 <?php
-	// Include autoloader
-	require '../lib/Dwoo/Autoloader.php';
 
-	// Register Dwoo namespace and register autoloader
-	$autoloader = new Dwoo\Autoloader();
-	$autoloader->add('Dwoo', '../lib/Dwoo');
-	$autoloader->register(true);
+// Include autoloader
+require '../lib/Dwoo/Autoloader.php';
 
-	// Create the controller, it is reusable and can render multiple templates
-	$dwoo = new Dwoo\Core();
+// Register Dwoo namespace and register autoloader
+$autoloader = new Dwoo\Autoloader();
+$autoloader->add('Dwoo', '../lib/Dwoo');
+$autoloader->register(true);
 
-	// Create some data
-	$data = array('a'=>5, 'b'=>6);
+// Create the controller, it is reusable and can render multiple templates
+$dwoo = new Dwoo\Core();
 
-	// Output the result directly ... 
-	$dwoo->output('path/to/index.tpl', $data);
+// Create some data
+$data = array('a' => 5, 'b' => 6);
+
+// Output the result directly ... 
+$dwoo->output('path/to/index.tpl', $data);
 ?>

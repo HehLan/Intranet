@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-02-15 20:56:16
+/* Smarty version 3.1.29, created on 2016-02-16 11:23:50
   from "E:\wamp\www\Intranet\templates\default\meta.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56c22d607a5510_32001308',
+  'unifunc' => 'content_56c2f8b6eef426_59796153',
   'file_dependency' => 
   array (
     '6b41b9848ad78ded4c299589ab4f51323090b031' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\templates\\default\\meta.tpl',
-      1 => 1455544585,
+      1 => 1455618175,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56c22d607a5510_32001308 ($_smarty_tpl) {
+function content_56c2f8b6eef426_59796153 ($_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/default/paths.conf", null, 0);
 ?>
 
@@ -87,16 +87,16 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE9]>
-	<?php echo '<script'; ?>
+        <?php echo '<script'; ?>
  src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"><?php echo '</script'; ?>
 >
-	<?php echo '<script'; ?>
+        <?php echo '<script'; ?>
  src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"><?php echo '</script'; ?>
 >
 <![endif]-->
 
 <!--[if lt IE 9]>
-	<?php echo '<script'; ?>
+        <?php echo '<script'; ?>
  src="http://html5shiv.googlecode.com/svn/trunk/html5.js"><?php echo '</script'; ?>
 >
 <![endif]--><?php }
