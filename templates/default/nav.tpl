@@ -1,3 +1,4 @@
+{* Smarty *}
 {config_load file="templates/default/paths.conf"}
 <nav id="navigation" class="navbar navbar-inverse" role="navigation" >
     <div class="container-fluid">
@@ -18,7 +19,7 @@
                     {/section}
                     {if $con}
                     <li><a href="ModifProfil.php">Mon profil</a></li>
-                        {if $SESSION.level==1}
+                        {if $smarty.session.level==1}
                         <li><a href="admin/index.php">Admin</a></li>
                         {/if}
                     {/if}

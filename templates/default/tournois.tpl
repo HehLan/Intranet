@@ -1,3 +1,4 @@
+{* Smarty *}
 {config_load file="templates/default/paths.conf"}
 <!DOCTYPE HTML>
 <html>
@@ -7,8 +8,8 @@
         <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
     </head>
     <body>
-        {include file="{#templatePath#}header.tpl" con=$con SESSION=$SESSION next_matches=$next_matches}
-        {include file="{#templatePath#}nav.tpl"  con=$con SESSION=$SESSION navTournois=$navTournois}	
+        {include file="{#templatePath#}header.tpl" con=$con next_matches=$next_matches}
+        {include file="{#templatePath#}nav.tpl"  con=$con navTournois=$navTournois}	
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">
                 <div class="col-lg-offset-1 col-lg-10">

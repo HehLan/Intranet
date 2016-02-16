@@ -1,4 +1,5 @@
-{config_load file="templates/default/paths.conf"}
+{* Smarty *}
+{config_load file='templates/default/paths.conf'}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -14,8 +15,8 @@
         </script>
     </head>
     <body role="document">
-        {include file="{#templatePath#}header.tpl" con=$con SESSION=$SESSION next_matches=$next_matches}
-        {include file="{#templatePath#}nav.tpl"  con=$con SESSION=$SESSION navTournois=$navTournois}
+        {include file="{#templatePath#}header.tpl" con=$con next_matches=$next_matches}
+        {include file="{#templatePath#}nav.tpl"  con=$con navTournois=$navTournois}
         <div id="container" class="container-fluid">
             <div class="row">
                 <div id="bloc_news" class="col-lg-6 col-xs-12">
@@ -23,13 +24,13 @@
                     {section name=sec1 loop=$newsList}
                         <div class="une_news" id="bloc_news_{$newsList[sec1].id_news}">
                             <div class="titre_news" id="titre_news_{$newsList[sec1].id_news}" onclick="news_toggle({$newsList[sec1].id_news});">
-                                {$newsList[sec1].titre}
+                                {$newsList[sec1].titre|nl2br}
                                 <div class="date_news" id="footer_news_{$newsList[sec1].id_news}">
                                     {$newsList[sec1].quand}
                                 </div>
                             </div>
                             <div class="contenu_news" id="contenu_news_{$newsList[sec1].id_news}">
-                                {$newsList[sec1].texte}
+                                {$newsList[sec1].texte|nl2br}
                             </div>
                         </div>
                     {/section}

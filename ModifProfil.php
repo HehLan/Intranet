@@ -5,15 +5,11 @@ require_once('common/connect.php');
 require_once('common/utils.php');
 require_once('common/getNextMatches.php');
 require_once('common/getNavTournois.php');
-require_once('lib/smarty/Smarty.class.php');
+require_once('class/Smarty_HEHLan.class.php');
 
 $con = false;
 $chat = false;
-$smarty = new Smarty;
-//$smarty->force_compile = true;
-$smarty->debugging = false;
-$smarty->caching = false;
-$smarty->cache_lifetime = 120;
+$smarty = new Smarty_HEHLan();
 
 if (isset($_SESSION['id_joueur'])) {
     if (($_SESSION['id_joueur'] != 0))

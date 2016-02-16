@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-02-16 11:23:13
+/* Smarty version 3.1.29, created on 2016-02-16 23:28:41
   from "E:\wamp\www\Intranet\templates\default\joueurs.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56c2f8915af7b5_10746924',
+  'unifunc' => 'content_56c3a2991a68a5_49316403',
   'file_dependency' => 
   array (
     '0b3243a47b584f563daeaca9d27ae1243144dea2' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\templates\\default\\joueurs.tpl',
-      1 => 1455618175,
+      1 => 1455657382,
       2 => 'file',
     ),
   ),
@@ -19,8 +19,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56c2f8915af7b5_10746924 ($_smarty_tpl) {
-$_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/default/paths.conf", null, 0);
+function content_56c3a2991a68a5_49316403 ($_smarty_tpl) {
+?>
+
+<?php
+$_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, 'templates/default/paths.conf', null, 0);
 ?>
 
 <!DOCTYPE html>

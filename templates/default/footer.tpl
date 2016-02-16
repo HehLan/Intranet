@@ -1,4 +1,5 @@
-{config_load file="templates/default/paths.conf"}
+{* Smarty *}
+{config_load file='templates/default/paths.conf'}
 <footer id="footer" class="row">
     <div id="copyright" class="col-lg-3 col-sm-12 col-xs-12">
         <p>HEHLan All Rights Reserved Copyright 2016</p>

@@ -1,3 +1,4 @@
+{* Smarty *}
 {config_load file="templates/default/paths.conf"}
 <!DOCTYPE html>
 <html>

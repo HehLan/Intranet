@@ -7,16 +7,12 @@ require_once('common/utils.php'); // get some utility functions
 require_once('common/getNextMatches.php');
 require_once('common/getNavTournois.php');
 require_once('common/getNewsList.php');
-require_once('lib/smarty/Smarty.class.php');
+require_once('class/Smarty_HEHLan.class.php');
 
 // Variables
 $con = false;
 $chat = false;
-$smarty = new Smarty;
-$smarty->force_compile = true;
-$smarty->debugging = false;
-$smarty->caching = false;
-$smarty->cache_lifetime = 120;
+$smarty = new Smarty_HEHLan();
 
 // Test if a user is connected
 if (isset($_SESSION['id_joueur'])) {
@@ -102,11 +98,10 @@ if ($con) {
 }
 
 // Applying Template
-$smarty->assign("con", $con);
-$smarty->assign("chat", $chat);
-$smarty->assign("SESSION", $_SESSION);
-$smarty->assign("next_matches", getNextMatches());
-$smarty->assign("navTournois", getNavTournois());
-$smarty->assign("newsList", getNewsList());
+$smarty->assign('con', $con);
+$smarty->assign('chat', $chat);
+$smarty->assign('next_matches', getNextMatches());
+$smarty->assign('navTournois', getNavTournois());
+$smarty->assign('newsList', getNewsList());
 $smarty->display('templates/default/index.tpl');
 ?>

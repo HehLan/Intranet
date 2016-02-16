@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-02-16 11:23:50
+/* Smarty version 3.1.29, created on 2016-02-16 23:29:01
   from "E:\wamp\www\Intranet\templates\default\meta.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56c2f8b6eef426_59796153',
+  'unifunc' => 'content_56c3a2ad1ea844_20130460',
   'file_dependency' => 
   array (
     '6b41b9848ad78ded4c299589ab4f51323090b031' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\templates\\default\\meta.tpl',
-      1 => 1455618175,
+      1 => 1455661707,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,10 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56c2f8b6eef426_59796153 ($_smarty_tpl) {
+function content_56c3a2ad1ea844_20130460 ($_smarty_tpl) {
+?>
+
+<?php
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, "templates/default/paths.conf", null, 0);
 ?>
 

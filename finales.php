@@ -2,8 +2,10 @@
 session_start();
 require_once('common/connect.php');
 require_once('common/utils.php');
+require_once('class/Smarty_HEHLan.class.php');
 
 $con = false;
+$smarty = new Smarty_HEHLan();
 
 if (isset($_SESSION['id_joueur'])) {
     if (($_SESSION['id_joueur'] != 0))

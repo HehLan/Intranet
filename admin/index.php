@@ -5,19 +5,14 @@
 	/*
 		TODO: functions list to call for using templates	
 	*/	
-	require_once('../lib/smarty/Smarty.class.php');
+	require_once('../class/Smarty_HEHLan.class.php');
 	
 	//need it ?
 	require_once('modules/connexion/classAuth.php');
 	
 	$con = false;
 	$chat = false;
-	$smarty = new Smarty;
-	
-	$smarty->force_compile = true;
-	$smarty->debugging = false;
-	$smarty->caching = false;
-	$smarty->cache_lifetime = 120;
+	$smarty = new Smarty_HEHLan();
 	
 	if(isset($_SESSION['id_joueur']))
 	{
