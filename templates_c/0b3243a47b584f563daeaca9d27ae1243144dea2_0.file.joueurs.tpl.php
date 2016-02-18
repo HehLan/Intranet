@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-02-17 00:33:49
+/* Smarty version 3.1.29, created on 2016-02-18 13:17:25
   from "E:\wamp\www\Intranet\templates\default\joueurs.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56c3b1dd6d7e16_38384703',
+  'unifunc' => 'content_56c5b655d37546_23767494',
   'file_dependency' => 
   array (
     '0b3243a47b584f563daeaca9d27ae1243144dea2' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\templates\\default\\joueurs.tpl',
-      1 => 1455665626,
+      1 => 1455665661,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56c3b1dd6d7e16_38384703 ($_smarty_tpl) {
+function content_56c5b655d37546_23767494 ($_smarty_tpl) {
 ?>
 
 <?php
@@ -188,7 +188,6 @@ $__foreach_playerLoop_0_saved_local_item = $_smarty_tpl->tpl_vars['joueur'];
                                 <br>
                                 <ul id="liste_joueur">
                             <?php }?>
-                            <?php if ($_smarty_tpl->tpl_vars['joueur']->value['pseudo']) {?>
                             <li>
                                 <a class='ClassPseudo' 
                                     <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['index'] : null)%2 == 0) {?>
@@ -200,7 +199,6 @@ $__foreach_playerLoop_0_saved_local_item = $_smarty_tpl->tpl_vars['joueur'];
 '><?php echo $_smarty_tpl->tpl_vars['joueur']->value['pseudo'];?>
 </a>
                             </li>
-                            <?php }?>
                             <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['last']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['last'] : null)) {?>
                                 </ul>
                             <?php }?> 
@@ -218,8 +216,7 @@ $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop'] = $__foreach_playerLoop_0_
 if ($__foreach_playerLoop_0_saved_item) {
 $_smarty_tpl->tpl_vars['joueur'] = $__foreach_playerLoop_0_saved_item;
 }
-?>
-                        
+?>               
                         
                         
                     </div>
