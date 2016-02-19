@@ -1,5 +1,6 @@
 <?php
 
+
 // Database class
 class Database
 {    
@@ -51,7 +52,7 @@ class Database
     
     public function bindValue($param, $var, $option)
     {
-        $this->query->bindValue($param, $_POST[$var], $option);
+        $this->query->bindValue($param, $var, $option);
     }
     
     public function getQuery()
