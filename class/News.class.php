@@ -31,8 +31,8 @@ class News extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking 
 	private static $PROPERTY_NAMES=array(
 		self::FIELD_ID_NEWS=>'idNews',
 		self::FIELD_TITRE=>'titre',
-		self::FIELD_TEXTE=>'textE',
-		self::FIELD_QUAND=>'quaNd',
+		self::FIELD_TEXTE=>'texte',
+		self::FIELD_QUAND=>'quand',
 		self::FIELD_INVISIBLE=>'invisible');
 	private static $PROPERTY_TYPES=array(
 		self::FIELD_ID_NEWS=>Db2PhpEntity::PHP_TYPE_INT,
@@ -54,8 +54,8 @@ class News extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking 
 		self::FIELD_INVISIBLE=>null);
 	private $idNews;
 	private $titre;
-	private $textE;
-	private $quaNd;
+	private $texte;
+	private $quand;
 	private $invisible;
 
 	/**
@@ -113,12 +113,12 @@ class News extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking 
 	 *
 	 * type:TEXT,size:65535,default:null
 	 *
-	 * @param mixed $textE
+	 * @param mixed $texte
 	 * @return News
 	 */
-	public function &setTextE($textE) {
-		$this->notifyChanged(self::FIELD_TEXTE,$this->textE,$textE);
-		$this->textE=$textE;
+	public function &setTexte($texte) {
+		$this->notifyChanged(self::FIELD_TEXTE,$this->texte,$texte);
+		$this->texte=$texte;
 		return $this;
 	}
 
@@ -129,8 +129,8 @@ class News extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking 
 	 *
 	 * @return mixed
 	 */
-	public function getTextE() {
-		return $this->textE;
+	public function getTexte() {
+		return $this->texte;
 	}
 
 	/**
@@ -138,12 +138,12 @@ class News extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking 
 	 *
 	 * type:DATETIME,size:19,default:null
 	 *
-	 * @param mixed $quaNd
+	 * @param mixed $quand
 	 * @return News
 	 */
-	public function &setQuaNd($quaNd) {
-		$this->notifyChanged(self::FIELD_QUAND,$this->quaNd,$quaNd);
-		$this->quaNd=$quaNd;
+	public function &setQuand($quand) {
+		$this->notifyChanged(self::FIELD_QUAND,$this->quand,$quand);
+		$this->quand=$quand;
 		return $this;
 	}
 
@@ -154,8 +154,8 @@ class News extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking 
 	 *
 	 * @return mixed
 	 */
-	public function getQuaNd() {
-		return $this->quaNd;
+	public function getQuand() {
+		return $this->quand;
 	}
 
 	/**
@@ -296,8 +296,8 @@ class News extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking 
 		return array(
 			self::FIELD_ID_NEWS=>$this->getIdNews(),
 			self::FIELD_TITRE=>$this->getTitre(),
-			self::FIELD_TEXTE=>$this->getTextE(),
-			self::FIELD_QUAND=>$this->getQuaNd(),
+			self::FIELD_TEXTE=>$this->getTexte(),
+			self::FIELD_QUAND=>$this->getQuand(),
 			self::FIELD_INVISIBLE=>$this->getInvisible());
 	}
 
@@ -570,8 +570,8 @@ class News extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking 
 	public function assignByHash($result) {
 		$this->setIdNews($result['id_news']);
 		$this->setTitre($result['titre']);
-		$this->setTextE($result['texte']);
-		$this->setQuaNd($result['quand']);
+		$this->setTexte($result['texte']);
+		$this->setQuand($result['quand']);
 		$this->setInvisible($result['invisible']);
 	}
 
@@ -609,8 +609,8 @@ class News extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking 
 	protected function bindValues(PDOStatement &$stmt) {
 		$stmt->bindValue(1,$this->getIdNews());
 		$stmt->bindValue(2,$this->getTitre());
-		$stmt->bindValue(3,$this->getTextE());
-		$stmt->bindValue(4,$this->getQuaNd());
+		$stmt->bindValue(3,$this->getTexte());
+		$stmt->bindValue(4,$this->getQuand());
 		$stmt->bindValue(5,$this->getInvisible());
 	}
 
@@ -625,8 +625,8 @@ class News extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking 
 		if (null===$this->getIdNews()) {
 			$stmt=self::prepareStatement($db,self::SQL_INSERT_AUTOINCREMENT);
 			$stmt->bindValue(1,$this->getTitre());
-			$stmt->bindValue(2,$this->getTextE());
-			$stmt->bindValue(3,$this->getQuaNd());
+			$stmt->bindValue(2,$this->getTexte());
+			$stmt->bindValue(3,$this->getQuand());
 			$stmt->bindValue(4,$this->getInvisible());
 		} else {
 			$stmt=self::prepareStatement($db,self::SQL_INSERT);

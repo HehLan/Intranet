@@ -6,117 +6,117 @@
  * @version 1.107
  * @package entity
  */
-class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
-	private static $CLASS_NAME='TChatUsers';
+class EquipesJoueur extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
+	private static $CLASS_NAME='EquipesJoueur';
 	const SQL_IDENTIFIER_QUOTE='`';
-	const SQL_TABLE_NAME='tchat_users';
-	const SQL_INSERT='INSERT INTO `tchat_users` (`id_joueur`,`pseudo`,`lastcon`) VALUES (?,?,?)';
-	const SQL_INSERT_AUTOINCREMENT='INSERT INTO `tchat_users` (`id_joueur`,`pseudo`,`lastcon`) VALUES (?,?,?)';
-	const SQL_UPDATE='UPDATE `tchat_users` SET `id_joueur`=?,`pseudo`=?,`lastcon`=? WHERE `id_joueur`=?';
-	const SQL_SELECT_PK='SELECT * FROM `tchat_users` WHERE `id_joueur`=?';
-	const SQL_DELETE_PK='DELETE FROM `tchat_users` WHERE `id_joueur`=?';
-	const FIELD_ID_JOUEUR=718149309;
-	const FIELD_PSEUDO=-1915208713;
-	const FIELD_LASTCON=1000598547;
-	private static $PRIMARY_KEYS=array(self::FIELD_ID_JOUEUR);
-	private static $AUTOINCREMENT_FIELDS=array();
+	const SQL_TABLE_NAME='equipes_joueur';
+	const SQL_INSERT='INSERT INTO `equipes_joueur` (`id_joueur_equipes`,`id_joueur`,`id_equipes`) VALUES (?,?,?)';
+	const SQL_INSERT_AUTOINCREMENT='INSERT INTO `equipes_joueur` (`id_joueur`,`id_equipes`) VALUES (?,?)';
+	const SQL_UPDATE='UPDATE `equipes_joueur` SET `id_joueur_equipes`=?,`id_joueur`=?,`id_equipes`=? WHERE `id_joueur_equipes`=?';
+	const SQL_SELECT_PK='SELECT * FROM `equipes_joueur` WHERE `id_joueur_equipes`=?';
+	const SQL_DELETE_PK='DELETE FROM `equipes_joueur` WHERE `id_joueur_equipes`=?';
+	const FIELD_ID_JOUEUR_EQUIPES=1797777018;
+	const FIELD_ID_JOUEUR=-1301077541;
+	const FIELD_ID_EQUIPES=-1763876843;
+	private static $PRIMARY_KEYS=array(self::FIELD_ID_JOUEUR_EQUIPES);
+	private static $AUTOINCREMENT_FIELDS=array(self::FIELD_ID_JOUEUR_EQUIPES);
 	private static $FIELD_NAMES=array(
+		self::FIELD_ID_JOUEUR_EQUIPES=>'id_joueur_equipes',
 		self::FIELD_ID_JOUEUR=>'id_joueur',
-		self::FIELD_PSEUDO=>'pseudo',
-		self::FIELD_LASTCON=>'lastcon');
+		self::FIELD_ID_EQUIPES=>'id_equipes');
 	private static $PROPERTY_NAMES=array(
-		self::FIELD_ID_JOUEUR=>'idJoUEur',
-		self::FIELD_PSEUDO=>'pseudo',
-		self::FIELD_LASTCON=>'lastCon');
+		self::FIELD_ID_JOUEUR_EQUIPES=>'idJoueurEquipes',
+		self::FIELD_ID_JOUEUR=>'idJoueur',
+		self::FIELD_ID_EQUIPES=>'idEquipes');
 	private static $PROPERTY_TYPES=array(
+		self::FIELD_ID_JOUEUR_EQUIPES=>Db2PhpEntity::PHP_TYPE_INT,
 		self::FIELD_ID_JOUEUR=>Db2PhpEntity::PHP_TYPE_INT,
-		self::FIELD_PSEUDO=>Db2PhpEntity::PHP_TYPE_STRING,
-		self::FIELD_LASTCON=>Db2PhpEntity::PHP_TYPE_STRING);
+		self::FIELD_ID_EQUIPES=>Db2PhpEntity::PHP_TYPE_INT);
 	private static $FIELD_TYPES=array(
+		self::FIELD_ID_JOUEUR_EQUIPES=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false),
 		self::FIELD_ID_JOUEUR=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false),
-		self::FIELD_PSEUDO=>array(Db2PhpEntity::JDBC_TYPE_CHAR,80,0,false),
-		self::FIELD_LASTCON=>array(Db2PhpEntity::JDBC_TYPE_TIMESTAMP,19,0,false));
+		self::FIELD_ID_EQUIPES=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false));
 	private static $DEFAULT_VALUES=array(
+		self::FIELD_ID_JOUEUR_EQUIPES=>null,
 		self::FIELD_ID_JOUEUR=>0,
-		self::FIELD_PSEUDO=>'',
-		self::FIELD_LASTCON=>'');
-	private $idJoUEur;
-	private $pseudo;
-	private $lastCon;
+		self::FIELD_ID_EQUIPES=>0);
+	private $idJoueurEquipes;
+	private $idJoueur;
+	private $idEquipes;
+
+	/**
+	 * set value for id_joueur_equipes 
+	 *
+	 * type:INT UNSIGNED,size:10,default:null,primary,unique,autoincrement
+	 *
+	 * @param mixed $idJoueurEquipes
+	 * @return EquipesJoueur
+	 */
+	public function &setIdJoueurEquipes($idJoueurEquipes) {
+		$this->notifyChanged(self::FIELD_ID_JOUEUR_EQUIPES,$this->idJoueurEquipes,$idJoueurEquipes);
+		$this->idJoueurEquipes=$idJoueurEquipes;
+		return $this;
+	}
+
+	/**
+	 * get value for id_joueur_equipes 
+	 *
+	 * type:INT UNSIGNED,size:10,default:null,primary,unique,autoincrement
+	 *
+	 * @return mixed
+	 */
+	public function getIdJoueurEquipes() {
+		return $this->idJoueurEquipes;
+	}
 
 	/**
 	 * set value for id_joueur 
 	 *
-	 * type:INT,size:10,default:null,primary,unique
+	 * type:INT UNSIGNED,size:10,default:null,index
 	 *
-	 * @param mixed $idJoUEur
-	 * @return TChatUsers
+	 * @param mixed $idJoueur
+	 * @return EquipesJoueur
 	 */
-	public function &setIdJoUEur($idJoUEur) {
-		$this->notifyChanged(self::FIELD_ID_JOUEUR,$this->idJoUEur,$idJoUEur);
-		$this->idJoUEur=$idJoUEur;
+	public function &setIdJoueur($idJoueur) {
+		$this->notifyChanged(self::FIELD_ID_JOUEUR,$this->idJoueur,$idJoueur);
+		$this->idJoueur=$idJoueur;
 		return $this;
 	}
 
 	/**
 	 * get value for id_joueur 
 	 *
-	 * type:INT,size:10,default:null,primary,unique
+	 * type:INT UNSIGNED,size:10,default:null,index
 	 *
 	 * @return mixed
 	 */
-	public function getIdJoUEur() {
-		return $this->idJoUEur;
+	public function getIdJoueur() {
+		return $this->idJoueur;
 	}
 
 	/**
-	 * set value for pseudo 
+	 * set value for id_equipes 
 	 *
-	 * type:CHAR,size:80,default:null
+	 * type:INT UNSIGNED,size:10,default:null,index
 	 *
-	 * @param mixed $pseudo
-	 * @return TChatUsers
+	 * @param mixed $idEquipes
+	 * @return EquipesJoueur
 	 */
-	public function &setPseudo($pseudo) {
-		$this->notifyChanged(self::FIELD_PSEUDO,$this->pseudo,$pseudo);
-		$this->pseudo=$pseudo;
+	public function &setIdEquipes($idEquipes) {
+		$this->notifyChanged(self::FIELD_ID_EQUIPES,$this->idEquipes,$idEquipes);
+		$this->idEquipes=$idEquipes;
 		return $this;
 	}
 
 	/**
-	 * get value for pseudo 
+	 * get value for id_equipes 
 	 *
-	 * type:CHAR,size:80,default:null
-	 *
-	 * @return mixed
-	 */
-	public function getPseudo() {
-		return $this->pseudo;
-	}
-
-	/**
-	 * set value for lastcon 
-	 *
-	 * type:DATETIME,size:19,default:null
-	 *
-	 * @param mixed $lastCon
-	 * @return TChatUsers
-	 */
-	public function &setLastCon($lastCon) {
-		$this->notifyChanged(self::FIELD_LASTCON,$this->lastCon,$lastCon);
-		$this->lastCon=$lastCon;
-		return $this;
-	}
-
-	/**
-	 * get value for lastcon 
-	 *
-	 * type:DATETIME,size:19,default:null
+	 * type:INT UNSIGNED,size:10,default:null,index
 	 *
 	 * @return mixed
 	 */
-	public function getLastCon() {
-		return $this->lastCon;
+	public function getIdEquipes() {
+		return $this->idEquipes;
 	}
 
 	/**
@@ -230,9 +230,9 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	 */
 	public function toArray() {
 		return array(
-			self::FIELD_ID_JOUEUR=>$this->getIdJoUEur(),
-			self::FIELD_PSEUDO=>$this->getPseudo(),
-			self::FIELD_LASTCON=>$this->getLastCon());
+			self::FIELD_ID_JOUEUR_EQUIPES=>$this->getIdJoueurEquipes(),
+			self::FIELD_ID_JOUEUR=>$this->getIdJoueur(),
+			self::FIELD_ID_EQUIPES=>$this->getIdEquipes());
 	}
 
 
@@ -243,7 +243,7 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	 */
 	public function getPrimaryKeyValues() {
 		return array(
-			self::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
+			self::FIELD_ID_JOUEUR_EQUIPES=>$this->getIdJoueurEquipes());
 	}
 
 	/**
@@ -323,15 +323,15 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	/**
 	 * Query by Example.
 	 *
-	 * Match by attributes of passed example instance and return matched rows as an array of TChatUsers instances
+	 * Match by attributes of passed example instance and return matched rows as an array of EquipesJoueur instances
 	 *
 	 * @param PDO $db a PDO Database instance
-	 * @param TChatUsers $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
+	 * @param EquipesJoueur $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return TChatUsers[]
+	 * @return EquipesJoueur[]
 	 */
-	public static function findByExample(PDO $db,TChatUsers $example, $and=true, $sort=null) {
+	public static function findByExample(PDO $db,EquipesJoueur $example, $and=true, $sort=null) {
 		$exampleValues=$example->toArray();
 		$filter=array();
 		foreach ($exampleValues as $fieldId=>$value) {
@@ -348,19 +348,19 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	 * The filter can be either an hash with the field id as index and the value as filter value,
 	 * or a array of DFC instances.
 	 *
-	 * Will return matched rows as an array of TChatUsers instances.
+	 * Will return matched rows as an array of EquipesJoueur instances.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $filter array of DFC instances defining the conditions
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return TChatUsers[]
+	 * @return EquipesJoueur[]
 	 */
 	public static function findByFilter(PDO $db, $filter, $and=true, $sort=null) {
 		if (!($filter instanceof DFCInterface)) {
 			$filter=new DFCAggregate($filter, $and);
 		}
-		$sql='SELECT * FROM `tchat_users`'
+		$sql='SELECT * FROM `equipes_joueur`'
 		. self::buildSqlWhere($filter, $and, false, true)
 		. self::buildSqlOrderBy($sort);
 
@@ -370,10 +370,10 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	}
 
 	/**
-	 * Will execute the passed statement and return the result as an array of TChatUsers instances
+	 * Will execute the passed statement and return the result as an array of EquipesJoueur instances
 	 *
 	 * @param PDOStatement $stmt
-	 * @return TChatUsers[]
+	 * @return EquipesJoueur[]
 	 */
 	public static function fromStatement(PDOStatement $stmt) {
 		$affected=$stmt->execute();
@@ -385,15 +385,15 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	}
 
 	/**
-	 * returns the result as an array of TChatUsers instances without executing the passed statement
+	 * returns the result as an array of EquipesJoueur instances without executing the passed statement
 	 *
 	 * @param PDOStatement $stmt
-	 * @return TChatUsers[]
+	 * @return EquipesJoueur[]
 	 */
 	public static function fromExecutedStatement(PDOStatement $stmt) {
 		$resultInstances=array();
 		while($result=$stmt->fetch(PDO::FETCH_ASSOC)) {
-			$o=new TChatUsers();
+			$o=new EquipesJoueur();
 			$o->assignByHash($result);
 			$o->notifyPristine();
 			$resultInstances[]=$o;
@@ -439,13 +439,13 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	}
 
 	/**
-	 * Execute select query and return matched rows as an array of TChatUsers instances.
+	 * Execute select query and return matched rows as an array of EquipesJoueur instances.
 	 *
 	 * The query should of course be on the table for this entity class and return all fields.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param string $sql
-	 * @return TChatUsers[]
+	 * @return EquipesJoueur[]
 	 */
 	public static function findBySql(PDO $db, $sql) {
 		$stmt=$db->query($sql);
@@ -470,7 +470,7 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 		if (0==count($filter)) {
 			throw new InvalidArgumentException('refusing to delete without filter'); // just comment out this line if you are brave
 		}
-		$sql='DELETE FROM `tchat_users`'
+		$sql='DELETE FROM `equipes_joueur`'
 		. self::buildSqlWhere($filter, $and, false, true);
 		$stmt=self::prepareStatement($db, $sql);
 		self::bindValuesForFilter($stmt, $filter);
@@ -502,9 +502,9 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	 * @param array $result
 	 */
 	public function assignByHash($result) {
-		$this->setIdJoUEur($result['id_joueur']);
-		$this->setPseudo($result['pseudo']);
-		$this->setLastCon($result['lastcon']);
+		$this->setIdJoueurEquipes($result['id_joueur_equipes']);
+		$this->setIdJoueur($result['id_joueur']);
+		$this->setIdEquipes($result['id_equipes']);
 	}
 
 	/**
@@ -512,11 +512,11 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	 * Will return null if no row was matched.
 	 *
 	 * @param PDO $db
-	 * @return TChatUsers
+	 * @return EquipesJoueur
 	 */
-	public static function findById(PDO $db,$idJoUEur) {
+	public static function findById(PDO $db,$idJoueurEquipes) {
 		$stmt=self::prepareStatement($db,self::SQL_SELECT_PK);
-		$stmt->bindValue(1,$idJoUEur);
+		$stmt->bindValue(1,$idJoueurEquipes);
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -527,7 +527,7 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 		if(!$result) {
 			return null;
 		}
-		$o=new TChatUsers();
+		$o=new EquipesJoueur();
 		$o->assignByHash($result);
 		$o->notifyPristine();
 		return $o;
@@ -539,9 +539,9 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	 * @param PDOStatement $stmt
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
-		$stmt->bindValue(1,$this->getIdJoUEur());
-		$stmt->bindValue(2,$this->getPseudo());
-		$stmt->bindValue(3,$this->getLastCon());
+		$stmt->bindValue(1,$this->getIdJoueurEquipes());
+		$stmt->bindValue(2,$this->getIdJoueur());
+		$stmt->bindValue(3,$this->getIdEquipes());
 	}
 
 
@@ -552,12 +552,22 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	 * @return mixed
 	 */
 	public function insertIntoDatabase(PDO $db) {
-		$stmt=self::prepareStatement($db,self::SQL_INSERT);
-		$this->bindValues($stmt);
+		if (null===$this->getIdJoueurEquipes()) {
+			$stmt=self::prepareStatement($db,self::SQL_INSERT_AUTOINCREMENT);
+			$stmt->bindValue(1,$this->getIdJoueur());
+			$stmt->bindValue(2,$this->getIdEquipes());
+		} else {
+			$stmt=self::prepareStatement($db,self::SQL_INSERT);
+			$this->bindValues($stmt);
+		}
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
 			throw new Exception($stmt->errorCode() . ':' . var_export($stmt->errorInfo(), true), 0);
+		}
+		$lastInsertId=$db->lastInsertId();
+		if (false!==$lastInsertId) {
+			$this->setIdJoueurEquipes($lastInsertId);
 		}
 		$stmt->closeCursor();
 		$this->notifyPristine();
@@ -574,7 +584,7 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	public function updateToDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_UPDATE);
 		$this->bindValues($stmt);
-		$stmt->bindValue(4,$this->getIdJoUEur());
+		$stmt->bindValue(4,$this->getIdJoueurEquipes());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -594,7 +604,7 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	 */
 	public function deleteFromDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_DELETE_PK);
-		$stmt->bindValue(1,$this->getIdJoUEur());
+		$stmt->bindValue(1,$this->getIdJoueurEquipes());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -604,6 +614,34 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 		return $affected;
 	}
 
+	/**
+	 * Fetch Joueurs which references this EquipesJoueur. Will return null in case reference is invalid.
+	 * `equipes_joueur`.`id_joueur` -> `joueurs`.`id_joueur`
+	 *
+	 * @param PDO $db a PDO Database instance
+	 * @param array $sort array of DSC instances
+	 * @return Joueurs
+	 */
+	public function fetchJoueurs(PDO $db, $sort=null) {
+		$filter=array(Joueurs::FIELD_ID_JOUEUR=>$this->getIdJoueur());
+		$result=Joueurs::findByFilter($db, $filter, true, $sort);
+		return empty($result) ? null : $result[0];
+	}
+
+	/**
+	 * Fetch Equipes which references this EquipesJoueur. Will return null in case reference is invalid.
+	 * `equipes_joueur`.`id_equipes` -> `equipes`.`id_equipes`
+	 *
+	 * @param PDO $db a PDO Database instance
+	 * @param array $sort array of DSC instances
+	 * @return Equipes
+	 */
+	public function fetchEquipes(PDO $db, $sort=null) {
+		$filter=array(Equipes::FIELD_ID_EQUIPES=>$this->getIdEquipes());
+		$result=Equipes::findByFilter($db, $filter, true, $sort);
+		return empty($result) ? null : $result[0];
+	}
+
 
 	/**
 	 * get element as DOM Document
@@ -611,31 +649,31 @@ class TChatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTra
 	 * @return DOMDocument
 	 */
 	public function toDOM() {
-		return self::hashToDomDocument($this->toHash(), 'TChatUsers');
+		return self::hashToDomDocument($this->toHash(), 'EquipesJoueur');
 	}
 
 	/**
-	 * get single TChatUsers instance from a DOMElement
+	 * get single EquipesJoueur instance from a DOMElement
 	 *
 	 * @param DOMElement $node
-	 * @return TChatUsers
+	 * @return EquipesJoueur
 	 */
 	public static function fromDOMElement(DOMElement $node) {
-		$o=new TChatUsers();
+		$o=new EquipesJoueur();
 		$o->assignByHash(self::domNodeToHash($node, self::$FIELD_NAMES, self::$DEFAULT_VALUES, self::$FIELD_TYPES));
 			$o->notifyPristine();
 		return $o;
 	}
 
 	/**
-	 * get all instances of TChatUsers from the passed DOMDocument
+	 * get all instances of EquipesJoueur from the passed DOMDocument
 	 *
 	 * @param DOMDocument $doc
-	 * @return TChatUsers[]
+	 * @return EquipesJoueur[]
 	 */
 	public static function fromDOMDocument(DOMDocument $doc) {
 		$instances=array();
-		foreach ($doc->getElementsByTagName('TChatUsers') as $node) {
+		foreach ($doc->getElementsByTagName('EquipesJoueur') as $node) {
 			$instances[]=self::fromDOMElement($node);
 		}
 		return $instances;

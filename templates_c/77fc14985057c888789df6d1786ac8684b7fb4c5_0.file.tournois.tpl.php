@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-02-18 13:17:32
+/* Smarty version 3.1.29, created on 2016-02-19 13:46:21
   from "E:\wamp\www\Intranet\templates\default\tournois.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56c5b65c65afb3_60826723',
+  'unifunc' => 'content_56c70e9db25461_00266081',
   'file_dependency' => 
   array (
     '77fc14985057c888789df6d1786ac8684b7fb4c5' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56c5b65c65afb3_60826723 ($_smarty_tpl) {
+function content_56c70e9db25461_00266081 ($_smarty_tpl) {
 ?>
 
 <?php

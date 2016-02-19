@@ -23,8 +23,8 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 		self::FIELD_NOM=>'nom',
 		self::FIELD_VALEUR=>'valeur');
 	private static $PROPERTY_NAMES=array(
-		self::FIELD_NOM=>'nOm',
-		self::FIELD_VALEUR=>'valeUr');
+		self::FIELD_NOM=>'nom',
+		self::FIELD_VALEUR=>'valeur');
 	private static $PROPERTY_TYPES=array(
 		self::FIELD_NOM=>Db2PhpEntity::PHP_TYPE_STRING,
 		self::FIELD_VALEUR=>Db2PhpEntity::PHP_TYPE_STRING);
@@ -34,20 +34,20 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	private static $DEFAULT_VALUES=array(
 		self::FIELD_NOM=>'',
 		self::FIELD_VALEUR=>'');
-	private $nOm;
-	private $valeUr;
+	private $nom;
+	private $valeur;
 
 	/**
 	 * set value for nom 
 	 *
 	 * type:VARCHAR,size:255,default:null,primary,unique
 	 *
-	 * @param mixed $nOm
+	 * @param mixed $nom
 	 * @return Variables
 	 */
-	public function &setNOm($nOm) {
-		$this->notifyChanged(self::FIELD_NOM,$this->nOm,$nOm);
-		$this->nOm=$nOm;
+	public function &setNom($nom) {
+		$this->notifyChanged(self::FIELD_NOM,$this->nom,$nom);
+		$this->nom=$nom;
 		return $this;
 	}
 
@@ -58,8 +58,8 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	 *
 	 * @return mixed
 	 */
-	public function getNOm() {
-		return $this->nOm;
+	public function getNom() {
+		return $this->nom;
 	}
 
 	/**
@@ -67,12 +67,12 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	 *
 	 * type:VARCHAR,size:255,default:null
 	 *
-	 * @param mixed $valeUr
+	 * @param mixed $valeur
 	 * @return Variables
 	 */
-	public function &setValeUr($valeUr) {
-		$this->notifyChanged(self::FIELD_VALEUR,$this->valeUr,$valeUr);
-		$this->valeUr=$valeUr;
+	public function &setValeur($valeur) {
+		$this->notifyChanged(self::FIELD_VALEUR,$this->valeur,$valeur);
+		$this->valeur=$valeur;
 		return $this;
 	}
 
@@ -83,8 +83,8 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	 *
 	 * @return mixed
 	 */
-	public function getValeUr() {
-		return $this->valeUr;
+	public function getValeur() {
+		return $this->valeur;
 	}
 
 	/**
@@ -198,8 +198,8 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	 */
 	public function toArray() {
 		return array(
-			self::FIELD_NOM=>$this->getNOm(),
-			self::FIELD_VALEUR=>$this->getValeUr());
+			self::FIELD_NOM=>$this->getNom(),
+			self::FIELD_VALEUR=>$this->getValeur());
 	}
 
 
@@ -210,7 +210,7 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	 */
 	public function getPrimaryKeyValues() {
 		return array(
-			self::FIELD_NOM=>$this->getNOm());
+			self::FIELD_NOM=>$this->getNom());
 	}
 
 	/**
@@ -469,8 +469,8 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	 * @param array $result
 	 */
 	public function assignByHash($result) {
-		$this->setNOm($result['nom']);
-		$this->setValeUr($result['valeur']);
+		$this->setNom($result['nom']);
+		$this->setValeur($result['valeur']);
 	}
 
 	/**
@@ -480,9 +480,9 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	 * @param PDO $db
 	 * @return Variables
 	 */
-	public static function findById(PDO $db,$nOm) {
+	public static function findById(PDO $db,$nom) {
 		$stmt=self::prepareStatement($db,self::SQL_SELECT_PK);
-		$stmt->bindValue(1,$nOm);
+		$stmt->bindValue(1,$nom);
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -505,8 +505,8 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	 * @param PDOStatement $stmt
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
-		$stmt->bindValue(1,$this->getNOm());
-		$stmt->bindValue(2,$this->getValeUr());
+		$stmt->bindValue(1,$this->getNom());
+		$stmt->bindValue(2,$this->getValeur());
 	}
 
 
@@ -539,7 +539,7 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	public function updateToDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_UPDATE);
 		$this->bindValues($stmt);
-		$stmt->bindValue(3,$this->getNOm());
+		$stmt->bindValue(3,$this->getNom());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -559,7 +559,7 @@ class Variables extends Db2PhpEntityBase implements Db2PhpEntityModificationTrac
 	 */
 	public function deleteFromDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_DELETE_PK);
-		$stmt->bindValue(1,$this->getNOm());
+		$stmt->bindValue(1,$this->getNom());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();

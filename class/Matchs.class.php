@@ -6,8 +6,8 @@
  * @version 1.107
  * @package entity
  */
-class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
-	private static $CLASS_NAME='MatchS';
+class Matchs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
+	private static $CLASS_NAME='Matchs';
 	const SQL_IDENTIFIER_QUOTE='`';
 	const SQL_TABLE_NAME='matchs';
 	const SQL_INSERT='INSERT INTO `matchs` (`id_match`,`id_tournoi`,`nbr_manche`,`teamParMatch`,`nom_match`,`looser_bracket`,`heure`,`id_parent`,`id_enfant1`,`id_enfant2`,`id_groupe`) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
@@ -42,16 +42,16 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 		self::FIELD_ID_GROUPE=>'id_groupe');
 	private static $PROPERTY_NAMES=array(
 		self::FIELD_ID_MATCH=>'idMatch',
-		self::FIELD_ID_TOURNOI=>'idTourNOi',
-		self::FIELD_NBR_MANCHE=>'nbRManChe',
+		self::FIELD_ID_TOURNOI=>'idTournoi',
+		self::FIELD_NBR_MANCHE=>'nbrManche',
 		self::FIELD_TEAMPARMATCH=>'teamParMatch',
-		self::FIELD_NOM_MATCH=>'nOmMatch',
+		self::FIELD_NOM_MATCH=>'nomMatch',
 		self::FIELD_LOOSER_BRACKET=>'looserBracket',
-		self::FIELD_HEURE=>'hEurE',
+		self::FIELD_HEURE=>'heure',
 		self::FIELD_ID_PARENT=>'idParent',
-		self::FIELD_ID_ENFANT1=>'idEnFanT1',
-		self::FIELD_ID_ENFANT2=>'idEnFanT2',
-		self::FIELD_ID_GROUPE=>'idGroupE');
+		self::FIELD_ID_ENFANT1=>'idEnfant1',
+		self::FIELD_ID_ENFANT2=>'idEnfant2',
+		self::FIELD_ID_GROUPE=>'idGroupe');
 	private static $PROPERTY_TYPES=array(
 		self::FIELD_ID_MATCH=>Db2PhpEntity::PHP_TYPE_INT,
 		self::FIELD_ID_TOURNOI=>Db2PhpEntity::PHP_TYPE_INT,
@@ -89,16 +89,16 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 		self::FIELD_ID_ENFANT2=>null,
 		self::FIELD_ID_GROUPE=>null);
 	private $idMatch;
-	private $idTourNOi;
-	private $nbRManChe;
+	private $idTournoi;
+	private $nbrManche;
 	private $teamParMatch;
-	private $nOmMatch;
+	private $nomMatch;
 	private $looserBracket;
-	private $hEurE;
+	private $heure;
 	private $idParent;
-	private $idEnFanT1;
-	private $idEnFanT2;
-	private $idGroupE;
+	private $idEnfant1;
+	private $idEnfant2;
+	private $idGroupe;
 
 	/**
 	 * set value for id_match 
@@ -106,7 +106,7 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 * type:INT UNSIGNED,size:10,default:null,primary,unique,autoincrement
 	 *
 	 * @param mixed $idMatch
-	 * @return MatchS
+	 * @return Matchs
 	 */
 	public function &setIdMatch($idMatch) {
 		$this->notifyChanged(self::FIELD_ID_MATCH,$this->idMatch,$idMatch);
@@ -130,12 +130,12 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * type:INT UNSIGNED,size:10,default:null,index
 	 *
-	 * @param mixed $idTourNOi
-	 * @return MatchS
+	 * @param mixed $idTournoi
+	 * @return Matchs
 	 */
-	public function &setIdTourNOi($idTourNOi) {
-		$this->notifyChanged(self::FIELD_ID_TOURNOI,$this->idTourNOi,$idTourNOi);
-		$this->idTourNOi=$idTourNOi;
+	public function &setIdTournoi($idTournoi) {
+		$this->notifyChanged(self::FIELD_ID_TOURNOI,$this->idTournoi,$idTournoi);
+		$this->idTournoi=$idTournoi;
 		return $this;
 	}
 
@@ -146,8 +146,8 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * @return mixed
 	 */
-	public function getIdTourNOi() {
-		return $this->idTourNOi;
+	public function getIdTournoi() {
+		return $this->idTournoi;
 	}
 
 	/**
@@ -155,12 +155,12 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * type:INT,size:10,default:1
 	 *
-	 * @param mixed $nbRManChe
-	 * @return MatchS
+	 * @param mixed $nbrManche
+	 * @return Matchs
 	 */
-	public function &setNbRManChe($nbRManChe) {
-		$this->notifyChanged(self::FIELD_NBR_MANCHE,$this->nbRManChe,$nbRManChe);
-		$this->nbRManChe=$nbRManChe;
+	public function &setNbrManche($nbrManche) {
+		$this->notifyChanged(self::FIELD_NBR_MANCHE,$this->nbrManche,$nbrManche);
+		$this->nbrManche=$nbrManche;
 		return $this;
 	}
 
@@ -171,8 +171,8 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * @return mixed
 	 */
-	public function getNbRManChe() {
-		return $this->nbRManChe;
+	public function getNbrManche() {
+		return $this->nbrManche;
 	}
 
 	/**
@@ -181,7 +181,7 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 * type:INT UNSIGNED,size:10,default:2
 	 *
 	 * @param mixed $teamParMatch
-	 * @return MatchS
+	 * @return Matchs
 	 */
 	public function &setTeamParMatch($teamParMatch) {
 		$this->notifyChanged(self::FIELD_TEAMPARMATCH,$this->teamParMatch,$teamParMatch);
@@ -205,12 +205,12 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * type:VARCHAR,size:255,default:null,nullable
 	 *
-	 * @param mixed $nOmMatch
-	 * @return MatchS
+	 * @param mixed $nomMatch
+	 * @return Matchs
 	 */
-	public function &setNOmMatch($nOmMatch) {
-		$this->notifyChanged(self::FIELD_NOM_MATCH,$this->nOmMatch,$nOmMatch);
-		$this->nOmMatch=$nOmMatch;
+	public function &setNomMatch($nomMatch) {
+		$this->notifyChanged(self::FIELD_NOM_MATCH,$this->nomMatch,$nomMatch);
+		$this->nomMatch=$nomMatch;
 		return $this;
 	}
 
@@ -221,8 +221,8 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * @return mixed
 	 */
-	public function getNOmMatch() {
-		return $this->nOmMatch;
+	public function getNomMatch() {
+		return $this->nomMatch;
 	}
 
 	/**
@@ -231,7 +231,7 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 * type:INT,size:10,default:0
 	 *
 	 * @param mixed $looserBracket
-	 * @return MatchS
+	 * @return Matchs
 	 */
 	public function &setLooserBracket($looserBracket) {
 		$this->notifyChanged(self::FIELD_LOOSER_BRACKET,$this->looserBracket,$looserBracket);
@@ -255,12 +255,12 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * type:DATETIME,size:19,default:null,nullable
 	 *
-	 * @param mixed $hEurE
-	 * @return MatchS
+	 * @param mixed $heure
+	 * @return Matchs
 	 */
-	public function &setHEurE($hEurE) {
-		$this->notifyChanged(self::FIELD_HEURE,$this->hEurE,$hEurE);
-		$this->hEurE=$hEurE;
+	public function &setHeure($heure) {
+		$this->notifyChanged(self::FIELD_HEURE,$this->heure,$heure);
+		$this->heure=$heure;
 		return $this;
 	}
 
@@ -271,8 +271,8 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * @return mixed
 	 */
-	public function getHEurE() {
-		return $this->hEurE;
+	public function getHeure() {
+		return $this->heure;
 	}
 
 	/**
@@ -281,7 +281,7 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 * type:INT UNSIGNED,size:10,default:null,index,nullable
 	 *
 	 * @param mixed $idParent
-	 * @return MatchS
+	 * @return Matchs
 	 */
 	public function &setIdParent($idParent) {
 		$this->notifyChanged(self::FIELD_ID_PARENT,$this->idParent,$idParent);
@@ -305,12 +305,12 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * type:INT UNSIGNED,size:10,default:null,index,nullable
 	 *
-	 * @param mixed $idEnFanT1
-	 * @return MatchS
+	 * @param mixed $idEnfant1
+	 * @return Matchs
 	 */
-	public function &setIdEnFanT1($idEnFanT1) {
-		$this->notifyChanged(self::FIELD_ID_ENFANT1,$this->idEnFanT1,$idEnFanT1);
-		$this->idEnFanT1=$idEnFanT1;
+	public function &setIdEnfant1($idEnfant1) {
+		$this->notifyChanged(self::FIELD_ID_ENFANT1,$this->idEnfant1,$idEnfant1);
+		$this->idEnfant1=$idEnfant1;
 		return $this;
 	}
 
@@ -321,8 +321,8 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * @return mixed
 	 */
-	public function getIdEnFanT1() {
-		return $this->idEnFanT1;
+	public function getIdEnfant1() {
+		return $this->idEnfant1;
 	}
 
 	/**
@@ -330,12 +330,12 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * type:INT UNSIGNED,size:10,default:null,index,nullable
 	 *
-	 * @param mixed $idEnFanT2
-	 * @return MatchS
+	 * @param mixed $idEnfant2
+	 * @return Matchs
 	 */
-	public function &setIdEnFanT2($idEnFanT2) {
-		$this->notifyChanged(self::FIELD_ID_ENFANT2,$this->idEnFanT2,$idEnFanT2);
-		$this->idEnFanT2=$idEnFanT2;
+	public function &setIdEnfant2($idEnfant2) {
+		$this->notifyChanged(self::FIELD_ID_ENFANT2,$this->idEnfant2,$idEnfant2);
+		$this->idEnfant2=$idEnfant2;
 		return $this;
 	}
 
@@ -346,8 +346,8 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * @return mixed
 	 */
-	public function getIdEnFanT2() {
-		return $this->idEnFanT2;
+	public function getIdEnfant2() {
+		return $this->idEnfant2;
 	}
 
 	/**
@@ -355,12 +355,12 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * type:INT UNSIGNED,size:10,default:null,index,nullable
 	 *
-	 * @param mixed $idGroupE
-	 * @return MatchS
+	 * @param mixed $idGroupe
+	 * @return Matchs
 	 */
-	public function &setIdGroupE($idGroupE) {
-		$this->notifyChanged(self::FIELD_ID_GROUPE,$this->idGroupE,$idGroupE);
-		$this->idGroupE=$idGroupE;
+	public function &setIdGroupe($idGroupe) {
+		$this->notifyChanged(self::FIELD_ID_GROUPE,$this->idGroupe,$idGroupe);
+		$this->idGroupe=$idGroupe;
 		return $this;
 	}
 
@@ -371,8 +371,8 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 *
 	 * @return mixed
 	 */
-	public function getIdGroupE() {
-		return $this->idGroupE;
+	public function getIdGroupe() {
+		return $this->idGroupe;
 	}
 
 	/**
@@ -487,16 +487,16 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	public function toArray() {
 		return array(
 			self::FIELD_ID_MATCH=>$this->getIdMatch(),
-			self::FIELD_ID_TOURNOI=>$this->getIdTourNOi(),
-			self::FIELD_NBR_MANCHE=>$this->getNbRManChe(),
+			self::FIELD_ID_TOURNOI=>$this->getIdTournoi(),
+			self::FIELD_NBR_MANCHE=>$this->getNbrManche(),
 			self::FIELD_TEAMPARMATCH=>$this->getTeamParMatch(),
-			self::FIELD_NOM_MATCH=>$this->getNOmMatch(),
+			self::FIELD_NOM_MATCH=>$this->getNomMatch(),
 			self::FIELD_LOOSER_BRACKET=>$this->getLooserBracket(),
-			self::FIELD_HEURE=>$this->getHEurE(),
+			self::FIELD_HEURE=>$this->getHeure(),
 			self::FIELD_ID_PARENT=>$this->getIdParent(),
-			self::FIELD_ID_ENFANT1=>$this->getIdEnFanT1(),
-			self::FIELD_ID_ENFANT2=>$this->getIdEnFanT2(),
-			self::FIELD_ID_GROUPE=>$this->getIdGroupE());
+			self::FIELD_ID_ENFANT1=>$this->getIdEnfant1(),
+			self::FIELD_ID_ENFANT2=>$this->getIdEnfant2(),
+			self::FIELD_ID_GROUPE=>$this->getIdGroupe());
 	}
 
 
@@ -587,15 +587,15 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	/**
 	 * Query by Example.
 	 *
-	 * Match by attributes of passed example instance and return matched rows as an array of MatchS instances
+	 * Match by attributes of passed example instance and return matched rows as an array of Matchs instances
 	 *
 	 * @param PDO $db a PDO Database instance
-	 * @param MatchS $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
+	 * @param Matchs $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return MatchS[]
+	 * @return Matchs[]
 	 */
-	public static function findByExample(PDO $db,MatchS $example, $and=true, $sort=null) {
+	public static function findByExample(PDO $db,Matchs $example, $and=true, $sort=null) {
 		$exampleValues=$example->toArray();
 		$filter=array();
 		foreach ($exampleValues as $fieldId=>$value) {
@@ -612,13 +612,13 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 * The filter can be either an hash with the field id as index and the value as filter value,
 	 * or a array of DFC instances.
 	 *
-	 * Will return matched rows as an array of MatchS instances.
+	 * Will return matched rows as an array of Matchs instances.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $filter array of DFC instances defining the conditions
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return MatchS[]
+	 * @return Matchs[]
 	 */
 	public static function findByFilter(PDO $db, $filter, $and=true, $sort=null) {
 		if (!($filter instanceof DFCInterface)) {
@@ -634,10 +634,10 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	}
 
 	/**
-	 * Will execute the passed statement and return the result as an array of MatchS instances
+	 * Will execute the passed statement and return the result as an array of Matchs instances
 	 *
 	 * @param PDOStatement $stmt
-	 * @return MatchS[]
+	 * @return Matchs[]
 	 */
 	public static function fromStatement(PDOStatement $stmt) {
 		$affected=$stmt->execute();
@@ -649,15 +649,15 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	}
 
 	/**
-	 * returns the result as an array of MatchS instances without executing the passed statement
+	 * returns the result as an array of Matchs instances without executing the passed statement
 	 *
 	 * @param PDOStatement $stmt
-	 * @return MatchS[]
+	 * @return Matchs[]
 	 */
 	public static function fromExecutedStatement(PDOStatement $stmt) {
 		$resultInstances=array();
 		while($result=$stmt->fetch(PDO::FETCH_ASSOC)) {
-			$o=new MatchS();
+			$o=new Matchs();
 			$o->assignByHash($result);
 			$o->notifyPristine();
 			$resultInstances[]=$o;
@@ -703,13 +703,13 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	}
 
 	/**
-	 * Execute select query and return matched rows as an array of MatchS instances.
+	 * Execute select query and return matched rows as an array of Matchs instances.
 	 *
 	 * The query should of course be on the table for this entity class and return all fields.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param string $sql
-	 * @return MatchS[]
+	 * @return Matchs[]
 	 */
 	public static function findBySql(PDO $db, $sql) {
 		$stmt=$db->query($sql);
@@ -767,16 +767,16 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 */
 	public function assignByHash($result) {
 		$this->setIdMatch($result['id_match']);
-		$this->setIdTourNOi($result['id_tournoi']);
-		$this->setNbRManChe($result['nbr_manche']);
+		$this->setIdTournoi($result['id_tournoi']);
+		$this->setNbrManche($result['nbr_manche']);
 		$this->setTeamParMatch($result['teamParMatch']);
-		$this->setNOmMatch($result['nom_match']);
+		$this->setNomMatch($result['nom_match']);
 		$this->setLooserBracket($result['looser_bracket']);
-		$this->setHEurE($result['heure']);
+		$this->setHeure($result['heure']);
 		$this->setIdParent($result['id_parent']);
-		$this->setIdEnFanT1($result['id_enfant1']);
-		$this->setIdEnFanT2($result['id_enfant2']);
-		$this->setIdGroupE($result['id_groupe']);
+		$this->setIdEnfant1($result['id_enfant1']);
+		$this->setIdEnfant2($result['id_enfant2']);
+		$this->setIdGroupe($result['id_groupe']);
 	}
 
 	/**
@@ -784,7 +784,7 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 * Will return null if no row was matched.
 	 *
 	 * @param PDO $db
-	 * @return MatchS
+	 * @return Matchs
 	 */
 	public static function findById(PDO $db,$idMatch) {
 		$stmt=self::prepareStatement($db,self::SQL_SELECT_PK);
@@ -799,7 +799,7 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 		if(!$result) {
 			return null;
 		}
-		$o=new MatchS();
+		$o=new Matchs();
 		$o->assignByHash($result);
 		$o->notifyPristine();
 		return $o;
@@ -812,16 +812,16 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
 		$stmt->bindValue(1,$this->getIdMatch());
-		$stmt->bindValue(2,$this->getIdTourNOi());
-		$stmt->bindValue(3,$this->getNbRManChe());
+		$stmt->bindValue(2,$this->getIdTournoi());
+		$stmt->bindValue(3,$this->getNbrManche());
 		$stmt->bindValue(4,$this->getTeamParMatch());
-		$stmt->bindValue(5,$this->getNOmMatch());
+		$stmt->bindValue(5,$this->getNomMatch());
 		$stmt->bindValue(6,$this->getLooserBracket());
-		$stmt->bindValue(7,$this->getHEurE());
+		$stmt->bindValue(7,$this->getHeure());
 		$stmt->bindValue(8,$this->getIdParent());
-		$stmt->bindValue(9,$this->getIdEnFanT1());
-		$stmt->bindValue(10,$this->getIdEnFanT2());
-		$stmt->bindValue(11,$this->getIdGroupE());
+		$stmt->bindValue(9,$this->getIdEnfant1());
+		$stmt->bindValue(10,$this->getIdEnfant2());
+		$stmt->bindValue(11,$this->getIdGroupe());
 	}
 
 
@@ -834,16 +834,16 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	public function insertIntoDatabase(PDO $db) {
 		if (null===$this->getIdMatch()) {
 			$stmt=self::prepareStatement($db,self::SQL_INSERT_AUTOINCREMENT);
-			$stmt->bindValue(1,$this->getIdTourNOi());
-			$stmt->bindValue(2,$this->getNbRManChe());
+			$stmt->bindValue(1,$this->getIdTournoi());
+			$stmt->bindValue(2,$this->getNbrManche());
 			$stmt->bindValue(3,$this->getTeamParMatch());
-			$stmt->bindValue(4,$this->getNOmMatch());
+			$stmt->bindValue(4,$this->getNomMatch());
 			$stmt->bindValue(5,$this->getLooserBracket());
-			$stmt->bindValue(6,$this->getHEurE());
+			$stmt->bindValue(6,$this->getHeure());
 			$stmt->bindValue(7,$this->getIdParent());
-			$stmt->bindValue(8,$this->getIdEnFanT1());
-			$stmt->bindValue(9,$this->getIdEnFanT2());
-			$stmt->bindValue(10,$this->getIdGroupE());
+			$stmt->bindValue(8,$this->getIdEnfant1());
+			$stmt->bindValue(9,$this->getIdEnfant2());
+			$stmt->bindValue(10,$this->getIdGroupe());
 		} else {
 			$stmt=self::prepareStatement($db,self::SQL_INSERT);
 			$this->bindValues($stmt);
@@ -903,149 +903,149 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	}
 
 	/**
-	 * Fetch ManChesEquipEs's which this MatchS references.
+	 * Fetch ManchesEquipes's which this Matchs references.
 	 * `matchs`.`id_match` -> `manches_equipes`.`id_match`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return ManChesEquipEs[]
+	 * @return ManchesEquipes[]
 	 */
-	public function fetchManChesEquipEsCollection(PDO $db, $sort=null) {
-		$filter=array(ManChesEquipEs::FIELD_ID_MATCH=>$this->getIdMatch());
-		return ManChesEquipEs::findByFilter($db, $filter, true, $sort);
+	public function fetchManchesEquipesCollection(PDO $db, $sort=null) {
+		$filter=array(ManchesEquipes::FIELD_ID_MATCH=>$this->getIdMatch());
+		return ManchesEquipes::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch ManChesJoUEurS's which this MatchS references.
+	 * Fetch ManchesJoueurs's which this Matchs references.
 	 * `matchs`.`id_match` -> `manches_joueurs`.`id_match`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return ManChesJoUEurS[]
+	 * @return ManchesJoueurs[]
 	 */
-	public function fetchManChesJoUEurSCollection(PDO $db, $sort=null) {
-		$filter=array(ManChesJoUEurS::FIELD_ID_MATCH=>$this->getIdMatch());
-		return ManChesJoUEurS::findByFilter($db, $filter, true, $sort);
+	public function fetchManchesJoueursCollection(PDO $db, $sort=null) {
+		$filter=array(ManchesJoueurs::FIELD_ID_MATCH=>$this->getIdMatch());
+		return ManchesJoueurs::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch MatchS's which this MatchS references.
+	 * Fetch Matchs's which this Matchs references.
 	 * `matchs`.`id_match` -> `matchs`.`id_parent`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchS[]
+	 * @return Matchs[]
 	 */
-	public function fetchMatchSCollection(PDO $db, $sort=null) {
-		$filter=array(MatchS::FIELD_ID_PARENT=>$this->getIdMatch());
-		return MatchS::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchsCollection(PDO $db, $sort=null) {
+		$filter=array(Matchs::FIELD_ID_PARENT=>$this->getIdMatch());
+		return Matchs::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch MatchS1's which this MatchS references.
+	 * Fetch Matchs1's which this Matchs references.
 	 * `matchs`.`id_match` -> `matchs`.`id_enfant1`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchS1[]
+	 * @return Matchs1[]
 	 */
-	public function fetchMatchS1Collection(PDO $db, $sort=null) {
-		$filter=array(MatchS1::FIELD_ID_ENFANT1=>$this->getIdMatch());
-		return MatchS1::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchs1Collection(PDO $db, $sort=null) {
+		$filter=array(Matchs1::FIELD_ID_ENFANT1=>$this->getIdMatch());
+		return Matchs1::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch MatchS2's which this MatchS references.
+	 * Fetch Matchs2's which this Matchs references.
 	 * `matchs`.`id_match` -> `matchs`.`id_enfant2`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchS2[]
+	 * @return Matchs2[]
 	 */
-	public function fetchMatchS2Collection(PDO $db, $sort=null) {
-		$filter=array(MatchS2::FIELD_ID_ENFANT2=>$this->getIdMatch());
-		return MatchS2::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchs2Collection(PDO $db, $sort=null) {
+		$filter=array(Matchs2::FIELD_ID_ENFANT2=>$this->getIdMatch());
+		return Matchs2::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch MatchSEquipEs's which this MatchS references.
+	 * Fetch MatchsEquipes's which this Matchs references.
 	 * `matchs`.`id_match` -> `matchs_equipes`.`id_match`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchSEquipEs[]
+	 * @return MatchsEquipes[]
 	 */
-	public function fetchMatchSEquipEsCollection(PDO $db, $sort=null) {
-		$filter=array(MatchSEquipEs::FIELD_ID_MATCH=>$this->getIdMatch());
-		return MatchSEquipEs::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchsEquipesCollection(PDO $db, $sort=null) {
+		$filter=array(MatchsEquipes::FIELD_ID_MATCH=>$this->getIdMatch());
+		return MatchsEquipes::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch MatchSJoUEurS's which this MatchS references.
+	 * Fetch MatchsJoueurs's which this Matchs references.
 	 * `matchs`.`id_match` -> `matchs_joueurs`.`id_match`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchSJoUEurS[]
+	 * @return MatchsJoueurs[]
 	 */
-	public function fetchMatchSJoUEurSCollection(PDO $db, $sort=null) {
-		$filter=array(MatchSJoUEurS::FIELD_ID_MATCH=>$this->getIdMatch());
-		return MatchSJoUEurS::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchsJoueursCollection(PDO $db, $sort=null) {
+		$filter=array(MatchsJoueurs::FIELD_ID_MATCH=>$this->getIdMatch());
+		return MatchsJoueurs::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch TourNOi which references this MatchS. Will return null in case reference is invalid.
+	 * Fetch Tournoi which references this Matchs. Will return null in case reference is invalid.
 	 * `matchs`.`id_tournoi` -> `tournoi`.`id_tournoi`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return TourNOi
+	 * @return Tournoi
 	 */
-	public function fetchTourNOi(PDO $db, $sort=null) {
-		$filter=array(TourNOi::FIELD_ID_TOURNOI=>$this->getIdTourNOi());
-		$result=TourNOi::findByFilter($db, $filter, true, $sort);
+	public function fetchTournoi(PDO $db, $sort=null) {
+		$filter=array(Tournoi::FIELD_ID_TOURNOI=>$this->getIdTournoi());
+		$result=Tournoi::findByFilter($db, $filter, true, $sort);
 		return empty($result) ? null : $result[0];
 	}
 
 	/**
-	 * Fetch MatchS which references this MatchS. Will return null in case reference is invalid.
+	 * Fetch Matchs which references this Matchs. Will return null in case reference is invalid.
 	 * `matchs`.`id_parent` -> `matchs`.`id_match`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchS
+	 * @return Matchs
 	 */
-	public function fetchMatchS(PDO $db, $sort=null) {
-		$filter=array(MatchS::FIELD_ID_MATCH=>$this->getIdParent());
-		$result=MatchS::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchs(PDO $db, $sort=null) {
+		$filter=array(Matchs::FIELD_ID_MATCH=>$this->getIdParent());
+		$result=Matchs::findByFilter($db, $filter, true, $sort);
 		return empty($result) ? null : $result[0];
 	}
 
 	/**
-	 * Fetch MatchS1 which references this MatchS. Will return null in case reference is invalid.
+	 * Fetch Matchs1 which references this Matchs. Will return null in case reference is invalid.
 	 * `matchs`.`id_enfant1` -> `matchs`.`id_match`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchS1
+	 * @return Matchs1
 	 */
-	public function fetchMatchS1(PDO $db, $sort=null) {
-		$filter=array(MatchS1::FIELD_ID_MATCH=>$this->getIdEnFanT1());
-		$result=MatchS1::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchs1(PDO $db, $sort=null) {
+		$filter=array(Matchs1::FIELD_ID_MATCH=>$this->getIdEnfant1());
+		$result=Matchs1::findByFilter($db, $filter, true, $sort);
 		return empty($result) ? null : $result[0];
 	}
 
 	/**
-	 * Fetch MatchS2 which references this MatchS. Will return null in case reference is invalid.
+	 * Fetch Matchs2 which references this Matchs. Will return null in case reference is invalid.
 	 * `matchs`.`id_enfant2` -> `matchs`.`id_match`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchS2
+	 * @return Matchs2
 	 */
-	public function fetchMatchS2(PDO $db, $sort=null) {
-		$filter=array(MatchS2::FIELD_ID_MATCH=>$this->getIdEnFanT2());
-		$result=MatchS2::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchs2(PDO $db, $sort=null) {
+		$filter=array(Matchs2::FIELD_ID_MATCH=>$this->getIdEnfant2());
+		$result=Matchs2::findByFilter($db, $filter, true, $sort);
 		return empty($result) ? null : $result[0];
 	}
 
@@ -1056,31 +1056,31 @@ class MatchS extends Db2PhpEntityBase implements Db2PhpEntityModificationTrackin
 	 * @return DOMDocument
 	 */
 	public function toDOM() {
-		return self::hashToDomDocument($this->toHash(), 'MatchS');
+		return self::hashToDomDocument($this->toHash(), 'Matchs');
 	}
 
 	/**
-	 * get single MatchS instance from a DOMElement
+	 * get single Matchs instance from a DOMElement
 	 *
 	 * @param DOMElement $node
-	 * @return MatchS
+	 * @return Matchs
 	 */
 	public static function fromDOMElement(DOMElement $node) {
-		$o=new MatchS();
+		$o=new Matchs();
 		$o->assignByHash(self::domNodeToHash($node, self::$FIELD_NAMES, self::$DEFAULT_VALUES, self::$FIELD_TYPES));
 			$o->notifyPristine();
 		return $o;
 	}
 
 	/**
-	 * get all instances of MatchS from the passed DOMDocument
+	 * get all instances of Matchs from the passed DOMDocument
 	 *
 	 * @param DOMDocument $doc
-	 * @return MatchS[]
+	 * @return Matchs[]
 	 */
 	public static function fromDOMDocument(DOMDocument $doc) {
 		$instances=array();
-		foreach ($doc->getElementsByTagName('MatchS') as $node) {
+		foreach ($doc->getElementsByTagName('Matchs') as $node) {
 			$instances[]=self::fromDOMElement($node);
 		}
 		return $instances;

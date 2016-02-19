@@ -6,8 +6,8 @@
  * @version 1.107
  * @package entity
  */
-class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
-	private static $CLASS_NAME='EquipEs';
+class Equipes extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
+	private static $CLASS_NAME='Equipes';
 	const SQL_IDENTIFIER_QUOTE='`';
 	const SQL_TABLE_NAME='equipes';
 	const SQL_INSERT='INSERT INTO `equipes` (`id_equipes`,`nom`,`mot_de_passe`,`tag`) VALUES (?,?,?,?)';
@@ -27,8 +27,8 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		self::FIELD_MOT_DE_PASSE=>'mot_de_passe',
 		self::FIELD_TAG=>'tag');
 	private static $PROPERTY_NAMES=array(
-		self::FIELD_ID_EQUIPES=>'idEquipEs',
-		self::FIELD_NOM=>'nOm',
+		self::FIELD_ID_EQUIPES=>'idEquipes',
+		self::FIELD_NOM=>'nom',
 		self::FIELD_MOT_DE_PASSE=>'motDePasse',
 		self::FIELD_TAG=>'tag');
 	private static $PROPERTY_TYPES=array(
@@ -46,8 +46,8 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		self::FIELD_NOM=>'',
 		self::FIELD_MOT_DE_PASSE=>'',
 		self::FIELD_TAG=>'');
-	private $idEquipEs;
-	private $nOm;
+	private $idEquipes;
+	private $nom;
 	private $motDePasse;
 	private $tag;
 
@@ -56,12 +56,12 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:INT UNSIGNED,size:10,default:null,primary,unique,autoincrement
 	 *
-	 * @param mixed $idEquipEs
-	 * @return EquipEs
+	 * @param mixed $idEquipes
+	 * @return Equipes
 	 */
-	public function &setIdEquipEs($idEquipEs) {
-		$this->notifyChanged(self::FIELD_ID_EQUIPES,$this->idEquipEs,$idEquipEs);
-		$this->idEquipEs=$idEquipEs;
+	public function &setIdEquipes($idEquipes) {
+		$this->notifyChanged(self::FIELD_ID_EQUIPES,$this->idEquipes,$idEquipes);
+		$this->idEquipes=$idEquipes;
 		return $this;
 	}
 
@@ -72,8 +72,8 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getIdEquipEs() {
-		return $this->idEquipEs;
+	public function getIdEquipes() {
+		return $this->idEquipes;
 	}
 
 	/**
@@ -81,12 +81,12 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:VARCHAR,size:255,default:null
 	 *
-	 * @param mixed $nOm
-	 * @return EquipEs
+	 * @param mixed $nom
+	 * @return Equipes
 	 */
-	public function &setNOm($nOm) {
-		$this->notifyChanged(self::FIELD_NOM,$this->nOm,$nOm);
-		$this->nOm=$nOm;
+	public function &setNom($nom) {
+		$this->notifyChanged(self::FIELD_NOM,$this->nom,$nom);
+		$this->nom=$nom;
 		return $this;
 	}
 
@@ -97,8 +97,8 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getNOm() {
-		return $this->nOm;
+	public function getNom() {
+		return $this->nom;
 	}
 
 	/**
@@ -107,7 +107,7 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * type:VARCHAR,size:255,default:null
 	 *
 	 * @param mixed $motDePasse
-	 * @return EquipEs
+	 * @return Equipes
 	 */
 	public function &setMotDePasse($motDePasse) {
 		$this->notifyChanged(self::FIELD_MOT_DE_PASSE,$this->motDePasse,$motDePasse);
@@ -132,7 +132,7 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * type:VARCHAR,size:255,default:null
 	 *
 	 * @param mixed $tag
-	 * @return EquipEs
+	 * @return Equipes
 	 */
 	public function &setTag($tag) {
 		$this->notifyChanged(self::FIELD_TAG,$this->tag,$tag);
@@ -262,8 +262,8 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 */
 	public function toArray() {
 		return array(
-			self::FIELD_ID_EQUIPES=>$this->getIdEquipEs(),
-			self::FIELD_NOM=>$this->getNOm(),
+			self::FIELD_ID_EQUIPES=>$this->getIdEquipes(),
+			self::FIELD_NOM=>$this->getNom(),
 			self::FIELD_MOT_DE_PASSE=>$this->getMotDePasse(),
 			self::FIELD_TAG=>$this->getTag());
 	}
@@ -276,7 +276,7 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 */
 	public function getPrimaryKeyValues() {
 		return array(
-			self::FIELD_ID_EQUIPES=>$this->getIdEquipEs());
+			self::FIELD_ID_EQUIPES=>$this->getIdEquipes());
 	}
 
 	/**
@@ -356,15 +356,15 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	/**
 	 * Query by Example.
 	 *
-	 * Match by attributes of passed example instance and return matched rows as an array of EquipEs instances
+	 * Match by attributes of passed example instance and return matched rows as an array of Equipes instances
 	 *
 	 * @param PDO $db a PDO Database instance
-	 * @param EquipEs $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
+	 * @param Equipes $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return EquipEs[]
+	 * @return Equipes[]
 	 */
-	public static function findByExample(PDO $db,EquipEs $example, $and=true, $sort=null) {
+	public static function findByExample(PDO $db,Equipes $example, $and=true, $sort=null) {
 		$exampleValues=$example->toArray();
 		$filter=array();
 		foreach ($exampleValues as $fieldId=>$value) {
@@ -381,13 +381,13 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * The filter can be either an hash with the field id as index and the value as filter value,
 	 * or a array of DFC instances.
 	 *
-	 * Will return matched rows as an array of EquipEs instances.
+	 * Will return matched rows as an array of Equipes instances.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $filter array of DFC instances defining the conditions
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return EquipEs[]
+	 * @return Equipes[]
 	 */
 	public static function findByFilter(PDO $db, $filter, $and=true, $sort=null) {
 		if (!($filter instanceof DFCInterface)) {
@@ -403,10 +403,10 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * Will execute the passed statement and return the result as an array of EquipEs instances
+	 * Will execute the passed statement and return the result as an array of Equipes instances
 	 *
 	 * @param PDOStatement $stmt
-	 * @return EquipEs[]
+	 * @return Equipes[]
 	 */
 	public static function fromStatement(PDOStatement $stmt) {
 		$affected=$stmt->execute();
@@ -418,15 +418,15 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * returns the result as an array of EquipEs instances without executing the passed statement
+	 * returns the result as an array of Equipes instances without executing the passed statement
 	 *
 	 * @param PDOStatement $stmt
-	 * @return EquipEs[]
+	 * @return Equipes[]
 	 */
 	public static function fromExecutedStatement(PDOStatement $stmt) {
 		$resultInstances=array();
 		while($result=$stmt->fetch(PDO::FETCH_ASSOC)) {
-			$o=new EquipEs();
+			$o=new Equipes();
 			$o->assignByHash($result);
 			$o->notifyPristine();
 			$resultInstances[]=$o;
@@ -472,13 +472,13 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * Execute select query and return matched rows as an array of EquipEs instances.
+	 * Execute select query and return matched rows as an array of Equipes instances.
 	 *
 	 * The query should of course be on the table for this entity class and return all fields.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param string $sql
-	 * @return EquipEs[]
+	 * @return Equipes[]
 	 */
 	public static function findBySql(PDO $db, $sql) {
 		$stmt=$db->query($sql);
@@ -535,8 +535,8 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @param array $result
 	 */
 	public function assignByHash($result) {
-		$this->setIdEquipEs($result['id_equipes']);
-		$this->setNOm($result['nom']);
+		$this->setIdEquipes($result['id_equipes']);
+		$this->setNom($result['nom']);
 		$this->setMotDePasse($result['mot_de_passe']);
 		$this->setTag($result['tag']);
 	}
@@ -546,11 +546,11 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * Will return null if no row was matched.
 	 *
 	 * @param PDO $db
-	 * @return EquipEs
+	 * @return Equipes
 	 */
-	public static function findById(PDO $db,$idEquipEs) {
+	public static function findById(PDO $db,$idEquipes) {
 		$stmt=self::prepareStatement($db,self::SQL_SELECT_PK);
-		$stmt->bindValue(1,$idEquipEs);
+		$stmt->bindValue(1,$idEquipes);
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -561,7 +561,7 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		if(!$result) {
 			return null;
 		}
-		$o=new EquipEs();
+		$o=new Equipes();
 		$o->assignByHash($result);
 		$o->notifyPristine();
 		return $o;
@@ -573,8 +573,8 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @param PDOStatement $stmt
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
-		$stmt->bindValue(1,$this->getIdEquipEs());
-		$stmt->bindValue(2,$this->getNOm());
+		$stmt->bindValue(1,$this->getIdEquipes());
+		$stmt->bindValue(2,$this->getNom());
 		$stmt->bindValue(3,$this->getMotDePasse());
 		$stmt->bindValue(4,$this->getTag());
 	}
@@ -587,9 +587,9 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @return mixed
 	 */
 	public function insertIntoDatabase(PDO $db) {
-		if (null===$this->getIdEquipEs()) {
+		if (null===$this->getIdEquipes()) {
 			$stmt=self::prepareStatement($db,self::SQL_INSERT_AUTOINCREMENT);
-			$stmt->bindValue(1,$this->getNOm());
+			$stmt->bindValue(1,$this->getNom());
 			$stmt->bindValue(2,$this->getMotDePasse());
 			$stmt->bindValue(3,$this->getTag());
 		} else {
@@ -603,7 +603,7 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		}
 		$lastInsertId=$db->lastInsertId();
 		if (false!==$lastInsertId) {
-			$this->setIdEquipEs($lastInsertId);
+			$this->setIdEquipes($lastInsertId);
 		}
 		$stmt->closeCursor();
 		$this->notifyPristine();
@@ -620,7 +620,7 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	public function updateToDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_UPDATE);
 		$this->bindValues($stmt);
-		$stmt->bindValue(5,$this->getIdEquipEs());
+		$stmt->bindValue(5,$this->getIdEquipes());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -640,7 +640,7 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 */
 	public function deleteFromDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_DELETE_PK);
-		$stmt->bindValue(1,$this->getIdEquipEs());
+		$stmt->bindValue(1,$this->getIdEquipes());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -651,68 +651,68 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * Fetch EquipEsGroupEs's which this EquipEs references.
+	 * Fetch EquipesGroupes's which this Equipes references.
 	 * `equipes`.`id_equipes` -> `equipes_groupes`.`id_equipe`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return EquipEsGroupEs[]
+	 * @return EquipesGroupes[]
 	 */
-	public function fetchEquipEsGroupEsCollection(PDO $db, $sort=null) {
-		$filter=array(EquipEsGroupEs::FIELD_ID_EQUIPE=>$this->getIdEquipEs());
-		return EquipEsGroupEs::findByFilter($db, $filter, true, $sort);
+	public function fetchEquipesGroupesCollection(PDO $db, $sort=null) {
+		$filter=array(EquipesGroupes::FIELD_ID_EQUIPE=>$this->getIdEquipes());
+		return EquipesGroupes::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch EquipEsJoUEur's which this EquipEs references.
+	 * Fetch EquipesJoueur's which this Equipes references.
 	 * `equipes`.`id_equipes` -> `equipes_joueur`.`id_equipes`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return EquipEsJoUEur[]
+	 * @return EquipesJoueur[]
 	 */
-	public function fetchEquipEsJoUEurCollection(PDO $db, $sort=null) {
-		$filter=array(EquipEsJoUEur::FIELD_ID_EQUIPES=>$this->getIdEquipEs());
-		return EquipEsJoUEur::findByFilter($db, $filter, true, $sort);
+	public function fetchEquipesJoueurCollection(PDO $db, $sort=null) {
+		$filter=array(EquipesJoueur::FIELD_ID_EQUIPES=>$this->getIdEquipes());
+		return EquipesJoueur::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch EquipEsTourNOi's which this EquipEs references.
+	 * Fetch EquipesTournoi's which this Equipes references.
 	 * `equipes`.`id_equipes` -> `equipes_tournoi`.`id_equipe`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return EquipEsTourNOi[]
+	 * @return EquipesTournoi[]
 	 */
-	public function fetchEquipEsTourNOiCollection(PDO $db, $sort=null) {
-		$filter=array(EquipEsTourNOi::FIELD_ID_EQUIPE=>$this->getIdEquipEs());
-		return EquipEsTourNOi::findByFilter($db, $filter, true, $sort);
+	public function fetchEquipesTournoiCollection(PDO $db, $sort=null) {
+		$filter=array(EquipesTournoi::FIELD_ID_EQUIPE=>$this->getIdEquipes());
+		return EquipesTournoi::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch ManChesEquipEs's which this EquipEs references.
+	 * Fetch ManchesEquipes's which this Equipes references.
 	 * `equipes`.`id_equipes` -> `manches_equipes`.`id_equipe`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return ManChesEquipEs[]
+	 * @return ManchesEquipes[]
 	 */
-	public function fetchManChesEquipEsCollection(PDO $db, $sort=null) {
-		$filter=array(ManChesEquipEs::FIELD_ID_EQUIPE=>$this->getIdEquipEs());
-		return ManChesEquipEs::findByFilter($db, $filter, true, $sort);
+	public function fetchManchesEquipesCollection(PDO $db, $sort=null) {
+		$filter=array(ManchesEquipes::FIELD_ID_EQUIPE=>$this->getIdEquipes());
+		return ManchesEquipes::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch MatchSEquipEs's which this EquipEs references.
+	 * Fetch MatchsEquipes's which this Equipes references.
 	 * `equipes`.`id_equipes` -> `matchs_equipes`.`id_equipe`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchSEquipEs[]
+	 * @return MatchsEquipes[]
 	 */
-	public function fetchMatchSEquipEsCollection(PDO $db, $sort=null) {
-		$filter=array(MatchSEquipEs::FIELD_ID_EQUIPE=>$this->getIdEquipEs());
-		return MatchSEquipEs::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchsEquipesCollection(PDO $db, $sort=null) {
+		$filter=array(MatchsEquipes::FIELD_ID_EQUIPE=>$this->getIdEquipes());
+		return MatchsEquipes::findByFilter($db, $filter, true, $sort);
 	}
 
 
@@ -722,31 +722,31 @@ class EquipEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @return DOMDocument
 	 */
 	public function toDOM() {
-		return self::hashToDomDocument($this->toHash(), 'EquipEs');
+		return self::hashToDomDocument($this->toHash(), 'Equipes');
 	}
 
 	/**
-	 * get single EquipEs instance from a DOMElement
+	 * get single Equipes instance from a DOMElement
 	 *
 	 * @param DOMElement $node
-	 * @return EquipEs
+	 * @return Equipes
 	 */
 	public static function fromDOMElement(DOMElement $node) {
-		$o=new EquipEs();
+		$o=new Equipes();
 		$o->assignByHash(self::domNodeToHash($node, self::$FIELD_NAMES, self::$DEFAULT_VALUES, self::$FIELD_TYPES));
 			$o->notifyPristine();
 		return $o;
 	}
 
 	/**
-	 * get all instances of EquipEs from the passed DOMDocument
+	 * get all instances of Equipes from the passed DOMDocument
 	 *
 	 * @param DOMDocument $doc
-	 * @return EquipEs[]
+	 * @return Equipes[]
 	 */
 	public static function fromDOMDocument(DOMDocument $doc) {
 		$instances=array();
-		foreach ($doc->getElementsByTagName('EquipEs') as $node) {
+		foreach ($doc->getElementsByTagName('Equipes') as $node) {
 			$instances[]=self::fromDOMElement($node);
 		}
 		return $instances;

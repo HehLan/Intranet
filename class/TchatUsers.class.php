@@ -6,106 +6,67 @@
  * @version 1.107
  * @package entity
  */
-class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
-	private static $CLASS_NAME='TChat';
+class TchatUsers extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
+	private static $CLASS_NAME='TchatUsers';
 	const SQL_IDENTIFIER_QUOTE='`';
-	const SQL_TABLE_NAME='tchat';
-	const SQL_INSERT='INSERT INTO `tchat` (`id_chat`,`id_joueur`,`pseudo`,`quand`,`message`) VALUES (?,?,?,?,?)';
-	const SQL_INSERT_AUTOINCREMENT='INSERT INTO `tchat` (`id_joueur`,`pseudo`,`quand`,`message`) VALUES (?,?,?,?)';
-	const SQL_UPDATE='UPDATE `tchat` SET `id_chat`=?,`id_joueur`=?,`pseudo`=?,`quand`=?,`message`=? WHERE `id_chat`=?';
-	const SQL_SELECT_PK='SELECT * FROM `tchat` WHERE `id_chat`=?';
-	const SQL_DELETE_PK='DELETE FROM `tchat` WHERE `id_chat`=?';
-	const FIELD_ID_CHAT=1438840282;
-	const FIELD_ID_JOUEUR=-46504460;
-	const FIELD_PSEUDO=-708964320;
-	const FIELD_QUAND=-714627439;
-	const FIELD_MESSAGE=741457381;
-	private static $PRIMARY_KEYS=array(self::FIELD_ID_CHAT);
-	private static $AUTOINCREMENT_FIELDS=array(self::FIELD_ID_CHAT);
+	const SQL_TABLE_NAME='tchat_users';
+	const SQL_INSERT='INSERT INTO `tchat_users` (`id_joueur`,`pseudo`,`lastcon`) VALUES (?,?,?)';
+	const SQL_INSERT_AUTOINCREMENT='INSERT INTO `tchat_users` (`id_joueur`,`pseudo`,`lastcon`) VALUES (?,?,?)';
+	const SQL_UPDATE='UPDATE `tchat_users` SET `id_joueur`=?,`pseudo`=?,`lastcon`=? WHERE `id_joueur`=?';
+	const SQL_SELECT_PK='SELECT * FROM `tchat_users` WHERE `id_joueur`=?';
+	const SQL_DELETE_PK='DELETE FROM `tchat_users` WHERE `id_joueur`=?';
+	const FIELD_ID_JOUEUR=718149309;
+	const FIELD_PSEUDO=-1915208713;
+	const FIELD_LASTCON=1000598547;
+	private static $PRIMARY_KEYS=array(self::FIELD_ID_JOUEUR);
+	private static $AUTOINCREMENT_FIELDS=array();
 	private static $FIELD_NAMES=array(
-		self::FIELD_ID_CHAT=>'id_chat',
 		self::FIELD_ID_JOUEUR=>'id_joueur',
 		self::FIELD_PSEUDO=>'pseudo',
-		self::FIELD_QUAND=>'quand',
-		self::FIELD_MESSAGE=>'message');
+		self::FIELD_LASTCON=>'lastcon');
 	private static $PROPERTY_NAMES=array(
-		self::FIELD_ID_CHAT=>'idChat',
-		self::FIELD_ID_JOUEUR=>'idJoUEur',
+		self::FIELD_ID_JOUEUR=>'idJoueur',
 		self::FIELD_PSEUDO=>'pseudo',
-		self::FIELD_QUAND=>'quaNd',
-		self::FIELD_MESSAGE=>'message');
+		self::FIELD_LASTCON=>'lastcon');
 	private static $PROPERTY_TYPES=array(
-		self::FIELD_ID_CHAT=>Db2PhpEntity::PHP_TYPE_INT,
 		self::FIELD_ID_JOUEUR=>Db2PhpEntity::PHP_TYPE_INT,
 		self::FIELD_PSEUDO=>Db2PhpEntity::PHP_TYPE_STRING,
-		self::FIELD_QUAND=>Db2PhpEntity::PHP_TYPE_STRING,
-		self::FIELD_MESSAGE=>Db2PhpEntity::PHP_TYPE_STRING);
+		self::FIELD_LASTCON=>Db2PhpEntity::PHP_TYPE_STRING);
 	private static $FIELD_TYPES=array(
-		self::FIELD_ID_CHAT=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false),
 		self::FIELD_ID_JOUEUR=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false),
 		self::FIELD_PSEUDO=>array(Db2PhpEntity::JDBC_TYPE_CHAR,80,0,false),
-		self::FIELD_QUAND=>array(Db2PhpEntity::JDBC_TYPE_TIMESTAMP,19,0,false),
-		self::FIELD_MESSAGE=>array(Db2PhpEntity::JDBC_TYPE_CHAR,255,0,false));
+		self::FIELD_LASTCON=>array(Db2PhpEntity::JDBC_TYPE_TIMESTAMP,19,0,false));
 	private static $DEFAULT_VALUES=array(
-		self::FIELD_ID_CHAT=>null,
 		self::FIELD_ID_JOUEUR=>0,
 		self::FIELD_PSEUDO=>'',
-		self::FIELD_QUAND=>'',
-		self::FIELD_MESSAGE=>'');
-	private $idChat;
-	private $idJoUEur;
+		self::FIELD_LASTCON=>'');
+	private $idJoueur;
 	private $pseudo;
-	private $quaNd;
-	private $message;
-
-	/**
-	 * set value for id_chat 
-	 *
-	 * type:INT,size:10,default:null,primary,unique,autoincrement
-	 *
-	 * @param mixed $idChat
-	 * @return TChat
-	 */
-	public function &setIdChat($idChat) {
-		$this->notifyChanged(self::FIELD_ID_CHAT,$this->idChat,$idChat);
-		$this->idChat=$idChat;
-		return $this;
-	}
-
-	/**
-	 * get value for id_chat 
-	 *
-	 * type:INT,size:10,default:null,primary,unique,autoincrement
-	 *
-	 * @return mixed
-	 */
-	public function getIdChat() {
-		return $this->idChat;
-	}
+	private $lastcon;
 
 	/**
 	 * set value for id_joueur 
 	 *
-	 * type:INT,size:10,default:null
+	 * type:INT,size:10,default:null,primary,unique
 	 *
-	 * @param mixed $idJoUEur
-	 * @return TChat
+	 * @param mixed $idJoueur
+	 * @return TchatUsers
 	 */
-	public function &setIdJoUEur($idJoUEur) {
-		$this->notifyChanged(self::FIELD_ID_JOUEUR,$this->idJoUEur,$idJoUEur);
-		$this->idJoUEur=$idJoUEur;
+	public function &setIdJoueur($idJoueur) {
+		$this->notifyChanged(self::FIELD_ID_JOUEUR,$this->idJoueur,$idJoueur);
+		$this->idJoueur=$idJoueur;
 		return $this;
 	}
 
 	/**
 	 * get value for id_joueur 
 	 *
-	 * type:INT,size:10,default:null
+	 * type:INT,size:10,default:null,primary,unique
 	 *
 	 * @return mixed
 	 */
-	public function getIdJoUEur() {
-		return $this->idJoUEur;
+	public function getIdJoueur() {
+		return $this->idJoueur;
 	}
 
 	/**
@@ -114,7 +75,7 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	 * type:CHAR,size:80,default:null
 	 *
 	 * @param mixed $pseudo
-	 * @return TChat
+	 * @return TchatUsers
 	 */
 	public function &setPseudo($pseudo) {
 		$this->notifyChanged(self::FIELD_PSEUDO,$this->pseudo,$pseudo);
@@ -134,53 +95,28 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	}
 
 	/**
-	 * set value for quand 
+	 * set value for lastcon 
 	 *
-	 * type:DATETIME,size:19,default:null,index
+	 * type:DATETIME,size:19,default:null
 	 *
-	 * @param mixed $quaNd
-	 * @return TChat
+	 * @param mixed $lastcon
+	 * @return TchatUsers
 	 */
-	public function &setQuaNd($quaNd) {
-		$this->notifyChanged(self::FIELD_QUAND,$this->quaNd,$quaNd);
-		$this->quaNd=$quaNd;
+	public function &setLastcon($lastcon) {
+		$this->notifyChanged(self::FIELD_LASTCON,$this->lastcon,$lastcon);
+		$this->lastcon=$lastcon;
 		return $this;
 	}
 
 	/**
-	 * get value for quand 
+	 * get value for lastcon 
 	 *
-	 * type:DATETIME,size:19,default:null,index
-	 *
-	 * @return mixed
-	 */
-	public function getQuaNd() {
-		return $this->quaNd;
-	}
-
-	/**
-	 * set value for message 
-	 *
-	 * type:CHAR,size:255,default:null
-	 *
-	 * @param mixed $message
-	 * @return TChat
-	 */
-	public function &setMessage($message) {
-		$this->notifyChanged(self::FIELD_MESSAGE,$this->message,$message);
-		$this->message=$message;
-		return $this;
-	}
-
-	/**
-	 * get value for message 
-	 *
-	 * type:CHAR,size:255,default:null
+	 * type:DATETIME,size:19,default:null
 	 *
 	 * @return mixed
 	 */
-	public function getMessage() {
-		return $this->message;
+	public function getLastcon() {
+		return $this->lastcon;
 	}
 
 	/**
@@ -294,11 +230,9 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	 */
 	public function toArray() {
 		return array(
-			self::FIELD_ID_CHAT=>$this->getIdChat(),
-			self::FIELD_ID_JOUEUR=>$this->getIdJoUEur(),
+			self::FIELD_ID_JOUEUR=>$this->getIdJoueur(),
 			self::FIELD_PSEUDO=>$this->getPseudo(),
-			self::FIELD_QUAND=>$this->getQuaNd(),
-			self::FIELD_MESSAGE=>$this->getMessage());
+			self::FIELD_LASTCON=>$this->getLastcon());
 	}
 
 
@@ -309,7 +243,7 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	 */
 	public function getPrimaryKeyValues() {
 		return array(
-			self::FIELD_ID_CHAT=>$this->getIdChat());
+			self::FIELD_ID_JOUEUR=>$this->getIdJoueur());
 	}
 
 	/**
@@ -389,15 +323,15 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	/**
 	 * Query by Example.
 	 *
-	 * Match by attributes of passed example instance and return matched rows as an array of TChat instances
+	 * Match by attributes of passed example instance and return matched rows as an array of TchatUsers instances
 	 *
 	 * @param PDO $db a PDO Database instance
-	 * @param TChat $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
+	 * @param TchatUsers $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return TChat[]
+	 * @return TchatUsers[]
 	 */
-	public static function findByExample(PDO $db,TChat $example, $and=true, $sort=null) {
+	public static function findByExample(PDO $db,TchatUsers $example, $and=true, $sort=null) {
 		$exampleValues=$example->toArray();
 		$filter=array();
 		foreach ($exampleValues as $fieldId=>$value) {
@@ -414,19 +348,19 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	 * The filter can be either an hash with the field id as index and the value as filter value,
 	 * or a array of DFC instances.
 	 *
-	 * Will return matched rows as an array of TChat instances.
+	 * Will return matched rows as an array of TchatUsers instances.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $filter array of DFC instances defining the conditions
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return TChat[]
+	 * @return TchatUsers[]
 	 */
 	public static function findByFilter(PDO $db, $filter, $and=true, $sort=null) {
 		if (!($filter instanceof DFCInterface)) {
 			$filter=new DFCAggregate($filter, $and);
 		}
-		$sql='SELECT * FROM `tchat`'
+		$sql='SELECT * FROM `tchat_users`'
 		. self::buildSqlWhere($filter, $and, false, true)
 		. self::buildSqlOrderBy($sort);
 
@@ -436,10 +370,10 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	}
 
 	/**
-	 * Will execute the passed statement and return the result as an array of TChat instances
+	 * Will execute the passed statement and return the result as an array of TchatUsers instances
 	 *
 	 * @param PDOStatement $stmt
-	 * @return TChat[]
+	 * @return TchatUsers[]
 	 */
 	public static function fromStatement(PDOStatement $stmt) {
 		$affected=$stmt->execute();
@@ -451,15 +385,15 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	}
 
 	/**
-	 * returns the result as an array of TChat instances without executing the passed statement
+	 * returns the result as an array of TchatUsers instances without executing the passed statement
 	 *
 	 * @param PDOStatement $stmt
-	 * @return TChat[]
+	 * @return TchatUsers[]
 	 */
 	public static function fromExecutedStatement(PDOStatement $stmt) {
 		$resultInstances=array();
 		while($result=$stmt->fetch(PDO::FETCH_ASSOC)) {
-			$o=new TChat();
+			$o=new TchatUsers();
 			$o->assignByHash($result);
 			$o->notifyPristine();
 			$resultInstances[]=$o;
@@ -505,13 +439,13 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	}
 
 	/**
-	 * Execute select query and return matched rows as an array of TChat instances.
+	 * Execute select query and return matched rows as an array of TchatUsers instances.
 	 *
 	 * The query should of course be on the table for this entity class and return all fields.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param string $sql
-	 * @return TChat[]
+	 * @return TchatUsers[]
 	 */
 	public static function findBySql(PDO $db, $sql) {
 		$stmt=$db->query($sql);
@@ -536,7 +470,7 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 		if (0==count($filter)) {
 			throw new InvalidArgumentException('refusing to delete without filter'); // just comment out this line if you are brave
 		}
-		$sql='DELETE FROM `tchat`'
+		$sql='DELETE FROM `tchat_users`'
 		. self::buildSqlWhere($filter, $and, false, true);
 		$stmt=self::prepareStatement($db, $sql);
 		self::bindValuesForFilter($stmt, $filter);
@@ -568,11 +502,9 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	 * @param array $result
 	 */
 	public function assignByHash($result) {
-		$this->setIdChat($result['id_chat']);
-		$this->setIdJoUEur($result['id_joueur']);
+		$this->setIdJoueur($result['id_joueur']);
 		$this->setPseudo($result['pseudo']);
-		$this->setQuaNd($result['quand']);
-		$this->setMessage($result['message']);
+		$this->setLastcon($result['lastcon']);
 	}
 
 	/**
@@ -580,11 +512,11 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	 * Will return null if no row was matched.
 	 *
 	 * @param PDO $db
-	 * @return TChat
+	 * @return TchatUsers
 	 */
-	public static function findById(PDO $db,$idChat) {
+	public static function findById(PDO $db,$idJoueur) {
 		$stmt=self::prepareStatement($db,self::SQL_SELECT_PK);
-		$stmt->bindValue(1,$idChat);
+		$stmt->bindValue(1,$idJoueur);
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -595,7 +527,7 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 		if(!$result) {
 			return null;
 		}
-		$o=new TChat();
+		$o=new TchatUsers();
 		$o->assignByHash($result);
 		$o->notifyPristine();
 		return $o;
@@ -607,11 +539,9 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	 * @param PDOStatement $stmt
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
-		$stmt->bindValue(1,$this->getIdChat());
-		$stmt->bindValue(2,$this->getIdJoUEur());
-		$stmt->bindValue(3,$this->getPseudo());
-		$stmt->bindValue(4,$this->getQuaNd());
-		$stmt->bindValue(5,$this->getMessage());
+		$stmt->bindValue(1,$this->getIdJoueur());
+		$stmt->bindValue(2,$this->getPseudo());
+		$stmt->bindValue(3,$this->getLastcon());
 	}
 
 
@@ -622,24 +552,12 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	 * @return mixed
 	 */
 	public function insertIntoDatabase(PDO $db) {
-		if (null===$this->getIdChat()) {
-			$stmt=self::prepareStatement($db,self::SQL_INSERT_AUTOINCREMENT);
-			$stmt->bindValue(1,$this->getIdJoUEur());
-			$stmt->bindValue(2,$this->getPseudo());
-			$stmt->bindValue(3,$this->getQuaNd());
-			$stmt->bindValue(4,$this->getMessage());
-		} else {
-			$stmt=self::prepareStatement($db,self::SQL_INSERT);
-			$this->bindValues($stmt);
-		}
+		$stmt=self::prepareStatement($db,self::SQL_INSERT);
+		$this->bindValues($stmt);
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
 			throw new Exception($stmt->errorCode() . ':' . var_export($stmt->errorInfo(), true), 0);
-		}
-		$lastInsertId=$db->lastInsertId();
-		if (false!==$lastInsertId) {
-			$this->setIdChat($lastInsertId);
 		}
 		$stmt->closeCursor();
 		$this->notifyPristine();
@@ -656,7 +574,7 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	public function updateToDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_UPDATE);
 		$this->bindValues($stmt);
-		$stmt->bindValue(6,$this->getIdChat());
+		$stmt->bindValue(4,$this->getIdJoueur());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -676,7 +594,7 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	 */
 	public function deleteFromDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_DELETE_PK);
-		$stmt->bindValue(1,$this->getIdChat());
+		$stmt->bindValue(1,$this->getIdJoueur());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -693,31 +611,31 @@ class TChat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking
 	 * @return DOMDocument
 	 */
 	public function toDOM() {
-		return self::hashToDomDocument($this->toHash(), 'TChat');
+		return self::hashToDomDocument($this->toHash(), 'TchatUsers');
 	}
 
 	/**
-	 * get single TChat instance from a DOMElement
+	 * get single TchatUsers instance from a DOMElement
 	 *
 	 * @param DOMElement $node
-	 * @return TChat
+	 * @return TchatUsers
 	 */
 	public static function fromDOMElement(DOMElement $node) {
-		$o=new TChat();
+		$o=new TchatUsers();
 		$o->assignByHash(self::domNodeToHash($node, self::$FIELD_NAMES, self::$DEFAULT_VALUES, self::$FIELD_TYPES));
 			$o->notifyPristine();
 		return $o;
 	}
 
 	/**
-	 * get all instances of TChat from the passed DOMDocument
+	 * get all instances of TchatUsers from the passed DOMDocument
 	 *
 	 * @param DOMDocument $doc
-	 * @return TChat[]
+	 * @return TchatUsers[]
 	 */
 	public static function fromDOMDocument(DOMDocument $doc) {
 		$instances=array();
-		foreach ($doc->getElementsByTagName('TChat') as $node) {
+		foreach ($doc->getElementsByTagName('TchatUsers') as $node) {
 			$instances[]=self::fromDOMElement($node);
 		}
 		return $instances;

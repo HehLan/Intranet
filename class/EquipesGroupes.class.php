@@ -6,8 +6,8 @@
  * @version 1.107
  * @package entity
  */
-class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
-	private static $CLASS_NAME='EquipEsGroupEs';
+class EquipesGroupes extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
+	private static $CLASS_NAME='EquipesGroupes';
 	const SQL_IDENTIFIER_QUOTE='`';
 	const SQL_TABLE_NAME='equipes_groupes';
 	const SQL_INSERT='INSERT INTO `equipes_groupes` (`id_equipe`,`id_groupe`) VALUES (?,?)';
@@ -23,8 +23,8 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 		self::FIELD_ID_EQUIPE=>'id_equipe',
 		self::FIELD_ID_GROUPE=>'id_groupe');
 	private static $PROPERTY_NAMES=array(
-		self::FIELD_ID_EQUIPE=>'idEquipE',
-		self::FIELD_ID_GROUPE=>'idGroupE');
+		self::FIELD_ID_EQUIPE=>'idEquipe',
+		self::FIELD_ID_GROUPE=>'idGroupe');
 	private static $PROPERTY_TYPES=array(
 		self::FIELD_ID_EQUIPE=>Db2PhpEntity::PHP_TYPE_INT,
 		self::FIELD_ID_GROUPE=>Db2PhpEntity::PHP_TYPE_INT);
@@ -34,20 +34,20 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	private static $DEFAULT_VALUES=array(
 		self::FIELD_ID_EQUIPE=>0,
 		self::FIELD_ID_GROUPE=>0);
-	private $idEquipE;
-	private $idGroupE;
+	private $idEquipe;
+	private $idGroupe;
 
 	/**
 	 * set value for id_equipe 
 	 *
 	 * type:INT UNSIGNED,size:10,default:null,primary,unique
 	 *
-	 * @param mixed $idEquipE
-	 * @return EquipEsGroupEs
+	 * @param mixed $idEquipe
+	 * @return EquipesGroupes
 	 */
-	public function &setIdEquipE($idEquipE) {
-		$this->notifyChanged(self::FIELD_ID_EQUIPE,$this->idEquipE,$idEquipE);
-		$this->idEquipE=$idEquipE;
+	public function &setIdEquipe($idEquipe) {
+		$this->notifyChanged(self::FIELD_ID_EQUIPE,$this->idEquipe,$idEquipe);
+		$this->idEquipe=$idEquipe;
 		return $this;
 	}
 
@@ -58,8 +58,8 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 *
 	 * @return mixed
 	 */
-	public function getIdEquipE() {
-		return $this->idEquipE;
+	public function getIdEquipe() {
+		return $this->idEquipe;
 	}
 
 	/**
@@ -67,12 +67,12 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 *
 	 * type:INT UNSIGNED,size:10,default:null,primary,index
 	 *
-	 * @param mixed $idGroupE
-	 * @return EquipEsGroupEs
+	 * @param mixed $idGroupe
+	 * @return EquipesGroupes
 	 */
-	public function &setIdGroupE($idGroupE) {
-		$this->notifyChanged(self::FIELD_ID_GROUPE,$this->idGroupE,$idGroupE);
-		$this->idGroupE=$idGroupE;
+	public function &setIdGroupe($idGroupe) {
+		$this->notifyChanged(self::FIELD_ID_GROUPE,$this->idGroupe,$idGroupe);
+		$this->idGroupe=$idGroupe;
 		return $this;
 	}
 
@@ -83,8 +83,8 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 *
 	 * @return mixed
 	 */
-	public function getIdGroupE() {
-		return $this->idGroupE;
+	public function getIdGroupe() {
+		return $this->idGroupe;
 	}
 
 	/**
@@ -198,8 +198,8 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 */
 	public function toArray() {
 		return array(
-			self::FIELD_ID_EQUIPE=>$this->getIdEquipE(),
-			self::FIELD_ID_GROUPE=>$this->getIdGroupE());
+			self::FIELD_ID_EQUIPE=>$this->getIdEquipe(),
+			self::FIELD_ID_GROUPE=>$this->getIdGroupe());
 	}
 
 
@@ -210,8 +210,8 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 */
 	public function getPrimaryKeyValues() {
 		return array(
-			self::FIELD_ID_EQUIPE=>$this->getIdEquipE(),
-			self::FIELD_ID_GROUPE=>$this->getIdGroupE());
+			self::FIELD_ID_EQUIPE=>$this->getIdEquipe(),
+			self::FIELD_ID_GROUPE=>$this->getIdGroupe());
 	}
 
 	/**
@@ -291,15 +291,15 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	/**
 	 * Query by Example.
 	 *
-	 * Match by attributes of passed example instance and return matched rows as an array of EquipEsGroupEs instances
+	 * Match by attributes of passed example instance and return matched rows as an array of EquipesGroupes instances
 	 *
 	 * @param PDO $db a PDO Database instance
-	 * @param EquipEsGroupEs $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
+	 * @param EquipesGroupes $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return EquipEsGroupEs[]
+	 * @return EquipesGroupes[]
 	 */
-	public static function findByExample(PDO $db,EquipEsGroupEs $example, $and=true, $sort=null) {
+	public static function findByExample(PDO $db,EquipesGroupes $example, $and=true, $sort=null) {
 		$exampleValues=$example->toArray();
 		$filter=array();
 		foreach ($exampleValues as $fieldId=>$value) {
@@ -316,13 +316,13 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 * The filter can be either an hash with the field id as index and the value as filter value,
 	 * or a array of DFC instances.
 	 *
-	 * Will return matched rows as an array of EquipEsGroupEs instances.
+	 * Will return matched rows as an array of EquipesGroupes instances.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $filter array of DFC instances defining the conditions
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return EquipEsGroupEs[]
+	 * @return EquipesGroupes[]
 	 */
 	public static function findByFilter(PDO $db, $filter, $and=true, $sort=null) {
 		if (!($filter instanceof DFCInterface)) {
@@ -338,10 +338,10 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	}
 
 	/**
-	 * Will execute the passed statement and return the result as an array of EquipEsGroupEs instances
+	 * Will execute the passed statement and return the result as an array of EquipesGroupes instances
 	 *
 	 * @param PDOStatement $stmt
-	 * @return EquipEsGroupEs[]
+	 * @return EquipesGroupes[]
 	 */
 	public static function fromStatement(PDOStatement $stmt) {
 		$affected=$stmt->execute();
@@ -353,15 +353,15 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	}
 
 	/**
-	 * returns the result as an array of EquipEsGroupEs instances without executing the passed statement
+	 * returns the result as an array of EquipesGroupes instances without executing the passed statement
 	 *
 	 * @param PDOStatement $stmt
-	 * @return EquipEsGroupEs[]
+	 * @return EquipesGroupes[]
 	 */
 	public static function fromExecutedStatement(PDOStatement $stmt) {
 		$resultInstances=array();
 		while($result=$stmt->fetch(PDO::FETCH_ASSOC)) {
-			$o=new EquipEsGroupEs();
+			$o=new EquipesGroupes();
 			$o->assignByHash($result);
 			$o->notifyPristine();
 			$resultInstances[]=$o;
@@ -407,13 +407,13 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	}
 
 	/**
-	 * Execute select query and return matched rows as an array of EquipEsGroupEs instances.
+	 * Execute select query and return matched rows as an array of EquipesGroupes instances.
 	 *
 	 * The query should of course be on the table for this entity class and return all fields.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param string $sql
-	 * @return EquipEsGroupEs[]
+	 * @return EquipesGroupes[]
 	 */
 	public static function findBySql(PDO $db, $sql) {
 		$stmt=$db->query($sql);
@@ -470,8 +470,8 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 * @param array $result
 	 */
 	public function assignByHash($result) {
-		$this->setIdEquipE($result['id_equipe']);
-		$this->setIdGroupE($result['id_groupe']);
+		$this->setIdEquipe($result['id_equipe']);
+		$this->setIdGroupe($result['id_groupe']);
 	}
 
 	/**
@@ -479,12 +479,12 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 * Will return null if no row was matched.
 	 *
 	 * @param PDO $db
-	 * @return EquipEsGroupEs
+	 * @return EquipesGroupes
 	 */
-	public static function findById(PDO $db,$idEquipE,$idGroupE) {
+	public static function findById(PDO $db,$idEquipe,$idGroupe) {
 		$stmt=self::prepareStatement($db,self::SQL_SELECT_PK);
-		$stmt->bindValue(1,$idEquipE);
-		$stmt->bindValue(2,$idGroupE);
+		$stmt->bindValue(1,$idEquipe);
+		$stmt->bindValue(2,$idGroupe);
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -495,7 +495,7 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 		if(!$result) {
 			return null;
 		}
-		$o=new EquipEsGroupEs();
+		$o=new EquipesGroupes();
 		$o->assignByHash($result);
 		$o->notifyPristine();
 		return $o;
@@ -507,8 +507,8 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 * @param PDOStatement $stmt
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
-		$stmt->bindValue(1,$this->getIdEquipE());
-		$stmt->bindValue(2,$this->getIdGroupE());
+		$stmt->bindValue(1,$this->getIdEquipe());
+		$stmt->bindValue(2,$this->getIdGroupe());
 	}
 
 
@@ -541,8 +541,8 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	public function updateToDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_UPDATE);
 		$this->bindValues($stmt);
-		$stmt->bindValue(3,$this->getIdEquipE());
-		$stmt->bindValue(4,$this->getIdGroupE());
+		$stmt->bindValue(3,$this->getIdEquipe());
+		$stmt->bindValue(4,$this->getIdGroupe());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -562,8 +562,8 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 */
 	public function deleteFromDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_DELETE_PK);
-		$stmt->bindValue(1,$this->getIdEquipE());
-		$stmt->bindValue(2,$this->getIdGroupE());
+		$stmt->bindValue(1,$this->getIdEquipe());
+		$stmt->bindValue(2,$this->getIdGroupe());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -574,30 +574,30 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	}
 
 	/**
-	 * Fetch EquipEs which references this EquipEsGroupEs. Will return null in case reference is invalid.
+	 * Fetch Equipes which references this EquipesGroupes. Will return null in case reference is invalid.
 	 * `equipes_groupes`.`id_equipe` -> `equipes`.`id_equipes`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return EquipEs
+	 * @return Equipes
 	 */
-	public function fetchEquipEs(PDO $db, $sort=null) {
-		$filter=array(EquipEs::FIELD_ID_EQUIPES=>$this->getIdEquipE());
-		$result=EquipEs::findByFilter($db, $filter, true, $sort);
+	public function fetchEquipes(PDO $db, $sort=null) {
+		$filter=array(Equipes::FIELD_ID_EQUIPES=>$this->getIdEquipe());
+		$result=Equipes::findByFilter($db, $filter, true, $sort);
 		return empty($result) ? null : $result[0];
 	}
 
 	/**
-	 * Fetch GroupEsPool which references this EquipEsGroupEs. Will return null in case reference is invalid.
+	 * Fetch GroupesPool which references this EquipesGroupes. Will return null in case reference is invalid.
 	 * `equipes_groupes`.`id_groupe` -> `groupes_pool`.`id_groupe`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return GroupEsPool
+	 * @return GroupesPool
 	 */
-	public function fetchGroupEsPool(PDO $db, $sort=null) {
-		$filter=array(GroupEsPool::FIELD_ID_GROUPE=>$this->getIdGroupE());
-		$result=GroupEsPool::findByFilter($db, $filter, true, $sort);
+	public function fetchGroupesPool(PDO $db, $sort=null) {
+		$filter=array(GroupesPool::FIELD_ID_GROUPE=>$this->getIdGroupe());
+		$result=GroupesPool::findByFilter($db, $filter, true, $sort);
 		return empty($result) ? null : $result[0];
 	}
 
@@ -608,31 +608,31 @@ class EquipEsGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 * @return DOMDocument
 	 */
 	public function toDOM() {
-		return self::hashToDomDocument($this->toHash(), 'EquipEsGroupEs');
+		return self::hashToDomDocument($this->toHash(), 'EquipesGroupes');
 	}
 
 	/**
-	 * get single EquipEsGroupEs instance from a DOMElement
+	 * get single EquipesGroupes instance from a DOMElement
 	 *
 	 * @param DOMElement $node
-	 * @return EquipEsGroupEs
+	 * @return EquipesGroupes
 	 */
 	public static function fromDOMElement(DOMElement $node) {
-		$o=new EquipEsGroupEs();
+		$o=new EquipesGroupes();
 		$o->assignByHash(self::domNodeToHash($node, self::$FIELD_NAMES, self::$DEFAULT_VALUES, self::$FIELD_TYPES));
 			$o->notifyPristine();
 		return $o;
 	}
 
 	/**
-	 * get all instances of EquipEsGroupEs from the passed DOMDocument
+	 * get all instances of EquipesGroupes from the passed DOMDocument
 	 *
 	 * @param DOMDocument $doc
-	 * @return EquipEsGroupEs[]
+	 * @return EquipesGroupes[]
 	 */
 	public static function fromDOMDocument(DOMDocument $doc) {
 		$instances=array();
-		foreach ($doc->getElementsByTagName('EquipEsGroupEs') as $node) {
+		foreach ($doc->getElementsByTagName('EquipesGroupes') as $node) {
 			$instances[]=self::fromDOMElement($node);
 		}
 		return $instances;

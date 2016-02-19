@@ -32,7 +32,7 @@ class Emplacement extends Db2PhpEntityBase implements Db2PhpEntityModificationTr
 		self::FIELD_HEIGHT=>'height');
 	private static $PROPERTY_NAMES=array(
 		self::FIELD_ID_EMPLACEMENT=>'idEmplacement',
-		self::FIELD_NUMERO=>'nUmErO',
+		self::FIELD_NUMERO=>'numero',
 		self::FIELD_TOP=>'top',
 		self::FIELD_XY_LEFT=>'xyLeft',
 		self::FIELD_WIDTH=>'width',
@@ -59,7 +59,7 @@ class Emplacement extends Db2PhpEntityBase implements Db2PhpEntityModificationTr
 		self::FIELD_WIDTH=>null,
 		self::FIELD_HEIGHT=>null);
 	private $idEmplacement;
-	private $nUmErO;
+	private $numero;
 	private $top;
 	private $xyLeft;
 	private $width;
@@ -95,12 +95,12 @@ class Emplacement extends Db2PhpEntityBase implements Db2PhpEntityModificationTr
 	 *
 	 * type:VARCHAR,size:255,default:null
 	 *
-	 * @param mixed $nUmErO
+	 * @param mixed $numero
 	 * @return Emplacement
 	 */
-	public function &setNUmErO($nUmErO) {
-		$this->notifyChanged(self::FIELD_NUMERO,$this->nUmErO,$nUmErO);
-		$this->nUmErO=$nUmErO;
+	public function &setNumero($numero) {
+		$this->notifyChanged(self::FIELD_NUMERO,$this->numero,$numero);
+		$this->numero=$numero;
 		return $this;
 	}
 
@@ -111,8 +111,8 @@ class Emplacement extends Db2PhpEntityBase implements Db2PhpEntityModificationTr
 	 *
 	 * @return mixed
 	 */
-	public function getNUmErO() {
-		return $this->nUmErO;
+	public function getNumero() {
+		return $this->numero;
 	}
 
 	/**
@@ -327,7 +327,7 @@ class Emplacement extends Db2PhpEntityBase implements Db2PhpEntityModificationTr
 	public function toArray() {
 		return array(
 			self::FIELD_ID_EMPLACEMENT=>$this->getIdEmplacement(),
-			self::FIELD_NUMERO=>$this->getNUmErO(),
+			self::FIELD_NUMERO=>$this->getNumero(),
 			self::FIELD_TOP=>$this->getTop(),
 			self::FIELD_XY_LEFT=>$this->getXyLeft(),
 			self::FIELD_WIDTH=>$this->getWidth(),
@@ -602,7 +602,7 @@ class Emplacement extends Db2PhpEntityBase implements Db2PhpEntityModificationTr
 	 */
 	public function assignByHash($result) {
 		$this->setIdEmplacement($result['id_emplacement']);
-		$this->setNUmErO($result['numero']);
+		$this->setNumero($result['numero']);
 		$this->setTop($result['top']);
 		$this->setXyLeft($result['xy_left']);
 		$this->setWidth($result['width']);
@@ -642,7 +642,7 @@ class Emplacement extends Db2PhpEntityBase implements Db2PhpEntityModificationTr
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
 		$stmt->bindValue(1,$this->getIdEmplacement());
-		$stmt->bindValue(2,$this->getNUmErO());
+		$stmt->bindValue(2,$this->getNumero());
 		$stmt->bindValue(3,$this->getTop());
 		$stmt->bindValue(4,$this->getXyLeft());
 		$stmt->bindValue(5,$this->getWidth());
@@ -659,7 +659,7 @@ class Emplacement extends Db2PhpEntityBase implements Db2PhpEntityModificationTr
 	public function insertIntoDatabase(PDO $db) {
 		if (null===$this->getIdEmplacement()) {
 			$stmt=self::prepareStatement($db,self::SQL_INSERT_AUTOINCREMENT);
-			$stmt->bindValue(1,$this->getNUmErO());
+			$stmt->bindValue(1,$this->getNumero());
 			$stmt->bindValue(2,$this->getTop());
 			$stmt->bindValue(3,$this->getXyLeft());
 			$stmt->bindValue(4,$this->getWidth());
@@ -723,16 +723,16 @@ class Emplacement extends Db2PhpEntityBase implements Db2PhpEntityModificationTr
 	}
 
 	/**
-	 * Fetch JoUEurS's which this Emplacement references.
+	 * Fetch Joueurs's which this Emplacement references.
 	 * `emplacement`.`id_emplacement` -> `joueurs`.`id_emplacement`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return JoUEurS[]
+	 * @return Joueurs[]
 	 */
-	public function fetchJoUEurSCollection(PDO $db, $sort=null) {
-		$filter=array(JoUEurS::FIELD_ID_EMPLACEMENT=>$this->getIdEmplacement());
-		return JoUEurS::findByFilter($db, $filter, true, $sort);
+	public function fetchJoueursCollection(PDO $db, $sort=null) {
+		$filter=array(Joueurs::FIELD_ID_EMPLACEMENT=>$this->getIdEmplacement());
+		return Joueurs::findByFilter($db, $filter, true, $sort);
 	}
 
 

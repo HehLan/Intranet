@@ -6,85 +6,181 @@
  * @version 1.107
  * @package entity
  */
-class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
-	private static $CLASS_NAME='MatchSJoUEurS';
+class Tchat extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
+	private static $CLASS_NAME='Tchat';
 	const SQL_IDENTIFIER_QUOTE='`';
-	const SQL_TABLE_NAME='matchs_joueurs';
-	const SQL_INSERT='INSERT INTO `matchs_joueurs` (`id_match`,`id_joueur`) VALUES (?,?)';
-	const SQL_INSERT_AUTOINCREMENT='INSERT INTO `matchs_joueurs` (`id_match`,`id_joueur`) VALUES (?,?)';
-	const SQL_UPDATE='UPDATE `matchs_joueurs` SET `id_match`=?,`id_joueur`=? WHERE `id_match`=? AND `id_joueur`=?';
-	const SQL_SELECT_PK='SELECT * FROM `matchs_joueurs` WHERE `id_match`=? AND `id_joueur`=?';
-	const SQL_DELETE_PK='DELETE FROM `matchs_joueurs` WHERE `id_match`=? AND `id_joueur`=?';
-	const FIELD_ID_MATCH=1945578239;
-	const FIELD_ID_JOUEUR=110457336;
-	private static $PRIMARY_KEYS=array(self::FIELD_ID_MATCH,self::FIELD_ID_JOUEUR);
-	private static $AUTOINCREMENT_FIELDS=array();
+	const SQL_TABLE_NAME='tchat';
+	const SQL_INSERT='INSERT INTO `tchat` (`id_chat`,`id_joueur`,`pseudo`,`quand`,`message`) VALUES (?,?,?,?,?)';
+	const SQL_INSERT_AUTOINCREMENT='INSERT INTO `tchat` (`id_joueur`,`pseudo`,`quand`,`message`) VALUES (?,?,?,?)';
+	const SQL_UPDATE='UPDATE `tchat` SET `id_chat`=?,`id_joueur`=?,`pseudo`=?,`quand`=?,`message`=? WHERE `id_chat`=?';
+	const SQL_SELECT_PK='SELECT * FROM `tchat` WHERE `id_chat`=?';
+	const SQL_DELETE_PK='DELETE FROM `tchat` WHERE `id_chat`=?';
+	const FIELD_ID_CHAT=1438840282;
+	const FIELD_ID_JOUEUR=-46504460;
+	const FIELD_PSEUDO=-708964320;
+	const FIELD_QUAND=-714627439;
+	const FIELD_MESSAGE=741457381;
+	private static $PRIMARY_KEYS=array(self::FIELD_ID_CHAT);
+	private static $AUTOINCREMENT_FIELDS=array(self::FIELD_ID_CHAT);
 	private static $FIELD_NAMES=array(
-		self::FIELD_ID_MATCH=>'id_match',
-		self::FIELD_ID_JOUEUR=>'id_joueur');
+		self::FIELD_ID_CHAT=>'id_chat',
+		self::FIELD_ID_JOUEUR=>'id_joueur',
+		self::FIELD_PSEUDO=>'pseudo',
+		self::FIELD_QUAND=>'quand',
+		self::FIELD_MESSAGE=>'message');
 	private static $PROPERTY_NAMES=array(
-		self::FIELD_ID_MATCH=>'idMatch',
-		self::FIELD_ID_JOUEUR=>'idJoUEur');
+		self::FIELD_ID_CHAT=>'idChat',
+		self::FIELD_ID_JOUEUR=>'idJoueur',
+		self::FIELD_PSEUDO=>'pseudo',
+		self::FIELD_QUAND=>'quand',
+		self::FIELD_MESSAGE=>'message');
 	private static $PROPERTY_TYPES=array(
-		self::FIELD_ID_MATCH=>Db2PhpEntity::PHP_TYPE_INT,
-		self::FIELD_ID_JOUEUR=>Db2PhpEntity::PHP_TYPE_INT);
+		self::FIELD_ID_CHAT=>Db2PhpEntity::PHP_TYPE_INT,
+		self::FIELD_ID_JOUEUR=>Db2PhpEntity::PHP_TYPE_INT,
+		self::FIELD_PSEUDO=>Db2PhpEntity::PHP_TYPE_STRING,
+		self::FIELD_QUAND=>Db2PhpEntity::PHP_TYPE_STRING,
+		self::FIELD_MESSAGE=>Db2PhpEntity::PHP_TYPE_STRING);
 	private static $FIELD_TYPES=array(
-		self::FIELD_ID_MATCH=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false),
-		self::FIELD_ID_JOUEUR=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false));
+		self::FIELD_ID_CHAT=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false),
+		self::FIELD_ID_JOUEUR=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false),
+		self::FIELD_PSEUDO=>array(Db2PhpEntity::JDBC_TYPE_CHAR,80,0,false),
+		self::FIELD_QUAND=>array(Db2PhpEntity::JDBC_TYPE_TIMESTAMP,19,0,false),
+		self::FIELD_MESSAGE=>array(Db2PhpEntity::JDBC_TYPE_CHAR,255,0,false));
 	private static $DEFAULT_VALUES=array(
-		self::FIELD_ID_MATCH=>0,
-		self::FIELD_ID_JOUEUR=>0);
-	private $idMatch;
-	private $idJoUEur;
+		self::FIELD_ID_CHAT=>null,
+		self::FIELD_ID_JOUEUR=>0,
+		self::FIELD_PSEUDO=>'',
+		self::FIELD_QUAND=>'',
+		self::FIELD_MESSAGE=>'');
+	private $idChat;
+	private $idJoueur;
+	private $pseudo;
+	private $quand;
+	private $message;
 
 	/**
-	 * set value for id_match 
+	 * set value for id_chat 
 	 *
-	 * type:INT UNSIGNED,size:10,default:null,primary,unique
+	 * type:INT,size:10,default:null,primary,unique,autoincrement
 	 *
-	 * @param mixed $idMatch
-	 * @return MatchSJoUEurS
+	 * @param mixed $idChat
+	 * @return Tchat
 	 */
-	public function &setIdMatch($idMatch) {
-		$this->notifyChanged(self::FIELD_ID_MATCH,$this->idMatch,$idMatch);
-		$this->idMatch=$idMatch;
+	public function &setIdChat($idChat) {
+		$this->notifyChanged(self::FIELD_ID_CHAT,$this->idChat,$idChat);
+		$this->idChat=$idChat;
 		return $this;
 	}
 
 	/**
-	 * get value for id_match 
+	 * get value for id_chat 
 	 *
-	 * type:INT UNSIGNED,size:10,default:null,primary,unique
+	 * type:INT,size:10,default:null,primary,unique,autoincrement
 	 *
 	 * @return mixed
 	 */
-	public function getIdMatch() {
-		return $this->idMatch;
+	public function getIdChat() {
+		return $this->idChat;
 	}
 
 	/**
 	 * set value for id_joueur 
 	 *
-	 * type:INT UNSIGNED,size:10,default:null,primary,index
+	 * type:INT,size:10,default:null
 	 *
-	 * @param mixed $idJoUEur
-	 * @return MatchSJoUEurS
+	 * @param mixed $idJoueur
+	 * @return Tchat
 	 */
-	public function &setIdJoUEur($idJoUEur) {
-		$this->notifyChanged(self::FIELD_ID_JOUEUR,$this->idJoUEur,$idJoUEur);
-		$this->idJoUEur=$idJoUEur;
+	public function &setIdJoueur($idJoueur) {
+		$this->notifyChanged(self::FIELD_ID_JOUEUR,$this->idJoueur,$idJoueur);
+		$this->idJoueur=$idJoueur;
 		return $this;
 	}
 
 	/**
 	 * get value for id_joueur 
 	 *
-	 * type:INT UNSIGNED,size:10,default:null,primary,index
+	 * type:INT,size:10,default:null
 	 *
 	 * @return mixed
 	 */
-	public function getIdJoUEur() {
-		return $this->idJoUEur;
+	public function getIdJoueur() {
+		return $this->idJoueur;
+	}
+
+	/**
+	 * set value for pseudo 
+	 *
+	 * type:CHAR,size:80,default:null
+	 *
+	 * @param mixed $pseudo
+	 * @return Tchat
+	 */
+	public function &setPseudo($pseudo) {
+		$this->notifyChanged(self::FIELD_PSEUDO,$this->pseudo,$pseudo);
+		$this->pseudo=$pseudo;
+		return $this;
+	}
+
+	/**
+	 * get value for pseudo 
+	 *
+	 * type:CHAR,size:80,default:null
+	 *
+	 * @return mixed
+	 */
+	public function getPseudo() {
+		return $this->pseudo;
+	}
+
+	/**
+	 * set value for quand 
+	 *
+	 * type:DATETIME,size:19,default:null,index
+	 *
+	 * @param mixed $quand
+	 * @return Tchat
+	 */
+	public function &setQuand($quand) {
+		$this->notifyChanged(self::FIELD_QUAND,$this->quand,$quand);
+		$this->quand=$quand;
+		return $this;
+	}
+
+	/**
+	 * get value for quand 
+	 *
+	 * type:DATETIME,size:19,default:null,index
+	 *
+	 * @return mixed
+	 */
+	public function getQuand() {
+		return $this->quand;
+	}
+
+	/**
+	 * set value for message 
+	 *
+	 * type:CHAR,size:255,default:null
+	 *
+	 * @param mixed $message
+	 * @return Tchat
+	 */
+	public function &setMessage($message) {
+		$this->notifyChanged(self::FIELD_MESSAGE,$this->message,$message);
+		$this->message=$message;
+		return $this;
+	}
+
+	/**
+	 * get value for message 
+	 *
+	 * type:CHAR,size:255,default:null
+	 *
+	 * @return mixed
+	 */
+	public function getMessage() {
+		return $this->message;
 	}
 
 	/**
@@ -198,8 +294,11 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	 */
 	public function toArray() {
 		return array(
-			self::FIELD_ID_MATCH=>$this->getIdMatch(),
-			self::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
+			self::FIELD_ID_CHAT=>$this->getIdChat(),
+			self::FIELD_ID_JOUEUR=>$this->getIdJoueur(),
+			self::FIELD_PSEUDO=>$this->getPseudo(),
+			self::FIELD_QUAND=>$this->getQuand(),
+			self::FIELD_MESSAGE=>$this->getMessage());
 	}
 
 
@@ -210,8 +309,7 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	 */
 	public function getPrimaryKeyValues() {
 		return array(
-			self::FIELD_ID_MATCH=>$this->getIdMatch(),
-			self::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
+			self::FIELD_ID_CHAT=>$this->getIdChat());
 	}
 
 	/**
@@ -291,15 +389,15 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	/**
 	 * Query by Example.
 	 *
-	 * Match by attributes of passed example instance and return matched rows as an array of MatchSJoUEurS instances
+	 * Match by attributes of passed example instance and return matched rows as an array of Tchat instances
 	 *
 	 * @param PDO $db a PDO Database instance
-	 * @param MatchSJoUEurS $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
+	 * @param Tchat $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return MatchSJoUEurS[]
+	 * @return Tchat[]
 	 */
-	public static function findByExample(PDO $db,MatchSJoUEurS $example, $and=true, $sort=null) {
+	public static function findByExample(PDO $db,Tchat $example, $and=true, $sort=null) {
 		$exampleValues=$example->toArray();
 		$filter=array();
 		foreach ($exampleValues as $fieldId=>$value) {
@@ -316,19 +414,19 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	 * The filter can be either an hash with the field id as index and the value as filter value,
 	 * or a array of DFC instances.
 	 *
-	 * Will return matched rows as an array of MatchSJoUEurS instances.
+	 * Will return matched rows as an array of Tchat instances.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $filter array of DFC instances defining the conditions
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return MatchSJoUEurS[]
+	 * @return Tchat[]
 	 */
 	public static function findByFilter(PDO $db, $filter, $and=true, $sort=null) {
 		if (!($filter instanceof DFCInterface)) {
 			$filter=new DFCAggregate($filter, $and);
 		}
-		$sql='SELECT * FROM `matchs_joueurs`'
+		$sql='SELECT * FROM `tchat`'
 		. self::buildSqlWhere($filter, $and, false, true)
 		. self::buildSqlOrderBy($sort);
 
@@ -338,10 +436,10 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	}
 
 	/**
-	 * Will execute the passed statement and return the result as an array of MatchSJoUEurS instances
+	 * Will execute the passed statement and return the result as an array of Tchat instances
 	 *
 	 * @param PDOStatement $stmt
-	 * @return MatchSJoUEurS[]
+	 * @return Tchat[]
 	 */
 	public static function fromStatement(PDOStatement $stmt) {
 		$affected=$stmt->execute();
@@ -353,15 +451,15 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	}
 
 	/**
-	 * returns the result as an array of MatchSJoUEurS instances without executing the passed statement
+	 * returns the result as an array of Tchat instances without executing the passed statement
 	 *
 	 * @param PDOStatement $stmt
-	 * @return MatchSJoUEurS[]
+	 * @return Tchat[]
 	 */
 	public static function fromExecutedStatement(PDOStatement $stmt) {
 		$resultInstances=array();
 		while($result=$stmt->fetch(PDO::FETCH_ASSOC)) {
-			$o=new MatchSJoUEurS();
+			$o=new Tchat();
 			$o->assignByHash($result);
 			$o->notifyPristine();
 			$resultInstances[]=$o;
@@ -407,13 +505,13 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	}
 
 	/**
-	 * Execute select query and return matched rows as an array of MatchSJoUEurS instances.
+	 * Execute select query and return matched rows as an array of Tchat instances.
 	 *
 	 * The query should of course be on the table for this entity class and return all fields.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param string $sql
-	 * @return MatchSJoUEurS[]
+	 * @return Tchat[]
 	 */
 	public static function findBySql(PDO $db, $sql) {
 		$stmt=$db->query($sql);
@@ -438,7 +536,7 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 		if (0==count($filter)) {
 			throw new InvalidArgumentException('refusing to delete without filter'); // just comment out this line if you are brave
 		}
-		$sql='DELETE FROM `matchs_joueurs`'
+		$sql='DELETE FROM `tchat`'
 		. self::buildSqlWhere($filter, $and, false, true);
 		$stmt=self::prepareStatement($db, $sql);
 		self::bindValuesForFilter($stmt, $filter);
@@ -470,8 +568,11 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	 * @param array $result
 	 */
 	public function assignByHash($result) {
-		$this->setIdMatch($result['id_match']);
-		$this->setIdJoUEur($result['id_joueur']);
+		$this->setIdChat($result['id_chat']);
+		$this->setIdJoueur($result['id_joueur']);
+		$this->setPseudo($result['pseudo']);
+		$this->setQuand($result['quand']);
+		$this->setMessage($result['message']);
 	}
 
 	/**
@@ -479,12 +580,11 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	 * Will return null if no row was matched.
 	 *
 	 * @param PDO $db
-	 * @return MatchSJoUEurS
+	 * @return Tchat
 	 */
-	public static function findById(PDO $db,$idMatch,$idJoUEur) {
+	public static function findById(PDO $db,$idChat) {
 		$stmt=self::prepareStatement($db,self::SQL_SELECT_PK);
-		$stmt->bindValue(1,$idMatch);
-		$stmt->bindValue(2,$idJoUEur);
+		$stmt->bindValue(1,$idChat);
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -495,7 +595,7 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 		if(!$result) {
 			return null;
 		}
-		$o=new MatchSJoUEurS();
+		$o=new Tchat();
 		$o->assignByHash($result);
 		$o->notifyPristine();
 		return $o;
@@ -507,8 +607,11 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	 * @param PDOStatement $stmt
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
-		$stmt->bindValue(1,$this->getIdMatch());
-		$stmt->bindValue(2,$this->getIdJoUEur());
+		$stmt->bindValue(1,$this->getIdChat());
+		$stmt->bindValue(2,$this->getIdJoueur());
+		$stmt->bindValue(3,$this->getPseudo());
+		$stmt->bindValue(4,$this->getQuand());
+		$stmt->bindValue(5,$this->getMessage());
 	}
 
 
@@ -519,12 +622,24 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	 * @return mixed
 	 */
 	public function insertIntoDatabase(PDO $db) {
-		$stmt=self::prepareStatement($db,self::SQL_INSERT);
-		$this->bindValues($stmt);
+		if (null===$this->getIdChat()) {
+			$stmt=self::prepareStatement($db,self::SQL_INSERT_AUTOINCREMENT);
+			$stmt->bindValue(1,$this->getIdJoueur());
+			$stmt->bindValue(2,$this->getPseudo());
+			$stmt->bindValue(3,$this->getQuand());
+			$stmt->bindValue(4,$this->getMessage());
+		} else {
+			$stmt=self::prepareStatement($db,self::SQL_INSERT);
+			$this->bindValues($stmt);
+		}
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
 			throw new Exception($stmt->errorCode() . ':' . var_export($stmt->errorInfo(), true), 0);
+		}
+		$lastInsertId=$db->lastInsertId();
+		if (false!==$lastInsertId) {
+			$this->setIdChat($lastInsertId);
 		}
 		$stmt->closeCursor();
 		$this->notifyPristine();
@@ -541,8 +656,7 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	public function updateToDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_UPDATE);
 		$this->bindValues($stmt);
-		$stmt->bindValue(3,$this->getIdMatch());
-		$stmt->bindValue(4,$this->getIdJoUEur());
+		$stmt->bindValue(6,$this->getIdChat());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -562,8 +676,7 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	 */
 	public function deleteFromDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_DELETE_PK);
-		$stmt->bindValue(1,$this->getIdMatch());
-		$stmt->bindValue(2,$this->getIdJoUEur());
+		$stmt->bindValue(1,$this->getIdChat());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -573,34 +686,6 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 		return $affected;
 	}
 
-	/**
-	 * Fetch MatchS which references this MatchSJoUEurS. Will return null in case reference is invalid.
-	 * `matchs_joueurs`.`id_match` -> `matchs`.`id_match`
-	 *
-	 * @param PDO $db a PDO Database instance
-	 * @param array $sort array of DSC instances
-	 * @return MatchS
-	 */
-	public function fetchMatchS(PDO $db, $sort=null) {
-		$filter=array(MatchS::FIELD_ID_MATCH=>$this->getIdMatch());
-		$result=MatchS::findByFilter($db, $filter, true, $sort);
-		return empty($result) ? null : $result[0];
-	}
-
-	/**
-	 * Fetch JoUEurS which references this MatchSJoUEurS. Will return null in case reference is invalid.
-	 * `matchs_joueurs`.`id_joueur` -> `joueurs`.`id_joueur`
-	 *
-	 * @param PDO $db a PDO Database instance
-	 * @param array $sort array of DSC instances
-	 * @return JoUEurS
-	 */
-	public function fetchJoUEurS(PDO $db, $sort=null) {
-		$filter=array(JoUEurS::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
-		$result=JoUEurS::findByFilter($db, $filter, true, $sort);
-		return empty($result) ? null : $result[0];
-	}
-
 
 	/**
 	 * get element as DOM Document
@@ -608,31 +693,31 @@ class MatchSJoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModification
 	 * @return DOMDocument
 	 */
 	public function toDOM() {
-		return self::hashToDomDocument($this->toHash(), 'MatchSJoUEurS');
+		return self::hashToDomDocument($this->toHash(), 'Tchat');
 	}
 
 	/**
-	 * get single MatchSJoUEurS instance from a DOMElement
+	 * get single Tchat instance from a DOMElement
 	 *
 	 * @param DOMElement $node
-	 * @return MatchSJoUEurS
+	 * @return Tchat
 	 */
 	public static function fromDOMElement(DOMElement $node) {
-		$o=new MatchSJoUEurS();
+		$o=new Tchat();
 		$o->assignByHash(self::domNodeToHash($node, self::$FIELD_NAMES, self::$DEFAULT_VALUES, self::$FIELD_TYPES));
 			$o->notifyPristine();
 		return $o;
 	}
 
 	/**
-	 * get all instances of MatchSJoUEurS from the passed DOMDocument
+	 * get all instances of Tchat from the passed DOMDocument
 	 *
 	 * @param DOMDocument $doc
-	 * @return MatchSJoUEurS[]
+	 * @return Tchat[]
 	 */
 	public static function fromDOMDocument(DOMDocument $doc) {
 		$instances=array();
-		foreach ($doc->getElementsByTagName('MatchSJoUEurS') as $node) {
+		foreach ($doc->getElementsByTagName('Tchat') as $node) {
 			$instances[]=self::fromDOMElement($node);
 		}
 		return $instances;

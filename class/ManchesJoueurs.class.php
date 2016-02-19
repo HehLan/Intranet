@@ -6,85 +6,149 @@
  * @version 1.107
  * @package entity
  */
-class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
-	private static $CLASS_NAME='JoUEurSGroupEs';
+class ManchesJoueurs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
+	private static $CLASS_NAME='ManchesJoueurs';
 	const SQL_IDENTIFIER_QUOTE='`';
-	const SQL_TABLE_NAME='joueurs_groupes';
-	const SQL_INSERT='INSERT INTO `joueurs_groupes` (`id_joueur`,`id_groupe`) VALUES (?,?)';
-	const SQL_INSERT_AUTOINCREMENT='INSERT INTO `joueurs_groupes` (`id_joueur`,`id_groupe`) VALUES (?,?)';
-	const SQL_UPDATE='UPDATE `joueurs_groupes` SET `id_joueur`=?,`id_groupe`=? WHERE `id_joueur`=? AND `id_groupe`=?';
-	const SQL_SELECT_PK='SELECT * FROM `joueurs_groupes` WHERE `id_joueur`=? AND `id_groupe`=?';
-	const SQL_DELETE_PK='DELETE FROM `joueurs_groupes` WHERE `id_joueur`=? AND `id_groupe`=?';
-	const FIELD_ID_JOUEUR=1016181847;
-	const FIELD_ID_GROUPE=932901419;
-	private static $PRIMARY_KEYS=array(self::FIELD_ID_JOUEUR,self::FIELD_ID_GROUPE);
+	const SQL_TABLE_NAME='manches_joueurs';
+	const SQL_INSERT='INSERT INTO `manches_joueurs` (`id_match`,`numero_manche`,`id_joueur`,`score`) VALUES (?,?,?,?)';
+	const SQL_INSERT_AUTOINCREMENT='INSERT INTO `manches_joueurs` (`id_match`,`numero_manche`,`id_joueur`,`score`) VALUES (?,?,?,?)';
+	const SQL_UPDATE='UPDATE `manches_joueurs` SET `id_match`=?,`numero_manche`=?,`id_joueur`=?,`score`=? WHERE `id_match`=? AND `numero_manche`=? AND `id_joueur`=?';
+	const SQL_SELECT_PK='SELECT * FROM `manches_joueurs` WHERE `id_match`=? AND `numero_manche`=? AND `id_joueur`=?';
+	const SQL_DELETE_PK='DELETE FROM `manches_joueurs` WHERE `id_match`=? AND `numero_manche`=? AND `id_joueur`=?';
+	const FIELD_ID_MATCH=1645873152;
+	const FIELD_NUMERO_MANCHE=1041991562;
+	const FIELD_ID_JOUEUR=-590465769;
+	const FIELD_SCORE=457356435;
+	private static $PRIMARY_KEYS=array(self::FIELD_ID_MATCH,self::FIELD_NUMERO_MANCHE,self::FIELD_ID_JOUEUR);
 	private static $AUTOINCREMENT_FIELDS=array();
 	private static $FIELD_NAMES=array(
+		self::FIELD_ID_MATCH=>'id_match',
+		self::FIELD_NUMERO_MANCHE=>'numero_manche',
 		self::FIELD_ID_JOUEUR=>'id_joueur',
-		self::FIELD_ID_GROUPE=>'id_groupe');
+		self::FIELD_SCORE=>'score');
 	private static $PROPERTY_NAMES=array(
-		self::FIELD_ID_JOUEUR=>'idJoUEur',
-		self::FIELD_ID_GROUPE=>'idGroupE');
+		self::FIELD_ID_MATCH=>'idMatch',
+		self::FIELD_NUMERO_MANCHE=>'numeroManche',
+		self::FIELD_ID_JOUEUR=>'idJoueur',
+		self::FIELD_SCORE=>'score');
 	private static $PROPERTY_TYPES=array(
+		self::FIELD_ID_MATCH=>Db2PhpEntity::PHP_TYPE_INT,
+		self::FIELD_NUMERO_MANCHE=>Db2PhpEntity::PHP_TYPE_INT,
 		self::FIELD_ID_JOUEUR=>Db2PhpEntity::PHP_TYPE_INT,
-		self::FIELD_ID_GROUPE=>Db2PhpEntity::PHP_TYPE_INT);
+		self::FIELD_SCORE=>Db2PhpEntity::PHP_TYPE_INT);
 	private static $FIELD_TYPES=array(
+		self::FIELD_ID_MATCH=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false),
+		self::FIELD_NUMERO_MANCHE=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false),
 		self::FIELD_ID_JOUEUR=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false),
-		self::FIELD_ID_GROUPE=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false));
+		self::FIELD_SCORE=>array(Db2PhpEntity::JDBC_TYPE_INTEGER,10,0,false));
 	private static $DEFAULT_VALUES=array(
+		self::FIELD_ID_MATCH=>0,
+		self::FIELD_NUMERO_MANCHE=>0,
 		self::FIELD_ID_JOUEUR=>0,
-		self::FIELD_ID_GROUPE=>0);
-	private $idJoUEur;
-	private $idGroupE;
+		self::FIELD_SCORE=>0);
+	private $idMatch;
+	private $numeroManche;
+	private $idJoueur;
+	private $score;
+
+	/**
+	 * set value for id_match 
+	 *
+	 * type:INT UNSIGNED,size:10,default:null,primary,unique
+	 *
+	 * @param mixed $idMatch
+	 * @return ManchesJoueurs
+	 */
+	public function &setIdMatch($idMatch) {
+		$this->notifyChanged(self::FIELD_ID_MATCH,$this->idMatch,$idMatch);
+		$this->idMatch=$idMatch;
+		return $this;
+	}
+
+	/**
+	 * get value for id_match 
+	 *
+	 * type:INT UNSIGNED,size:10,default:null,primary,unique
+	 *
+	 * @return mixed
+	 */
+	public function getIdMatch() {
+		return $this->idMatch;
+	}
+
+	/**
+	 * set value for numero_manche 
+	 *
+	 * type:INT UNSIGNED,size:10,default:null,primary,unique
+	 *
+	 * @param mixed $numeroManche
+	 * @return ManchesJoueurs
+	 */
+	public function &setNumeroManche($numeroManche) {
+		$this->notifyChanged(self::FIELD_NUMERO_MANCHE,$this->numeroManche,$numeroManche);
+		$this->numeroManche=$numeroManche;
+		return $this;
+	}
+
+	/**
+	 * get value for numero_manche 
+	 *
+	 * type:INT UNSIGNED,size:10,default:null,primary,unique
+	 *
+	 * @return mixed
+	 */
+	public function getNumeroManche() {
+		return $this->numeroManche;
+	}
 
 	/**
 	 * set value for id_joueur 
 	 *
-	 * type:INT UNSIGNED,size:10,default:null,primary,unique
+	 * type:INT UNSIGNED,size:10,default:null,primary,index
 	 *
-	 * @param mixed $idJoUEur
-	 * @return JoUEurSGroupEs
+	 * @param mixed $idJoueur
+	 * @return ManchesJoueurs
 	 */
-	public function &setIdJoUEur($idJoUEur) {
-		$this->notifyChanged(self::FIELD_ID_JOUEUR,$this->idJoUEur,$idJoUEur);
-		$this->idJoUEur=$idJoUEur;
+	public function &setIdJoueur($idJoueur) {
+		$this->notifyChanged(self::FIELD_ID_JOUEUR,$this->idJoueur,$idJoueur);
+		$this->idJoueur=$idJoueur;
 		return $this;
 	}
 
 	/**
 	 * get value for id_joueur 
 	 *
-	 * type:INT UNSIGNED,size:10,default:null,primary,unique
+	 * type:INT UNSIGNED,size:10,default:null,primary,index
 	 *
 	 * @return mixed
 	 */
-	public function getIdJoUEur() {
-		return $this->idJoUEur;
+	public function getIdJoueur() {
+		return $this->idJoueur;
 	}
 
 	/**
-	 * set value for id_groupe 
+	 * set value for score 
 	 *
-	 * type:INT UNSIGNED,size:10,default:null,primary,index
+	 * type:INT,size:10,default:0
 	 *
-	 * @param mixed $idGroupE
-	 * @return JoUEurSGroupEs
+	 * @param mixed $score
+	 * @return ManchesJoueurs
 	 */
-	public function &setIdGroupE($idGroupE) {
-		$this->notifyChanged(self::FIELD_ID_GROUPE,$this->idGroupE,$idGroupE);
-		$this->idGroupE=$idGroupE;
+	public function &setScore($score) {
+		$this->notifyChanged(self::FIELD_SCORE,$this->score,$score);
+		$this->score=$score;
 		return $this;
 	}
 
 	/**
-	 * get value for id_groupe 
+	 * get value for score 
 	 *
-	 * type:INT UNSIGNED,size:10,default:null,primary,index
+	 * type:INT,size:10,default:0
 	 *
 	 * @return mixed
 	 */
-	public function getIdGroupE() {
-		return $this->idGroupE;
+	public function getScore() {
+		return $this->score;
 	}
 
 	/**
@@ -198,8 +262,10 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 */
 	public function toArray() {
 		return array(
-			self::FIELD_ID_JOUEUR=>$this->getIdJoUEur(),
-			self::FIELD_ID_GROUPE=>$this->getIdGroupE());
+			self::FIELD_ID_MATCH=>$this->getIdMatch(),
+			self::FIELD_NUMERO_MANCHE=>$this->getNumeroManche(),
+			self::FIELD_ID_JOUEUR=>$this->getIdJoueur(),
+			self::FIELD_SCORE=>$this->getScore());
 	}
 
 
@@ -210,8 +276,9 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 */
 	public function getPrimaryKeyValues() {
 		return array(
-			self::FIELD_ID_JOUEUR=>$this->getIdJoUEur(),
-			self::FIELD_ID_GROUPE=>$this->getIdGroupE());
+			self::FIELD_ID_MATCH=>$this->getIdMatch(),
+			self::FIELD_NUMERO_MANCHE=>$this->getNumeroManche(),
+			self::FIELD_ID_JOUEUR=>$this->getIdJoueur());
 	}
 
 	/**
@@ -291,15 +358,15 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	/**
 	 * Query by Example.
 	 *
-	 * Match by attributes of passed example instance and return matched rows as an array of JoUEurSGroupEs instances
+	 * Match by attributes of passed example instance and return matched rows as an array of ManchesJoueurs instances
 	 *
 	 * @param PDO $db a PDO Database instance
-	 * @param JoUEurSGroupEs $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
+	 * @param ManchesJoueurs $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return JoUEurSGroupEs[]
+	 * @return ManchesJoueurs[]
 	 */
-	public static function findByExample(PDO $db,JoUEurSGroupEs $example, $and=true, $sort=null) {
+	public static function findByExample(PDO $db,ManchesJoueurs $example, $and=true, $sort=null) {
 		$exampleValues=$example->toArray();
 		$filter=array();
 		foreach ($exampleValues as $fieldId=>$value) {
@@ -316,19 +383,19 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 * The filter can be either an hash with the field id as index and the value as filter value,
 	 * or a array of DFC instances.
 	 *
-	 * Will return matched rows as an array of JoUEurSGroupEs instances.
+	 * Will return matched rows as an array of ManchesJoueurs instances.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $filter array of DFC instances defining the conditions
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return JoUEurSGroupEs[]
+	 * @return ManchesJoueurs[]
 	 */
 	public static function findByFilter(PDO $db, $filter, $and=true, $sort=null) {
 		if (!($filter instanceof DFCInterface)) {
 			$filter=new DFCAggregate($filter, $and);
 		}
-		$sql='SELECT * FROM `joueurs_groupes`'
+		$sql='SELECT * FROM `manches_joueurs`'
 		. self::buildSqlWhere($filter, $and, false, true)
 		. self::buildSqlOrderBy($sort);
 
@@ -338,10 +405,10 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	}
 
 	/**
-	 * Will execute the passed statement and return the result as an array of JoUEurSGroupEs instances
+	 * Will execute the passed statement and return the result as an array of ManchesJoueurs instances
 	 *
 	 * @param PDOStatement $stmt
-	 * @return JoUEurSGroupEs[]
+	 * @return ManchesJoueurs[]
 	 */
 	public static function fromStatement(PDOStatement $stmt) {
 		$affected=$stmt->execute();
@@ -353,15 +420,15 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	}
 
 	/**
-	 * returns the result as an array of JoUEurSGroupEs instances without executing the passed statement
+	 * returns the result as an array of ManchesJoueurs instances without executing the passed statement
 	 *
 	 * @param PDOStatement $stmt
-	 * @return JoUEurSGroupEs[]
+	 * @return ManchesJoueurs[]
 	 */
 	public static function fromExecutedStatement(PDOStatement $stmt) {
 		$resultInstances=array();
 		while($result=$stmt->fetch(PDO::FETCH_ASSOC)) {
-			$o=new JoUEurSGroupEs();
+			$o=new ManchesJoueurs();
 			$o->assignByHash($result);
 			$o->notifyPristine();
 			$resultInstances[]=$o;
@@ -407,13 +474,13 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	}
 
 	/**
-	 * Execute select query and return matched rows as an array of JoUEurSGroupEs instances.
+	 * Execute select query and return matched rows as an array of ManchesJoueurs instances.
 	 *
 	 * The query should of course be on the table for this entity class and return all fields.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param string $sql
-	 * @return JoUEurSGroupEs[]
+	 * @return ManchesJoueurs[]
 	 */
 	public static function findBySql(PDO $db, $sql) {
 		$stmt=$db->query($sql);
@@ -438,7 +505,7 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 		if (0==count($filter)) {
 			throw new InvalidArgumentException('refusing to delete without filter'); // just comment out this line if you are brave
 		}
-		$sql='DELETE FROM `joueurs_groupes`'
+		$sql='DELETE FROM `manches_joueurs`'
 		. self::buildSqlWhere($filter, $and, false, true);
 		$stmt=self::prepareStatement($db, $sql);
 		self::bindValuesForFilter($stmt, $filter);
@@ -470,8 +537,10 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 * @param array $result
 	 */
 	public function assignByHash($result) {
-		$this->setIdJoUEur($result['id_joueur']);
-		$this->setIdGroupE($result['id_groupe']);
+		$this->setIdMatch($result['id_match']);
+		$this->setNumeroManche($result['numero_manche']);
+		$this->setIdJoueur($result['id_joueur']);
+		$this->setScore($result['score']);
 	}
 
 	/**
@@ -479,12 +548,13 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 * Will return null if no row was matched.
 	 *
 	 * @param PDO $db
-	 * @return JoUEurSGroupEs
+	 * @return ManchesJoueurs
 	 */
-	public static function findById(PDO $db,$idJoUEur,$idGroupE) {
+	public static function findById(PDO $db,$idMatch,$numeroManche,$idJoueur) {
 		$stmt=self::prepareStatement($db,self::SQL_SELECT_PK);
-		$stmt->bindValue(1,$idJoUEur);
-		$stmt->bindValue(2,$idGroupE);
+		$stmt->bindValue(1,$idMatch);
+		$stmt->bindValue(2,$numeroManche);
+		$stmt->bindValue(3,$idJoueur);
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -495,7 +565,7 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 		if(!$result) {
 			return null;
 		}
-		$o=new JoUEurSGroupEs();
+		$o=new ManchesJoueurs();
 		$o->assignByHash($result);
 		$o->notifyPristine();
 		return $o;
@@ -507,8 +577,10 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 * @param PDOStatement $stmt
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
-		$stmt->bindValue(1,$this->getIdJoUEur());
-		$stmt->bindValue(2,$this->getIdGroupE());
+		$stmt->bindValue(1,$this->getIdMatch());
+		$stmt->bindValue(2,$this->getNumeroManche());
+		$stmt->bindValue(3,$this->getIdJoueur());
+		$stmt->bindValue(4,$this->getScore());
 	}
 
 
@@ -541,8 +613,9 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	public function updateToDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_UPDATE);
 		$this->bindValues($stmt);
-		$stmt->bindValue(3,$this->getIdJoUEur());
-		$stmt->bindValue(4,$this->getIdGroupE());
+		$stmt->bindValue(5,$this->getIdMatch());
+		$stmt->bindValue(6,$this->getNumeroManche());
+		$stmt->bindValue(7,$this->getIdJoueur());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -562,8 +635,9 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 */
 	public function deleteFromDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_DELETE_PK);
-		$stmt->bindValue(1,$this->getIdJoUEur());
-		$stmt->bindValue(2,$this->getIdGroupE());
+		$stmt->bindValue(1,$this->getIdMatch());
+		$stmt->bindValue(2,$this->getNumeroManche());
+		$stmt->bindValue(3,$this->getIdJoueur());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -574,30 +648,30 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	}
 
 	/**
-	 * Fetch JoUEurS which references this JoUEurSGroupEs. Will return null in case reference is invalid.
-	 * `joueurs_groupes`.`id_joueur` -> `joueurs`.`id_joueur`
+	 * Fetch Matchs which references this ManchesJoueurs. Will return null in case reference is invalid.
+	 * `manches_joueurs`.`id_match` -> `matchs`.`id_match`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return JoUEurS
+	 * @return Matchs
 	 */
-	public function fetchJoUEurS(PDO $db, $sort=null) {
-		$filter=array(JoUEurS::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
-		$result=JoUEurS::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchs(PDO $db, $sort=null) {
+		$filter=array(Matchs::FIELD_ID_MATCH=>$this->getIdMatch());
+		$result=Matchs::findByFilter($db, $filter, true, $sort);
 		return empty($result) ? null : $result[0];
 	}
 
 	/**
-	 * Fetch GroupEsPool which references this JoUEurSGroupEs. Will return null in case reference is invalid.
-	 * `joueurs_groupes`.`id_groupe` -> `groupes_pool`.`id_groupe`
+	 * Fetch Joueurs which references this ManchesJoueurs. Will return null in case reference is invalid.
+	 * `manches_joueurs`.`id_joueur` -> `joueurs`.`id_joueur`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return GroupEsPool
+	 * @return Joueurs
 	 */
-	public function fetchGroupEsPool(PDO $db, $sort=null) {
-		$filter=array(GroupEsPool::FIELD_ID_GROUPE=>$this->getIdGroupE());
-		$result=GroupEsPool::findByFilter($db, $filter, true, $sort);
+	public function fetchJoueurs(PDO $db, $sort=null) {
+		$filter=array(Joueurs::FIELD_ID_JOUEUR=>$this->getIdJoueur());
+		$result=Joueurs::findByFilter($db, $filter, true, $sort);
 		return empty($result) ? null : $result[0];
 	}
 
@@ -608,31 +682,31 @@ class JoUEurSGroupEs extends Db2PhpEntityBase implements Db2PhpEntityModificatio
 	 * @return DOMDocument
 	 */
 	public function toDOM() {
-		return self::hashToDomDocument($this->toHash(), 'JoUEurSGroupEs');
+		return self::hashToDomDocument($this->toHash(), 'ManchesJoueurs');
 	}
 
 	/**
-	 * get single JoUEurSGroupEs instance from a DOMElement
+	 * get single ManchesJoueurs instance from a DOMElement
 	 *
 	 * @param DOMElement $node
-	 * @return JoUEurSGroupEs
+	 * @return ManchesJoueurs
 	 */
 	public static function fromDOMElement(DOMElement $node) {
-		$o=new JoUEurSGroupEs();
+		$o=new ManchesJoueurs();
 		$o->assignByHash(self::domNodeToHash($node, self::$FIELD_NAMES, self::$DEFAULT_VALUES, self::$FIELD_TYPES));
 			$o->notifyPristine();
 		return $o;
 	}
 
 	/**
-	 * get all instances of JoUEurSGroupEs from the passed DOMDocument
+	 * get all instances of ManchesJoueurs from the passed DOMDocument
 	 *
 	 * @param DOMDocument $doc
-	 * @return JoUEurSGroupEs[]
+	 * @return ManchesJoueurs[]
 	 */
 	public static function fromDOMDocument(DOMDocument $doc) {
 		$instances=array();
-		foreach ($doc->getElementsByTagName('JoUEurSGroupEs') as $node) {
+		foreach ($doc->getElementsByTagName('ManchesJoueurs') as $node) {
 			$instances[]=self::fromDOMElement($node);
 		}
 		return $instances;

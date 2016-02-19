@@ -6,8 +6,8 @@
  * @version 1.107
  * @package entity
  */
-class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
-	private static $CLASS_NAME='TourNOi';
+class Tournoi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
+	private static $CLASS_NAME='Tournoi';
 	const SQL_IDENTIFIER_QUOTE='`';
 	const SQL_TABLE_NAME='tournoi';
 	const SQL_INSERT='INSERT INTO `tournoi` (`id_tournoi`,`nomTournoi`,`joueurParTeam`,`reglement`,`teamParMatch`,`nombreManche`,`nombre_joueurs_qualifies`,`heure_groupe_start`,`heure_finale_start`,`duree_inter_match`) VALUES (?,?,?,?,?,?,?,?,?,?)';
@@ -39,16 +39,16 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		self::FIELD_HEURE_FINALE_START=>'heure_finale_start',
 		self::FIELD_DUREE_INTER_MATCH=>'duree_inter_match');
 	private static $PROPERTY_NAMES=array(
-		self::FIELD_ID_TOURNOI=>'idTourNOi',
-		self::FIELD_NOMTOURNOI=>'nOmTourNOi',
-		self::FIELD_JOUEURPARTEAM=>'joUEurParTeam',
-		self::FIELD_REGLEMENT=>'regLeMenT',
+		self::FIELD_ID_TOURNOI=>'idTournoi',
+		self::FIELD_NOMTOURNOI=>'nomTournoi',
+		self::FIELD_JOUEURPARTEAM=>'joueurParTeam',
+		self::FIELD_REGLEMENT=>'reglement',
 		self::FIELD_TEAMPARMATCH=>'teamParMatch',
-		self::FIELD_NOMBREMANCHE=>'nOmbRemAnChe',
-		self::FIELD_NOMBRE_JOUEURS_QUALIFIES=>'nOmbReJoUEurSQualifies',
-		self::FIELD_HEURE_GROUPE_START=>'hEurEGroupEStart',
-		self::FIELD_HEURE_FINALE_START=>'hEurEFinaleStart',
-		self::FIELD_DUREE_INTER_MATCH=>'duReeInterMatch');
+		self::FIELD_NOMBREMANCHE=>'nombreManche',
+		self::FIELD_NOMBRE_JOUEURS_QUALIFIES=>'nombreJoueursQualifies',
+		self::FIELD_HEURE_GROUPE_START=>'heureGroupeStart',
+		self::FIELD_HEURE_FINALE_START=>'heureFinaleStart',
+		self::FIELD_DUREE_INTER_MATCH=>'dureeInterMatch');
 	private static $PROPERTY_TYPES=array(
 		self::FIELD_ID_TOURNOI=>Db2PhpEntity::PHP_TYPE_INT,
 		self::FIELD_NOMTOURNOI=>Db2PhpEntity::PHP_TYPE_STRING,
@@ -82,28 +82,28 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		self::FIELD_HEURE_GROUPE_START=>null,
 		self::FIELD_HEURE_FINALE_START=>null,
 		self::FIELD_DUREE_INTER_MATCH=>null);
-	private $idTourNOi;
-	private $nOmTourNOi;
-	private $joUEurParTeam;
-	private $regLeMenT;
+	private $idTournoi;
+	private $nomTournoi;
+	private $joueurParTeam;
+	private $reglement;
 	private $teamParMatch;
-	private $nOmbRemAnChe;
-	private $nOmbReJoUEurSQualifies;
-	private $hEurEGroupEStart;
-	private $hEurEFinaleStart;
-	private $duReeInterMatch;
+	private $nombreManche;
+	private $nombreJoueursQualifies;
+	private $heureGroupeStart;
+	private $heureFinaleStart;
+	private $dureeInterMatch;
 
 	/**
 	 * set value for id_tournoi 
 	 *
 	 * type:INT UNSIGNED,size:10,default:null,primary,unique,autoincrement
 	 *
-	 * @param mixed $idTourNOi
-	 * @return TourNOi
+	 * @param mixed $idTournoi
+	 * @return Tournoi
 	 */
-	public function &setIdTourNOi($idTourNOi) {
-		$this->notifyChanged(self::FIELD_ID_TOURNOI,$this->idTourNOi,$idTourNOi);
-		$this->idTourNOi=$idTourNOi;
+	public function &setIdTournoi($idTournoi) {
+		$this->notifyChanged(self::FIELD_ID_TOURNOI,$this->idTournoi,$idTournoi);
+		$this->idTournoi=$idTournoi;
 		return $this;
 	}
 
@@ -114,8 +114,8 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getIdTourNOi() {
-		return $this->idTourNOi;
+	public function getIdTournoi() {
+		return $this->idTournoi;
 	}
 
 	/**
@@ -123,12 +123,12 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:VARCHAR,size:255,default:null
 	 *
-	 * @param mixed $nOmTourNOi
-	 * @return TourNOi
+	 * @param mixed $nomTournoi
+	 * @return Tournoi
 	 */
-	public function &setNOmTourNOi($nOmTourNOi) {
-		$this->notifyChanged(self::FIELD_NOMTOURNOI,$this->nOmTourNOi,$nOmTourNOi);
-		$this->nOmTourNOi=$nOmTourNOi;
+	public function &setNomTournoi($nomTournoi) {
+		$this->notifyChanged(self::FIELD_NOMTOURNOI,$this->nomTournoi,$nomTournoi);
+		$this->nomTournoi=$nomTournoi;
 		return $this;
 	}
 
@@ -139,8 +139,8 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getNOmTourNOi() {
-		return $this->nOmTourNOi;
+	public function getNomTournoi() {
+		return $this->nomTournoi;
 	}
 
 	/**
@@ -148,12 +148,12 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:INT,size:10,default:null
 	 *
-	 * @param mixed $joUEurParTeam
-	 * @return TourNOi
+	 * @param mixed $joueurParTeam
+	 * @return Tournoi
 	 */
-	public function &setJoUEurParTeam($joUEurParTeam) {
-		$this->notifyChanged(self::FIELD_JOUEURPARTEAM,$this->joUEurParTeam,$joUEurParTeam);
-		$this->joUEurParTeam=$joUEurParTeam;
+	public function &setJoueurParTeam($joueurParTeam) {
+		$this->notifyChanged(self::FIELD_JOUEURPARTEAM,$this->joueurParTeam,$joueurParTeam);
+		$this->joueurParTeam=$joueurParTeam;
 		return $this;
 	}
 
@@ -164,8 +164,8 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getJoUEurParTeam() {
-		return $this->joUEurParTeam;
+	public function getJoueurParTeam() {
+		return $this->joueurParTeam;
 	}
 
 	/**
@@ -173,12 +173,12 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:TEXT,size:65535,default:null
 	 *
-	 * @param mixed $regLeMenT
-	 * @return TourNOi
+	 * @param mixed $reglement
+	 * @return Tournoi
 	 */
-	public function &setRegLeMenT($regLeMenT) {
-		$this->notifyChanged(self::FIELD_REGLEMENT,$this->regLeMenT,$regLeMenT);
-		$this->regLeMenT=$regLeMenT;
+	public function &setReglement($reglement) {
+		$this->notifyChanged(self::FIELD_REGLEMENT,$this->reglement,$reglement);
+		$this->reglement=$reglement;
 		return $this;
 	}
 
@@ -189,8 +189,8 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getRegLeMenT() {
-		return $this->regLeMenT;
+	public function getReglement() {
+		return $this->reglement;
 	}
 
 	/**
@@ -199,7 +199,7 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * type:INT,size:10,default:null
 	 *
 	 * @param mixed $teamParMatch
-	 * @return TourNOi
+	 * @return Tournoi
 	 */
 	public function &setTeamParMatch($teamParMatch) {
 		$this->notifyChanged(self::FIELD_TEAMPARMATCH,$this->teamParMatch,$teamParMatch);
@@ -223,12 +223,12 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:INT,size:10,default:null
 	 *
-	 * @param mixed $nOmbRemAnChe
-	 * @return TourNOi
+	 * @param mixed $nombreManche
+	 * @return Tournoi
 	 */
-	public function &setNOmbRemAnChe($nOmbRemAnChe) {
-		$this->notifyChanged(self::FIELD_NOMBREMANCHE,$this->nOmbRemAnChe,$nOmbRemAnChe);
-		$this->nOmbRemAnChe=$nOmbRemAnChe;
+	public function &setNombreManche($nombreManche) {
+		$this->notifyChanged(self::FIELD_NOMBREMANCHE,$this->nombreManche,$nombreManche);
+		$this->nombreManche=$nombreManche;
 		return $this;
 	}
 
@@ -239,8 +239,8 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getNOmbRemAnChe() {
-		return $this->nOmbRemAnChe;
+	public function getNombreManche() {
+		return $this->nombreManche;
 	}
 
 	/**
@@ -248,12 +248,12 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:INT,size:10,default:1
 	 *
-	 * @param mixed $nOmbReJoUEurSQualifies
-	 * @return TourNOi
+	 * @param mixed $nombreJoueursQualifies
+	 * @return Tournoi
 	 */
-	public function &setNOmbReJoUEurSQualifies($nOmbReJoUEurSQualifies) {
-		$this->notifyChanged(self::FIELD_NOMBRE_JOUEURS_QUALIFIES,$this->nOmbReJoUEurSQualifies,$nOmbReJoUEurSQualifies);
-		$this->nOmbReJoUEurSQualifies=$nOmbReJoUEurSQualifies;
+	public function &setNombreJoueursQualifies($nombreJoueursQualifies) {
+		$this->notifyChanged(self::FIELD_NOMBRE_JOUEURS_QUALIFIES,$this->nombreJoueursQualifies,$nombreJoueursQualifies);
+		$this->nombreJoueursQualifies=$nombreJoueursQualifies;
 		return $this;
 	}
 
@@ -264,8 +264,8 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getNOmbReJoUEurSQualifies() {
-		return $this->nOmbReJoUEurSQualifies;
+	public function getNombreJoueursQualifies() {
+		return $this->nombreJoueursQualifies;
 	}
 
 	/**
@@ -273,12 +273,12 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:DATETIME,size:19,default:null,nullable
 	 *
-	 * @param mixed $hEurEGroupEStart
-	 * @return TourNOi
+	 * @param mixed $heureGroupeStart
+	 * @return Tournoi
 	 */
-	public function &setHEurEGroupEStart($hEurEGroupEStart) {
-		$this->notifyChanged(self::FIELD_HEURE_GROUPE_START,$this->hEurEGroupEStart,$hEurEGroupEStart);
-		$this->hEurEGroupEStart=$hEurEGroupEStart;
+	public function &setHeureGroupeStart($heureGroupeStart) {
+		$this->notifyChanged(self::FIELD_HEURE_GROUPE_START,$this->heureGroupeStart,$heureGroupeStart);
+		$this->heureGroupeStart=$heureGroupeStart;
 		return $this;
 	}
 
@@ -289,8 +289,8 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getHEurEGroupEStart() {
-		return $this->hEurEGroupEStart;
+	public function getHeureGroupeStart() {
+		return $this->heureGroupeStart;
 	}
 
 	/**
@@ -298,12 +298,12 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:DATETIME,size:19,default:null,nullable
 	 *
-	 * @param mixed $hEurEFinaleStart
-	 * @return TourNOi
+	 * @param mixed $heureFinaleStart
+	 * @return Tournoi
 	 */
-	public function &setHEurEFinaleStart($hEurEFinaleStart) {
-		$this->notifyChanged(self::FIELD_HEURE_FINALE_START,$this->hEurEFinaleStart,$hEurEFinaleStart);
-		$this->hEurEFinaleStart=$hEurEFinaleStart;
+	public function &setHeureFinaleStart($heureFinaleStart) {
+		$this->notifyChanged(self::FIELD_HEURE_FINALE_START,$this->heureFinaleStart,$heureFinaleStart);
+		$this->heureFinaleStart=$heureFinaleStart;
 		return $this;
 	}
 
@@ -314,8 +314,8 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getHEurEFinaleStart() {
-		return $this->hEurEFinaleStart;
+	public function getHeureFinaleStart() {
+		return $this->heureFinaleStart;
 	}
 
 	/**
@@ -323,12 +323,12 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:TIME,size:8,default:null,nullable
 	 *
-	 * @param mixed $duReeInterMatch
-	 * @return TourNOi
+	 * @param mixed $dureeInterMatch
+	 * @return Tournoi
 	 */
-	public function &setDuReeInterMatch($duReeInterMatch) {
-		$this->notifyChanged(self::FIELD_DUREE_INTER_MATCH,$this->duReeInterMatch,$duReeInterMatch);
-		$this->duReeInterMatch=$duReeInterMatch;
+	public function &setDureeInterMatch($dureeInterMatch) {
+		$this->notifyChanged(self::FIELD_DUREE_INTER_MATCH,$this->dureeInterMatch,$dureeInterMatch);
+		$this->dureeInterMatch=$dureeInterMatch;
 		return $this;
 	}
 
@@ -339,8 +339,8 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getDuReeInterMatch() {
-		return $this->duReeInterMatch;
+	public function getDureeInterMatch() {
+		return $this->dureeInterMatch;
 	}
 
 	/**
@@ -454,16 +454,16 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 */
 	public function toArray() {
 		return array(
-			self::FIELD_ID_TOURNOI=>$this->getIdTourNOi(),
-			self::FIELD_NOMTOURNOI=>$this->getNOmTourNOi(),
-			self::FIELD_JOUEURPARTEAM=>$this->getJoUEurParTeam(),
-			self::FIELD_REGLEMENT=>$this->getRegLeMenT(),
+			self::FIELD_ID_TOURNOI=>$this->getIdTournoi(),
+			self::FIELD_NOMTOURNOI=>$this->getNomTournoi(),
+			self::FIELD_JOUEURPARTEAM=>$this->getJoueurParTeam(),
+			self::FIELD_REGLEMENT=>$this->getReglement(),
 			self::FIELD_TEAMPARMATCH=>$this->getTeamParMatch(),
-			self::FIELD_NOMBREMANCHE=>$this->getNOmbRemAnChe(),
-			self::FIELD_NOMBRE_JOUEURS_QUALIFIES=>$this->getNOmbReJoUEurSQualifies(),
-			self::FIELD_HEURE_GROUPE_START=>$this->getHEurEGroupEStart(),
-			self::FIELD_HEURE_FINALE_START=>$this->getHEurEFinaleStart(),
-			self::FIELD_DUREE_INTER_MATCH=>$this->getDuReeInterMatch());
+			self::FIELD_NOMBREMANCHE=>$this->getNombreManche(),
+			self::FIELD_NOMBRE_JOUEURS_QUALIFIES=>$this->getNombreJoueursQualifies(),
+			self::FIELD_HEURE_GROUPE_START=>$this->getHeureGroupeStart(),
+			self::FIELD_HEURE_FINALE_START=>$this->getHeureFinaleStart(),
+			self::FIELD_DUREE_INTER_MATCH=>$this->getDureeInterMatch());
 	}
 
 
@@ -474,7 +474,7 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 */
 	public function getPrimaryKeyValues() {
 		return array(
-			self::FIELD_ID_TOURNOI=>$this->getIdTourNOi());
+			self::FIELD_ID_TOURNOI=>$this->getIdTournoi());
 	}
 
 	/**
@@ -554,15 +554,15 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	/**
 	 * Query by Example.
 	 *
-	 * Match by attributes of passed example instance and return matched rows as an array of TourNOi instances
+	 * Match by attributes of passed example instance and return matched rows as an array of Tournoi instances
 	 *
 	 * @param PDO $db a PDO Database instance
-	 * @param TourNOi $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
+	 * @param Tournoi $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return TourNOi[]
+	 * @return Tournoi[]
 	 */
-	public static function findByExample(PDO $db,TourNOi $example, $and=true, $sort=null) {
+	public static function findByExample(PDO $db,Tournoi $example, $and=true, $sort=null) {
 		$exampleValues=$example->toArray();
 		$filter=array();
 		foreach ($exampleValues as $fieldId=>$value) {
@@ -579,13 +579,13 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * The filter can be either an hash with the field id as index and the value as filter value,
 	 * or a array of DFC instances.
 	 *
-	 * Will return matched rows as an array of TourNOi instances.
+	 * Will return matched rows as an array of Tournoi instances.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $filter array of DFC instances defining the conditions
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return TourNOi[]
+	 * @return Tournoi[]
 	 */
 	public static function findByFilter(PDO $db, $filter, $and=true, $sort=null) {
 		if (!($filter instanceof DFCInterface)) {
@@ -601,10 +601,10 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * Will execute the passed statement and return the result as an array of TourNOi instances
+	 * Will execute the passed statement and return the result as an array of Tournoi instances
 	 *
 	 * @param PDOStatement $stmt
-	 * @return TourNOi[]
+	 * @return Tournoi[]
 	 */
 	public static function fromStatement(PDOStatement $stmt) {
 		$affected=$stmt->execute();
@@ -616,15 +616,15 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * returns the result as an array of TourNOi instances without executing the passed statement
+	 * returns the result as an array of Tournoi instances without executing the passed statement
 	 *
 	 * @param PDOStatement $stmt
-	 * @return TourNOi[]
+	 * @return Tournoi[]
 	 */
 	public static function fromExecutedStatement(PDOStatement $stmt) {
 		$resultInstances=array();
 		while($result=$stmt->fetch(PDO::FETCH_ASSOC)) {
-			$o=new TourNOi();
+			$o=new Tournoi();
 			$o->assignByHash($result);
 			$o->notifyPristine();
 			$resultInstances[]=$o;
@@ -670,13 +670,13 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * Execute select query and return matched rows as an array of TourNOi instances.
+	 * Execute select query and return matched rows as an array of Tournoi instances.
 	 *
 	 * The query should of course be on the table for this entity class and return all fields.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param string $sql
-	 * @return TourNOi[]
+	 * @return Tournoi[]
 	 */
 	public static function findBySql(PDO $db, $sql) {
 		$stmt=$db->query($sql);
@@ -733,16 +733,16 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @param array $result
 	 */
 	public function assignByHash($result) {
-		$this->setIdTourNOi($result['id_tournoi']);
-		$this->setNOmTourNOi($result['nomTournoi']);
-		$this->setJoUEurParTeam($result['joueurParTeam']);
-		$this->setRegLeMenT($result['reglement']);
+		$this->setIdTournoi($result['id_tournoi']);
+		$this->setNomTournoi($result['nomTournoi']);
+		$this->setJoueurParTeam($result['joueurParTeam']);
+		$this->setReglement($result['reglement']);
 		$this->setTeamParMatch($result['teamParMatch']);
-		$this->setNOmbRemAnChe($result['nombreManche']);
-		$this->setNOmbReJoUEurSQualifies($result['nombre_joueurs_qualifies']);
-		$this->setHEurEGroupEStart($result['heure_groupe_start']);
-		$this->setHEurEFinaleStart($result['heure_finale_start']);
-		$this->setDuReeInterMatch($result['duree_inter_match']);
+		$this->setNombreManche($result['nombreManche']);
+		$this->setNombreJoueursQualifies($result['nombre_joueurs_qualifies']);
+		$this->setHeureGroupeStart($result['heure_groupe_start']);
+		$this->setHeureFinaleStart($result['heure_finale_start']);
+		$this->setDureeInterMatch($result['duree_inter_match']);
 	}
 
 	/**
@@ -750,11 +750,11 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * Will return null if no row was matched.
 	 *
 	 * @param PDO $db
-	 * @return TourNOi
+	 * @return Tournoi
 	 */
-	public static function findById(PDO $db,$idTourNOi) {
+	public static function findById(PDO $db,$idTournoi) {
 		$stmt=self::prepareStatement($db,self::SQL_SELECT_PK);
-		$stmt->bindValue(1,$idTourNOi);
+		$stmt->bindValue(1,$idTournoi);
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -765,7 +765,7 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		if(!$result) {
 			return null;
 		}
-		$o=new TourNOi();
+		$o=new Tournoi();
 		$o->assignByHash($result);
 		$o->notifyPristine();
 		return $o;
@@ -777,16 +777,16 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @param PDOStatement $stmt
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
-		$stmt->bindValue(1,$this->getIdTourNOi());
-		$stmt->bindValue(2,$this->getNOmTourNOi());
-		$stmt->bindValue(3,$this->getJoUEurParTeam());
-		$stmt->bindValue(4,$this->getRegLeMenT());
+		$stmt->bindValue(1,$this->getIdTournoi());
+		$stmt->bindValue(2,$this->getNomTournoi());
+		$stmt->bindValue(3,$this->getJoueurParTeam());
+		$stmt->bindValue(4,$this->getReglement());
 		$stmt->bindValue(5,$this->getTeamParMatch());
-		$stmt->bindValue(6,$this->getNOmbRemAnChe());
-		$stmt->bindValue(7,$this->getNOmbReJoUEurSQualifies());
-		$stmt->bindValue(8,$this->getHEurEGroupEStart());
-		$stmt->bindValue(9,$this->getHEurEFinaleStart());
-		$stmt->bindValue(10,$this->getDuReeInterMatch());
+		$stmt->bindValue(6,$this->getNombreManche());
+		$stmt->bindValue(7,$this->getNombreJoueursQualifies());
+		$stmt->bindValue(8,$this->getHeureGroupeStart());
+		$stmt->bindValue(9,$this->getHeureFinaleStart());
+		$stmt->bindValue(10,$this->getDureeInterMatch());
 	}
 
 
@@ -797,17 +797,17 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @return mixed
 	 */
 	public function insertIntoDatabase(PDO $db) {
-		if (null===$this->getIdTourNOi()) {
+		if (null===$this->getIdTournoi()) {
 			$stmt=self::prepareStatement($db,self::SQL_INSERT_AUTOINCREMENT);
-			$stmt->bindValue(1,$this->getNOmTourNOi());
-			$stmt->bindValue(2,$this->getJoUEurParTeam());
-			$stmt->bindValue(3,$this->getRegLeMenT());
+			$stmt->bindValue(1,$this->getNomTournoi());
+			$stmt->bindValue(2,$this->getJoueurParTeam());
+			$stmt->bindValue(3,$this->getReglement());
 			$stmt->bindValue(4,$this->getTeamParMatch());
-			$stmt->bindValue(5,$this->getNOmbRemAnChe());
-			$stmt->bindValue(6,$this->getNOmbReJoUEurSQualifies());
-			$stmt->bindValue(7,$this->getHEurEGroupEStart());
-			$stmt->bindValue(8,$this->getHEurEFinaleStart());
-			$stmt->bindValue(9,$this->getDuReeInterMatch());
+			$stmt->bindValue(5,$this->getNombreManche());
+			$stmt->bindValue(6,$this->getNombreJoueursQualifies());
+			$stmt->bindValue(7,$this->getHeureGroupeStart());
+			$stmt->bindValue(8,$this->getHeureFinaleStart());
+			$stmt->bindValue(9,$this->getDureeInterMatch());
 		} else {
 			$stmt=self::prepareStatement($db,self::SQL_INSERT);
 			$this->bindValues($stmt);
@@ -819,7 +819,7 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		}
 		$lastInsertId=$db->lastInsertId();
 		if (false!==$lastInsertId) {
-			$this->setIdTourNOi($lastInsertId);
+			$this->setIdTournoi($lastInsertId);
 		}
 		$stmt->closeCursor();
 		$this->notifyPristine();
@@ -836,7 +836,7 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	public function updateToDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_UPDATE);
 		$this->bindValues($stmt);
-		$stmt->bindValue(11,$this->getIdTourNOi());
+		$stmt->bindValue(11,$this->getIdTournoi());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -856,7 +856,7 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 */
 	public function deleteFromDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_DELETE_PK);
-		$stmt->bindValue(1,$this->getIdTourNOi());
+		$stmt->bindValue(1,$this->getIdTournoi());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -867,55 +867,55 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * Fetch EquipEsTourNOi's which this TourNOi references.
+	 * Fetch EquipesTournoi's which this Tournoi references.
 	 * `tournoi`.`id_tournoi` -> `equipes_tournoi`.`id_tournoi`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return EquipEsTourNOi[]
+	 * @return EquipesTournoi[]
 	 */
-	public function fetchEquipEsTourNOiCollection(PDO $db, $sort=null) {
-		$filter=array(EquipEsTourNOi::FIELD_ID_TOURNOI=>$this->getIdTourNOi());
-		return EquipEsTourNOi::findByFilter($db, $filter, true, $sort);
+	public function fetchEquipesTournoiCollection(PDO $db, $sort=null) {
+		$filter=array(EquipesTournoi::FIELD_ID_TOURNOI=>$this->getIdTournoi());
+		return EquipesTournoi::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch GroupEsPool's which this TourNOi references.
+	 * Fetch GroupesPool's which this Tournoi references.
 	 * `tournoi`.`id_tournoi` -> `groupes_pool`.`id_tournoi`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return GroupEsPool[]
+	 * @return GroupesPool[]
 	 */
-	public function fetchGroupEsPoolCollection(PDO $db, $sort=null) {
-		$filter=array(GroupEsPool::FIELD_ID_TOURNOI=>$this->getIdTourNOi());
-		return GroupEsPool::findByFilter($db, $filter, true, $sort);
+	public function fetchGroupesPoolCollection(PDO $db, $sort=null) {
+		$filter=array(GroupesPool::FIELD_ID_TOURNOI=>$this->getIdTournoi());
+		return GroupesPool::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch JoUeurTourNOi's which this TourNOi references.
+	 * Fetch Joueurtournoi's which this Tournoi references.
 	 * `tournoi`.`id_tournoi` -> `joueurtournoi`.`id_tournoi`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return JoUeurTourNOi[]
+	 * @return Joueurtournoi[]
 	 */
-	public function fetchJoUeurTourNOiCollection(PDO $db, $sort=null) {
-		$filter=array(JoUeurTourNOi::FIELD_ID_TOURNOI=>$this->getIdTourNOi());
-		return JoUeurTourNOi::findByFilter($db, $filter, true, $sort);
+	public function fetchJoueurtournoiCollection(PDO $db, $sort=null) {
+		$filter=array(Joueurtournoi::FIELD_ID_TOURNOI=>$this->getIdTournoi());
+		return Joueurtournoi::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch MatchS's which this TourNOi references.
+	 * Fetch Matchs's which this Tournoi references.
 	 * `tournoi`.`id_tournoi` -> `matchs`.`id_tournoi`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchS[]
+	 * @return Matchs[]
 	 */
-	public function fetchMatchSCollection(PDO $db, $sort=null) {
-		$filter=array(MatchS::FIELD_ID_TOURNOI=>$this->getIdTourNOi());
-		return MatchS::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchsCollection(PDO $db, $sort=null) {
+		$filter=array(Matchs::FIELD_ID_TOURNOI=>$this->getIdTournoi());
+		return Matchs::findByFilter($db, $filter, true, $sort);
 	}
 
 
@@ -925,31 +925,31 @@ class TourNOi extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @return DOMDocument
 	 */
 	public function toDOM() {
-		return self::hashToDomDocument($this->toHash(), 'TourNOi');
+		return self::hashToDomDocument($this->toHash(), 'Tournoi');
 	}
 
 	/**
-	 * get single TourNOi instance from a DOMElement
+	 * get single Tournoi instance from a DOMElement
 	 *
 	 * @param DOMElement $node
-	 * @return TourNOi
+	 * @return Tournoi
 	 */
 	public static function fromDOMElement(DOMElement $node) {
-		$o=new TourNOi();
+		$o=new Tournoi();
 		$o->assignByHash(self::domNodeToHash($node, self::$FIELD_NAMES, self::$DEFAULT_VALUES, self::$FIELD_TYPES));
 			$o->notifyPristine();
 		return $o;
 	}
 
 	/**
-	 * get all instances of TourNOi from the passed DOMDocument
+	 * get all instances of Tournoi from the passed DOMDocument
 	 *
 	 * @param DOMDocument $doc
-	 * @return TourNOi[]
+	 * @return Tournoi[]
 	 */
 	public static function fromDOMDocument(DOMDocument $doc) {
 		$instances=array();
-		foreach ($doc->getElementsByTagName('TourNOi') as $node) {
+		foreach ($doc->getElementsByTagName('Tournoi') as $node) {
 			$instances[]=self::fromDOMElement($node);
 		}
 		return $instances;

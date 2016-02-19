@@ -6,8 +6,8 @@
  * @version 1.107
  * @package entity
  */
-class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
-	private static $CLASS_NAME='JoUEurS';
+class Joueurs extends Db2PhpEntityBase implements Db2PhpEntityModificationTracking {
+	private static $CLASS_NAME='Joueurs';
 	const SQL_IDENTIFIER_QUOTE='`';
 	const SQL_TABLE_NAME='joueurs';
 	const SQL_INSERT='INSERT INTO `joueurs` (`id_joueur`,`pseudo`,`password`,`id_emplacement`,`nom`,`prenom`,`email`,`sexe`,`gsm`,`paye`,`avatar`,`ecole`,`date_de_naissance`,`level`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
@@ -47,19 +47,19 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		self::FIELD_DATE_DE_NAISSANCE=>'date_de_naissance',
 		self::FIELD_LEVEL=>'level');
 	private static $PROPERTY_NAMES=array(
-		self::FIELD_ID_JOUEUR=>'idJoUEur',
+		self::FIELD_ID_JOUEUR=>'idJoueur',
 		self::FIELD_PSEUDO=>'pseudo',
 		self::FIELD_PASSWORD=>'password',
 		self::FIELD_ID_EMPLACEMENT=>'idEmplacement',
-		self::FIELD_NOM=>'nOm',
-		self::FIELD_PRENOM=>'pRenoM',
+		self::FIELD_NOM=>'nom',
+		self::FIELD_PRENOM=>'prenom',
 		self::FIELD_EMAIL=>'email',
-		self::FIELD_SEXE=>'sexE',
-		self::FIELD_GSM=>'gSm',
-		self::FIELD_PAYE=>'payE',
+		self::FIELD_SEXE=>'sexe',
+		self::FIELD_GSM=>'gsm',
+		self::FIELD_PAYE=>'paye',
 		self::FIELD_AVATAR=>'avatar',
-		self::FIELD_ECOLE=>'ecolE',
-		self::FIELD_DATE_DE_NAISSANCE=>'dateDeNaISsaNcE',
+		self::FIELD_ECOLE=>'ecole',
+		self::FIELD_DATE_DE_NAISSANCE=>'dateDeNaissance',
 		self::FIELD_LEVEL=>'level');
 	private static $PROPERTY_TYPES=array(
 		self::FIELD_ID_JOUEUR=>Db2PhpEntity::PHP_TYPE_INT,
@@ -106,19 +106,19 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		self::FIELD_ECOLE=>null,
 		self::FIELD_DATE_DE_NAISSANCE=>null,
 		self::FIELD_LEVEL=>5);
-	private $idJoUEur;
+	private $idJoueur;
 	private $pseudo;
 	private $password;
 	private $idEmplacement;
-	private $nOm;
-	private $pRenoM;
+	private $nom;
+	private $prenom;
 	private $email;
-	private $sexE;
-	private $gSm;
-	private $payE;
+	private $sexe;
+	private $gsm;
+	private $paye;
 	private $avatar;
-	private $ecolE;
-	private $dateDeNaISsaNcE;
+	private $ecole;
+	private $dateDeNaissance;
 	private $level;
 
 	/**
@@ -126,12 +126,12 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:INT UNSIGNED,size:10,default:null,primary,unique,autoincrement
 	 *
-	 * @param mixed $idJoUEur
-	 * @return JoUEurS
+	 * @param mixed $idJoueur
+	 * @return Joueurs
 	 */
-	public function &setIdJoUEur($idJoUEur) {
-		$this->notifyChanged(self::FIELD_ID_JOUEUR,$this->idJoUEur,$idJoUEur);
-		$this->idJoUEur=$idJoUEur;
+	public function &setIdJoueur($idJoueur) {
+		$this->notifyChanged(self::FIELD_ID_JOUEUR,$this->idJoueur,$idJoueur);
+		$this->idJoueur=$idJoueur;
 		return $this;
 	}
 
@@ -142,8 +142,8 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getIdJoUEur() {
-		return $this->idJoUEur;
+	public function getIdJoueur() {
+		return $this->idJoueur;
 	}
 
 	/**
@@ -152,7 +152,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * type:VARCHAR,size:80,default:null
 	 *
 	 * @param mixed $pseudo
-	 * @return JoUEurS
+	 * @return Joueurs
 	 */
 	public function &setPseudo($pseudo) {
 		$this->notifyChanged(self::FIELD_PSEUDO,$this->pseudo,$pseudo);
@@ -177,7 +177,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * type:VARCHAR,size:255,default:null
 	 *
 	 * @param mixed $password
-	 * @return JoUEurS
+	 * @return Joueurs
 	 */
 	public function &setPassword($password) {
 		$this->notifyChanged(self::FIELD_PASSWORD,$this->password,$password);
@@ -202,7 +202,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * type:INT,size:10,default:null,index,nullable
 	 *
 	 * @param mixed $idEmplacement
-	 * @return JoUEurS
+	 * @return Joueurs
 	 */
 	public function &setIdEmplacement($idEmplacement) {
 		$this->notifyChanged(self::FIELD_ID_EMPLACEMENT,$this->idEmplacement,$idEmplacement);
@@ -226,12 +226,12 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:VARCHAR,size:255,default:null
 	 *
-	 * @param mixed $nOm
-	 * @return JoUEurS
+	 * @param mixed $nom
+	 * @return Joueurs
 	 */
-	public function &setNOm($nOm) {
-		$this->notifyChanged(self::FIELD_NOM,$this->nOm,$nOm);
-		$this->nOm=$nOm;
+	public function &setNom($nom) {
+		$this->notifyChanged(self::FIELD_NOM,$this->nom,$nom);
+		$this->nom=$nom;
 		return $this;
 	}
 
@@ -242,8 +242,8 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getNOm() {
-		return $this->nOm;
+	public function getNom() {
+		return $this->nom;
 	}
 
 	/**
@@ -251,12 +251,12 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:VARCHAR,size:255,default:null
 	 *
-	 * @param mixed $pRenoM
-	 * @return JoUEurS
+	 * @param mixed $prenom
+	 * @return Joueurs
 	 */
-	public function &setPRenoM($pRenoM) {
-		$this->notifyChanged(self::FIELD_PRENOM,$this->pRenoM,$pRenoM);
-		$this->pRenoM=$pRenoM;
+	public function &setPrenom($prenom) {
+		$this->notifyChanged(self::FIELD_PRENOM,$this->prenom,$prenom);
+		$this->prenom=$prenom;
 		return $this;
 	}
 
@@ -267,8 +267,8 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getPRenoM() {
-		return $this->pRenoM;
+	public function getPrenom() {
+		return $this->prenom;
 	}
 
 	/**
@@ -277,7 +277,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * type:VARCHAR,size:255,default:null
 	 *
 	 * @param mixed $email
-	 * @return JoUEurS
+	 * @return Joueurs
 	 */
 	public function &setEmail($email) {
 		$this->notifyChanged(self::FIELD_EMAIL,$this->email,$email);
@@ -301,12 +301,12 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:VARCHAR,size:255,default:null
 	 *
-	 * @param mixed $sexE
-	 * @return JoUEurS
+	 * @param mixed $sexe
+	 * @return Joueurs
 	 */
-	public function &setSexE($sexE) {
-		$this->notifyChanged(self::FIELD_SEXE,$this->sexE,$sexE);
-		$this->sexE=$sexE;
+	public function &setSexe($sexe) {
+		$this->notifyChanged(self::FIELD_SEXE,$this->sexe,$sexe);
+		$this->sexe=$sexe;
 		return $this;
 	}
 
@@ -317,8 +317,8 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getSexE() {
-		return $this->sexE;
+	public function getSexe() {
+		return $this->sexe;
 	}
 
 	/**
@@ -326,12 +326,12 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:VARCHAR,size:255,default:null
 	 *
-	 * @param mixed $gSm
-	 * @return JoUEurS
+	 * @param mixed $gsm
+	 * @return Joueurs
 	 */
-	public function &setGSm($gSm) {
-		$this->notifyChanged(self::FIELD_GSM,$this->gSm,$gSm);
-		$this->gSm=$gSm;
+	public function &setGsm($gsm) {
+		$this->notifyChanged(self::FIELD_GSM,$this->gsm,$gsm);
+		$this->gsm=$gsm;
 		return $this;
 	}
 
@@ -342,8 +342,8 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getGSm() {
-		return $this->gSm;
+	public function getGsm() {
+		return $this->gsm;
 	}
 
 	/**
@@ -351,12 +351,12 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:BIT,size:0,default:0
 	 *
-	 * @param mixed $payE
-	 * @return JoUEurS
+	 * @param mixed $paye
+	 * @return Joueurs
 	 */
-	public function &setPayE($payE) {
-		$this->notifyChanged(self::FIELD_PAYE,$this->payE,$payE);
-		$this->payE=$payE;
+	public function &setPaye($paye) {
+		$this->notifyChanged(self::FIELD_PAYE,$this->paye,$paye);
+		$this->paye=$paye;
 		return $this;
 	}
 
@@ -367,8 +367,8 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getPayE() {
-		return $this->payE;
+	public function getPaye() {
+		return $this->paye;
 	}
 
 	/**
@@ -377,7 +377,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * type:BLOB,size:65535,default:null,nullable
 	 *
 	 * @param mixed $avatar
-	 * @return JoUEurS
+	 * @return Joueurs
 	 */
 	public function &setAvatar($avatar) {
 		$this->notifyChanged(self::FIELD_AVATAR,$this->avatar,$avatar);
@@ -401,12 +401,12 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:VARCHAR,size:255,default:null,nullable
 	 *
-	 * @param mixed $ecolE
-	 * @return JoUEurS
+	 * @param mixed $ecole
+	 * @return Joueurs
 	 */
-	public function &setEcolE($ecolE) {
-		$this->notifyChanged(self::FIELD_ECOLE,$this->ecolE,$ecolE);
-		$this->ecolE=$ecolE;
+	public function &setEcole($ecole) {
+		$this->notifyChanged(self::FIELD_ECOLE,$this->ecole,$ecole);
+		$this->ecole=$ecole;
 		return $this;
 	}
 
@@ -417,8 +417,8 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getEcolE() {
-		return $this->ecolE;
+	public function getEcole() {
+		return $this->ecole;
 	}
 
 	/**
@@ -426,12 +426,12 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * type:DATE,size:10,default:null,nullable
 	 *
-	 * @param mixed $dateDeNaISsaNcE
-	 * @return JoUEurS
+	 * @param mixed $dateDeNaissance
+	 * @return Joueurs
 	 */
-	public function &setDateDeNaISsaNcE($dateDeNaISsaNcE) {
-		$this->notifyChanged(self::FIELD_DATE_DE_NAISSANCE,$this->dateDeNaISsaNcE,$dateDeNaISsaNcE);
-		$this->dateDeNaISsaNcE=$dateDeNaISsaNcE;
+	public function &setDateDeNaissance($dateDeNaissance) {
+		$this->notifyChanged(self::FIELD_DATE_DE_NAISSANCE,$this->dateDeNaissance,$dateDeNaissance);
+		$this->dateDeNaissance=$dateDeNaissance;
 		return $this;
 	}
 
@@ -442,8 +442,8 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 *
 	 * @return mixed
 	 */
-	public function getDateDeNaISsaNcE() {
-		return $this->dateDeNaISsaNcE;
+	public function getDateDeNaissance() {
+		return $this->dateDeNaissance;
 	}
 
 	/**
@@ -452,7 +452,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * type:SMALLINT,size:5,default:5
 	 *
 	 * @param mixed $level
-	 * @return JoUEurS
+	 * @return Joueurs
 	 */
 	public function &setLevel($level) {
 		$this->notifyChanged(self::FIELD_LEVEL,$this->level,$level);
@@ -582,19 +582,19 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 */
 	public function toArray() {
 		return array(
-			self::FIELD_ID_JOUEUR=>$this->getIdJoUEur(),
+			self::FIELD_ID_JOUEUR=>$this->getIdJoueur(),
 			self::FIELD_PSEUDO=>$this->getPseudo(),
 			self::FIELD_PASSWORD=>$this->getPassword(),
 			self::FIELD_ID_EMPLACEMENT=>$this->getIdEmplacement(),
-			self::FIELD_NOM=>$this->getNOm(),
-			self::FIELD_PRENOM=>$this->getPRenoM(),
+			self::FIELD_NOM=>$this->getNom(),
+			self::FIELD_PRENOM=>$this->getPrenom(),
 			self::FIELD_EMAIL=>$this->getEmail(),
-			self::FIELD_SEXE=>$this->getSexE(),
-			self::FIELD_GSM=>$this->getGSm(),
-			self::FIELD_PAYE=>$this->getPayE(),
+			self::FIELD_SEXE=>$this->getSexe(),
+			self::FIELD_GSM=>$this->getGsm(),
+			self::FIELD_PAYE=>$this->getPaye(),
 			self::FIELD_AVATAR=>$this->getAvatar(),
-			self::FIELD_ECOLE=>$this->getEcolE(),
-			self::FIELD_DATE_DE_NAISSANCE=>$this->getDateDeNaISsaNcE(),
+			self::FIELD_ECOLE=>$this->getEcole(),
+			self::FIELD_DATE_DE_NAISSANCE=>$this->getDateDeNaissance(),
 			self::FIELD_LEVEL=>$this->getLevel());
 	}
 
@@ -606,7 +606,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 */
 	public function getPrimaryKeyValues() {
 		return array(
-			self::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
+			self::FIELD_ID_JOUEUR=>$this->getIdJoueur());
 	}
 
 	/**
@@ -686,15 +686,15 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	/**
 	 * Query by Example.
 	 *
-	 * Match by attributes of passed example instance and return matched rows as an array of JoUEurS instances
+	 * Match by attributes of passed example instance and return matched rows as an array of Joueurs instances
 	 *
 	 * @param PDO $db a PDO Database instance
-	 * @param JoUEurS $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
+	 * @param Joueurs $example an example instance defining the conditions. All non-null properties will be considered a constraint, null values will be ignored.
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return JoUEurS[]
+	 * @return Joueurs[]
 	 */
-	public static function findByExample(PDO $db,JoUEurS $example, $and=true, $sort=null) {
+	public static function findByExample(PDO $db,Joueurs $example, $and=true, $sort=null) {
 		$exampleValues=$example->toArray();
 		$filter=array();
 		foreach ($exampleValues as $fieldId=>$value) {
@@ -711,13 +711,13 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * The filter can be either an hash with the field id as index and the value as filter value,
 	 * or a array of DFC instances.
 	 *
-	 * Will return matched rows as an array of JoUEurS instances.
+	 * Will return matched rows as an array of Joueurs instances.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $filter array of DFC instances defining the conditions
 	 * @param boolean $and true if conditions should be and'ed, false if they should be or'ed
 	 * @param array $sort array of DSC instances
-	 * @return JoUEurS[]
+	 * @return Joueurs[]
 	 */
 	public static function findByFilter(PDO $db, $filter, $and=true, $sort=null) {
 		if (!($filter instanceof DFCInterface)) {
@@ -733,10 +733,10 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * Will execute the passed statement and return the result as an array of JoUEurS instances
+	 * Will execute the passed statement and return the result as an array of Joueurs instances
 	 *
 	 * @param PDOStatement $stmt
-	 * @return JoUEurS[]
+	 * @return Joueurs[]
 	 */
 	public static function fromStatement(PDOStatement $stmt) {
 		$affected=$stmt->execute();
@@ -748,15 +748,15 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * returns the result as an array of JoUEurS instances without executing the passed statement
+	 * returns the result as an array of Joueurs instances without executing the passed statement
 	 *
 	 * @param PDOStatement $stmt
-	 * @return JoUEurS[]
+	 * @return Joueurs[]
 	 */
 	public static function fromExecutedStatement(PDOStatement $stmt) {
 		$resultInstances=array();
 		while($result=$stmt->fetch(PDO::FETCH_ASSOC)) {
-			$o=new JoUEurS();
+			$o=new Joueurs();
 			$o->assignByHash($result);
 			$o->notifyPristine();
 			$resultInstances[]=$o;
@@ -802,13 +802,13 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * Execute select query and return matched rows as an array of JoUEurS instances.
+	 * Execute select query and return matched rows as an array of Joueurs instances.
 	 *
 	 * The query should of course be on the table for this entity class and return all fields.
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param string $sql
-	 * @return JoUEurS[]
+	 * @return Joueurs[]
 	 */
 	public static function findBySql(PDO $db, $sql) {
 		$stmt=$db->query($sql);
@@ -865,19 +865,19 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @param array $result
 	 */
 	public function assignByHash($result) {
-		$this->setIdJoUEur($result['id_joueur']);
+		$this->setIdJoueur($result['id_joueur']);
 		$this->setPseudo($result['pseudo']);
 		$this->setPassword($result['password']);
 		$this->setIdEmplacement($result['id_emplacement']);
-		$this->setNOm($result['nom']);
-		$this->setPRenoM($result['prenom']);
+		$this->setNom($result['nom']);
+		$this->setPrenom($result['prenom']);
 		$this->setEmail($result['email']);
-		$this->setSexE($result['sexe']);
-		$this->setGSm($result['gsm']);
-		$this->setPayE($result['paye']);
+		$this->setSexe($result['sexe']);
+		$this->setGsm($result['gsm']);
+		$this->setPaye($result['paye']);
 		$this->setAvatar($result['avatar']);
-		$this->setEcolE($result['ecole']);
-		$this->setDateDeNaISsaNcE($result['date_de_naissance']);
+		$this->setEcole($result['ecole']);
+		$this->setDateDeNaissance($result['date_de_naissance']);
 		$this->setLevel($result['level']);
 	}
 
@@ -886,11 +886,11 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * Will return null if no row was matched.
 	 *
 	 * @param PDO $db
-	 * @return JoUEurS
+	 * @return Joueurs
 	 */
-	public static function findById(PDO $db,$idJoUEur) {
+	public static function findById(PDO $db,$idJoueur) {
 		$stmt=self::prepareStatement($db,self::SQL_SELECT_PK);
-		$stmt->bindValue(1,$idJoUEur);
+		$stmt->bindValue(1,$idJoueur);
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -901,7 +901,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		if(!$result) {
 			return null;
 		}
-		$o=new JoUEurS();
+		$o=new Joueurs();
 		$o->assignByHash($result);
 		$o->notifyPristine();
 		return $o;
@@ -913,19 +913,19 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @param PDOStatement $stmt
 	 */
 	protected function bindValues(PDOStatement &$stmt) {
-		$stmt->bindValue(1,$this->getIdJoUEur());
+		$stmt->bindValue(1,$this->getIdJoueur());
 		$stmt->bindValue(2,$this->getPseudo());
 		$stmt->bindValue(3,$this->getPassword());
 		$stmt->bindValue(4,$this->getIdEmplacement());
-		$stmt->bindValue(5,$this->getNOm());
-		$stmt->bindValue(6,$this->getPRenoM());
+		$stmt->bindValue(5,$this->getNom());
+		$stmt->bindValue(6,$this->getPrenom());
 		$stmt->bindValue(7,$this->getEmail());
-		$stmt->bindValue(8,$this->getSexE());
-		$stmt->bindValue(9,$this->getGSm());
-		$stmt->bindValue(10,$this->getPayE());
+		$stmt->bindValue(8,$this->getSexe());
+		$stmt->bindValue(9,$this->getGsm());
+		$stmt->bindValue(10,$this->getPaye());
 		$stmt->bindValue(11,$this->getAvatar());
-		$stmt->bindValue(12,$this->getEcolE());
-		$stmt->bindValue(13,$this->getDateDeNaISsaNcE());
+		$stmt->bindValue(12,$this->getEcole());
+		$stmt->bindValue(13,$this->getDateDeNaissance());
 		$stmt->bindValue(14,$this->getLevel());
 	}
 
@@ -937,20 +937,20 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @return mixed
 	 */
 	public function insertIntoDatabase(PDO $db) {
-		if (null===$this->getIdJoUEur()) {
+		if (null===$this->getIdJoueur()) {
 			$stmt=self::prepareStatement($db,self::SQL_INSERT_AUTOINCREMENT);
 			$stmt->bindValue(1,$this->getPseudo());
 			$stmt->bindValue(2,$this->getPassword());
 			$stmt->bindValue(3,$this->getIdEmplacement());
-			$stmt->bindValue(4,$this->getNOm());
-			$stmt->bindValue(5,$this->getPRenoM());
+			$stmt->bindValue(4,$this->getNom());
+			$stmt->bindValue(5,$this->getPrenom());
 			$stmt->bindValue(6,$this->getEmail());
-			$stmt->bindValue(7,$this->getSexE());
-			$stmt->bindValue(8,$this->getGSm());
-			$stmt->bindValue(9,$this->getPayE());
+			$stmt->bindValue(7,$this->getSexe());
+			$stmt->bindValue(8,$this->getGsm());
+			$stmt->bindValue(9,$this->getPaye());
 			$stmt->bindValue(10,$this->getAvatar());
-			$stmt->bindValue(11,$this->getEcolE());
-			$stmt->bindValue(12,$this->getDateDeNaISsaNcE());
+			$stmt->bindValue(11,$this->getEcole());
+			$stmt->bindValue(12,$this->getDateDeNaissance());
 			$stmt->bindValue(13,$this->getLevel());
 		} else {
 			$stmt=self::prepareStatement($db,self::SQL_INSERT);
@@ -963,7 +963,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 		}
 		$lastInsertId=$db->lastInsertId();
 		if (false!==$lastInsertId) {
-			$this->setIdJoUEur($lastInsertId);
+			$this->setIdJoueur($lastInsertId);
 		}
 		$stmt->closeCursor();
 		$this->notifyPristine();
@@ -980,7 +980,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	public function updateToDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_UPDATE);
 		$this->bindValues($stmt);
-		$stmt->bindValue(15,$this->getIdJoUEur());
+		$stmt->bindValue(15,$this->getIdJoueur());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -1000,7 +1000,7 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 */
 	public function deleteFromDatabase(PDO $db) {
 		$stmt=self::prepareStatement($db,self::SQL_DELETE_PK);
-		$stmt->bindValue(1,$this->getIdJoUEur());
+		$stmt->bindValue(1,$this->getIdJoueur());
 		$affected=$stmt->execute();
 		if (false===$affected) {
 			$stmt->closeCursor();
@@ -1011,72 +1011,72 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	}
 
 	/**
-	 * Fetch EquipEsJoUEur's which this JoUEurS references.
+	 * Fetch EquipesJoueur's which this Joueurs references.
 	 * `joueurs`.`id_joueur` -> `equipes_joueur`.`id_joueur`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return EquipEsJoUEur[]
+	 * @return EquipesJoueur[]
 	 */
-	public function fetchEquipEsJoUEurCollection(PDO $db, $sort=null) {
-		$filter=array(EquipEsJoUEur::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
-		return EquipEsJoUEur::findByFilter($db, $filter, true, $sort);
+	public function fetchEquipesJoueurCollection(PDO $db, $sort=null) {
+		$filter=array(EquipesJoueur::FIELD_ID_JOUEUR=>$this->getIdJoueur());
+		return EquipesJoueur::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch JoUEurSGroupEs's which this JoUEurS references.
+	 * Fetch JoueursGroupes's which this Joueurs references.
 	 * `joueurs`.`id_joueur` -> `joueurs_groupes`.`id_joueur`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return JoUEurSGroupEs[]
+	 * @return JoueursGroupes[]
 	 */
-	public function fetchJoUEurSGroupEsCollection(PDO $db, $sort=null) {
-		$filter=array(JoUEurSGroupEs::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
-		return JoUEurSGroupEs::findByFilter($db, $filter, true, $sort);
+	public function fetchJoueursGroupesCollection(PDO $db, $sort=null) {
+		$filter=array(JoueursGroupes::FIELD_ID_JOUEUR=>$this->getIdJoueur());
+		return JoueursGroupes::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch JoUeurTourNOi's which this JoUEurS references.
+	 * Fetch Joueurtournoi's which this Joueurs references.
 	 * `joueurs`.`id_joueur` -> `joueurtournoi`.`id_joueur`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return JoUeurTourNOi[]
+	 * @return Joueurtournoi[]
 	 */
-	public function fetchJoUeurTourNOiCollection(PDO $db, $sort=null) {
-		$filter=array(JoUeurTourNOi::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
-		return JoUeurTourNOi::findByFilter($db, $filter, true, $sort);
+	public function fetchJoueurtournoiCollection(PDO $db, $sort=null) {
+		$filter=array(Joueurtournoi::FIELD_ID_JOUEUR=>$this->getIdJoueur());
+		return Joueurtournoi::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch ManChesJoUEurS's which this JoUEurS references.
+	 * Fetch ManchesJoueurs's which this Joueurs references.
 	 * `joueurs`.`id_joueur` -> `manches_joueurs`.`id_joueur`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return ManChesJoUEurS[]
+	 * @return ManchesJoueurs[]
 	 */
-	public function fetchManChesJoUEurSCollection(PDO $db, $sort=null) {
-		$filter=array(ManChesJoUEurS::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
-		return ManChesJoUEurS::findByFilter($db, $filter, true, $sort);
+	public function fetchManchesJoueursCollection(PDO $db, $sort=null) {
+		$filter=array(ManchesJoueurs::FIELD_ID_JOUEUR=>$this->getIdJoueur());
+		return ManchesJoueurs::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch MatchSJoUEurS's which this JoUEurS references.
+	 * Fetch MatchsJoueurs's which this Joueurs references.
 	 * `joueurs`.`id_joueur` -> `matchs_joueurs`.`id_joueur`
 	 *
 	 * @param PDO $db a PDO Database instance
 	 * @param array $sort array of DSC instances
-	 * @return MatchSJoUEurS[]
+	 * @return MatchsJoueurs[]
 	 */
-	public function fetchMatchSJoUEurSCollection(PDO $db, $sort=null) {
-		$filter=array(MatchSJoUEurS::FIELD_ID_JOUEUR=>$this->getIdJoUEur());
-		return MatchSJoUEurS::findByFilter($db, $filter, true, $sort);
+	public function fetchMatchsJoueursCollection(PDO $db, $sort=null) {
+		$filter=array(MatchsJoueurs::FIELD_ID_JOUEUR=>$this->getIdJoueur());
+		return MatchsJoueurs::findByFilter($db, $filter, true, $sort);
 	}
 
 	/**
-	 * Fetch Emplacement which references this JoUEurS. Will return null in case reference is invalid.
+	 * Fetch Emplacement which references this Joueurs. Will return null in case reference is invalid.
 	 * `joueurs`.`id_emplacement` -> `emplacement`.`id_emplacement`
 	 *
 	 * @param PDO $db a PDO Database instance
@@ -1096,31 +1096,31 @@ class JoUEurS extends Db2PhpEntityBase implements Db2PhpEntityModificationTracki
 	 * @return DOMDocument
 	 */
 	public function toDOM() {
-		return self::hashToDomDocument($this->toHash(), 'JoUEurS');
+		return self::hashToDomDocument($this->toHash(), 'Joueurs');
 	}
 
 	/**
-	 * get single JoUEurS instance from a DOMElement
+	 * get single Joueurs instance from a DOMElement
 	 *
 	 * @param DOMElement $node
-	 * @return JoUEurS
+	 * @return Joueurs
 	 */
 	public static function fromDOMElement(DOMElement $node) {
-		$o=new JoUEurS();
+		$o=new Joueurs();
 		$o->assignByHash(self::domNodeToHash($node, self::$FIELD_NAMES, self::$DEFAULT_VALUES, self::$FIELD_TYPES));
 			$o->notifyPristine();
 		return $o;
 	}
 
 	/**
-	 * get all instances of JoUEurS from the passed DOMDocument
+	 * get all instances of Joueurs from the passed DOMDocument
 	 *
 	 * @param DOMDocument $doc
-	 * @return JoUEurS[]
+	 * @return Joueurs[]
 	 */
 	public static function fromDOMDocument(DOMDocument $doc) {
 		$instances=array();
-		foreach ($doc->getElementsByTagName('JoUEurS') as $node) {
+		foreach ($doc->getElementsByTagName('Joueurs') as $node) {
 			$instances[]=self::fromDOMElement($node);
 		}
 		return $instances;
