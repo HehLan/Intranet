@@ -37,6 +37,19 @@ class Player
         $this->level = $level;        
     }
     
+    public function isLogged() {
+			
+			if(isset($_SESSION['id_joueur']))
+			{
+				if(($_SESSION['id_joueur']!=0)) return true;
+			}
+	 
+			return false;
+		   
+		}
+    
+    
+    
      /**
      * set value for id_joueur	 
      * type:INT UNSIGNED,size:10,default:null,primary,unique,autoincrement

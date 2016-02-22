@@ -32,28 +32,14 @@
                                 <tr>
                                     <td>
                                         <div id="listeEquipeAdmin">
-                                            <?php
-                                            try {
-
-                                            while($equipes=$requete_preparee->fetch(PDO::FETCH_ASSOC)) 
-                                            {
-                                            echo'
-                                            <h6 class="EquipeAdmin" value="'.$equipes["id_equipes"].'">'.$equipes["nom"].'</h6>
-                                            ';
-                                            }
-
-                                            }
-
-                                            catch(PDOException $e) {
-                                            echo 'Base de données est indisponible pour le moment!';
-                                            }
-
-                                            ?>
+                                            {foreach from=$teams item=team}
+                                                <h6 class="EquipeAdmin" value="{$team['id_equipes']}">{$team['nom']}</h6>
+                                            {/foreach}
                                         </div>
                                     </td>
                                     <td>
                                         <div id="listeEquipeJoueurAdmin">
-
+                                            What here ?
                                         </div>
                                         <input id="submitNewPlayerInTeam" type="button" value="Ajouter un joueur" style="display: none;">
                                     </td>
@@ -66,7 +52,7 @@
                                 <tr>
                                     <td  colspan="2">
                                         <div id="InfoJoueurEquipes" style="height:250px;">
-
+                                              What here ?
                                         </div>
                                     </td>
                                 </tr>

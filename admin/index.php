@@ -1,34 +1,56 @@
 <?php
-    session_start();
-    require_once('../common/connect.php');
-    require_once('../common/utils.php');
-    require_once('../class/Smarty_HEHLan.class.php');
-    require_once('../class/Database.class.php');
-    require_once('modules/connexion/classAuth.php');
 
-    $con = false;
-    $chat = false;
-    $database = new Database();
-    $smarty = new Smarty_HEHLan();
+session_start();
+require_once('../common/utils.php');
+require_once('../class/Smarty_HEHLan.class.php');
+require_once('../class/Database.class.php');
+require_once('../class/Auth.class.php');
 
-    if(isset($_SESSION['id_joueur']))
+
+$connected = false;
+$allowed = false;
+$chatIsActive = false;
+$database = new Database();
+$smarty = new Smarty_HEHLan();
+
+
+$connected = Auth::isLogged();
+$allowed = Auth::isAllowed(5);
+
+
+if(!$connected && !$allowed)
+{
+    header('Location: ../index.php');
+} 
+
+
+$sql = 'SELECT id_equipes, nom FROM equipes ORDER BY nom';  
+$database->setQuery($sql);
+$database->getQuery()->execute();
+
+try
+{
+    while($team = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
     {
-        if(($_SESSION['id_joueur']!=0) && $_SESSION['level']<=3)
-            $con=true;
+        $teams[] = $team;        
     }
+}
+catch(PDOException $e)
+{
+    echo 'Base de données est indisponible pour le moment!';
+    exit;
+}
 
-    if(!$con)
-    {
-        header('Location: ../index.php');
-    } 
 
-    $sql = 'SELECT id_equipes, nom FROM equipes ORDER BY nom';  
-    $database->setQuery($sql);
-    $database->getQuery()->execute();
 
-    // send to the template
-    $smarty->assign("con", $con);
-    $smarty->assign("chat", $chat);
-    $smarty->assign("SESSION", $_SESSION);
-    $smarty->display(DOCUMENT_ROOT.'/templates/default/admin/index.tpl');	
+
+
+// send to the template
+$smarty->assign("con", $connected);
+$smarty->assign("chat", $chatIsActive);
+$smarty->assign('teams', $teams);
+
+
+
+$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/index.tpl');	
 ?>

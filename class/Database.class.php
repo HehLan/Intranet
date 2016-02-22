@@ -75,7 +75,7 @@ class Database
         if ($this->getQuery()->execute())
         {
             $data = $this->getQuery()->fetch(PDO::FETCH_ASSOC);            
-            $player = new Player($data['id_joueur'], $data['pseudo'], $data['pwd'], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, $data['level']);
+            $player = new Player($data['id_joueur'], $data['pseudo'], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, $data['level']);
         }
         else
         {

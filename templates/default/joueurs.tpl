@@ -15,7 +15,7 @@
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">
                 <div class="col-lg-offset-1 col-lg-8 col-xs-12 map_cafetaria">
-                    <img class="photo_cafetaria" src="{#domain#}/assets/img/plan.jpg">
+                    <img class="photo_cafetaria" src="{#assets#}/img/plan.jpg">
                     {section name=sec1 loop=$emplacements}
                         <div class='place' onclick='Click(this)' id="{$emplacements[sec1].id_emplacement}" style="
                              position: absolute;
