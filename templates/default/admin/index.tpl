@@ -1,64 +1,19 @@
-<?php
-/* Smarty version 3.1.29, created on 2016-02-19 15:38:50
-  from "E:\wamp\www\Intranet\templates\default\admin_index.tpl" */
-
-if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
-  'has_nocache_code' => false,
-  'version' => '3.1.29',
-  'unifunc' => 'content_56c728fa127333_45953615',
-  'file_dependency' => 
-  array (
-    'fdf49f06ca0913e5b5bb355325dce2f10c5fbaec' => 
-    array (
-      0 => 'E:\\wamp\\www\\Intranet\\templates\\default\\admin_index.tpl',
-      1 => 1455664037,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-),false)) {
-function content_56c728fa127333_45953615 ($_smarty_tpl) {
-?>
-
-<?php
-$_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, 'templates/default/paths.conf', null, 0);
-?>
-
+{* Smarty *}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."meta.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
-?>
- 
-        <?php echo '<script'; ?>
- type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery.js"><?php echo '</script'; ?>
->
-        <?php echo '<script'; ?>
- type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery-ui.js"><?php echo '</script'; ?>
->
-        <?php echo '<script'; ?>
- type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/getXhr.js"><?php echo '</script'; ?>
->
-        <?php echo '<script'; ?>
- type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/admin_index.js"><?php echo '</script'; ?>
->		
+        {include file="meta.tpl"} 
+        <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
+        <script type="text/javascript" src="{#domain#}/assets/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
+        <script type="text/javascript" src="{#domain#}/assets/js/admin_index.js"></script>		
     </head>
 
     <body role="document">	
-        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'next_matches'=>$_smarty_tpl->tpl_vars['next_matches']->value), 0, true);
-?>
+        {include file="header.tpl" con=$con next_matches=$next_matches}
+        {include file="nav.tpl"  con=$con navTournois=$navTournois}
 
-        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'navTournois'=>$_smarty_tpl->tpl_vars['navTournois']->value), 0, true);
-?>
-
-
-        <?php echo '<?php ';?>require_once('modules/menuTop.php'); <?php echo '?>';?>
+        <?php require_once('modules/menuTop.php'); ?>
 
         <div id="container" class="container-fluid">
 
@@ -77,8 +32,8 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, 'templates/
                                 <tr>
                                     <td>
                                         <div id="listeEquipeAdmin">
-                                            <?php echo '<?php
-                                            ';?>try {
+                                            <?php
+                                            try {
 
                                             while($equipes=$requete_preparee->fetch(PDO::FETCH_ASSOC)) 
                                             {
@@ -93,7 +48,7 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, 'templates/
                                             echo 'Base de données est indisponible pour le moment!';
                                             }
 
-                                            <?php echo '?>';?>
+                                            ?>
                                         </div>
                                     </td>
                                     <td>
@@ -146,12 +101,9 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, 'templates/
         </div>
 
 
-        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'templatePath'))."footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
-?>
-
-        <?php if ($_smarty_tpl->tpl_vars['chat']->value) {?>
-            <?php echo '<script'; ?>
- type="text/javascript">
+        {include file="footer.tpl"}
+        {if $chat}
+            <script type="text/javascript">
                 $("#bloc_chat_message").keyup(function (event)
                 {
                     if (event.keyCode == 13)
@@ -162,9 +114,7 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigFile($_smarty_tpl, 'templates/
 
                 afficher(0);
                 users();
-            <?php echo '</script'; ?>
->
-        <?php }?>
+            </script>
+        {/if}
     </body>
-</html><?php }
-}
+</html>

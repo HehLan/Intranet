@@ -1,59 +1,66 @@
 <?php
 
 session_start();
-require_once('common/connect.php');
 require_once('common/utils.php');
-require_once('common/getNextMatches.php');
-require_once('common/getNavTournois.php');
 require_once('class/Smarty_HEHLan.class.php');
+require_once('class/Database.class.php');
 
-$con = false;
-$chat = false;
+$connected = false;
+$chatIsActive = false;
+$database = new Database();
 $smarty = new Smarty_HEHLan();
 
-if (isset($_SESSION['id_joueur'])) {
+if (isset($_SESSION['id_joueur']))
+{
     if (($_SESSION['id_joueur'] != 0))
-        $con = true;
+    {
+       $connected = true; 
+    }     
 }
 
-if (!$con) {
-    if (isset($_POST['login']) && isset($_POST['pwd'])) {
-        $sql = "SELECT id_joueur,level FROM joueurs WHERE pseudo=:login and password=:pwd";
-        $query = $connexion->prepare($sql);
-        $query->bindValue('login', $_POST['login'], PDO::PARAM_STR);
-        $query->bindValue('pwd', sha1($_POST['pwd']), PDO::PARAM_STR);
-        if ($query->execute()) {
-            $rst = $query->fetch(PDO::FETCH_ASSOC);
-            if (!is_null($rst['id_joueur'])) {
-                $_SESSION['id_joueur'] = $rst['id_joueur'];
-                $_SESSION['login'] = $_POST['login'];
-                $_SESSION['level'] = $rst['level'];
-                $con = true;
-            }
-        } else {
-            echo 'ERREUR LOGIN SQL';
+// This is an unknown user (no connected)
+if (!$connected)
+{
+    // The user has entered its login and password
+    if (isset($_POST['login']) && isset($_POST['pwd']))
+    {
+        $player = $database->getPlayer($_POST['login'], $_POST['pwd']);          
+        if (!is_null($player))
+        {
+            $_SESSION['id_joueur'] = $player->getIdJoueur();
+            $_SESSION['login'] = $player->getPseudo();
+            $_SESSION['level'] = $player->getLevel();
+            $_SESSION['password'] = $player->getPassword();
+            $connected = true;
         }
     }
 }
 
-function isPlay($idJoueur, $idTournoi, &$connexion, &$pseudoJeux) {
+function isPlay($idJoueur, $idTournoi, &$connexion, &$pseudoJeux)
+{
     $sqlPlay = 'SELECT * FROM joueurtournoi WHERE id_joueur = :id_joueur AND id_tournoi = :id_tournoi';
-    try {
-        $req = $connexion->prepare($sqlPlay);
-        $req->execute(array(
+    try
+    {
+        $database->setQuery($sqlPlay);
+        $database->getQuery()->execute(array(
             'id_joueur' => $idJoueur,
             'id_tournoi' => $idTournoi
         ));
-        $jeux = $req->fetch();
-        if (empty($jeux)) {
+        $jeux = $database->getQuery()->fetch();
+        if (empty($jeux))
+        {
             //do not play at this game
             return '';
-        } else {
+        }
+        else
+        {
             $pseudoJeux = $jeux['pseudoJeux'];
             //play at this game
             return 'checked';
         }
-    } catch (PDOException $e) {
+    }
+    catch (PDOException $e)
+    {
         return '';
     }
 }
@@ -63,26 +70,48 @@ $sql = 'SELECT j.*, e.nom AS team
 		LEFT OUTER JOIN equipes_joueur ej ON j.id_joueur = ej.id_joueur
 		LEFT OUTER JOIN equipes e ON e.id_equipes = ej.id_equipes
 		WHERE j.id_joueur = :idj';
-$query = $connexion->prepare($sql);
-$query->bindValue("idj", $_SESSION['id_joueur'], PDO::PARAM_INT);
-$query->execute();
-$joueur = $query->fetch();
+$database->setQuery($sql);
+$database->bindValue('idj', $_SESSION['id_joueur'], PDO::PARAM_INT);
+$database->getQuery()->execute();
+$joueur = $database->getQuery()->fetch();
+
+
 $pseudoJeux = '';
 
 
 // Selecting player profile information	
 $sql = 'SELECT * FROM joueurs WHERE id_joueur = :id_player';
-$query = $connexion->prepare($sql);
-$query->bindValue(":id_player", $_SESSION['id_joueur'], PDO::PARAM_INT);
-$query->execute();
-$joueur = $query->fetch(PDO::FETCH_OBJ);
+$database->setQuery($sql);
+$database->bindValue(':id_player', $_SESSION['id_joueur'], PDO::PARAM_INT);
+$database->getQuery()->execute();
+$joueur = $database->getQuery()->fetch(PDO::FETCH_OBJ);
 
 
-$smarty->assign("con", $con);
-$smarty->assign("next_matches", getNextMatches());
-$smarty->assign("navTournois", getNavTournois());
+
+
+
+
+
+
+$sql = 'SELECT id_equipes, nom FROM equipes ORDER BY nom';
+$database->setQuery($sql);
+$database->getQuery()->execute();
+while($equipe = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
+{
+    $equipes[] = $equipe;
+}
+                                       
+
+
+$smarty->assign("con", $connected);
+$smarty->assign("next_matches", $database->getNextMatches($connected));
+$smarty->assign("navTournois", $database->getNavTournois());
 $smarty->assign("joueur", $joueur);
-$smarty->display('templates/default/player_change.tpl');
+$smarty->assign('pseudoJeux', $pseudoJeux);
+$smarty->assign('equipes', $equipes);
+//$smarty->display('templates/default/player_change.tpl');
+$smarty->display('player_change.tpl');
+
 ?>
 
 

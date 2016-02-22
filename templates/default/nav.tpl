@@ -1,5 +1,4 @@
 {* Smarty *}
-{config_load file="templates/default/paths.conf"}
 <nav id="navigation" class="navbar navbar-inverse" role="navigation" >
     <div class="container-fluid">
         <div class="navbar-header">

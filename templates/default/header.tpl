@@ -1,5 +1,4 @@
 {* Smarty *}
-{config_load file='templates/default/paths.conf'}
 <header id="header" class="row" >
     <div id="logo" class="col-lg-9 col-sm-9 col-xs-12" >
         <a href="index.php">

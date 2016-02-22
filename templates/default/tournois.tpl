@@ -1,15 +1,14 @@
 {* Smarty *}
-{config_load file="templates/default/paths.conf"}
 <!DOCTYPE HTML>
 <html>
     <head>
-        {include file="{#templatePath#}meta.tpl"}  
+        {include file="meta.tpl"}  
         <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
         <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
     </head>
     <body>
-        {include file="{#templatePath#}header.tpl" con=$con next_matches=$next_matches}
-        {include file="{#templatePath#}nav.tpl"  con=$con navTournois=$navTournois}	
+        {include file="header.tpl" con=$con next_matches=$next_matches}
+        {include file="nav.tpl"  con=$con navTournois=$navTournois}	
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">
                 <div class="col-lg-offset-1 col-lg-10">
@@ -59,6 +58,11 @@
                                     <th class="title_round" colspan="{$tournoi.nombreManche|@count}">
                                         {$groupes[groupe].nom_groupe} ( {$groupes[groupe].jour} {$groupes[groupe].heure} )
                                     </th>
+								</tr>
+								<tr>
+									<th class="th_empty_round" >
+										Participants
+									</th>
                                     {for $idManche=1 to $tournoi.nombreManche}
                                         <th class="th_manche_round">Manche {$idManche}</th>
                                         {/for}
@@ -90,6 +94,6 @@
                 </div>
             </div>
         </div>
-        {include file="{#templatePath#}footer.tpl"}
+        {include file="footer.tpl"}
     </body>
 </html>

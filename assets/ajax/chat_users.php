@@ -1,16 +1,16 @@
 <?php
 
-require_once('../../common/connect.php');
 
-if (isset($_POST['id'])) {
-    $sql = "INSERT INTO tchat_users (id_joueur,pseudo,lastcon)
-	VALUES (:id,:pseudo,NOW())
-	ON DUPLICATE KEY UPDATE  lastcon=NOW()";
-    $query = $connexion->prepare($sql);
-    $query->bindValue('id', $_POST['id'], PDO::PARAM_INT);
-    $query->bindValue('pseudo', $_POST['pseudo'], PDO::PARAM_INT);
-    if (!$query->execute())
-        echo 'ERREUR USERS CHAT SQL 1';
+require_once('../../common/connect.php');
+require_once('../../class/Smarty_HEHLan.class.php');
+require_once('../../class/Database.class.php');
+
+$database = new Database();
+$smarty = new Smarty_HEHLan();
+
+if (isset($_POST['id']))
+{
+    $database->insertUserInChat($_POST['id'], $_POST['pseudo']);
 }
 
 $sql = "SELECT pseudo FROM tchat_users WHERE lastcon>SUBTIME(NOW(),'0 0:0:30') ORDER BY pseudo";
