@@ -2,43 +2,46 @@
  fonction recherche joueurs
  **************************/
 $(document).ready(function () {
-    // d�tection de la saisie dans le champ de recherche
+    // détection de la saisie dans le champ de recherche
     $('#recherche_joueur').keyup(function () {
         $('#results').show();
 
         $('.ClassPseudo').hide();
-        $('.ClassPseudo:contains("' + $('#recherche_joueur').val() + '")').each(function () {
 
+        // on recupère le 1 cractère qu'on met en majusqule. Et en suite on lui ajoute la suite de la chaine rentré par user.
+        var modifiedString = $('#recherche_joueur').val().charAt(0).toUpperCase() + $('#recherche_joueur').val().substring(1);
+
+        $('.ClassPseudo:contains("' + $('#recherche_joueur').val() + '"), .ClassPseudo:contains("' + modifiedString + '")').each(function () {
             $(this).show();
             $('#results').hide();
         });
-
-
     });
+
     $('#recherche_equipe').keyup(function () {
         $('#results_equipe').show();
 
         $('.ClassEquipe').hide();
-        $('.ClassEquipe:contains("' + $('#recherche_equipe').val() + '")').each(function () {
 
+        // on recupère le 1 cractère qu'on met en majusqule. Et en suite on lui ajoute la suite de la chaine rentré par user.
+        var modifiedString = $('#recherche_equipe').val().charAt(0).toUpperCase() + $('#recherche_equipe').val().substring(1);
+
+        $('.ClassEquipe:contains("' + $('#recherche_equipe').val() + '"), .ClassEquipe:contains("' + modifiedString + '")').each(function () {
             $(this).show();
             $('#results_equipe').hide();
         });
-
-
     });
+
     /*********************************************
      alerte apparait lors du clic sur l'emplacement
      **********************************************/
-//colorie la case pour le pseudo
+    //colorie la case pour le pseudo
     $('div').delegate('.ClassPseudo', 'click', function (e)
     {
         $('.place').css({background: "none"});
         $('#' + $(this).attr("value")).css({background: '#337ab7'});
     });
 
-
-// recupere id_equipes pour l'envoi en AJAX
+    // recupere id_equipes pour l'envoi en AJAX
     $('.ClassEquipe').click(function (e)
     {
         valeur = $(this).attr("value");
@@ -51,13 +54,10 @@ $(document).ready(function () {
             {
                 $("#dialogEquipe_Emplacement").html(contenu);
             }
-
         });
-
     });
-
-
 });
+
 /*****       
  onglet
  ******/
