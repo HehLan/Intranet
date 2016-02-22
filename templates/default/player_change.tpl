@@ -35,7 +35,7 @@
                             <input type="text" name="firstname" id="firstname" readonly value="{$joueur.firstname}"><br >
 
                             <label for="datepicker">Date de naissance :</label>
-                            <input type="text" name="date" id="date" readonly value="<?php echo date("d/m/Y", strtotime($joueur['date_de_naissance'])); ?>"><br >
+                            <input type="text" name="date" id="date" readonly value="{$dateOfBirth}"><br >
 
                             <label for="telephone">Téléphone :</label>
                             <input type="text" name="telephone" id="telephone" readonly value="{$joueur.gsm}"><br >
@@ -49,7 +49,7 @@
 
                             <input id="afficheChgtMDP" type="button" value="Changer de mot de passe" ><br><br>						
 
-                            <fieldset id="ModifMDP" style="display:none";>
+                            <fieldset id="ModifMDP" style="display:none">
                                 <legend>Modification de mot de passe</legend>
 
                                 <label for="password">Ancien mot de passe :</label>
@@ -67,15 +67,23 @@
                         <fieldset>
                             <legend>Jeux</legend>
 
-                            <input type="checkbox" class="jeux" name="tournois[]" id="LOL" <?php echo isPlay($joueur['id_joueur'],"1",$connexion,$pseudoJeux); ?> disabled value="1">League Of Legends<br >
-                            <div id="pseudoLOL" style="<?php if(empty($pseudoJeux)) echo 'display : none;';?>">
+                            <input type="checkbox" class="jeux" name="tournois[]" id="LOL"
+                                   <?php echo isPlay($joueur['id_joueur'],"1",$connexion,$pseudoJeux); ?> disabled value="1">League Of Legends<br >
+                            <div id="pseudoLOL"
+                                 {if empty($pseudoJeux)}
+                                    style="display : none;"
+                                {/if}
+                                >
                                 <label for="pseudoLOL" style="padding-left: 40px; ">Votre pseudo à LOL :</label>
-                                <input type="text" name="pseudoLOL" id="VerifPseudoLOL" style="margin-left: -40px;" readonly value="<?php echo $pseudoJeux; ?>">
+                                <input type="text" name="pseudoLOL" id="VerifPseudoLOL" style="margin-left: -40px;" readonly value="{$pseudoJeux}">
                                 <div id="pseudoboxLOL" style="padding-left: 250px; "></div>
                             </div>
-                            <input type="checkbox" class="jeux" name="tournois[]" id="COD4" <?php echo isPlay($joueur['id_joueur'],"2",$connexion,$pseudoJeux); ?> disabled value="2">Call Of Duty 4<br >
-                            <input type="checkbox" class="jeux" name="tournois[]" id="TM" <?php echo isPlay($joueur['id_joueur'],"3",$connexion,$pseudoJeux); ?> disabled value="3">TrackMania<br >
-                            <input type="checkbox" class="jeux" name="tournois[]" id="UT3" <?php echo isPlay($joueur['id_joueur'],"4",$connexion,$pseudoJeux); ?> disabled value="4">Unreal Tournament 3
+                            <input type="checkbox" class="jeux" name="tournois[]" id="COD4"
+                                   <?php echo isPlay($joueur['id_joueur'],"2",$connexion,$pseudoJeux); ?> disabled value="2">Call Of Duty 4<br >
+                            <input type="checkbox" class="jeux" name="tournois[]" id="TM"
+                                   <?php echo isPlay($joueur['id_joueur'],"3",$connexion,$pseudoJeux); ?> disabled value="3">TrackMania<br >
+                            <input type="checkbox" class="jeux" name="tournois[]" id="UT3"
+                                   <?php echo isPlay($joueur['id_joueur'],"4",$connexion,$pseudoJeux); ?> disabled value="4">Unreal Tournament 3
                                    <br >
                         </fieldset>
 
@@ -110,25 +118,15 @@
                                     <input id="RetourTeam" style="width: 100px" type="button" value="Retour"><br><br>
                                     <label for="rejoindre_Team">Le nom de la team :</label>
                                     <select id="rejoindre_Team" name="nomequipe" style="min-width: 140px;">
-
-                                        <?php
-                                        $query="SELECT id_equipes, nom FROM equipes ORDER BY nom";
-                                        $requete_preparee=$connexion->prepare($query);
-                                        $requete_preparee->execute();
-                                        while($equipes=$requete_preparee->fetch(PDO::FETCH_ASSOC)) 
-                                        {
-                                        echo '<option value="'.$equipes["id_equipes"].'" style="color:#000"/>'.$equipes["nom"];
-                                        echo "</option>";
-                                        }
-                                        ?>
-
+                                        {foreach from=$equipes item=equipe}
+                                            <option value="{$equipe['id_equipes']}" style="color:#000"/>{$equipe['nom']}</option>
+                                        {/foreach}                                 
                                     </select><br />
                                     <label for="psw_equipe">Mot de passe :</label>
                                     <input type="password" name="psw_equipe" id="psw_equipe" ><br />
                                     <div id="infoJoinTeam" style="border: none"></div>
                                     <input id="submitRejoindreTeam" type="button" value="Rejoindre cette team">
                                 </div>
-
                             {else}
                                 <p>Votre team est : <strong id='votreTeam'>"{$joueur.team}"</strong><br>
                                     <input id="quitterTeam" type="button" class="withTeam" value="Quitter cette team">
@@ -138,17 +136,9 @@
                                     <input id="RetourTeam" style="width: 100px" type="button" value="Retour"><br><br>
                                     <label for="rejoindre_Team">Le nom de la team :</label>
                                     <select id="rejoindre_Team" name="nomequipe" style="min-width: 140px;">
-
-                                        <?php
-                                        $query="SELECT id_equipes, nom FROM equipes ORDER BY nom";
-                                        $requete_preparee=$connexion->prepare($query);
-                                        $requete_preparee->execute();
-                                        while($equipes=$requete_preparee->fetch(PDO::FETCH_ASSOC)) 
-                                        {
-                                        echo '<option value="'.$equipes["id_equipes"].'" style="color:#000"/>'.$equipes["nom"];
-                                        echo "</option>";
-                                        }
-                                        ?>
+                                        {foreach from=$equipes item=equipe}
+                                            <option value="{$equipe['id_equipes']}" style="color:#000"/>{$equipe['nom']}</option>
+                                        {/foreach}
                                     </select><br />
                                     <label for="psw_equipe">Mot de passe :</label>
                                     <input type="password" name="psw_equipe" id="psw_equipe" ><br />

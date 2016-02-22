@@ -301,7 +301,10 @@ class Database
     
     public function insertUserInChat($id, $login)
     {
-        $sql = file_get_contents('sql/insertUserInChat.sql');
+        //$sql = file_get_contents('sql/insertUserInChat.sql');
+		$sql = 'INSERT INTO tchat_users (id_joueur,pseudo,lastcon)
+		VALUES (:id,:pseudo,NOW())
+		ON DUPLICATE KEY UPDATE lastcon=NOW()';
         $this->setQuery($sql);
         $this->bindValue('id', $id, PDO::PARAM_INT);
         $this->bindValue('pseudo', $login, PDO::PARAM_INT);      

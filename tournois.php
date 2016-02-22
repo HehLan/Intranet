@@ -25,7 +25,7 @@ if (isset($_GET['id']))
 {
     $id_tournoi = $_GET['id'];
 }
-<<<<<<< HEAD
+
 
 //SQL Query to select pools for this tournament
 $groupes = '';
@@ -39,13 +39,13 @@ else {
     exit;
 }
 
+$tournoi = $database->getTournament($id_tournoi);
+
 if( $tournoi['joueurParTeam'] > 1)
 	include_once('tournoisPools.php');
 else
 	include_once('tournoisRounds.php');
 
-=======
-$tournoi = $database->getTournament($id_tournoi);
 $groupes = $database->getGroups($id_tournoi);
 $jpt = $tournoi['joueurParTeam'];
 
@@ -190,5 +190,5 @@ if ($jpt > 1)
 }
 
 $smarty->display('templates/default/tournois.tpl');
->>>>>>> ba852f18a7582363267003b5386053a4fd406876
+
 ?>

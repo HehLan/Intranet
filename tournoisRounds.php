@@ -117,8 +117,8 @@ foreach ($groupes as $itGroupe => $groupe) {
 
 // Applying Template
 $smarty->assign("con", $con);
-$smarty->assign("next_matches", getNextMatches());
-$smarty->assign("navTournois", getNavTournois());
+$smarty->assign("next_matches", $database->getNextMatches($con));
+$smarty->assign("navTournois", $database->getNavTournois());
 $smarty->assign("tournoi", $tournoi);
 $smarty->assign("nbr_lb2", $nbr_lb2);
 $smarty->assign("nbr_lb3", $nbr_lb3);
