@@ -1,11 +1,20 @@
 <?php
+<<<<<<< HEAD:templates_c/1ea3e94fae4ce5c9706bd20da7a4a0979a944a7a_0.file.nav.tpl.php
 /* Smarty version 3.1.29, created on 2016-02-22 02:42:49
   from "D:\DATA\heh-www\BACKUP INTRANET\www\templates\default\nav.tpl" */
+=======
+/* Smarty version 3.1.29, created on 2016-02-21 22:57:20
+  from "E:\wamp\www\Intranet\templates\default\nav.tpl" */
+>>>>>>> ba852f18a7582363267003b5386053a4fd406876:templates_c/5030ce4f1a0d43e42b052c3a5b2f938b26b9334b_0.file.nav.tpl.php
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
+<<<<<<< HEAD:templates_c/1ea3e94fae4ce5c9706bd20da7a4a0979a944a7a_0.file.nav.tpl.php
   'unifunc' => 'content_56ca6799ceeb94_63904961',
+=======
+  'unifunc' => 'content_56ca32c0f3bf35_59538481',
+>>>>>>> ba852f18a7582363267003b5386053a4fd406876:templates_c/5030ce4f1a0d43e42b052c3a5b2f938b26b9334b_0.file.nav.tpl.php
   'file_dependency' => 
   array (
     '1ea3e94fae4ce5c9706bd20da7a4a0979a944a7a' => 
@@ -19,7 +28,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
+<<<<<<< HEAD:templates_c/1ea3e94fae4ce5c9706bd20da7a4a0979a944a7a_0.file.nav.tpl.php
 function content_56ca6799ceeb94_63904961 ($_smarty_tpl) {
+=======
+function content_56ca32c0f3bf35_59538481 ($_smarty_tpl) {
+>>>>>>> ba852f18a7582363267003b5386053a4fd406876:templates_c/5030ce4f1a0d43e42b052c3a5b2f938b26b9334b_0.file.nav.tpl.php
 ?>
 
 <?php

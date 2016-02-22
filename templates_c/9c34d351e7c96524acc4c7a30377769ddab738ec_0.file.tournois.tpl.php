@@ -1,11 +1,20 @@
 <?php
+<<<<<<< HEAD:templates_c/9c34d351e7c96524acc4c7a30377769ddab738ec_0.file.tournois.tpl.php
 /* Smarty version 3.1.29, created on 2016-02-22 00:16:24
   from "D:\DATA\heh-www\BACKUP INTRANET\www\templates\default\tournois.tpl" */
+=======
+/* Smarty version 3.1.29, created on 2016-02-21 22:36:07
+  from "E:\wamp\www\Intranet\templates\default\tournois.tpl" */
+>>>>>>> ba852f18a7582363267003b5386053a4fd406876:templates_c/77fc14985057c888789df6d1786ac8684b7fb4c5_0.file.tournois.tpl.php
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
+<<<<<<< HEAD:templates_c/9c34d351e7c96524acc4c7a30377769ddab738ec_0.file.tournois.tpl.php
   'unifunc' => 'content_56ca4548cfbd33_48881349',
+=======
+  'unifunc' => 'content_56ca2dc7a27d43_35406668',
+>>>>>>> ba852f18a7582363267003b5386053a4fd406876:templates_c/77fc14985057c888789df6d1786ac8684b7fb4c5_0.file.tournois.tpl.php
   'file_dependency' => 
   array (
     '9c34d351e7c96524acc4c7a30377769ddab738ec' => 
@@ -19,7 +28,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
+<<<<<<< HEAD:templates_c/9c34d351e7c96524acc4c7a30377769ddab738ec_0.file.tournois.tpl.php
 function content_56ca4548cfbd33_48881349 ($_smarty_tpl) {
+=======
+function content_56ca2dc7a27d43_35406668 ($_smarty_tpl) {
+>>>>>>> ba852f18a7582363267003b5386053a4fd406876:templates_c/77fc14985057c888789df6d1786ac8684b7fb4c5_0.file.tournois.tpl.php
 ?>
 
 <?php

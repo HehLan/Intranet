@@ -1,7 +1,12 @@
 <?php
 
-// Smarty Library
-require_once('lib/smarty/Smarty.class.php');
+
+
+$domain = 'Intranet';
+$root = $_SERVER['DOCUMENT_ROOT'].$domain;
+$path = $root.'/lib/Smarty/Smarty.class.php';
+require_once($path);
+
 
 // Smarty_HEHLan class
 class Smarty_HEHLan extends Smarty {
@@ -9,11 +14,12 @@ class Smarty_HEHLan extends Smarty {
     public function __construct()
     {
         parent::__construct();
+      
         
-        //$this->template_dir = '{#templatePath#}templates/';       
-        //$this->compile_dir = '/Intranet/templates_c/';
-        //$this->config_dir = '/Intranet/configs/';
-        //$this->cache_dir = '/Intranet/cache/';
+        //$this->setTemplateDir($root.'/templates');
+        //$this->setCompileDir($root.'/templates_c');
+        //$this->setCacheDir('lib/smarty/cache');
+        //$this->setConfigDir($root.'/templates');
         
         $this->force_compile = true;
         $this->debugging = true;
