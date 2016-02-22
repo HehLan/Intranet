@@ -16,9 +16,9 @@ class Smarty_HEHLan extends Smarty {
         //$this->cache_dir = '/Intranet/cache/';
         
         $this->force_compile = true;
-        $this->debugging = false;
+        $this->debugging = true;
         $this->caching = false;
-        $this->cache_lifetime = 120;
+        $this->cache_lifetime = 0;
         
         // Delimiters in HTML codes
         $this->left_delimiter = '{';

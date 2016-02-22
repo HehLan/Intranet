@@ -8,7 +8,7 @@
 	require_once('../class/Smarty_HEHLan.class.php');
 	
 	//need it ?
-	require_once('modules/connexion/classAuth.php');
+	require_once('../modules/connexion/classAuth.php');
 	
 	$con = false;
 	$chat = false;
@@ -34,6 +34,6 @@
 	$smarty->assign("chat", $chat);
 	$smarty->assign("SESSION", $_SESSION);
 	
-	$smarty->display('templates/default/admin_index.tpl');
+	$smarty->display('templates/default/admin/index.tpl');
 	
 ?>

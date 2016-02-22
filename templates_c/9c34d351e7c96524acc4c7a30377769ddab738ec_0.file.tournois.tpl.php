@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-02-19 13:46:21
-  from "E:\wamp\www\Intranet\templates\default\tournois.tpl" */
+/* Smarty version 3.1.29, created on 2016-02-22 00:16:24
+  from "D:\DATA\heh-www\BACKUP INTRANET\www\templates\default\tournois.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56c70e9db25461_00266081',
+  'unifunc' => 'content_56ca4548cfbd33_48881349',
   'file_dependency' => 
   array (
-    '77fc14985057c888789df6d1786ac8684b7fb4c5' => 
+    '9c34d351e7c96524acc4c7a30377769ddab738ec' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\templates\\default\\tournois.tpl',
-      1 => 1455661705,
+      0 => 'D:\\DATA\\heh-www\\BACKUP INTRANET\\www\\templates\\default\\tournois.tpl',
+      1 => 1456093144,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56c70e9db25461_00266081 ($_smarty_tpl) {
+function content_56ca4548cfbd33_48881349 ($_smarty_tpl) {
 ?>
 
 <?php
@@ -157,6 +157,11 @@ $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_2_saved;
  <?php echo $_smarty_tpl->tpl_vars['groupes']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_groupe']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_groupe']->value['index'] : null)]['heure'];?>
  )
                                     </th>
+								</tr>
+								<tr>
+									<th class="th_empty_round" >
+										Participants
+									</th>
                                     <?php
 $_smarty_tpl->tpl_vars['idManche'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['idManche']->step = 1;$_smarty_tpl->tpl_vars['idManche']->total = (int) ceil(($_smarty_tpl->tpl_vars['idManche']->step > 0 ? $_smarty_tpl->tpl_vars['tournoi']->value['nombreManche']+1 - (1) : 1-($_smarty_tpl->tpl_vars['tournoi']->value['nombreManche'])+1)/abs($_smarty_tpl->tpl_vars['idManche']->step));
 if ($_smarty_tpl->tpl_vars['idManche']->total > 0) {

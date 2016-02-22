@@ -59,6 +59,11 @@
                                     <th class="title_round" colspan="{$tournoi.nombreManche|@count}">
                                         {$groupes[groupe].nom_groupe} ( {$groupes[groupe].jour} {$groupes[groupe].heure} )
                                     </th>
+								</tr>
+								<tr>
+									<th class="th_empty_round" >
+										Participants
+									</th>
                                     {for $idManche=1 to $tournoi.nombreManche}
                                         <th class="th_manche_round">Manche {$idManche}</th>
                                         {/for}
