@@ -68,7 +68,6 @@ class Player
      * @return Joueurs
      */
     public function &setPseudo($pseudo) {
-        $this->notifyChanged(self::FIELD_PSEUDO, $this->pseudo, $pseudo);
         $this->pseudo = $pseudo;
         return $this;
     }
@@ -93,7 +92,6 @@ class Player
      * @return Joueurs
      */
     public function &setPassword($password) {
-        $this->notifyChanged(self::FIELD_PASSWORD, $this->password, $password);
         $this->password = $password;
         return $this;
     }
@@ -118,7 +116,6 @@ class Player
      * @return Joueurs
      */
     public function &setIdEmplacement($idEmplacement) {
-        $this->notifyChanged(self::FIELD_ID_EMPLACEMENT, $this->idEmplacement, $idEmplacement);
         $this->idEmplacement = $idEmplacement;
         return $this;
     }
@@ -143,7 +140,6 @@ class Player
      * @return Joueurs
      */
     public function &setNom($nom) {
-        $this->notifyChanged(self::FIELD_NOM, $this->nom, $nom);
         $this->nom = $nom;
         return $this;
     }
@@ -168,7 +164,6 @@ class Player
      * @return Joueurs
      */
     public function &setPrenom($prenom) {
-        $this->notifyChanged(self::FIELD_PRENOM, $this->prenom, $prenom);
         $this->prenom = $prenom;
         return $this;
     }
@@ -193,7 +188,6 @@ class Player
      * @return Joueurs
      */
     public function &setEmail($email) {
-        $this->notifyChanged(self::FIELD_EMAIL, $this->email, $email);
         $this->email = $email;
         return $this;
     }

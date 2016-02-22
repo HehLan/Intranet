@@ -189,6 +189,7 @@ if ($jpt > 1)
     $smarty->assign("totaux", $totaux);
 }
 
-$smarty->display('templates/default/tournois.tpl');
+//$smarty->display('templates/default/tournois.tpl');
+$smarty->display('tournois.tpl');
 
 ?>

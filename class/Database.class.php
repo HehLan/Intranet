@@ -1,6 +1,6 @@
 <?php
 
-require_once($root.'/class/objects/Player.class.php');
+require_once(DOCUMENT_ROOT.'/class/objects/Player.class.php');
 
 
 class Database
@@ -9,8 +9,7 @@ class Database
     private $port;
     private $database;
     private $user;
-    private $pwd;
-    
+    private $pwd;    
     private $connexion;
     private $sql;
     private $query;    
@@ -72,18 +71,18 @@ class Database
     {
         $this->setQuery('SELECT * FROM joueurs WHERE pseudo=:login AND password=:pwd');
         $this->bindValue(':login', $login, PDO::PARAM_STR);
-        $this->bindValue(':pwd', $password, PDO::PARAM_STR);
+        $this->bindValue(':pwd', sha1($password), PDO::PARAM_STR);
         if ($this->getQuery()->execute())
         {
-            $data = $this->getQuery()->fetch(PDO::FETCH_ASSOC);
-            $player = new Player($data['id_joueur'], $data['login'], $data['pwd'], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, $data['level']);
-            return $player;
+            $data = $this->getQuery()->fetch(PDO::FETCH_ASSOC);            
+            $player = new Player($data['id_joueur'], $data['pseudo'], $data['pwd'], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, $data['level']);
         }
         else
         {
             echo 'ERROR';
             exit;
-        }         
+        }  
+        return $player;
     }    
     
     public function getNavTournois()

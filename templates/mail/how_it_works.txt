@@ -1,0 +1,10 @@
+To use email templates, you must write:
+
+
+<?php
+
+
+mail($player['email'], 'Subject', $smarty->fetch('email_body.tpl'));
+
+
+?>

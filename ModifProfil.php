@@ -87,7 +87,7 @@ $database->getQuery()->execute();
 $joueur = $database->getQuery()->fetch(PDO::FETCH_OBJ);
 
 
-$dateOfBirth = date("d/m/Y", strtotime($joueur['date_de_naissance']));
+
 
 
 
@@ -107,10 +107,11 @@ $smarty->assign("con", $connected);
 $smarty->assign("next_matches", $database->getNextMatches($connected));
 $smarty->assign("navTournois", $database->getNavTournois());
 $smarty->assign("joueur", $joueur);
-$smarty->assign('dateOfBirth', $dateOfBirth);
 $smarty->assign('pseudoJeux', $pseudoJeux);
 $smarty->assign('equipes', $equipes);
-$smarty->display('templates/default/player_change.tpl');
+//$smarty->display('templates/default/player_change.tpl');
+$smarty->display('player_change.tpl');
+
 ?>
 
 

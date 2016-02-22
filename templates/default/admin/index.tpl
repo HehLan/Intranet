@@ -1,9 +1,8 @@
 {* Smarty *}
-{config_load file='templates/default/paths.conf'}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        {include file="{#templatePath#}meta.tpl"} 
+        {include file="meta.tpl"} 
         <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
         <script type="text/javascript" src="{#domain#}/assets/js/jquery-ui.js"></script>
         <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
@@ -11,8 +10,8 @@
     </head>
 
     <body role="document">	
-        {include file="{#templatePath#}header.tpl" con=$con next_matches=$next_matches}
-        {include file="{#templatePath#}nav.tpl"  con=$con navTournois=$navTournois}
+        {include file="header.tpl" con=$con next_matches=$next_matches}
+        {include file="nav.tpl"  con=$con navTournois=$navTournois}
 
         <?php require_once('modules/menuTop.php'); ?>
 
@@ -102,7 +101,7 @@
         </div>
 
 
-        {include file="{#templatePath#}footer.tpl"}
+        {include file="footer.tpl"}
         {if $chat}
             <script type="text/javascript">
                 $("#bloc_chat_message").keyup(function (event)

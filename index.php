@@ -30,14 +30,16 @@ if (!$connected)
     if (isset($_POST['login']) && isset($_POST['pwd']))
     {
         $player = $database->getPlayer($_POST['login'], $_POST['pwd']);          
-        if (!is_null($player))
-        {
+        //if (!is_null($player))
+        //{
             $_SESSION['id_joueur'] = $player->getIdJoueur();
+            echo 'coucou';
+            echo $player->getPseudo();
             $_SESSION['login'] = $player->getPseudo();
             $_SESSION['level'] = $player->getLevel();
             $_SESSION['password'] = $player->getPassword();
             $connected = true;
-        }
+        //}
     }
 }
 
@@ -61,5 +63,7 @@ $smarty->assign('chat', $chatIsActive);
 $smarty->assign('next_matches', $database->getNextMatches($connected));
 $smarty->assign('navTournois', $database->getNavTournois());
 $smarty->assign('newsList', $database->getNewsList());
-$smarty->display('templates/default/index.tpl');
+//$smarty->display('templates/default/index.tpl');
+$smarty->display('index.tpl');
+
 ?>

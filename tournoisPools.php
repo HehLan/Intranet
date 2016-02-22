@@ -130,8 +130,10 @@ $smarty->assign("nbr_lb2", $nbr_lb2);
 $smarty->assign("nbr_lb3", $nbr_lb3);
 $smarty->assign("nbrteam", $nbrteam);
 $smarty->assign("groupes", $groupes);
-    $smarty->assign("resultTeams", $resultTeams);
-    $smarty->assign("totaux", $totaux);
+$smarty->assign("resultTeams", $resultTeams);
+$smarty->assign("totaux", $totaux);
 
-$smarty->display('templates/default/tournoisPools.tpl');
+//$smarty->display('templates/default/tournoisPools.tpl');
+$smarty->display('tournoisPools.tpl');
+
 ?>

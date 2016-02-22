@@ -1,9 +1,8 @@
 {* Smarty *}
-{config_load file="templates/default/paths.conf"}
 <!DOCTYPE html>
 <html>
     <head>
-        {include file="{#templatePath#}meta.tpl"}
+        {include file="meta.tpl"}
         <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
         <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
         <script type="text/javascript" src="{#domain#}/assets/js/jquery-ui.js"></script>
@@ -14,8 +13,8 @@
     </head>
 
     <body role="document">
-        {include file="{#templatePath#}header.tpl" con=$con next_matches=$next_matches}
-        {include file="{#templatePath#}nav.tpl"  con=$con navTournois=$navTournois}
+        {include file="header.tpl" con=$con next_matches=$next_matches}
+        {include file="nav.tpl"  con=$con navTournois=$navTournois}
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">			
 
@@ -35,7 +34,9 @@
                             <input type="text" name="firstname" id="firstname" readonly value="{$joueur.firstname}"><br >
 
                             <label for="datepicker">Date de naissance :</label>
-                            <input type="text" name="date" id="date" readonly value="{$dateOfBirth}"><br >
+                            <input type="text" name="date" id="date" readonly value="bug to solve"><br >
+                            <!-- <?php echo date("d/m/Y", strtotime($joueur['date_de_naissance']));?> -->
+                                   
 
                             <label for="telephone">Téléphone :</label>
                             <input type="text" name="telephone" id="telephone" readonly value="{$joueur.gsm}"><br >
@@ -156,7 +157,7 @@
                 </div>
 
             </div>
-            {include file="{#templatePath#}footer.tpl"}
+            {include file="footer.tpl"}
         </div>		
     </body>
 </html>

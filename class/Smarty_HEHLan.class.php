@@ -3,9 +3,11 @@
 
 
 $domain = 'Intranet';
-$root = $_SERVER['DOCUMENT_ROOT'].$domain;
-$path = $root.'/lib/Smarty/Smarty.class.php';
-require_once($path);
+define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT'].$domain);
+define('SMARTY_DIR', DOCUMENT_ROOT.'/lib/Smarty/');
+
+
+require_once(SMARTY_DIR.'Smarty.class.php');
 
 
 // Smarty_HEHLan class
@@ -15,16 +17,23 @@ class Smarty_HEHLan extends Smarty {
     {
         parent::__construct();
       
+        // It is not recommended to put these directories under the web server document root
+        $this->setTemplateDir(DOCUMENT_ROOT.'/templates/default/');
+        $this->setCompileDir(DOCUMENT_ROOT.'/templates_c/');
+        $this->setCacheDir(DOCUMENT_ROOT.'/cache/');
+        $this->setConfigDir(DOCUMENT_ROOT.'/configs/');
         
-        //$this->setTemplateDir($root.'/templates');
-        //$this->setCompileDir($root.'/templates_c');
-        //$this->setCacheDir('lib/smarty/cache');
-        //$this->setConfigDir($root.'/templates');
+        $this->configLoad('paths.conf');
+              
         
-        $this->force_compile = true;
+        $this->compile_check = true;    // put to false for maximal performance when it is into production
+        $this->force_compile = true;    // should never be used in a production environment
         $this->debugging = true;
-        $this->caching = false;
+        //$this->debugging_ctrl = ($_SERVER['SERVER_NAME'] == 'localhost')
+        $this->caching = 2;
         $this->cache_lifetime = 0;
+        
+        
         
         // Delimiters in HTML codes
         $this->left_delimiter = '{';

@@ -34,5 +34,6 @@ $smarty->assign("emplacements", $locations);
 $smarty->assign("emplacements1", $locations_1);
 $smarty->assign("joueurs", $players);
 $smarty->assign("equipes", $teams);
-$smarty->display('templates/default/joueurs.tpl');
+//$smarty->display('templates/default/joueurs.tpl');
+$smarty->display('joueurs.tpl');
 ?>

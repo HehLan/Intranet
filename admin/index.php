@@ -2,8 +2,8 @@
     session_start();
     require_once('../common/connect.php');
     require_once('../common/utils.php');
-    require_once('../class/Database.class.php');
     require_once('../class/Smarty_HEHLan.class.php');
+    require_once('../class/Database.class.php');
     require_once('modules/connexion/classAuth.php');
 
     $con = false;
@@ -23,12 +23,12 @@
     } 
 
     $sql = 'SELECT id_equipes, nom FROM equipes ORDER BY nom';  
-    $database->query($sql);
+    $database->setQuery($sql);
     $database->getQuery()->execute();
 
     // send to the template
     $smarty->assign("con", $con);
     $smarty->assign("chat", $chat);
     $smarty->assign("SESSION", $_SESSION);
-    $smarty->display('../templates/admin/index.tpl');	
+    $smarty->display(DOCUMENT_ROOT.'/templates/default/admin/index.tpl');	
 ?>
