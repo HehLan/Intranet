@@ -1,50 +1,70 @@
 <?php
 session_start();
-require_once('modules/connect.php');
+require_once('../class/Smarty_HEHLan.class.php');
+require_once('../class/Database.class.php');
+require_once('../class/Auth.class.php');
 
-$con=false;
+$con = false;
 
-if(isset($_SESSION['id_joueur']))
+$connected = false;
+$allowed = false;
+$chatIsActive = false;
+$database = new Database();
+
+
+$connected = Auth::isLogged();
+$allowed = Auth::isAllowed(3);
+
+
+if (!$connected && !$allowed)
 {
-	if(($_SESSION['id_joueur']!=0) && $_SESSION['level']<=3) $con=true;
-}
-if(!$con)
-{
- header('Location: ../index.php');
+    header('Location: ../index.php');
 } 
 
-if(isset($_POST['id_news'])) $id_news=$_POST['id_news'];
-else exit;
-		
-if($id_news==0)
+
+
+if (isset($_POST['id_news']))
 {
-	$sql="INSERT INTO news (titre,texte,quand,invisible) 
-	VALUES (:titre,:texte,NOW(),:invisible) ";
-	$query=$connexion->prepare($sql);
-	$query->bindValue('titre', $_POST['titre'], PDO::PARAM_STR);
-	$query->bindValue('texte', $_POST['texte'], PDO::PARAM_STR);
-	$query->bindValue('invisible', 0, PDO::PARAM_INT);
-	if($query->execute())
-	{
-		header('Location: news.php');
-	}
-	else echo 'ERREUR INSERT';
-	
+     $id_news = $_POST['id_news'];
+} 
+else
+{
+    exit;
+}
+		
+if ($id_news == 0)
+{
+    $sql = 'INSERT INTO news (titre,texte,quand,invisible) 
+    VALUES (:titre,:texte,NOW(),:invisible)';
+    $database->setQuery($sql);
+    $database->bindValue('titre', $_POST['titre'], PDO::PARAM_STR);
+    $database->bindValue('texte', $_POST['texte'], PDO::PARAM_STR);
+    $database->bindValue('invisible', 0, PDO::PARAM_INT);
+    if($database->getQuery()->execute())
+    {
+        header('Location: news.php');
+    }
+    else
+    {
+        echo 'ERREUR INSERT';
+    }	
 }
 else
 {
-	$sql="UPDATE news SET titre=:titre, texte=:texte, quand=NOW() WHERE id_news=:id";
-	$query=$connexion->prepare($sql);
-	$query->bindValue('titre', $_POST['titre'], PDO::PARAM_STR);
-	$query->bindValue('texte', $_POST['texte'], PDO::PARAM_STR);
-	$query->bindValue('id', $id_news, PDO::PARAM_INT);
-	if($query->execute())
-	{
-		header('Location: news.php');
-	}
-	else echo 'ERREUR UPDATE';	
-}		
-		
+    $sql = 'UPDATE news SET titre=:titre, texte=:texte, quand=NOW() WHERE id_news=:id';
+    $database->setQuery($sql);
+    $database->bindValue('titre', $_POST['titre'], PDO::PARAM_STR);
+    $database->bindValue('texte', $_POST['texte'], PDO::PARAM_STR);
+    $database->bindValue('id', $id_news, PDO::PARAM_INT);
+    if($database->getQuery()->execute())
+    {
+        header('Location: news.php');
+    }
+    else
+    {
+        echo 'ERREUR UPDATE';	
+    }
+}	
 
 
 

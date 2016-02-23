@@ -1,35 +1,50 @@
 <?php
 session_start();
-require_once('modules/connect.php');
+require_once('../class/Smarty_HEHLan.class.php');
+require_once('../class/Database.class.php');
+require_once('../class/Auth.class.php');
 
-$con=false;
 
-if(isset($_SESSION['id_joueur']))
+
+$connected = false;
+$allowed = false;
+$chatIsActive = false;
+$database = new Database();
+
+$connected = Auth::isLogged();
+$allowed = Auth::isAllowed(3);
+
+
+if(!$connected && !$allowed)
 {
-	if(($_SESSION['id_joueur']!=0) && $_SESSION['level']<=3) $con=true;
-}
-if(!$con)
-{
- header('Location: ../index.php');
+    header('Location: ../index.php');
 } 
+
+
 
 if(isset($_GET['id_news']) && isset($_GET['invisible']))
 {
- $id_news=$_GET['id_news'];
- $invi=$_GET['invisible'];
+    $id_news = $_GET['id_news'];
+    $invi = $_GET['invisible'];
 }
-else exit;
+else
+{
+    exit;
+}
 		
 
-	$sql="UPDATE news SET invisible=:invi WHERE id_news=:id";
-	$query=$connexion->prepare($sql);
-	$query->bindValue('invi', $invi, PDO::PARAM_INT);
-	$query->bindValue('id', $id_news, PDO::PARAM_INT);
-	if($query->execute())
-	{
-		header('Location: news.php');
-	}
-	else echo 'ERREUR EFFACER';	
+$sql = 'UPDATE news SET invisible=:invi WHERE id_news=:id';
+$database->setQuery($sql);
+$database->bindValue('invi', $invi, PDO::PARAM_INT);
+$database->bindValue('id', $id_news, PDO::PARAM_INT);
+if($database->getQuery()->execute())
+{
+    header('Location: news.php');
+}
+else
+{
+    echo 'ERREUR EFFACER';	
+}
 
 
 

@@ -5,6 +5,7 @@ session_start();
 require_once('common/utils.php'); // get some utility functions
 require_once('class/Smarty_HEHLan.class.php');
 require_once('class/Database.class.php');
+require_once('class/Auth.class.php');
 
 
 // Variables
@@ -14,14 +15,7 @@ $database = new Database();
 $smarty = new Smarty_HEHLan();
 
 
-// Test if a user is connected
-if (isset($_SESSION['id_joueur']))
-{
-    if (($_SESSION['id_joueur'] != 0))
-    {
-        $connected = true;
-    }
-}
+$connected = Auth::isLogged();
 
 // This is an unknown user (no connected)
 if (!$connected)
@@ -33,8 +27,6 @@ if (!$connected)
         //if (!is_null($player))
         //{
             $_SESSION['id_joueur'] = $player->getIdJoueur();
-            echo 'coucou';
-            echo $player->getPseudo();
             $_SESSION['login'] = $player->getPseudo();
             $_SESSION['level'] = $player->getLevel();
             $_SESSION['password'] = $player->getPassword();
@@ -63,7 +55,6 @@ $smarty->assign('chat', $chatIsActive);
 $smarty->assign('next_matches', $database->getNextMatches($connected));
 $smarty->assign('navTournois', $database->getNavTournois());
 $smarty->assign('newsList', $database->getNewsList());
-//$smarty->display('templates/default/index.tpl');
 $smarty->display('index.tpl');
 
 ?>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        {include file="meta.tpl"} 
+        {include file="admin/meta.tpl"} 
         <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
         <script type="text/javascript" src="{#domain#}/assets/js/jquery-ui.js"></script>
         <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
@@ -10,84 +10,26 @@
     </head>
 
     <body role="document">	
-        {include file="header.tpl" con=$con next_matches=$next_matches}
-        {include file="nav.tpl"  con=$con navTournois=$navTournois}
+        {include file="admin/header.tpl" con=$con }
+        {include file="admin/nav.tpl"  con=$con }
 
-        <?php require_once('modules/menuTop.php'); ?>
 
         <div id="container" class="container-fluid">
 
             <div id="contenu">
-                <div id="ListeEquipeAdmin">
-                    <fieldset>
-                        <legend>Liste des équipes</legend>
-                        <table class="listeEquipes">
-                            <thead>
-                                <tr>
-                                    <th>Les équipes</th>
-                                    <th>Joueurs dans l'équipe</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div id="listeEquipeAdmin">
-                                            {foreach from=$teams item=team}
-                                                <h6 class="EquipeAdmin" value="{$team['id_equipes']}">{$team['nom']}</h6>
-                                            {/foreach}
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div id="listeEquipeJoueurAdmin">
-                                            What here ?
-                                        </div>
-                                        <input id="submitNewPlayerInTeam" type="button" value="Ajouter un joueur" style="display: none;">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td  colspan="2" style="font-size: 16px; font-weight: bold; color: #fff;">
-                                        Informations du joueur
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td  colspan="2">
-                                        <div id="InfoJoueurEquipes" style="height:250px;">
-                                              What here ?
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>        
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Ajouter une équipe</legend>
-                        <div id="creerTeamAdmin" >
-                            <label for="Team">Nom de la team :</label>
-                            <input type="text" name="Team" id="Team"><br />
-
-                            <div id="pseudoboxTeam" style="border: none; margin: 0px; padding: 0px"></div>
-
-                            <label for="TagTeam">Tag de la team :</label>
-                            <input type="text" name="TagTeam" id="TagTeam"><br />
-                            <div id="pseudoboxTagTeam" style="border: none; margin: 0px; padding: 0px"></div>
-
-                            <label for="new_psw_equipe">Mot de passe : </label>
-                            <input type="password" name="new_psw_equipe" id="new_psw_equipe" /><br/>
-                            <label for="new_psw_equipe2">Confirmer mot de passe : </label>
-                            <input type="password" name="new_psw_equipe2" id="new_psw_equipe2" />
-                        </div>
-                        <div id="erreurNewTeamAdmin" style="height: auto;"></div>
-                        <input type="button" id="submitCreerNewEquipeAdmin" value="Ajouter l'équipe">
-                    </fieldset>
-                    <div id="infoEquipeAdmin" style="display: none"></div>
-                </div>
+                <h2>Overview</h2>
+                <p>Ceci est la page d'acceuil de la partie admin.</p>
+                <p>Vous pourrez voir une vue d'ensemble de la gestion de la HEHLan.</p>
+                <h3>Statistiques</h3>
+                <p>Dessiner de beaux graphes :)</p>
             </div>
-
         </div>
 
+        <!-- gap to have the footer in the bottom of the window -->
+        <div style="height: 450px;">
 
-        {include file="footer.tpl"}
+        </div>
+        {include file="admin/footer.tpl"}
         {if $chat}
             <script type="text/javascript">
                 $("#bloc_chat_message").keyup(function (event)

@@ -24,6 +24,23 @@ if(!$connected && !$allowed)
 } 
 
 
+$sql = 'SELECT id_equipes, nom FROM equipes ORDER BY nom';  
+$database->setQuery($sql);
+$database->getQuery()->execute();
+
+try
+{
+    while($team = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
+    {
+        $teams[] = $team;        
+    }
+}
+catch(PDOException $e)
+{
+    echo 'Base de données est indisponible pour le moment!';
+    exit;
+}
+
 
 
 
@@ -31,5 +48,9 @@ if(!$connected && !$allowed)
 // send to the template
 $smarty->assign("con", $connected);
 $smarty->assign("chat", $chatIsActive);
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/index.tpl');	
+$smarty->assign('teams', $teams);
+
+
+
+$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/equipes.tpl');	
 ?>
