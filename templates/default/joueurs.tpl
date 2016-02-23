@@ -68,17 +68,22 @@
                             <label for="recherche_joueur">Rechercher un pseudo :</label>
                             <input type="text" name="recherche_joueur" id="recherche_joueur" />
                         </form>
+                        <br>
 
                         <!-- Result Displaying -->
                         <div id="results" style="display: none">
                             <strong>Pas de résultat</strong>
+                            <br>
+                            <br>
                         </div>                       
              
                         
                         <!-- Player List -->
                         {foreach name=playerLoop from=$joueurs item=joueur}
                             {if $smarty.foreach.playerLoop.first}
-                                <u>Liste des joueurs :</u>
+                                <div>
+                                    <u>Liste des joueurs :</u>
+                                </div>
                                 <br>
                                 <ul id="liste_joueur">
                             {/if}
@@ -109,13 +114,18 @@
                             <label for="recherche_equipe">Rechercher une équipe :</label>
                             <input type="text" name="recherche_equipe" id="recherche_equipe" />
                         </form>
+                        <br>
 
                         <div id="results_equipe" style="display: none">
                             <strong>Pas de résultat</strong>
+                            <br>
+                            <br>
                         </div>
 
                         <div>
-                            <u>Liste des Equipes :</u>
+                            <div>
+                                <u>Liste des Equipes :</u>
+                            </div>
                             <br>
                             <ul id="liste_equipe">
                                 {section name=sec1 loop=$equipes}
