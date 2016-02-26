@@ -3,7 +3,7 @@
 
 
 $domain = '/Intranet';
-define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT'].$domain);
+define('DOCUMENT_ROOT', $_SERVER['CONTEXT_DOCUMENT_ROOT'].$domain);
 define('SMARTY_DIR', DOCUMENT_ROOT.'/lib/Smarty/');
 
 
