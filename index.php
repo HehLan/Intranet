@@ -24,14 +24,14 @@ if (!$connected)
     if (isset($_POST['login']) && isset($_POST['pwd']))
     {
         $player = $database->getPlayer($_POST['login'], $_POST['pwd']);          
-        //if (!is_null($player))
-        //{
+        if (($player->getIdJoueur())== null)
+            header('Location: '.WEB_ROOT);
             $_SESSION['id_joueur'] = $player->getIdJoueur();
             $_SESSION['login'] = $player->getPseudo();
             $_SESSION['level'] = $player->getLevel();
             $_SESSION['password'] = $player->getPassword();
             $connected = true;
-        //}
+        
     }
 }
 

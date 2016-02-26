@@ -51,6 +51,11 @@
                         </div>
                     {/section}
                 </div>		
+
+                <!-- ****************************************** test button for pick *********************************************-->
+                <a target="_blank" href="pick.php">Click to pick !</a>
+                <!-- **************************************************************************************************** -->
+
                 <div id="tabs" class="col-lg-2 col-xs-12">
                     <div class="row">
                         <div class="col-lg-6 col-xs-6">
@@ -76,7 +81,6 @@
                             <br>
                             <br>
                         </div>                       
-             
                         
                         <!-- Player List -->
                         {foreach name=playerLoop from=$joueurs item=joueur}
@@ -103,8 +107,6 @@
                         {foreachelse}
                             <p>No players !</p>
                         {/foreach}               
-                        
-                        
                     </div>
 
                     <!-- Team Tab -->
@@ -138,6 +140,7 @@
                     <div id="dialogPseudo_Emplacement" style="display:none;"></div>
                 </div>
             </div>
+
         </div>
         {include file="{#templatePath#}footer.tpl"}
     </body>
