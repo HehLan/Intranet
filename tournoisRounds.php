@@ -1,19 +1,5 @@
 <?php
-/*
-// Listing players for this tournament
-foreach ($groupes as $groupe) {    
-	$sql = 'SELECT j.id_joueur AS id, j.pseudo AS pseudo
-				FROM joueurs AS j, joueurs_groupes AS g
-				WHERE g.id_groupe=:idg AND j.id_joueur=g.id_joueur';
-	$query = $connexion->prepare($sql);
-	$query->bindValue(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
-	if ($query->execute())
-		$participants[$groupe['id_groupe']] = $query->fetchAll(PDO::FETCH_ASSOC);
-	else {
-		echo 'ERREUR SQL JOUEURS';
-		exit;
-	}
-}*/
+
 // Setting second and third loser brackets
 $nbr_lb2 = 0;
 $nbr_lb3 = 0;
@@ -107,39 +93,6 @@ foreach ($groupes as $itGroupe => $groupe) {
 		echo 'ERREUR SQL MANCHES';
 		exit;
 	}
-	
-	/*
-	mj.numero_manche, mj.score
-			
-	
-	$sql = "SELECT j.pseudo, mj.id_joueur, SUM(mj.score) as total,
-		mj.numero_manche, mj.score
-		FROM joueurs as j 
-		LEFT JOIN manches_joueurs as mj ON j.id_joueur=mj.id_joueur 
-		LEFT JOIN matchs as m ON mj.id_match=m.id_match
-		WHERE m.id_groupe=:idg 
-		GROUP BY j.id_joueur";
-	$query = $connexion->prepare($sql);
-	$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
-	if ($query->execute())
-	{
-		while ($ligne = $query->fetch(PDO::FETCH_ASSOC))
-		{
-			$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['pseudo'] = $ligne['pseudo'];
-			$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['ok'] = false;
-			$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['total'] = 0;
-			$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['scores'] =  array_fill(1, $tournoi['nombreManche'], "-");
-			$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['total'] = $ligne['total']; 
-			//$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['scores'][$ligne['numero_manche']] = $ligne['score'];
-			var_dump($ligne);
-			printf("<br /><br />");
-		}
-	}
-	else 
-	{
-		echo 'ERREUR SQL MANCHES';
-		exit;
-	}*/
 }
 
 // Applying Template
@@ -151,7 +104,6 @@ $smarty->assign("nbr_lb2", $nbr_lb2);
 $smarty->assign("nbr_lb3", $nbr_lb3);
 $smarty->assign("groupes", $groupes);
 
-//$smarty->display('templates/default/tournoisRounds.tpl');
 $smarty->display('tournoisRounds.tpl');
 
 ?>

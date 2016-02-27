@@ -224,10 +224,14 @@ class Database
     {
         // Create tooltip of location div tags
         $sql = file_get_contents('sql/getLocations_1.sql');
-        $this->setQuery($sql);
+        /*$this->setQuery($sql);
         $this->getQuery()->execute();
         $locations_1 = array();
-        while ($location_1 = $this->getQuery()->fetch(PDO::FETCH_ASSOC))
+        while ($location_1 = $this->getQuery()->fetch(PDO::FETCH_ASSOC))*/
+			
+		$quer = $this->connexion->prepare($sql);
+		if($quer->execute())
+			while($location_1 = $quer->fetch(PDO::FETCH_ASSOC))
         {
             $id_joueur = $location_1['id_joueur'];  
             $team = $this->getLocations_2($id_joueur);            
@@ -236,6 +240,8 @@ class Database
             $location_1['nomTournoi'] = implode(', ', $nomTournoi);
             $locations_1[] = $location_1;
         }
+				var_dump($locations_1);
+
         return $locations_1;
     }
     
