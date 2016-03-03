@@ -1,4 +1,4 @@
-SELECT *
-FROM emplacement,joueurs
-WHERE joueurs.id_emplacement = emplacement.id_emplacement
-AND emplacement.id_emplacement != 0
+SELECT * FROM joueurs as j
+RIGHT JOIN emplacement as e 
+ON e.id_emplacement = j.id_emplacement 
+WHERE j.id_emplacement != 0;

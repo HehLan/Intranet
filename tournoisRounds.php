@@ -1,20 +1,5 @@
 <?php
 
-// Listing players for this tournament
-foreach ($groupes as $groupe) {    
-	$sql = 'SELECT j.id_joueur AS id, j.pseudo AS pseudo
-				FROM joueurs AS j, joueurs_groupes AS g
-				WHERE g.id_groupe=:idg AND j.id_joueur=g.id_joueur';
-	$query = $connexion->prepare($sql);
-	$query->bindValue(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
-	if ($query->execute())
-		$participants[$groupe['id_groupe']] = $query->fetchAll(PDO::FETCH_ASSOC);
-	else {
-		echo 'ERREUR SQL JOUEURS';
-		exit;
-	}
-}
-
 // Setting second and third loser brackets
 $nbr_lb2 = 0;
 $nbr_lb3 = 0;
@@ -52,7 +37,7 @@ foreach ($groupes as $itGroupe => $groupe) {
 	//-----------------TOURNOI TYPE UT TRACKMANIA-----------------
 	
 	// Get time and number of rounds for each group
-	$sql = "SELECT nbr_manche, heure FROM matchs WHERE id_groupe=:idg LIMIT 0,1";
+	$sql = "SELECT heure, nbr_manche FROM matchs WHERE id_groupe=:idg LIMIT 0,1";
 	$query = $connexion->prepare($sql);
 	$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
 	$heure = '';
@@ -69,47 +54,42 @@ foreach ($groupes as $itGroupe => $groupe) {
 		exit;
 	}
 	
-	// Initialize every player's row
-	foreach ($participants[$groupe['id_groupe']] as $joueur) {
-		$groupes[$itGroupe]['joueurs'][$joueur['id']]['pseudo'] = $joueur['pseudo'];
-		$groupes[$itGroupe]['joueurs'][$joueur['id']]['ok'] = false;
-		$groupes[$itGroupe]['joueurs'][$joueur['id']]['total'] = 0;
-		$groupes[$itGroupe]['joueurs'][$joueur['id']]['scores'] =  array_fill(1, $tournoi['nombreManche'], "-");
-	}
-	//var_dump($groupes[$itGroupe]);
 	
-	$sql = "SELECT j.pseudo, mj.id_joueur, SUM(mj.score) as total
-		FROM joueurs as j, manches_joueurs as mj, matchs as m 
-		WHERE m.id_groupe=:idg AND mj.id_match=m.id_match and j.id_joueur=mj.id_joueur
-		GROUP BY mj.id_joueur
-		ORDER BY total DESC, j.pseudo";
+	$sql = "SELECT j.pseudo, j.id_joueur, SUM(mj.score) as total
+		FROM joueurs_groupes as jg
+		RIGHT JOIN joueurs as j ON jg.id_joueur = j.id_joueur
+		LEFT JOIN manches_joueurs as mj ON j.id_joueur=mj.id_joueur
+		WHERE jg.id_groupe=:idg 
+		GROUP BY j.id_joueur";
 	$query = $connexion->prepare($sql);
 	$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
 	if ($query->execute())
 	{
-		$totaux = $query->fetchAll(PDO::FETCH_ASSOC);
-		foreach ($totaux as $total)
+		while ($ligne = $query->fetch(PDO::FETCH_ASSOC))
 		{
-			$groupes[$itGroupe]['joueurs'][$total['id_joueur']]['total'] = $total['total']; 
+			$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['pseudo'] = $ligne['pseudo'];
+			$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['ok'] = false;
+			$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['scores'] =  array_fill(1, $tournoi['nombreManche'], "-");
+			if(isset($ligne['total']))
+				$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['total'] = $ligne['total'];
+			else
+				$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['total'] = 0;
+			
+			$scores_querying = 
+				"SELECT score, numero_manche
+				FROM manches_joueurs
+				WHERE id_joueur=:idj";
+			$query_score = $connexion->prepare($scores_querying);
+			$query_score->bindValue('idj', $ligne['id_joueur'], PDO::PARAM_INT);
+			if($query_score->execute())
+				while($score = $query_score->fetch(PDO::FETCH_ASSOC))
+				{
+					$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['scores'][$score['numero_manche']] = $score['score'];
+				}
 		}
 	}
 	else 
 	{
-		echo 'ERREUR SQL MANCHES';
-		exit;
-	}
-
-	$sql = "SELECT mj.id_joueur, mj.numero_manche, mj.score
-		FROM manches_joueurs as mj, matchs as m 
-		WHERE m.id_groupe=:idg AND mj.id_match=m.id_match 
-		ORDER BY id_joueur";
-	$query = $connexion->prepare($sql);
-	$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
-	if ($query->execute()) {
-		while ($ligne = $query->fetch(PDO::FETCH_ASSOC)) {
-			$groupes[$itGroupe]['joueurs'][$ligne['id_joueur']]['scores'][$ligne['numero_manche']] = $ligne['score'];
-		}
-	} else {
 		echo 'ERREUR SQL MANCHES';
 		exit;
 	}
@@ -124,7 +104,6 @@ $smarty->assign("nbr_lb2", $nbr_lb2);
 $smarty->assign("nbr_lb3", $nbr_lb3);
 $smarty->assign("groupes", $groupes);
 
-//$smarty->display('templates/default/tournoisRounds.tpl');
 $smarty->display('tournoisRounds.tpl');
 
 ?>
