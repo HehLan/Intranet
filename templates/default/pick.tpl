@@ -15,13 +15,12 @@
     	{include file="header.tpl"}
 
     	<!-- CUSTOM NAVBAR TEMPLATE -->
-		<nav id="navigation" class="navbar navbar-inverse" role="navigation" >
-		    <div class="container-fluid">
-		        <div class="navbar-header" style="width:100%; height:50px;"/>
-		        <div class="collapse navbar-collapse"/>
-		    </div>			
-		</nav>
-
+        <nav id="navigation" class="navbar navbar-inverse" role="navigation" >
+            <div class="container-fluid">
+                <div class="navbar-header" style="width:100%; height:50px;"/>
+                <div class="collapse navbar-collapse"/>
+            </div>			
+        </nav>
 
     </body>
 </html>
