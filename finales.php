@@ -3,6 +3,8 @@ session_start();
 require_once('common/connect.php');
 require_once('common/utils.php');
 require_once('class/Smarty_HEHLan.class.php');
+require_once('class/Database.class.php');
+
 
 $con = false;
 $smarty = new Smarty_HEHLan();
@@ -51,14 +53,9 @@ if (!$query->execute()) {
 	$nbr_lb3 = $query->fetch(PDO::FETCH_ASSOC);
 	$nbr_lb3 = $nbr_lb3['nbr'];
 }
-echo '<h1>Finales de ' . $tournoi['nomTournoi'] . '</h1>';
-echo 'Cliquez ici pour voir les <a href="tournois.php?id=' . $id_tournoi . '">QUALIFICATIONS</a><br>';
-if ($nbr_lb2 > 0)
-	echo 'Cliquez ici pour voir les <a href="finales.php?id=' . $id_tournoi . '&lb=2">FINALES DES LOSERS (silver)</a><br>';
-if ($nbr_lb3 > 0)
-	echo 'Cliquez ici pour voir les <a href="finales.php?id=' . $id_tournoi . '&lb=3">FINALES DES ULTRA NOOBS (bronze)</a><br>';
+$smarty->assign("nbr_lb2", $nbr_lb2);
+$smarty->assign("nbr_lb3", $nbr_lb3);
 
-echo '<br>';
 $nbrmatch = 0;
 if( $tournoi['joueurParTeam'] > 1)
 	include_once('tournoisPools.php');
