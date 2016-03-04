@@ -1,7 +1,7 @@
 <?php
 
-$domain = '/edsa-Intranet';
-define('DOCUMENT_ROOT', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
+$domain = '/Intranet';
+define('DOCUMENT_ROOT', $_SERVER['CONTEXT_DOCUMENT_ROOT'].$domain);
 define('SMARTY_DIR', DOCUMENT_ROOT.'/lib/Smarty/');
 define('WEB_ROOT', 'http://localhost/'.$domain);
 define('ADMIN_ROOT', 'http://localhost/'.$domain.'/admin');
