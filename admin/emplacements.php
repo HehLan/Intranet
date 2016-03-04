@@ -36,8 +36,8 @@ while($location = $database->getQuery()->fetch(PDO::FETCH_ASSOC))
 
 $sql = 'SELECT * FROM emplacement,joueurs WHERE joueurs.id_emplacement=emplacement.id_emplacement and emplacement.id_emplacement!=0';
 $database->setQuery($sql);
-$database->getQuery()->execute();
-while($location_1 = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
+$query_1 = $database->getQuery()->execute();
+while($location_1 = $query_1->fetch(PDO::FETCH_ASSOC)) 
 {
     $locations_1[] = $location_1;
     $id_joueur = $location_1['id_joueur'];
