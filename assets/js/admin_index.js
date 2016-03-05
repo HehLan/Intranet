@@ -10,7 +10,7 @@ $(document).ready(function () {
         $(this).css({background: "rgba(0,0,255,0.2)"});
         $.ajax({
             type: "POST",
-            url: "admin/listeJoueursEquipe.php",
+            url: "unused/listeJoueursEquipe.php",
             data: "id_equipe=" + $(this).attr("value"),
             success: function (contenu, etat) {
                 $('#listeEquipeJoueurAdmin').html(contenu);
@@ -23,7 +23,7 @@ $(document).ready(function () {
         $(this).css({background: "rgba(0,0,255,0.2)"});
         $.ajax({
             type: "POST",
-            url: "admin/InfoJoueurAdmin.php",
+            url: "unused/InfoJoueurAdmin.php",
             data: "id_joueur=" + $(this).attr("value"),
             success: function (contenu, etat) {
                 $('#InfoJoueurEquipes').html(contenu);
