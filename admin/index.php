@@ -7,6 +7,7 @@ require_once('../class/Database.class.php');
 require_once('../class/Auth.class.php');
 
 
+
 $connected = false;
 $allowed = false;
 $chatIsActive = false;
@@ -21,15 +22,11 @@ $allowed = Auth::isAllowed(3);
 if(!$connected && !$allowed)
 {
     header('Location: ../index.php');
-} 
-
-
-
-
+}
 
 
 // send to the template
 $smarty->assign("con", $connected);
 $smarty->assign("chat", $chatIsActive);
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/index.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/index.tpl');	
 ?>

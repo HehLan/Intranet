@@ -5,6 +5,8 @@ require_once('../common/utils.php');
 require_once('../class/Smarty_HEHLan.class.php');
 require_once('../class/Database.class.php');
 require_once('../class/Auth.class.php');
+require_once('../class/Query.class.php');
+
 
 
 $connected = false;
@@ -24,19 +26,17 @@ if(!$connected && !$allowed)
 } 
 
 
-
-
 /**********************************
  *	tournois avec equipes
  **********************************/
 $sql = 'SELECT id_tournoi, nomTournoi FROM tournoi WHERE joueurParTeam = 5';
-$database->setQuery($sql);
-$database->getQuery($sql)->execute();
+$query = new Query($database, $sql);
+$query->execute();
 
 $select = "SELECT e.*";
 $lefton = " FROM  equipes e";
 $i = 0;
-while($tournoi = $database->getQuery()->fetch(PDO::FETCH_ASSOC))
+foreach($query->getResult() as $tournoi)
 {
     $tab[$i][1] = $tournoi['id_tournoi'];
     $tab[$i][2] = $tournoi['nomTournoi'];
@@ -45,9 +45,9 @@ while($tournoi = $database->getQuery()->fetch(PDO::FETCH_ASSOC))
     $i++;
 }
 $sql = $select.$lefton.' ORDER BY e.nom';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-$donnees = $database->getQuery()->fetchAll();
+$query = new Query($database, $sql);
+$query->execute();
+$donnees = $query->getResult();
 
 
 
@@ -55,13 +55,13 @@ $donnees = $database->getQuery()->fetchAll();
  *	tournois individuels
  **********************************/
 $sql = 'SELECT id_tournoi, nomTournoi FROM tournoi WHERE joueurParTeam = 1';
-$database->setQuery($sql);
-$database->getQuery()->execute();
+$query = new Query($database, $sql);
+$query->execute();
 
 $select = "SELECT j.*";
 $lefton = " FROM  joueurs j";
 $i = 0;
-while($tournoi = $database->getQuery()->fetch(PDO::FETCH_ASSOC))
+foreach($query->getResult() as $tournoi)
 {
     $tabJT[$i][1] = $tournoi['id_tournoi'];
     $tabJT[$i][2] = $tournoi['nomTournoi'];
@@ -69,10 +69,10 @@ while($tournoi = $database->getQuery()->fetch(PDO::FETCH_ASSOC))
     $lefton.=" LEFT OUTER JOIN joueurtournoi AS jt".$tournoi['id_tournoi']." ON jt".$tournoi['id_tournoi'].".id_joueur = j.id_joueur AND jt".$tournoi['id_tournoi'].".id_tournoi = ".$tournoi['id_tournoi'];
     $i++;
 }
-$sql2 = $select.$lefton.' ORDER BY j.pseudo';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-$donneesJT = $database->getQuery()->fetchAll();                             
+$sql = $select.$lefton.' ORDER BY j.pseudo';
+$query = new Query($database, $sql);
+$query->execute();
+$donneesJT = $query->getResult();                             
 				
 
 
@@ -87,5 +87,5 @@ $smarty->assign('donneesJT', $donneesJT);
 
 
 
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/inscriptions.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/inscriptions.tpl');	
 ?>

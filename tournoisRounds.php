@@ -104,6 +104,6 @@ $smarty->assign("nbr_lb2", $nbr_lb2);
 $smarty->assign("nbr_lb3", $nbr_lb3);
 $smarty->assign("groupes", $groupes);
 
-$smarty->display('tournoisRounds.tpl');
+$smarty->display('default/tournoisRounds.tpl');
 
 ?>

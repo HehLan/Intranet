@@ -19,22 +19,22 @@ class Player
     private $level;
     
     
-    public function __construct($id, $login, $password, $place = NULL, $name = NULL, $firstname = NULL, $mail = NULL, $sex = NULL, $phone = NULL, $hasPaid = NULL, $avatar = NULL, $school = NULL, $dateOfBirth = NULL, $level)
+    public function __construct($data)
     {
-        $this->idJoueur = $id;
-        $this->pseudo = $login;
-        $this->password = $password;
-        $this->idEmplacement = $place;
-        $this->nom = $name;
-        $this->prenom = $firstname;
-        $this->email = $mail;
-        $this->sexe = $sex;
-        $this->gsm = $phone;
-        $this->paye = $hasPaid;
-        $this->avatar = $avatar;
-        $this->ecole = $school;
-        $this->dateDeNaissance = $dateOfBirth;
-        $this->level = $level;        
+        $this->idJoueur = $data['id_joueur'];
+        $this->pseudo = $data['pseudo'];
+        $this->password = $data['password'];
+        $this->idEmplacement = $data['id_emplacement'];
+        $this->nom = $data['nom'];
+        $this->prenom = $data['prenom'];
+        $this->email = $data['email'];
+        $this->sexe = $data['sexe'];
+        $this->gsm = $data['gsm'];
+        $this->paye = $data['paye'];
+        $this->avatar = $data['avatar'];
+        $this->ecole = $data['ecole'];
+        $this->dateDeNaissance = $data['date_de_naissance'];
+        $this->level = $data['level'];        
     }
     
     

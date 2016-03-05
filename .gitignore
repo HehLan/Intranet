@@ -2,5 +2,3 @@
 /templates_c/*
 /cache/*
 /configs/paths.conf
-/class/Database.class.php
-/class/Smarty_HEHLan.class.php
