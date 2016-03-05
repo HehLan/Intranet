@@ -57,6 +57,6 @@ $smarty->assign('chat', $chatIsActive);
 $smarty->assign('next_matches', $database->getNextMatches($connected));
 $smarty->assign('navTournois', $database->getNavTournois());
 $smarty->assign('newsList', $database->getNewsList());
-$smarty->display('index.tpl');
+$smarty->display('default/index.tpl');
 
 ?>

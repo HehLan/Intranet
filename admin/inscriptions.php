@@ -87,5 +87,5 @@ $smarty->assign('donneesJT', $donneesJT);
 
 
 
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/inscriptions.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/inscriptions.tpl');	
 ?>

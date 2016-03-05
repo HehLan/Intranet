@@ -19,10 +19,10 @@ class Smarty_HEHLan extends Smarty {
         parent::__construct();
       
         // It is not recommended to put these directories under the web server document root
-        $this->setTemplateDir(DOCUMENT_ROOT.'/templates/default/');
-        $this->setCompileDir(DOCUMENT_ROOT.'/templates_c/');
-        $this->setCacheDir(DOCUMENT_ROOT.'/cache/');
-        $this->setConfigDir(DOCUMENT_ROOT.'/configs/');
+        $this->setTemplateDir(DOCUMENT_ROOT.'/view/templates/');
+        $this->setCompileDir(DOCUMENT_ROOT.'/view/templates_c/');
+        $this->setCacheDir(DOCUMENT_ROOT.'/view/cache/');
+        $this->setConfigDir(DOCUMENT_ROOT.'/view/configs/');
         
         $this->configLoad('paths.conf');
               

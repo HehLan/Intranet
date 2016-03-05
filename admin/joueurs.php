@@ -47,5 +47,5 @@ $smarty->assign("con", $connected);
 $smarty->assign("chat", $chatIsActive);
 $smarty->assign('joueurs', $joueurs);
 
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/joueurs.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/joueurs.tpl');	
 ?>

@@ -184,5 +184,5 @@ $smarty->assign('tournois', $tournois);
 
 
 
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/tournois.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/tournois.tpl');	
 ?>

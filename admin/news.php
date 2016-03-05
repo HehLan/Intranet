@@ -42,5 +42,5 @@ $smarty->assign('news', $news);
 
 
 
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/news.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/news.tpl');	
 ?>

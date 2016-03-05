@@ -47,5 +47,5 @@ $smarty->assign("chat", $chatIsActive);
 $smarty->assign('teams', $teams);
 
 
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/equipes.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/equipes.tpl');	
 ?>

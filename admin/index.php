@@ -28,5 +28,5 @@ if(!$connected && !$allowed)
 // send to the template
 $smarty->assign("con", $connected);
 $smarty->assign("chat", $chatIsActive);
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/index.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/index.tpl');	
 ?>

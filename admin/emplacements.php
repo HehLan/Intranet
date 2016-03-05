@@ -104,5 +104,5 @@ $smarty->assign('joueurs_autre', $joueurs_autre);
 
 
 
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/emplacements.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/emplacements.tpl');	
 ?>

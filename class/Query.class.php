@@ -37,9 +37,16 @@ class Query
         }
         if($this->executed_query = $this->prepared_query->execute())
         {
-            $this->output_array = $this->prepared_query->fetchAll(PDO::FETCH_ASSOC);
-            $this->output_object = $this->prepared_query->fetch(PDO::FETCH_OBJ);
-            return true;
+            try
+            {
+                $this->output_array = $this->prepared_query->fetchAll(PDO::FETCH_ASSOC);
+                $this->output_object = $this->prepared_query->fetch(PDO::FETCH_OBJ);
+                return true;
+            }
+            catch (Exception $e)
+            {
+                echo $e;
+            }
         }
         else
         {

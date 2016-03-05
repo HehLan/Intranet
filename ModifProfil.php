@@ -104,7 +104,7 @@ $smarty->assign("joueur", $joueur);
 $smarty->assign('pseudoJeux', $pseudoJeux);
 $smarty->assign('equipes', $equipes);
 //$smarty->display('templates/default/player_change.tpl');
-$smarty->display('player_change.tpl');
+$smarty->display('default/player_change.tpl');
 
 ?>
 

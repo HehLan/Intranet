@@ -134,6 +134,6 @@ $smarty->assign("resultTeams", $resultTeams);
 $smarty->assign("totaux", $totaux);
 
 //$smarty->display('templates/default/tournoisPools.tpl');
-$smarty->display('tournoisPools.tpl');
+$smarty->display('default/tournoisPools.tpl');
 
 ?>
