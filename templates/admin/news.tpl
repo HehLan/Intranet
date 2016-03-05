@@ -48,7 +48,7 @@
                     {if $new['invisible']==1}
                         <h1>News effacées</h1>
                     {/if}
-                    <form method="POST" action="news_save.php">
+                    <form method="POST" action="modules/news_save.php">
                     <input type="hidden" name="id_news" value="{$new['id_news']}">
 			<table>
                             <tr>
@@ -59,9 +59,9 @@
                                     <input type="text" name="titre" size="50" value="{$new['titre']}">
                                     <input type="submit" value="modifier">
                                     {if $new['invisible']==0}
-                                        <a href="news_effacer.php?invisible=1&id_news={$new['id_news']}">Masquer</a>
+                                        <a href="modules/news_effacer.php?invisible=1&id_news={$new['id_news']}">Masquer</a>
                                     {else}
-                                        <a href="news_effacer.php?invisible=0&id_news={$new['id_news']}">Dé-Masquer</a>
+                                        <a href="modules/news_effacer.php?invisible=0&id_news={$new['id_news']}">Dé-Masquer</a>
                                     {/if}
                                 </td>
                             </tr>

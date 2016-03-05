@@ -5,6 +5,8 @@ require_once('../common/utils.php');
 require_once('../class/Smarty_HEHLan.class.php');
 require_once('../class/Database.class.php');
 require_once('../class/Auth.class.php');
+require_once('../class/Query.class.php');
+
 
 
 $connected = false;
@@ -24,20 +26,18 @@ if(!$connected && !$allowed)
 } 
 
 $sql = 'SELECT id_joueur, pseudo FROM joueurs ORDER BY pseudo';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-try
-{                   
-    while($joueur = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
-    {
-        $joueurs[] = $joueur;
-    }
-}
-catch(PDOException $e)
+$query = new Query($database, $sql);
+if($query->execute())
 {
-    echo 'Base de données est indisponible pour le moment!';
+    $joueurs = $query->getResult();    
+}
+else
+{
+    echo 'ERROR';
     exit;
 }
+
+
 
 
 

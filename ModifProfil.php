@@ -4,6 +4,8 @@ session_start();
 require_once('common/utils.php');
 require_once('class/Smarty_HEHLan.class.php');
 require_once('class/Database.class.php');
+require_once('class/Query.class.php');
+
 
 $connected = false;
 $chatIsActive = false;
@@ -70,10 +72,10 @@ $sql = 'SELECT j.*, e.nom AS team
 		LEFT OUTER JOIN equipes_joueur ej ON j.id_joueur = ej.id_joueur
 		LEFT OUTER JOIN equipes e ON e.id_equipes = ej.id_equipes
 		WHERE j.id_joueur = :idj';
-$database->setQuery($sql);
-$database->bindValue('idj', $_SESSION['id_joueur'], PDO::PARAM_INT);
-$database->getQuery()->execute();
-$joueur = $database->getQuery()->fetch();
+$query = new Query($database, $sql);
+$query->bind('idj', $_SESSION['id_joueur'], PDO::PARAM_INT);
+$query->execute();
+$joueur = $query->getResult()[0];
 
 
 $pseudoJeux = '';
@@ -81,25 +83,17 @@ $pseudoJeux = '';
 
 // Selecting player profile information	
 $sql = 'SELECT * FROM joueurs WHERE id_joueur = :id_player';
-$database->setQuery($sql);
-$database->bindValue(':id_player', $_SESSION['id_joueur'], PDO::PARAM_INT);
-$database->getQuery()->execute();
-$joueur = $database->getQuery()->fetch(PDO::FETCH_OBJ);
-
-
-
-
-
-
+$query = new Query($database, $sql);
+$query->bind(':id_player', $_SESSION['id_joueur'], PDO::PARAM_INT);
+$query->execute();
+$joueur = $query->getObject();
 
 
 $sql = 'SELECT id_equipes, nom FROM equipes ORDER BY nom';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-while($equipe = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
-{
-    $equipes[] = $equipe;
-}
+$query = new Query($database, $sql);
+$query->execute();
+$equipes = $query->getResult();
+
                                        
 
 

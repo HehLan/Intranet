@@ -5,6 +5,8 @@ require_once('common/utils.php');
 require_once('common/connect.php');
 require_once('class/Smarty_HEHLan.class.php');
 require_once('class/Database.class.php');
+require_once('class/Query.class.php');
+
 
 $con = false;
 $nbrteam = 0;
@@ -30,11 +32,14 @@ if (isset($_GET['id']))
 //SQL Query to select pools for this tournament
 $groupes = '';
 $sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id';
-$query = $connexion->prepare($sql);
-$query->bindValue(':id', $id_tournoi, PDO::PARAM_INT);
+$query = new Query($database, $sql);
+$query->bind(':id', $id_tournoi, PDO::PARAM_INT);
 if ($query->execute())
-    $groupes = $query->fetchAll(PDO::FETCH_ASSOC);
-else {
+{
+    $groupes = $query->getResult();
+}
+else
+{
     echo 'ERREUR SQL GROUPES';
     exit;
 }
@@ -42,9 +47,13 @@ else {
 $tournoi = $database->getTournament($id_tournoi);
 
 if( $tournoi['joueurParTeam'] > 1)
-	include_once('tournoisPools.php');
+{
+    include_once('tournoisPools.php');
+}
 else
-	include_once('tournoisRounds.php');
+{
+    include_once('tournoisRounds.php');
+}
 
 
 
