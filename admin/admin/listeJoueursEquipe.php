@@ -1,20 +1,26 @@
 <?php
 session_start();
-require_once('classAuth.php');
+require_once('../../class/Auth.class.php');
+require_once('../../class/Smarty_HEHLan.class.php');
+require_once('../../class/Database.class.php');
+
+$database = new Database();
+$connexion = $database->getConnection();
+$smarty = new Smarty_HEHLan();
 
 if (Auth::isLogged()){
-    if (Auth::isAllow(3)){
+    if (Auth::isAllowed(3)){
 	if(!empty($_POST['id_equipe'])){
-	    
-	    $query = "SELECT j.id_joueur, j.pseudo
-		FROM  joueurs j
-		LEFT OUTER JOIN equipes_joueur ej ON j.id_joueur = ej.id_joueur
-		WHERE ej.id_equipes = :id";
-	    $requete_preparee=$connexion->prepare($query);
-	    $requete_preparee->bindValue("id",$_POST['id_equipe'],PDO::PARAM_INT);
-	    $result=$requete_preparee->execute();
-	    $nbr=$requete_preparee->rowCount();
-	    
+            $query = "SELECT j.id_joueur, j.pseudo
+                FROM  joueurs j
+                LEFT OUTER JOIN equipes_joueur ej ON j.id_joueur = ej.id_joueur
+                WHERE ej.id_equipes = :id";
+            $requete_preparee = $connexion->prepare($query);
+            $requete_preparee->bindValue("id", $_POST['id_equipe'], PDO::PARAM_INT);
+            $requete_preparee->execute();
+        
+	    $nbr=$requete_preparee->rowCount();	   
+            
 	    if($nbr!=0){
 		
 		while($joueur = $requete_preparee->fetch()){
@@ -34,7 +40,7 @@ if (Auth::isLogged()){
 		    if($nbr!=0){
 			$joueurtournoi = $req->fetch();
 			echo'
-			    (LoL ==> '.$joueurtournoi["pseudoJeux"].')</h6>
+			    (BattleTag ==> '.$joueurtournoi["pseudoJeux"].')</h6>
 			';		
 		    }
 		    else echo'</h6>';

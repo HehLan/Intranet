@@ -4,7 +4,7 @@ $(document).ready(function () {
 
         $('#submitNewPlayerInTeam').show();
         $(".EquipeAdmin").css({background: "none"});
-        $('#InfoJoueurEquipes').php('');
+        //$('#InfoJoueurEquipes').php('');
         $(".EquipeJoueurAdmin").css({background: "none"});
 
         $(this).css({background: "rgba(0,0,255,0.2)"});
@@ -13,7 +13,8 @@ $(document).ready(function () {
             url: "admin/listeJoueursEquipe.php",
             data: "id_equipe=" + $(this).attr("value"),
             success: function (contenu, etat) {
-                $('#listeEquipeJoueurAdmin').php(contenu);
+                $('#listeEquipeJoueurAdmin').html(contenu);
+                $('#InfoJoueurEquipes').html('');
             }
         });
     });
@@ -25,7 +26,7 @@ $(document).ready(function () {
             url: "admin/InfoJoueurAdmin.php",
             data: "id_joueur=" + $(this).attr("value"),
             success: function (contenu, etat) {
-                $('#InfoJoueurEquipes').php(contenu);
+                $('#InfoJoueurEquipes').html(contenu);
             }
         });
     });
@@ -90,7 +91,7 @@ $(document).ready(function () {
 
     });
 
-    $("#erreurNewTeamAdmin").dialog({
+    /*$("#erreurNewTeamAdmin").dialog({
         autoOpen: false,
         title: "Nouvelle �quipe",
         height: 300,
@@ -102,7 +103,7 @@ $(document).ready(function () {
         buttons: [{text: "Ok", click: function () {
                     $(this).dialog("close");
                 }}]
-    });
+    });*/
 
     $("div").delegate("#submitCreerNewEquipeAdmin", "click", function () {
 
@@ -198,7 +199,7 @@ $(document).ready(function () {
             });
         }
         else {
-            $("#erreurNewTeamAdmin").php(erreur);
+            $("#erreurNewTeamAdmin").html(erreur);
             $("#erreurNewTeamAdmin").css({color: "#f00"});
         }
     });

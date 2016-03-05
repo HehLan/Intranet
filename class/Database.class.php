@@ -18,9 +18,9 @@ class Database
     {        
         $this->host = 'localhost';
         $this->port = '3306';
-        $this->database = 'hehlanbd';
+        $this->database = 'intranetbd';
         $this->user = 'root';
-        $this->pwd = '1234';
+        $this->pwd = '';
         $this->connexion = '';
         $this->sql = '';
         $this->query = '';

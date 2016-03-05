@@ -1,7 +1,11 @@
 <?php
 session_start();
-require_once('classAuth.php');
+require_once('../../class/Auth.class.php');
+require_once('../../class/Smarty_HEHLan.class.php');
+require_once('../../class/Database.class.php');
 
+$database = new Database();
+$connexion = $database->getConnection();
 function isPlay($idJoueur, $idTournoi, &$connexion, &$pseudoJeux){
     //$sqlPlay="SELECT * FROM joueurtournoi jt WHERE jt.id_joueur = :id_joueur AND jt.id_tournoi = :id_tournoi " ;
     $sqlPlay="SELECT * FROM joueurtournoi WHERE id_joueur = :id_joueur AND id_tournoi = :id_tournoi";
@@ -15,13 +19,13 @@ function isPlay($idJoueur, $idTournoi, &$connexion, &$pseudoJeux){
         if(empty($jeux)){
             
             //ne joue pas a ce jeux
-            return 'cross.png';
+            return '../../src/img/cross.png';
             $pseudoJeux='';
         }
         else {
             $pseudoJeux=$jeux['pseudoJeux'];
             //joue a ce jeux
-            return 'check.png';
+            return '../../src/img/check.png';
         }
     }
     
@@ -33,7 +37,7 @@ function isPlay($idJoueur, $idTournoi, &$connexion, &$pseudoJeux){
 }
 
 if (Auth::isLogged()){
-    if (Auth::isAllow(3)){
+    if (Auth::isAllowed(3)){
 	if(!empty($_POST['id_joueur'])){
 	    
 	    $sql="SELECT j.*, e.nom AS team
