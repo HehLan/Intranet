@@ -1,0 +1,169 @@
+/*----------------------------------------------------------------------*/
+/*				INDEX CSS				*/							
+/*----------------------------------------------------------------------*/
+
+
+/*------------ NEWS ---------------------------------*/
+
+#container #bloc_news .une_news 
+{
+    padding: 5px;
+    background-color: #111111;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid #353535;
+    border-radius: 3px;
+}
+#container #bloc_news .titre_news 
+{
+    padding: 10px;
+    background-color: #000000;
+    margin-bottom: 5px;
+    overflow-x: hidden;
+    font-size: 14px;
+    cursor: pointer;
+    color: #D1D1D1;
+}
+#container #bloc_news .titre_news:hover
+{
+    color: #ff9900;
+}
+#container #bloc_news .contenu_news
+{
+    padding-bottom: 10px;
+    padding-left: 15px;
+    overflow-x: hidden;
+    font-size: 13px;
+    display: none;
+}
+#container #bloc_news .date_news
+{
+    float: right;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 10px;
+    color: #999999;
+}
+
+
+
+/*------------ LOG ON ---------------------------------*/
+
+
+#bloc_connexion_form
+{
+    background-color: #111111;
+    border: 1px solid #353535;
+}
+
+input
+{
+    height: 20px;
+}
+
+
+
+
+/*------------ TCHAT ---------------------------------*/
+
+#bloc_chat
+{
+    overflow: hidden;
+    padding: 0 15px;
+}
+#bloc_chat_box
+{
+    background-color: #111111;
+    border: 1px solid #353535;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+}
+#bloc_chat_texte
+{
+    height: 550px;
+    width: 74%;
+    display: inline-block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #000000;
+    padding: 4px;
+    font-size: 14px;
+    border: 1px solid #353535;
+    border-radius: 3px;
+}
+#container #bloc_chat #bloc_chat_texte .chatqui
+{
+    font-size: 12px;
+    color: #AAA;
+}
+#container #bloc_chat #bloc_chat_users
+{
+    height: 550px;
+    width: 24%;
+    display: inline-block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #000000;
+    padding: 5px;
+    color: #AAAAAA;
+    border: 1px solid #353535;
+    border-radius: 3px;
+}
+#container #bloc_chat #bloc_chat_users strong
+{
+    color: #FFFFFF;
+}
+#container #bloc_chat #bloc_chat_send
+{
+    position: relative;
+    clear: both;
+    width: 98%;
+    height: 10%;
+    padding: 10px 0;
+}
+#container #bloc_chat #bloc_chat_send #bloc_chat_message 
+{
+    width: 75%;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #353535;
+    border-radius: 3px;
+}
+
+#bloc_chat_bouton
+{
+    background-color: #000;
+    color: #fff;
+    margin: 0 5px;
+    border: 1px solid #353535;
+    border-radius: 3px;
+    padding: 0 15px;
+}
+::-webkit-scrollbar
+{
+    color: #fff;
+    background-color: #000;
+    border: 1px solid #353535;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: #000;
+}
+
+#liste_joueur::-webkit-scrollbar {
+    width: 12px;
+}
+#liste_joueur::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #ccc;
+}
+#liste_joueur::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+#liste_joueur::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+}

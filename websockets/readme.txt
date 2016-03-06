@@ -1,0 +1,1 @@
+to launch on another server, not the main (which turns the main site (Apache))

@@ -5,6 +5,8 @@ require_once('../common/utils.php');
 require_once('../class/Smarty_HEHLan.class.php');
 require_once('../class/Database.class.php');
 require_once('../class/Auth.class.php');
+require_once('../class/Query.class.php');
+
 
 
 $connected = false;
@@ -26,27 +28,25 @@ if(!$connected && !$allowed)
 
 
 $sql = 'SELECT * FROM emplacement where id_emplacement!=0';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-while($location = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
-{
-    $locations[] = $location;
-}       	
+$query = new Query($database, $sql);
+$query->execute();
+$locations = $query->getResult();     	
 
 
 $sql = 'SELECT * FROM emplacement,joueurs WHERE joueurs.id_emplacement=emplacement.id_emplacement and emplacement.id_emplacement!=0';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-while($location_1 = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
+$query = new Query($database, $sql);
+$query->execute();
+
+foreach ($query->getResult() as $location_1)
 {
     $locations_1[] = $location_1;
     $id_joueur = $location_1['id_joueur'];
 
-    $sql = 'SELECT * FROM equipes,equipes_joueur where equipes_joueur.id_joueur='.$id_joueur.' and equipes.id_equipes=equipes_joueur.id_equipes';
-    $database->setQuery($sql);
-    $database->getQuery()->execute();
+    $sql_2 = 'SELECT * FROM equipes,equipes_joueur where equipes_joueur.id_joueur='.$id_joueur.' and equipes.id_equipes=equipes_joueur.id_equipes';
+    $query_2 = new Query($database, $sql_2);
+    $query_2->execute();
     $teams = array();
-    while($location_2 = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
+    foreach ($query_2->getResult() as $location_2)
     {
         $teams[] = $location_2['nom'];        
     }         
@@ -56,45 +56,32 @@ while($location_1 = $database->getQuery()->fetch(PDO::FETCH_ASSOC))
 
 // Selection des pseudos
 $sql = 'SELECT pseudo,id_emplacement FROM joueurs ORDER BY pseudo ASC';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-while($joueur = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
-{
-    $joueurs[] = $joueur;
-}
+$query = new Query($database, $sql);
+$query->execute();
+$joueurs = $query->getResult();
 
                 
 
 // Selection des équipes		
 $sql = 'SELECT id_equipes,nom from equipes order by nom ASC';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-while($equipe = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
-{
-    $equipes[] = $equipe;  						
-}
+$query = new Query($database, $sql);
+$query->execute();
+$equipes = $query->getResult();
 
 
 
 $sql = 'SELECT * FROM emplacement';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-while($emplacement = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
-{
-    $emplacements[] = $emplacement;
-}
+$query = new Query($database, $sql);
+$query->execute();
+$emplacements = $query->getResult();
+
 
 
 // Selection des pseudos			
 $sql = 'SELECT pseudo FROM joueurs ORDER BY pseudo ASC';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-while($joueur_autre = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
-{
-    $joueurs_autre[] = $joueur_autre;
-}
-
-
+$query = new Query($database, $sql);
+$query->execute();
+$joueurs_autre = $query->getResult();
 
 
 
@@ -117,5 +104,5 @@ $smarty->assign('joueurs_autre', $joueurs_autre);
 
 
 
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/emplacements.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/emplacements.tpl');	
 ?>

@@ -5,6 +5,8 @@ require_once('../common/utils.php');
 require_once('../class/Smarty_HEHLan.class.php');
 require_once('../class/Database.class.php');
 require_once('../class/Auth.class.php');
+require_once('../class/Query.class.php');
+
 
 
 $connected = false;
@@ -24,24 +26,18 @@ if(!$connected && !$allowed)
 } 
 
 
-$sql = 'SELECT id_equipes, nom FROM equipes ORDER BY nom';  
-$database->setQuery($sql);
-$database->getQuery()->execute();
+$sql = 'SELECT id_equipes, nom FROM equipes ORDER BY nom'; 
+$query = new Query($database, $sql);
 
-try
+if($query->execute())
 {
-    while($team = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
-    {
-        $teams[] = $team;        
-    }
+    $teams = $query->getResult();
 }
-catch(PDOException $e)
+else
 {
-    echo 'Base de données est indisponible pour le moment!';
+    echo 'ERROR';
     exit;
 }
-
-
 
 
 
@@ -51,6 +47,5 @@ $smarty->assign("chat", $chatIsActive);
 $smarty->assign('teams', $teams);
 
 
-
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/equipes.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/equipes.tpl');	
 ?>
