@@ -58,16 +58,23 @@
 
             <script>
                 function kickMap(el) {
-                    var container = $(el);
-                    $(el).attr('data-value', 0);
+                    var container = $(el);              // div containing img&text
+                    container.attr('data-value', 0);    // change div's value, to avoid it change css on mouseHower
+                    
+                    
+                    // faire disparaitre l'effet de survol, car après avoir changé 'data-value' l'effet "mouseLeave" 
+                    // n'a plus d'effet. Du coup on le fait ici à la main
                     container.children('div').css('background-color', 'rgba(0,0,0,0)');
+                    // griser le champ de texte
                     container.css('background-color', 'rgba(0,0,0,0.8)');
+                    // griser l'image
+                    container.children('img').css('-webkit-filter', 'grayscale(1)');
                 }
 
                 // highlighting text 
                 // --> visibility/styling while user is choosing
                 function highlightUp(el) {
-                    var container = $(el);              // get div containing img&text
+                    var container = $(el);              // div containing img&text
                     var val = $(el).attr('data-value'); // get its custom value
                     if (val == 1)
                         container.children('div').css('background-color', 'rgba(214,251,251,0.3)');
