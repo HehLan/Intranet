@@ -37,7 +37,7 @@
 								</th>
 								{for $idManche=1 to $tournoi.nombreManche}
 									<th class="th_manche_round">Manche {$idManche}</th>
-									{/for}
+								{/for}
 								<th class="th_points_round">Points</th>
 							</tr>
 							{foreach from=$groupes[groupe].joueurs item=joueur}
