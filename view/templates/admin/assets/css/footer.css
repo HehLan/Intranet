@@ -1,0 +1,40 @@
+/*----------------------------------------------------------------------*/
+/*                          FOOTER CSS                                  */							
+/*----------------------------------------------------------------------*/
+
+#footer 
+{
+    margin-top: 50px;
+    border-top: 8px solid #151515;
+    background-color: #000000;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+#footer #copyright 
+{
+    text-align: center;
+    margin-bottom: 5px;
+}
+#footer #copyright p 
+{
+    padding-top: 30px;
+}
+#footer #ceheh 
+{
+    text-align: center;
+    margin-bottom: 5px;
+}
+#footer #ceheh img 
+{
+    vertical-align: middle;
+}
+#footer #campus_technique 
+{
+    text-align: center;
+    margin-bottom: 5px;
+}
+#footer #campus_technique img 
+{
+    margin-top: 5px;
+}
+

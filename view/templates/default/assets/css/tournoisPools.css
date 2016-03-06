@@ -1,0 +1,91 @@
+/*----------------------------------------------------------------------*/
+/*                          TOURNOIS POOL CSS                           */
+/*----------------------------------------------------------------------*/
+
+.table_pool_row
+{
+    margin-bottom: 30px;
+}
+.table_pool
+{
+    border: 2px solid #000000;
+}
+.th_title_pool
+{
+    border: 1px solid #000000;
+    background-color: #090C14;
+    font-size: 18px;
+    padding-left: 5px;
+    color: #E4D9D3;
+}
+.td_empty_pool
+{
+    border: 1px solid #000000;
+    background-color: none;
+    width: 75px;
+}
+.th_team_pool
+{
+    border: 1px solid #000000;
+    background-color: #1B2232;
+    font-size: 14px;
+    padding-left: 5px;
+    color: #E4D9D3;
+}
+.th_team2_pool
+{
+    border: 1px solid #000000;
+    background-color: #1B2232;
+    font-size: 14px;
+    padding-left: 5px;
+    width: 300px;
+    color: #E4D9D3;
+}
+.th_score_pool
+{
+    border: 1px solid #000000;
+    background-color: #090C14;
+    font-size: 14px;
+    width: 100px;
+}
+.tr_pool
+{
+    border: 1px solid #000000;
+    text-align: center;
+}
+.td_pool
+{
+    border: 1px solid #000000;
+}
+.td_win_pool
+{
+    border: 1px solid #000000;
+    background-color: #71DA71;
+}
+.td_same_pool
+{
+    border: 1px solid #000000;
+    background-color: #444444;
+    color: black;
+}
+.td_loose_pool
+{
+    border: 1px solid #000000;
+    background-color: #E6474B;
+}
+.td_x_pool
+{
+    border: 1px solid #000000;
+    background-color: #FFE383;
+}
+.td_score_pool
+{
+    border: 1px solid #000000;
+    background-color: #E88147;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+
+

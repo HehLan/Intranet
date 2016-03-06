@@ -13,17 +13,17 @@ $database = new Database();
 $smarty = new Smarty_HEHLan();
 
 $mapPaths = array(); // get from db, which class is temporary broken
-array_push($mapPaths, 
-        "src\img\hots\maps\Battlefield of Eternity.jpg",
-        "src\img\hots\maps\Blackheart's Bay.jpg",
-        "src\img\hots\maps\Cursed Hollow.jpg",
-        "src\img\hots\maps\Dragon Shire.jpg",
-        "src\img\hots\maps\Garden of Terror.jpg",
-        "src\img\hots\maps\Haunted mines.jpg",
-        "src\img\hots\maps\Infernal Shrines.jpg",
-        "src\img\hots\maps\Sky Temple.jpg",
-        "src\img\hots\maps\Tomb of the Spider Queen.jpg",
-        "src\img\hots\maps\Towers of Doom.jpg");
+array_push($mapPaths,
+        "/img/hots/maps/Battlefield of Eternity.jpg",
+        "/img/hots/maps/Blackheart's Bay.jpg",
+        "/img/hots/maps/Cursed Hollow.jpg",
+        "/img/hots/maps/Dragon Shire.jpg",
+        "/img/hots/maps/Garden of Terror.jpg",
+        "/img/hots/maps/Haunted mines.jpg",
+        "/img/hots/maps/Infernal Shrines.jpg",
+        "/img/hots/maps/Sky Temple.jpg",
+        "/img/hots/maps/Tomb of the Spider Queen.jpg",
+        "/img/hots/maps/Towers of Doom.jpg");
 
 $mapNames = array(); // get from db, which class is temporary broken
 array_push($mapNames,"Battlefield of Eternity","Blackheart's Bay",
@@ -37,5 +37,5 @@ $smarty->assign('con', $connected);
 $smarty->assign('chat', $chatIsActive);
 $smarty->assign('mapPaths', $mapPaths);
 $smarty->assign('mapNames', $mapNames);
-$smarty->display('pick.tpl');
+$smarty->display('default/pick.tpl');
 ?>

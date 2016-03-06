@@ -1,0 +1,147 @@
+/*----------------------------------------------------------------------*/
+/*                      JOUEURS CSS                                     */
+/*----------------------------------------------------------------------*/
+a:hover
+{
+    text-decoration: underline;
+    color: green;
+    cursor:pointer;
+}   
+a.ClassPseudo
+{
+    display: block;
+}
+a.ClassEquipe
+{
+    display: block;
+}
+.map_cafetaria
+{
+    position: relative; 
+    font-size: 8pt;
+    border-width: 1px;
+    border-style: solid;
+}
+.photo_cafetaria
+{
+    width: 100%;
+    height: 100%;
+}
+.tooltip
+{
+    position: relative;
+    background-color: initial;
+    cursor: help;
+    display: block;
+    text-decoration: none;
+    color: #222;
+    outline: none;
+    font-size: medium;
+    z-index: 1300;  
+}
+.tooltip span
+{
+    visibility: hidden;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    z-index: 1200;
+    width: 230px;
+    margin-left: -127px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    opacity: .9;
+    background-color: #ddd;
+    background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+    background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+    background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+    background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+    background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+    box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+}
+.tooltip:hover
+{
+    border: 0; /* IE6 fix */
+}
+.tooltip:hover span
+{
+    visibility: visible;
+    background-color:#23527c;
+    color: #fff;  
+}
+.tooltip span:before,
+.tooltip span:after
+{
+    position: absolute;
+    z-index: 1100;
+    bottom: 0px;
+    left: 50%;
+    margin-left: 8px;
+    border-top: 8px solid #ddd;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 0;
+}
+.tooltip span:after
+{
+    content: "";
+}
+.tooltip span:before
+{
+    border-top-color: #ccc;
+    bottom: -8px;
+}
+#liste_joueur,
+#liste_equipe
+{
+    overflow: auto;
+    height: 550px;
+}
+#liste_joueur li,
+#liste_equipe li
+{
+    display: block;
+}
+#liste_joueur li:before,
+#liste_equipe li:before
+{
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 9px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+    color: #CCCCCC;
+}
+#liste_joueur li:hover
+{
+    color: orange;
+}
+#liste_joueur li a:hover
+{
+    text-decoration: none;
+    color: orange;
+    cursor: pointer;
+}
+#liste_equipe
+{
+    overflow: auto;
+    height: 550px;
+}
+#liste_equipe li:hover
+{
+    color: orange;
+    cursor: pointer;
+}
+#liste_equipe li a:hover
+{
+    text-decoration: none;
+    color: orange;
+    cursor: pointer;
+}
+

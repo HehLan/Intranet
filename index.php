@@ -6,6 +6,8 @@ require_once('common/utils.php'); // get some utility functions
 require_once('class/Smarty_HEHLan.class.php');
 require_once('class/Database.class.php');
 require_once('class/Auth.class.php');
+require_once('class/Query.class.php');
+
 
 
 // Variables
@@ -45,7 +47,7 @@ if ($connected)
     {        
         $duree_chat = $database->getChatTiming();
         $duree_chat_users = $database->getUserChatTiming();
-        require_once('assets/ajax/chat.php');
+        require_once('src/ajax/chat.php');
     }
 }
 
@@ -55,6 +57,6 @@ $smarty->assign('chat', $chatIsActive);
 $smarty->assign('next_matches', $database->getNextMatches($connected));
 $smarty->assign('navTournois', $database->getNavTournois());
 $smarty->assign('newsList', $database->getNewsList());
-$smarty->display('index.tpl');
+$smarty->display('default/index.tpl');
 
 ?>

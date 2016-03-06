@@ -5,6 +5,8 @@ require_once('../common/utils.php');
 require_once('../class/Smarty_HEHLan.class.php');
 require_once('../class/Database.class.php');
 require_once('../class/Auth.class.php');
+require_once('../class/Query.class.php');
+
 
 
 $connected = false;
@@ -26,12 +28,10 @@ if(!$connected && !$allowed)
 
 
 $sql = 'SELECT * FROM news ORDER by invisible, quand DESC';
-$database->setQuery($sql);
-$database->getQuery()->execute();
-while($new = $database->getQuery()->fetch(PDO::FETCH_ASSOC))
-{
-    $news[] = $new;
-}  
+$query = new Query($database, $sql);
+$query->execute();
+$news = $query->getResult();
+
 
 
 
@@ -42,5 +42,5 @@ $smarty->assign('news', $news);
 
 
 
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/news.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/news.tpl');	
 ?>

@@ -5,6 +5,8 @@ require_once('../common/utils.php');
 require_once('../class/Smarty_HEHLan.class.php');
 require_once('../class/Database.class.php');
 require_once('../class/Auth.class.php');
+require_once('../class/Query.class.php');
+
 
 
 $connected = false;
@@ -26,25 +28,25 @@ if(!$connected && !$allowed)
 
 
 $sql = 'SELECT * FROM tournoi ORDER BY nomTournoi';
-$database->setQuery($sql);
-if($database->getQuery()->execute())
+$query = new Query($database, $sql);
+if($query->execute())
 {
-    while($tournoi = $database->getQuery()->fetch(PDO::FETCH_ASSOC)) 
+    foreach ($query->getResult() as $tournoi)
     {
         $tournois[] = $tournoi;
         if($tournoi['joueurParTeam']==1)
         {
-            $sql = 'SELECT COUNT(*) as nbr FROM joueurtournoi WHERE id_tournoi=:idt';
+            $sql_2 = 'SELECT COUNT(*) as nbr FROM joueurtournoi WHERE id_tournoi=:idt';
         }
         else
         {
-            $sql = 'SELECT COUNT(*) as nbr FROM equipes_tournoi WHERE id_tournoi=:idt';
+            $sql_2 = 'SELECT COUNT(*) as nbr FROM equipes_tournoi WHERE id_tournoi=:idt';
         }
-        $database->setQuery($sql);
-        $database->bindValue('idt', $tournoi['id_tournoi'], PDO::PARAM_STR);
-        if($database->getQuery()->execute())
+        $query_2 = new Query($database, $sql_2);
+        $query_2->bind('idt', $tournoi['id_tournoi'], PDO::PARAM_STR);
+        if($query_2->execute())
         {
-            $participants = $database->getQuery()->fetch(PDO::FETCH_ASSOC);
+            $participants = $query_2->getResult();
         }
         else
         {
@@ -62,13 +64,12 @@ if($database->getQuery()->execute())
 
         et de tournoi sans pool
         ---------------------*/  
-        $sql = 'SELECT COUNT(*) as nbr FROM groupes_pool WHERE id_tournoi=:idt';
-        $database->setQuery($sql);
-        $database->getQuery();
-        $database->bindValue('idt', $tournoi['id_tournoi'], PDO::PARAM_STR);
-        if($database->getQuery()->execute())
+        $sql_3 = 'SELECT COUNT(*) as nbr FROM groupes_pool WHERE id_tournoi=:idt';
+        $query_3 = new Query($database, $sql_3);
+        $query_3->bind('idt', $tournoi['id_tournoi'], PDO::PARAM_STR);
+        if($query_3->execute())
         {
-            $groupes_exist = $database->getQuery()->fetch(PDO::FETCH_ASSOC);
+            $groupes_exist = $query_3->getResult();
         }
         else
         {
@@ -183,5 +184,5 @@ $smarty->assign('tournois', $tournois);
 
 
 
-$smarty->display(DOCUMENT_ROOT.'/templates/default/admin/tournois.tpl');	
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/tournois.tpl');	
 ?>
