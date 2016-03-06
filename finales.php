@@ -58,8 +58,8 @@ $smarty->assign("nbr_lb3", $nbr_lb3);
 
 $nbrmatch = 0;
 if( $tournoi['joueurParTeam'] > 1)
-	include_once('tournoisPools.php');
+	include_once('finalesPools.php');
 else
-	include_once('tournoisRounds.php');
+	include_once('finalesRounds.php');
 
 ?>

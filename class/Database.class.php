@@ -240,7 +240,6 @@ class Database
             $location_1['nomTournoi'] = implode(', ', $nomTournoi);
             $locations_1[] = $location_1;
         }
-				var_dump($locations_1);
 
         return $locations_1;
     }
