@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 17:28:43
+/* Smarty version 3.1.29, created on 2016-03-06 22:17:22
   from "E:\wamp\www\Intranet\view\templates\default\pick.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc5abb627829_91771282',
+  'unifunc' => 'content_56dc9e6269ebb3_70762063',
   'file_dependency' => 
   array (
     '5453816c70d8c21ef6c2c7e0422d3259ac1bae85' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\pick.tpl',
-      1 => 1457281506,
+      1 => 1457299034,
       2 => 'file',
     ),
     'ed988336c4343083b0c42e2ff20b9d17b41f4bae' => 
@@ -35,7 +35,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dc5abb627829_91771282 ($_smarty_tpl) {
+function content_56dc9e6269ebb3_70762063 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -110,6 +110,7 @@ function content_56dc5abb627829_91771282 ($_smarty_tpl) {
     <body role="document">
 
         <!-- le logo -->
+
         
 <header id="header" class="row" >
     <div id="logo" class="col-lg-9 col-sm-9 col-xs-12" >
@@ -118,7 +119,7 @@ function content_56dc5abb627829_91771282 ($_smarty_tpl) {
         </a>
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
-                    <p>Bienvenue admin, <a href="common/deco.php">se déconnecter</a></p>
+                    <p>Bienvenue, <a href="index.php">se connecter</a></p>
                 <p>Votre IP: ::1</p>
                
     </div>	     
@@ -132,63 +133,106 @@ function content_56dc5abb627829_91771282 ($_smarty_tpl) {
             </div>			
         </nav>
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-1 col-sm-1 col-md-1 col-lg1">
-                    <span class="glyphicon glyphicon-user">Player 1</span> 
+
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
+                    <div class="glyphicon glyphicon-user" style="font-size:3em"></div> 
+                    <div>Nickname 1</div>
                 </div>
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10">
                     <div class="row">
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Battlefield of Eternity.jpg" alt="Battlefield of Eternity"/>
-                                <div style="margin-bottom: 5px; text-align: center;">Battlefield of Eternity</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="Battlefield of Eternity" class="img-responsive" src="src/img/hots/maps/Battlefield of Eternity.jpg" alt="Battlefield of Eternity" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        Battlefield of Eternity
+                                    </div>
+                                </div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Blackheart's Bay.jpg" alt="Blackheart's Bay"/>
-                                <div style="margin-bottom: 5px; text-align: center;">Blackheart's Bay</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="Blackheart's Bay" class="img-responsive" src="src/img/hots/maps/Blackheart's Bay.jpg" alt="Blackheart's Bay" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        Blackheart's Bay
+                                    </div>
+                                </div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Cursed Hollow.jpg" alt="Cursed Hollow"/>
-                                <div style="margin-bottom: 5px; text-align: center;">Cursed Hollow</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="Cursed Hollow" class="img-responsive" src="src/img/hots/maps/Cursed Hollow.jpg" alt="Cursed Hollow" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        Cursed Hollow
+                                    </div>
+                                </div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Dragon Shire.jpg" alt="Dragon Shire"/>
-                                <div style="margin-bottom: 5px; text-align: center;">Dragon Shire</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="Dragon Shire" class="img-responsive" src="src/img/hots/maps/Dragon Shire.jpg" alt="Dragon Shire" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        Dragon Shire
+                                    </div>
+                                </div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Garden of Terror.jpg" alt="Garden of Terror"/>
-                                <div style="margin-bottom: 5px; text-align: center;">Garden of Terror</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="Garden of Terror" class="img-responsive" src="src/img/hots/maps/Garden of Terror.jpg" alt="Garden of Terror" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        Garden of Terror
+                                    </div>
+                                </div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Haunted mines.jpg" alt="Haunted mines"/>
-                                <div style="margin-bottom: 5px; text-align: center;">Haunted mines</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="Haunted mines" class="img-responsive" src="src/img/hots/maps/Haunted mines.jpg" alt="Haunted mines" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        Haunted mines
+                                    </div>
+                                </div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Infernal Shrines.jpg" alt="Infernal Shrines"/>
-                                <div style="margin-bottom: 5px; text-align: center;">Infernal Shrines</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="Infernal Shrines" class="img-responsive" src="src/img/hots/maps/Infernal Shrines.jpg" alt="Infernal Shrines" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        Infernal Shrines
+                                    </div>
+                                </div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Sky Temple.jpg" alt="Sky Temple"/>
-                                <div style="margin-bottom: 5px; text-align: center;">Sky Temple</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="Sky Temple" class="img-responsive" src="src/img/hots/maps/Sky Temple.jpg" alt="Sky Temple" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        Sky Temple
+                                    </div>
+                                </div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Tomb of the Spider Queen.jpg" alt="Tomb of the Spider Queen"/>
-                                <div style="margin-bottom: 5px; text-align: center;">Tomb of the Spider Queen</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="Tomb of the Spider Queen" class="img-responsive" src="src/img/hots/maps/Tomb of the Spider Queen.jpg" alt="Tomb of the Spider Queen" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        Tomb of the Spider Queen
+                                    </div>
+                                </div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Towers of Doom.jpg" alt="Towers of Doom"/>
-                                <div style="margin-bottom: 5px; text-align: center;">Towers of Doom</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="Towers of Doom" class="img-responsive" src="src/img/hots/maps/Towers of Doom.jpg" alt="Towers of Doom" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        Towers of Doom
+                                    </div>
+                                </div>
                             </div>
                                             </div>
                 </div>
 
-                <div class="col-xs-1 col-sm-1 col-md-1 col-lg1">
-                    <span class="glyphicon glyphicon-user">Player 2</span>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
+                    <div class="glyphicon glyphicon-user" style="font-size:3em"></div> 
+                    <div>Nickname 2</div>
                 </div>
             </div>
         </div>
-                    
+
         
 <footer id="footer" class="row">
     <div id="copyright" class="col-lg-3 col-sm-12 col-xs-12">
@@ -204,6 +248,37 @@ function content_56dc5abb627829_91771282 ($_smarty_tpl) {
     </div>
 </footer>
 
+            <script>
+                function kickMap(el) {
+                    var container = $(el);              // div containing img&text
+                    container.attr('data-value', 0);    // change div's value, to avoid it change css on mouseHower
+                    
+                    
+                    // faire disparaitre l'effet de survol, car après avoir changé 'data-value' l'effet "mouseLeave" 
+                    // n'a plus d'effet. Du coup on le fait ici à la main
+                    container.children('div').css('background-color', 'rgba(0,0,0,0)');
+                    // griser le champ de texte
+                    container.css('background-color', 'rgba(0,0,0,0.8)');
+                    // griser l'image
+                    container.children('img').css('-webkit-filter', 'grayscale(1)');
+                }
+
+                // highlighting text 
+                // --> visibility/styling while user is choosing
+                function highlightUp(el) {
+                    var container = $(el);              // div containing img&text
+                    var val = $(el).attr('data-value'); // get its custom value
+                    if (val == 1)
+                        container.children('div').css('background-color', 'rgba(214,251,251,0.3)');
+                }
+                function highlightDown(el) {
+                    var container = $(el);
+                    var val = $(el).attr('data-value');
+                    if (val == 1)
+                        container.children('div').css('background-color', 'rgba(214,251,251,0)');
+                }
+            </script>
     </body>
+    
 </html><?php }
 }

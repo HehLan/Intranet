@@ -25,7 +25,7 @@
             </div>			
         </nav>
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
 
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
@@ -53,8 +53,9 @@
                     <div>Nickname 2</div>
                 </div>
             </div>
+        </div>
 
-            {include file="default/footer.tpl"}
+        {include file="default/footer.tpl"}
 
             <script>
                 function kickMap(el) {
@@ -87,4 +88,5 @@
                 }
             </script>
     </body>
+    
 </html>

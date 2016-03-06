@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 17:29:55
+/* Smarty version 3.1.29, created on 2016-03-06 22:12:51
   from "E:\wamp\www\Intranet\view\templates\default\joueurs.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc5b038fe936_32917433',
+  'unifunc' => 'content_56dc9d53af8f40_89643751',
   'file_dependency' => 
   array (
     'a53587d829aef1f079c0bea5c00ddce34ebc0074' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\joueurs.tpl',
-      1 => 1457279843,
+      1 => 1457292133,
       2 => 'file',
     ),
   ),
@@ -23,8 +23,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:default/footer.tpl' => 1,
   ),
 ),false)) {
-function content_56dc5b038fe936_32917433 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '779856dc5b0372db40_03258762';
+function content_56dc9d53af8f40_89643751 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '61256dc9d5394e647_50910145';
 ?>
 
 <!DOCTYPE html>
@@ -169,7 +169,7 @@ $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_1_saved;
                             <br>
                             <br>
                         </div>                       
-                        
+
                         <!-- Player List -->
                         <?php
 $_from = $_smarty_tpl->tpl_vars['joueurs']->value;
@@ -199,20 +199,20 @@ $__foreach_playerLoop_0_saved_local_item = $_smarty_tpl->tpl_vars['joueur'];
                                 </div>
                                 <br>
                                 <ul id="liste_joueur">
-                            <?php }?>
-                            <li>
-                                <a class='ClassPseudo' 
-                                    <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['index'] : null)%2 == 0) {?>
-                                        style='background-color:#212121'                                                             
-                                    <?php } else { ?>
-                                        style='background-color:#262626'
-                                    <?php }?>
-                                    value='<?php echo $_smarty_tpl->tpl_vars['joueur']->value['id_emplacement'];?>
+                                <?php }?>
+                                <li>
+                                    <a class='ClassPseudo' 
+                                       <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['index'] : null)%2 == 0) {?>
+                                           style='background-color:#212121'                                                             
+                                       <?php } else { ?>
+                                           style='background-color:#262626'
+                                       <?php }?>
+                                       value='<?php echo $_smarty_tpl->tpl_vars['joueur']->value['id_emplacement'];?>
 '><?php echo $_smarty_tpl->tpl_vars['joueur']->value['pseudo'];?>
 
-                                </a>
-                            </li>
-                            <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['last']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['last'] : null)) {?>
+                                    </a>
+                                </li>
+                                <?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['last']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_playerLoop']->value['last'] : null)) {?>
                                 </ul>
                             <?php }?> 
                         <?php
