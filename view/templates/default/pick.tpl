@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg1">
-                    <span class="glyphicon glyphicon-user">Player 2</span> 
+                    <span class="glyphicon glyphicon-user">Player 2</span>
                 </div>
             </div>
         </div>

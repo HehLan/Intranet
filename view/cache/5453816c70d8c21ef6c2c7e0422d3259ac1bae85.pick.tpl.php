@@ -1,23 +1,23 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 16:07:23
+/* Smarty version 3.1.29, created on 2016-03-06 17:28:43
   from "E:\wamp\www\Intranet\view\templates\default\pick.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc47ab620800_17315694',
+  'unifunc' => 'content_56dc5abb627829_91771282',
   'file_dependency' => 
   array (
     '5453816c70d8c21ef6c2c7e0422d3259ac1bae85' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\pick.tpl',
-      1 => 1457275109,
+      1 => 1457281506,
       2 => 'file',
     ),
     'ed988336c4343083b0c42e2ff20b9d17b41f4bae' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\meta.tpl',
-      1 => 1457276643,
+      1 => 1457281706,
       2 => 'file',
     ),
     '38b87550390b4498246829deafc9d57640d6d43a' => 
@@ -35,7 +35,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dc47ab620800_17315694 ($_smarty_tpl) {
+function content_56dc5abb627829_91771282 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -73,8 +73,8 @@ function content_56dc47ab620800_17315694 ($_smarty_tpl) {
 <link rel="icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
 
 <!-- CSS STYLESHEETS BASE -->
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/css/bootstrap.min.css" />
 <!-- CSS STYLESHEETS LAYERS -->
 <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/main.css" />
 <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/header.css" />
@@ -85,9 +85,9 @@ function content_56dc47ab620800_17315694 ($_smarty_tpl) {
 
 
 
-<script src="/Intranet/assets/js/jquery.js"></script>
-<script src="/Intranet/assets/js/bootstrap.min.js"></script>
-<script src="/Intranet/assets/js/jquery-2.1.4.min.js"></script>
+<script src="/Intranet/src/js/jquery.js"></script>
+<script src="/Intranet/src/js/bootstrap.min.js"></script>
+<script src="/Intranet/src/js/jquery-2.1.4.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -101,10 +101,10 @@ function content_56dc47ab620800_17315694 ($_smarty_tpl) {
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
         <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/pick.css" />
-        <script type="text/javascript" src="/Intranet/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/getXhr.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/joueur.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/jquery.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/getXhr.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/joueur.js"></script>
     </head>
 
     <body role="document">
@@ -141,50 +141,50 @@ function content_56dc47ab620800_17315694 ($_smarty_tpl) {
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10">
                     <div class="row">
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/view/templates/default/assets/img/hots/maps/Battlefield of Eternity.jpg" alt="Battlefield of Eternity"/>
+                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Battlefield of Eternity.jpg" alt="Battlefield of Eternity"/>
                                 <div style="margin-bottom: 5px; text-align: center;">Battlefield of Eternity</div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/view/templates/default/assets/img/hots/maps/Blackheart's Bay.jpg" alt="Blackheart's Bay"/>
+                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Blackheart's Bay.jpg" alt="Blackheart's Bay"/>
                                 <div style="margin-bottom: 5px; text-align: center;">Blackheart's Bay</div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/view/templates/default/assets/img/hots/maps/Cursed Hollow.jpg" alt="Cursed Hollow"/>
+                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Cursed Hollow.jpg" alt="Cursed Hollow"/>
                                 <div style="margin-bottom: 5px; text-align: center;">Cursed Hollow</div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/view/templates/default/assets/img/hots/maps/Dragon Shire.jpg" alt="Dragon Shire"/>
+                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Dragon Shire.jpg" alt="Dragon Shire"/>
                                 <div style="margin-bottom: 5px; text-align: center;">Dragon Shire</div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/view/templates/default/assets/img/hots/maps/Garden of Terror.jpg" alt="Garden of Terror"/>
+                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Garden of Terror.jpg" alt="Garden of Terror"/>
                                 <div style="margin-bottom: 5px; text-align: center;">Garden of Terror</div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/view/templates/default/assets/img/hots/maps/Haunted mines.jpg" alt="Haunted mines"/>
+                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Haunted mines.jpg" alt="Haunted mines"/>
                                 <div style="margin-bottom: 5px; text-align: center;">Haunted mines</div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/view/templates/default/assets/img/hots/maps/Infernal Shrines.jpg" alt="Infernal Shrines"/>
+                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Infernal Shrines.jpg" alt="Infernal Shrines"/>
                                 <div style="margin-bottom: 5px; text-align: center;">Infernal Shrines</div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/view/templates/default/assets/img/hots/maps/Sky Temple.jpg" alt="Sky Temple"/>
+                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Sky Temple.jpg" alt="Sky Temple"/>
                                 <div style="margin-bottom: 5px; text-align: center;">Sky Temple</div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/view/templates/default/assets/img/hots/maps/Tomb of the Spider Queen.jpg" alt="Tomb of the Spider Queen"/>
+                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Tomb of the Spider Queen.jpg" alt="Tomb of the Spider Queen"/>
                                 <div style="margin-bottom: 5px; text-align: center;">Tomb of the Spider Queen</div>
                             </div>
                                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="/Intranet/view/templates/default/assets/img/hots/maps/Towers of Doom.jpg" alt="Towers of Doom"/>
+                                <img class="img-responsive" src="/Intranet/src/img/hots/maps/Towers of Doom.jpg" alt="Towers of Doom"/>
                                 <div style="margin-bottom: 5px; text-align: center;">Towers of Doom</div>
                             </div>
                                             </div>
                 </div>
 
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg1">
-                    <span class="glyphicon glyphicon-user">Player 2</span> 
+                    <span class="glyphicon glyphicon-user">Player 2</span>
                 </div>
             </div>
         </div>

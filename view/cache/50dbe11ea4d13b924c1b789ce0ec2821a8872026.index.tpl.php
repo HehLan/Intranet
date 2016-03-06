@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 17:02:47
+/* Smarty version 3.1.29, created on 2016-03-06 17:29:39
   from "E:\wamp\www\Intranet\view\templates\default\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc54a7183628_52719025',
+  'unifunc' => 'content_56dc5af312eca7_35859367',
   'file_dependency' => 
   array (
     '50dbe11ea4d13b924c1b789ce0ec2821a8872026' => 
@@ -17,7 +17,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'ed988336c4343083b0c42e2ff20b9d17b41f4bae' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\meta.tpl',
-      1 => 1457280087,
+      1 => 1457281706,
       2 => 'file',
     ),
     '38b87550390b4498246829deafc9d57640d6d43a' => 
@@ -41,7 +41,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dc54a7183628_52719025 ($_smarty_tpl) {
+function content_56dc5af312eca7_35859367 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +79,7 @@ function content_56dc54a7183628_52719025 ($_smarty_tpl) {
 
 <!-- CSS STYLESHEETS BASE -->
 <link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/css/bootstrap.min.css" />
 <!-- CSS STYLESHEETS LAYERS -->
 <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/main.css" />
 <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/header.css" />

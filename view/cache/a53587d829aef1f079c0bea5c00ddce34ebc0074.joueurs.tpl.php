@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 17:00:39
+/* Smarty version 3.1.29, created on 2016-03-06 17:29:55
   from "E:\wamp\www\Intranet\view\templates\default\joueurs.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc54271b2c53_28224463',
+  'unifunc' => 'content_56dc5b03b217b1_06578316',
   'file_dependency' => 
   array (
     'a53587d829aef1f079c0bea5c00ddce34ebc0074' => 
@@ -17,7 +17,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'ed988336c4343083b0c42e2ff20b9d17b41f4bae' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\meta.tpl',
-      1 => 1457279279,
+      1 => 1457281706,
       2 => 'file',
     ),
     '38b87550390b4498246829deafc9d57640d6d43a' => 
@@ -41,7 +41,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dc54271b2c53_28224463 ($_smarty_tpl) {
+function content_56dc5b03b217b1_06578316 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -78,8 +78,8 @@ function content_56dc54271b2c53_28224463 ($_smarty_tpl) {
 <link rel="icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
 
 <!-- CSS STYLESHEETS BASE -->
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/css/bootstrap.min.css" />
 <!-- CSS STYLESHEETS LAYERS -->
 <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/main.css" />
 <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/header.css" />

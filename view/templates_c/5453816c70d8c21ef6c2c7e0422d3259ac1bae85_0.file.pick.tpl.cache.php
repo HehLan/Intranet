@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 16:07:23
+/* Smarty version 3.1.29, created on 2016-03-06 17:28:43
   from "E:\wamp\www\Intranet\view\templates\default\pick.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc47ab4b14b6_09222878',
+  'unifunc' => 'content_56dc5abb4f6cd5_05354456',
   'file_dependency' => 
   array (
     '5453816c70d8c21ef6c2c7e0422d3259ac1bae85' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\pick.tpl',
-      1 => 1457275109,
+      1 => 1457281506,
       2 => 'file',
     ),
   ),
@@ -22,8 +22,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:default/footer.tpl' => 1,
   ),
 ),false)) {
-function content_56dc47ab4b14b6_09222878 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '795556dc47ab3d6887_08828901';
+function content_56dc5abb4f6cd5_05354456 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '1545556dc5abb4337b7_76509175';
 ?>
 
 <!DOCTYPE html>
@@ -37,19 +37,19 @@ $_smarty_tpl->compiled->nocache_hash = '795556dc47ab3d6887_08828901';
 /css/pick.css" />
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery.js"><?php echo '</script'; ?>
+/src/js/jquery.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/getXhr.js"><?php echo '</script'; ?>
+/src/js/getXhr.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery-ui.js"><?php echo '</script'; ?>
+/src/js/jquery-ui.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/joueur.js"><?php echo '</script'; ?>
+/src/js/joueur.js"><?php echo '</script'; ?>
 >
     </head>
 
@@ -91,7 +91,7 @@ $_smarty_tpl->tpl_vars['path']->_loop = true;
 $__foreach_path_0_saved_local_item = $_smarty_tpl->tpl_vars['path'];
 ?>
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');
+                                <img class="img-responsive" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'src');
 echo $_smarty_tpl->tpl_vars['path']->value;?>
 " alt="<?php echo $_smarty_tpl->tpl_vars['mapNames']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 "/>
@@ -112,7 +112,7 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_path_0_saved_key;
                 </div>
 
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg1">
-                    <span class="glyphicon glyphicon-user">Player 2</span> 
+                    <span class="glyphicon glyphicon-user">Player 2</span>
                 </div>
             </div>
         </div>
