@@ -1,29 +1,29 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 15:52:53
+/* Smarty version 3.1.29, created on 2016-03-06 17:02:35
   from "E:\wamp\www\Intranet\view\templates\admin\news.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56daf2c5eea636_27297446',
+  'unifunc' => 'content_56dc549ba231e6_29358475',
   'file_dependency' => 
   array (
     '93069afb6615d428eeea0494ae9a5d297cd237c8' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\admin\\news.tpl',
-      1 => 1457189572,
+      1 => 1457279517,
       2 => 'file',
     ),
     '0e581425c25b7e4430f823fafb32398a1a42b35f' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\admin\\meta.tpl',
-      1 => 1457188949,
+      1 => 1457280036,
       2 => 'file',
     ),
     '671975c94dd1e7dba0ca368cae0b42da0a3615ec' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\admin\\header.tpl',
-      1 => 1456228370,
+      1 => 1457274566,
       2 => 'file',
     ),
     'e98396841417fe328ce0f332a73c8fbcf7a31642' => 
@@ -41,7 +41,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56daf2c5eea636_27297446 ($_smarty_tpl) {
+function content_56dc549ba231e6_29358475 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -76,23 +76,27 @@ function content_56daf2c5eea636_27297446 ($_smarty_tpl) {
 
 <link rel="shortcut icon" href="/Intranet/view/templates/admin/assets/img/logoheh.ico" />
 <link rel="icon" href="/Intranet/view/templates/admin/assets/img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/profil.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/equipes.css" >
 
 
-<!-- CSS certificated -->
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/news.css" >
+<!-- CSS STYLESHEETS BASE -->
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/bootstrap.min.css" />
+<!-- CSS STYLESHEETS LAYERS -->
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/footer.css" />
 
 
-<script src="/Intranet/assets/js/jquery.js"></script>
-<script src="/Intranet/assets/js/bootstrap.min.js"></script>
-<script src="/Intranet/assets/js/jquery-2.1.4.min.js"></script>
+
+
+
+
+
+
+<script src="/Intranet/src/js/jquery.js"></script>
+<script src="/Intranet/src/js/bootstrap.min.js"></script>
+<script src="/Intranet/src/js/jquery-2.1.4.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -104,9 +108,11 @@ function content_56daf2c5eea636_27297446 ($_smarty_tpl) {
 
 <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]--> 
-        <script type="text/javascript" src="/Intranet/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/getXhr.js"></script>
+<![endif]-->
+        <!-- CSS certificated -->
+        <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/news.css" >
+        <script type="text/javascript" src="/Intranet/src/js/jquery.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/getXhr.js"></script>
     </head>
 
     <body role="document">
@@ -118,7 +124,7 @@ function content_56daf2c5eea636_27297446 ($_smarty_tpl) {
         </a>
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
-                    <p>Bienvenue admin, <a href="common/deco.php">se déconnecter</a></p>
+                    <p>Bienvenue admin, <a href="../common/deco.php">se déconnecter</a></p>
                 <p>IP: ::1.</p>
                
     </div>	     
@@ -177,24 +183,6 @@ function content_56daf2c5eea636_27297446 ($_smarty_tpl) {
                             <form class="well col-lg-12" method="POST" action="modules/news_save.php">
                                 <legend>Published news</legend>
                                 <fieldset>
-                                    <input type="hidden" name="id_news" value="11">
-                                    <div class="form-group">
-                                        <label for="title">Titre : </label>
-                                        <input id="title" class="form-control" type="text" name="title"  value="C'est la fin du monde pas du tout">  
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="textarea">Texte : </label>
-                                        <textarea id="textarea" type class="form-control" name="textarea">La fin du monde!!!</textarea>  
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">Save</button>
-                                    <a class="btn btn-primary" href="modules/news_hide.php?invisible=1&id_news=11">Hide</a> 
-                                    <small><p class="pull-right">Last update : 2015-12-03 14:06:04</p></small>                                    
-                                </fieldset>
-                            </form>
-                                                                     
-                            <form class="well col-lg-12" method="POST" action="modules/news_save.php">
-                                <legend>Published news</legend>
-                                <fieldset>
                                     <input type="hidden" name="id_news" value="10">
                                     <div class="form-group">
                                         <label for="title">Titre : </label>
@@ -228,54 +216,6 @@ function content_56daf2c5eea636_27297446 ($_smarty_tpl) {
                                     <button class="btn btn-primary" type="submit">Save</button>
                                     <a class="btn btn-primary" href="modules/news_hide.php?invisible=1&id_news=9">Hide</a> 
                                     <small><p class="pull-right">Last update : 2014-04-06 02:33:19</p></small>                                    
-                                </fieldset>
-                            </form>
-                                                                     
-                            <form class="well col-lg-12" method="POST" action="modules/news_save.php">
-                                <legend>Published news</legend>
-                                <fieldset>
-                                    <input type="hidden" name="id_news" value="6">
-                                    <div class="form-group">
-                                        <label for="title">Titre : </label>
-                                        <input id="title" class="form-control" type="text" name="title"  value="Horaire soirée de samedi">  
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="textarea">Texte : </label>
-                                        <textarea id="textarea" type class="form-control" name="textarea">22H00 :
-Tournoi Trackmania
-23h00 : 
-Tournoi COD4
-
-Serveur tournoi 1(IP : 192.168.10.211) -> BIT2 vs Belgian Rape Squad
-Serveur tournoi 2 (IP : 192.168.10.212) -> Don't feed the ginger vs BIT1
-Serveur tournoi 3 (IP : 192.168.10.213) -> Go Nerf Karma vs NIP TA MERE
-
-00h00 :
-- Tournoi UT3 
-- BO3 de League Of Legend
-</textarea>  
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">Save</button>
-                                    <a class="btn btn-primary" href="modules/news_hide.php?invisible=1&id_news=6">Hide</a> 
-                                    <small><p class="pull-right">Last update : 2014-04-05 22:49:23</p></small>                                    
-                                </fieldset>
-                            </form>
-                                                                     
-                            <form class="well col-lg-12" method="POST" action="modules/news_save.php">
-                                <legend>Published news</legend>
-                                <fieldset>
-                                    <input type="hidden" name="id_news" value="8">
-                                    <div class="form-group">
-                                        <label for="title">Titre : </label>
-                                        <input id="title" class="form-control" type="text" name="title"  value="">  
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="textarea">Texte : </label>
-                                        <textarea id="textarea" type class="form-control" name="textarea"></textarea>  
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">Save</button>
-                                    <a class="btn btn-primary" href="modules/news_hide.php?invisible=1&id_news=8">Hide</a> 
-                                    <small><p class="pull-right">Last update : 2014-04-05 21:45:50</p></small>                                    
                                 </fieldset>
                             </form>
                                                                      
@@ -438,7 +378,7 @@ Opérationnel</textarea>
                 
                 
                 <div id="bloc_deleted_news" class="col-lg-4 col-xs-12">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                                             
                             <form class="well col-lg-12" method="POST" action="modules/news_save.php">
                                 <legend>Hidden news</legend>
                                 <fieldset>
@@ -480,19 +420,31 @@ Opérationnel</textarea>
                             <form class="well col-lg-12" method="POST" action="modules/news_save.php">
                                 <legend>Hidden news</legend>
                                 <fieldset>
-                                    <input type="hidden" name="id_news" value="12">
+                                    <input type="hidden" name="id_news" value="6">
                                     <div class="form-group">
                                         <label for="title">Titre : </label>
-                                        <input id="title" class="form-control" type="text" name="title"  value="test">  
+                                        <input id="title" class="form-control" type="text" name="title"  value="Horaire soirée de samedi">  
                                     </div>
                                     <div class="form-group">
                                         <label for="textarea">Texte : </label>
-                                        <textarea id="textarea" type class="form-control" name="textarea">test</textarea>  
+                                        <textarea id="textarea" type class="form-control" name="textarea">22H00 :
+Tournoi Trackmania
+23h00 : 
+Tournoi COD4
+
+Serveur tournoi 1(IP : 192.168.10.211) -> BIT2 vs Belgian Rape Squad
+Serveur tournoi 2 (IP : 192.168.10.212) -> Don't feed the ginger vs BIT1
+Serveur tournoi 3 (IP : 192.168.10.213) -> Go Nerf Karma vs NIP TA MERE
+
+00h00 :
+- Tournoi UT3 
+- BO3 de League Of Legend
+</textarea>  
                                     </div>
                                     <button class="btn btn-primary" type="submit">Save</button>
-                                    <a class="btn btn-primary" href="modules/news_hide.php?invisible=0&id_news=12">Unhide</a> 
-                                    <a class="btn btn-primary" href="modules/news_delete.php?id_news=12">Delete</a> 
-                                    <small><p class="pull-right">Last update : 2015-11-26 23:54:51</p></small>
+                                    <a class="btn btn-primary" href="modules/news_hide.php?invisible=0&id_news=6">Unhide</a> 
+                                    <a class="btn btn-primary" href="modules/news_delete.php?id_news=6">Delete</a> 
+                                    <small><p class="pull-right">Last update : 2014-04-05 22:49:23</p></small>
                                 </fieldset>
                             </form>
                                               

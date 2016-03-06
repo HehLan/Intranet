@@ -4,10 +4,11 @@
     <head>
         <!-- includes all libraries -->
         {include file="default/meta.tpl"}
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/joueur.js"></script>
+        <link rel="stylesheet" type="text/css" href="{#assets#}/css/pick.css" />
+        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/joueur.js"></script>
     </head>
 
     <body role="document">
@@ -33,7 +34,7 @@
                     <div class="row">
                         {foreach from=$mapPaths key=i item=path}
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="{#assets#}{$path}" alt="{$mapNames[$i]}"/>
+                                <img class="img-responsive" src="{#src#}{$path}" alt="{$mapNames[$i]}"/>
                                 <div style="margin-bottom: 5px; text-align: center;">{$mapNames[$i]}</div>
                             </div>
                         {/foreach}

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 15:52:53
+/* Smarty version 3.1.29, created on 2016-03-06 17:02:42
   from "E:\wamp\www\Intranet\view\templates\admin\meta.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56daf2c5dfc178_64343860',
+  'unifunc' => 'content_56dc54a2aeb2a2_38368869',
   'file_dependency' => 
   array (
     '0e581425c25b7e4430f823fafb32398a1a42b35f' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\admin\\meta.tpl',
-      1 => 1457188949,
+      1 => 1457280036,
       2 => 'file',
     ),
   ),
@@ -19,8 +19,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56daf2c5dfc178_64343860 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '559856daf2c5da6263_10076507';
+function content_56dc54a2aeb2a2_38368869 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '1224556dc54a2aae3a7_11803203';
 ?>
 
 <title>HEHLan</title>
@@ -53,40 +53,41 @@ $_smarty_tpl->compiled->nocache_hash = '559856daf2c5da6263_10076507';
 /img/logoheh.ico" />
 <link rel="icon" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
 /img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
-/css/profil.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
-/css/style.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
-/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
-/css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
-/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
-/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
-/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
-/css/equipes.css" >
 
 
-<!-- CSS certificated -->
+<!-- CSS STYLESHEETS BASE -->
+<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
+/lib/jQuery/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
+/lib/Bootstrap/bootstrap.min.css" />
+<!-- CSS STYLESHEETS LAYERS -->
 <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
-/css/news.css" >
+/css/main.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
+/css/header.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
+/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
+/css/footer.css" />
+
+
+
+
+
+
 
 
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery.js"><?php echo '</script'; ?>
+/src/js/jquery.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/bootstrap.min.js"><?php echo '</script'; ?>
+/src/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery-2.1.4.min.js"><?php echo '</script'; ?>
+/src/js/jquery-2.1.4.min.js"><?php echo '</script'; ?>
 >
 
 <!-- SCRIPTS BOOTSTRAPS -->		

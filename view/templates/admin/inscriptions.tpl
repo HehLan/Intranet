@@ -2,10 +2,11 @@
 <!DOCTYPE HTML>
 <html lang="fr">
     <head>
-        {include file="admin/meta.tpl"}    
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
+        {include file="admin/meta.tpl"} 
+        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/inscriptions.css" >
+        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
         <script>
             $(document).ready(function() {
 

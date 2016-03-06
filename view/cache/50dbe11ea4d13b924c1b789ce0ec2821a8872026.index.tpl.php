@@ -1,35 +1,35 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 13:57:20
+/* Smarty version 3.1.29, created on 2016-03-06 17:02:47
   from "E:\wamp\www\Intranet\view\templates\default\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dad7b0ad1524_76305772',
+  'unifunc' => 'content_56dc54a7183628_52719025',
   'file_dependency' => 
   array (
     '50dbe11ea4d13b924c1b789ce0ec2821a8872026' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\index.tpl',
-      1 => 1457174034,
+      1 => 1457279212,
       2 => 'file',
     ),
     'ed988336c4343083b0c42e2ff20b9d17b41f4bae' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\meta.tpl',
-      1 => 1456169953,
+      1 => 1457280087,
       2 => 'file',
     ),
     '38b87550390b4498246829deafc9d57640d6d43a' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\header.tpl',
-      1 => 1456835886,
+      1 => 1457191474,
       2 => 'file',
     ),
     'eb253ea85fa0c415276f6fd713630b1f49745222' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\nav.tpl',
-      1 => 1457104148,
+      1 => 1457194650,
       2 => 'file',
     ),
     'c083a58202c533e2b690828b2c323e50174f0471' => 
@@ -41,7 +41,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dad7b0ad1524_76305772 ($_smarty_tpl) {
+function content_56dc54a7183628_52719025 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -76,18 +76,23 @@ function content_56dad7b0ad1524_76305772 ($_smarty_tpl) {
 
 <link rel="shortcut icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
 <link rel="icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/profil.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/equipes.css" >
 
-<script src="/Intranet/assets/js/jquery.js"></script>
-<script src="/Intranet/assets/js/bootstrap.min.js"></script>
-<script src="/Intranet/assets/js/jquery-2.1.4.min.js"></script>
+<!-- CSS STYLESHEETS BASE -->
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/bootstrap.min.css" />
+<!-- CSS STYLESHEETS LAYERS -->
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/footer.css" />
+
+
+
+
+
+<script src="/Intranet/src/js/jquery.js"></script>
+<script src="/Intranet/src/js/bootstrap.min.js"></script>
+<script src="/Intranet/src/js/jquery-2.1.4.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -100,8 +105,9 @@ function content_56dad7b0ad1524_76305772 ($_smarty_tpl) {
 <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]--> 
-        <script type="text/javascript" src="/Intranet/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/getXhr.js"></script>
+        <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/index.css" />
+        <script type="text/javascript" src="/Intranet/src/js/jquery.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/getXhr.js"></script>
         <script type="text/javascript">
             function news_toggle(idn)
             {
@@ -148,7 +154,7 @@ function content_56dad7b0ad1524_76305772 ($_smarty_tpl) {
                                         <li><a href="tournois.php?id=5">Hearthstone</a></li>
                                         
                     
-                                        <li><a href="ModifProfil.php">Mon profil</a></li>
+                                        <li><a href="profile.php">Mon profil</a></li>
                                                 <li><a href="admin/index.php">Admin</a></li>
                                                         </ul>
         </div>
@@ -159,39 +165,6 @@ function content_56dad7b0ad1524_76305772 ($_smarty_tpl) {
             <div class="row">
                 <div id="bloc_news" class="col-lg-6 col-xs-12">
                     <h3>News</h3>
-                                            <div class="une_news" id="bloc_news_15">
-                            <div class="titre_news" id="titre_news_15" onclick="news_toggle(15);">
-                                test Query class
-                                <div class="date_news" id="footer_news_15">
-                                    samedi à 11h06
-                                </div>
-                            </div>
-                            <div class="contenu_news" id="contenu_news_15">
-                                fsdfsdfs
-                            </div>
-                        </div>
-                                            <div class="une_news" id="bloc_news_13">
-                            <div class="titre_news" id="titre_news_13" onclick="news_toggle(13);">
-                                test avec smarty (modif ?)
-                                <div class="date_news" id="footer_news_13">
-                                    mercredi à 00h03
-                                </div>
-                            </div>
-                            <div class="contenu_news" id="contenu_news_13">
-                                write in white on white, ... well
-                            </div>
-                        </div>
-                                            <div class="une_news" id="bloc_news_11">
-                            <div class="titre_news" id="titre_news_11" onclick="news_toggle(11);">
-                                C'est la fin du monde pas du tout
-                                <div class="date_news" id="footer_news_11">
-                                    jeudi à 14h06
-                                </div>
-                            </div>
-                            <div class="contenu_news" id="contenu_news_11">
-                                La fin du monde!!!
-                            </div>
-                        </div>
                                             <div class="une_news" id="bloc_news_10">
                             <div class="titre_news" id="titre_news_10" onclick="news_toggle(10);">
                                 R&eacute;sultat Trackmania
@@ -215,40 +188,6 @@ function content_56dad7b0ad1524_76305772 ($_smarty_tpl) {
                                 1. BIT1<br /><br />
 2. NIP TA MERE<br /><br />
 3. Don't feed the ginger
-                            </div>
-                        </div>
-                                            <div class="une_news" id="bloc_news_6">
-                            <div class="titre_news" id="titre_news_6" onclick="news_toggle(6);">
-                                Horaire soirée de samedi
-                                <div class="date_news" id="footer_news_6">
-                                    samedi à 22h49
-                                </div>
-                            </div>
-                            <div class="contenu_news" id="contenu_news_6">
-                                22H00 :<br /><br />
-Tournoi Trackmania<br /><br />
-23h00 : <br /><br />
-Tournoi COD4<br /><br />
-<br /><br />
-Serveur tournoi 1(IP : 192.168.10.211) -> BIT2 vs Belgian Rape Squad<br /><br />
-Serveur tournoi 2 (IP : 192.168.10.212) -> Don't feed the ginger vs BIT1<br /><br />
-Serveur tournoi 3 (IP : 192.168.10.213) -> Go Nerf Karma vs NIP TA MERE<br /><br />
-<br /><br />
-00h00 :<br /><br />
-- Tournoi UT3 <br /><br />
-- BO3 de League Of Legend<br /><br />
-
-                            </div>
-                        </div>
-                                            <div class="une_news" id="bloc_news_8">
-                            <div class="titre_news" id="titre_news_8" onclick="news_toggle(8);">
-                                
-                                <div class="date_news" id="footer_news_8">
-                                    samedi à 21h45
-                                </div>
-                            </div>
-                            <div class="contenu_news" id="contenu_news_8">
-                                
                             </div>
                         </div>
                                             <div class="une_news" id="bloc_news_7">

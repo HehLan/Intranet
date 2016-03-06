@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 13:50:52
+/* Smarty version 3.1.29, created on 2016-03-06 16:55:16
   from "E:\wamp\www\Intranet\view\templates\default\tournoisRounds.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dad62c605f06_80907100',
+  'unifunc' => 'content_56dc52e4050f90_91662423',
   'file_dependency' => 
   array (
     '22ca7d08a07342e8dbb2851259088780ec16caa8' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\tournoisRounds.tpl',
-      1 => 1457174212,
+      1 => 1457279372,
       2 => 'file',
     ),
   ),
@@ -23,8 +23,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:default/footer.tpl' => 1,
   ),
 ),false)) {
-function content_56dad62c605f06_80907100 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1358956dad62c3a09f6_89580124';
+function content_56dc52e4050f90_91662423 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '2829656dc52e3de8a91_35620683';
 ?>
 
 <!DOCTYPE HTML>
@@ -32,14 +32,16 @@ $_smarty_tpl->compiled->nocache_hash = '1358956dad62c3a09f6_89580124';
     <head>
         <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:default/meta.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-  
+
+        <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
+/css/tournoisRounds.css" />
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery.js"><?php echo '</script'; ?>
+/src/js/jquery.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/getXhr.js"><?php echo '</script'; ?>
+/src/js/getXhr.js"><?php echo '</script'; ?>
 >
     </head>
     <body>

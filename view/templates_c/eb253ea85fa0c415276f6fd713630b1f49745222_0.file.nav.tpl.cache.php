@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 13:57:23
+/* Smarty version 3.1.29, created on 2016-03-06 17:02:47
   from "E:\wamp\www\Intranet\view\templates\default\nav.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dad7b34abaf8_77371648',
+  'unifunc' => 'content_56dc54a7146721_06310855',
   'file_dependency' => 
   array (
     'eb253ea85fa0c415276f6fd713630b1f49745222' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\nav.tpl',
-      1 => 1457104148,
+      1 => 1457194650,
       2 => 'file',
     ),
   ),
@@ -19,8 +19,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56dad7b34abaf8_77371648 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '2052856dad7b34367d2_22045100';
+function content_56dc54a7146721_06310855 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '2486856dc54a70cc921_45656623';
 ?>
 
 <nav id="navigation" class="navbar navbar-inverse" role="navigation" >
@@ -60,8 +60,8 @@ $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_0_saved;
                     
                     
                     <?php if ($_smarty_tpl->tpl_vars['con']->value) {?>
-                    <li><a href="ModifProfil.php">Mon profil</a></li>
-                        <?php if ($_SESSION['level'] == 1) {?>
+                    <li><a href="profile.php">Mon profil</a></li>
+                        <?php if ($_SESSION['level'] == 1 || $_SESSION['level'] == 2) {?>
                         <li><a href="admin/index.php">Admin</a></li>
                         <?php }?>
                     <?php }?>

@@ -1,3 +1,13 @@
+/*----------------------------------------------------------------------*/
+/*				JOUEURS CSS				*/							
+/*----------------------------------------------------------------------*/
+
+/* 
+Beaucoup de CSS pour rien grand chose d'extraordinaire
+--> utiliser bootstrap et ajouter une couche au dessus
+*/
+
+
 div#ListejoueurAdmin legend{
     font-size: 14px;
     margin: 5px;

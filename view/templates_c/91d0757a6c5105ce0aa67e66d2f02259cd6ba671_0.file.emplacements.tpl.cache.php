@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 13:52:38
+/* Smarty version 3.1.29, created on 2016-03-06 17:02:40
   from "E:\wamp\www\Intranet\view\templates\admin\emplacements.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dad696df1a56_42295102',
+  'unifunc' => 'content_56dc54a0172265_90859689',
   'file_dependency' => 
   array (
     '91d0757a6c5105ce0aa67e66d2f02259cd6ba671' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\admin\\emplacements.tpl',
-      1 => 1456500753,
+      1 => 1457280146,
       2 => 'file',
     ),
   ),
@@ -23,27 +23,29 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:admin/footer.tpl' => 1,
   ),
 ),false)) {
-function content_56dad696df1a56_42295102 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '3200156dad696bedfd3_03204592';
+function content_56dc54a0172265_90859689 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '3235556dc549fe53069_05484539';
 ?>
-}
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:admin/meta.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
+        <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
+/css/emplacements.css" >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery.js"><?php echo '</script'; ?>
+/src/js/jquery.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery-ui.js"><?php echo '</script'; ?>
+/src/js/jquery-ui.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/getXhr.js"><?php echo '</script'; ?>
+/src/js/getXhr.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript">
@@ -94,38 +96,7 @@ $_smarty_tpl->compiled->nocache_hash = '3200156dad696bedfd3_03204592';
                });
             });
 	<?php echo '</script'; ?>
->
-    <style>    
-        #info{
-        position:relative;
-        z-index:24;
-        color:#000;
-        text-decoration:blink
-        }
-
-        #info:hover{
-        z-index:25;
-        background-color:red;
-        cursor: help;
-        }
-
-        #info span{
-        display: none
-        }
-
-        #info:hover span{
-        display:block;
-        position:absolute;
-        top:2em; left:2em; width:10em;
-        border:1px solid #000;
-        background-color:#FFF;
-        color:#000;
-        text-align: justify;
-        font-size: medium;
-        font-weight:none;
-        padding:5px;
-        }
-    </style>	
+>	
 </head>
 
 <body role="document">
@@ -228,15 +199,7 @@ if ($__foreach_location_1_1_saved_item) {
 $_smarty_tpl->tpl_vars['location_1'] = $__foreach_location_1_1_saved_item;
 }
 ?>                        
-                <div id="cadre" style="
-                     position: absolute;
-                     top: 5%;
-                     left: 36%;
-                     width: 4.5%;
-                     height:3%;
-                     border:0.1em solid #000;
-                     text-align:center;">
-                </div>
+                <div id="cadre"</div>
                 <!-- VISIONNER LA PLACE DU JOUEUR -->    
                 <b><u><center>Consulter la place :</center></u></b></b>
                 <br><br>
@@ -296,7 +259,7 @@ $_smarty_tpl->tpl_vars['equipe'] = $__foreach_equipe_3_saved_item;
 }
 ?>           
                 </select>
-                <div id="dialogEquipe_Emplacement" style='display:none;'></div>
+                <div id="dialogEquipe_Emplacement"></div>
                 <br>
                 <br>
                 <!-- AJOUTER PLACE AU JOUEUR -->                                                                                       
@@ -358,30 +321,8 @@ $_smarty_tpl->tpl_vars['joueur_autre'] = $__foreach_joueur_autre_5_saved_item;
                     <br><br>
                     <p><center><input class="submit" type="submit" value="Valider" /></center></p>
                 </form>
-                <div id="dialogInfo_joueur" style="width:300px;
-                     height:auto;
-                     border:1px solid #000;
-                    display: none;
-                    padding:5px; 
-                    background-color:#9ba0ee; 
-                    border:2px solid #656ab0;
-                -khtml-border-radius:9px; 
-                -webkit-border-radius:9px; 
-                border-radius:9px;">
-                    
-                </div>
-                <div id="dialogInfo_equipe" style="width:300px;
-                     height:auto;
-                     border:1px solid #000;
-                display: none;
-                padding:5px; 
-                background-color:#ffaca3; 
-                border:2px solid #ff3924;
-                -khtml-border-radius:9px;
-                -webkit-border-radius:9px; 
-                border-radius:9px;">
-                    
-                </div>
+                <div id="dialogInfo_joueur"></div>
+                <div id="dialogInfo_equipe"></div>
             </div>
 	</div>	
 	

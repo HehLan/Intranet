@@ -1,35 +1,35 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 13:50:52
+/* Smarty version 3.1.29, created on 2016-03-06 16:55:16
   from "E:\wamp\www\Intranet\view\templates\default\tournoisRounds.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dad62c87ec93_27611624',
+  'unifunc' => 'content_56dc52e41be998_21185400',
   'file_dependency' => 
   array (
     '22ca7d08a07342e8dbb2851259088780ec16caa8' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\tournoisRounds.tpl',
-      1 => 1457174212,
+      1 => 1457279372,
       2 => 'file',
     ),
     'ed988336c4343083b0c42e2ff20b9d17b41f4bae' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\meta.tpl',
-      1 => 1456169953,
+      1 => 1457279279,
       2 => 'file',
     ),
     '38b87550390b4498246829deafc9d57640d6d43a' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\header.tpl',
-      1 => 1456835886,
+      1 => 1457191474,
       2 => 'file',
     ),
     'eb253ea85fa0c415276f6fd713630b1f49745222' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\nav.tpl',
-      1 => 1457104148,
+      1 => 1457194650,
       2 => 'file',
     ),
     'c083a58202c533e2b690828b2c323e50174f0471' => 
@@ -41,7 +41,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dad62c87ec93_27611624 ($_smarty_tpl) {
+function content_56dc52e41be998_21185400 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE HTML>
@@ -76,18 +76,23 @@ function content_56dad62c87ec93_27611624 ($_smarty_tpl) {
 
 <link rel="shortcut icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
 <link rel="icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/profil.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/equipes.css" >
 
-<script src="/Intranet/assets/js/jquery.js"></script>
-<script src="/Intranet/assets/js/bootstrap.min.js"></script>
-<script src="/Intranet/assets/js/jquery-2.1.4.min.js"></script>
+<!-- CSS STYLESHEETS BASE -->
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/bootstrap.min.css" />
+<!-- CSS STYLESHEETS LAYERS -->
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/footer.css" />
+
+
+
+
+
+<script src="/Intranet/src/js/jquery.js"></script>
+<script src="/Intranet/src/js/bootstrap.min.js"></script>
+<script src="/Intranet/src/js/jquery-2.1.4.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -99,9 +104,10 @@ function content_56dad62c87ec93_27611624 ($_smarty_tpl) {
 
 <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->  
-        <script type="text/javascript" src="/Intranet/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/getXhr.js"></script>
+<![endif]-->
+        <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/tournoisRounds.css" />
+        <script type="text/javascript" src="/Intranet/src/js/jquery.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/getXhr.js"></script>
     </head>
     <body>
         
@@ -141,7 +147,7 @@ function content_56dad62c87ec93_27611624 ($_smarty_tpl) {
                                         <li><a href="tournois.php?id=5">Hearthstone</a></li>
                                         
                     
-                                        <li><a href="ModifProfil.php">Mon profil</a></li>
+                                        <li><a href="profile.php">Mon profil</a></li>
                                                 <li><a href="admin/index.php">Admin</a></li>
                                                         </ul>
         </div>
@@ -153,526 +159,10 @@ function content_56dad62c87ec93_27611624 ($_smarty_tpl) {
                 <div class="col-lg-offset-1 col-lg-10">
                     <h1>
                                                     Qualifications 
-                                                Trackmania
+                                                UT3
                     </h1>
-                                            <p>Cliquez ici pour voir les <a href="finales.php?id=3">FINALES DES PGM'S (gold)</a></p><br>
+                                            <p>Cliquez ici pour voir les <a href="finales.php?id=4">FINALES DES PGM'S (gold)</a></p><br>
                                                                                         <br>
-                    						<table class="table_round">
-							<tr>
-								<th class="title_round" colspan="9">
-									Groupe 1 ( samedi 18h00 )
-								</th>
-							</tr>
-							<tr>
-								<th class="th_manche_round" >
-									Participants
-								</th>
-																	<th class="th_manche_round">Manche 1</th>
-																		<th class="th_manche_round">Manche 2</th>
-																		<th class="th_manche_round">Manche 3</th>
-																		<th class="th_manche_round">Manche 4</th>
-																		<th class="th_manche_round">Manche 5</th>
-																		<th class="th_manche_round">Manche 6</th>
-																		<th class="th_manche_round">Manche 7</th>
-									
-								<th class="th_points_round">Points</th>
-							</tr>
-															<tr>
-									<td class="td_pseudo_round">Canon6etoiles</td>
-																			<td class="td_score_round">10</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">10</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Boulvay</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">gosh101</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">gwennytoux</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Ash</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Danilus</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">1ST_Tr45HxC</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">cloud1213</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Broflovsky</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-													</table><br><br>
-                    						<table class="table_round">
-							<tr>
-								<th class="title_round" colspan="9">
-									Groupe 2 ( samedi 18h00 )
-								</th>
-							</tr>
-							<tr>
-								<th class="th_manche_round" >
-									Participants
-								</th>
-																	<th class="th_manche_round">Manche 1</th>
-																		<th class="th_manche_round">Manche 2</th>
-																		<th class="th_manche_round">Manche 3</th>
-																		<th class="th_manche_round">Manche 4</th>
-																		<th class="th_manche_round">Manche 5</th>
-																		<th class="th_manche_round">Manche 6</th>
-																		<th class="th_manche_round">Manche 7</th>
-									
-								<th class="th_points_round">Points</th>
-							</tr>
-															<tr>
-									<td class="td_pseudo_round">LamboX</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Happy Nems</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">NamaTroX</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">iGlooW</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">JankulaseK</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">landre164</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Mikeman</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Loraline</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Navarro</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-													</table><br><br>
-                    						<table class="table_round">
-							<tr>
-								<th class="title_round" colspan="9">
-									Groupe 3 ( samedi 18h00 )
-								</th>
-							</tr>
-							<tr>
-								<th class="th_manche_round" >
-									Participants
-								</th>
-																	<th class="th_manche_round">Manche 1</th>
-																		<th class="th_manche_round">Manche 2</th>
-																		<th class="th_manche_round">Manche 3</th>
-																		<th class="th_manche_round">Manche 4</th>
-																		<th class="th_manche_round">Manche 5</th>
-																		<th class="th_manche_round">Manche 6</th>
-																		<th class="th_manche_round">Manche 7</th>
-									
-								<th class="th_points_round">Points</th>
-							</tr>
-															<tr>
-									<td class="td_pseudo_round">RectoO</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Salcatin</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">satanasth250</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">roden164</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Shyrøw</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">rougetta</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">skuyz</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">PuLse Olen</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">RaKyora</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-													</table><br><br>
-                    						<table class="table_round">
-							<tr>
-								<th class="title_round" colspan="9">
-									Groupe 4 ( samedi 18h00 )
-								</th>
-							</tr>
-							<tr>
-								<th class="th_manche_round" >
-									Participants
-								</th>
-																	<th class="th_manche_round">Manche 1</th>
-																		<th class="th_manche_round">Manche 2</th>
-																		<th class="th_manche_round">Manche 3</th>
-																		<th class="th_manche_round">Manche 4</th>
-																		<th class="th_manche_round">Manche 5</th>
-																		<th class="th_manche_round">Manche 6</th>
-																		<th class="th_manche_round">Manche 7</th>
-									
-								<th class="th_points_round">Points</th>
-							</tr>
-															<tr>
-									<td class="td_pseudo_round">Thaerith</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Sponos</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">ximunou</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Skynyx</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Zarak</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">Wadosh</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">thotwith</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">sleve</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-															<tr>
-									<td class="td_pseudo_round">supertinez</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-																			<td class="td_score_round">-</td>
-									
-									<td class="td_total_round">0</td>
-								</tr>
-													</table><br><br>
                                     </div>
             </div>
         </div>

@@ -19,13 +19,13 @@ function isPlay($idJoueur, $idTournoi, &$connexion, &$pseudoJeux){
         if(empty($jeux)){
             
             //ne joue pas a ce jeux
-            return '../../src/img/cross.png';
+            return '../../view/templates/admin/assets/img/cross.png';
             $pseudoJeux='';
         }
         else {
             $pseudoJeux=$jeux['pseudoJeux'];
             //joue a ce jeux
-            return '../../src/img/check.png';
+            return '../../view/templates/admin/assets/img/check.png';
         }
     }
     
@@ -97,10 +97,10 @@ if (Auth::isLogged()){
 				  
 				echo'
 				    
-				    <td><img class="imgJeuxJoueurs" src="img/'.isPlay($_POST['id_joueur'],"1",$connexion,$pseudoJeuxLOL).'" alt="inscritLOL"></td>
-				    <td><img class="imgJeuxJoueurs" src="img/'.isPlay($_POST['id_joueur'],"2",$connexion,$pseudoJeuxCOD).'" alt="inscritCOD"></td>
-				    <td><img class="imgJeuxJoueurs" src="img/'.isPlay($_POST['id_joueur'],"4",$connexion,$pseudoJeuxUT).'" alt="inscritUT3"></td>
-				    <td><img class="imgJeuxJoueurs" src="img/'.isPlay($_POST['id_joueur'],"3",$connexion,$pseudoJeuxTM).'" alt="inscritTM"></td>
+				    <td><img class="imgJeuxJoueurs" src="../../view/templates/admin/assets/img/'.isPlay($_POST['id_joueur'],"1",$connexion,$pseudoJeuxLOL).'" alt="inscritLOL"></td>
+				    <td><img class="imgJeuxJoueurs" src="../../view/templates/admin/assets/img/'.isPlay($_POST['id_joueur'],"2",$connexion,$pseudoJeuxCOD).'" alt="inscritCOD"></td>
+				    <td><img class="imgJeuxJoueurs" src="../../view/templates/admin/assets/img/'.isPlay($_POST['id_joueur'],"4",$connexion,$pseudoJeuxUT).'" alt="inscritUT3"></td>
+				    <td><img class="imgJeuxJoueurs" src="../../view/templates/admin/assets/img/'.isPlay($_POST['id_joueur'],"3",$connexion,$pseudoJeuxTM).'" alt="inscritTM"></td>
 				';
 				  
 				echo'</tr>';

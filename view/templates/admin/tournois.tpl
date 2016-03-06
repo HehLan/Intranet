@@ -3,8 +3,9 @@
 <html lang="fr">
     <head>
         {include file="admin/meta.tpl"}
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
+        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/tournois.css" >
+        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
         <script type="text/javascript">
             /*function go_groupes(id)
             {

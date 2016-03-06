@@ -20,9 +20,11 @@ class Database
     {        
         $this->host = 'localhost';
         $this->port = '3306';
-        $this->database = 'intranetbd';
+        //$this->database = 'intranetbd'; // Geoffrey
+        $this->database = 'hehlanbd'; 
         $this->user = 'root';
-        $this->pwd = '';
+        //$this->pwd = ''; // Geoffrey
+        $this->pwd = '1234';
         $this->connexion = '';
         $this->sql = '';
         $this->query = '';
@@ -137,7 +139,7 @@ class Database
         if (!$connected)
             return '';
     
-        $sql = file_get_contents('sql/selectMatches.sql');
+        $sql = file_get_contents('src/sql/selectMatches.sql');
         $query = new Query($this, $sql);
         $query->bind(':idj', $_SESSION['id_joueur'], PDO::PARAM_INT);
         if($query->execute())
@@ -219,7 +221,7 @@ class Database
     public function getLocations()
     {
         //SQL command to get table drawing
-        $sql = file_get_contents('sql/getLocations.sql');
+        $sql = file_get_contents('src/sql/getLocations.sql');
         $query = new Query($this, $sql);        
         if($query->execute())
         {  
@@ -236,7 +238,7 @@ class Database
     public function getLocations_1()
     {
         // Create tooltip of location div tags
-        $sql = file_get_contents('sql/getLocations_1.sql');
+        $sql = file_get_contents('src/sql/getLocations_1.sql');
         $query = new Query($this, $sql);        
         if($query->execute())
         { 
@@ -263,7 +265,7 @@ class Database
     
     public function getLocations_2($idPlayer)
     {
-        $sql = file_get_contents('sql/getLocations_2.sql');
+        $sql = file_get_contents('src/sql/getLocations_2.sql');
         $query = new Query($this, $sql);
         $query->bind(':idPlayer', $idPlayer, PDO::PARAM_INT);
         if($query->execute())
@@ -280,7 +282,7 @@ class Database
     
     public function getLocations_3($idPlayer)
     {
-        $sql = file_get_contents('sql/getLocations_3.sql');
+        $sql = file_get_contents('src/sql/getLocations_3.sql');
         $query = new Query($this, $sql);
         $query->bind(':idPlayer', $idPlayer, PDO::PARAM_INT);
         if($query->execute())

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 13:58:48
+/* Smarty version 3.1.29, created on 2016-03-06 17:02:47
   from "E:\wamp\www\Intranet\view\templates\default\footer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dad80860aba0_21122672',
+  'unifunc' => 'content_56dc54a7146729_62237110',
   'file_dependency' => 
   array (
     'c083a58202c533e2b690828b2c323e50174f0471' => 
@@ -19,8 +19,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56dad80860aba0_21122672 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '2963956dad8085f7325_56942870';
+function content_56dc54a7146729_62237110 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '116556dc54a7146727_85203459';
 ?>
 
 <footer id="footer" class="row">

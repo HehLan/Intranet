@@ -3,8 +3,9 @@
 <html lang="fr">
     <head>
         {include file="default/meta.tpl"} 
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
+        <link rel="stylesheet" type="text/css" href="{#assets#}/css/index.css" />
+        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
         <script type="text/javascript">
             function news_toggle(idn)
             {

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 13:58:48
+/* Smarty version 3.1.29, created on 2016-03-06 17:02:47
   from "E:\wamp\www\Intranet\view\templates\default\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dad8085d7f14_86271567',
+  'unifunc' => 'content_56dc54a70cc927_28257423',
   'file_dependency' => 
   array (
     '38b87550390b4498246829deafc9d57640d6d43a' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\header.tpl',
-      1 => 1456835886,
+      1 => 1457191474,
       2 => 'file',
     ),
   ),
@@ -19,8 +19,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56dad8085d7f14_86271567 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '26256dad808562bf9_59652113';
+function content_56dc54a70cc927_28257423 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '146356dc54a7052b26_81489088';
 ?>
 
 <header id="header" class="row" >
@@ -35,7 +35,7 @@ $_smarty_tpl->compiled->nocache_hash = '26256dad808562bf9_59652113';
             <p>Bienvenue <?php echo $_SESSION['login'];?>
 , <a href="common/deco.php">se déconnecter</a></p>
         <?php } else { ?>
-            <p>Bienvenue, <a href="#">se connecter</a></p>
+            <p>Bienvenue, <a href="index.php">se connecter</a></p>
         <?php }?>
         <p>Votre IP: <?php echo $_SERVER['REMOTE_ADDR'];?>
 </p>

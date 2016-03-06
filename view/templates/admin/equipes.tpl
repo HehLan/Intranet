@@ -3,10 +3,11 @@
 <html lang="fr">
     <head>
         {include file="admin/meta.tpl"} 
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/admin_index.js"></script>		
+        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/equipes.css" >
+        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/admin_index.js"></script>		
     </head>
 
     <body role="document">	
@@ -37,9 +38,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div id="listeEquipeJoueurAdmin">
-                                            What here ?
-                                        </div>
+                                        <div id="listeEquipeJoueurAdmin"></div>
                                         <input id="submitNewPlayerInTeam" type="button" value="Ajouter un joueur" style="display: none;">
                                     </td>
                                 </tr>
@@ -50,9 +49,7 @@
                                 </tr>
                                 <tr>
                                     <td  colspan="2">
-                                        <div id="InfoJoueurEquipes" style="height:250px;">
-                                              What here ?
-                                        </div>
+                                        <div id="InfoJoueurEquipes" style="height:250px;"></div>
                                     </td>
                                 </tr>
                             </tbody>

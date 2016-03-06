@@ -1,3 +1,62 @@
+/*----------------------------------------------------------------------*/
+/*			TOURNOIS CSS                                    */							
+/*----------------------------------------------------------------------*/
+
+/* 
+Beaucoup de CSS pour rien grand chose d'extraordinaire
+--> utiliser bootstrap et ajouter une couche au dessus
+*/
+
+
+#adm_tablo
+{
+    border:1px solid white;
+}
+#adm_tablo tr
+{
+    /*border:1px solid white;*/
+}
+#adm_tablo td
+{
+    border:1px solid #999999;
+    text-align:center;
+}
+#adm_tablo th
+{
+    border:1px solid #9999FF;
+}
+#shadowing
+{
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #666666;
+    z-index:80;
+    opacity:0.5;
+    filter: alpha(opacity=50);
+}
+.popup_centree
+{
+    visibility:hidden;
+    background-color:#000000;
+    position:fixed;
+    left: 50%;
+    top: 50%; 
+    z-index: 100;
+    border: 4px solid #888888;
+    padding: 20px 20px 20px 20px;
+    overflow:auto;
+}
+/*--G�rer la position fixed pour IE6--*/
+*html .popup_centree
+{
+    position: absolute;
+}
+
+
 div#InscriptionDesJoueursEquipesAuxTournois{
     margin-left: 50px;
     text-align: center;
@@ -47,3 +106,10 @@ div#InscriptionDesJoueursEquipesAuxTournois{
     line-height: 2em;
     cursor: pointer;
 }
+
+
+
+
+
+
+

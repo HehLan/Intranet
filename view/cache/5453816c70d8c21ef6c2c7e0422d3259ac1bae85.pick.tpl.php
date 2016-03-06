@@ -1,29 +1,29 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 13:58:48
+/* Smarty version 3.1.29, created on 2016-03-06 16:07:23
   from "E:\wamp\www\Intranet\view\templates\default\pick.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dad80862de20_60474947',
+  'unifunc' => 'content_56dc47ab620800_17315694',
   'file_dependency' => 
   array (
     '5453816c70d8c21ef6c2c7e0422d3259ac1bae85' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\pick.tpl',
-      1 => 1457182660,
+      1 => 1457275109,
       2 => 'file',
     ),
     'ed988336c4343083b0c42e2ff20b9d17b41f4bae' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\meta.tpl',
-      1 => 1456169953,
+      1 => 1457276643,
       2 => 'file',
     ),
     '38b87550390b4498246829deafc9d57640d6d43a' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\header.tpl',
-      1 => 1456835886,
+      1 => 1457191474,
       2 => 'file',
     ),
     'c083a58202c533e2b690828b2c323e50174f0471' => 
@@ -35,7 +35,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dad80862de20_60474947 ($_smarty_tpl) {
+function content_56dc47ab620800_17315694 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -71,14 +71,19 @@ function content_56dad80862de20_60474947 ($_smarty_tpl) {
 
 <link rel="shortcut icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
 <link rel="icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/profil.css" />
+
+<!-- CSS STYLESHEETS BASE -->
 <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui2.css" />
 <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/equipes.css" >
+<!-- CSS STYLESHEETS LAYERS -->
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/footer.css" />
+
+
+
+
 
 <script src="/Intranet/assets/js/jquery.js"></script>
 <script src="/Intranet/assets/js/bootstrap.min.js"></script>
@@ -95,6 +100,7 @@ function content_56dad80862de20_60474947 ($_smarty_tpl) {
 <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+        <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/pick.css" />
         <script type="text/javascript" src="/Intranet/assets/js/jquery.js"></script>
         <script type="text/javascript" src="/Intranet/assets/js/getXhr.js"></script>
         <script type="text/javascript" src="/Intranet/assets/js/jquery-ui.js"></script>

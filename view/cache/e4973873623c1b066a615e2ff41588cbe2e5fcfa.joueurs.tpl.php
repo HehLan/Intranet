@@ -1,29 +1,29 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 13:52:37
+/* Smarty version 3.1.29, created on 2016-03-06 17:02:38
   from "E:\wamp\www\Intranet\view\templates\admin\joueurs.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dad6956773f6_96945310',
+  'unifunc' => 'content_56dc549e3e0030_19338264',
   'file_dependency' => 
   array (
     'e4973873623c1b066a615e2ff41588cbe2e5fcfa' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\admin\\joueurs.tpl',
-      1 => 1456270386,
+      1 => 1457279488,
       2 => 'file',
     ),
     '0e581425c25b7e4430f823fafb32398a1a42b35f' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\admin\\meta.tpl',
-      1 => 1456227087,
+      1 => 1457280036,
       2 => 'file',
     ),
     '671975c94dd1e7dba0ca368cae0b42da0a3615ec' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\admin\\header.tpl',
-      1 => 1456228370,
+      1 => 1457274566,
       2 => 'file',
     ),
     'e98396841417fe328ce0f332a73c8fbcf7a31642' => 
@@ -41,7 +41,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dad6956773f6_96945310 ($_smarty_tpl) {
+function content_56dc549e3e0030_19338264 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -74,20 +74,29 @@ function content_56dad6956773f6_96945310 ($_smarty_tpl) {
 <meta name="geo.region" content="BE-WHT" />
 <meta name="geo.placename" content="Mons, Hainaut" />
 
-<link rel="shortcut icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
-<link rel="icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/profil.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/equipes.css" >
+<link rel="shortcut icon" href="/Intranet/view/templates/admin/assets/img/logoheh.ico" />
+<link rel="icon" href="/Intranet/view/templates/admin/assets/img/logoheh.ico" />
 
-<script src="/Intranet/assets/js/jquery.js"></script>
-<script src="/Intranet/assets/js/bootstrap.min.js"></script>
-<script src="/Intranet/assets/js/jquery-2.1.4.min.js"></script>
+
+<!-- CSS STYLESHEETS BASE -->
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/bootstrap.min.css" />
+<!-- CSS STYLESHEETS LAYERS -->
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/footer.css" />
+
+
+
+
+
+
+
+
+<script src="/Intranet/src/js/jquery.js"></script>
+<script src="/Intranet/src/js/bootstrap.min.js"></script>
+<script src="/Intranet/src/js/jquery-2.1.4.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -100,9 +109,10 @@ function content_56dad6956773f6_96945310 ($_smarty_tpl) {
 <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]--> 
-        <script type="text/javascript" src="/Intranet/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/getXhr.js"></script>
+        <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/joueurs.css" >
+        <script type="text/javascript" src="/Intranet/src/js/jquery.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/getXhr.js"></script>
         <script>
             $(document).ready(function() {
 
@@ -204,7 +214,7 @@ function content_56dad6956773f6_96945310 ($_smarty_tpl) {
         </a>
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
-                    <p>Bienvenue admin, <a href="common/deco.php">se déconnecter</a></p>
+                    <p>Bienvenue admin, <a href="../common/deco.php">se déconnecter</a></p>
                 <p>IP: ::1.</p>
                
     </div>	     
