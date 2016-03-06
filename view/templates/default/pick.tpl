@@ -59,7 +59,7 @@
             <script>
                 function kickMap(el) {
                     var container = $(el);
-                    $(el).attr('data-value', -1);
+                    $(el).attr('data-value', 0);
                     container.children('div').css('background-color', 'rgba(0,0,0,0)');
                     container.css('background-color', 'rgba(0,0,0,0.8)');
                 }

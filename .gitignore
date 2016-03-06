@@ -1,11 +1,7 @@
 /nbproject
 /templates_c/*
+/view/cache/*
+/view/templates_c/*
 /cache/*
 /configs/paths.conf
-view/cache/733e95318687d978de5514d49e019003ac7c3e77.pick.tpl.php
-view/templates_c/12504c554fd6d7d31f357f50964a22789dba3dfa_0.file.meta.tpl.cache.php
-view/templates_c/39ff23fbf04cfd6f4576108739b4653cabdc9430_2.file.debug.tpl.php
-view/templates_c/733e95318687d978de5514d49e019003ac7c3e77_0.file.pick.tpl.cache.php
-view/templates_c/a531291dd88a6f96f2526ada945b870e70804031_6.file.paths.conf.php
-view/templates_c/b1017378399f7168f14f79c1b09931ecb3a5895e_0.file.footer.tpl.cache.php
-view/templates_c/c91c4a7a96f600bab01574342f564dd27990a16c_0.file.header.tpl.cache.php
+*.tpl.cache.php
