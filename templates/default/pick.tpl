@@ -33,8 +33,12 @@
                     <div class="row">
                         {foreach from=$mapPaths key=i item=path}
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <img class="img-responsive" src="{$path}" alt="{$mapNames[$i]}"/>
-                                <div style="margin-bottom: 5px; text-align: center;">{$mapNames[$i]}</div>
+                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                    <img id="{$mapNames[$i]}" class="img-responsive" src="{$path}" alt="{$mapNames[$i]}" />
+                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                        {$mapNames[$i]}
+                                    </div>
+                                </div>
                             </div>
                         {/foreach}
                     </div>
@@ -45,6 +49,34 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            
+            
+            
+            
+            function kickMap(el) {
+                var container = $(el);              
+                $(el).attr('data-value',-1);
+                container.children('div').css('background-color', 'rgba(0,0,0,0)');
+                container.css('background-color', 'rgba(0,0,0,0.8)');
+            }
+
+            // highlighting text 
+            // --> visibility/styling while user is choosing
+            function highlightUp(el){
+                var container = $(el);              // get div containing img&text
+                var val = $(el).attr('data-value'); // get its custom value
+                if(val == 1)
+                    container.children('div').css('background-color', 'rgba(214,251,251,0.3)');
+            }
+            function highlightDown(el){
+                var container = $(el);
+                var val = $(el).attr('data-value');
+                if(val == 1)
+                    container.children('div').css('background-color', 'rgba(214,251,251,0)');
+            }
+        </script>
 
     </body>
 </html>

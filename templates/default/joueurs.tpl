@@ -81,7 +81,7 @@
                             <br>
                             <br>
                         </div>                       
-                        
+
                         <!-- Player List -->
                         {foreach name=playerLoop from=$joueurs item=joueur}
                             {if $smarty.foreach.playerLoop.first}
@@ -90,18 +90,18 @@
                                 </div>
                                 <br>
                                 <ul id="liste_joueur">
-                            {/if}
-                            <li>
-                                <a class='ClassPseudo' 
-                                    {if $smarty.foreach.playerLoop.index % 2 == 0}
-                                        style='background-color:#212121'                                                             
-                                    {else}
-                                        style='background-color:#262626'
-                                    {/if}
-                                    value='{$joueur.id_emplacement}'>{$joueur.pseudo}
-                                </a>
-                            </li>
-                            {if $smarty.foreach.playerLoop.last}
+                                {/if}
+                                <li>
+                                    <a class='ClassPseudo' 
+                                       {if $smarty.foreach.playerLoop.index % 2 == 0}
+                                           style='background-color:#212121'                                                             
+                                       {else}
+                                           style='background-color:#262626'
+                                       {/if}
+                                       value='{$joueur.id_emplacement}'>{$joueur.pseudo}
+                                    </a>
+                                </li>
+                                {if $smarty.foreach.playerLoop.last}
                                 </ul>
                             {/if} 
                         {foreachelse}
