@@ -37,8 +37,7 @@ class Query
         }
         if($this->executed_query = $this->prepared_query->execute())
         {        
-	print $this->sql;
-            if (!strpos($this->sql, 'INSERT'))
+            if (!preg_match('#INSERT#i',$this->sql))
             {
                 try
                 {
