@@ -36,7 +36,7 @@ class Query
            $this->prepared_query->bindValue($arg[0], $arg[1], $arg[2]);
         }
         if($this->executed_query = $this->prepared_query->execute())
-        {            
+        {        
             if (!strpos($this->sql, 'INSERT'))
             {
                 try

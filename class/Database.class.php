@@ -1,8 +1,7 @@
 <?php
-
+require_once(dirname(__FILE__).'/var.conf.php');
 require_once(DOCUMENT_ROOT.'/class/objects/Player.class.php');
 require_once(DOCUMENT_ROOT.'/class/Query.class.php');
-
 
 
 class Database
@@ -17,14 +16,14 @@ class Database
     private $query;    
     
     public function __construct()
-    {        
-        $this->host = 'localhost';
-        $this->port = '3306';
-        //$this->database = 'intranetbd'; // Geoffrey
-        $this->database = 'hehlanbd'; 
-        $this->user = 'root';
-        //$this->pwd = ''; // Geoffrey
-        $this->pwd = '1234';
+    {   
+		GLOBAL $glob_host,$glob_port,$glob_database,$glob_user,$glob_pwd;
+
+        $this->host = $glob_host;
+        $this->port = $glob_port;
+        $this->database = $glob_database; 
+        $this->user = $glob_user;
+        $this->pwd = $glob_pwd;
         $this->connexion = '';
         $this->sql = '';
         $this->query = '';
