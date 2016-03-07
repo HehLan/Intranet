@@ -21,7 +21,7 @@ echo '<script type="text/javascript">
 						setTimeout("afficher("+max+")",' . $duree_chat . ');
 					}
 				}
-				xhr.open("POST","assets/ajax/chat_read_json.php",true);
+				xhr.open("POST","src/ajax/chat_read_json.php",true);
 				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhr.send("max="+max+"&start=' . date("Y-m-d H:i:s") . '");
 			}
@@ -37,7 +37,7 @@ echo '<script type="text/javascript">
 						setTimeout("users()",' . $duree_chat_users . ');
 					}
 				}
-				xhr.open("POST","assets/ajax/chat_users.php",true);
+				xhr.open("POST","src/ajax/chat_users.php",true);
 				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhr.send("id=' . $_SESSION['id_joueur'] . '&pseudo=' . $_SESSION['login'] . '");
 			}
@@ -53,7 +53,7 @@ echo '<script type="text/javascript">
 						if(xhr.readyState == 4 && xhr.status == 200)
 							document.getElementById("bloc_chat_message").innerHTML+=msg;
 					}
-					xhr.open("POST","assets/ajax/chat_insert.php",true);
+					xhr.open("POST","src/ajax/chat_insert.php",true);
 					xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					xhr.send("id=' . $_SESSION['id_joueur'] . '&pseudo=' . $_SESSION['login'] . '&msg="+msg);
 				}

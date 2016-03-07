@@ -1,8 +1,7 @@
 <?php
-
+require_once(dirname(__FILE__).'/var.conf.php');
 require_once(DOCUMENT_ROOT.'/class/objects/Player.class.php');
 require_once(DOCUMENT_ROOT.'/class/Query.class.php');
-
 
 
 class Database
@@ -14,17 +13,17 @@ class Database
     private $pwd;    
     private $connexion;
     private $sql;
-    private $query;    
+    private $query;
     
     public function __construct()
-    {        
-        $this->host = 'localhost';
-        $this->port = '3306';
-        //$this->database = 'intranetbd'; // Geoffrey
-        $this->database = 'hehlanbd'; 
-        $this->user = 'root';
-        //$this->pwd = ''; // Geoffrey
-        $this->pwd = '1234';
+    {   
+		GLOBAL $glob_host,$glob_port,$glob_database,$glob_user,$glob_pwd;
+
+        $this->host = $glob_host;
+        $this->port = $glob_port;
+        $this->database = $glob_database; 
+        $this->user = $glob_user;
+        $this->pwd = $glob_pwd;
         $this->connexion = '';
         $this->sql = '';
         $this->query = '';
@@ -40,10 +39,14 @@ class Database
             $this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         }
         catch (Exception $e)
-        {
-            echo 'An error has occured\n';
-            echo 'Code:' . $e->getCode();
-            echo 'Message:' . $e->getMessage();
+        {	
+			GLOBAL $glob_debug;	
+			if ($glob_debug)
+			{
+				echo 'An error has occured\n';
+				echo 'Code:' . $e->getCode();
+				echo 'Message:' . $e->getMessage();
+			}
             die();
             exit;
         }
@@ -84,8 +87,10 @@ class Database
         }
         else
         {
-           echo 'ERROR PLAYER';
-           exit; 
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR PLAYER';
+			exit; 
         }
         return $player;
     }    
@@ -102,7 +107,9 @@ class Database
         }
         else
         {
-            echo 'ERROR PLAYER';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR PLAYER';
             exit; 
         }
     }
@@ -129,7 +136,9 @@ class Database
         }
         else
         {
-            echo 'ERROR NEWS LIST';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR NEWS LIST';
             exit; 
         }  
     }
@@ -156,7 +165,9 @@ class Database
         }
         else
         {
-            echo 'ERREUR SQL NEXT MATCHES';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL NEXT MATCHES';
             exit; 
         }     
     }
@@ -177,7 +188,9 @@ class Database
         }
         else
         {
-            echo 'ERROR SQL duree_chat';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR SQL duree_chat';
             exit;
         }        
     }
@@ -194,7 +207,9 @@ class Database
         }
         else
         {
-            echo 'ERROR SQL duree_chat';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR SQL duree_chat';
             exit;
         }
         return $res;  
@@ -212,7 +227,9 @@ class Database
         }
         else
         {
-            echo 'ERROR SQL duree_chat_users';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR SQL duree_chat_users';
             exit;
         }
         return $res;
@@ -230,7 +247,9 @@ class Database
         }
         else
         {
-            echo 'ERROR SQL duree_chat_users';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR SQL duree_chat_users';
             exit;
         } 
     }
@@ -257,10 +276,11 @@ class Database
         }
         else
         {
-            echo 'ERROR';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR';
             exit;
         }
-        
     }
     
     public function getLocations_2($idPlayer)
@@ -296,7 +316,9 @@ class Database
         }
         else
         {
-            echo 'ERROR';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR';
             exit;
         }
     }
@@ -315,7 +337,9 @@ class Database
         } 
         else
         {
-            echo 'ERROR';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR';
             exit;
         }
     }
@@ -333,7 +357,9 @@ class Database
         }
         else
         {
-            echo 'ERROR';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERROR';
             exit;
         }
     }
@@ -346,10 +372,13 @@ class Database
         ON DUPLICATE KEY UPDATE lastcon=NOW()';
         $query = new Query($this, $sql);
         $query->bind('id', $id, PDO::PARAM_INT);
-        $query->bind('pseudo', $login, PDO::PARAM_INT);  
-        if(!$query->execute())
-        {        
-            echo 'ERREUR USERS CHAT SQL 1';
+        $query->bind('pseudo', $login, PDO::PARAM_INT);
+		$affected_rows = $query->execute();
+        if(!is_null($affected_rows) && !$affected_rows)
+        {   
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR USERS CHAT SQL 1';
         }  
     }
     
@@ -361,12 +390,13 @@ class Database
         $query->bind(':id', $idTournament, PDO::PARAM_INT);
         if ($query->execute())
         {
-            //print_r($query->getResult());
             return $query->getResult()[0]; 
         }
         else
         {
-            echo 'ERREUR SQL TOURNOI';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL TOURNOI';
             exit;
         }     
     }
@@ -384,7 +414,9 @@ class Database
         }
         else
         {
-            echo 'ERREUR SQL GROUPES';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL GROUPES';
             exit;
         }
     }
@@ -401,7 +433,9 @@ class Database
         }
         else
         {
-            echo 'ERREUR SQL EQUIPES';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL EQUIPES';
             exit;
         }
     }
@@ -418,7 +452,9 @@ class Database
         }
         else
         {
-            echo 'ERREUR SQL JOUEURS';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL JOUEURS';
             exit;
         } 
     }
@@ -437,7 +473,9 @@ class Database
         }
         else
         {
-            echo 'ERREUR SQL COUNT LB';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL COUNT LB';
             exit;
         }
     }
@@ -463,7 +501,9 @@ class Database
         }
         else
         {
-            echo 'ERREUR SQL SCORES TEAM 1';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL SCORES TEAM 1';
             exit;
         }
     }
@@ -489,7 +529,9 @@ class Database
         }
         else
         {
-            echo 'ERREUR SQL MANCHES';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL MANCHES';
             exit;
         }
     }
@@ -506,7 +548,9 @@ class Database
         }
         else
         {
-            echo 'ERREUR SQL MANCHES';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL MANCHES';
             exit;
         }
     }    
@@ -525,7 +569,9 @@ class Database
         }
         else
         {
-            echo 'ERREUR SQL MANCHES';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL MANCHES';
             exit;
         }
     }

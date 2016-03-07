@@ -56,22 +56,20 @@
                         {/if}
                     {else}
                         <h3 id="bloc_chat_titre">Connexion</h3>	
-                        <div id="bloc_connexion">
-                            <form method="POST" id="bloc_connexion_form">
-                                <table id="bloc_connexion_table">
-                                    <tr>
-                                        <td><label><strong>Login</strong></label></td>
-                                        <td><input type="text" name="login" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label><strong>Password</strong></label></td>
-                                        <td><input type="password" name="pwd" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><input type="submit" value="Connexion" /></td>						
-                                    </tr>					
-                                </table>
-                            </form>
+                        <div id="row bloc_connexion">
+                            <form class="well col-lg-8" method="POST" id="bloc_connexion_form">
+                                <fieldset id="bloc_connexion_fieldset">
+                                    <div class="form-group">
+                                        <label for="login">Login </label>
+                                        <input id="login" class="form-control" type="text" name="login">  
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Password </label>
+                                        <input id="pwd" class="form-control" type="password" name="pwd">  
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">Log on</button>
+                                </fieldset>                           
+                            </form>                            
                         </div>
                     {/if}
                 </div>

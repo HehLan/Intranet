@@ -1,35 +1,60 @@
 <?php
 
-require_once('../../common/connect.php');
-require_once('../../common/utils.php');
+
+
+// Includes
+session_start();
+require_once('../../common/utils.php'); // get some utility functions
+require_once('../../class/Smarty_HEHLan.class.php');
+require_once('../../class/Database.class.php');
+require_once('../../class/Auth.class.php');
+require_once('../../class/Query.class.php');
+
+$database = new Database();
+
+
+
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . "GMT");
 header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
 header("Content-Type: text/xml; charset=utf-8");
-$sql = "SELECT * FROM tchat WHERE quand>=";
+
+
+$sql = 'SELECT * FROM tchat WHERE quand >=';
 
 if (!isset($_POST['start']))
+{
     $sql.="NOW()";
+}
 else
+{
     $sql.=":start";
+}
+    
 
-$sql.=" AND id_chat>:max ORDER BY quand";
-$query = $connexion->prepare($sql);
+$sql.=' AND id_chat >:max ORDER BY quand'; 
+$query = new Query($database, $sql);
 
 $max = 0;
 if (isset($_POST['max']))
+{
     $max = $_POST['max'];
-$query->bindValue('max', $max, PDO::PARAM_INT);
+}
+$query->bind('max', $max, PDO::PARAM_INT);
 if (isset($_POST['start']))
-    $query->bindValue('start', $_POST['start'], PDO::PARAM_INT);
+{
+    $query->bind('start', $_POST['start'], PDO::PARAM_INT);
+}
 
 echo '
 {"messages":
 	{"message":[ ';
-if ($query->execute()) {
+if ($query->execute())
+{
     $first = true;
-    while ($msg = $query->fetch(PDO::FETCH_ASSOC)) {
+    foreach($query->getResult() as $msg)
+    {
         $pseudo = htmlspecialchars($msg['pseudo']);
         $message = htmlspecialchars($msg['message']);
         //$quand=get_date($msg['quand']).' à '.get_heure($msg['quand']);

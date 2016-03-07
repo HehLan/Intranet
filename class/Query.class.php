@@ -36,22 +36,28 @@ class Query
            $this->prepared_query->bindValue($arg[0], $arg[1], $arg[2]);
         }
         if($this->executed_query = $this->prepared_query->execute())
-        {
-            try
+        {        
+            if (!preg_match('#INSERT#i',$this->sql))
             {
-                $this->output_array = $this->prepared_query->fetchAll(PDO::FETCH_ASSOC);
-                $this->output_object = $this->prepared_query->fetch(PDO::FETCH_OBJ);
-                return true;
-            }
-            catch (Exception $e)
-            {
-                echo $e;
+                try
+                {
+                    $this->output_array = $this->prepared_query->fetchAll(PDO::FETCH_ASSOC);
+                    $this->output_object = $this->prepared_query->fetch(PDO::FETCH_OBJ);
+                    return true;
+                }
+                catch (Exception $e)
+                {
+					global $glob_debug;
+					if ($glob_debug)
+						echo $e;
+                }
             }
         }
         else
         {
             return false;
         }
+        $this->prepared_query->closeCursor();
     }
     
     public function getResult()

@@ -1,13 +1,5 @@
 <?php
-
-$domain = '/Intranet';
-define('DOCUMENT_ROOT', $_SERVER['CONTEXT_DOCUMENT_ROOT'].$domain);
-define('SMARTY_DIR', DOCUMENT_ROOT.'/lib/Smarty/');
-define('WEB_ROOT', 'http://localhost:8080/'.$domain);
-define('ADMIN_ROOT', 'http://localhost:8080/'.$domain.'/admin');
-
-
-
+require_once(dirname(__FILE__).'/var.conf.php');
 require_once(SMARTY_DIR.'Smarty.class.php');
 
 
