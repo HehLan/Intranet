@@ -12,3 +12,4 @@ view/templates_c/*
 *.tpl.cache.php
 
 
+templates_c/
