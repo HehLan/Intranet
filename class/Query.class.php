@@ -37,6 +37,7 @@ class Query
         }
         if($this->executed_query = $this->prepared_query->execute())
         {        
+	print $this->sql;
             if (!strpos($this->sql, 'INSERT'))
             {
                 try
@@ -47,7 +48,9 @@ class Query
                 }
                 catch (Exception $e)
                 {
-                    echo $e;
+					global $glob_debug;
+					if ($glob_debug)
+						echo $e;
                 }
             }
         }

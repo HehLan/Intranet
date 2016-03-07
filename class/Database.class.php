@@ -40,9 +40,14 @@ class Database
         }
         catch (Exception $e)
         {
-            echo 'An error has occured\n';
-            echo 'Code:' . $e->getCode();
-            echo 'Message:' . $e->getMessage();
+			global $glob_debug;
+			
+			if ($glob_debug)
+			{
+				echo 'An error has occured\n';
+				echo 'Code:' . $e->getCode();
+				echo 'Message:' . $e->getMessage();
+			}
             die();
             exit;
         }
