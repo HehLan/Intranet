@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 22:12:51
+/* Smarty version 3.1.29, created on 2016-03-07 13:06:09
   from "E:\wamp\www\Intranet\view\templates\default\joueurs.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc9d53d1d653_43504468',
+  'unifunc' => 'content_56dd6eb1e27396_54980174',
   'file_dependency' => 
   array (
     'a53587d829aef1f079c0bea5c00ddce34ebc0074' => 
@@ -41,7 +41,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
+function content_56dd6eb1e27396_54980174 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +121,7 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
         </a>
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
-                    <p>Bienvenue, <a href="index.php">se connecter</a></p>
+                    <p>Bienvenue admin, <a href="common/deco.php">se déconnecter</a></p>
                 <p>Votre IP: ::1</p>
                
     </div>	     
@@ -150,7 +150,9 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
                                         <li><a href="tournois.php?id=5">Hearthstone</a></li>
                                         
                     
-                                </ul>
+                                        <li><a href="profile.php">Mon profil</a></li>
+                                                <li><a href="admin/index.php">Admin</a></li>
+                                                        </ul>
         </div>
     </div>			
 </nav>

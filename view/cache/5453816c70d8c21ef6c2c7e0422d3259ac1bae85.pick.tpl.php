@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 22:17:22
+/* Smarty version 3.1.29, created on 2016-03-06 22:32:12
   from "E:\wamp\www\Intranet\view\templates\default\pick.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc9e6269ebb3_70762063',
+  'unifunc' => 'content_56dca1dca597c1_10948875',
   'file_dependency' => 
   array (
     '5453816c70d8c21ef6c2c7e0422d3259ac1bae85' => 
@@ -35,7 +35,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dc9e6269ebb3_70762063 ($_smarty_tpl) {
+function content_56dca1dca597c1_10948875 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +119,7 @@ function content_56dc9e6269ebb3_70762063 ($_smarty_tpl) {
         </a>
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
-                    <p>Bienvenue, <a href="index.php">se connecter</a></p>
+                    <p>Bienvenue admin, <a href="common/deco.php">se déconnecter</a></p>
                 <p>Votre IP: ::1</p>
                
     </div>	     

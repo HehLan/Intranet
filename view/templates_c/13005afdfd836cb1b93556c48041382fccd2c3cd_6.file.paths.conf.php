@@ -1,19 +1,19 @@
-<?php /* Smarty version 3.1.29, created on 2016-03-06 17:09:48
+<?php /* Smarty version 3.1.29, created on 2016-03-07 13:05:35
          compiled from "E:\wamp\www\Intranet\view\configs\paths.conf" */ ?>
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 17:09:48
+/* Smarty version 3.1.29, created on 2016-03-07 13:05:35
   from "E:\wamp\www\Intranet\view\configs\paths.conf" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc564c2678d5_68974150',
+  'unifunc' => 'content_56dd6e8fee6db7_79350206',
   'file_dependency' => 
   array (
     '13005afdfd836cb1b93556c48041382fccd2c3cd' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\configs\\paths.conf',
-      1 => 1457278283,
+      1 => 1457352271,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56dc564c2678d5_68974150 ($_smarty_tpl) {
+function content_56dd6e8fee6db7_79350206 ($_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigVars($_smarty_tpl, array (
   'sections' => 
   array (
