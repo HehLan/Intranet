@@ -61,14 +61,16 @@
                     var container = $(el);              // div containing img&text
                     container.attr('data-value', 0);    // change div's value, to avoid it change css on mouseHower
                     
-                    
                     // faire disparaitre l'effet de survol, car après avoir changé 'data-value' l'effet "mouseLeave" 
                     // n'a plus d'effet. Du coup on le fait ici à la main
                     container.children('div').css('background-color', 'rgba(0,0,0,0)');
                     // griser le champ de texte
                     container.css('background-color', 'rgba(0,0,0,0.8)');
                     // griser l'image
-                    container.children('img').css('-webkit-filter', 'grayscale(1)');
+                    container.children('img').css({
+                        '-webkit-filter' : 'grayscale(1)',
+                        'filter' : 'grayscale(100%)'
+                    });
                 }
 
                 // highlighting text 
