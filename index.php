@@ -47,7 +47,7 @@ if ($connected)
     {        
         $duree_chat = $database->getChatTiming();
         $duree_chat_users = $database->getUserChatTiming();
-        require_once('assets/ajax/chat.php');
+        require_once('src/ajax/chat.php');
     }
 }
 

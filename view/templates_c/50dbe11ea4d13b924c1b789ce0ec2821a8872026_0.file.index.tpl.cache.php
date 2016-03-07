@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 13:57:20
+/* Smarty version 3.1.29, created on 2016-03-06 22:19:07
   from "E:\wamp\www\Intranet\view\templates\default\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dad7b093ef51_94383613',
+  'unifunc' => 'content_56dc9ecb001476_70049322',
   'file_dependency' => 
   array (
     '50dbe11ea4d13b924c1b789ce0ec2821a8872026' => 
     array (
       0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\index.tpl',
-      1 => 1457174034,
+      1 => 1457293946,
       2 => 'file',
     ),
   ),
@@ -23,8 +23,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:default/footer.tpl' => 1,
   ),
 ),false)) {
-function content_56dad7b093ef51_94383613 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '2204056dad7b07d3a75_35086642';
+function content_56dc9ecb001476_70049322 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '1807056dc9ecae12d79_98024314';
 ?>
 
 <!DOCTYPE html>
@@ -33,13 +33,15 @@ $_smarty_tpl->compiled->nocache_hash = '2204056dad7b07d3a75_35086642';
         <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:default/meta.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
  
+        <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
+/css/index.css" />
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery.js"><?php echo '</script'; ?>
+/src/js/jquery.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/getXhr.js"><?php echo '</script'; ?>
+/src/js/getXhr.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript">
@@ -118,22 +120,20 @@ $_smarty_tpl->tpl_vars['__smarty_section_sec1'] = $__section_sec1_0_saved;
                         <?php }?>
                     <?php } else { ?>
                         <h3 id="bloc_chat_titre">Connexion</h3>	
-                        <div id="bloc_connexion">
-                            <form method="POST" id="bloc_connexion_form">
-                                <table id="bloc_connexion_table">
-                                    <tr>
-                                        <td><label><strong>Login</strong></label></td>
-                                        <td><input type="text" name="login" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label><strong>Password</strong></label></td>
-                                        <td><input type="password" name="pwd" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><input type="submit" value="Connexion" /></td>						
-                                    </tr>					
-                                </table>
-                            </form>
+                        <div id="row bloc_connexion">
+                            <form class="well col-lg-8" method="POST" id="bloc_connexion_form">
+                                <fieldset id="bloc_connexion_fieldset">
+                                    <div class="form-group">
+                                        <label for="login">Login </label>
+                                        <input id="login" class="form-control" type="text" name="login">  
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Password </label>
+                                        <input id="pwd" class="form-control" type="password" name="pwd">  
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">Log on</button>
+                                </fieldset>                           
+                            </form>                            
                         </div>
                     <?php }?>
                 </div>

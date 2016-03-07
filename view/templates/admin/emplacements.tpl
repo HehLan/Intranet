@@ -1,11 +1,12 @@
-{* Smarty *}}
+{* Smarty *}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         {include file="admin/meta.tpl"}
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
+        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/emplacements.css" >
+        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
         <script type="text/javascript">
             $(document).ready(function()
             {
@@ -53,38 +54,7 @@
                         });  
                });
             });
-	</script>
-    <style>    
-        #info{
-        position:relative;
-        z-index:24;
-        color:#000;
-        text-decoration:blink
-        }
-
-        #info:hover{
-        z-index:25;
-        background-color:red;
-        cursor: help;
-        }
-
-        #info span{
-        display: none
-        }
-
-        #info:hover span{
-        display:block;
-        position:absolute;
-        top:2em; left:2em; width:10em;
-        border:1px solid #000;
-        background-color:#FFF;
-        color:#000;
-        text-align: justify;
-        font-size: medium;
-        font-weight:none;
-        padding:5px;
-        }
-    </style>	
+	</script>	
 </head>
 
 <body role="document">
@@ -136,15 +106,7 @@
                         </span></a>
                     </div>
                 {/foreach}                        
-                <div id="cadre" style="
-                     position: absolute;
-                     top: 5%;
-                     left: 36%;
-                     width: 4.5%;
-                     height:3%;
-                     border:0.1em solid #000;
-                     text-align:center;">
-                </div>
+                <div id="cadre"</div>
                 <!-- VISIONNER LA PLACE DU JOUEUR -->    
                 <b><u><center>Consulter la place :</center></u></b></b>
                 <br><br>
@@ -166,7 +128,7 @@
                         <option value="{$equipes['id_equipes']}">{$equipes['nom']}</option>
                     {/foreach}           
                 </select>
-                <div id="dialogEquipe_Emplacement" style='display:none;'></div>
+                <div id="dialogEquipe_Emplacement"></div>
                 <br>
                 <br>
                 <!-- AJOUTER PLACE AU JOUEUR -->                                                                                       
@@ -190,30 +152,8 @@
                     <br><br>
                     <p><center><input class="submit" type="submit" value="Valider" /></center></p>
                 </form>
-                <div id="dialogInfo_joueur" style="width:300px;
-                     height:auto;
-                     border:1px solid #000;
-                    display: none;
-                    padding:5px; 
-                    background-color:#9ba0ee; 
-                    border:2px solid #656ab0;
-                -khtml-border-radius:9px; 
-                -webkit-border-radius:9px; 
-                border-radius:9px;">
-                    
-                </div>
-                <div id="dialogInfo_equipe" style="width:300px;
-                     height:auto;
-                     border:1px solid #000;
-                display: none;
-                padding:5px; 
-                background-color:#ffaca3; 
-                border:2px solid #ff3924;
-                -khtml-border-radius:9px;
-                -webkit-border-radius:9px; 
-                border-radius:9px;">
-                    
-                </div>
+                <div id="dialogInfo_joueur"></div>
+                <div id="dialogInfo_equipe"></div>
             </div>
 	</div>	
 	

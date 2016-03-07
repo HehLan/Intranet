@@ -1,0 +1,33 @@
+/*----------------------------------------------------------------------*/
+/*                      NAVIGATION CSS                                  */
+/*----------------------------------------------------------------------*/
+#navigation 
+{
+    background: transparent url("../img/bg_menu.png") repeat-x top left;
+}
+#navigation  li 
+{
+    list-style: none;
+}
+#navigation  li a 
+{
+    line-height: 50px;
+    width: auto;
+    text-decoration: none;
+    color: #DDD;
+    text-transform: uppercase;
+    font-family: Calibri, Arial, Times, serif;
+    font-weight: bold;
+    padding: 0 25px;
+    font-size: 1.3em;
+    text-shadow: 1px 1px 1px #353535;
+}
+#navigation  li a:hover,
+#navigation  li a.active 
+{
+    color: #fff;
+    background: transparent url("../img/nav_hover.png") top center repeat-x;
+}
+
+
+

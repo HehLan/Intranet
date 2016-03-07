@@ -2,9 +2,10 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        {include file="default/meta.tpl"}  
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
+        {include file="default/meta.tpl"}
+        <link rel="stylesheet" type="text/css" href="{#assets#}/css/tournoisRounds.css" />
+        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
     </head>
     <body>
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
@@ -37,7 +38,7 @@
 								</th>
 								{for $idManche=1 to $tournoi.nombreManche}
 									<th class="th_manche_round">Manche {$idManche}</th>
-									{/for}
+								{/for}
 								<th class="th_points_round">Points</th>
 							</tr>
 							{foreach from=$groupes[groupe].joueurs item=joueur}

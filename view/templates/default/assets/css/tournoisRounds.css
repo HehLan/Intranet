@@ -1,0 +1,66 @@
+/*----------------------------------------------------------------------*/
+/*                     TOURNOIS ROUNDS CSS                              */
+/*----------------------------------------------------------------------*/
+
+.table_round
+{
+    border: 2px solid #000000;
+}
+.title_round
+{	
+    border: 1px solid #000000;
+    background-color: #090C14;
+    font-size: 18px;
+    padding-left: 5px;
+    color: #E4D9D3;
+}
+.th_empty_round
+{
+    border: 1px solid #000000;
+    background-color: none;
+    width: 75px;
+}
+.th_manche_round
+{
+    border: 1px solid #000000;
+    background-color: #1B2232;
+    font-size: 14px;
+    padding-left: 5px;
+    width: 300px;
+    color: #E4D9D3;
+}
+.th_points_round
+{
+    border: 1px solid #000000;
+    background-color: #1B2232;
+    font-size: 14px;
+    padding-left: 5px;
+    width: 300px;
+    color: #E4D9D3;
+}
+.td_pseudo_round
+{
+    border: 1px solid #000000;
+    background-color: #1B2232;
+    font-size: 14px;
+    padding-left: 5px;
+    width: 300px;
+    color: #E4D9D3;
+}
+.td_score_round
+{
+    border: 1px solid #000000;
+    background-color: #444444;
+    text-align: center;
+    font-size: 14px;
+    color: black;
+}
+.td_total_round
+{
+    border: 1px solid #000000;
+    background-color: #E88147;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}

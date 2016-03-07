@@ -2,9 +2,11 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        {include file="admin/meta.tpl"} 
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
+        {include file="admin/meta.tpl"}
+        <!-- CSS certificated -->
+        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/news.css" >
+        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
     </head>
 
     <body role="document">

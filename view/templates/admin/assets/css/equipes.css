@@ -1,3 +1,13 @@
+/*----------------------------------------------------------------------*/
+/*				EQUIPES CSS				*/							
+/*----------------------------------------------------------------------*/
+
+/* 
+Beaucoup de CSS pour rien grand chose d'extraordinaire
+--> utiliser bootstrap et ajouter une couche au dessus
+*/
+
+
 div#ListeEquipeAdmin legend{
     font-size: 16px;
     margin: 5px;

@@ -7,8 +7,8 @@ require_once('class/Database.class.php');
 require_once('class/Query.class.php');
 
 
-
 $con = false;
+//$nbrteam = 0;
 $database = new Database();
 $smarty = new Smarty_HEHLan();
 
@@ -84,12 +84,9 @@ $smarty->assign("nbr_lb3", $nbr_lb3);
 
 $nbrmatch = 0;
 if( $tournoi['joueurParTeam'] > 1)
-{
-    include_once('tournoisPools.php');
-}
+
+	include_once(DOCUMENT_ROOT.'/common/finalesPools.php');
 else
-{
-    include_once('tournoisRounds.php');
-}
+	include_once(DOCUMENT_ROOT.'/common/finalesRounds.php');
 
 ?>
