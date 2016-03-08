@@ -34,12 +34,12 @@
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10">
                     <div class="row">
-                        {foreach from=$mapPaths key=i item=path}
+                        {foreach from=$maps item=map}
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
                                 <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
-                                    <img id="{$mapNames[$i]}" class="img-responsive" src="{$path}" alt="{$mapNames[$i]}" />
+                                    <img id="{$map['id']}" class="img-responsive" src="{$map['imgPath']}" alt="{$map['name']}" />
                                     <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
-                                        {$mapNames[$i]}
+                                        {$map['name']}
                                     </div>
                                 </div>
                             </div>
