@@ -14,7 +14,6 @@
     <body role="document">
 
         <!-- le logo -->
-
         {include file="default/header.tpl"}
 
         <!-- CUSTOM NAVBAR TEMPLATE -->
@@ -68,6 +67,7 @@
                     // griser le champ de texte
                     container.css('background-color', 'rgba(0,0,0,0.8)');
                     // griser l'image
+                    
                     container.children('img').css({
                         '-webkit-filter' : 'grayscale(1)',
                         'filter' : 'grayscale(100%)'
