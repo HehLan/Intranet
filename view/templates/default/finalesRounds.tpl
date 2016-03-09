@@ -86,11 +86,13 @@
 														{if $j==1}	
 															<td class="td_arbre_gauche" rowspan="{$matches[$tablo[$c][$m]]['maxj']}">#{$tablo[$c][$m]}</td>
 														{/if}
-														<td class="td_arbre_joueur">{$matches[$tablo[$c][$m]]['nom'][$j]}</td>
+														{if isset($matches[$tablo[$c][$m]]['joueurs'][$j])}
+														<td class="td_arbre_joueur">{$matches[$tablo[$c][$m]]['joueurs'][$j]['nom']}</td>
+														{/if}
 														{foreach from=$scores[$tablo[$c][$m]] item=score}
-															<td class="td_arbre_joueur_score">{$score[$ma]}</td>
+															<!--<td class="td_arbre_joueur_score">{$score[$ma]}</td>-->
 														{/foreach}
-														<td class="td_arbre_joueur_total">{$matches[$tablo[$c][$m]]['score'][$j]}</td>
+														<td class="td_arbre_joueur_total">{$matches[$tablo[$c][$m]]['joueurs'][$j]['score']}</td>
 														{if $j==1}	
 															<td class="td_arbre_droite" rowspan="{$matches[$tablo[$c][$m]]['maxj']}">{$matches[$tablo[$c][$m]]['fleche']} {$matches[$tablo[$c][$m]]['id_parent']}</td>
 														{/if}

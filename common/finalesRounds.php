@@ -1,10 +1,13 @@
 <?php
 //------------------------------TOURNOI TYPE TM UT--------------------------------------
+
+/*	Set Matches information	*/
+
 $sql = "SELECT m.id_match,m.nom_match,m.heure,m.id_parent,m.id_enfant1, m.id_enfant2, 
-m.nbr_manche, m.teamParMatch as mtpm, t.teamParMatch as ttpm
-FROM matchs as m, tournoi as t
-WHERE m.id_tournoi=:idt AND t.id_tournoi=:idt AND m.id_groupe IS NULL AND m.looser_bracket=:looser
-ORDER BY m.id_parent";
+	m.nbr_manche, m.teamParMatch as mtpm, t.teamParMatch as ttpm
+	FROM matchs as m, tournoi as t
+	WHERE m.id_tournoi=:idt AND t.id_tournoi=:idt AND m.id_groupe IS NULL AND m.looser_bracket=:looser
+	ORDER BY m.id_parent";
 $query = $connexion->prepare($sql);
 $query->bindValue('idt', $id_tournoi, PDO::PARAM_INT);
 $query->bindValue('looser', $looser, PDO::PARAM_INT);
@@ -15,7 +18,7 @@ if ($query->execute()) {
 	while ($match = $query->fetch(PDO::FETCH_ASSOC)) {
 		$nbrmatch++;
 		$matches[$match['id_match']]['id'] = $match['id_match'];
-		$matches[$match['id_match']]['heure'] = $match['heure'];
+		$matches[$match['id_match']]['heure'] = get_jour_de_la_semaine($match['heure']).' '.get_heure($match['heure']);
 		$matches[$match['id_match']]['nom'] = $match['nom_match'];
 		$matches[$match['id_match']]['id_parent'] = $match['id_parent'];
 		$matches[$match['id_match']]['id_enfant1'] = $match['id_enfant1'];
@@ -30,65 +33,58 @@ if ($query->execute()) {
 				$finale = $match['id_match'];
 		}
 
+		/*	For every Match proceeded, get the Joueurs corresponding	*/
 		$sql2 = "SELECT mtj.id_joueur,j.pseudo,
-		(SELECT SUM(ma.score) FROM manches_joueurs as ma 
+			(SELECT SUM(ma.score) FROM manches_joueurs as ma 
 			WHERE ma.id_match=:idm AND ma.id_joueur=mtj.id_joueur
 			GROUP BY ma.id_joueur) as score
-	FROM matchs_joueurs as mtj, joueurs as j 
-	WHERE mtj.id_match=:idm and j.id_joueur=mtj.id_joueur
-	ORDER BY score DESC";
+			FROM matchs_joueurs as mtj, joueurs as j 
+			WHERE mtj.id_match=:idm and j.id_joueur=mtj.id_joueur
+			ORDER BY score DESC";
 		$query2 = $connexion->prepare($sql2);
 		$query2->bindValue('idm', $match['id_match'], PDO::PARAM_INT);
 		if ($query2->execute()) {
 			$cpt = 0;
 			while ($team = $query2->fetch(PDO::FETCH_ASSOC)) {
 				$cpt++;
-				$matches[$match['id_match']][$team['id_joueur']]['id'] = $team['id_joueur'];
-				$matches[$match['id_match']][$team['id_joueur']]['nom'] = $team['pseudo'];
-				$matches[$match['id_match']][$team['id_joueur']]['score'] = $team['score'];
+				$matches[$match['id_match']]['joueurs'][$cpt]['id'] = $team['id_joueur'];
+				$matches[$match['id_match']]['joueurs'][$cpt]['nom'] = $team['pseudo'];
+				$matches[$match['id_match']]['joueurs'][$cpt]['score'] = $team['score'];
+				
+				/*	For every Match and Joueur proceeded, get the Manches corresponding	*/
+				$sql2 = "SELECT mj.numero_manche, mj.score
+					FROM manches_joueurs as mj
+					WHERE mj.id_match=:idm
+					AND mj.id_joueur=:idj";
+				$query2 = $connexion->prepare($sql2);
+				$query2->bindValue('idm', $match['id_match'], PDO::PARAM_INT);
+				$query2->bindValue('idj', $team['id_joueur'], PDO::PARAM_INT);
+				if ($query2->execute()) {
+
+					while ($ligne = $query2->fetch(PDO::FETCH_ASSOC)) {
+						$scores[$match['id_match']]['joueurs'][$cpt]['scores'][$ligne['numero_manche']] = $ligne['score'];
+					}
+				}
+				else {
+					GLOBAL $glob_debug;
+					if ($glob_debug)
+						echo 'ERREUR SQL MANCHES';
+					exit;
+				}
 			}
 			$matches[$match['id_match']]['nbr_joueurs'] = $cpt;
 		} else {
-			echo 'ERREUR SQL JOUEURS';
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL JOUEURS';
 			exit;
 		}
-
-
-		$sql2 = "SELECT mj.id_joueur, mj.numero_manche, mj.score
-	FROM manches_joueurs as mj
-	WHERE mj.id_match=:idm
-	ORDER BY mj.id_joueur";
-		$query2 = $connexion->prepare($sql2);
-		$query2->bindValue('idm', $match['id_match'], PDO::PARAM_INT);
-		if ($query2->execute()) {
-			$nbrmax = 0;
-			$nbrm = 0;
-			$old_idj = 0;
-			while ($ligne = $query2->fetch(PDO::FETCH_ASSOC)) {
-				if ($old_idj != $ligne['id_joueur']) {
-					$nbrm = 0;
-					$old_idj = $ligne['id_joueur'];
-				}
-				$scores[$match['id_match']][$ligne['id_joueur']][$ligne['numero_manche']] = $ligne['score'];
-
-				if ($old_idj == $ligne['id_joueur']) {
-					$nbrm++;
-					if ($nbrm > $nbrmax)
-						$nbrmax = $nbrm;
-				}
-			}
-		}
-		else {
-			echo 'ERREUR SQL MANCHES';
-			exit;
-		}
-
-		if ($nbrmax > $matches[$match['id_match']]['nbr_manche'])
-			$matches[$match['id_match']]['nbr_manche'] = $nbrmax;
 	}
 }
 else {
-	echo 'ERREUR SQL MATCHES';
+	GLOBAL $glob_debug;
+	if ($glob_debug)
+		echo 'ERREUR SQL MATCHES';
 	exit;
 }
 if ($nbrmatch == 1) {
@@ -148,13 +144,12 @@ if ($nbrmatch != 0) {
 				$nom[$j] = 'TBD';
 				$score[$j] = '';
 
-				if (isset($matches[$tablo[$c][$m]][$j]['id'])) {
-					$nom[$j] = $matches[$tablo[$c][$m]][$j]['nom'];
-					$score[$j] = $matches[$tablo[$c][$m]][$j]['score'];
+				if (isset($matches[$tablo[$c][$m]]['joueurs'][$j]['id'])) {
+					$nom[$j] = $matches[$tablo[$c][$m]]['joueurs'][$j]['nom'];
+					$score[$j] = $matches[$tablo[$c][$m]]['joueurs'][$j]['score'];
 				}
 
 				$fleche = '->';
-				$matches[$tablo[$c][$m]][$j]['heure'] = get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']) . ' ' . get_heure($matches[$tablo[$c][$m]]['heure']);
 
 				if ($j == 1) {
 					if ($c == 0) { 
@@ -164,12 +159,11 @@ if ($nbrmatch != 0) {
 				for ($ma = 1; $ma <= $matches[$tablo[$c][$m]]['nbr_manche']; $ma++) {
 					if (isset($matches[$tablo[$c][$m]][$j]['id'])) {
 						$idj = $matches[$tablo[$c][$m]][$j]['id'];
-						if (!isset($scores[$tablo[$c][$m]][$idj][$ma]))
-							$scores[$tablo[$c][$m]][$idj][$ma] = '-';;
+						if (!isset($scores[$tablo[$c][$m]]['joueurs'][$idj]['scores'][$ma]))
+							$scores[$tablo[$c][$m]]['joueurs'][$idj]['scores'][$ma] = '-';;
 					}
 					$matches[$tablo[$c][$m]]['fleche'] = $fleche;
 				}
-
 			}
 		}
 	}

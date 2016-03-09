@@ -5,3 +5,4 @@
 /view/templates_c/*
 /cache/*
 *.tpl.cache.php
+/class/var.conf.php
