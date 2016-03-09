@@ -46,30 +46,19 @@
 																	{$matches[$tablo[$c][$m]]['heure']}
 																</td>
 															</tr>
-														{elseif $c==0 && $m==1}
+														{elseif $c==0 && $m==2}
 															<tr class="tr_arbre_vide">
 																<td class="td_finale_vide" colspan="{$matches[$tablo[$c][$m]]['nbr_manche'] + 4}">
 																	Petite Finale<br>{$matches[$tablo[$c][$m]]['heure']}
 																</td>
 															</tr>
-														{elseif $c>0}
+														{else}
 															<tr class="tr_arbre_vide">
 																<td class="td_finale_vide" colspan="{$matches[$tablo[$c][$m]]['nbr_manche'] + 4}">
 																	{$matches[$tablo[$c][$m]]['heure']}
 																</td>
 															</tr>
 														{/if}
-														<tr class="tr_arbre_vide">
-															<td class="td_finale_vide" colspan="3">
-																FINALE
-															</td>
-														</tr>
-													{elseif $m==2}
-														<tr class="tr_arbre_vide">
-															<td class="td_finale_vide" colspan="3">
-																Petite Finale
-															</td>
-														</tr>
 													{/if}
 													{if $j==1}
 														<tr class="tr_arbre_vide">
@@ -86,13 +75,23 @@
 														{if $j==1}	
 															<td class="td_arbre_gauche" rowspan="{$matches[$tablo[$c][$m]]['maxj']}">#{$tablo[$c][$m]}</td>
 														{/if}
-														{if isset($matches[$tablo[$c][$m]]['joueurs'][$j])}
-														<td class="td_arbre_joueur">{$matches[$tablo[$c][$m]]['joueurs'][$j]['nom']}</td>
+														{if isset($matches[$tablo[$c][$m]][$j]['nom'])}
+															<td class="td_arbre_joueur">{$matches[$tablo[$c][$m]][$j]['nom']}</td>
+														{else}
+															<td class="td_arbre_joueur">TBA</td>
 														{/if}
-														{foreach from=$scores[$tablo[$c][$m]] item=score}
-															<!--<td class="td_arbre_joueur_score">{$score[$ma]}</td>-->
-														{/foreach}
-														<td class="td_arbre_joueur_total">{$matches[$tablo[$c][$m]]['joueurs'][$j]['score']}</td>
+														{for $ma=1 to $matches[$tablo[$c][$m]]['nbr_manche']}
+															{if isset($scores[$tablo[$c][$m]][$j]['scores'][$ma])}
+																<td class="td_arbre_joueur_score">{$scores[$tablo[$c][$m]][$j]['scores'][$ma]}</td>
+															{else}
+																<td class="td_arbre_joueur_score">-</td>
+															{/if}
+														{/for}
+														{if isset($matches[$tablo[$c][$m]][$j]['score'])}	
+															<td class="td_arbre_joueur_total">{$matches[$tablo[$c][$m]][$j]['score']}</td>
+														{else}
+															<td class="td_arbre_joueur_total">0</td>
+														{/if}
 														{if $j==1}	
 															<td class="td_arbre_droite" rowspan="{$matches[$tablo[$c][$m]]['maxj']}">{$matches[$tablo[$c][$m]]['fleche']} {$matches[$tablo[$c][$m]]['id_parent']}</td>
 														{/if}

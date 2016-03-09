@@ -47,22 +47,22 @@ if ($query->execute()) {
 			$cpt = 0;
 			while ($team = $query2->fetch(PDO::FETCH_ASSOC)) {
 				$cpt++;
-				$matches[$match['id_match']]['joueurs'][$cpt]['id'] = $team['id_joueur'];
-				$matches[$match['id_match']]['joueurs'][$cpt]['nom'] = $team['pseudo'];
-				$matches[$match['id_match']]['joueurs'][$cpt]['score'] = $team['score'];
+				$matches[$match['id_match']][$cpt]['id'] = $team['id_joueur'];
+				$matches[$match['id_match']][$cpt]['nom'] = $team['pseudo'];
+				$matches[$match['id_match']][$cpt]['score'] = $team['score'];
 				
 				/*	For every Match and Joueur proceeded, get the Manches corresponding	*/
-				$sql2 = "SELECT mj.numero_manche, mj.score
+				$sql3 = "SELECT mj.numero_manche, mj.score
 					FROM manches_joueurs as mj
 					WHERE mj.id_match=:idm
 					AND mj.id_joueur=:idj";
-				$query2 = $connexion->prepare($sql2);
-				$query2->bindValue('idm', $match['id_match'], PDO::PARAM_INT);
-				$query2->bindValue('idj', $team['id_joueur'], PDO::PARAM_INT);
-				if ($query2->execute()) {
+				$query3 = $connexion->prepare($sql3);
+				$query3->bindValue('idm', $match['id_match'], PDO::PARAM_INT);
+				$query3->bindValue('idj', $team['id_joueur'], PDO::PARAM_INT);
+				if ($query3->execute()) {
 
-					while ($ligne = $query2->fetch(PDO::FETCH_ASSOC)) {
-						$scores[$match['id_match']]['joueurs'][$cpt]['scores'][$ligne['numero_manche']] = $ligne['score'];
+					while ($ligne = $query3->fetch(PDO::FETCH_ASSOC)) {
+						$scores[$match['id_match']][$cpt]['scores'][$ligne['numero_manche']] = $ligne['score'];
 					}
 				}
 				else {
@@ -144,9 +144,9 @@ if ($nbrmatch != 0) {
 				$nom[$j] = 'TBD';
 				$score[$j] = '';
 
-				if (isset($matches[$tablo[$c][$m]]['joueurs'][$j]['id'])) {
-					$nom[$j] = $matches[$tablo[$c][$m]]['joueurs'][$j]['nom'];
-					$score[$j] = $matches[$tablo[$c][$m]]['joueurs'][$j]['score'];
+				if (isset($matches[$tablo[$c][$m]][$j]['id'])) {
+					$nom[$j] = $matches[$tablo[$c][$m]][$j]['nom'];
+					$score[$j] = $matches[$tablo[$c][$m]][$j]['score'];
 				}
 
 				$fleche = '->';
@@ -159,8 +159,8 @@ if ($nbrmatch != 0) {
 				for ($ma = 1; $ma <= $matches[$tablo[$c][$m]]['nbr_manche']; $ma++) {
 					if (isset($matches[$tablo[$c][$m]][$j]['id'])) {
 						$idj = $matches[$tablo[$c][$m]][$j]['id'];
-						if (!isset($scores[$tablo[$c][$m]]['joueurs'][$idj]['scores'][$ma]))
-							$scores[$tablo[$c][$m]]['joueurs'][$idj]['scores'][$ma] = '-';;
+						if (!isset($scores[$tablo[$c][$m]][$idj]['scores'][$ma]))
+							$scores[$tablo[$c][$m]][$idj]['scores'][$ma] = '-';;
 					}
 					$matches[$tablo[$c][$m]]['fleche'] = $fleche;
 				}
