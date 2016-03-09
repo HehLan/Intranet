@@ -14,7 +14,6 @@
     <body role="document">
 
         <!-- le logo -->
-
         {include file="default/header.tpl"}
 
         <!-- CUSTOM NAVBAR TEMPLATE -->
@@ -35,12 +34,12 @@
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10">
                     <div class="row">
-                        {foreach from=$mapPaths key=i item=path}
+                        {foreach from=$maps item=map}
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
                                 <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
-                                    <img id="{$mapNames[$i]}" class="img-responsive" src="{$path}" alt="{$mapNames[$i]}" />
+                                    <img id="{$map['id']}" class="img-responsive" src="{$map['imgPath']}" alt="{$map['name']}" />
                                     <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
-                                        {$mapNames[$i]}
+                                        {$map['name']}
                                     </div>
                                 </div>
                             </div>
@@ -62,14 +61,17 @@
                     var container = $(el);              // div containing img&text
                     container.attr('data-value', 0);    // change div's value, to avoid it change css on mouseHower
                     
-                    
                     // faire disparaitre l'effet de survol, car après avoir changé 'data-value' l'effet "mouseLeave" 
                     // n'a plus d'effet. Du coup on le fait ici à la main
                     container.children('div').css('background-color', 'rgba(0,0,0,0)');
                     // griser le champ de texte
                     container.css('background-color', 'rgba(0,0,0,0.8)');
                     // griser l'image
-                    container.children('img').css('-webkit-filter', 'grayscale(1)');
+                    
+                    container.children('img').css({
+                        '-webkit-filter' : 'grayscale(1)',
+                        'filter' : 'grayscale(100%)'
+                    });
                 }
 
                 // highlighting text 
