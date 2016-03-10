@@ -9,7 +9,19 @@
     </head>
     <body>
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
-        {include file="default/nav.tpl"  con=$con navTournois=$navTournois}	
+        {include file="default/nav.tpl"  con=$con navTournois=$navTournois}
+		<!-- Header and Rules -->
+		{if isset($tournoi.header)}
+			<div id="headerTournoi">
+				<img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nom}" />
+			</div>
+		{/if}
+		{if isset($tournoi.reglement)}
+			<div id="reglementTournoi">
+				Pour consulter le réglement de ce tournoi, <a href="{#domain#}/src/{$tournoi.reglement}"> cliquez ici </a>
+			</div>
+		{/if}
+				
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">
                 <div class="col-lg-offset-1 col-lg-10">

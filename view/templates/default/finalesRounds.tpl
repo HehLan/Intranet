@@ -2,14 +2,25 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        {include file="default/meta.tpl"}  
-        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery.gracket.js"></script>
+        {include file="default/meta.tpl"}
+		<link rel="stylesheet" type="text/css" href="{#assets#}/css/tournoisRounds.css" />
+        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/bracket/jquery.gracket.js"></script>
     </head>
     <body>
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
         {include file="default/nav.tpl"  con=$con navTournois=$navTournois}	
-        
+        <!-- Header and Rules -->
+		{if isset($tournoi.header)}
+			<div id="headerTournoi">
+				<img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nom}" />
+			</div>
+		{/if}
+		{if isset($tournoi.reglement)}
+			<div id="reglementTournoi">
+				Pour consulter le réglement de ce tournoi, <a href="{#domain#}/src/{$tournoi.reglement}"> cliquez ici </a>
+			</div>
+		{/if}
 		<div id="container">
             <div id="contenu">
 				<h1>
