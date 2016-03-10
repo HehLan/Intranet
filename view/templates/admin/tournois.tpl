@@ -66,13 +66,13 @@
                         <th>Joueurs par team</th>
                         <th>Teams par match</th>
                         <th>Nombre de manches</th>
-                        <th>Heure groupes</th>
-                        <th>Heure finales</th>
-                        <th>Durée inter match</th>
-                        <th>Gérer les groupes</th>
-                        <th>Gérer les finales</th>
-                        <th>Looser 1</th>
-                        <th>Looser 2</th>
+                        <th>Heure des qualifications</th>
+                        <th>Heure des finales</th>
+                        <th>Durée intermatch</th>
+                        <th>Gérer les Qualifications</th>
+                        <th>Gérer les Finales</th>
+                        <th>Looser Bracket 1</th>
+                        <th>Looser Bracket 2</th>
                         <th>Supprimer</th>
                     </tr>
                     {foreach from=$tournois item=tournoi}
@@ -86,26 +86,56 @@
                             <td>{$tournoi['heure_groupe_start']}</td>
                             <td>{$tournoi['heure_finale_start']}</td>
                             <td>{$tournoi['duree_inter_match']}</td>
-                            
+							
+                            <!-- MANAGE POOLS -->
                             <td>                                
-                                
-                                TRUC 1  
-                                
-                            </td>                               
-                            
+                                {if !($tournoi['exist_manche_qualif0'])}
+									<input type="button" value="Créer" onclick="go_groupes({$tournoi['id_tournoi']},{$participants['nbr']})"/>
+								{else}
+									<input type="button" value="Gérer" onclick="document.location.href='scores.php?id_tournoi={$tournoi['id_tournoi']}'" />
+									<input type="button" value="Effacer" onclick="reset_groupes({$tournoi['id_tournoi']},'group',0)"/>
+								{/if}
+								<a href="scores.php?id_tournoi={$tournoi['id_tournoi']}">Scores</a>
+							</td>
+							<td>
+								{if !($tournoi['exist_manche_final0'])}
+									{if $tournoi['joueurParTeam']>1}
+										<input type="button" value="Créer" onclick="go_finales({$tournoi['id_tournoi']},{$participants['nbr']},0)"/>
+									{else}
+										<input type="button" value="Créer" onclick="go_finales2({$tournoi['id_tournoi']},{$participants['nbr']},0)"/>
+									{/if}
+								{else}
+									<input type="button" value="Gérer" onclick="document.location.href='finales.php?id_tournoi={$tournoi['id_tournoi']}&looser=0'" />
+									<input type="button" value="Effacer" onclick="reset_groupes({$tournoi['id_tournoi']},'finale',0)"/>
+								{/if}
+							</td>                               
+                            <!-- MANAGE FINALS -->
                             <td>
-                                
-                                TRUC 2
-                                
+                                {if !($tournoi['exist_manche_final2'])}
+									{if $tournoi['joueurParTeam']>1}
+										<input type="button" value="Créer" onclick="go_finales({$tournoi['id_tournoi']},{$participants['nbr']},2)"/>
+									{else}
+										<input type="button" value="Créer" onclick="go_finales2({$tournoi['id_tournoi']},{$participants['nbr']},2)"/>
+									{/if}
+								{else}
+									<input type="button" value="Gérer" onclick="document.location.href='finales.php?id_tournoi={$tournoi['id_tournoi']}&looser=2'" />
+									<input type="button" value="Effacer" onclick="reset_groupes({$tournoi['id_tournoi']},'looser1',2)"/>
+								{/if}
                             </td>
-                            
+                            <!-- MANAGE LOOSER BRACKETS -->
                             <td>
-                                
-                                TRUC 3
-                                
+                                {if !($tournoi['exist_manche_final3'])}
+									{if $tournoi['joueurParTeam']>1}
+										<input type="button" value="Créer" onclick="go_finales({$tournoi['id_tournoi']},{$participants['nbr']},3)"/>
+									{else}
+										<input type="button" value="Créer" onclick="go_finales2({$tournoi['id_tournoi']},{$participants['nbr']},3)"/>
+									{/if}
+								{else}
+									<input type="button" value="Gérer" onclick="document.location.href=finales.php?id_tournoi={$tournoi['id_tournoi']}&looser=3'" />
+									<input type="button" value="Effacer" onclick="reset_groupes({$tournoi['id_tournoi']},'looser2',3)"/>
+								{/if}
                             </td>
-                        
-                                
+							<!-- ERASE TOURNOI -->
                             <td>
                                 <a href="tournois_management.php?del={$tournoi['id_tournoi']}">
                                     <img src="{#assets#}/img/cross_red.png" alt="Supprimer" />
