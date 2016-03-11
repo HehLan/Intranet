@@ -1,23 +1,23 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 16:51:36
+/* Smarty version 3.1.29, created on 2016-03-07 10:37:07
   from "C:\xampp\htdocs\Intranet\view\templates\default\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56db00888bca20_80880172',
+  'unifunc' => 'content_56dd4bc3db4f95_78208446',
   'file_dependency' => 
   array (
     'e7f3277534b0e6b3c76082fd73b7d65639a9d526' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\default\\index.tpl',
-      1 => 1457190545,
+      1 => 1457342619,
       2 => 'file',
     ),
     '57dc77f5dc1c60d394cd101710b8f0d577b2f068' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\default\\meta.tpl',
-      1 => 1457190545,
+      1 => 1457342619,
       2 => 'file',
     ),
     'cd8dcff196fa7f063c81df3b2da337a176f868a1' => 
@@ -29,7 +29,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     '0c222f6d59bbfb07bb733e0b594dcefe01050154' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\default\\nav.tpl',
-      1 => 1457190545,
+      1 => 1457342619,
       2 => 'file',
     ),
     '24b534126ffbe8c2409b3f5d7753f576cbf20626' => 
@@ -41,7 +41,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56db00888bca20_80880172 ($_smarty_tpl) {
+function content_56dd4bc3db4f95_78208446 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -76,18 +76,23 @@ function content_56db00888bca20_80880172 ($_smarty_tpl) {
 
 <link rel="shortcut icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
 <link rel="icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/profil.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/equipes.css" >
 
-<script src="/Intranet/assets/js/jquery.js"></script>
-<script src="/Intranet/assets/js/bootstrap.min.js"></script>
-<script src="/Intranet/assets/js/jquery-2.1.4.min.js"></script>
+<!-- CSS STYLESHEETS BASE -->
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/css/bootstrap.min.css" />
+<!-- CSS STYLESHEETS LAYERS -->
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/footer.css" />
+
+
+
+
+
+<script src="/Intranet/src/js/jquery.js"></script>
+<script src="/Intranet/src/js/bootstrap.min.js"></script>
+<script src="/Intranet/src/js/jquery-2.1.4.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -100,8 +105,9 @@ function content_56db00888bca20_80880172 ($_smarty_tpl) {
 <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]--> 
-        <script type="text/javascript" src="/Intranet/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/getXhr.js"></script>
+        <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/index.css" />
+        <script type="text/javascript" src="/Intranet/src/js/jquery.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/getXhr.js"></script>
         <script type="text/javascript">
             function news_toggle(idn)
             {
@@ -120,7 +126,7 @@ function content_56db00888bca20_80880172 ($_smarty_tpl) {
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
                     <p>Bienvenue admin, <a href="common/deco.php">se déconnecter</a></p>
-                <p>Votre IP: ::1</p>
+                <p>Votre IP: 127.0.0.1</p>
                
     </div>	     
 </header>
@@ -148,7 +154,7 @@ function content_56db00888bca20_80880172 ($_smarty_tpl) {
                                         <li><a href="tournois.php?id=5">Hearthstone</a></li>
                                         
                     
-                                        <li><a href="ModifProfil.php">Mon profil</a></li>
+                                        <li><a href="profile.php">Mon profil</a></li>
                                                 <li><a href="admin/index.php">Admin</a></li>
                                                         </ul>
         </div>

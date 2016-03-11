@@ -1,29 +1,29 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 16:51:42
+/* Smarty version 3.1.29, created on 2016-03-07 10:37:21
   from "C:\xampp\htdocs\Intranet\view\templates\admin\equipes.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56db008e787236_71827858',
+  'unifunc' => 'content_56dd4bd1a87f04_22475090',
   'file_dependency' => 
   array (
     '45a645cc6d37acf0eb25a63d72368f5cdb9a02b8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\admin\\equipes.tpl',
-      1 => 1457190545,
+      1 => 1457342619,
       2 => 'file',
     ),
     'af751e6de53304a331e22e27a1af12516031d6ea' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\admin\\meta.tpl',
-      1 => 1457190530,
+      1 => 1457342619,
       2 => 'file',
     ),
     'c39657ddc2a4f9b77c7f889d7d6fd5f7d744bf82' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\admin\\header.tpl',
-      1 => 1457190545,
+      1 => 1457342619,
       2 => 'file',
     ),
     'af5214c9739fb386542284bef5bc41d6bb25cb2b' => 
@@ -41,7 +41,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56db008e787236_71827858 ($_smarty_tpl) {
+function content_56dd4bd1a87f04_22475090 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -76,23 +76,27 @@ function content_56db008e787236_71827858 ($_smarty_tpl) {
 
 <link rel="shortcut icon" href="/Intranet/view/templates/admin/assets/img/logoheh.ico" />
 <link rel="icon" href="/Intranet/view/templates/admin/assets/img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/profil.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/equipes.css" >
 
 
-<!-- CSS certificated -->
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/news.css" >
+<!-- CSS STYLESHEETS BASE -->
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/css/bootstrap.min.css" />
+<!-- CSS STYLESHEETS LAYERS -->
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/footer.css" />
 
 
-<script src="/Intranet/assets/js/jquery.js"></script>
-<script src="/Intranet/assets/js/bootstrap.min.js"></script>
-<script src="/Intranet/assets/js/jquery-2.1.4.min.js"></script>
+
+
+
+
+
+
+<script src="/Intranet/src/js/jquery.js"></script>
+<script src="/Intranet/src/js/bootstrap.min.js"></script>
+<script src="/Intranet/src/js/jquery-2.1.4.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -105,10 +109,11 @@ function content_56db008e787236_71827858 ($_smarty_tpl) {
 <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]--> 
-        <script type="text/javascript" src="/Intranet/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/getXhr.js"></script>
-        <script type="text/javascript" src="/Intranet/assets/js/admin_index.js"></script>		
+        <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/equipes.css" >
+        <script type="text/javascript" src="/Intranet/src/js/jquery.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/getXhr.js"></script>
+        <script type="text/javascript" src="/Intranet/src/js/admin_index.js"></script>		
     </head>
 
     <body role="document">	
@@ -120,8 +125,8 @@ function content_56db008e787236_71827858 ($_smarty_tpl) {
         </a>
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
-                    <p>Bienvenue admin, <a href="common/deco.php">se déconnecter</a></p>
-                <p>IP: ::1.</p>
+                    <p>Bienvenue admin, <a href="../common/deco.php">se déconnecter</a></p>
+                <p>IP: 127.0.0.1.</p>
                
     </div>	     
 </header>
@@ -240,9 +245,7 @@ function content_56db008e787236_71827858 ($_smarty_tpl) {
                                                                                     </div>
                                     </td>
                                     <td>
-                                        <div id="listeEquipeJoueurAdmin">
-                                            What here ?
-                                        </div>
+                                        <div id="listeEquipeJoueurAdmin"></div>
                                         <input id="submitNewPlayerInTeam" type="button" value="Ajouter un joueur" style="display: none;">
                                     </td>
                                 </tr>
@@ -253,9 +256,7 @@ function content_56db008e787236_71827858 ($_smarty_tpl) {
                                 </tr>
                                 <tr>
                                     <td  colspan="2">
-                                        <div id="InfoJoueurEquipes" style="height:250px;">
-                                              What here ?
-                                        </div>
+                                        <div id="InfoJoueurEquipes" style="height:250px;"></div>
                                     </td>
                                 </tr>
                             </tbody>

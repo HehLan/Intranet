@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 16:51:36
+/* Smarty version 3.1.29, created on 2016-03-07 10:37:07
   from "C:\xampp\htdocs\Intranet\view\templates\default\meta.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56db00888433c0_20521837',
+  'unifunc' => 'content_56dd4bc3d550b9_74464724',
   'file_dependency' => 
   array (
     '57dc77f5dc1c60d394cd101710b8f0d577b2f068' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\default\\meta.tpl',
-      1 => 1457190545,
+      1 => 1457342619,
       2 => 'file',
     ),
   ),
@@ -19,8 +19,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56db00888433c0_20521837 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1569156db0088825206_08988767';
+function content_56dd4bc3d550b9_74464724 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '824856dd4bc3d42317_26726424';
 ?>
 
 <title>HEHLan</title>
@@ -53,34 +53,37 @@ $_smarty_tpl->compiled->nocache_hash = '1569156db0088825206_08988767';
 /img/logoheh.ico" />
 <link rel="icon" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
 /img/logoheh.ico" />
+
+<!-- CSS STYLESHEETS BASE -->
+<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
+/lib/jQuery/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
+/lib/Bootstrap/css/bootstrap.min.css" />
+<!-- CSS STYLESHEETS LAYERS -->
 <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
-/css/style.css" />
+/css/main.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
-/css/profil.css" />
+/css/header.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
-/css/jquery-ui.css" />
+/css/nav.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
-/css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
-/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
-/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
-/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
-/css/equipes.css" >
+/css/footer.css" />
+
+
+
+
 
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery.js"><?php echo '</script'; ?>
+/src/js/jquery.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/bootstrap.min.js"><?php echo '</script'; ?>
+/src/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery-2.1.4.min.js"><?php echo '</script'; ?>
+/src/js/jquery-2.1.4.min.js"><?php echo '</script'; ?>
 >
 
 <!-- SCRIPTS BOOTSTRAPS -->		

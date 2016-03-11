@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 16:51:42
+/* Smarty version 3.1.29, created on 2016-03-07 10:37:21
   from "C:\xampp\htdocs\Intranet\view\templates\admin\equipes.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56db008e704584_18007525',
+  'unifunc' => 'content_56dd4bd19c7f91_80422987',
   'file_dependency' => 
   array (
     '45a645cc6d37acf0eb25a63d72368f5cdb9a02b8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\admin\\equipes.tpl',
-      1 => 1457190545,
+      1 => 1457342619,
       2 => 'file',
     ),
   ),
@@ -23,8 +23,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:admin/footer.tpl' => 1,
   ),
 ),false)) {
-function content_56db008e704584_18007525 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1209656db008e6af857_43704901';
+function content_56dd4bd19c7f91_80422987 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '168656dd4bd18f84a3_84241226';
 ?>
 
 <!DOCTYPE html>
@@ -33,21 +33,23 @@ $_smarty_tpl->compiled->nocache_hash = '1209656db008e6af857_43704901';
         <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:admin/meta.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
  
+        <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'adminAssets');?>
+/css/equipes.css" >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery.js"><?php echo '</script'; ?>
+/src/js/jquery.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/jquery-ui.js"><?php echo '</script'; ?>
+/src/js/jquery-ui.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/getXhr.js"><?php echo '</script'; ?>
+/src/js/getXhr.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'domain');?>
-/assets/js/admin_index.js"><?php echo '</script'; ?>
+/src/js/admin_index.js"><?php echo '</script'; ?>
 >		
     </head>
 
@@ -102,9 +104,7 @@ $_smarty_tpl->tpl_vars['team'] = $__foreach_team_0_saved_item;
                                         </div>
                                     </td>
                                     <td>
-                                        <div id="listeEquipeJoueurAdmin">
-                                            What here ?
-                                        </div>
+                                        <div id="listeEquipeJoueurAdmin"></div>
                                         <input id="submitNewPlayerInTeam" type="button" value="Ajouter un joueur" style="display: none;">
                                     </td>
                                 </tr>
@@ -115,9 +115,7 @@ $_smarty_tpl->tpl_vars['team'] = $__foreach_team_0_saved_item;
                                 </tr>
                                 <tr>
                                     <td  colspan="2">
-                                        <div id="InfoJoueurEquipes" style="height:250px;">
-                                              What here ?
-                                        </div>
+                                        <div id="InfoJoueurEquipes" style="height:250px;"></div>
                                     </td>
                                 </tr>
                             </tbody>
