@@ -2,6 +2,14 @@
 /*			TOURNOIS CSS                                    */							
 /*----------------------------------------------------------------------*/
 
+
+
+input, button
+{
+    color: black;
+}
+
+
 /* 
 Beaucoup de CSS pour rien grand chose d'extraordinaire
 --> utiliser bootstrap et ajouter une couche au dessus
