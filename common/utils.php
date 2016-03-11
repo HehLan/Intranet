@@ -173,6 +173,34 @@ function inscrits_en_finale($conn, $idt, $jpt, $lb) {
         return true;
 }
 
+//Test match
+ function existe_match($conn,$idt,$reset,$looser_bracket)
+ {
+	if($reset=="group")
+	{
+		$sql="SELECT COUNT(*) as nbr
+		FROM matchs as m
+		WHERE m.id_tournoi=:idt AND m.id_groupe IS NOT NULL AND m.looser_bracket=:looser_bracket";
+	}
+	else
+	{
+		$sql="SELECT COUNT(*) as nbr
+		FROM matchs as m
+		WHERE m.id_tournoi=:idt AND m.id_groupe IS NULL AND m.looser_bracket=:looser_bracket";
+	}
+	$query=$conn->prepare($sql);
+	$query->bindValue('idt',$idt,PDO::PARAM_INT);
+	$query->bindValue('looser_bracket',$looser_bracket,PDO::PARAM_INT);
+	if($query->execute())
+	{
+		$nbr=$query->fetch(PDO::FETCH_ASSOC);
+	}
+	else {echo 'ERREUR EXISTE MANCHE GROUPE TEAM SQL'; exit;}
+	$nbr=$nbr['nbr'];
+	if($nbr==0) return false;
+	else return true;		
+ }
+
 //Cretate a team match
 function creer_match_equipe($conn, $idt, $idg, $nbrm, $tpm, $heure, $ide1, $ide2) {
     $sql = "INSERT INTO matchs (id_tournoi,nbr_manche,teamParMatch,heure,id_groupe)

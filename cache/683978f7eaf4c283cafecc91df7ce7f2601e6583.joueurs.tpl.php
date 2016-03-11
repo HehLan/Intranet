@@ -1,47 +1,47 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-05 16:45:21
-  from "C:\xampp\htdocs\Intranet\view\templates\admin\joueurs.tpl" */
+/* Smarty version 3.1.29, created on 2016-03-04 16:08:53
+  from "C:\xampp\htdocs\Intranet\templates\default\admin\joueurs.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56daff1155fc60_24541185',
+  'unifunc' => 'content_56d9a5051ba171_29810898',
   'file_dependency' => 
   array (
-    '38c4d69c512c2aa43300bbdb3fc9f29ca6144afb' => 
+    '683978f7eaf4c283cafecc91df7ce7f2601e6583' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\admin\\joueurs.tpl',
-      1 => 1457190545,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\admin\\joueurs.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
-    'af751e6de53304a331e22e27a1af12516031d6ea' => 
+    'b493b6f098e88c214bf9835ab1973fc7531ed465' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\admin\\meta.tpl',
-      1 => 1457190530,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\admin\\meta.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
-    'c39657ddc2a4f9b77c7f889d7d6fd5f7d744bf82' => 
+    '456ca66fd08e9eeeb31328c288dceedefd5a25ae' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\admin\\header.tpl',
-      1 => 1457190545,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\admin\\header.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
-    'af5214c9739fb386542284bef5bc41d6bb25cb2b' => 
+    '05702a0f84d589a36376d69e0d1e5fd0696bc06f' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\admin\\nav.tpl',
-      1 => 1457190545,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\admin\\nav.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
-    'dc9b13d7f10e9731709763b996e0dc7adb3d3bd5' => 
+    '722c7e0f2d8a2a9da9241268c6114f7062bec7a0' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\admin\\footer.tpl',
-      1 => 1457190545,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\admin\\footer.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56daff1155fc60_24541185 ($_smarty_tpl) {
+function content_56d9a5051ba171_29810898 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -74,21 +74,16 @@ function content_56daff1155fc60_24541185 ($_smarty_tpl) {
 <meta name="geo.region" content="BE-WHT" />
 <meta name="geo.placename" content="Mons, Hainaut" />
 
-<link rel="shortcut icon" href="/Intranet/view/templates/admin/assets/img/logoheh.ico" />
-<link rel="icon" href="/Intranet/view/templates/admin/assets/img/logoheh.ico" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/profil.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/jquery-ui2.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/joueurs.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/tournois.css" >
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/equipes.css" >
-
-
-<!-- CSS certificated -->
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/admin/assets/css/news.css" >
-
+<link rel="shortcut icon" href="/Intranet/templates/default/assets/img/logoheh.ico" />
+<link rel="icon" href="/Intranet/templates/default/assets/img/logoheh.ico" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/profil.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/jquery-ui2.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/joueurs.css" >
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/tournois.css" >
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/equipes.css" >
 
 <script src="/Intranet/assets/js/jquery.js"></script>
 <script src="/Intranet/assets/js/bootstrap.min.js"></script>
@@ -205,7 +200,7 @@ function content_56daff1155fc60_24541185 ($_smarty_tpl) {
 <header id="header" class="row" >
     <div id="logo" class="col-lg-9 col-sm-9 col-xs-12" >
         <a href="index.php">
-            <img src="/Intranet/view/templates/default/assets/img/logoheh.png" alt="HEHLan" width="250px">
+            <img src="/Intranet/templates/default/assets/img/logoheh.png" alt="HEHLan" width="250px">
         </a>
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
@@ -505,11 +500,11 @@ function content_56daff1155fc60_24541185 ($_smarty_tpl) {
         <p>HEHLan All Rights Reserved Copyright 2016</p>
     </div>
     <div id="ceheh" class="col-lg-offset-2 col-lg-2 col-sm-12 col-xs-12">
-        <img src="/Intranet/view/templates/default/assets/img/logo3.png" alt="CEHECOFH">
+        <img src="/Intranet/templates/default/assets/img/logo3.png" alt="CEHECOFH">
     </div>
     <div id="campus_technique" class="col-lg-offset-3 col-lg-2 col-sm-12 col-xs-12">
         <a href="http://www.heh.be" target="_blank">
-            <img src="/Intranet/view/templates/default/assets/img/logo4.png" alt="HeH">
+            <img src="/Intranet/templates/default/assets/img/logo4.png" alt="HeH">
         </a>
     </div>
 </footer> 

@@ -1,47 +1,47 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 22:19:07
-  from "E:\wamp\www\Intranet\view\templates\default\index.tpl" */
+/* Smarty version 3.1.29, created on 2016-03-05 15:59:54
+  from "C:\xampp\htdocs\Intranet\templates\default\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc9ecb16ee75_97111058',
+  'unifunc' => 'content_56daf46a820267_21557748',
   'file_dependency' => 
   array (
-    '50dbe11ea4d13b924c1b789ce0ec2821a8872026' => 
+    'd4b078bd9b382810303d4ebe882ec8855040ba40' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\index.tpl',
-      1 => 1457293946,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\index.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
-    'ed988336c4343083b0c42e2ff20b9d17b41f4bae' => 
+    'a8a4a27188d1166d70939cf67a1b3cb7110cd173' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\meta.tpl',
-      1 => 1457281706,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\meta.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
-    '38b87550390b4498246829deafc9d57640d6d43a' => 
+    '3b4fab3b6c0ab020216cc9c065008e808669f6e7' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\header.tpl',
-      1 => 1457191474,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\header.tpl',
+      1 => 1457189813,
       2 => 'file',
     ),
-    'eb253ea85fa0c415276f6fd713630b1f49745222' => 
+    'da870d7e68d069bacb39bc90043576474f293a9b' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\nav.tpl',
-      1 => 1457194650,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\nav.tpl',
+      1 => 1457189813,
       2 => 'file',
     ),
-    'c083a58202c533e2b690828b2c323e50174f0471' => 
+    '1689aac45742ae864d63bee6eda739ed6bb0d226' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\footer.tpl',
-      1 => 1456169819,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\footer.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dc9ecb16ee75_97111058 ($_smarty_tpl) {
+function content_56daf46a820267_21557748 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -74,25 +74,20 @@ function content_56dc9ecb16ee75_97111058 ($_smarty_tpl) {
 <meta name="geo.region" content="BE-WHT" />
 <meta name="geo.placename" content="Mons, Hainaut" />
 
-<link rel="shortcut icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
-<link rel="icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
+<link rel="shortcut icon" href="/Intranet/templates/default/assets/img/logoheh.ico" />
+<link rel="icon" href="/Intranet/templates/default/assets/img/logoheh.ico" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/profil.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/jquery-ui2.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/joueurs.css" >
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/tournois.css" >
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/equipes.css" >
 
-<!-- CSS STYLESHEETS BASE -->
-<link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/css/bootstrap.min.css" />
-<!-- CSS STYLESHEETS LAYERS -->
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/main.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/header.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/nav.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/footer.css" />
-
-
-
-
-
-<script src="/Intranet/src/js/jquery.js"></script>
-<script src="/Intranet/src/js/bootstrap.min.js"></script>
-<script src="/Intranet/src/js/jquery-2.1.4.min.js"></script>
+<script src="/Intranet/assets/js/jquery.js"></script>
+<script src="/Intranet/assets/js/bootstrap.min.js"></script>
+<script src="/Intranet/assets/js/jquery-2.1.4.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -105,9 +100,8 @@ function content_56dc9ecb16ee75_97111058 ($_smarty_tpl) {
 <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]--> 
-        <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/index.css" />
-        <script type="text/javascript" src="/Intranet/src/js/jquery.js"></script>
-        <script type="text/javascript" src="/Intranet/src/js/getXhr.js"></script>
+        <script type="text/javascript" src="/Intranet/assets/js/jquery.js"></script>
+        <script type="text/javascript" src="/Intranet/assets/js/getXhr.js"></script>
         <script type="text/javascript">
             function news_toggle(idn)
             {
@@ -121,7 +115,7 @@ function content_56dc9ecb16ee75_97111058 ($_smarty_tpl) {
 <header id="header" class="row" >
     <div id="logo" class="col-lg-9 col-sm-9 col-xs-12" >
         <a href="index.php">
-            <img src="/Intranet/view/templates/default/assets/img/logoheh.png" alt="HEHLan" width="250px">
+            <img src="/Intranet/templates/default/assets/img/logoheh.png" alt="HEHLan" width="250px">
         </a>
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
@@ -144,17 +138,13 @@ function content_56dc9ecb16ee75_97111058 ($_smarty_tpl) {
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Accueil</a></li>
-                <li><a href="joueurs.php">Joueurs</a></li>            
-                
-                
+                <li><a href="joueurs.php">Joueurs</a></li>
                                         <li><a href="tournois.php?id=1">League of Legends</a></li>
                                         <li><a href="tournois.php?id=2">COD4</a></li>
                                         <li><a href="tournois.php?id=3">Trackmania</a></li>
                                         <li><a href="tournois.php?id=4">UT3</a></li>
                                         <li><a href="tournois.php?id=5">Hearthstone</a></li>
-                                        
-                    
-                                        <li><a href="profile.php">Mon profil</a></li>
+                                                            <li><a href="ModifProfil.php">Mon profil</a></li>
                                                 <li><a href="admin/index.php">Admin</a></li>
                                                         </ul>
         </div>
@@ -167,13 +157,13 @@ function content_56dc9ecb16ee75_97111058 ($_smarty_tpl) {
                     <h3>News</h3>
                                             <div class="une_news" id="bloc_news_10">
                             <div class="titre_news" id="titre_news_10" onclick="news_toggle(10);">
-                                R&eacute;sultat Trackmania
+                                Résultat Trackmania
                                 <div class="date_news" id="footer_news_10">
                                     dimanche à 02h46
                                 </div>
                             </div>
                             <div class="contenu_news" id="contenu_news_10">
-                                <IMG SRC="assets/img/resultTM.png" WIDTH=100<?php echo '%>'; ?>
+                                <IMG SRC="resultTM.png" WIDTH=100<?php echo '%>'; ?>
 
                             </div>
                         </div>
@@ -188,6 +178,29 @@ function content_56dc9ecb16ee75_97111058 ($_smarty_tpl) {
                                 1. BIT1<br /><br />
 2. NIP TA MERE<br /><br />
 3. Don't feed the ginger
+                            </div>
+                        </div>
+                                            <div class="une_news" id="bloc_news_6">
+                            <div class="titre_news" id="titre_news_6" onclick="news_toggle(6);">
+                                Horaire soirée de samedi
+                                <div class="date_news" id="footer_news_6">
+                                    samedi à 22h49
+                                </div>
+                            </div>
+                            <div class="contenu_news" id="contenu_news_6">
+                                22H00 :<br /><br />
+Tournoi Trackmania<br /><br />
+23h00 : <br /><br />
+Tournoi COD4<br /><br />
+<br /><br />
+Serveur tournoi 1(IP : 192.168.10.211) -> BIT2 vs Belgian Rape Squad<br /><br />
+Serveur tournoi 2 (IP : 192.168.10.212) -> Don't feed the ginger vs BIT1<br /><br />
+Serveur tournoi 3 (IP : 192.168.10.213) -> Go Nerf Karma vs NIP TA MERE<br /><br />
+<br /><br />
+00h00 :<br /><br />
+- Tournoi UT3 <br /><br />
+- BO3 de League Of Legend<br /><br />
+
                             </div>
                         </div>
                                             <div class="une_news" id="bloc_news_7">
@@ -265,17 +278,6 @@ Cette page est pour toi ;-)
 <u>Trackmania :</u> 18h00
                             </div>
                         </div>
-                                            <div class="une_news" id="bloc_news_3">
-                            <div class="titre_news" id="titre_news_3" onclick="news_toggle(3);">
-                                Téléchargement COD4
-                                <div class="date_news" id="footer_news_3">
-                                    samedi à 05h08
-                                </div>
-                            </div>
-                            <div class="contenu_news" id="contenu_news_3">
-                                <a href="cod4.rar">COD4</a>
-                            </div>
-                        </div>
                                             <div class="une_news" id="bloc_news_2">
                             <div class="titre_news" id="titre_news_2" onclick="news_toggle(2);">
                                 Gagnant de Hearthstone
@@ -325,11 +327,11 @@ Opérationnel
         <p>HEHLan All Rights Reserved Copyright 2016</p>
     </div>
     <div id="ceheh" class="col-lg-offset-2 col-lg-2 col-sm-12 col-xs-12">
-        <img src="/Intranet/view/templates/default/assets/img/logo3.png" alt="CEHECOFH">
+        <img src="/Intranet/templates/default/assets/img/logo3.png" alt="CEHECOFH">
     </div>
     <div id="campus_technique" class="col-lg-offset-3 col-lg-2 col-sm-12 col-xs-12">
         <a href="http://www.heh.be" target="_blank">
-            <img src="/Intranet/view/templates/default/assets/img/logo4.png" alt="HeH">
+            <img src="/Intranet/templates/default/assets/img/logo4.png" alt="HeH">
         </a>
     </div>
 </footer>

@@ -1,47 +1,47 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-06 22:12:51
-  from "E:\wamp\www\Intranet\view\templates\default\joueurs.tpl" */
+/* Smarty version 3.1.29, created on 2016-03-04 13:47:01
+  from "C:\xampp\htdocs\Intranet\templates\default\joueurs.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dc9d53d1d653_43504468',
+  'unifunc' => 'content_56d983c5d5b293_70593223',
   'file_dependency' => 
   array (
-    'a53587d829aef1f079c0bea5c00ddce34ebc0074' => 
+    '96d74b439014bf1d9a1191acd628bce878b0d5ef' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\joueurs.tpl',
-      1 => 1457292133,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\joueurs.tpl',
+      1 => 1456498909,
       2 => 'file',
     ),
-    'ed988336c4343083b0c42e2ff20b9d17b41f4bae' => 
+    'a8a4a27188d1166d70939cf67a1b3cb7110cd173' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\meta.tpl',
-      1 => 1457281706,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\meta.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
-    '38b87550390b4498246829deafc9d57640d6d43a' => 
+    '3b4fab3b6c0ab020216cc9c065008e808669f6e7' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\header.tpl',
-      1 => 1457191474,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\header.tpl',
+      1 => 1457095129,
       2 => 'file',
     ),
-    'eb253ea85fa0c415276f6fd713630b1f49745222' => 
+    'da870d7e68d069bacb39bc90043576474f293a9b' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\nav.tpl',
-      1 => 1457194650,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\nav.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
-    'c083a58202c533e2b690828b2c323e50174f0471' => 
+    '1689aac45742ae864d63bee6eda739ed6bb0d226' => 
     array (
-      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\footer.tpl',
-      1 => 1456169819,
+      0 => 'C:\\xampp\\htdocs\\Intranet\\templates\\default\\footer.tpl',
+      1 => 1456496461,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
+function content_56d983c5d5b293_70593223 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -74,25 +74,20 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
 <meta name="geo.region" content="BE-WHT" />
 <meta name="geo.placename" content="Mons, Hainaut" />
 
-<link rel="shortcut icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
-<link rel="icon" href="/Intranet/view/templates/default/assets/img/logoheh.ico" />
+<link rel="shortcut icon" href="/Intranet/templates/default/assets/img/logoheh.ico" />
+<link rel="icon" href="/Intranet/templates/default/assets/img/logoheh.ico" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/profil.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/jquery-ui2.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/joueurs.css" >
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/tournois.css" >
+<link rel="stylesheet" type="text/css" href="/Intranet/templates/default/assets/css/equipes.css" >
 
-<!-- CSS STYLESHEETS BASE -->
-<link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/css/bootstrap.min.css" />
-<!-- CSS STYLESHEETS LAYERS -->
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/main.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/header.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/nav.css" />
-<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/footer.css" />
-
-
-
-
-
-<script src="/Intranet/src/js/jquery.js"></script>
-<script src="/Intranet/src/js/bootstrap.min.js"></script>
-<script src="/Intranet/src/js/jquery-2.1.4.min.js"></script>
+<script src="/Intranet/assets/js/jquery.js"></script>
+<script src="/Intranet/assets/js/bootstrap.min.js"></script>
+<script src="/Intranet/assets/js/jquery-2.1.4.min.js"></script>
 
 <!-- SCRIPTS BOOTSTRAPS -->		
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -105,11 +100,10 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
 <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-        <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/joueurs.css" />
-        <script type="text/javascript" src="/Intranet/src/js/jquery.js"></script>
-        <script type="text/javascript" src="/Intranet/src/js/getXhr.js"></script>
-        <script type="text/javascript" src="/Intranet/src/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="/Intranet/src/js/joueur.js"></script>
+        <script type="text/javascript" src="/Intranet/assets/js/jquery.js"></script>
+        <script type="text/javascript" src="/Intranet/assets/js/getXhr.js"></script>
+        <script type="text/javascript" src="/Intranet/assets/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="/Intranet/assets/js/joueur.js"></script>
     </head>
 
     <body role="document">
@@ -117,11 +111,11 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
 <header id="header" class="row" >
     <div id="logo" class="col-lg-9 col-sm-9 col-xs-12" >
         <a href="index.php">
-            <img src="/Intranet/view/templates/default/assets/img/logoheh.png" alt="HEHLan" width="250px">
+            <img src="/Intranet/templates/default/assets/img/logoheh.png" alt="HEHLan" width="250px">
         </a>
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
-                    <p>Bienvenue, <a href="index.php">se connecter</a></p>
+                    <p>Bienvenue admin, <a href="common/deco.php">se déconnecter</a></p>
                 <p>Votre IP: ::1</p>
                
     </div>	     
@@ -140,17 +134,14 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Accueil</a></li>
-                <li><a href="joueurs.php">Joueurs</a></li>            
-                
-                
+                <li><a href="joueurs.php">Joueurs</a></li>
                                         <li><a href="tournois.php?id=1">League of Legends</a></li>
                                         <li><a href="tournois.php?id=2">COD4</a></li>
                                         <li><a href="tournois.php?id=3">Trackmania</a></li>
                                         <li><a href="tournois.php?id=4">UT3</a></li>
                                         <li><a href="tournois.php?id=5">Hearthstone</a></li>
-                                        
-                    
-                                </ul>
+                                                            <li><a href="ModifProfil.php">Mon profil</a></li>
+                                                        </ul>
         </div>
     </div>			
 </nav>
@@ -158,7 +149,7 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">
                 <div class="col-lg-offset-1 col-lg-8 col-xs-12 map_cafetaria">
-                    <img class="photo_cafetaria" src="/Intranet/view/templates/default/assets/img/plan.jpg">
+                    <img class="photo_cafetaria" src="/Intranet/templates/default/assets/img/plan.jpg">
                                             <div class='place' onclick='Click(this)' id="1" style="
                              position: absolute;
                              top: 3%;
@@ -1156,7 +1147,7 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
                              border:0.1em solid #000;
                              text-align:center;
                              color:#000000;
-                                                              background:#337ab7;
+                                                              background:initial;
                              ">
                             H1
                         </div>
@@ -2226,7 +2217,7 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
                                 <br>
                                 Equipe : Mid Or Feed
                                 <br>
-                                <u>Tournoi : League of Legends, COD4, Trackmania, UT3</u>
+                                <u>Tournoi : League of Legends, COD4, UT3</u>
                             </span>
                         </div>
                                             <div class='tooltip' style='position:absolute;
@@ -2999,20 +2990,6 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
                                 <u>Tournoi : League of Legends</u>
                             </span>
                         </div>
-                                            <div class='tooltip' style='position:absolute;
-                             top: 50%;
-                             left: 28%;
-                             width: 4.5%;
-                             height: 3%;
-                             text-align:center;'>
-                            <span>
-                                pseudo : <strong> admin</strong>
-                                <br>
-                                Equipe : 
-                                <br>
-                                <u>Tournoi : </u>
-                            </span>
-                        </div>
                                     </div>		
 
                 <!-- ****************************************** test button for pick *********************************************-->
@@ -3044,1490 +3021,1476 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
                             <br>
                             <br>
                         </div>                       
-
+                        
                         <!-- Player List -->
                                                                                     <div>
                                     <u>Liste des joueurs :</u>
                                 </div>
                                 <br>
                                 <ul id="liste_joueur">
-                                                                <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>1ST_Tr45HxC
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='43'>Abysses
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='77'>admin
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='23'>adri0413
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='92'>Alcyoal
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='36'>Alfatta
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='35'>Alfattarte
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='6'>Ander BloodEyes
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='44'>Anga
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='51'>Angerfirst
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Anus42
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Artanis Pirgis
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Artikthor
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Ash
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>AsylumCoven
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Atariks
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='7'>ATMbigslick
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Banksyz
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>batllegame
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='30'>Belgium Flag DzX
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='31'>Belgium Flag Zeytenh
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='50'>benauto
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Beno50
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Blakcat
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>bou
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Boulvay
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>brasix
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Brenda
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='53'>Broflovsky
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>bryan6mepu
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>buenoC6
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Bumblebee
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='93'>Canon6etoiles
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Chat Ringan
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='69'>Chillsforyou
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>China
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>cloud1213
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Codu
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>corky
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>craywyn
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>crisedefoi
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Danilus
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>deadlive
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='8'>Dekama
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='100'>Delikan57
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='5'>Desert
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>DestroyedParadis
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='105'>dodop
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>DottyLloyd
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Dr Miika
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='24'>Drêdack
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='98'>Droledami
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='46'>ducoman
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='99'>Echofox
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Eklatburnes
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='15'>Eklatpif
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='16'>Entamoeba
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Er3az
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='21'>eystornt
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>fliwdeir
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Florentcle
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='45'>Fluffy
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Fogz
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='62'>fox2903
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>FroZen
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='42'>Fyren
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Gahkin
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Galdesh
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='104'>Gaudryk
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='19'>giovanbaba
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>gosh101
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='94'>GRAPHH
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='65'>Greybak
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Gs DeadLine56
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Guerrier666
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Guirlande
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>gwennytoux
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Hamsterguys
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='29'>handsome smurf
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='37'>Happy Nems
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Helmanath
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='39'>Hexceed
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Hextia
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>hfkill
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Horokrist
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='63'>HyzoWeed
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>iGlooW
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='79'>igor mono
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>ioni
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>JankulaseK
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Kaethuseth
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='13'>KaMoKyu
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='68'>Katax
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Katnus
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>kazuhya
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='127'>koekjes
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Kovers
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='48'>Kr0usty
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='11'>Krogoh
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>LamboX
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='4'>landre164
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Lasti
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Lee Sin
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>lion24
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='12'>LittleS4T4N
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='67'>Liytøse
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='70'>Loraline
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Lordftw
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='55'>Louza
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>luffy0612
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>lukasobito
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='2'>Luke
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>machabastien
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='25'>Macphalin
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='28'>Madixti
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>malu7800
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>MetaxLight
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Métronic
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Mikeman
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='20'>Mizark
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Monkey D Allan
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='27'>Morgasme
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='32'>MrNedria
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='17'>mrtoshio
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Multidoting
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='38'>NamaTroX
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='96'>Narco
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Navarro
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='49'>Nucleaz
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='71'>Nydda
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Nyuw
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>oculus
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Ohgreat
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>OPMaRSs
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Orceus
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='102'>Origamie
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>ousermont
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='103'>Playas
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Popol au Cirque
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='1'>Psychopaf
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>PuLse Olen
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>qodex
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>RageManSenior
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>RaKyora
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='14'>Rawnur
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='101'>Rayalok
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>RectoO
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>rod0511
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='3'>roden164
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Rothesse
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>rougetta
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Salcatin
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>samarïtan
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>satanasth250
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Seyfur
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>shasha07
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Shethan
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Shoutmog
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='10'>Shyrøw
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Siena
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Skayard
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>skit
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Skullhards
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>skuyz
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Skynyx
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='128'>Sl33p3r
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='52'>sleve
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='106'>Sman3133
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='66'>Soccielo
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='64'>Soyo
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='56'>Sponos
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Spytte is Coming
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>subbyy
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='54'>supertinez
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Suyken
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Tartines
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Téflon
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Thaerith
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>TheBlackDiamond
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>THEDEVASTATOR
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='47'>Thorgrim
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>thotwith
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Tomirock
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Torakh
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>ToSu91
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='97'>Touza
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Tøxigrinta
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>trogalt
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='95'>Unexard
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='9'>VeryBadLegend
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='26'>vindoze
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='18'>Volgrim
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Wadosh
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='34'>waelan
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='40'>Webolivieri
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Winblast
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value='33'>Witchh Doctor
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='22'>wiwi0123
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>wooligan
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Worst fiddle EUW
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>xemnas192
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>ximunou
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>XUltiX
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>xxbitter
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>xxroroxx
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Yasukiro
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Yellowpit
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value=''>Zarak
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>zarbisi
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#262626'
-                                                                              value='41'>Zayzo
-                                    </a>
-                                </li>
-                                 
-                                                                                    <li>
-                                    <a class='ClassPseudo' 
-                                                                                  style='background-color:#212121'                                                             
-                                                                              value=''>Zelof
-                                    </a>
-                                </li>
-                                                                </ul>
+                                                        <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>1ST_Tr45HxC
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='43'>Abysses
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>admin
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='23'>adri0413
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='92'>Alcyoal
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='36'>Alfatta
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='35'>Alfattarte
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='6'>Ander BloodEyes
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='44'>Anga
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='51'>Angerfirst
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Anus42
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Artanis Pirgis
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Artikthor
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Ash
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>AsylumCoven
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Atariks
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='7'>ATMbigslick
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Banksyz
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>batllegame
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='30'>Belgium Flag DzX
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='31'>Belgium Flag Zeytenh
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='50'>benauto
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Beno50
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Blakcat
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>bou
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Boulvay
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>brasix
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Brenda
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='53'>Broflovsky
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>bryan6mepu
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>buenoC6
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Bumblebee
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='93'>Canon6etoiles
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Chat Ringan
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='69'>Chillsforyou
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>China
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>cloud1213
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Codu
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>craywyn
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>crisedefoi
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Danilus
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>deadlive
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='8'>Dekama
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='100'>Delikan57
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='5'>Desert
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>DestroyedParadis
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='105'>dodop
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>DottyLloyd
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Dr Miika
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='24'>Drêdack
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='98'>Droledami
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='46'>ducoman
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='99'>Echofox
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Eklatburnes
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='15'>Eklatpif
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='16'>Entamoeba
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Er3az
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='21'>eystornt
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>fliwdeir
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Florentcle
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='45'>Fluffy
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Fogz
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='62'>fox2903
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>FroZen
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='42'>Fyren
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Gahkin
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Galdesh
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='104'>Gaudryk
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='19'>giovanbaba
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>gosh101
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='94'>GRAPHH
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='65'>Greybak
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Gs DeadLine56
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Guerrier666
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Guirlande
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>gwennytoux
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Hamsterguys
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='29'>handsome smurf
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='37'>Happy Nems
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Helmanath
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='39'>Hexceed
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Hextia
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>hfkill
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Horokrist
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='63'>HyzoWeed
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>iGlooW
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='79'>igor mono
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>ioni
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>JankulaseK
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Kaethuseth
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='13'>KaMoKyu
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='68'>Katax
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Katnus
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>kazuhya
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='127'>koekjes
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Kovers
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='48'>Kr0usty
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='11'>Krogoh
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>LamboX
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='4'>landre164
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Lasti
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Lee Sin
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>lion24
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='12'>LittleS4T4N
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='67'>Liytøse
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='70'>Loraline
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Lordftw
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='55'>Louza
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>luffy0612
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>lukasobito
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='2'>Luke
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>machabastien
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='25'>Macphalin
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='28'>Madixti
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>malu7800
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>MetaxLight
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Métronic
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Mikeman
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='20'>Mizark
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Monkey D Allan
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='27'>Morgasme
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='32'>MrNedria
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='17'>mrtoshio
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Multidoting
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='38'>NamaTroX
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='96'>Narco
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Navarro
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='49'>Nucleaz
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='71'>Nydda
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Nyuw
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>oculus
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Ohgreat
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>OPMaRSs
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Orceus
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='102'>Origamie
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>ousermont
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='103'>Playas
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Popol au Cirque
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='1'>Psychopaf
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>PuLse Olen
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>qodex
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>RageManSenior
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>RaKyora
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='14'>Rawnur
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='101'>Rayalok
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>RectoO
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>rod0511
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='3'>roden164
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Rothesse
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>rougetta
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Salcatin
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>samarïtan
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>satanasth250
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Seyfur
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>shasha07
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Shethan
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Shoutmog
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='10'>Shyrøw
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Siena
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Skayard
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Skullhards
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>skuyz
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Skynyx
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='128'>Sl33p3r
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='52'>sleve
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='106'>Sman3133
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='66'>Soccielo
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='64'>Soyo
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='56'>Sponos
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Spytte is Coming
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>subbyy
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='54'>supertinez
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Suyken
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Tartines
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Téflon
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Thaerith
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>TheBlackDiamond
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>THEDEVASTATOR
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='47'>Thorgrim
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>thotwith
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Tomirock
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Torakh
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>ToSu91
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='97'>Touza
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Tøxigrinta
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>trogalt
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='95'>Unexard
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='9'>VeryBadLegend
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='26'>vindoze
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='18'>Volgrim
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Wadosh
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='34'>waelan
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='40'>Webolivieri
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Winblast
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value='33'>Witchh Doctor
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='22'>wiwi0123
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>wooligan
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Worst fiddle EUW
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>xemnas192
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>ximunou
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>XUltiX
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>xxbitter
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>xxroroxx
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Yasukiro
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Yellowpit
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value=''>Zarak
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>zarbisi
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#262626'
+                                                                        value='41'>Zayzo
+                                </a>
+                            </li>
+                             
+                                                                                <li>
+                                <a class='ClassPseudo' 
+                                                                            style='background-color:#212121'                                                             
+                                                                        value=''>Zelof
+                                </a>
+                            </li>
+                                                            </ul>
                              
                                        
                     </div>
@@ -4635,11 +4598,11 @@ function content_56dc9d53d1d653_43504468 ($_smarty_tpl) {
         <p>HEHLan All Rights Reserved Copyright 2016</p>
     </div>
     <div id="ceheh" class="col-lg-offset-2 col-lg-2 col-sm-12 col-xs-12">
-        <img src="/Intranet/view/templates/default/assets/img/logo3.png" alt="CEHECOFH">
+        <img src="/Intranet/templates/default/assets/img/logo3.png" alt="CEHECOFH">
     </div>
     <div id="campus_technique" class="col-lg-offset-3 col-lg-2 col-sm-12 col-xs-12">
         <a href="http://www.heh.be" target="_blank">
-            <img src="/Intranet/view/templates/default/assets/img/logo4.png" alt="HeH">
+            <img src="/Intranet/templates/default/assets/img/logo4.png" alt="HeH">
         </a>
     </div>
 </footer>

@@ -135,10 +135,13 @@ if ($nbrmatch > 0) {
 }
 
 // Applying Template
-$smarty->assign('niveau',$niveau);
-$smarty->assign('match_par_niveau',$match_par_niveau);
-$smarty->assign('matches',$matches);
-$smarty->assign('tablo',$tablo);
+if(isset($tablo))
+{
+	$smarty->assign('niveau',$niveau);
+	$smarty->assign('match_par_niveau',$match_par_niveau);
+	$smarty->assign('matches',$matches);
+	$smarty->assign('tablo',$tablo);
+}
 $smarty->assign("con", $con);
 $smarty->assign("next_matches", $database->getNextMatches($con));
 $smarty->assign("navTournois", $database->getNavTournois());

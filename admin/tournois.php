@@ -1,11 +1,12 @@
 <?php
 
 session_start();
-require_once('../common/utils.php');
-require_once('../class/Smarty_HEHLan.class.php');
-require_once('../class/Database.class.php');
-require_once('../class/Auth.class.php');
-require_once('../class/Query.class.php');
+require_once('../class/var.conf.php');
+require_once(DOCUMENT_ROOT.'/common/utils.php');
+require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
+require_once(DOCUMENT_ROOT.'/class/Database.class.php');
+require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
+require_once(DOCUMENT_ROOT.'/class/Query.class.php');
 
 
 
@@ -22,7 +23,7 @@ $allowed = Auth::isAllowed(3);
 
 if(!$connected && !$allowed)
 {
-    header('Location: ../index.php');
+    header('Location: '.DOCUMENT_ROOT.'/index.php');
 } 
 
 
@@ -33,7 +34,6 @@ if($query->execute())
 {
     foreach ($query->getResult() as $tournoi)
     {
-        $tournois[] = $tournoi;
         if($tournoi['joueurParTeam']==1)
         {
             $sql_2 = 'SELECT COUNT(*) as nbr FROM joueurtournoi WHERE id_tournoi=:idt';
@@ -46,7 +46,7 @@ if($query->execute())
         $query_2->bind('idt', $tournoi['id_tournoi'], PDO::PARAM_STR);
         if($query_2->execute())
         {
-            $participants = $query_2->getResult();
+            $participants = $query_2->getResult()[0];
         }
         else
         {
@@ -77,112 +77,34 @@ if($query->execute())
             exit;
         }
         
+        //MANAGE POOLS  --------------------------------------------------------------------------
+        $connexion = $database->getConnection();
+		$tournoi['exist_manche_qualif0'] = existe_match($connexion,$tournoi['id_tournoi'],'group',0);
+		$tournoi['exist_manche_final0'] = existe_match($connexion,$tournoi['id_tournoi'],'final',0);
         
-        
-        //TRUC 1  --------------------------------------------------------------------------
-        
-        if (!existe_manche_de_groupe($connexion,$tournoi['id_tournoi'],$tournoi['joueurParTeam']))
-        {
-            echo '<input type="button" value="Créer" onclick="go_groupes('.$tournoi['id_tournoi'].','.$participants['nbr'].')"/>';					
-        }	
-        echo ' <a href="scores.php?id_tournoi='.$tournoi['id_tournoi'].'">Scores</a></td>
-                <td>';
-        //if (!existe_manche_de_finale($connexion,$tournoi['id_tournoi'],$tournoi['joueurParTeam'],0) && $groupes_exist['nbr']>0)
-        if (!existe_manche_de_finale($connexion,$tournoi['id_tournoi'],$tournoi['joueurParTeam'],0))
-        {			
-            if($tournoi['joueurParTeam']>1)
-            {
-                echo '<input type="button" value="Créer" onclick="go_finales('.$tournoi['id_tournoi'].','.$participants['nbr'].',0)"/>';                    
-            }
-            else
-            {
-                echo '<input type="button" value="Créer" onclick="go_finales2('.$tournoi['id_tournoi'].','.$participants['nbr'].',0)"/>';
-            }
-            echo '<a href="finales.php?id_tournoi='.$tournoi['id_tournoi'].'&looser=0">Modifier</a>';	
-        }
-        else
-        {
-            if(inscrits_en_finale($connexion,$tournoi['id_tournoi'],$tournoi['joueurParTeam'],0))
-            {
-                echo '<a href="finales.php?id_tournoi='.$tournoi['id_tournoi'].'&looser=0">Scores</a>';
-            }
-        }
-        
-        //-----------------------------------------------------------------------------------------------------------
-        
-        
-        // TRUC 2 ---------------------------------------------------------------------------------------------------
+        // MANAGE FINALS ---------------------------------------------------------------------------------------------------
 
-        if (!existe_manche_de_finale($connexion,$tournoi['id_tournoi'],$tournoi['joueurParTeam'],2) )
-        {
-            if($tournoi['joueurParTeam']>1)
-            {
-                echo '<input type="button" value="Créer" onclick="go_finales('.$tournoi['id_tournoi'].','.$participants['nbr'].',2)"/>';
-            }
-            else
-            {
-                echo '<input type="button" value="Créer" onclick="go_finales2('.$tournoi['id_tournoi'].','.$participants['nbr'].',2)"/>';
-            }
-            echo '<a href="finales.php?id_tournoi='.$tournoi['id_tournoi'].'&looser=2">Modifier</a>';	
-        }
-        else
-        {
-            if(inscrits_en_finale($connexion,$tournoi['id_tournoi'],$tournoi['joueurParTeam'],2))
-            {
-                echo '<a href="finales.php?id_tournoi='.$tournoi['id_tournoi'].'&looser=2">Scores</a>';
-            }
-        }							
+        $tournoi['exist_manche_final2']= existe_match($connexion,$tournoi['id_tournoi'],'looser1',2);
       
-        // TRUC 3 ----------------------------------------------------------------------------------------------------------------------
-        if (!existe_manche_de_finale($connexion,$tournoi['id_tournoi'],$tournoi['joueurParTeam'],3) )
-        {
-            if($tournoi['joueurParTeam']>1)
-            {
-                echo '<input type="button" value="Créer" onclick="go_finales('.$tournoi['id_tournoi'].','.$participants['nbr'].',3)"/>';
-            }
-            else
-            {
-                echo '<input type="button" value="Créer" onclick="go_finales2('.$tournoi['id_tournoi'].','.$participants['nbr'].',3)"/>';
-            }
-            echo '<a href="finales.php?id_tournoi='.$tournoi['id_tournoi'].'&looser=3">Modifier</a>';
-        }
-        else
-        {
-            if(inscrits_en_finale($connexion,$tournoi['id_tournoi'],$tournoi['joueurParTeam'],3))
-            {
-                echo '<a href="finales.php?id_tournoi='.$tournoi['id_tournoi'].'&looser=3">Scores</a>';
-            }
-        }							
- 
+        // LOOSER BRACKETS ----------------------------------------------------------------------------------------------------------------------
+        $tournoi['exist_manche_final3'] = existe_match($connexion,$tournoi['id_tournoi'],'looser2',3);
         //--------------------------------------------------------------------------------------------------------------------------------
-    
-    }     
+		$tournois[] = $tournoi;
+	}     
 }
 else
 {
-    echo 'ERROR TOURNOI SQL';
+	global $glob_debug;
+	if($glob_debug)
+		echo 'ERREUR TOURNOI SQL';
     exit;
 }
-
-
-
-				
-                                
-				
-
-
-
-
-
 
 // send to the template
 $smarty->assign("con", $connected);
 $smarty->assign("chat", $chatIsActive);
+$smarty->assign('participants', $participants);
 $smarty->assign('tournois', $tournois);
-
-
-
-
 
 $smarty->display(DOCUMENT_ROOT.'/view/templates/admin/tournois.tpl');	
 ?>
