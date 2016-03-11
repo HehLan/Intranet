@@ -4,3 +4,8 @@
 /view/templates_c/*
 *.tpl.cache.php
 /class/var.conf.php
+nbproject
+view/cache/*
+view/configs/paths.conf
+view/templates_c/*
+class/var.conf.php
