@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-07 10:37:21
+/* Smarty version 3.1.29, created on 2016-03-11 14:52:41
   from "C:\xampp\htdocs\Intranet\view\templates\admin\nav.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dd4bd1a58867_33855032',
+  'unifunc' => 'content_56e2cda984aa36_55012179',
   'file_dependency' => 
   array (
     'af5214c9739fb386542284bef5bc41d6bb25cb2b' => 
@@ -19,8 +19,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56dd4bd1a58867_33855032 ($_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '3070156dd4bd1a54214_90727863';
+function content_56e2cda984aa36_55012179 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '2544756e2cda98473e2_52945370';
 ?>
 
 <nav id="navigation" class="navbar navbar-inverse" role="navigation" >

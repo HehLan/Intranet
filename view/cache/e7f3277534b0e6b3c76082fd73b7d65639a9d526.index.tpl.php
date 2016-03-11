@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-07 10:37:07
+/* Smarty version 3.1.29, created on 2016-03-11 12:17:52
   from "C:\xampp\htdocs\Intranet\view\templates\default\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56dd4bc3db4f95_78208446',
+  'unifunc' => 'content_56e2a9609da141_39498063',
   'file_dependency' => 
   array (
     'e7f3277534b0e6b3c76082fd73b7d65639a9d526' => 
@@ -29,7 +29,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     '0c222f6d59bbfb07bb733e0b594dcefe01050154' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Intranet\\view\\templates\\default\\nav.tpl',
-      1 => 1457342619,
+      1 => 1457694816,
       2 => 'file',
     ),
     '24b534126ffbe8c2409b3f5d7753f576cbf20626' => 
@@ -41,7 +41,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   ),
   'cache_lifetime' => 0,
 ),true)) {
-function content_56dd4bc3db4f95_78208446 ($_smarty_tpl) {
+function content_56e2a9609da141_39498063 ($_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -144,7 +144,7 @@ function content_56dd4bc3db4f95_78208446 ($_smarty_tpl) {
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Accueil</a></li>
-                <li><a href="joueurs.php">Joueurs</a></li>            
+                <!--<li><a href="joueurs.php">Joueurs</a></li>-->            
                 
                 
                                         <li><a href="tournois.php?id=1">League of Legends</a></li>

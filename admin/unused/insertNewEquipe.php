@@ -1,9 +1,14 @@
 <?php
 session_start();
-require_once('classAuth.php');
+require_once('../../class/Auth.class.php');
+require_once('../../class/Smarty_HEHLan.class.php');
+require_once('../../class/Database.class.php');
+
+$database = new Database();
+$connexion = $database->getConnection();
 
 if (Auth::isLogged()){
-    if (Auth::isAllow(3)){
+    if (Auth::isAllowed(3)){
         if (!empty($_POST)){
             $valid=true;
             $erreurTag='';
@@ -72,7 +77,8 @@ if (Auth::isLogged()){
                 $nbr=$requete_preparee->rowCount();
                 
                 if($nbr == 0)
-                {     
+                {  
+                    echo $nbr;
                     try{
                             // Creation de l'equipe
                             $query = "INSERT INTO equipes (nom, mot_de_passe,tag) VALUES (:nom,:mot_de_passe,:tag)";
@@ -83,14 +89,15 @@ if (Auth::isLogged()){
                             $requete_preparee->execute();
                             
                             echo'L\'équipe a été créée!<br>';
-                            exit();
+                            //exit();
                             
                     }
                     catch(Exception $e){
                             echo "Une erreur est survenue<br>";
                             echo "Message = ".$e->getMessage();
-                            exit();
+                            //exit();
                     }
+                    echo $nbr;
                 }
                 else
                 {
