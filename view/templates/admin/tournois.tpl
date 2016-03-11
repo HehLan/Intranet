@@ -95,7 +95,6 @@
 									<input type="button" value="Gérer" onclick="document.location.href='scores.php?id_tournoi={$tournoi['id_tournoi']}'" />
 									<input type="button" value="Effacer" onclick="reset_groupes({$tournoi['id_tournoi']},'group',0)"/>
 								{/if}
-								<a href="scores.php?id_tournoi={$tournoi['id_tournoi']}">Scores</a>
 							</td>
 							<td>
 								{if !($tournoi['exist_manche_final0'])}

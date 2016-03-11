@@ -18,7 +18,7 @@
 		{/if}
 		{if isset($tournoi.reglement)}
 			<div id="reglementTournoi">
-				Pour consulter le réglement de ce tournoi, <a href="{#domain#}/src/{$tournoi.reglement}"> cliquez ici </a>
+				Pour consulter le règlement de ce tournoi, <a href="{#domain#}/src/{$tournoi.reglement}"> cliquez ici </a>
 			</div>
 		{/if}
 		<div id="container">

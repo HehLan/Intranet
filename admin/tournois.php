@@ -23,7 +23,7 @@ $allowed = Auth::isAllowed(3);
 
 if(!$connected && !$allowed)
 {
-    header('Location: ../index.php');
+    header('Location: '.DOCUMENT_ROOT.'/index.php');
 } 
 
 

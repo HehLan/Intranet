@@ -1,16 +1,29 @@
 <?php
-session_start();
-require_once('modules/connect.php');
-require_once('../common/utils.php');
-$con=false;
 
-if(isset($_SESSION['id_joueur']))
+session_start();
+require_once('../class/var.conf.php');
+require_once(DOCUMENT_ROOT.'/common/utils.php');
+require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
+require_once(DOCUMENT_ROOT.'/class/Database.class.php');
+require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
+require_once(DOCUMENT_ROOT.'/class/Query.class.php');
+
+
+
+$connected = false;
+$allowed = false;
+$chatIsActive = false;
+$database = new Database();
+$smarty = new Smarty_HEHLan();
+
+
+$connected = Auth::isLogged();
+$allowed = Auth::isAllowed(3);
+
+
+if(!$connected && !$allowed)
 {
-	if(($_SESSION['id_joueur']!=0) && $_SESSION['level']<=3) $con=true;
-}
-if(!$con)
-{
- header('Location: ../index.php');
+    header('Location: '.DOCUMENT_ROOT.'/index.php');
 } 
 
 $id_tournoi=1;
@@ -35,15 +48,6 @@ if($query->execute())
 }
 else {echo 'ERREUR SQL GROUPES'; exit;}
 
-$groupes='';
-$sql="SELECT * FROM groupes_pool WHERE id_tournoi=:id";
-$query=$connexion->prepare($sql);
-$query->bindValue('id', $id_tournoi, PDO::PARAM_INT);
-if($query->execute())
-{
-	$groupes = $query->fetchAll(PDO::FETCH_ASSOC);
-}
-else {echo 'ERREUR SQL GROUPES'; exit;}
 $jpt=$tournoi['joueurParTeam'];
 
 foreach($groupes as $groupe)
@@ -71,324 +75,231 @@ foreach($groupes as $groupe)
 		else {echo 'ERREUR SQL JOUEURS'; exit;}	
 	}
 }
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<?php require_once('../includes/_meta.php'); ?> 
-    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/getXhr.js"></script>
-    <script type="text/javascript">
-	function active_score(idm,idt)
-	{
-		if(document.getElementById('score_m_'+idm+'_p_'+idt).disabled)
-		{
-			document.getElementById('score_m_'+idm+'_p_'+idt).disabled=false;
-		}
-		else
-		{
-			document.getElementById('score_m_'+idm+'_p_'+idt).disabled=true;
-		}
-	}
-	function active_score2(idm,m,idt)
-	{
-		if(document.getElementById('score_m_'+idm+'_ma_'+m+'_p_'+idt).disabled)
-		{
-			document.getElementById('score_m_'+idm+'_ma_'+m+'_p_'+idt).disabled=false;
-		}
-		else
-		{
-			document.getElementById('score_m_'+idm+'_ma_'+m+'_p_'+idt).disabled=true;
-		}
-	}
-	function popup_heure(idm)
-	{
-		document.getElementById('input_id_match').value=idm;
-		document.getElementById('shadowing').style.display='block';
-		document.getElementById('div_popup').style.visibility='visible';
+//------------ KILL THEM BEFORE THEY LAY EGGS!!!!!!!!!!!! ------------
 
-	}
-	function popup_close()
+foreach($groupes as $groupe)
+{
+	if($jpt>1)
 	{
-		document.getElementById('shadowing').style.display='none';
-		document.getElementById('div_popup').style.visibility='hidden';			
-	}	
-	</script>
-</head>
+	//-----------------TOURNOI TYPE LOL COD-----------------
+		$nbrteam=0;
+		$teams='';
+		$scores='';
+		foreach($participants[$groupe['id_groupe']] as $team)
+		{
+				$teams[$nbrteam]['nom']=$team['nom'];
+				$teams[$nbrteam]['id']=$team['id'];
+				$nbrteam++;
+		}
 
-<body role="document">
+		$heures='';
 
- 	<?php require_once('../includes/_header.php'); ?>
-	<?php require_once('modules/menuTop.php'); ?>  
-	
-	<div id="container">
-		<div id="contenu">
-			<?php
-				echo '<h1>Qualifications '.$tournoi['nomTournoi'].'</h1>';
-				echo '<form method="POST" action="scores_save.php">
-				<input type="hidden" name="id_tournoi" value="'.$id_tournoi.'">
-				<input type="SUBMIT" value="Enregistrer"><br>';
-				
-				foreach($groupes as $groupe)
+		
+		foreach($teams as $team)
+		{
+
+			$sql="SELECT m.id_match,m.heure, SUM(me.score) as score, 
+				(SELECT mte2.id_equipe FROM matchs_equipes as mte2 WHERE mte2.id_match=m.id_match AND mte2.id_equipe<>:ide LIMIT 0,1) as team2								
+			FROM (matchs_equipes as mte, matchs as m) 
+			LEFT JOIN (manches_equipes as me)
+			ON (me.id_match=m.id_match AND me.id_equipe=:ide)
+			WHERE m.id_groupe=:idg AND mte.id_match=m.id_match AND mte.id_equipe=:ide
+			GROUP BY m.id_match";
+			$query=$connexion->prepare($sql);
+			$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
+			$query->bindValue('ide', $team['id'], PDO::PARAM_INT);
+			if($query->execute())
+			{
+				while($ligne=$query->fetch(PDO::FETCH_ASSOC))
 				{
-					if($jpt>1)
+					if(!is_null($ligne['score']))
 					{
-					//-----------------TOURNOI TYPE LOL COD-----------------
-						$nbrteam=0;
-						$teams='';
-						$scores='';
-						foreach($participants[$groupe['id_groupe']] as $team)
-						{
-								$teams[$nbrteam]['nom']=$team['nom'];
-								$teams[$nbrteam]['id']=$team['id'];
-								$nbrteam++;
-						}
-		
-						$heures='';
-	
+						$scores[$team['id']][$ligne['team2']]['score']=$ligne['score'];
 						
-						foreach($teams as $team)
-						{
-
-							$sql="SELECT m.id_match,m.heure, SUM(me.score) as score, 
-								(SELECT mte2.id_equipe FROM matchs_equipes as mte2 WHERE mte2.id_match=m.id_match AND mte2.id_equipe<>:ide LIMIT 0,1) as team2								
-							FROM (matchs_equipes as mte, matchs as m) 
-							LEFT JOIN (manches_equipes as me)
-							ON (me.id_match=m.id_match AND me.id_equipe=:ide)
-							WHERE m.id_groupe=:idg AND mte.id_match=m.id_match AND mte.id_equipe=:ide
-							GROUP BY m.id_match";
-							$query=$connexion->prepare($sql);
-							$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
-							$query->bindValue('ide', $team['id'], PDO::PARAM_INT);
-							if($query->execute())
-							{
-								while($ligne=$query->fetch(PDO::FETCH_ASSOC))
-								{
-									if(!is_null($ligne['score']))
-									{
-										$scores[$team['id']][$ligne['team2']]['score']=$ligne['score'];
-										
-									}	
-									$matchs[$team['id']][$ligne['team2']]['heure']=$ligne['heure'];
-									$matchs[$team['id']][$ligne['team2']]['id_match']=$ligne['id_match'];
-								}
-							}
-							else {echo 'ERREUR SQL SCORES TEAM 1'; exit;}
-							
-				
-						}
-
-						 echo '<table class="table_pool_lol">
-							<tr>
-								<th class="th_titre_pool_lol" colspan="'.($nbrteam+2).'">'.$groupe['nom_groupe'].'<th>
-							</tr>
-							<tr>
-								<td class="td_vide_pool_lol"></td>';
-							for($i=0;$i<$nbrteam;$i++) echo '<th class="th_team2_pool_lol">'.$teams[$i]['nom'].'</th>';
-							echo '<th class="th_score_pool_lol">score</th></tr>';
-							$teams2=$teams;
-							$totaux='';
-						 foreach($teams as $team)
-						 {
-							$totaux[$team['id']]=0;
-							echo '<tr class="tr_pool_lol">
-									<th class="th_team_pool_lol">'.$team['nom'].'</th>';
-									
-							foreach($teams2 as $team2)
-							{	
-								
-
-								if ($team['id']==$team2['id']) echo '<td class="td_X_pool_lol">X</td>';
-								else
-								{
-									$couleur='same_';
-									$valeur='';
-									if(isset($scores[$team['id']][$team2['id']]['score']))
-									{
-										$couleur='loose_';
-										$valeur=$scores[$team['id']][$team2['id']]['score'];
-										//echo 'id'.$team['id'].' '.$team['id'].'<br>';
-										if ($scores[$team['id']][$team2['id']]['score']>$scores[$team2['id']][$team['id']]['score']) 
-										{
-											$totaux[$team['id']]+=3;
-											$couleur='win_';
-										}	
-										if ($scores[$team['id']][$team2['id']]['score']==$scores[$team2['id']][$team['id']]['score']) 
-										{
-											$totaux[$team['id']]+=1;
-											$couleur='same_';
-										}		
-											
-									}	
-		
-											$heure=get_jour_de_la_semaine($matchs[$team['id']][$team2['id']]['heure']).' '.get_heure($matchs[$team['id']][$team2['id']]['heure']);
+					}	
+					$matchs[$team['id']][$ligne['team2']]['heure']=$ligne['heure'];
+					$matchs[$team['id']][$ligne['team2']]['id_match']=$ligne['id_match'];
+				}
+			}
+			else {echo 'ERREUR SQL SCORES TEAM 1'; exit;}
 			
-				
-									echo '<td class="td_'.$couleur.'pool_lol"><a href="#" onclick="popup_heure('.$matchs[$team['id']][$team2['id']]['id_match'].')" >'.$heure.'</a><br>
-									<input type="checkbox" name="cb_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" value="1" onclick="active_score('.$matchs[$team['id']][$team2['id']]['id_match'].','.$team['id'].')"> <input type="text" name="score_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" id="score_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" value="'.$valeur.'" size="4" disabled="disabled"></td>';
-								}
-								
-							}
-							echo '<td class="td_score_pool_lol">'.$totaux[$team['id']].'</td>	
-								</tr>';
-						 }
-						echo '				 
-						  </table><br><br>';
-					}
-					else
-					{
-						//-----------------TOURNOI TYPE UT TRACKMANIA-----------------
-						$sql="SELECT id_match,nbr_manche, heure FROM matchs WHERE id_groupe=:idg LIMIT 0,1";
-						$query=$connexion->prepare($sql);
-						$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
-						if($query->execute())
-						{
-							if($nbr_manches=$query->fetch(PDO::FETCH_ASSOC))
-							{
-								$id_match=$nbr_manches['id_match'];
-								$heure=$nbr_manches['heure'];
-								$nbr_manches=$nbr_manches['nbr_manche'];
-							}
-							else $nbr_manches=$tournoi['nombreManche'];
-						}
-						else {echo 'ERREUR SQL MANCHES'; exit;}	
-	
-						
-						$sql="SELECT j.pseudo, mj.id_joueur, SUM(mj.score) as total
-						FROM joueurs as j, manches_joueurs as mj, matchs as m 
-						WHERE m.id_groupe=:idg AND mj.id_match=m.id_match and j.id_joueur=mj.id_joueur
-						GROUP BY mj.id_joueur
-						ORDER BY total DESC, j.pseudo";
-						$query=$connexion->prepare($sql);
-						$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
-						if($query->execute())
-						{
-							$totaux = $query->fetchAll(PDO::FETCH_ASSOC);
-						}
-						else {echo 'ERREUR SQL MANCHES'; exit;}									
-						
-						$sql="SELECT mj.id_joueur, mj.numero_manche, mj.score
-						FROM manches_joueurs as mj, matchs as m 
-						WHERE m.id_groupe=:idg AND mj.id_match=m.id_match 
-						ORDER BY id_joueur";
-						$query=$connexion->prepare($sql);
-						$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
-						if($query->execute())
-						{
-							while($ligne=$query->fetch(PDO::FETCH_ASSOC))
-							{
-								$scores[$ligne['id_joueur']][$ligne['numero_manche']] = $ligne['score'];
-							}
-						}
-						else {echo 'ERREUR SQL MANCHES'; exit;}							
-						
-	
-						
-						
-						echo '<table class="table_pool_tm">
-							<tr>
-								<th  class="titre_pool_tm" colspan="'.($nbr_manches+2).'">'.$groupe['nom_groupe'].'<br>
-								<a href="#" onclick="popup_heure('.$id_match.')" >'.get_jour_de_la_semaine($heure).' '.get_heure($heure).'</a></th>
-							</tr>
-							<tr>
-								<th class="th_part_pool_tm">Participant</th>';
-								for($i=1;$i<=$nbr_manches;$i++) echo '<th class="th_manche_pool_tm">Manche '.$i.'<br></th>';
-								echo '<th class="th_points_pool_tm">Points</th>
-							</tr>';
-						$inscrits='';	
-						foreach($participants[$groupe['id_groupe']]	as $joueur)
-						{
-							$inscrits[$joueur['id']]['nom']=$joueur['nom'];
-							$inscrits[$joueur['id']]['id']=$joueur['id'];
-							$inscrits[$joueur['id']]['ok']=false;
-						}
-						foreach($totaux	as $joueur)
-						{
-							echo '<tr>
-							<td class="td_pseudo_pool_tm">'.$joueur['pseudo'].'</td>';
-							for($i=1;$i<=$nbr_manches;$i++)
-							{
-								$valeur='';
-								echo '<td class="td_score_pool_tm">';
-								if(isset($scores[$joueur['id_joueur']][$i]))
-									$valeur=$scores[$joueur['id_joueur']][$i];
-								
-								echo '<input type="checkbox" 
-									name="cb_m_'.$id_match.'_ma_'.$i.'_p_'.$joueur['id_joueur'].'" value="1" 
-									onclick="active_score2('.$id_match.','.$i.','.$joueur['id_joueur'].')"> 
-									<input type="text" name="score_m_'.$id_match.'_ma_'.$i.'_p_'.$joueur['id_joueur'].'" 
-									id="score_m_'.$id_match.'_ma_'.$i.'_p_'.$joueur['id_joueur'].'" value="'.$valeur.'" size="4" disabled="disabled">';								
-								echo '</td>';
-							}
-							echo '<td class="td_total_pool_tm">'.$joueur['total'].'</td>
-							</tr>';
-							$inscrits[$joueur['id_joueur']]['ok']=true;
-						}		
-						foreach($inscrits	as $inscrit)
-						{
-							if(!$inscrit['ok'])
-							{
-								echo '<tr>
-								<td class="td_pseudo_pool_tm">'.$inscrit['nom'].'</td>';
-								for($i=1;$i<=$nbr_manches;$i++) echo '<td class="td_score_pool_tm">
-									<input type="checkbox" name="cb_m_'.$id_match.'_ma_'.$i.'_p_'.$inscrit['id'].'" 
-									value="1" onclick="active_score2('.$id_match.','.$i.','.$inscrit['id'].')"> 
-									<input type="text" name="score_m_'.$id_match.'_ma_'.$i.'_p_'.$inscrit['id'].'" 
-									id="score_m_'.$id_match.'_ma_'.$i.'_p_'.$inscrit['id'].'" value="" size="4" disabled="disabled">
-								</td>';	
 
-								echo '<td class="td_total_pool_tm"></td>
-								</tr>';
-							}
-						}
+		}
+
+		 echo '<table class="table_pool_lol">
+			<tr>
+				<th class="th_titre_pool_lol" colspan="'.($nbrteam+2).'">'.$groupe['nom_groupe'].'<th>
+			</tr>
+			<tr>
+				<td class="td_vide_pool_lol"></td>';
+			for($i=0;$i<$nbrteam;$i++) echo '<th class="th_team2_pool_lol">'.$teams[$i]['nom'].'</th>';
+			echo '<th class="th_score_pool_lol">score</th></tr>';
+			$teams2=$teams;
+			$totaux='';
+		 foreach($teams as $team)
+		 {
+			$totaux[$team['id']]=0;
+			echo '<tr class="tr_pool_lol">
+					<th class="th_team_pool_lol">'.$team['nom'].'</th>';
+					
+			foreach($teams2 as $team2)
+			{	
+				
+
+				if ($team['id']==$team2['id']) echo '<td class="td_X_pool_lol">X</td>';
+				else
+				{
+					$couleur='same_';
+					$valeur='';
+					if(isset($scores[$team['id']][$team2['id']]['score']))
+					{
+						$couleur='loose_';
+						$valeur=$scores[$team['id']][$team2['id']]['score'];
+						//echo 'id'.$team['id'].' '.$team['id'].'<br>';
+						if ($scores[$team['id']][$team2['id']]['score']>$scores[$team2['id']][$team['id']]['score']) 
+						{
+							$totaux[$team['id']]+=3;
+							$couleur='win_';
+						}	
+						if ($scores[$team['id']][$team2['id']]['score']==$scores[$team2['id']][$team['id']]['score']) 
+						{
+							$totaux[$team['id']]+=1;
+							$couleur='same_';
+						}		
 							
-						echo '</table><br><br>';	
-						
-					}
+					}	
+
+							$heure=get_jour_de_la_semaine($matchs[$team['id']][$team2['id']]['heure']).' '.get_heure($matchs[$team['id']][$team2['id']]['heure']);
+
+
+					echo '<td class="td_'.$couleur.'pool_lol"><a href="#" onclick="popup_heure('.$matchs[$team['id']][$team2['id']]['id_match'].')" >'.$heure.'</a><br>
+					<input type="checkbox" name="cb_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" value="1" onclick="active_score('.$matchs[$team['id']][$team2['id']]['id_match'].','.$team['id'].')"> <input type="text" name="score_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" id="score_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" value="'.$valeur.'" size="4" disabled="disabled"></td>';
 				}
 				
-				
-			?>
-			</form>
-		</div>
-	</div>
-    <!-- gap to have the footer in the bottom of the window -->
-	<div style="height: 55px;">
-	
-	</div>
-    
-	<?php require_once('../includes/_footer.php'); ?>
-	
-	
-	<div id="shadowing"></div>
+			}
+			echo '<td class="td_score_pool_lol">'.$totaux[$team['id']].'</td>	
+				</tr>';
+		 }
+		echo '				 
+		  </table><br><br>';
+	}
+	else
+	{
+		//-----------------TOURNOI TYPE UT TRACKMANIA-----------------
+		$sql="SELECT id_match,nbr_manche, heure FROM matchs WHERE id_groupe=:idg LIMIT 0,1";
+		$query=$connexion->prepare($sql);
+		$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
+		if($query->execute())
+		{
+			if($nbr_manches=$query->fetch(PDO::FETCH_ASSOC))
+			{
+				$id_match=$nbr_manches['id_match'];
+				$heure=$nbr_manches['heure'];
+				$nbr_manches=$nbr_manches['nbr_manche'];
+			}
+			else $nbr_manches=$tournoi['nombreManche'];
+		}
+		else {echo 'ERREUR SQL MANCHES'; exit;}	
 
-	<div id="div_popup" class="popup_centree" style="height:200px;width:600px;margin-top:-100px;margin-left:-300px;">
-		<input type="button" value="annuler" onclick="popup_close()" />
-		<form method="POST" action="modifier_heure.php">
-		<input type="hidden" name="id_match" id="input_id_match" value="0" />
-		<input type="hidden" name="id_tournoi" value="<?php echo $id_tournoi; ?>" />
-		<input type="hidden" name="page" value="scores" />
-		vendredi <input type="radio" name="jour" value="vendredi"> / samedi <input type="radio" name="jour" value="samedi"> / dimanche <input type="radio" name="jour" value="dimanche"><br>
-		Heure : <select name="heure">
-				<?php 
-					for($i=0;$i<24;$i++)
-					{
-						echo '<option>';
-						if($i<10) echo '0';
-						echo $i.'</option>';
-					}
-				?>	
-				</select>h<select name="minute">
-				<?php 
-					for($i=0;$i<60;$i+=5)
-					{
-						echo '<option>';
-						if($i<10) echo '0';
-						echo $i.'</option>';
-					}
-				?>					
-				</select><br>
-		<input type="submit" value="Modifier" /><br>
-	</div>
-</body>
-</html>
+		
+		$sql="SELECT j.pseudo, mj.id_joueur, SUM(mj.score) as total
+		FROM joueurs as j, manches_joueurs as mj, matchs as m 
+		WHERE m.id_groupe=:idg AND mj.id_match=m.id_match and j.id_joueur=mj.id_joueur
+		GROUP BY mj.id_joueur
+		ORDER BY total DESC, j.pseudo";
+		$query=$connexion->prepare($sql);
+		$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
+		if($query->execute())
+		{
+			$totaux = $query->fetchAll(PDO::FETCH_ASSOC);
+		}
+		else {echo 'ERREUR SQL MANCHES'; exit;}									
+		
+		$sql="SELECT mj.id_joueur, mj.numero_manche, mj.score
+		FROM manches_joueurs as mj, matchs as m 
+		WHERE m.id_groupe=:idg AND mj.id_match=m.id_match 
+		ORDER BY id_joueur";
+		$query=$connexion->prepare($sql);
+		$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
+		if($query->execute())
+		{
+			while($ligne=$query->fetch(PDO::FETCH_ASSOC))
+			{
+				$scores[$ligne['id_joueur']][$ligne['numero_manche']] = $ligne['score'];
+			}
+		}
+		else {echo 'ERREUR SQL MANCHES'; exit;}							
+		
+
+		
+		
+		echo '<table class="table_pool_tm">
+			<tr>
+				<th  class="titre_pool_tm" colspan="'.($nbr_manches+2).'">'.$groupe['nom_groupe'].'<br>
+				<a href="#" onclick="popup_heure('.$id_match.')" >'.get_jour_de_la_semaine($heure).' '.get_heure($heure).'</a></th>
+			</tr>
+			<tr>
+				<th class="th_part_pool_tm">Participant</th>';
+				for($i=1;$i<=$nbr_manches;$i++) echo '<th class="th_manche_pool_tm">Manche '.$i.'<br></th>';
+				echo '<th class="th_points_pool_tm">Points</th>
+			</tr>';
+		$inscrits='';	
+		foreach($participants[$groupe['id_groupe']]	as $joueur)
+		{
+			$inscrits[$joueur['id']]['nom']=$joueur['nom'];
+			$inscrits[$joueur['id']]['id']=$joueur['id'];
+			$inscrits[$joueur['id']]['ok']=false;
+		}
+		foreach($totaux	as $joueur)
+		{
+			echo '<tr>
+			<td class="td_pseudo_pool_tm">'.$joueur['pseudo'].'</td>';
+			for($i=1;$i<=$nbr_manches;$i++)
+			{
+				$valeur='';
+				echo '<td class="td_score_pool_tm">';
+				if(isset($scores[$joueur['id_joueur']][$i]))
+					$valeur=$scores[$joueur['id_joueur']][$i];
+				
+				echo '<input type="checkbox" 
+					name="cb_m_'.$id_match.'_ma_'.$i.'_p_'.$joueur['id_joueur'].'" value="1" 
+					onclick="active_score2('.$id_match.','.$i.','.$joueur['id_joueur'].')"> 
+					<input type="text" name="score_m_'.$id_match.'_ma_'.$i.'_p_'.$joueur['id_joueur'].'" 
+					id="score_m_'.$id_match.'_ma_'.$i.'_p_'.$joueur['id_joueur'].'" value="'.$valeur.'" size="4" disabled="disabled">';								
+				echo '</td>';
+			}
+			echo '<td class="td_total_pool_tm">'.$joueur['total'].'</td>
+			</tr>';
+			$inscrits[$joueur['id_joueur']]['ok']=true;
+		}		
+		foreach($inscrits	as $inscrit)
+		{
+			if(!$inscrit['ok'])
+			{
+				echo '<tr>
+				<td class="td_pseudo_pool_tm">'.$inscrit['nom'].'</td>';
+				for($i=1;$i<=$nbr_manches;$i++) echo '<td class="td_score_pool_tm">
+					<input type="checkbox" name="cb_m_'.$id_match.'_ma_'.$i.'_p_'.$inscrit['id'].'" 
+					value="1" onclick="active_score2('.$id_match.','.$i.','.$inscrit['id'].')"> 
+					<input type="text" name="score_m_'.$id_match.'_ma_'.$i.'_p_'.$inscrit['id'].'" 
+					id="score_m_'.$id_match.'_ma_'.$i.'_p_'.$inscrit['id'].'" value="" size="4" disabled="disabled">
+				</td>';	
+
+				echo '<td class="td_total_pool_tm"></td>
+				</tr>';
+			}
+		}
+			
+		echo '</table><br><br>';	
+		
+	}
+}
+
+// send to the template
+$smarty->assign("con", $connected);
+$smarty->assign("chat", $chatIsActive);
+$smarty->assign('participants', $participants);
+$smarty->assign('tournois', $tournois);
+
+$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/scores.tpl');
+?>
