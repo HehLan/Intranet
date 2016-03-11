@@ -2,14 +2,25 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        {include file="default/meta.tpl"}  
-        <script type="text/javascript" src="{#domain#}/assets/js/getXhr.js"></script>
-        <script type="text/javascript" src="{#domain#}/assets/js/jquery.gracket.js"></script>
+        {include file="default/meta.tpl"}
+		<link rel="stylesheet" type="text/css" href="{#assets#}/css/tournoisRounds.css" />
+        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/bracket/jquery.gracket.js"></script>
     </head>
     <body>
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
         {include file="default/nav.tpl"  con=$con navTournois=$navTournois}	
-        
+        <!-- Header and Rules -->
+		{if isset($tournoi.header)}
+			<div id="headerTournoi">
+				<img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nom}" />
+			</div>
+		{/if}
+		{if isset($tournoi.reglement)}
+			<div id="reglementTournoi">
+				Pour consulter le règlement de ce tournoi, <a href="{#domain#}/src/{$tournoi.reglement}"> cliquez ici </a>
+			</div>
+		{/if}
 		<div id="container">
             <div id="contenu">
 				<h1>
@@ -46,30 +57,19 @@
 																	{$matches[$tablo[$c][$m]]['heure']}
 																</td>
 															</tr>
-														{elseif $c==0 && $m==1}
+														{elseif $c==0 && $m==2}
 															<tr class="tr_arbre_vide">
 																<td class="td_finale_vide" colspan="{$matches[$tablo[$c][$m]]['nbr_manche'] + 4}">
 																	Petite Finale<br>{$matches[$tablo[$c][$m]]['heure']}
 																</td>
 															</tr>
-														{elseif $c>0}
+														{else}
 															<tr class="tr_arbre_vide">
 																<td class="td_finale_vide" colspan="{$matches[$tablo[$c][$m]]['nbr_manche'] + 4}">
 																	{$matches[$tablo[$c][$m]]['heure']}
 																</td>
 															</tr>
 														{/if}
-														<tr class="tr_arbre_vide">
-															<td class="td_finale_vide" colspan="3">
-																FINALE
-															</td>
-														</tr>
-													{elseif $m==2}
-														<tr class="tr_arbre_vide">
-															<td class="td_finale_vide" colspan="3">
-																Petite Finale
-															</td>
-														</tr>
 													{/if}
 													{if $j==1}
 														<tr class="tr_arbre_vide">
@@ -86,11 +86,23 @@
 														{if $j==1}	
 															<td class="td_arbre_gauche" rowspan="{$matches[$tablo[$c][$m]]['maxj']}">#{$tablo[$c][$m]}</td>
 														{/if}
-														<td class="td_arbre_joueur">{$matches[$tablo[$c][$m]]['nom'][$j]}</td>
-														{foreach from=$scores[$tablo[$c][$m]] item=score}
-															<td class="td_arbre_joueur_score">{$score[$ma]}</td>
-														{/foreach}
-														<td class="td_arbre_joueur_total">{$matches[$tablo[$c][$m]]['score'][$j]}</td>
+														{if isset($matches[$tablo[$c][$m]][$j]['nom'])}
+															<td class="td_arbre_joueur">{$matches[$tablo[$c][$m]][$j]['nom']}</td>
+														{else}
+															<td class="td_arbre_joueur">TBA</td>
+														{/if}
+														{for $ma=1 to $matches[$tablo[$c][$m]]['nbr_manche']}
+															{if isset($scores[$tablo[$c][$m]][$j]['scores'][$ma])}
+																<td class="td_arbre_joueur_score">{$scores[$tablo[$c][$m]][$j]['scores'][$ma]}</td>
+															{else}
+																<td class="td_arbre_joueur_score">-</td>
+															{/if}
+														{/for}
+														{if isset($matches[$tablo[$c][$m]][$j]['score'])}	
+															<td class="td_arbre_joueur_total">{$matches[$tablo[$c][$m]][$j]['score']}</td>
+														{else}
+															<td class="td_arbre_joueur_total">0</td>
+														{/if}
 														{if $j==1}	
 															<td class="td_arbre_droite" rowspan="{$matches[$tablo[$c][$m]]['maxj']}">{$matches[$tablo[$c][$m]]['fleche']} {$matches[$tablo[$c][$m]]['id_parent']}</td>
 														{/if}
