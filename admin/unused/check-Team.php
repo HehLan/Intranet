@@ -1,5 +1,10 @@
 <?php
-require_once("connect.php");
+require_once('../../class/Auth.class.php');
+require_once('../../class/Smarty_HEHLan.class.php');
+require_once('../../class/Database.class.php');
+
+$database = new Database();
+$connexion = $database->getConnection();
 
 //vérifier le nom de la team
 $sql="SELECT * FROM equipes WHERE nom = :pseudo";

@@ -21,10 +21,13 @@ $connexion = $database->getConnection();
 //$user = $req->fetchAll(PDO::FETCH_ASSOC);     // it works !!! ^^
 // *****************************************************************************
 
-$query = "select * from hots_maps";
+// recuperer les maps
+$query = "select * from hotsmaps";
 $req=$connexion->prepare($query); 
 $req->execute();
 $maps = $req->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 $connected = Auth::isLogged();
 
