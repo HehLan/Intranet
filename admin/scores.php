@@ -29,6 +29,8 @@ if(!$connected && !$allowed)
 $id_tournoi=1;
 if(isset($_GET['id_tournoi'])) $id_tournoi=$_GET['id_tournoi'];
 
+$connexion = $database->getConnection();
+
 $sql="SELECT * FROM tournoi WHERE id_tournoi=:id";
 $query=$connexion->prepare($sql);
 $query->bindValue('id', $id_tournoi, PDO::PARAM_INT);
@@ -87,9 +89,9 @@ foreach($groupes as $groupe)
 		$scores='';
 		foreach($participants[$groupe['id_groupe']] as $team)
 		{
-				$teams[$nbrteam]['nom']=$team['nom'];
-				$teams[$nbrteam]['id']=$team['id'];
-				$nbrteam++;
+			$teams[$nbrteam]['nom']=$team['nom'];
+			$teams[$nbrteam]['id']=$team['id'];
+			$nbrteam++;
 		}
 
 		$heures='';
@@ -100,11 +102,11 @@ foreach($groupes as $groupe)
 
 			$sql="SELECT m.id_match,m.heure, SUM(me.score) as score, 
 				(SELECT mte2.id_equipe FROM matchs_equipes as mte2 WHERE mte2.id_match=m.id_match AND mte2.id_equipe<>:ide LIMIT 0,1) as team2								
-			FROM (matchs_equipes as mte, matchs as m) 
-			LEFT JOIN (manches_equipes as me)
-			ON (me.id_match=m.id_match AND me.id_equipe=:ide)
-			WHERE m.id_groupe=:idg AND mte.id_match=m.id_match AND mte.id_equipe=:ide
-			GROUP BY m.id_match";
+				FROM (matchs_equipes as mte, matchs as m) 
+				LEFT JOIN (manches_equipes as me)
+				ON (me.id_match=m.id_match AND me.id_equipe=:ide)
+				WHERE m.id_groupe=:idg AND mte.id_match=m.id_match AND mte.id_equipe=:ide
+				GROUP BY m.id_match";
 			$query=$connexion->prepare($sql);
 			$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
 			$query->bindValue('ide', $team['id'], PDO::PARAM_INT);

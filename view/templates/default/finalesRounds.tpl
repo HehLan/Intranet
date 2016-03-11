@@ -30,7 +30,7 @@
 					{$tournoi.nomTournoi}
 				</h1>
 				{if $tournoi.id_tournoi != 2}
-					<p>Cliquez ici pour voir les <a href="tournois.php?id={$tournoi.id_tournoi}">FINALES DES QUALIFICATIONS</a></p><br>
+					<p>Cliquez ici pour voir les <a href="tournois.php?id={$tournoi.id_tournoi}">QUALIFICATIONS</a></p><br>
 					{if $nbr_lb2>0} Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=2">FINALES DES LOSERS (silver)</a><br>{/if}
 					{if $nbr_lb3>0} Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=3">FINALES DES NOOBS (bronze)</a><br>{/if}
 				{/if}
