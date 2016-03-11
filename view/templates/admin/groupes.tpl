@@ -54,9 +54,7 @@
 	
 	</div>
     
-	<?php require_once('../includes/_footer.php'); ?>
-
-
-
-</body>
+	
+        {include file="admin/footer.tpl"  con=$con } 
+    </body>
 </html>
