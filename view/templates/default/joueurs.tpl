@@ -4,7 +4,7 @@
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/joueurs.css" />
-        <script type="text/javascript" src="{#domain#}/src/js/joueur.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/joueurs.js"></script>
     </head>
 
     <body role="document">
