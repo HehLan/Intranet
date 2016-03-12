@@ -2,6 +2,14 @@
 /*				EMPLACEMENTS CSS                        */							
 /*----------------------------------------------------------------------*/
 
+
+input, select, option
+{
+    color: black;
+}
+
+
+
 #info
 {
     position: relative;

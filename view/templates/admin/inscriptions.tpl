@@ -9,9 +9,9 @@
     <body role="document">
         {include file="admin/header.tpl" con=$con }
         {include file="admin/nav.tpl"  con=$con }	
-	<div id="container">
-            <div id="contenu">
-                <div id="InscriptionDesJoueursEquipesAuxTournois" >
+	<div id="container" class="container-fluid">
+            <div id="contenu" class="row">
+                <div id="InscriptionDesJoueursEquipesAuxTournois" class="col-lg-12">
                     <!-- tournois avec equipes -->
                     {foreach from=$tab item=ligne}
                         <div class='ListePourInscrireTournoi'>
