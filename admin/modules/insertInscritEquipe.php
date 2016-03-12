@@ -1,10 +1,27 @@
 <?php
-session_start();
-require_once('classAuth.php');
 
-if (Auth::isLogged()){
-    if (Auth::isAllow(3)){
-        if(!empty($_POST['inscrit'])){
+
+session_start();
+require_once('../../class/Auth.class.php');
+require_once('../../class/Smarty_HEHLan.class.php');
+require_once('../../class/Database.class.php');
+require_once('../../class/Query.class.php');
+
+$connected = false;
+$allowed = false;
+$chatIsActive = false;
+$database = new Database();
+$smarty = new Smarty_HEHLan();
+
+
+$connexion = $database->getConnection();
+
+if (Auth::isLogged())
+{
+    if (Auth::isAllowed(3))
+    {
+        if(!empty($_POST['inscrit']))
+        {
             try
             {
                 //on tente d'exécuter les requêtes suivantes dans une transactions
@@ -12,13 +29,14 @@ if (Auth::isLogged()){
                 //on lance la transaction
                 $connexion->beginTransaction();
                 //supprime toutes les lignes la table
-                $sql="DELETE FROM joueurtournoi WHERE id_tournoi = :id_tournoi";
+                $sql="DELETE FROM equipes_tournoi WHERE id_tournoi = :id_tournoi";
                 $req = $connexion->prepare($sql);
                 $req->bindValue("id_tournoi",$_POST['id_tournoi'],PDO::PARAM_INT);
                 $req->execute();
-                $query="INSERT INTO joueurtournoi (id_tournoi,id_joueur) VALUES ";
+                $query="INSERT INTO equipes_tournoi (id_tournoi,id_equipe) VALUES ";
                 $i=0;
-                foreach($_POST['inscrit'] as $row){
+                foreach($_POST['inscrit'] as $row)
+                {
                     if($i==0){
                         $query.="(".$_POST['id_tournoi'].",".$row.")";
                     }else

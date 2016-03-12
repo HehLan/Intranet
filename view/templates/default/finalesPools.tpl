@@ -3,8 +3,7 @@
 <html>
     <head>
         {include file="default/meta.tpl"}
-		<link rel="stylesheet" type="text/css" href="{#assets#}/css/tournoisPools.css" />		
-        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
+        <link rel="stylesheet" type="text/css" href="{#assets#}/css/tournoisPools.css" />		
         <script type="text/javascript" src="{#domain#}/src/js/bracket/jquery.gracket.js"></script>
     </head>
     <body>

@@ -12,9 +12,9 @@ define ('SITE_URL',    'http://'.$_SERVER['HTTP_HOST'].'/'.BASE_FOLDER);
 
 $glob_host = 'localhost';
 $glob_port = '3306';
-$glob_database = 'intranetbd'; 
+$glob_database = 'hehlanbd'; 
 $glob_user = 'root';
-$glob_pwd = '';
+$glob_pwd = '1234';
 $glob_debug = true;
 
 ?>

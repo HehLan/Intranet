@@ -16,18 +16,18 @@
                     $( this ).css(background: "rgba(0,0,255,0.2)");
                     $.ajax({ 
                         type: "POST", 
-                        url: "admin/listeDesTournoisDuJoueur.php",
+                        url: "modules/listeDesTournoisDuJoueur.php",
                         data: "id_joueur="+$(this).attr("value"),
                         success : function(contenu,etat){ 
-                            $('#listeTournoisInscritDuJoueur').php(contenu);
+                            $('#listeTournoisInscritDuJoueur').html(contenu);
                         }
                     });
                     $.ajax({ 
                         type: "POST", 
-                        url: "admin/equipesDuJoueur.php",
+                        url: "modules/equipesDuJoueur.php",
                         data: "id_joueur="+$(this).attr("value"),
                         success : function(contenu,etat){ 
-                            $('#EquipesDuJoueurAdmin').php(contenu);
+                            $('#EquipesDuJoueurAdmin').html(contenu);
                         }
                     });
 
@@ -60,10 +60,10 @@
                     }
                     $.ajax({ 
                         type: "POST", 
-                        url: "admin/insertEquipeDuJoueur.php",
+                        url: "modules/insertEquipeDuJoueur.php",
                         data: id,
                         success : function(contenu,etat){ 
-                            $( "#infoEquipeAdmin" ).php(contenu);
+                            $( "#infoEquipeAdmin" ).html(contenu);
                             $( "#infoEquipeAdmin" ).dialog({ buttons: [ { text: "Ok", click: function() { $( this ).dialog( "close" ); location.reload(); } } ] });
                             $( "#infoEquipeAdmin" ).dialog( "open" );
                         }
@@ -86,7 +86,7 @@
 
                     $.ajax({ 
                         type: "POST", 
-                        url: "admin/insertTournoiJoueur.php",
+                        url: "modules/insertTournoiJoueur.php",
                         data: id,
                         success : function(contenu,etat){ 
                             $( "#infoEquipeAdmin" ).php(contenu);

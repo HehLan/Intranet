@@ -1,5 +1,20 @@
 <?php
 
+session_start();
+require_once('../../class/Auth.class.php');
+require_once('../../class/Smarty_HEHLan.class.php');
+require_once('../../class/Database.class.php');
+require_once('../../class/Query.class.php');
+
+$connected = false;
+$allowed = false;
+$chatIsActive = false;
+$database = new Database();
+$smarty = new Smarty_HEHLan();
+
+
+$connexion = $database->getConnection();
+
 
 $id_equipes=$_POST['id_equipes'];
 

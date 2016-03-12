@@ -4,13 +4,6 @@
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/profile.css" />
-        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/main.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/menu.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/less.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/jquery.media.js"></script>
     </head>
 
     <body role="document">
