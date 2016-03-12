@@ -1,6 +1,6 @@
 nbproject
 view/cache/*
-/view/configs/paths.conf
+view/configs/paths.conf
 view/templates_c/*
 *.tpl.cache.php
-/class/var.conf.php
+class/var.conf.php
