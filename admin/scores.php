@@ -123,19 +123,15 @@ foreach($groupes as $groupe)
 					$matchs[$team['id']][$ligne['team2']]['id_match']=$ligne['id_match'];
 				}
 			}
-			else {echo 'ERREUR SQL SCORES TEAM 1'; exit;}
+			else 
+			{
+				global glob_debug;
+				if(glob_debug)
+					echo 'ERREUR SQL SCORES TEAM 1'; exit;
+			}
 			
 
 		}
-
-		 echo '<table class="table_pool_lol">
-			<tr>
-				<th class="th_titre_pool_lol" colspan="'.($nbrteam+2).'">'.$groupe['nom_groupe'].'<th>
-			</tr>
-			<tr>
-				<td class="td_vide_pool_lol"></td>';
-			for($i=0;$i<$nbrteam;$i++) echo '<th class="th_team2_pool_lol">'.$teams[$i]['nom'].'</th>';
-			echo '<th class="th_score_pool_lol">score</th></tr>';
 			$teams2=$teams;
 			$totaux='';
 		 foreach($teams as $team)
@@ -146,8 +142,6 @@ foreach($groupes as $groupe)
 					
 			foreach($teams2 as $team2)
 			{	
-				
-
 				if ($team['id']==$team2['id']) echo '<td class="td_X_pool_lol">X</td>';
 				else
 				{
@@ -177,14 +171,8 @@ foreach($groupes as $groupe)
 					echo '<td class="td_'.$couleur.'pool_lol"><a href="#" onclick="popup_heure('.$matchs[$team['id']][$team2['id']]['id_match'].')" >'.$heure.'</a><br>
 					<input type="checkbox" name="cb_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" value="1" onclick="active_score('.$matchs[$team['id']][$team2['id']]['id_match'].','.$team['id'].')"> <input type="text" name="score_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" id="score_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" value="'.$valeur.'" size="4" disabled="disabled"></td>';
 				}
-				
 			}
-			echo '<td class="td_score_pool_lol">'.$totaux[$team['id']].'</td>	
-				</tr>';
 		 }
-		echo '				 
-		  </table><br><br>';
-	}
 	else
 	{
 		//-----------------TOURNOI TYPE UT TRACKMANIA-----------------

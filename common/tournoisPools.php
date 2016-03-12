@@ -9,7 +9,9 @@ foreach ($groupes as $groupe) {
 	if ($query->execute())
 		$participants[$groupe['id_groupe']] = $query->fetchAll(PDO::FETCH_ASSOC);
 	else {
-		echo 'ERREUR SQL EQUIPES';
+		global $glob_debug;
+		if ($glob_debug)
+			echo 'ERREUR SQL EQUIPES';
 		exit;
 	}
 }
@@ -23,7 +25,9 @@ $sql = 'SELECT COUNT(*) AS nbr
 $query = $connexion->prepare($sql);
 $query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
 if (!$query->execute()) {
-    echo 'ERREUR SQL COUNT LB2';
+	global $glob_debug;
+	if ($glob_debug)
+		echo 'ERREUR SQL COUNT LB2';
     exit;
 } else {
     $nbr_lb2 = $query->fetch(PDO::FETCH_ASSOC);
@@ -37,7 +41,9 @@ $sql = 'SELECT COUNT(*) AS nbr
 $query = $connexion->prepare($sql);
 $query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
 if (!$query->execute()) {
-    echo 'ERREUR SQL COUNT LB3';
+	global $glob_debug;
+	if($glob_debug)
+			echo 'ERREUR SQL COUNT LB3';
     exit;
 } else {
     $nbr_lb3 = $query->fetch(PDO::FETCH_ASSOC);
@@ -81,7 +87,9 @@ foreach ($groupes as $itGroupe => $groupe) {
 				$heures[$team['id']][$ligne['team2']] = $ligne['heure'];
 			}
 		} else {
-			echo 'ERREUR SQL SCORES TEAM 1';
+			global $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL SCORES TEAM 1';
 			exit;
 		}
 	}

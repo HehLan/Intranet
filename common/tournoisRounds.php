@@ -25,7 +25,9 @@ $sql = 'SELECT COUNT(*) AS nbr
 $query = $connexion->prepare($sql);
 $query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
 if (!$query->execute()) {
-    echo 'ERREUR SQL COUNT LB3';
+    global $glob_debug;
+		if($glob_debug)
+			echo 'ERREUR SQL COUNT LB3';
     exit;
 } else {
     $nbr_lb3 = $query->fetch(PDO::FETCH_ASSOC);
@@ -50,7 +52,9 @@ foreach ($groupes as $itGroupe => $groupe) {
 		}
 	}
 	else {
-		echo 'ERREUR SQL MANCHES';
+		global $glob_debug;
+		if($glob_debug)
+			echo 'ERREUR SQL MANCHES';
 		exit;
 	}
 	
@@ -90,7 +94,9 @@ foreach ($groupes as $itGroupe => $groupe) {
 	}
 	else 
 	{
-		echo 'ERREUR SQL MANCHES';
+		global $glob_debug;
+		if($glob_debug)
+			echo 'ERREUR SQL MANCHES';
 		exit;
 	}
 }
