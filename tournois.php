@@ -55,6 +55,4 @@ else
     include_once(DOCUMENT_ROOT.'/common/tournoisRounds.php');
 }
 
-
-
 ?>

@@ -10,18 +10,22 @@
     <body>
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
         {include file="default/nav.tpl"  con=$con navTournois=$navTournois}
-		<!-- Header and Rules -->
-		{if isset($tournoi.header)}
-			<div id="headerTournoi">
-				<img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nom}" />
-			</div>
-		{/if}
-		{if isset($tournoi.reglement)}
-			<div id="reglementTournoi">
-				Pour consulter le règlement de ce tournoi, <a href="{#domain#}/src/{$tournoi.reglement}"> cliquez ici </a>
-			</div>
-		{/if}
-				
+        <!-- Header and Rules -->
+        {if isset($tournoi.header)}
+            <div id="headerTournoi">
+                <img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nom}" />
+            </div>
+        {/if}
+        {if isset($tournoi.reglement)}
+            <div id="reglementTournoi">
+                Pour consulter le règlement de ce tournoi, <a href="{#domain#}/src/{$tournoi.reglement}"> cliquez ici </a>
+            </div>
+        {/if}
+        
+        <!-- **************** test button for pick ************************************************-->
+        <a target="_blank" href="pick.php">Click to pick !</a>
+        <!-- ************************************************************************************************** -->
+
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">
                 <div class="col-lg-offset-1 col-lg-10">
@@ -38,32 +42,32 @@
                     {/if}
                     <br>
                     {section name=groupe loop=$groupes}
-						<div class="row table_pool_row">
-							<table class="col-lg-12 table_pool">
-								<tr>
-									<th class="th_title_pool"> 
-										{$groupes[groupe].nom_groupe}
-									</th>
-									{section name=sec1 loop=$groupes[groupe].teams}
-										<th class="th_team2_pool">{$groupes[groupe].teams[sec1].nom}</th>
-										{/section}
-									<th class="th_score_pool">Scores</th>
-								</tr>
-								{section name=sec1 loop=$groupes[groupe].teams}
-									<tr class="tr_pool">
-										<th class="th_team_pool">{$groupes[groupe].teams[sec1].nom}</th>
-											{section name=sec2 loop=$groupes[groupe].teams}
-												{if $groupes[groupe].teams[sec1].id == $groupes[groupe].teams[sec2].id}
-												<td class="td_x_pool">X</td>
-											{else}
-												<td class="td_{$groupes[groupe].resultTeams[sec1][sec2].couleur}pool">{$groupes[groupe].resultTeams[sec1][sec2].valeur}</td>
-											{/if}
-										{/section}
-										<td class="td_score_pool">{$totaux[$groupes[groupe].teams[sec1].id]}</td>
-									</tr>
-								{/section}
-							</table>
-						</div>
+                        <div class="row table_pool_row">
+                            <table class="col-lg-12 table_pool">
+                                <tr>
+                                    <th class="th_title_pool"> 
+                                        {$groupes[groupe].nom_groupe}
+                                    </th>
+                                    {section name=sec1 loop=$groupes[groupe].teams}
+                                        <th class="th_team2_pool">{$groupes[groupe].teams[sec1].nom}</th>
+                                        {/section}
+                                    <th class="th_score_pool">Scores</th>
+                                </tr>
+                                {section name=sec1 loop=$groupes[groupe].teams}
+                                    <tr class="tr_pool">
+                                        <th class="th_team_pool">{$groupes[groupe].teams[sec1].nom}</th>
+                                            {section name=sec2 loop=$groupes[groupe].teams}
+                                                {if $groupes[groupe].teams[sec1].id == $groupes[groupe].teams[sec2].id}
+                                                <td class="td_x_pool">X</td>
+                                            {else}
+                                                <td class="td_{$groupes[groupe].resultTeams[sec1][sec2].couleur}pool">{$groupes[groupe].resultTeams[sec1][sec2].valeur}</td>
+                                            {/if}
+                                        {/section}
+                                        <td class="td_score_pool">{$totaux[$groupes[groupe].teams[sec1].id]}</td>
+                                    </tr>
+                                {/section}
+                            </table>
+                        </div>
                     {/section}
                 </div>
             </div>

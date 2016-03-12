@@ -4,3 +4,4 @@
 /view/templates_c/*
 *.tpl.cache.php
 /class/var.conf.php
+class/var.conf.php
