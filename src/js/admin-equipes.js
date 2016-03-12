@@ -10,7 +10,7 @@ $(document).ready(function () {
         $(this).css({background: "rgba(0,0,255,0.2)"});
         $.ajax({
             type: "POST",
-            url: "unused/listeJoueursEquipe.php",
+            url: "modules/listeJoueursEquipe.php",
             data: "id_equipe=" + $(this).attr("value"),
             success: function (contenu, etat) {
                 $('#listeEquipeJoueurAdmin').html(contenu);
@@ -23,7 +23,7 @@ $(document).ready(function () {
         $(this).css({background: "rgba(0,0,255,0.2)"});
         $.ajax({
             type: "POST",
-            url: "unused/InfoJoueurAdmin.php",
+            url: "modules/InfoJoueurAdmin.php",
             data: "id_joueur=" + $(this).attr("value"),
             success: function (contenu, etat) {
                 $('#InfoJoueurEquipes').html(contenu);
@@ -35,14 +35,16 @@ $(document).ready(function () {
         title: "joueur � ajouter",
         height: 300,
         width: 350,
-        modal: true
-
+        modal: true,
+        close: function() {
+                
+        }
     });
     $("div").delegate("#submitNewPlayerInTeam", "click", function () {
         $("#infoEquipeAdmin").dialog("open");
         $.ajax({
             type: "POST",
-            url: "unused/chargerListeJoueurs.php",
+            url: "modules/chargerListeJoueurs.php",
             data: "id_joueur=" + $(this).attr("value"),
             success: function (contenu, etat) {
                 $('#infoEquipeAdmin').html(contenu);
@@ -53,7 +55,7 @@ $(document).ready(function () {
         $("#infoEquipeAdmin").dialog({title: "Les �quipes du joueur"});
         $.ajax({
             type: "POST",
-            url: "unused/equipesDuJoueur.php",
+            url: "modules/equipesDuJoueur.php",
             data: "id_joueur=" + $("#SelectJoueur option:selected").val(),
             success: function (contenu, etat) {
                 $('#infoEquipeAdmin').html(contenu);
@@ -77,7 +79,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: "POST",
-            url: "unused/insertEquipeDuJoueur.php",
+            url: "modules/insertEquipeDuJoueur.php",
             data: id,
             success: function (contenu, etat) {
                 $("#infoEquipeAdmin").html(contenu);
@@ -117,7 +119,7 @@ $(document).ready(function () {
         var valid = true;
 
         /***************************
-         * Cr�er une team
+         * Créer une team
          * ************************/
 
         //nom de la team
@@ -190,7 +192,7 @@ $(document).ready(function () {
             id += "&new_psw_equipe=" + $("#new_psw_equipe").val();
             $.ajax({
                 type: "POST",
-                url: "unused/insertNewEquipe.php",
+                url: "modules/insertNewEquipe.php",
                 data: id,
                 success: function (contenu, etat) {
                     $("#erreurNewTeamAdmin").html(contenu);
@@ -207,7 +209,7 @@ $(document).ready(function () {
     $('#ListeEquipeAdmin #Team').on('change', function () {
         $.ajax({
             type: "POST",
-            url: "unused/check-Team.php",
+            url: "modules/check-Team.php",
             data: "Team=" + $('#Team').val(),
             success: function (contenu, etat) {
                 $("#pseudoboxTeam").html(contenu);
@@ -218,7 +220,7 @@ $(document).ready(function () {
     $('#ListeEquipeAdmin #TagTeam').on('change', function () {
         $.ajax({
             type: "POST",
-            url: "unused/check-Team.php",
+            url: "modules/check-Team.php",
             data: "TagTeam=" + $('#TagTeam').val(),
             success: function (contenu, etat) {
                 $("#pseudoboxTagTeam").html(contenu);

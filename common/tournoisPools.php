@@ -1,17 +1,27 @@
 <?php
 
+if (is_array($groupes))
+{
 foreach ($groupes as $groupe) {
-    $sql = 'SELECT e.id_equipes AS id, e.nom AS nom
+            $sql = 'SELECT e.id_equipes AS id, e.nom AS nom
 				FROM equipes AS e, equipes_groupes AS g
 				WHERE g.id_groupe=:idg AND e.id_equipes=g.id_equipe';
-    $query = $connexion->prepare($sql);
-    $query->bindValue(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
-    if ($query->execute())
-        $participants[$groupe['id_groupe']] = $query->fetchAll(PDO::FETCH_ASSOC);
-    else {
-        echo 'ERREUR SQL EQUIPES';
-        exit;
-    }
+            $query = $connexion->prepare($sql);
+            $query->bindValue(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
+            if ($query->execute())
+                    $participants[$groupe['id_groupe']] = $query->fetchAll(PDO::FETCH_ASSOC);
+            else {
+                    global $glob_debug;
+                    if ($glob_debug)
+                    	echo 'ERREUR SQL EQUIPES';
+                    exit;
+            }
+}
+}
+else
+{
+    echo 'groupes is not an array';
+    exit;
 }
 $nbr_lb2 = 0;
 $nbr_lb3 = 0;
@@ -23,6 +33,8 @@ $sql = 'SELECT COUNT(*) AS nbr
 $query = $connexion->prepare($sql);
 $query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
 if (!$query->execute()) {
+	global $glob_debug;
+	if ($glob_debug)
     echo 'ERREUR SQL COUNT LB2';
     exit;
 } else {
@@ -37,6 +49,8 @@ $sql = 'SELECT COUNT(*) AS nbr
 $query = $connexion->prepare($sql);
 $query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
 if (!$query->execute()) {
+	global $glob_debug;
+	if($glob_debug)
     echo 'ERREUR SQL COUNT LB3';
     exit;
 } else {
@@ -52,39 +66,66 @@ foreach ($groupes as $itGroupe => $groupe) {
     $nbrteam = 0;
     $teams = '';
     $scores = '';
-    foreach ($participants[$groupe['id_groupe']] as $team) {
-        $teams[$nbrteam]['nom'] = $team['nom'];
-        $teams[$nbrteam]['id'] = $team['id'];
-        $nbrteam++;
-    }
+        if(is_array($participants))
+        {
+            foreach ($participants[$groupe['id_groupe']] as $team)
+            {
+                
+                // This part needs to be debugged
+                
+                
+                // This does not give an array
+                //$teams[$nbrteam]['nom'] = $team['nom'];
+                //$teams[$nbrteam]['id'] = $team['id'];
+                //
+                // try to test this below but teams is still not an array
+                //$teams[$nbrteam][] = $team;
+                
+                $nbrteam++;
+            }
+        }
+        else
+        {
+            echo 'ERROR - participants is not an array';
+            exit;
+        }
     $groupes[$itGroupe]['teams'] = $teams;
 
     $heures = '';
-
-    foreach ($teams as $team) {
-        $sql = "SELECT me.id_match, m.heure, SUM(me.score) as score, 
+        if(is_array($teams))
+        {
+            foreach ($teams as $team) {
+                    $sql = "SELECT me.id_match,m.heure, SUM(me.score) as score, 
 				(SELECT mte2.id_equipe FROM matchs_equipes as mte2 WHERE mte2.id_match=m.id_match AND mte2.id_equipe<>:ide LIMIT 0,1) as team2								
 			FROM (matchs_equipes as mte, matchs as m) 
 			LEFT JOIN (manches_equipes as me)
 			ON (me.id_match=m.id_match AND me.id_equipe=:ide)
 			WHERE m.id_groupe=:idg AND mte.id_match=m.id_match AND mte.id_equipe=:ide
 			GROUP BY m.id_match";
-        $query = $connexion->prepare($sql);
-        $query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
-        $query->bindValue('ide', $team['id'], PDO::PARAM_INT);
-        if ($query->execute()) {
-            while ($ligne = $query->fetch(PDO::FETCH_ASSOC)) {
-                if (!is_null($ligne['score'])) {
-                    $scores[$team['id']][$ligne['team2']]['score'] = $ligne['score'];
-                    $scores[$team['id']][$ligne['team2']]['id_match'] = $ligne['id_match'];
-                }
-                $heures[$team['id']][$ligne['team2']] = $ligne['heure'];
+                    $query = $connexion->prepare($sql);
+                    $query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
+                    $query->bindValue('ide', $team['id'], PDO::PARAM_INT);
+                    if ($query->execute()) {
+                            while ($ligne = $query->fetch(PDO::FETCH_ASSOC)) {
+                                    if (!is_null($ligne['score'])) {
+                                            $scores[$team['id']][$ligne['team2']]['score'] = $ligne['score'];
+                                            $scores[$team['id']][$ligne['team2']]['id_match'] = $ligne['id_match'];
+                                    }
+                                    $heures[$team['id']][$ligne['team2']] = $ligne['heure'];
+                            }
+                    } else {
+                            global $glob_debug;
+                            if ($glob_debug)
+                                    echo 'ERREUR SQL SCORES TEAM 1';
+                            exit;
+                    }
             }
-        } else {
-            echo 'ERREUR SQL SCORES TEAM 1';
+        }
+        else
+        {
+            echo 'ERROR - teams is not an array';
             exit;
         }
-    }
     // A supprimer mais warning:undefined index
     foreach ($teams as $team) {
         $totaux[$team['id']] = 0;

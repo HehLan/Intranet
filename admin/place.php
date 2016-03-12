@@ -1,8 +1,8 @@
 <?php
 
 
-$id_place=$_POST["SelectEmplacement"];
-$pseudo=$_POST["SelectPseudo"];
+$id_place = $_POST["SelectEmplacement"];
+$pseudo = $_POST["SelectPseudo"];
 
 
 echo "<script type='text/JavaScript'>";

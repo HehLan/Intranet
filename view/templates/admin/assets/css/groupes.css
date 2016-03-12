@@ -1,0 +1,29 @@
+/*----------------------------------------------------------------------*/
+/*				GROUPES CSS				*/							
+/*----------------------------------------------------------------------*/
+
+
+
+
+input
+{
+    color: black;
+}
+
+#adm_tablo
+{
+    border:1px solid white;
+}
+#adm_tablo tr
+{
+    /*border:1px solid white;*/
+}
+#adm_tablo td
+{
+    border:1px solid #999999;
+    text-align:center;
+}
+#adm_tablo th
+{
+    border:1px solid #9999FF;
+}

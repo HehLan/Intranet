@@ -29,6 +29,8 @@ if(!$connected && !$allowed)
 $id_tournoi=1;
 if(isset($_GET['id_tournoi'])) $id_tournoi=$_GET['id_tournoi'];
 
+$connexion = $database->getConnection();
+
 $sql="SELECT * FROM tournoi WHERE id_tournoi=:id";
 $query=$connexion->prepare($sql);
 $query->bindValue('id', $id_tournoi, PDO::PARAM_INT);
@@ -87,9 +89,9 @@ foreach($groupes as $groupe)
 		$scores='';
 		foreach($participants[$groupe['id_groupe']] as $team)
 		{
-				$teams[$nbrteam]['nom']=$team['nom'];
-				$teams[$nbrteam]['id']=$team['id'];
-				$nbrteam++;
+			$teams[$nbrteam]['nom']=$team['nom'];
+			$teams[$nbrteam]['id']=$team['id'];
+			$nbrteam++;
 		}
 
 		$heures='';
@@ -100,11 +102,11 @@ foreach($groupes as $groupe)
 
 			$sql="SELECT m.id_match,m.heure, SUM(me.score) as score, 
 				(SELECT mte2.id_equipe FROM matchs_equipes as mte2 WHERE mte2.id_match=m.id_match AND mte2.id_equipe<>:ide LIMIT 0,1) as team2								
-			FROM (matchs_equipes as mte, matchs as m) 
-			LEFT JOIN (manches_equipes as me)
-			ON (me.id_match=m.id_match AND me.id_equipe=:ide)
-			WHERE m.id_groupe=:idg AND mte.id_match=m.id_match AND mte.id_equipe=:ide
-			GROUP BY m.id_match";
+				FROM (matchs_equipes as mte, matchs as m) 
+				LEFT JOIN (manches_equipes as me)
+				ON (me.id_match=m.id_match AND me.id_equipe=:ide)
+				WHERE m.id_groupe=:idg AND mte.id_match=m.id_match AND mte.id_equipe=:ide
+				GROUP BY m.id_match";
 			$query=$connexion->prepare($sql);
 			$query->bindValue('idg', $groupe['id_groupe'], PDO::PARAM_INT);
 			$query->bindValue('ide', $team['id'], PDO::PARAM_INT);
@@ -121,19 +123,15 @@ foreach($groupes as $groupe)
 					$matchs[$team['id']][$ligne['team2']]['id_match']=$ligne['id_match'];
 				}
 			}
-			else {echo 'ERREUR SQL SCORES TEAM 1'; exit;}
+			else 
+			{
+				global glob_debug;
+				if(glob_debug)
+					echo 'ERREUR SQL SCORES TEAM 1'; exit;
+			}
 			
 
 		}
-
-		 echo '<table class="table_pool_lol">
-			<tr>
-				<th class="th_titre_pool_lol" colspan="'.($nbrteam+2).'">'.$groupe['nom_groupe'].'<th>
-			</tr>
-			<tr>
-				<td class="td_vide_pool_lol"></td>';
-			for($i=0;$i<$nbrteam;$i++) echo '<th class="th_team2_pool_lol">'.$teams[$i]['nom'].'</th>';
-			echo '<th class="th_score_pool_lol">score</th></tr>';
 			$teams2=$teams;
 			$totaux='';
 		 foreach($teams as $team)
@@ -144,8 +142,6 @@ foreach($groupes as $groupe)
 					
 			foreach($teams2 as $team2)
 			{	
-				
-
 				if ($team['id']==$team2['id']) echo '<td class="td_X_pool_lol">X</td>';
 				else
 				{
@@ -175,14 +171,8 @@ foreach($groupes as $groupe)
 					echo '<td class="td_'.$couleur.'pool_lol"><a href="#" onclick="popup_heure('.$matchs[$team['id']][$team2['id']]['id_match'].')" >'.$heure.'</a><br>
 					<input type="checkbox" name="cb_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" value="1" onclick="active_score('.$matchs[$team['id']][$team2['id']]['id_match'].','.$team['id'].')"> <input type="text" name="score_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" id="score_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" value="'.$valeur.'" size="4" disabled="disabled"></td>';
 				}
-				
 			}
-			echo '<td class="td_score_pool_lol">'.$totaux[$team['id']].'</td>	
-				</tr>';
 		 }
-		echo '				 
-		  </table><br><br>';
-	}
 	else
 	{
 		//-----------------TOURNOI TYPE UT TRACKMANIA-----------------

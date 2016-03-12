@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Accueil</a></li>
-                <!--<li><a href="joueurs.php">Joueurs</a></li>-->            
+                <li><a href="joueurs.php">Joueurs</a></li>            
                 
                 
                     {section name=sec1 loop=$navTournois}
@@ -21,7 +21,7 @@
                     
                     
                     {if $con}
-                    <li><a href="profile.php">Mon profil</a></li>
+                    <!--<li><a href="profile.php">Mon profil</a></li>-->
                         {if $smarty.session.level==1 || $smarty.session.level==2}
                         <li><a href="admin/index.php">Admin</a></li>
                         {/if}

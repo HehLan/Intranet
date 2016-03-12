@@ -40,7 +40,9 @@ if ($query->execute())
 }
 else
 {
-    echo 'ERREUR SQL GROUPES';
+	global $glob_debug;
+	if ($glob_debug)
+		echo 'ERREUR SQL GROUPES';
     exit;
 }
 

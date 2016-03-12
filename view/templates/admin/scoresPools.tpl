@@ -52,8 +52,24 @@
 				<input type="hidden" name="id_tournoi" value="{$tournoi.id_tournoi}">
 				<input type="SUBMIT" value="Enregistrer">
 				<br>
-	
-			<!-- Insérer le reste du caca ici-->
+				{foreach from=$groupes item=groupe}
+					<table class="table_pool_lol">
+						<tr>
+							<th class="th_titre_pool_lol" colspan="'.($nbrteam+2).'">'.$groupe['nom_groupe'].'<th>
+						</tr>
+						<tr>
+							<td class="td_vide_pool_lol"></td>
+							{for $i=0 to $groupe['nbrteam']}
+								<th class="th_team2_pool_lol">{$teams[$i]['nom']}</th>
+							{/for}
+							<th class="th_score_pool_lol">score</th>
+						</tr>
+				
+				<td class="td_score_pool_lol">'.$totaux[$team['id']].'</td>	
+				</tr>
+				</table>
+				<br><br>
+				{/foreach}
 			</form>
 		</div>
 	</div>

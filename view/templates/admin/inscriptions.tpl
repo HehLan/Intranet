@@ -4,64 +4,14 @@
     <head>
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/inscriptions.css" >
-        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
-        <script>
-            $(document).ready(function() {
-
-                $( ".submitInscriptionEquipesTournoiAdmin" ).click(function() {
-                    var id=$( this ).attr('id');
-                    var donnee='id_tournoi='+id;
-                    var i=0;
-                    $( "#ListeInscrit"+id+" input[type=checkbox]:checked").each(function(){
-
-                        donnee+="&inscrit["+i+"]="+$(this).val();
-                        i++;
-                    });
-
-                    $.ajax({ 
-                        type: "POST", 
-                        url: "admin/insertInscritEquipe.php",
-                        data: donnee,
-                        success : function(contenu,etat){ 
-                            alert(contenu);
-
-                        }
-                    });
-                });
-
-                $( ".submitInscriptionJTAdmin" ).click(function() {
-                    var id=$( this ).attr('id');
-                    var donnee='id_tournoi='+id;
-                    var pseudoJeux='';
-                    var i=0;
-                    $( "#ListeInscritJT"+id+" input[type=checkbox]:checked").each(function(){
-                        //pseudoJeux+="&pseudoJeux["+i+"]="+$( "#Joueur"+id+$(this).val() ).val();
-                        donnee+="&inscrit["+i+"]="+$(this).val();
-                        i++;
-                    });
-
-                    $.ajax({ 
-                        type: "POST", 
-                        url: "admin/insertInscritJoueur.php",
-                        data: donnee,
-                        success : function(contenu,etat){ 
-                            alert(contenu);
-
-                        }
-                    });
-                });
-
-            });
-        </script>  
+        <script type="text/javascript" src="{#domain#}/src/js/admin-inscriptions.js"></script> 
     </head>
     <body role="document">
         {include file="admin/header.tpl" con=$con }
         {include file="admin/nav.tpl"  con=$con }	
-	<div id="container">
-            <div id="contenu">
-                <div id="InscriptionDesJoueursEquipesAuxTournois" >
+	<div id="container" class="container-fluid">
+            <div id="contenu" class="row">
+                <div id="InscriptionDesJoueursEquipesAuxTournois" class="col-lg-12">
                     <!-- tournois avec equipes -->
                     {foreach from=$tab item=ligne}
                         <div class='ListePourInscrireTournoi'>

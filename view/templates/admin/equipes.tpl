@@ -7,7 +7,7 @@
         <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
         <script type="text/javascript" src="{#domain#}/src/js/jquery-ui.js"></script>
         <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/admin_index.js"></script>		
+        <script type="text/javascript" src="{#domain#}/src/js/admin-equipes.js"></script>		
     </head>
 
     <body role="document">	
@@ -84,19 +84,5 @@
 
 
         {include file="admin/footer.tpl"}
-        {if $chat}
-            <script type="text/javascript">
-                $("#bloc_chat_message").keyup(function (event)
-                {
-                    if (event.keyCode == 13)
-                    {
-                        $("#bloc_chat_bouton").click();
-                    }
-                });
-
-                afficher(0);
-                users();
-            </script>
-        {/if}
     </body>
 </html>
