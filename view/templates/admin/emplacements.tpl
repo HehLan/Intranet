@@ -4,57 +4,7 @@
     <head>
         {include file="admin/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/emplacements.css" >
-        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function()
-            {
-            //colorie la case pour le pseudo
-                $('#SelectPseudo').change(function()
-                {
-                $("#dialogInfo_equipe").css(display :"none");
-                $('.place').css(background : "none");
-                $('#'+$('#SelectPseudo').val()).css(background : "#9ba0ee");
-                valeur = $('#SelectPseudo').val();
-                    $.ajax(
-                    { 
-                    type: "POST", 
-                    url: "admin/info_joueur.php",
-                    data: "id_emplacement="+valeur,
-                    success : function(contenu,etat)
-                        { 
-                        $("#dialogInfo_joueur").php(contenu);
-                        }
-                    });
-               });
-             //colorie la place pour le select emplacement
-                $('#SelectEmplacement').change(function()
-                {
-                    $('.place').css(background : "none");
-                  $('#'+$('#SelectEmplacement').val()).css(background : "green");
-               });
-            // recupere id_equipes pour l'envoi en AJAX
-                $('#SelectEquipe').change(function()
-                {
-                    $("#dialogInfo_joueur").css(display :"none");
-                    $('.place').css(background : "none");
-                    valeur=$('#SelectEquipe').val();
-                    $.ajax(
-                        { 
-                        type: "POST", 
-                        url: "admin/color_equipe.php",
-                        data: "id_equipes="+valeur,
-                        success : function(contenu,etat)
-                                { 
-                                $( "#dialogEquipe_Emplacement" ).php(contenu);
-                                $( "#dialogInfo_equipe" ).php(contenu);
-                                }         
-
-                        });  
-               });
-            });
-	</script>	
+        <script type="text/javascript" src="{#domain#}/src/js/admin-emplacements.js"></script>	
 </head>
 
 <body role="document">

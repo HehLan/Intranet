@@ -1,10 +1,28 @@
 <?php
-session_start();
-require_once('classAuth.php');
 
-if (Auth::isLogged()){
-    if (Auth::isAllow(3)){
-        if(!empty($_POST['inscrit'])){
+
+session_start();
+require_once('../../class/Auth.class.php');
+require_once('../../class/Smarty_HEHLan.class.php');
+require_once('../../class/Database.class.php');
+require_once('../../class/Query.class.php');
+
+
+$connected = false;
+$allowed = false;
+$chatIsActive = false;
+$database = new Database();
+$smarty = new Smarty_HEHLan();
+
+
+$connexion = $database->getConnection();
+
+if (Auth::isLogged())
+{
+    if (Auth::isAllowed(3))
+    {
+        if(!empty($_POST['inscrit']))
+        {
             try
             {
                 
@@ -19,10 +37,13 @@ if (Auth::isLogged()){
                 $req->execute();
                 $query="INSERT INTO equipes_joueur (id_joueur,id_equipes) VALUES ";
                 $i=0;
-                foreach($_POST['inscrit'] as $row){
-                    if($i==0){
+                foreach($_POST['inscrit'] as $row)
+                {
+                    if($i==0)
+                    {
                         $query.="(".$_POST['id_joueur'].",".$row.")";
-                    }else
+                    }
+                    else
                     {
                         $query.=",(".$_POST['id_joueur'].",".$row.")";
                     }
@@ -33,7 +54,7 @@ if (Auth::isLogged()){
                 $req = $connexion->prepare($query);
                 $req->execute();
                 $connexion->commit();
-                echo'requête réussie!';
+                echo 'requête réussie!';
             }
             catch(Exception $e) //en cas d'erreur
             {
@@ -48,7 +69,9 @@ if (Auth::isLogged()){
                 //on arrête l'exécution s'il y a du code après
                 exit();
             }
-        }else if(!empty($_POST['deleteAll'])){
+        }
+        else if(!empty($_POST['deleteAll']))
+        {
             try
             {
                 
@@ -78,10 +101,19 @@ if (Auth::isLogged()){
                 exit();
             }
         }
-        else echo'aucune donnée reçue';
+        else
+        {
+            echo'aucune donnée reçue';
+        }
     }
-    else echo "Vous n'êtes pas autorisé à effectuer cette modification!";
+    else
+    {
+        echo "Vous n'êtes pas autorisé à effectuer cette modification!";
+    }
 }
-else echo "Vous n'êtes pas connecté!";
+else
+{
+    echo "Vous n'êtes pas connecté!";
+}
 
 ?>

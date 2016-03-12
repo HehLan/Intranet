@@ -4,15 +4,7 @@
     <head>
         {include file="default/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/index.css" />
-        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
-        <script type="text/javascript">
-            function news_toggle(idn)
-            {
-                var nom = '#contenu_news_' + idn;
-                $(nom).toggle();
-            }
-        </script>
+        <script type="text/javascript" src="{#domain#}/src/js/index.js"></script>
     </head>
     <body role="document">
         {include file="default/header.tpl" con=$con next_matches=$next_matches}

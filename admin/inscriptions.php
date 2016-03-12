@@ -72,7 +72,7 @@ foreach($query->getResult() as $tournoi)
 $sql = $select.$lefton.' ORDER BY j.pseudo';
 $query = new Query($database, $sql);
 $query->execute();
-$donneesJT = $query->getResult();                             
+$donneesJT = $query->getResult()[0];                             
 				
 
 
