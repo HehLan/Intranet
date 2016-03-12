@@ -14,18 +14,34 @@ $smarty = new Smarty_HEHLan();
 $connexion = $database->getConnection();
 
 // ******************** test purposals -> don't touch!!!! **********************
-//$query="SELECT * FROM joueurs WHERE id_joueur=:id";
-//$req=$connexion->prepare($query);
-//$req->bindValue('id', 5);
-//$req->execute();
-//$user = $req->fetchAll(PDO::FETCH_ASSOC);     // it works !!! ^^
+//
+//$sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id';
+//$query = new Query($database, $sql);
+//$query->bind(':id', $id_tournoi, PDO::PARAM_INT);
+//if ($query->execute())
+//{
+//    $groupes = $query->getResult();
+//}
+//else
+//{
+//    echo 'ERREUR SQL GROUPES';
+//    exit;
+//}
+//
 // *****************************************************************************
 
 // recuperer les maps
-$query = "select * from hotsmaps";
-$req=$connexion->prepare($query); 
-$req->execute();
-$maps = $req->fetchAll(PDO::FETCH_ASSOC);
+$sql = "select * from hotsmaps";
+$query = new Query($database, $sql);
+ 
+if($query->execute()){
+    $maps = $query->getResult();
+}
+else
+{
+    echo 'ERREUR SQL MAPS';
+    exit;
+}
 
 
 
