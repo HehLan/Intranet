@@ -140,6 +140,7 @@ foreach ($groupes as $itGroupe => $groupe) {
                         $totaux[$team['id']]+=1;
                         $couleur = 'same_';
                     }
+                    $isPickActive = false;
                 }
                 if ($valeur == '') {
                     if (isset($heures[$team['id']][$team2['id']])) {
