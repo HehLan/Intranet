@@ -93,10 +93,7 @@ foreach ($groupes as $itGroupe => $groupe) {
             if ($team['id'] != $team2['id']) {
                 $couleur = 'same_';
                 $valeur = '';
-                $heure_DebutMatch = '';
-                $heure_Maintenant = '';
-                $jour_DebutMatch = '';
-                $jour_Maintenant = '';
+                $isPickActive = '';
 
                 if (isset($scores[$team['id']][$team2['id']])) {
                     $couleur = 'loose_';
@@ -114,29 +111,16 @@ foreach ($groupes as $itGroupe => $groupe) {
                     if (isset($heures[$team['id']][$team2['id']])) {
                         $valeur = get_jour_de_la_semaine($heures[$team['id']][$team2['id']]) . ' ' . get_heure($heures[$team['id']][$team2['id']]);
 
-                        // recuperer les dates des debuts des matchs et heure actuelle
+                        // recuperer le dateTime du match
                         $dateTime_DebutMatch = $heures[$team['id']][$team2['id']];
-                        $dateTime_Maintenant = date('Y-m-j H:i:s');
-
-                        $heure_DebutMatch = get_hour_from_string($dateTime_DebutMatch);
-                        $heure_Maintenant = get_hour_from_string($dateTime_Maintenant);
-                        $jour_DebutMatch = get_day_from_string($dateTime_DebutMatch);
-                        $jour_Maintenant = get_day_from_string($dateTime_Maintenant);
                         
-//                        printf("hDebut : ".$heure_DebutMatch."<br>");
-//                        printf("hNow : ".$heure_Maintenant."<br>");
-//                        printf("jDebut : ".$jour_DebutMatch."<br>");
-//                        printf("jNow : ".$jour_Maintenant."<br>");
-//                        die();
+                        $isPickActive = checkIsPickActive($dateTime_DebutMatch);
                     }
                 }
                 $resultTeam[] = array(
                     "couleur" => $couleur,
                     "valeur" => $valeur,
-                    "jour_debut" => $jour_DebutMatch,
-                    "heure_debut" => $heure_DebutMatch,
-                    "jour_now" => $jour_Maintenant,
-                    "heure_now" => $heure_Maintenant);
+                    "isPickActive" => $isPickActive);
             } else
                 $resultTeam[] = array();
         }

@@ -20,11 +20,6 @@
             </div>
         {/if}
 
-        <!-- **************** test button for pick ************************************************-->
-        <a target="_blank" href="pick.php">Click to pick !</a>
-        <!-- ************************************************************************************** -->
-
-
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">
                 <div class="col-lg-offset-1 col-lg-10">
@@ -59,7 +54,16 @@
                                                 {if $groupes[groupe].teams[sec1].id == $groupes[groupe].teams[sec2].id}
                                                 <td class="td_x_pool">X</td>
                                             {else}
-                                                <td class="td_{$groupes[groupe].resultTeams[sec1][sec2].couleur}pool">{$groupes[groupe].resultTeams[sec1][sec2].valeur}</td>
+                                                <td class="td_{$groupes[groupe].resultTeams[sec1][sec2].couleur}pool">
+                                                    {$groupes[groupe].resultTeams[sec1][sec2].valeur}
+
+                                                    <!-- manage link to acced the pick -->
+                                                    {if $groupes[groupe].resultTeams[sec1][sec2].isPickActive}
+                                                        <div>
+                                                            <a target="_blank" href="pick.php">Pick !</a>
+                                                        </div>
+                                                    {/if}
+                                                </td>
                                             {/if}
                                         {/section}
                                         <td class="td_score_pool">{$totaux[$groupes[groupe].teams[sec1].id]}</td>
