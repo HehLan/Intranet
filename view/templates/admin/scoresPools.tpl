@@ -64,7 +64,23 @@
 							{/for}
 							<th class="th_score_pool_lol">score</th>
 						</tr>
-				
+						{foreach from=$teams item=team}
+							<tr class="tr_pool_lol">
+								<th class="th_team_pool_lol">{$team['nom']}</th>
+							{foreach from=$teams item=team2}
+								{if $team.id == $team2.id}
+									<td class="td_X_pool_lol">X</td>
+								{else}
+									<td class="td_'.$couleur.'pool_lol">
+										<a href="#" onclick="popup_heure('.$matchs[$team['id']][$team2['id']]['id_match'].')" >
+											'.$heure.'
+										</a>
+										<br />
+										<input type="checkbox" name="cb_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" value="1" onclick="active_score('.$matchs[$team['id']][$team2['id']]['id_match'].','.$team['id'].')" />
+										<input type="text" name="score_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" id="score_m_'.$matchs[$team['id']][$team2['id']]['id_match'].'_p_'.$team['id'].'" value="'.$valeur.'" size="4" disabled="disabled" />
+									</td>
+							{/foreach}
+						{/foreach}
 				<td class="td_score_pool_lol">'.$totaux[$team['id']].'</td>	
 				</tr>
 				</table>

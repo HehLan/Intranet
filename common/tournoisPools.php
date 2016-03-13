@@ -117,7 +117,13 @@ foreach ($groupes as $itGroupe => $groupe) {
 					if (isset($heures[$team['id']][$team2['id']]))
 						$valeur = get_jour_de_la_semaine($heures[$team['id']][$team2['id']]) . ' ' . get_heure($heures[$team['id']][$team2['id']]);
 				}
+				if(isset($scores[$team2['id']][$team['id']]['id_match']))
+					$id_match = $scores[$team2['id']][$team['id']]['id_match'];
+				else
+					$id_match = 0;
+				
 				$resultTeam[] = array(
+					"id_match" => $id_match,
 					"couleur" => $couleur,
 					"valeur" => $valeur);
 			} else
