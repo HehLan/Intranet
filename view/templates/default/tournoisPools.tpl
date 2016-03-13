@@ -31,8 +31,12 @@
                     </h1>
                     {if $tournoi.id_tournoi != 2}
                         <p>Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}">FINALES DES PGM'S (gold)</a></p><br>
-                        {if $nbr_lb2>0} Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=2">FINALES DES LOSERS (silver)</a><br>{/if}
-                        {if $nbr_lb3>0} Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=3">FINALES DES NOOBS (bronze)</a><br>{/if}
+                        {if $nbr_lb2>0} 
+                            Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=2">FINALES DES LOSERS (silver)</a><br>
+                        {/if}
+                        {if $nbr_lb3>0} 
+                            Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=3">FINALES DES NOOBS (bronze)</a><br>
+                        {/if}
                     {/if}
                     <br>
                     {section name=groupe loop=$groupes}
@@ -57,10 +61,12 @@
                                                 <td class="td_{$groupes[groupe].resultTeams[sec1][sec2].couleur}pool">
                                                     {$groupes[groupe].resultTeams[sec1][sec2].valeur}
 
-                                                    <!-- manage link to acced the pick -->
-                                                    {if $groupes[groupe].resultTeams[sec1][sec2].isPickActive}
+                                                    <!-- manage link to access the pick -->
+                                                    {if $groupes[groupe].resultTeams[sec1][sec2].isPickActive && 
+                                                        ($groupes[groupe].teams[sec1].nom == $peekData.teamName 
+                                                        || $groupes[groupe].teams[sec2].nom == $peekData.teamName)}
                                                         <div>
-                                                            <a target="_blank" href="pick.php">Pick !</a>
+                                                            <a target="_blank" href="pick.php?id={$peekData.userId}&smth1={}&smth2{}">Pick !</a>
                                                         </div>
                                                     {/if}
                                                 </td>

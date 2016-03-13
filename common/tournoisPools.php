@@ -130,6 +130,17 @@ foreach ($groupes as $itGroupe => $groupe) {
     $groupes[$itGroupe]['resultTeams'] = $resultTeams;
 }
 
+$userId = $_GET['id'];
+// faire la fonc ici qui va aller recuperer cette info dans la db
+$isChiefOfTeam = true; // pour l'intant true pour les tests
+// faire la fonc qui va aller recuperer le nom de la team du gars en fct de son ID
+$teamName = 'BIT1';
+
+$peekData = array(
+    "userId" => $userId,
+    "isChief" => $isChiefOfTeam,
+    "teamName" => $teamName);
+
 // Applying Template
 $smarty->assign("con", $con);
 $smarty->assign("next_matches", $database->getNextMatches($con));
@@ -141,6 +152,7 @@ $smarty->assign("nbrteam", $nbrteam);
 $smarty->assign("groupes", $groupes);
 $smarty->assign("resultTeams", $resultTeams);
 $smarty->assign("totaux", $totaux);
+$smarty->assign("peekData", $peekData);
 
 //$smarty->display('templates/default/tournoisPools.tpl');
 $smarty->display('default/tournoisPools.tpl');
