@@ -16,8 +16,65 @@
 				<input type="hidden" name="id_tournoi" value="{$tournoi.id_tournoi}">
 				<input type="SUBMIT" value="Enregistrer">
 				<br>
-	
-			<!-- Insérer le reste du caca ici-->
+			<!-- Début du caca cloné -->
+			{foreach from=$groupes item=groupe}
+				<table class="table_pool_tm">
+					<tr>
+						<th class="th_titre_pool_tm" colspan="{($groupe['nbr_manches']+2)}">
+							{$groupe['nom_groupe']}<br />
+							<a href="#" onclick="popup_heure({$groupe['id_match']})" >{$groupe['heure']}</a>
+						</th>
+					</tr>
+					<tr>
+						<th class="th_part_pool_tm">Participants</th>
+						{for $i=1 to $groupe['nbr_manches']}
+							<th class="th_manche_pool_tm">Manche {$i}<br></th>
+						{/for}
+						<th class="th_score_pool_tm">Points</th>
+					</tr>
+					
+					{foreach from=$groupe.totaux item=joueur}
+						<tr class="tr_pool_tm">
+							<th class="th_team_pool_tm">{$joueur['pseudo']}</th>
+							{for $i=1 to $groupe.nbr_manches}
+								<td class="td_score_pool_tm">
+									<input type="checkbox" 
+										name="cb_m_{$groupe.id_match}_ma_{$i}_p_{$joueur['id_joueur']}" value="1" 
+										onclick="active_score2({$groupe.id_match},{$i},{$joueur['id_joueur']})"> 
+									<input type="text" name="score_m_{$groupe.id_match}_ma_{$i}_p_{$joueur['id_joueur']}" 
+										id="score_m_{$groupe.id_match}_ma_{$i}_p_{$joueur['id_joueur']}" 
+										
+										{if isset($groupe.inscrits[$joueur['id_joueur']]['scores'][$i])}
+											value="{$groupe.inscrits[$joueur['id_joueur']]['scores'][$i]}"
+										{else}
+											value=""
+										{/if}
+										size="4" disabled="disabled">								
+								</td>
+							{/for}
+							<td class="td_total_pool_tm">{$joueur['total']}</td>
+						</tr>
+					{/foreach}
+					{foreach from=$groupe.inscrits item=inscrit}
+						{if !$inscrit.ok}
+							<tr>
+								<td class="td_pseudo_pool_tm">{$inscrit.nom}</td>
+								{for $i=1 to $groupe.nbr_manches}
+									<td class="td_score_pool_tm">
+										<input type="checkbox" name="cb_m_{$id_match}_ma_{$i}_p_{$inscrit['id']}" 
+										value="1" onclick="active_score2({$id_match},{$i},{$inscrit['id']})"> 
+										<input type="text" name="score_m_{$id_match}_ma_{$i}_p_{$inscrit['id']}" 
+										id="score_m_{$id_match}_ma_{$i}_p_{$inscrit['id']}" value="" size="4" disabled="disabled">
+									</td>
+								{/for}
+								<td class="td_total_pool_tm"></td>
+							</tr>
+						{/if}
+					{/foreach}
+				</table>
+				<br><br>
+			{/foreach}
+			<!-- Fin du caca cloné -->
 			</form>
 		</div>
 	</div>

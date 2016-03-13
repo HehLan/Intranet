@@ -532,7 +532,7 @@ CREATE TABLE `tchat_users` (
 
 LOCK TABLES `tchat_users` WRITE;
 /*!40000 ALTER TABLE `tchat_users` DISABLE KEYS */;
-INSERT INTO `tchat_users` VALUES (2552,'skit','2016-03-10 23:46:34');
+INSERT INTO `tchat_users` VALUES (2552,'skit','2016-03-13 13:47:00');
 /*!40000 ALTER TABLE `tchat_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -555,6 +555,8 @@ CREATE TABLE `tournoi` (
   `heure_finale_start` datetime DEFAULT NULL,
   `duree_inter_match` time DEFAULT NULL,
   `header` text,
+  `pick_characters` tinyint(1) DEFAULT '0',
+  `pick_maps` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id_tournoi`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -565,7 +567,7 @@ CREATE TABLE `tournoi` (
 
 LOCK TABLES `tournoi` WRITE;
 /*!40000 ALTER TABLE `tournoi` DISABLE KEYS */;
-INSERT INTO `tournoi` VALUES (1,'HOTS',5,'pdf/rules/Heroes of The Storm - Réglement.pdf',2,1,1,'2014-04-05 09:00:00','2014-04-05 21:00:00','02:00:00','img/tournoisHeaders/hots_header.jpg'),(2,'COD4',5,'pdf/rules/Call of Duty 4 - Réglement.pdf',2,3,1,'2014-04-05 10:00:00','2014-04-05 22:00:00','02:00:00','img/tournoisHeaders/cod4_header.jpg'),(3,'TMNF',1,'pdf/rules/Track Mania - Réglement.pdf',10,7,5,'2014-04-05 18:00:00','2014-04-05 23:59:00','02:00:00','img/tournoisHeaders/tmnf_header.jpg'),(5,'HS',2,'pdf/rules/HearthStone - Réglement.pdf',2,1,1,'2014-04-04 22:10:00','2014-04-04 23:55:00','00:30:00','img/tournoisHeaders/hs_header.jpg');
+INSERT INTO `tournoi` VALUES (1,'HOTS',5,'pdf/rules/Heroes of The Storm - Réglement.pdf',2,1,1,'2014-04-05 09:00:00','2014-04-05 21:00:00','02:00:00','img/tournoisHeaders/hots_header.jpg',0,0),(2,'COD4',5,'pdf/rules/Call of Duty 4 - Réglement.pdf',2,3,1,'2014-04-05 10:00:00','2014-04-05 22:00:00','02:00:00','img/tournoisHeaders/cod4_header.jpg',0,0),(3,'TMNF',1,'pdf/rules/Track Mania - Réglement.pdf',10,7,5,'2014-04-05 18:00:00','2014-04-05 23:59:00','02:00:00','img/tournoisHeaders/tmnf_header.jpg',0,0),(5,'HS',2,'pdf/rules/HearthStone - Réglement.pdf',2,1,1,'2014-04-04 22:10:00','2014-04-04 23:55:00','00:30:00','img/tournoisHeaders/hs_header.jpg',0,0);
 /*!40000 ALTER TABLE `tournoi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -602,4 +604,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-10 23:58:41
+-- Dump completed on 2016-03-13 22:15:45
