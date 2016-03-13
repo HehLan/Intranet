@@ -80,12 +80,24 @@ function get_date($chaine) {
     return $jsem . ' ' . $d . ' ' . $m . ' ' . $y;
 }
 
-//Get the hour
+//Get custom hour for UI
 function get_heure($chaine) {
     $h = substr($chaine, 11, 2);
     $m = substr($chaine, 14, 2);
 
     return $h . 'h' . $m;
+}
+
+//Get only hour from string like "2016-03-13 18:38:38", ie --> 18
+function get_hour_from_string($chaine) {
+    $h = substr($chaine, 11, 2);
+    return $h;
+}
+
+//Get only date from string like "2016-03-13 13:38:38", ie --> 13
+function get_day_from_string($chaine) {
+    $d = substr($chaine, 8, 2);
+    return $d;
 }
 
 //Test if group handle exists
