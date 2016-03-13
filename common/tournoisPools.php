@@ -94,6 +94,7 @@ foreach ($groupes as $itGroupe => $groupe) {
                 $couleur = 'same_';
                 $valeur = '';
                 $isPickActive = '';
+                $idMatch = '';
 
                 if (isset($scores[$team['id']][$team2['id']])) {
                     $couleur = 'loose_';
@@ -113,14 +114,18 @@ foreach ($groupes as $itGroupe => $groupe) {
 
                         // recuperer le dateTime du match
                         $dateTime_DebutMatch = $heures[$team['id']][$team2['id']];
-                        
+                        // chequer en fct du temps si on peut afficher le link (1h avant que match commence)
                         $isPickActive = checkIsPickActive($dateTime_DebutMatch);
+                        
+                        // recuperer l'id du match --> nop ça foire!!! --> need Youness help here
+                        //$idMatch = $scores[$team['id']][$ligne['team2']]['id_match'];
                     }
                 }
                 $resultTeam[] = array(
                     "couleur" => $couleur,
                     "valeur" => $valeur,
-                    "isPickActive" => $isPickActive);
+                    "isPickActive" => $isPickActive,
+                    /*"idMatch" => $idMatch*/);
             } else
                 $resultTeam[] = array();
         }
@@ -130,6 +135,7 @@ foreach ($groupes as $itGroupe => $groupe) {
     $groupes[$itGroupe]['resultTeams'] = $resultTeams;
 }
 
+// ***************************************************************************
 $userId = $_GET['id'];
 // faire la fonc ici qui va aller recuperer cette info dans la db
 $isChiefOfTeam = true; // pour l'intant true pour les tests
@@ -140,6 +146,7 @@ $peekData = array(
     "userId" => $userId,
     "isChief" => $isChiefOfTeam,
     "teamName" => $teamName);
+// ***************************************************************************
 
 // Applying Template
 $smarty->assign("con", $con);

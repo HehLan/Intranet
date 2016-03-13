@@ -66,7 +66,7 @@
                                                         ($groupes[groupe].teams[sec1].nom == $peekData.teamName 
                                                         || $groupes[groupe].teams[sec2].nom == $peekData.teamName)}
                                                         <div>
-                                                            <a target="_blank" href="pick.php?id={$peekData.userId}&smth1={}&smth2{}">Pick !</a>
+                                                            <a target="_blank" href="pick.php?id={$peekData.userId}&idMatch={}">Pick !</a>
                                                         </div>
                                                     {/if}
                                                 </td>

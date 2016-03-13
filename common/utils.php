@@ -268,9 +268,10 @@ function get_day_from_string($chaine) {
 // si match commence dans moins d'une heure, retourne True. else -> False
 function checkIsPickActive($dateTime_DebutMatch){
     
-    // test proposals
-    return true;
-    
+    // ********************************** test proposals
+                        return true;
+    // *************************************************
+
     // recuperer les valeures des jours et des heures
     $dateTime_Maintenant = date('Y-m-j H:i:s');
     $heure_DebutMatch = get_hour_from_string($dateTime_DebutMatch);
