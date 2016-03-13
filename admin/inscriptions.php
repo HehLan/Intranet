@@ -48,6 +48,7 @@ $sql = $select.$lefton.' ORDER BY e.nom';
 $query = new Query($database, $sql);
 $query->execute();
 $donnees = $query->getResult();
+//print_r($donnees);
 
 
 
@@ -72,7 +73,8 @@ foreach($query->getResult() as $tournoi)
 $sql = $select.$lefton.' ORDER BY j.pseudo';
 $query = new Query($database, $sql);
 $query->execute();
-$donneesJT = $query->getResult()[0];                             
+$donneesJT = $query->getResult();  
+//print_r($donneesJT);
 				
 
 

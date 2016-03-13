@@ -48,7 +48,7 @@ $(document).ready(function () {
         $('.place').css({background: "none"});
         $.ajax({
             type: "POST",
-            url: "assets/ajax/color_equipe.php",
+            url: "src/ajax/color_equipe.php",
             data: "id_equipes=" + valeur,
             success: function (contenu, etat)
             {

@@ -4,7 +4,7 @@
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/joueurs.css" />
-        <script type="text/javascript" src="{#domain#}/src/js/joueur.js"></script>
+        <script type="text/javascript" src="{#domain#}/src/js/joueurs.js"></script>
     </head>
 
     <body role="document">
@@ -49,10 +49,6 @@
                         </div>
                     {/section}
                 </div>		
-
-                <!-- ****************************************** test button for pick *********************************************-->
-                <a target="_blank" href="pick.php">Click to pick !</a>
-                <!-- **************************************************************************************************** -->
 
                 <div id="tabs" class="col-lg-2 col-xs-12">
                     <div class="row">
