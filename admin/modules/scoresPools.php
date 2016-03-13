@@ -1,68 +1,5 @@
 <?php
 
-session_start();
-require_once('../class/var.conf.php');
-require_once(DOCUMENT_ROOT.'/common/utils.php');
-require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
-require_once(DOCUMENT_ROOT.'/class/Database.class.php');
-require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
-require_once(DOCUMENT_ROOT.'/class/Query.class.php');
-
-
-
-$connected = false;
-$allowed = false;
-$database = new Database();
-$smarty = new Smarty_HEHLan();
-
-
-$connected = Auth::isLogged();
-$allowed = Auth::isAllowed(3);
-
-//	Test whether the user has admin privilege
-if(!$connected && !$allowed)
-{
-    header('Location: '.DOCUMENT_ROOT.'/index.php');
-} 
-
-$id_tournoi=1;
-if(isset($_GET['id_tournoi'])) $id_tournoi=$_GET['id_tournoi'];
-
-$connexion = $database->getConnection();
-
-//	Get the Tournoi information
-$sql="SELECT * FROM tournoi WHERE id_tournoi=:id";
-$query=$connexion->prepare($sql);
-$query->bindValue('id', $id_tournoi, PDO::PARAM_INT);
-if($query->execute())
-{
-	$tournoi = $query->fetch(PDO::FETCH_ASSOC);
-}
-else 
-{
-	global $glob_debug
-	if($glob_debug)
-		echo 'ERREUR SQL TOURNOI'; 
-	exit;
-}
-
-//	Get the Groupes information relative to its Tournoi
-$groupes='';
-$sql="SELECT * FROM groupes_pool WHERE id_tournoi=:id";
-$query=$connexion->prepare($sql);
-$query->bindValue('id', $id_tournoi, PDO::PARAM_INT);
-if($query->execute())
-{
-	$groupes = $query->fetchAll(PDO::FETCH_ASSOC);
-}
-else 
-{
-	global $glob_debug
-	if($glob_debug)
-		echo 'ERREUR SQL GROUPES'; 
-	exit;
-}
-
 foreach($groupes as $groupe)
 {
 	$sql="SELECT e.id_equipes as id, e.nom as nom FROM equipes as e, equipes_groupes as g WHERE g.id_groupe=:idg and e.id_equipes=g.id_equipe";
@@ -74,7 +11,7 @@ foreach($groupes as $groupe)
 	}
 	else 
 	{
-		global $glob_debug
+		global $glob_debug;
 		if($glob_debug)
 			echo 'ERREUR SQL EQUIPES'; 
 		exit;
@@ -82,7 +19,7 @@ foreach($groupes as $groupe)
 }
 //------------ KILL THEM BEFORE THEY LAY EGGS!!!!!!!!!!!! ------------
 
-foreach($groupes as $groupe)
+foreach($groupes as $keyGroupe => $groupe)
 {
 	//-----------------TOURNOI TYPE LOL COD-----------------
 	$nbrteam=0;
@@ -94,9 +31,8 @@ foreach($groupes as $groupe)
 		$teams[$nbrteam]['id']=$team['id'];
 		$nbrteam++;
 	}
-
-	$heures='';
-
+	$groupes[$keyGroupe]['nbrteam'] = $nbrteam;
+	$groupes[$keyGroupe]['teams'] = $teams;
 	
 	foreach($teams as $team)
 	{
@@ -115,10 +51,11 @@ foreach($groupes as $groupe)
 		{
 			while($ligne=$query->fetch(PDO::FETCH_ASSOC))
 			{
-				if(!is_null($ligne['score']))
+				if(is_null($ligne['score']))
 				{
-					$scores[$team['id']][$ligne['team2']]['score']=$ligne['score'];
-				}	
+					$scores[$team['id']][$ligne['team2']]['score']='';
+				}
+				$matchs[$team['id']][$ligne['team2']]['score']=$ligne['score'];	
 				$matchs[$team['id']][$ligne['team2']]['heure']=$ligne['heure'];
 				$matchs[$team['id']][$ligne['team2']]['id_match']=$ligne['id_match'];
 			}
@@ -131,8 +68,8 @@ foreach($groupes as $groupe)
 			exit;
 		}
 	}
-	$totaux='';
-	foreach($teams as $team)
+	$totaux=array();
+	foreach($teams as $keyTeam=>$team)
 	{
 		$totaux[$team['id']]=0;				
 		foreach($teams as $team2)
@@ -140,11 +77,10 @@ foreach($groupes as $groupe)
 			if (!($team['id']==$team2['id']))
 			{
 				$couleur='same_';
-				$valeur='';
-				if(isset($scores[$team['id']][$team2['id']]['score']))
+				if(is_numeric($scores[$team['id']][$team2['id']]['score']))
 				{
 					$couleur='loose_';
-					$valeur=$scores[$team['id']][$team2['id']]['score'];
+					$matchs[$team['id']][$team2['id']]['score']=$scores[$team['id']][$team2['id']]['score'];
 					if ($scores[$team['id']][$team2['id']]['score']>$scores[$team2['id']][$team['id']]['score']) 
 					{
 						$totaux[$team['id']]+=3;
@@ -154,11 +90,13 @@ foreach($groupes as $groupe)
 					{
 						$totaux[$team['id']]+=1;
 						$couleur='same_';
-					}			
-				}	
-				$heure=get_jour_de_la_semaine($matchs[$team['id']][$team2['id']]['heure']).' '.get_heure($matchs[$team['id']][$team2['id']]['heure']);
+					}
+					$matchs[$team['id']][$team2['id']]['couleur'] = $couleur;
+				}
+				$matchs[$team['id']][$team2['id']]['heure'] = get_jour_de_la_semaine($matchs[$team['id']][$team2['id']]['heure']).' '.get_heure($matchs[$team['id']][$team2['id']]['heure']);
 			}
 		}
+		$groupes[$keyGroupe]['teams'][$keyTeam]['total'] = $totaux[$team['id']];
 	}
 }
 
@@ -166,7 +104,10 @@ foreach($groupes as $groupe)
 $smarty->assign("con", $connected);
 $smarty->assign("chat", $chatIsActive);
 $smarty->assign('participants', $participants);
-$smarty->assign('tournois', $tournois);
+$smarty->assign('tournoi', $tournoi);
+$smarty->assign('groupes', $groupes);
+$smarty->assign('matchs', $matchs);
+$smarty->assign('totaux', $totaux);
 
 $smarty->display(DOCUMENT_ROOT.'/view/templates/admin/scoresPools.tpl');
 ?>
