@@ -50,10 +50,6 @@
                     {/section}
                 </div>		
 
-                <!-- **************** test button for pick ******************-->
-                <a target="_blank" href="pick.php">Click to pick !</a>
-                <!-- ******************************************************* -->
-
                 <div id="tabs" class="col-lg-2 col-xs-12">
                     <div class="row">
                         <div class="col-lg-6 col-xs-6">
