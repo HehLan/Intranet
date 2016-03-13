@@ -66,6 +66,8 @@ foreach ($groupes as $itGroupe => $groupe) {
     $scores = '';
     if (is_array($participants)) {
         foreach ($participants[$groupe['id_groupe']] as $team) {
+			$teams[$nbrteam]['nom'] = $team['nom'];
+			$teams[$nbrteam]['id'] = $team['id'];
 
             // This part needs to be debugged
             // This does not give an array
@@ -124,6 +126,9 @@ foreach ($groupes as $itGroupe => $groupe) {
             if ($team['id'] != $team2['id']) {
                 $couleur = 'same_';
                 $valeur = '';
+                $isPickActive = '';
+                $idMatch = '';
+
                 if (isset($scores[$team['id']][$team2['id']])) {
                     $couleur = 'loose_';
                     $valeur = $scores[$team['id']][$team2['id']]['score'] . '-' . $scores[$team2['id']][$team['id']]['score'];
@@ -140,19 +145,20 @@ foreach ($groupes as $itGroupe => $groupe) {
                     if (isset($heures[$team['id']][$team2['id']])) {
                         $valeur = get_jour_de_la_semaine($heures[$team['id']][$team2['id']]) . ' ' . get_heure($heures[$team['id']][$team2['id']]);
 
-                        //*******************************************************************************
-                        // test
-                        $test = $heures[$team['id']][$team2['id']];
-                        var_dump($test);
-                        $date = date('Y-m-j H:i:s');
-                        var_dump($date);
-                        die();
-                        //*******************************************************************************
+                        // recuperer le dateTime du match
+                        $dateTime_DebutMatch = $heures[$team['id']][$team2['id']];
+                        // chequer en fct du temps si on peut afficher le link (1h avant que match commence)
+                        $isPickActive = checkIsPickActive($dateTime_DebutMatch);
+                        
+                        // recuperer l'id du match --> nop ça foire!!! --> need Youness help here
+                        //$idMatch = $scores[$team['id']][$ligne['team2']]['id_match'];
                     }
                 }
                 $resultTeam[] = array(
                     "couleur" => $couleur,
-                    "valeur" => $valeur);
+                    "valeur" => $valeur,
+                    "isPickActive" => $isPickActive,
+                    /*"idMatch" => $idMatch*/);
             } else
                 $resultTeam[] = array();
         }
@@ -161,6 +167,19 @@ foreach ($groupes as $itGroupe => $groupe) {
     }
     $groupes[$itGroupe]['resultTeams'] = $resultTeams;
 }
+
+// ***************************************************************************
+$userId = $_GET['id'];
+// faire la fonc ici qui va aller recuperer cette info dans la db
+$isChiefOfTeam = true; // pour l'intant true pour les tests
+// faire la fonc qui va aller recuperer le nom de la team du gars en fct de son ID
+$teamName = 'BIT1';
+
+$peekData = array(
+    "userId" => $userId,
+    "isChief" => $isChiefOfTeam,
+    "teamName" => $teamName);
+// ***************************************************************************
 
 // Applying Template
 $smarty->assign("con", $con);
@@ -173,6 +192,7 @@ $smarty->assign("nbrteam", $nbrteam);
 $smarty->assign("groupes", $groupes);
 $smarty->assign("resultTeams", $resultTeams);
 $smarty->assign("totaux", $totaux);
+$smarty->assign("peekData", $peekData);
 
 //$smarty->display('templates/default/tournoisPools.tpl');
 $smarty->display('default/tournoisPools.tpl');

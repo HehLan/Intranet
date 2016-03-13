@@ -80,7 +80,7 @@ function get_date($chaine) {
     return $jsem . ' ' . $d . ' ' . $m . ' ' . $y;
 }
 
-//Get the hour
+//Get custom hour for UI
 function get_heure($chaine) {
     $h = substr($chaine, 11, 2);
     $m = substr($chaine, 14, 2);
@@ -250,6 +250,47 @@ function get_variable($conn, $nom) {
     }
     $nom = $query->fetch(PDO::FETCH_ASSOC);
     return $nom['valeur'];
+}
+
+// Get only hour from string like "2016-03-13 18:38:38", ie --> 18
+function get_hour_from_string($chaine) {
+    $h = substr($chaine, 11, 2);
+    return $h;
+}
+
+// Get only date from string like "2016-03-13 13:38:38", ie --> 13
+function get_day_from_string($chaine) {
+    $d = substr($chaine, 8, 2);
+    return $d;
+}
+
+// va renvoyer une valeur bool en fonction de l'heure et du jour du match
+// si match commence dans moins d'une heure, retourne True. else -> False
+function checkIsPickActive($dateTime_DebutMatch){
+    
+    // ********************************** test proposals
+                        return true;
+    // *************************************************
+
+    // recuperer les valeures des jours et des heures
+    $dateTime_Maintenant = date('Y-m-j H:i:s');
+    $heure_DebutMatch = get_hour_from_string($dateTime_DebutMatch);
+    $heure_Maintenant = get_hour_from_string($dateTime_Maintenant);
+    $jour_DebutMatch = get_day_from_string($dateTime_DebutMatch);
+    $jour_Maintenant = get_day_from_string($dateTime_Maintenant);
+    
+    // logic here :)
+    if($jour_Maintenant > $jour_DebutMatch){
+        return false;
+    }
+    else{
+        if($heure_Maintenant > $heure_DebutMatch){
+            return false;
+        }
+        elseif($heure_Maintenant == $heure_DebutMatch - 1){
+            return true;
+        }
+    }
 }
 ?>
  

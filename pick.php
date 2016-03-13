@@ -13,7 +13,7 @@ $database = new Database();
 $smarty = new Smarty_HEHLan();
 $connexion = $database->getConnection();
 
-// ******************** test purposals -> don't touch!!!! **********************
+// ******************** test proposals -> don't touch!!!! **********************
 //
 //$sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id';
 //$query = new Query($database, $sql);
@@ -42,6 +42,7 @@ else
     echo 'ERREUR SQL MAPS';
     exit;
 }
+
 
 $connected = Auth::isLogged();
 

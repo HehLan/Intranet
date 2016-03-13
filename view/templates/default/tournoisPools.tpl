@@ -19,10 +19,6 @@
                 Pour consulter le règlement de ce tournoi, <a href="{#domain#}/src/{$tournoi.reglement}"> cliquez ici </a>
             </div>
         {/if}
-        
-        <!-- **************** test button for pick ************************************************-->
-        <a target="_blank" href="pick.php">Click to pick !</a>
-        <!-- ************************************************************************************************** -->
 
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">
@@ -35,8 +31,12 @@
                     </h1>
                     {if $tournoi.id_tournoi != 2}
                         <p>Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}">FINALES DES PGM'S (gold)</a></p><br>
-                        {if $nbr_lb2>0} Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=2">FINALES DES LOSERS (silver)</a><br>{/if}
-                        {if $nbr_lb3>0} Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=3">FINALES DES NOOBS (bronze)</a><br>{/if}
+                        {if $nbr_lb2>0} 
+                            Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=2">FINALES DES LOSERS (silver)</a><br>
+                    {/if}
+                        {if $nbr_lb3>0} 
+                            Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=3">FINALES DES NOOBS (bronze)</a><br>
+                        {/if}
                     {/if}
                     <br>
                     {section name=groupe loop=$groupes}
@@ -58,7 +58,18 @@
                                                 {if $groupes[groupe].teams[sec1].id == $groupes[groupe].teams[sec2].id}
                                                 <td class="td_x_pool">X</td>
                                             {else}
-                                                <td class="td_{$groupes[groupe].resultTeams[sec1][sec2].couleur}pool">{$groupes[groupe].resultTeams[sec1][sec2].valeur}</td>
+                                                <td class="td_{$groupes[groupe].resultTeams[sec1][sec2].couleur}pool">
+                                                    {$groupes[groupe].resultTeams[sec1][sec2].valeur}
+
+                                                    <!-- manage link to access the pick -->
+                                                    {if $groupes[groupe].resultTeams[sec1][sec2].isPickActive && 
+                                                        ($groupes[groupe].teams[sec1].nom == $peekData.teamName 
+                                                        || $groupes[groupe].teams[sec2].nom == $peekData.teamName)}
+                                                        <div>
+                                                            <a target="_blank" href="pick.php?id={$peekData.userId}&idMatch={}">Pick !</a>
+                                                        </div>
+                                                    {/if}
+                                                </td>
                                             {/if}
                                         {/section}
                                         <td class="td_score_pool">{$totaux[$groupes[groupe].teams[sec1].id]}</td>
