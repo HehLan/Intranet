@@ -84,14 +84,15 @@
                                                             <td class="td_arbre_joueur_score{$clr[$j]}">
                                                                 <input type="text" name="s_{$tablo[$c][$m]}_{$j}_{$ma}"
                                                                     id="s_{$tablo[$c][$m]}_{$j}_{$ma}"
-                                                                    value="{$score_ma}" size="4" disabled="disabled">
+                                                                    value="beuh" size="4" disabled="disabled">
+
                                                             </td>
                                                         {/for}
                                                         
                                                         <td class="td_arbre_joueur_total{$clr[$j]}">
                                                             <input type="hidden" name="s_{$tablo[$c][$m]}_{$j}_id" 
                                                                 id="s_{$tablo[$c][$m]}_{$j}_id" value="{$id_score[$j]}">
-                                                            {$score[$j]}
+                                                            {$matches[$tablo[$c][$m]][$j]['score']}
                                                         </td>
                                                         
                                                         {if isset($matches[$tablo[$c][$m]][$j]['score'])}	

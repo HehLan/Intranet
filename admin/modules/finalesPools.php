@@ -224,19 +224,12 @@ if(isset($tablo))
 	$smarty->assign('matches',$matches);
 	$smarty->assign('tablo',$tablo);
 }
-$smarty->assign("con", $con);
-$smarty->assign("next_matches", $database->getNextMatches($con));
-$smarty->assign("navTournois", $database->getNavTournois());
-
-$smarty->assign("nbr_lb2", $nbr_lb2);
-$smarty->assign("nbr_lb3", $nbr_lb3);
-
-
-
+$smarty->assign("con", $connected);
 $smarty->assign("tournoi", $tournoi);
 $smarty->assign("gsb", $gsb);
 $smarty->assign("looser", $looser);
-$smarty->assign("fleche", $fleche);
+$smarty->assign("equipes", $equipes);
+
 
 
 

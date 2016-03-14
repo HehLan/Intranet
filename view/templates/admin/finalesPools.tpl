@@ -17,7 +17,7 @@
                 <form method="POST" action="modules/finale_save.php">
                     <input type="hidden" name="id_tournoi" value="{$tournoi['id_tournoi']}">
                     <input type="hidden" name="looser" value="{$looser}">
-                    <input type="submit" value="Enregistrer"><br><br>';
+                    <input type="submit" value="Enregistrer"><br><br>
                     {if {$matches|@count} > 0}
                         <table>
                             <tr>
@@ -60,7 +60,7 @@
                                                     
                                            
                                                 
-                                                {foreach form=$equipes item=equipe}
+                                                {foreach from=$equipes item=equipe}
 						 <!--	
                                                     
                                                     $nom1.='<option value="'.$equipe['id'].'"';
@@ -110,7 +110,7 @@
                                                     <td class="td_arbre_team2" colspan="2">
                                                         <a href="#" onclick="popup_heure({$tablo[$c][$m]})">
                                                             get_jour_de_la_semaine({$matches[$tablo[$c][$m]]['heure']})
-                                                            get_heure({$matches[$tablo[$c][$m]]['heure'])}
+                                                            get_heure({$matches[$tablo[$c][$m]]['heure']})
                                                         </a>
                                                     </td>
                                                     <td class="td_arbre_droite"></td>
@@ -120,16 +120,16 @@
                                                     <td class="td_arbre_team{$matches[$tablo[$c][$m]]['clr1']}">{$matches[$tablo[$c][$m]]['nom1']}</td>
                                                     <td class="td_arbre_score{$matches[$tablo[$c][$m]]['clr1']}">
                                                         <input type="checkbox" name="cb_{$tablo[$c][$m]}_1" onclick="active_score({$tablo[$c][$m]})"> 
-                                                        <input type="hidden" name="s_{$tablo[$c][$m]}_1_id" id="s_{$tablo[$c][$m]}_1_id" value="{$matches[$tablo[$c][$m]]['id_score1']}" >
+                                                        <input type="hidden" name="s_{$tablo[$c][$m]}_1_id" id="s_{$tablo[$c][$m]}_1_id" value="{$matches[$tablo[$c][$m]]['score1']}" >
                                                         <input type="text" name="s_{$tablo[$c][$m]}_1" id="s_{$tablo[$c][$m]}_1" value="{$matches[$tablo[$c][$m]]['score1']}" size="3"  disabled="disabled">
                                                     </td>
-                                                    <td class="td_arbre_droite" rowspan="2">{$fleche} {$matches[$tablo[$c][$m]]['id_parent']}</td>
+                                                    <td class="td_arbre_droite" rowspan="2">{$matches[$tablo[$c][$m]]['fleche']} {$matches[$tablo[$c][$m]]['id_parent']}</td>
                                                 </tr>
                                                 
                                                 <tr>
                                                     <td class="td_arbre_team{$matches[$tablo[$c][$m]]['clr2']}">{$matches[$tablo[$c][$m]]['nom2']}</td>
                                                     <td class="td_arbre_score{$matches[$tablo[$c][$m]]['clr2']}">		
-                                                        <input type="hidden" name="s_{$tablo[$c][$m]}_2_id" id="s_{$tablo[$c][$m]}_2_id" value="{$matches[$tablo[$c][$m]]['id_score2']}">								
+                                                        <input type="hidden" name="s_{$tablo[$c][$m]}_2_id" id="s_{$tablo[$c][$m]}_2_id" value="{$matches[$tablo[$c][$m]]['score2']}">								
                                                         <input type="text" name="s_{$tablo[$c][$m]}_2" id="s_{$tablo[$c][$m]}_2" value="{$matches[$tablo[$c][$m]]['score2']}" size="3" disabled="disabled">
                                                     </td>							
                                                 </tr>	

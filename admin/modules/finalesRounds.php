@@ -78,14 +78,13 @@ if ($query->execute())
             $nbrmax = 0;
             $nbrm = 0;
             $old_idj = 0;
-            foreach($query2->getResult() as $team)
+            foreach($query2->getResult() as $ligne)
             {
                 if($old_idj != $ligne['id_joueur'])
                 {
                     $nbrm = 0;
                     $old_idj = $ligne['id_joueur'];
                 }
-                $scores[$match['id_match']][$ligne['id_joueur']][$ligne['numero_manche']] = $ligne['score'];
 
                 if($old_idj == $ligne['id_joueur'])
                 {
@@ -97,9 +96,9 @@ if ($query->execute())
                 }                
             
                 $cpt++;
-                $matches[$match['id_match']][$cpt]['id']=$team['id_joueur'];
-                $matches[$match['id_match']][$cpt]['nom']=$team['pseudo'];
-                $matches[$match['id_match']][$cpt]['score']=$team['score'];
+                $matches[$match['id_match']][$cpt]['id'] = $ligne['id_joueur'];
+                $matches[$match['id_match']][$cpt]['nom'] = $ligne['pseudo'];
+                $matches[$match['id_match']][$cpt]['score'] = $ligne['score'];
                 
                 /* For every Match and Joueur proceeded, get the Manches corresponding	*/
                 $sql3 = 'SELECT mj.numero_manche, mj.score
@@ -108,7 +107,7 @@ if ($query->execute())
                         AND mj.id_joueur=:idj';
                 $query3 = new Query($database, $sql3);
                 $query3->bind('idm', $match['id_match'], PDO::PARAM_INT);
-                $query3->bind('idj', $team['id_joueur'], PDO::PARAM_INT);
+                $query3->bind('idj', $ligne['id_joueur'], PDO::PARAM_INT);
                 if ($query3->execute())
                 {
                     foreach($query3->getResult() as $ligne)
@@ -264,7 +263,7 @@ if ($nbrmatch != 0)
                 
                 $clr[$j]='';
                 $fleche = '->';
-                $heure = get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']).' '.get_heure($matches[$tablo[$c][$m]]['heure']);
+                //$heure = get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']).' '.get_heure($matches[$tablo[$c][$m]]['heure']);
                 
                 
                 if ($j == 1)
@@ -276,16 +275,15 @@ if ($nbrmatch != 0)
                 }
                 for ($ma = 1; $ma <= $matches[$tablo[$c][$m]]['nbr_manche']; $ma++)
                 {
-                    $score_ma = '';
                     if (isset($matches[$tablo[$c][$m]][$j]['id']))
                     {
                         $idj = $matches[$tablo[$c][$m]][$j]['id'];
                         if (!isset($scores[$tablo[$c][$m]][$idj]['scores'][$ma]))
                         {
-                            $score_ma = $scores[$tablo[$c][$m]][$idj][$ma];
                             $scores[$tablo[$c][$m]][$idj]['scores'][$ma] = '-';;
                         }
                     }
+                    $matches[$tablo[$c][$m]]['nom'] = $nom;
                     $matches[$tablo[$c][$m]]['fleche'] = $fleche;
                 }
             }
@@ -299,12 +297,17 @@ $smarty->assign('scores',$scores);
 $smarty->assign('match_par_niveau',$match_par_niveau);
 $smarty->assign('matches',$matches);
 $smarty->assign('tablo',$tablo);
-$smarty->assign("con", $con);
-$smarty->assign("next_matches", $database->getNextMatches($con));
-$smarty->assign("navTournois", $database->getNavTournois());
+$smarty->assign("con", $connected);
+
 $smarty->assign("tournoi", $tournoi);
-$smarty->assign("nbr_lb2", $nbr_lb2);
-$smarty->assign("nbr_lb3", $nbr_lb3);
+$smarty->assign("looser", $looser);
+$smarty->assign("gsb", $gsb);
+$smarty->assign("clr", $clr);
+$smarty->assign("nom", $nom);
+$smarty->assign("id_score", $id_score);
+
+
+
 
 $smarty->display('admin/finalesRounds.tpl');
 

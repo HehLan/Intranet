@@ -71,7 +71,7 @@ $query = new Query($database, $sql);
 $query->bind('id', $id_tournoi, PDO::PARAM_INT);	
 if($query->execute())
 {
-    $tournoi = $query->getResult();
+    $tournoi = $query->getResult()[0];
 }
 else
 {
