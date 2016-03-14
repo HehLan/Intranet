@@ -11,7 +11,7 @@
         <!-- Header and Rules -->
         {if isset($tournoi.header)}
             <div id="headerTournoi">
-                <img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nom}" />
+                <img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nomTournoi}" />
             </div>
         {/if}
         {if isset($tournoi.reglement)}
