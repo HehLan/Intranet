@@ -19,7 +19,6 @@ if(!$con)
 	<?php require_once('../includes/_meta.php'); ?> 
     <script type="text/javascript" src="../assets/js/jquery.js"></script>
     <script type="text/javascript" src="../assets/js/getXhr.js"></script>
-	</script>
 </head>
 
 <body role="document">
@@ -56,7 +55,7 @@ if(!$con)
 						<th>Looser 2</th>
 						<th>Supprimer</th>
 					</tr>';	
-			
+			?>
 			<input type="submit" value="Créer" />
 			<br>
 		</form>
