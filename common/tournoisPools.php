@@ -7,9 +7,9 @@ if (is_array($groupes)) {
 				WHERE g.id_groupe=:idg AND e.id_equipes=g.id_equipe';
         $query = $connexion->prepare($sql);
         $query->bindValue(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
-        if ($query->execute())
+        if ($query->execute()) {
             $participants[$groupe['id_groupe']] = $query->fetchAll(PDO::FETCH_ASSOC);
-        else {
+        } else {
             global $glob_debug;
             if ($glob_debug)
                 echo 'ERREUR SQL EQUIPES';
@@ -64,10 +64,11 @@ foreach ($groupes as $itGroupe => $groupe) {
     $nbrteam = 0;
     $teams = '';
     $scores = '';
+
     if (is_array($participants)) {
         foreach ($participants[$groupe['id_groupe']] as $team) {
-			$teams[$nbrteam]['nom'] = $team['nom'];
-			$teams[$nbrteam]['id'] = $team['id'];
+            $teams[$nbrteam]['nom'] = $team['nom'];
+            $teams[$nbrteam]['id'] = $team['id'];
 
             // This part needs to be debugged
             // This does not give an array
@@ -89,7 +90,7 @@ foreach ($groupes as $itGroupe => $groupe) {
     if (is_array($teams)) {
         foreach ($teams as $team) {
             $sql = "SELECT me.id_match,m.heure, SUM(me.score) as score, 
-				(SELECT mte2.id_equipe FROM matchs_equipes as mte2 WHERE mte2.id_match=m.id_match AND mte2.id_equipe<>:ide LIMIT 0,1) as team2								
+				(SELECT mte2.id_equipe FROM matchs_equipes as mte2 WHERE mte2.id_match=m.id_match AND mte2.id_equipe<>:ide LIMIT 0,1) as team2 
 			FROM (matchs_equipes as mte, matchs as m) 
 			LEFT JOIN (manches_equipes as me)
 			ON (me.id_match=m.id_match AND me.id_equipe=:ide)
@@ -116,11 +117,12 @@ foreach ($groupes as $itGroupe => $groupe) {
         }
     }
     else {
-		global $glob_debug;
-		if($glob_debug)
-			echo 'ERROR - teams is not an array';
+        global $glob_debug;
+        if ($glob_debug)
+            echo 'ERROR - teams is not an array';
         exit;
     }
+
     // A supprimer mais warning:undefined index
     foreach ($teams as $team) {
         $totaux[$team['id']] = 0;
@@ -153,21 +155,20 @@ foreach ($groupes as $itGroupe => $groupe) {
                         $dateTime_DebutMatch = $heures[$team['id']][$team2['id']];
                         // chequer en fct du temps si on peut afficher le link (1h avant que match commence)
                         $isPickActive = checkIsPickActive($dateTime_DebutMatch);
-                        
-                        // recuperer l'id du match --> nop ça foire!!! --> need Youness help here
-                        //$idMatch = $scores[$team['id']][$ligne['team2']]['id_match'];
                     }
                 }
-				if(isset($scores[$team2['id']][$team['id']]['id_match']))
-					$id_match = $scores[$team2['id']][$team['id']]['id_match'];
-				else
-					$id_match = 0;
-				
-				$resultTeam[] = array(
-					"id_match" => $id_match,
-					"couleur" => $couleur,
-					"valeur" => $valeur,
-                    "isPickActive" => $isPickActive);
+
+                // recuperer l'id du match
+                if (isset($scores[$team2['id']][$team['id']]['id_match']))
+                    $id_match = $scores[$team2['id']][$team['id']]['id_match'];
+                else
+                    $id_match = 0;
+
+                $resultTeam[] = array(
+                    "couleur" => $couleur,
+                    "valeur" => $valeur,
+                    "isPickActive" => $isPickActive,
+                    "id_match" => $id_match);
             } else
                 $resultTeam[] = array();
         }
@@ -189,7 +190,6 @@ $peekData = array(
     "isChief" => $isChiefOfTeam,
     "teamName" => $teamName);
 // ***************************************************************************
-
 // Applying Template
 $smarty->assign("con", $con);
 $smarty->assign("next_matches", $database->getNextMatches($con));
