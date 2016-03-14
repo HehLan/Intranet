@@ -20,25 +20,46 @@ if (!$connected) {
 }
 
 // recuperer les maps
-$maps = '';
 $sql = "select * from hotsmaps";
 $query = new Query($database, $sql);
 if ($query->execute())
+{
     $maps = $query->getResult();
-else {
-    echo 'ERREUR SQL MAPS';
-    exit;
+}
+else
+{
+    global $glob_debug;
+    if($glob_debug)
+    {
+        echo 'ERREUR SQL MAPS';
+    }
+    exit; 
 }
 
 // get player nickname
-$playerNickname = '';
-$sql = "SELECT pseudo FROM joueurs WHERE id_joueur=:userId";
+$sql = 'SELECT pseudo FROM joueurs WHERE id_joueur=:userId';
 $query = new Query($database, $sql);
 $query->bind(':userId', $userId, PDO::PARAM_INT);
-if ($query->execute()) {
-    $playerNickname = $query->getResult()[0]['pseudo'];
-} else {
-    echo 'ERREUR SQL MAPS';
+
+if ($query->execute())
+{
+    // Test if the user has a pseudo or not
+    if ($query->getResult())
+    {
+        $playerNickname = $query->getResult()[0]['pseudo'];
+    }
+    else
+    {
+        $playerNickname = 'unknown';
+    }
+}
+else
+{
+    global $glob_debug;
+    if($glob_debug)
+    {
+        echo 'ERREUR SQL MAPS';
+    }
     exit;
 }
 
