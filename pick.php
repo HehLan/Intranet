@@ -19,22 +19,6 @@ if (!$connected) {
     die();
 }
 
-// ******************** test proposals -> don't touch!!!! **********************
-//
-//$sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id';
-//$query = new Query($database, $sql);
-//$query->bind(':id', $id_tournoi, PDO::PARAM_INT);
-//if ($query->execute())
-//{
-//    $groupes = $query->getResult();
-//}
-//else
-//{
-//    echo 'ERREUR SQL GROUPES';
-//    exit;
-//}
-//
-// *****************************************************************************
 // recuperer les maps
 $sql = "select * from hotsmaps";
 $query = new Query($database, $sql);
