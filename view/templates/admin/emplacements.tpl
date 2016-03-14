@@ -32,7 +32,7 @@
                 <select id="SelectEquipe">
                     <option value="" selected ></option>
                     {foreach from=$equipes item=equipe}
-                        <option value="{$equipes['id_equipes']}">{$equipes['nom']}</option>
+                        <option value="{$equipe['id_equipes']}">{$equipe['nom']}</option>
                     {/foreach}           
                 </select>
                 <div id="dialogEquipe_Emplacement"></div>

@@ -8,14 +8,11 @@ require_once(DOCUMENT_ROOT.'/class/Database.class.php');
 require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
 require_once(DOCUMENT_ROOT.'/class/Query.class.php');
 
-
-
 $connected = false;
 $allowed = false;
 $chatIsActive = false;
 $database = new Database();
 $smarty = new Smarty_HEHLan();
-
 
 $connected = Auth::isLogged();
 $allowed = Auth::isAllowed(3);

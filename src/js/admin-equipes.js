@@ -1,6 +1,7 @@
-$(document).ready(function () {
-
-    $(".EquipeAdmin").click(function () {
+$(document).ready(function()
+{
+    $('.EquipeAdmin').click(function()
+    {
 
         $('#submitNewPlayerInTeam').show();
         $(".EquipeAdmin").css({background: "none"});
