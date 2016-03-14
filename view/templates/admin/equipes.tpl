@@ -4,9 +4,6 @@
     <head>
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/equipes.css" >
-        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
         <script type="text/javascript" src="{#domain#}/src/js/admin-equipes.js"></script>		
     </head>
 
