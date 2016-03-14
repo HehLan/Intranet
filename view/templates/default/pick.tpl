@@ -21,20 +21,23 @@
         </nav>
 
         <div class="container-fluid">
-            <h2></h2>
+            <h2> </h2>
             <div class="row">
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
-                    <div class="glyphicon glyphicon-user" style="font-size:3em"></div> 
+                    <div id="iconPlayer1" class="glyphicon glyphicon-user" style="font-size:3em" ></div> 
                     <div>{$playerNickname}</div>
+                    <br>
+                    <br>
+                    <button onclick="hideGrayBox();">hide grayBox</button>
                 </div>
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10" id="middleDiv">
                     <div class="row">
                         {foreach from=$maps item=map}
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <div onclick="kickMap(this)" onmouseover="highlightUp(this)" onmouseout="highlightDown(this)" data-value="1"> 
+                                <div onclick="kickMap(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-value="1"> 
                                     <img id="{$map['id']}" class="img-responsive" src="{$map['imgPath']}" alt="{$map['name']}" />
-                                    <div style="margin-bottom:5px; margin-top:3px; color:#D1D1D1; text-align:center; border:2px solid #008080">
+                                    <div class="thumbnailText">
                                         {$map['name']}
                                     </div>
                                 </div>
@@ -43,12 +46,10 @@
                     </div>
                 </div>
 
-                <div class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
+                <div id="iconPlayer2" class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
                     <div class="glyphicon glyphicon-user" style="font-size:3em"></div> 
                     <div>Player 2</div>
                 </div>
-                <button onclick="showGrayBox()">show</button>
-                <button onclick="hideGrayBox()">hide</button>
             </div>
         </div>
 
@@ -69,17 +70,15 @@
                 $('#middleDiv').prepend(grayBox);
                 grayBox.addClass("darkCover");
                 grayBox.hide();
-                grayBox.text('Hi I am replace');
+                grayBox.text('Waiting for %Player2_Nickname%');
             }
 
             function showGrayBox() {
                 grayBox.show();
-        //grayBox.addClass("darkCover");
             }
 
             function hideGrayBox() {
                 grayBox.hide();
-                //grayBox.removeClass("darkCover");
             }
 
             // suite à l'appuie sur l'image
@@ -105,9 +104,9 @@
                 });
 
                 // cacher les tuilles
-                setTimeout(function(){ 
+                setTimeout(function () {
                     showGrayBox();
-                }, 800);
+                }, 400);
             }
 
             // highlighting text 
