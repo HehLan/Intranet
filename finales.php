@@ -1,24 +1,20 @@
 <?php
+
 session_start();
-require_once('common/connect.php');
-require_once('common/utils.php');
-require_once('class/Smarty_HEHLan.class.php');
-require_once('class/Database.class.php');
-require_once('class/Query.class.php');
+require_once('/class/var.conf.php');
+require_once(DOCUMENT_ROOT.'/common/utils.php');
+require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
+require_once(DOCUMENT_ROOT.'/class/Database.class.php');
+require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
+require_once(DOCUMENT_ROOT.'/class/Query.class.php');
 
 
-$con = false;
+$connected = false;
 //$nbrteam = 0;
 $database = new Database();
 $smarty = new Smarty_HEHLan();
 
-if (isset($_SESSION['id_joueur']))
-{
-    if (($_SESSION['id_joueur'] != 0))
-    {
-        $con = true;
-    }
-}
+$connected = Auth::isLogged();
 
 $id_tournoi = 1;
 $looser = 0;

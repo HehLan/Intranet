@@ -69,5 +69,15 @@ class Query
     {
         return $this->output_object;
     }
+    
+    public function getPreparedQuery()
+    {
+        return $this->prepared_query;
+    }
+    
+    public function getExecutedQuery()
+    {
+        return $this->executed_query;
+    }
 
 }

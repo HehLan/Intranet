@@ -1,11 +1,12 @@
 <?php
 
 session_start();
-require_once('../common/utils.php');
-require_once('../class/Smarty_HEHLan.class.php');
-require_once('../class/Database.class.php');
-require_once('../class/Auth.class.php');
-require_once('../class/Query.class.php');
+require_once('../class/var.conf.php');
+require_once(DOCUMENT_ROOT.'/common/utils.php');
+require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
+require_once(DOCUMENT_ROOT.'/class/Database.class.php');
+require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
+require_once(DOCUMENT_ROOT.'/class/Query.class.php');
 
 
 $connected = false;
@@ -152,8 +153,8 @@ $nbr_groupes = count($groupes);
 
 
 // send to the template
-$smarty->assign("con", $connected);
-$smarty->assign("chat", $chatIsActive);
+$smarty->assign('con', $connected);
+$smarty->assign('chat', $chatIsActive);
 $smarty->assign('tournoi', $tournoi);
 $smarty->assign('groupes', $groupes);
 $smarty->assign('participants', $participants);
