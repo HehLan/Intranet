@@ -35,24 +35,33 @@ if ($query->execute())
 }
 else
 {
-	global $glob_debug;
-	if ($glob_debug)
-		echo 'ERREUR SQL GROUPES';
-    exit;
+    global $glob_debug;
+    if($glob_debug)
+    {
+        echo 'ERREUR - SQL GROUPES';
+    }
+    exit; 
 }
 
 
 //SQL Query to count the number of matchs for a tournament and a looser bracket
 $sql = 'SELECT COUNT(*) AS nbr
-			FROM matchs
-			WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=2';
-$query = $connexion->prepare($sql);
-$query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
-if (!$query->execute()) {
-    echo 'ERREUR SQL COUNT LB2';
+        FROM matchs
+        WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=2';
+$query = new Query($database, $sql);
+$query->bind(':idt', $id_tournoi, PDO::PARAM_INT);
+if (!$query->execute())
+{
+    global $glob_debug;
+    if($glob_debug)
+    {
+        echo 'ERREUR - SQL COUNT LB2';
+    }
     exit;
-} else {
-    $nbr_lb2 = $query->fetch(PDO::FETCH_ASSOC);
+}
+else
+{
+    $nbr_lb2 = $query->getResult()[0];
     $nbr_lb2 = $nbr_lb2['nbr'];
 }
 
@@ -63,17 +72,22 @@ $nbr_lb3 = 0;
 
 //SQL Query to count the number of matchs for a tournament and a double looser bracket
 $sql = 'SELECT COUNT(*) AS nbr
-			 FROM matchs
-			 WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=3';
-$query = $connexion->prepare($sql);
-$query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
-if (!$query->execute()) {
+        FROM matchs
+        WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=3';
+$query = new Query($database, $sql);
+$query->bind(':idt', $id_tournoi, PDO::PARAM_INT);
+if (!$query->execute())
+{
     global $glob_debug;
-		if($glob_debug)
-			echo 'ERREUR SQL COUNT LB3';
+    if($glob_debug)
+    {
+        echo 'ERREUR - SQL COUNT LB3';
+    }
     exit;
-} else {
-    $nbr_lb3 = $query->fetch(PDO::FETCH_ASSOC);
+}
+else
+{
+    $nbr_lb3 = $query->getResult()[0];
     $nbr_lb3 = $nbr_lb3['nbr'];
 }
 

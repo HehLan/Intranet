@@ -9,7 +9,7 @@
         {if $con}
             <p>Bienvenue {$smarty.session.login}, <a href="common/logout.php">se déconnecter</a></p>
         {else}
-            <p>Bienvenue, <a href="index.php">se connecter</a></p>
+            <p>Bienvenue, <a href="{#domain#}/index.php">se connecter</a></p>
         {/if}
         <p>Votre IP: {$smarty.server.REMOTE_ADDR}</p>
         {if $con & isset($next_matches) & !empty($next_matches)}
