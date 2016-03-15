@@ -4,7 +4,7 @@
     <head>
         {include file="admin/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/tournois.css" >
-        <script type="text/javascript" src="{#domain#}/src/js/admin-tournois.js"></script>
+        <script type="text/javascript" src="{#adminAssets#}/js/tournois.js"></script>
     </head>
     <body role="document">
         {include file="admin/header.tpl" con=$con }

@@ -50,11 +50,11 @@ $tournoi = $database->getTournament($id_tournoi);
 
 if( $tournoi['joueurParTeam'] > 1)
 {
-    include_once(DOCUMENT_ROOT.'/common/tournoisPools.php');
+    include_once(DOCUMENT_ROOT.'/modules/tournoisPools.php');
 }
 else
 {
-    include_once(DOCUMENT_ROOT.'/common/tournoisRounds.php');
+    include_once(DOCUMENT_ROOT.'/modules/tournoisRounds.php');
 }
 
 ?>

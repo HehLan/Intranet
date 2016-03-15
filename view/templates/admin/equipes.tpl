@@ -4,7 +4,7 @@
     <head>
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/equipes.css" >
-        <script type="text/javascript" src="{#domain#}/src/js/admin-equipes.js"></script>		
+        <script type="text/javascript" src="{#adminAssets#}/js/equipes.js"></script>		
     </head>
 
     <body role="document">	

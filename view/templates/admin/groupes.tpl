@@ -4,8 +4,6 @@
     <head>    
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/groupes.css" >
-        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
     </head>
     <body>
         {include file="admin/header.tpl" con=$con }

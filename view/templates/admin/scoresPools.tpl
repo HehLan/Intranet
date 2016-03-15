@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
 	{include file="admin/meta.tpl"}
-	<link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/score.css" />
-	<script type="text/javascript" src="{#domain#}/src/js/score_state.js"></script>
+	<link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/scores.css" />
+	<script type="text/javascript" src="{#adminAssets#}/js/scores.js"></script>
 </head>
 <body role="document">
 	{include file="admin/header.tpl" con=$con }

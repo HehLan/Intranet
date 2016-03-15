@@ -4,8 +4,8 @@
     <head>
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/finalesRounds.css" >
-        <script type="text/javascript" src="{#domain#}/src/js/admin-finales.js"></script>
-	<script type="text/javascript" src="{#domain#}/src/js/bracket/jquery.gracket.js"></script> 
+        <script type="text/javascript" src="{#adminAssets#}/js/finales.js"></script>
+        <script type="text/javascript" src="{#domain#}/lib/jQuery/bracket/jquery.gracket.js"></script>  
     </head>
     <body role="document">
         {include file="admin/header.tpl" con=$con }

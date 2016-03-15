@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('modules/connect.php');
+require_once('../common/connect.php');
 require_once('../common/utils.php');
 $con=false;
 
