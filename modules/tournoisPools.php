@@ -219,6 +219,7 @@ foreach ($groupes as $itGroupe => $groupe)
                 }
 
                 $resultTeam[] = array(
+                    "id_match" => $database->getIdMatchEquipe($groupe['id_groupe'], $team['id'], $team2['id']),
                     "couleur" => $couleur,
                     "valeur" => $valeur,
                     "isPickActive" => $isPickActive,
