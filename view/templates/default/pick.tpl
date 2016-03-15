@@ -29,16 +29,6 @@
                     <br>
                     <br>
                     <button onclick="hideGrayBox();">hide grayBox</button>
-
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <!-- circle div -->
-                    <div>
-                        <div class="circle"></div>
-                        <div class="circle1"></div>
-                    </div>
                 </div>
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10" id="middleDiv">
@@ -68,7 +58,8 @@
         <script>
 
             var grayBox;   // box gris qui apparait devant les tuilles
-
+            var grayBoxText;
+            
             $(document).ready(function () {
                 initGrayBox();
                 showGrayBox();
@@ -76,11 +67,15 @@
 
             // le div gris qui va cacher les tuilles pendant que Player1 attends la rep de Player2
             function initGrayBox() {
-                grayBox = $("<div></div>");
+                grayBox = $('<div></div>');
+                grayBoxText = $('<span id="grayBoxText"></span>');
+                
                 $('#middleDiv').prepend(grayBox);
+                grayBox.append('<div id="loadingCircle"><div class="circle"></div><div class="circle1"></div></div>');
+                grayBox.append(grayBoxText);
+                
                 grayBox.addClass("darkCover");
-                grayBox.hide();
-                grayBox.text('Waiting for %Player2_Nickname%');
+                grayBoxText.text('Waiting for %Player2_Nickname%');
             }
 
             function showGrayBox() {

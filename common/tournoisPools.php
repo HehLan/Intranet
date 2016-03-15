@@ -18,9 +18,9 @@ if (is_array($groupes)) {
     }
 }
 else {
-	global $glob_debug;
-	if($glob_debug)
-		echo 'groupes is not an array';
+    global $glob_debug;
+    if ($glob_debug)
+        echo 'groupes is not an array';
     exit;
 }
 
@@ -72,7 +72,6 @@ foreach ($groupes as $itGroupe => $groupe) {
                 while ($ligne = $query->fetch(PDO::FETCH_ASSOC)) {
                     if (!is_null($ligne['score'])) {
                         $scores[$team['id']][$ligne['team2']]['score'] = $ligne['score'];
-						
                     }
                     $heures[$team['id']][$ligne['team2']] = $ligne['heure'];
                 }
@@ -125,10 +124,10 @@ foreach ($groupes as $itGroupe => $groupe) {
                     }
                 }
 
-				$resultTeam[] = array(
-					"id_match" => $database->getIdMatchEquipe($groupe['id_groupe'],$team['id'],$team2['id']),
-					"couleur" => $couleur,
-					"valeur" => $valeur,
+                $resultTeam[] = array(
+                    "id_match" => $database->getIdMatchEquipe($groupe['id_groupe'], $team['id'], $team2['id']),
+                    "couleur" => $couleur,
+                    "valeur" => $valeur,
                     "isPickActive" => $isPickActive);
             } else
                 $resultTeam[] = array();

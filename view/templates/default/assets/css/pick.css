@@ -15,20 +15,32 @@
     margin-top: -13px;
     margin-left: -10px;
     border-radius: 5px;
+    /* center content verticaly*/
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
-.darkCover:before {
+/*.darkCover:before {
     content: " ";
     display: inline-block;
     height: 100%;
     vertical-align: middle;
-    max-width: 0.001%; /* Just in case the text wrapps, you shouldn't notice it */
+    max-width: 0.001%;  Just in case the text wrapps, you shouldn't notice it 
 }
 
 .darkCover:first-child {
     display: inline-block;
     vertical-align: middle;
     max-width: 99.999%;
+}*/
+
+#loadingCircle{
+    display: inline-block;
+    opacity: 1;
+}
+#grayBoxText{
+    opacity: 1;
 }
 
 .thumbnailText{
@@ -41,7 +53,6 @@
 
 
 /* Loading Circle */
-
 .circle {
 	background-color: rgba(0,0,0,0);
 	border:5px solid rgba(0,183,229,0.9);
@@ -72,7 +83,6 @@
 	-moz-animation:spinoffPulse 1s infinite linear;
 	-webkit-animation:spinoffPulse 1s infinite linear;
 }
-
 @-moz-keyframes spinPulse {
 	0% { -moz-transform:rotate(160deg); opacity:0; box-shadow:0 0 1px #2187e7;}
 	50% { -moz-transform:rotate(145deg); opacity:1; }
