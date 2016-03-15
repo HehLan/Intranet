@@ -7,48 +7,68 @@ require_once('class/Database.class.php');
 require_once('class/Auth.class.php');
 
 // Variables
-$connected = true;
-$chatIsActive = false;
 $database = new Database();
 $smarty = new Smarty_HEHLan();
 $connexion = $database->getConnection();
+$userId = $_GET['id'];
+$matchId = $_GET['idMatch'];
 
-// ******************** test proposals -> don't touch!!!! **********************
-//
-//$sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id';
-//$query = new Query($database, $sql);
-//$query->bind(':id', $id_tournoi, PDO::PARAM_INT);
-//if ($query->execute())
-//{
-//    $groupes = $query->getResult();
-//}
-//else
-//{
-//    echo 'ERREUR SQL GROUPES';
-//    exit;
-//}
-//
-// *****************************************************************************
+$connected = Auth::isLogged();
+if (!$connected) {
+    echo "Get da fuck out !!!";
+    die();
+}
 
 // recuperer les maps
 $sql = "select * from hotsmaps";
 $query = new Query($database, $sql);
- 
-if($query->execute()){
+if ($query->execute())
+{
     $maps = $query->getResult();
 }
 else
 {
-    echo 'ERREUR SQL MAPS';
+    global $glob_debug;
+    if($glob_debug)
+    {
+        echo 'ERREUR SQL MAPS';
+    }
+    exit; 
+}
+
+// get player nickname
+$sql = 'SELECT pseudo FROM joueurs WHERE id_joueur=:userId';
+$query = new Query($database, $sql);
+$query->bind(':userId', $userId, PDO::PARAM_INT);
+
+if ($query->execute())
+{
+    // Test if the user has a pseudo or not
+    if ($query->getResult())
+    {
+        $playerNickname = $query->getResult()[0]['pseudo'];
+    }
+    else
+    {
+        $playerNickname = 'unknown';
+    }
+}
+else
+{
+    global $glob_debug;
+    if($glob_debug)
+    {
+        echo 'ERREUR SQL MAPS';
+    }
     exit;
 }
 
-
-$connected = Auth::isLogged();
-
 // Applying Template
 $smarty->assign('con', $connected);
-$smarty->assign('chat', $chatIsActive);
 $smarty->assign('maps', $maps);
+$smarty->assign('userId', $userId);
+$smarty->assign('playerNickname', $playerNickname);
+$smarty->assign('matchId', $matchId);
+
 $smarty->display('default/pick.tpl');
 ?>

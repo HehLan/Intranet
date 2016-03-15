@@ -5,3 +5,4 @@ view/templates_c/*
 class/var.conf.php
 *.orig
 view/configs/paths.conf
+/cache/
