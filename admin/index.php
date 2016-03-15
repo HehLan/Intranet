@@ -42,7 +42,10 @@ if(!$connected && !$allowed)
 
 
 
-$url_games_piechart = WEB_ROOT.'/src/graphs/games.php';
+$url_games_players_piegraph = WEB_ROOT.'/src/graphs/games_players_piegraph.php';
+$url_games_teams_piegraph = WEB_ROOT.'/src/graphs/games_teams_piegraph.php';
+$url_games_bargraph = WEB_ROOT.'/src/graphs/games_bargraph.php';
+
 
 
 
@@ -54,7 +57,10 @@ $url_games_piechart = WEB_ROOT.'/src/graphs/games.php';
 // send to the template
 $smarty->assign('con', $connected);
 $smarty->assign('chat', $chatIsActive);
-$smarty->assign('url_games_piechart', $url_games_piechart);
+$smarty->assign('url_games_players_piegraph', $url_games_players_piegraph);
+$smarty->assign('url_games_teams_piegraph', $url_games_teams_piegraph);
+$smarty->assign('url_games_bargraph', $url_games_bargraph);
+
 
 
 
