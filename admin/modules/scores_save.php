@@ -12,7 +12,6 @@ require_once(DOCUMENT_ROOT.'/class/Query.class.php');
 
 $connected = false;
 $allowed = false;
-$chatIsActive = false;
 $database = new Database();
 $smarty = new Smarty_HEHLan();
 

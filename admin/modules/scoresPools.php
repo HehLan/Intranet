@@ -106,7 +106,6 @@ foreach($groupes as $keyGroupe => $groupe)
 
 // send to the template
 $smarty->assign('con', $connected);
-$smarty->assign('chat', $chatIsActive);
 $smarty->assign('participants', $participants);
 $smarty->assign('tournoi', $tournoi);
 $smarty->assign('groupes', $groupes);
