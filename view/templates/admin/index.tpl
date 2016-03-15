@@ -19,6 +19,9 @@
                 <p>Vous pourrez voir une vue d'ensemble de la gestion de la HEHLan.</p>
                 <h3>Statistiques</h3>
                 <p>Dessiner de beaux graphes :)</p>
+                                <img src="{$url_games_piechart}" />
+
+
             </div>
         </div>
 
