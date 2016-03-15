@@ -1,39 +1,5 @@
 <?php
 
-// Setting second and third loser brackets
-$nbr_lb2 = 0;
-$nbr_lb3 = 0;
-
-//SQL Query to count the number of matchs for a tournament and a looser bracket of 2
-$sql = 'SELECT COUNT(*) AS nbr
-			FROM matchs
-			WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=2';
-$query = $connexion->prepare($sql);
-$query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
-if (!$query->execute()) {
-    echo 'ERREUR SQL COUNT LB2';
-    exit;
-} else {
-    $nbr_lb2 = $query->fetch(PDO::FETCH_ASSOC);
-    $nbr_lb2 = $nbr_lb2['nbr'];
-}
-
-//SQL Query to count the number of matchs for a tournament and a looser bracket of 3
-$sql = 'SELECT COUNT(*) AS nbr
-			 FROM matchs
-			 WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=3';
-$query = $connexion->prepare($sql);
-$query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
-if (!$query->execute()) {
-    global $glob_debug;
-		if($glob_debug)
-			echo 'ERREUR SQL COUNT LB3';
-    exit;
-} else {
-    $nbr_lb3 = $query->fetch(PDO::FETCH_ASSOC);
-    $nbr_lb3 = $nbr_lb3['nbr'];
-}
-
 
 foreach ($groupes as $itGroupe => $groupe) {
 	//-----------------TOURNOI TYPE UT TRACKMANIA-----------------

@@ -18,42 +18,10 @@ if (is_array($groupes)) {
     }
 }
 else {
-    echo 'groupes is not an array';
+	global $glob_debug;
+	if($glob_debug)
+		echo 'groupes is not an array';
     exit;
-}
-$nbr_lb2 = 0;
-$nbr_lb3 = 0;
-
-//SQL Query to count the number of matchs for a tournament and a looser bracket of 2
-$sql = 'SELECT COUNT(*) AS nbr
-			FROM matchs
-			WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=2';
-$query = $connexion->prepare($sql);
-$query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
-if (!$query->execute()) {
-    global $glob_debug;
-    if ($glob_debug)
-        echo 'ERREUR SQL COUNT LB2';
-    exit;
-} else {
-    $nbr_lb2 = $query->fetch(PDO::FETCH_ASSOC);
-    $nbr_lb2 = $nbr_lb2['nbr'];
-}
-
-//SQL Query to count the number of matchs for a tournament and a looser bracket of 3
-$sql = 'SELECT COUNT(*) AS nbr
-			 FROM matchs
-			 WHERE id_groupe IS NULL AND id_tournoi=:idt AND looser_bracket=3';
-$query = $connexion->prepare($sql);
-$query->bindValue(':idt', $id_tournoi, PDO::PARAM_INT);
-if (!$query->execute()) {
-    global $glob_debug;
-    if ($glob_debug)
-        echo 'ERREUR SQL COUNT LB3';
-    exit;
-} else {
-    $nbr_lb3 = $query->fetch(PDO::FETCH_ASSOC);
-    $nbr_lb3 = $nbr_lb3['nbr'];
 }
 
 $totaux = array();
@@ -88,7 +56,7 @@ foreach ($groupes as $itGroupe => $groupe) {
     $heures = '';
     if (is_array($teams)) {
         foreach ($teams as $team) {
-            $sql = "SELECT me.id_match,m.heure, SUM(me.score) as score, 
+            $sql = "SELECT m.heure, SUM(me.score) as score, 
 				(SELECT mte2.id_equipe FROM matchs_equipes as mte2 WHERE mte2.id_match=m.id_match AND mte2.id_equipe<>:ide LIMIT 0,1) as team2								
 			FROM (matchs_equipes as mte, matchs as m) 
 			LEFT JOIN (manches_equipes as me)
@@ -103,7 +71,7 @@ foreach ($groupes as $itGroupe => $groupe) {
                 while ($ligne = $query->fetch(PDO::FETCH_ASSOC)) {
                     if (!is_null($ligne['score'])) {
                         $scores[$team['id']][$ligne['team2']]['score'] = $ligne['score'];
-                        $scores[$team['id']][$ligne['team2']]['id_match'] = $ligne['id_match'];
+						
                     }
                     $heures[$team['id']][$ligne['team2']] = $ligne['heure'];
                 }
@@ -130,7 +98,6 @@ foreach ($groupes as $itGroupe => $groupe) {
                 $couleur = 'same_';
                 $valeur = '';
                 $isPickActive = '';
-                $idMatch = '';
 
                 if (isset($scores[$team['id']][$team2['id']])) {
                     $couleur = 'loose_';
@@ -158,13 +125,9 @@ foreach ($groupes as $itGroupe => $groupe) {
                         //$idMatch = $scores[$team['id']][$ligne['team2']]['id_match'];
                     }
                 }
-				if(isset($scores[$team2['id']][$team['id']]['id_match']))
-					$id_match = $scores[$team2['id']][$team['id']]['id_match'];
-				else
-					$id_match = 0;
 				
 				$resultTeam[] = array(
-					"id_match" => $id_match,
+					"id_match" => $database->getIdMatchEquipe($groupe['id_groupe'],$team['id'],$team2['id']),
 					"couleur" => $couleur,
 					"valeur" => $valeur,
                     "isPickActive" => $isPickActive);
