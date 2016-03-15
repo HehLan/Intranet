@@ -575,5 +575,29 @@ class Database
             exit;
         }
     }
+	
+	///////////////////////////////////////////////
+	///////////////////TOURNOI/////////////////////
+	///////////////////////////////////////////////
+	
+	public function getIdMatchEquipe($idGroup,$idTeam1,$idTeam2)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/getIdMatchEquipe.sql');
+		$query = new Query($this,$sql);
+        $query->bind('idg', $idGroup, PDO::PARAM_INT);
+        $query->bind('idt1', $idTeam1, PDO::PARAM_INT);
+        $query->bind('idt2', $idTeam2, PDO::PARAM_INT);
+        if ($query->execute())
+        {
+			return $query->getResult()[0]['id_match'];
 
+        }
+        else
+        {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+				echo 'ERREUR SQL ID MANCHE';
+            return 0;
+        }
+	}
 }
