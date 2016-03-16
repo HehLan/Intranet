@@ -22,7 +22,7 @@ if (!$connected) {
     die();
 }
 
-// recuperer les maps
+// ********************** recuperer les maps **********************
 $sql = "select * from hotsmaps";
 $query = new Query($database, $sql);
 if ($query->execute()) {
@@ -35,7 +35,7 @@ if ($query->execute()) {
     exit;
 }
 
-// get player nickname
+// ********************** get player nickname **********************
 $sql = 'SELECT pseudo FROM joueurs WHERE id_joueur=:userId';
 $query = new Query($database, $sql);
 $query->bind(':userId', $playerId, PDO::PARAM_INT);
@@ -54,7 +54,7 @@ if ($query->execute()) {
     exit;
 }
 
-// chercher l'id de l'adversaire
+// ********************** chercher l'id de l'adversaire **********************
 $sql = "SELECT joueurs.id_joueur, pseudo FROM matchs_equipes 
         LEFT JOIN equipes_joueur ON matchs_equipes.id_equipe=equipes_joueur.id_equipes
         LEFT JOIN joueurs  ON equipes_joueur.id_joueur=joueurs.id_joueur
@@ -70,7 +70,6 @@ if ($query->execute()) {
         echo 'ERREUR SQL MAPS';
     exit;
 }
-
 foreach ($players as $player) {
     if ($player['id_joueur'] != $playerId) {
         $opponentNickname = $player['pseudo'];
@@ -78,9 +77,8 @@ foreach ($players as $player) {
     }
 }
 
-// verifier l'existence de la table temporaire, sinon creer
-$sql = "SHOW TABLES LIKE 'temppick_" . $matchId . "'";
-//$sql = "SHOW TABLES LIKE 'equipes'";
+// ********************** verifier l'existence de la table temporaire, sinon creer **********************
+$sql = "SHOW TABLES LIKE 'temppick_$matchId'";
 $query = new Query($database, $sql);
 if ($query->execute()) {
     $result = $query->getResult();
@@ -91,28 +89,26 @@ if ($query->execute()) {
     exit;
 }
 
-if (count($result) > 0) {
-    // si la table exite
+// si la table existe --> recuperer les id's et les etats 'checked'
+if (count($result) > 0) { 
+    $sql = "SELECT mapId, checked FROM temppick_$matchId";
+    $query = new Query($database, $sql);
     echo 'table exists';
     // TODO
-    die();
-} else {
-    // si la table n'exitste pas --> creer et remplire
-    
+} else { // si la table n'exitste pas --> creer et remplire
     // creation
     $sql = "CREATE TABLE hehlanbd.temppick_$matchId ("
             . "mapId INT NOT NULL AUTO_INCREMENT, "
             . "checked BOOLEAN NOT NULL, "
-            . "PRIMARY KEY (mapId)) "
-            . "ENGINE = MEMORY";
+            . "PRIMARY KEY (mapId))";
     $req = $connexion->prepare($sql);
     $req->execute();
-    
+
     // remplissage
     $counter = 0;
     $sql = "INSERT INTO hehlanbd.temppick_$matchId (mapId, checked) VALUES ";
     foreach ($maps as $map) {
-        if ($counter < count($maps)-1) {
+        if ($counter < count($maps) - 1) {
             $sql .= " ('" . $map['id'] . "', FALSE),";
             $counter++;
         } else {
@@ -124,7 +120,7 @@ if (count($result) > 0) {
 }
 
 
-// Applying Template
+// ********************** Applying Template **********************
 $smarty->assign('con', $connected);
 $smarty->assign('maps', $maps);
 $smarty->assign('playerId', $playerId);
