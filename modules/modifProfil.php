@@ -24,16 +24,19 @@ if (!empty($_POST))
     $erreurSession = '';
 
     //vérification de la session
+    // if (empty($_SESSION['Auth']))
     if (empty($_SESSION['id_joueur']))
     {
         $valid = false;
         $erreurSession = 'Erreur de session 1 : Veuillez vous reconnecter!';
     }
+    //else if(empty($_SESSION['Auth']['password']))
     else if (empty($_SESSION['password']))
     {
         $valid = false;
         $erreurSession = 'Erreur de session 2 : Veuillez vous reconnecter!';
     }
+    //else if(empty($_SESSION['Auth']['pseudo']))
     else if (empty($_SESSION['login']))
     {
         $valid = false;
@@ -100,6 +103,7 @@ if (!empty($_POST))
         $pseudoLOL = $_POST["pseudoLOL"];
 
         //si le joueur change de pseudo
+        //if ($pseudo != $_SESSION['Auth']['pseudo'])
         if ($pseudo != $_SESSION['login'])
         {
             //vérification si le pseudo existe déjà
