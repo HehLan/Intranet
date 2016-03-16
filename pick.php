@@ -72,6 +72,9 @@ if ($query->execute()) {
     exit;
 }
 
+$opponentNickname = '';
+$opponentId = '';
+
 foreach ($players as $player) {
     if ($player['id_joueur'] != $playerId) {
         $opponentNickname = $player['pseudo'];
