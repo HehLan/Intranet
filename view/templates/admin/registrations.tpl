@@ -11,20 +11,20 @@
 	
 	<div id="container" class="container-fluid">
             <div id="contenu" class="row">
-                <div class="table-responsive">
+                <div class="table-responsive col-lg-8">
                     <table class="table table-condensed">
                         <caption>
                             <h4>Informations sur l'enregistrement des inscriptions</h4>
                         </caption>
                         <thead>
                             <tr>
-                                <th>Payé</th>
-                                <th>Pseudo</th>
-                                <th>Team</th>
-                                <th>HOTS</th>
-                                <th>COD</th>
-                                <th>TM</th>
-                                <th>HS</th>
+                                <th>Payé <span class="badge">{$counter['paye']}</span></th>
+                                <th>Pseudo <span class="badge">{$counter['player']}</span></th>
+                                <th>Team <span class="badge">{$counter['team']}</span></th>
+                                <th>HOTS <span class="badge">{$counter['HOTS']}</span></th>
+                                <th>COD <span class="badge">{$counter['COD']}</span></th>
+                                <th>TM <span class="badge">{$counter['TM']}</span></th>
+                                <th>HS <span class="badge">{$counter['HS']}</span></th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -38,11 +38,6 @@
                                 <td>{$counter['HS']}</td>
                             </tr>
                         </tfoot>
-                        
-                        
-
-
-                        
                         <tbody>
                             {foreach from=$datas item=data}
                                 <tr>

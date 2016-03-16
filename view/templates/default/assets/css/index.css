@@ -46,24 +46,6 @@
 }
 
 
-
-/*------------ LOG ON ---------------------------------*/
-
-
-#bloc_connexion_form
-{
-    background-color: #111111;
-    border: 1px solid #353535;
-}
-
-input
-{
-    height: 20px;
-}
-
-
-
-
 /*------------ TCHAT ---------------------------------*/
 
 #bloc_chat

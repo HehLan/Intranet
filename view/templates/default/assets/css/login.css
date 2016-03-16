@@ -1,0 +1,57 @@
+/*----------------------------------------------------------------------*/
+/*                          LOGIN CSS                                  */
+/*----------------------------------------------------------------------*/
+
+#container
+{
+    margin-top: 100px;
+}
+
+.logo-hehlan
+{
+    display: block;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+img 
+{
+    width: 500px;
+    height: 188px;
+    display: block;
+    margin: auto;
+    background: url(../img/logoheh.jpg) center no-repeat;	/* IE6 */
+    background: url(../img/logoheh.png) center no-repeat;
+    background-size: cover; /* Safari */
+    -moz-background-size: 100% 100%; /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%; /* Opera 9.5 */
+    -webkit-background-size: 100% 100%; /* Safari 3.0 */
+    background-size: 100% 100%; /* Gecko 2.0 (Firefox 4.0) > CSS3 */
+}
+
+
+#bloc_login, #bloc_forgot
+{
+    display: block;
+    width: 375px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.myform
+{
+    background-color: #111111;
+    border: 1px solid #353535;
+}
+
+input
+{
+    height: 20px;
+}
+
+legend
+{
+    color: white;
+}
+

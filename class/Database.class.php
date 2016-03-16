@@ -83,14 +83,21 @@ class Database
         $query->bind(':pwd', sha1($password), PDO::PARAM_STR);
         if($query->execute())
         {
-            $player = new Player($query->getResult()[0]);
+            if(!empty($query->getResult()))
+            {
+                $player = new Player($query->getResult()[0]);
+            }
+            else
+            {
+                $player = null;
+            }
         }
         else
         {
-			GLOBAL $glob_debug;
-			if ($glob_debug)
-				echo 'ERROR PLAYER';
-			exit; 
+            GLOBAL $glob_debug;
+            if ($glob_debug)
+                    echo 'ERROR PLAYER';
+            exit; 
         }
         return $player;
     }    
