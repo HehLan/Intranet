@@ -70,6 +70,7 @@ if ($query->execute()) {
         echo 'ERREUR SQL MAPS';
     exit;
 }
+
 foreach ($players as $player) {
     if ($player['id_joueur'] != $playerId) {
         $opponentNickname = $player['pseudo'];
