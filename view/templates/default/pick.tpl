@@ -48,7 +48,7 @@
 
                 <div id="iconPlayer2" class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
                     <div class="glyphicon glyphicon-user" style="font-size:3em"></div> 
-                    <div>Player 2</div>
+                    <div>{$opponentNickname}</div>
                 </div>
             </div>
         </div>
@@ -57,25 +57,40 @@
 
         <script>
 
-            var grayBox;   // box gris qui apparait devant les tuilles
+            // box gris qui apparait devant les tuilles
+            var grayBox;
             var grayBoxText;
-            
+
+            // les données relatives à l'adversaire et le joueur
+            var playerId;
+            var playerNickname;
+            var opponentId;
+            var opponentNickname;
+
             $(document).ready(function () {
+                initPlayers();
                 initGrayBox();
                 showGrayBox();
             });
+
+            function initPlayers() {
+                playerId = "{$playerId}";
+                playerNickname = "{$playerNickname}";
+                opponentId = "{$opponentId}";
+                opponentNickname = "{$opponentNickname}";
+            }
 
             // le div gris qui va cacher les tuilles pendant que Player1 attends la rep de Player2
             function initGrayBox() {
                 grayBox = $('<div></div>');
                 grayBoxText = $('<span id="grayBoxText"></span>');
-                
+
                 $('#middleDiv').prepend(grayBox);
                 grayBox.append('<div id="loadingCircle"><div class="circle"></div><div class="circle1"></div></div>');
                 grayBox.append(grayBoxText);
-                
+
                 grayBox.addClass("darkCover");
-                grayBoxText.text('Waiting for %Player2_Nickname%');
+                grayBoxText.text('En attente de  ' + opponentNickname);
             }
 
             function showGrayBox() {
