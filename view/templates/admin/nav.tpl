@@ -19,6 +19,7 @@
                 <li><a href="emplacements.php">Emplacements</a></li>
                 <li><a href="inscriptions.php">Inscriptions</a></li>
                 <li><a href="tournois.php">Tournois</a></li> 
+                <li><a href="registrations.php">Registrations</a></li> 
             </ul>
         </div>
     </div>			

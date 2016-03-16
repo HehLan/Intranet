@@ -988,7 +988,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: "POST",
-                url: "modules/connexion/oublieMDP.php",
+                url: "common/oublieMDP.php",
                 data: "pseudoOublie=" + pseudo + "&emailOublie=" + emailOublie,
                 success: function (contenu, etat) {
                     $("#erreurMDPoublie").html(contenu);

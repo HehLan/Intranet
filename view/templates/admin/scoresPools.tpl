@@ -65,7 +65,7 @@
 
 	<div id="div_popup" class="popup_centree" style="height:200px;width:600px;margin-top:-100px;margin-left:-300px;">
 		<input type="button" value="annuler" onclick="popup_close()" />
-		<form method="POST" action="modifier_heure.php">
+		<form method="POST" action="{#domain#}/admin/modules/modifier_heure.php">
 		<input type="hidden" name="id_match" id="input_id_match" value="0" />
 		<input type="hidden" name="id_tournoi" value="{$tournoi.id_tournoi}" />
 		<input type="hidden" name="page" value="scores" />
