@@ -2,10 +2,12 @@
 
 
 session_start();
-require_once('../../class/Auth.class.php');
-require_once('../../class/Smarty_HEHLan.class.php');
-require_once('../../class/Database.class.php');
-require_once('../../class/Query.class.php');
+require_once('../../class/var.conf.php');
+require_once(DOCUMENT_ROOT.'/common/utils.php');
+require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
+require_once(DOCUMENT_ROOT.'/class/Database.class.php');
+require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
+require_once(DOCUMENT_ROOT.'/class/Query.class.php');
 
 
 $connected = false;
@@ -174,109 +176,108 @@ foreach($groupes  as $groupe)
 		
         $h_start = $tournoi['heure_groupe_start'];
         
-        $connexion = $database->getConnection();
         switch($nbr_equipes)
         {
             case 2 :
-                creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[1]['id']);
 
                                     break;
             case 3 :
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[1]['id']);			
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[2]['id']);	
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[1]['id'],$equipes[2]['id']);													
                                     break;
             case 4 :
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[1]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[2]['id'],$equipes[3]['id']);
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[2]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[1]['id'],$equipes[3]['id']);
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[3]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[1]['id'],$equipes[2]['id']);						
                                     break;
             case 5 :
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[1]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[2]['id'],$equipes[3]['id']);
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);	
 
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[1]['id'],$equipes[2]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[4]['id'],$equipes[3]['id']);
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
 
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[4]['id'],$equipes[2]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[3]['id']);
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
 
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[4]['id'],$equipes[0]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[1]['id'],$equipes[3]['id']);
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
 
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[2]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[1]['id'],$equipes[4]['id']);
 
                                     break;
             case 6 :
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[1]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[2]['id'],$equipes[3]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[4]['id'],$equipes[5]['id']);											
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
 
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[1]['id'],$equipes[2]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[4]['id'],$equipes[3]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[5]['id']);											
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
 
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[3]['id'],$equipes[5]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[1]['id'],$equipes[4]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[2]['id'],$equipes[0]['id']);											
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
 
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[2]['id'],$equipes[5]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[0]['id'],$equipes[4]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[1]['id'],$equipes[3]['id']);											
                                     $h_start=ajouter_heures($h_start,$tournoi['duree_inter_match']);
 
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[2]['id'],$equipes[4]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[1]['id'],$equipes[5]['id']);
-                                    creer_match_equipe($connexion,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
+                                    creer_match_equipe($database,$id_tournoi,$groupe['id_groupe'],$tournoi['nombreManche'],$tournoi['teamParMatch'],
                                                                             $h_start,$equipes[3]['id'],$equipes[0]['id']);											
 
                                     break;						

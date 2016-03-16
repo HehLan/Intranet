@@ -3,8 +3,8 @@
 <html>
     <head>
         {include file="default/meta.tpl"}
-	<link rel="stylesheet" type="text/css" href="{#assets#}/css/tournoisRounds.css" />
-        <script type="text/javascript" src="{#domain#}/src/js/bracket/jquery.gracket.js"></script>
+	<link rel="stylesheet" type="text/css" href="{#assets#}/css/finalesRounds.css" />
+        <script type="text/javascript" src="{#domain#}/lib/jQuery/bracket/jquery.gracket.js"></script>
     </head>
     <body>
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
@@ -12,7 +12,7 @@
         <!-- Header and Rules -->
 		{if isset($tournoi.header)}
 			<div id="headerTournoi">
-				<img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nom}" />
+				<img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nomTournoi}" />
 			</div>
 		{/if}
 		{if isset($tournoi.reglement)}

@@ -78,7 +78,7 @@ $(document).ready(function () {
         //vérifie le captcha
         $.ajax({
             type: "POST",
-            url: "modules/verifCaptcha.php",
+            url: "common/verifCaptcha.php",
             data: "recaptcha_response_field=" + $('#recaptcha_response_field').val() + "&recaptcha_challenge_field=" + $('#recaptcha_challenge_field').val(),
             async: false,
             success: function (contenu, etat) {

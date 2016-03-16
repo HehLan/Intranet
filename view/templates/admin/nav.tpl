@@ -14,9 +14,9 @@
                 <li><a href="../index.php">Back</a></li>
                 <li><a href="index.php">Overview</a></li>
                 <li><a href="news.php">News</a></li>
-                <li><a href="joueurs.php">Joueurs</a></li>
-                <li><a href="emplacements.php">Emplacements</a></li>
+                <li><a href="joueurs.php">Joueurs</a></li>                
                 <li><a href="equipes.php">Equipes</a></li>
+                <li><a href="emplacements.php">Emplacements</a></li>
                 <li><a href="inscriptions.php">Inscriptions</a></li>
                 <li><a href="tournois.php">Tournois</a></li> 
             </ul>

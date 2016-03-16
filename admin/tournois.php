@@ -79,15 +79,15 @@ if($query->execute())
         
         //MANAGE POOLS  --------------------------------------------------------------------------
         $connexion = $database->getConnection();
-		$tournoi['exist_manche_qualif0'] = existe_match($connexion,$tournoi['id_tournoi'],'group',0);
-		$tournoi['exist_manche_final0'] = existe_match($connexion,$tournoi['id_tournoi'],'final',0);
+		$tournoi['exist_manche_qualif0'] = existe_match($database,$tournoi['id_tournoi'],'group',0);
+		$tournoi['exist_manche_final0'] = existe_match($database,$tournoi['id_tournoi'],'final',0);
         
         // MANAGE FINALS ---------------------------------------------------------------------------------------------------
 
-        $tournoi['exist_manche_final2']= existe_match($connexion,$tournoi['id_tournoi'],'looser1',2);
+        $tournoi['exist_manche_final2']= existe_match($database,$tournoi['id_tournoi'],'looser1',2);
       
         // LOOSER BRACKETS ----------------------------------------------------------------------------------------------------------------------
-        $tournoi['exist_manche_final3'] = existe_match($connexion,$tournoi['id_tournoi'],'looser2',3);
+        $tournoi['exist_manche_final3'] = existe_match($database,$tournoi['id_tournoi'],'looser2',3);
         //--------------------------------------------------------------------------------------------------------------------------------
 		$tournois[] = $tournoi;
 	}     

@@ -5,6 +5,13 @@
         <!-- includes all libraries -->
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/pick.css" />
+        <!-- 
+        les variables palyerId, opponentId, etc ne sont pas initialises dans fichier js appart,
+        car le fichier n'as pas de ref à Smarty. Test, si tu y arrive à les faire passer, 
+        alors tu peux inclure le js dans assets/js/pick.js.
+        Pour l'instant je travaille comme ça...
+        -->
+        <!--<script type="text/javascript" src="{#assets#}/js/pick.js"></script>-->
     </head>
 
     <body role="document">
@@ -56,12 +63,11 @@
         {include file="default/footer.tpl"}
 
         <script>
-
             // box gris qui apparait devant les tuilles
             var grayBox;
             var grayBoxText;
 
-            // les données relatives à l'adversaire et le joueur
+            // les donn�es relatives � l'adversaire et le joueur
             var playerId;
             var playerNickname;
             var opponentId;
@@ -78,6 +84,7 @@
                 playerNickname = "{$playerNickname}";
                 opponentId = "{$opponentId}";
                 opponentNickname = "{$opponentNickname}";
+                //alert("pl: " + playerNickname + ", id: " + playerId + "\nopp:" + opponentNickname + ", id:" + opponentId);
             }
 
             // le div gris qui va cacher les tuilles pendant que Player1 attends la rep de Player2
@@ -101,7 +108,7 @@
                 grayBox.hide();
             }
 
-            // suite à l'appuie sur l'image
+            // suite � l'appuie sur l'image
             function kickMap(el) {
                 var container = $(el);   // div containing img&text
                 griserImage(container);
@@ -110,8 +117,8 @@
             function griserImage(container) {
                 container.attr('data-value', 0);    // change div's value, to avoid it change css on mouseHower
 
-                // faire disparaitre l'effet de survol, car après avoir changé 'data-value' l'effet "mouseLeave" 
-                // n'a plus d'effet. Du coup on le fait ici à la main
+                // faire disparaitre l'effet de survol, car apr�s avoir chang� 'data-value' l'effet "mouseLeave" 
+                // n'a plus d'effet. Du coup on le fait ici � la main
                 container.children('div').css('background-color', 'rgba(0,0,0,0)');
 
                 // griser le champ de texte
@@ -142,8 +149,6 @@
                 if (val == 1)
                     container.children('div').css('background-color', 'rgba(214,251,251,0)');
             }
-
         </script>
     </body>
-
 </html>

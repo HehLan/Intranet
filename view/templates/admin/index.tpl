@@ -3,11 +3,7 @@
 <html lang="fr">
     <head>
         {include file="admin/meta.tpl"} 
-        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/index.css" >
-        <script type="text/javascript" src="{#domain#}/src/js/jquery.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
-        <script type="text/javascript" src="{#domain#}/src/js/admin_index.js"></script>		
+        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/index.css" >		
     </head>
 
     <body role="document">	
@@ -23,6 +19,12 @@
                 <p>Vous pourrez voir une vue d'ensemble de la gestion de la HEHLan.</p>
                 <h3>Statistiques</h3>
                 <p>Dessiner de beaux graphes :)</p>
+                <img src="{$url_games_players_piegraph}" />
+                <img src="{$url_games_teams_piegraph}" />
+                <img src="{$url_games_bargraph}" />
+
+
+
             </div>
         </div>
 

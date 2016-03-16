@@ -36,4 +36,18 @@ class Auth
         return false;
     }
     
+    /*
+     * log out
+     */
+    static function logout()
+    {
+        session_start();
+        session_destroy();
+        header('location: '.DOCUMENT_ROOT.'/index.php');
+        exit;
+    }
+    
+    
+    
+    
 }

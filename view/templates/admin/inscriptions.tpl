@@ -4,7 +4,7 @@
     <head>
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/inscriptions.css" >
-        <script type="text/javascript" src="{#domain#}/src/js/admin-inscriptions.js"></script> 
+        <script type="text/javascript" src="{#adminAssets#}/js/inscriptions.js"></script> 
     </head>
     <body role="document">
         {include file="admin/header.tpl" con=$con }

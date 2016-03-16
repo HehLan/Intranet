@@ -6,7 +6,7 @@
 		<meta name="Robots" content="noindex, nofollow, noodp"/>		
 	</head>
 	<body role="document">
-		Votre page n'a pas été trouvée
+		Votre page n'a pas Ã©tÃ© trouvÃ©e.
 	</body>
 </html>
 

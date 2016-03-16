@@ -4,7 +4,7 @@
     <head>
         {include file="default/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/index.css" />
-        <script type="text/javascript" src="{#domain#}/src/js/index.js"></script>
+        <script type="text/javascript" src="{#assets#}/js/index.js"></script>
     </head>
     <body role="document">
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
@@ -69,18 +69,7 @@
         </div>
         {include file="default/footer.tpl"}
         {if $chat}
-            <script type="text/javascript">
-                $("#bloc_chat_message").keyup(function (event)
-                {
-                    if (event.keyCode === 13)
-                    {
-                        $("#bloc_chat_bouton").click();
-                    }
-                });
-
-                afficher(0);
-                users();
-            </script>
+            <script type="text/javascript" src="{#assets#}/js/chat.js"></script>
         {/if}
     </body>
 </html>
