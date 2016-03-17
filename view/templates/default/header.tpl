@@ -13,7 +13,6 @@
 				<a href="#" id="notifBlock"
 					data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" data-content="{$smarty.server.REMOTE_ADDR}">
 					<img src="{#assets#}/img/userbar/notif_off.png" alt="Vos Notifications">
-					{include file="default/notif.tpl"}
 				</a>
 				<a href="#" class=""
 					data-container="body" data-toggle="tooltip" data-placement="bottom" title="{$smarty.server.REMOTE_ADDR}">
