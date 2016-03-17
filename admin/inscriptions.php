@@ -12,7 +12,6 @@ require_once(DOCUMENT_ROOT.'/class/Query.class.php');
 
 $connected = false;
 $allowed = false;
-$chatIsActive = false;
 $database = new Database();
 $smarty = new Smarty_HEHLan();
 
@@ -79,10 +78,21 @@ $donneesJT = $query->getResult();
 				
 
 
+foreach ($donnees as $row)
+{
+    //print_r($donnees);
+    
+    echo '<br><br>';
+    print_r($row);
+    echo '<br><br>';
+
+}
+
+
+
 
 // send to the template
-$smarty->assign("con", $connected);
-$smarty->assign("chat", $chatIsActive);
+$smarty->assign('con', $connected);
 $smarty->assign('tab', $tab);
 $smarty->assign('donnees', $donnees);
 $smarty->assign('tabJT', $tabJT);

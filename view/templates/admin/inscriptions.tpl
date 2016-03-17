@@ -15,34 +15,34 @@
                     <!-- tournois avec equipes -->
                     {foreach from=$tab item=ligne}
                         <div class='ListePourInscrireTournoi'>
-                            <h6>{$ligne[2]}</h6>
-                            <div id="ListeInscrit{$ligne[1]}">
+                            <h6>{$ligne['2']}</h6>
+                            <div id="ListeInscrit{$ligne['1']}">
                                 {foreach from=$donnees item=row}
-                                    {if $row['id_tournoi'+$ligne[1]] == $ligne[1]}
+                                    {if $row['id_tournoi'|cat:$ligne['1']] == $ligne['1']}
                                         <label><input type='checkbox' checked value="{$row['id_equipes']}">{$row['nom']}</label><br>
                                     {else}
                                         <label><input type='checkbox' value="{$row['id_equipes']}">{$row['nom']}</label><br>
                                     {/if}
                                 {/foreach}
                             </div>
-                            <input type="button" class="submitInscriptionEquipesTournoiAdmin" id="{$ligne[1]}" value="Valider les inscriptions">
+                            <input type="button" class="submitInscriptionEquipesTournoiAdmin" id="{$ligne['1']}" value="Valider les inscriptions">
                         </div>                        
                     {/foreach}             
                     <!-- tournois individuels -->
                     {foreach from=$tabJT item=ligne}
                         <div class='ListePourInscrireTournoi'>
-                            <h6>{$ligne[2]}</h6>
-                            <div id="ListeInscritJT{$ligne[1]}">
+                            <h6>{$ligne['2']}</h6>
+                            <div id="ListeInscritJT{$ligne['1']}">
                                 {foreach from=$donneesJT item=row}
-                                    {if $row['id_tournoi'+$ligne[1]] == $ligne[1]}
+                                    {if $row['id_tournoi'|cat:$ligne['1']] == $ligne['1']}
                                         <label><input type="checkbox" checked value="{$row['id_joueur']}">{$row['pseudo']}</label>
                                     {else}
                                         <label><input type="checkbox" value="{$row['id_joueur']}">{$row['pseudo']}</label>                                    
                                     {/if}
-                                    <input type="text" id="Joueur{$ligne[1]+$row['id_joueur']}" value="{$row['pseudoJeux'+$ligne[1]]}">
+                                    <input type="text" id="Joueur{$ligne['1']}{$row['id_joueur']}" value="{$row['pseudoJeux'|cat:$ligne['1']]}">
                                 {/foreach}
                             </div>
-                            <input type="button" class="submitInscriptionJTAdmin" id="{$ligne[1]}" value="Valider les inscriptions">
+                            <input type="button" class="submitInscriptionJTAdmin" id="{$ligne['1']}" value="Valider les inscriptions">
                         </div>                        
                     {/foreach}
                     <br>    
