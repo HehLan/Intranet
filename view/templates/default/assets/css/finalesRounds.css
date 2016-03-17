@@ -1,0 +1,129 @@
+/*----------------------------------------------------------------------*/
+/*                      FINALES ROUNDS CSS                              */
+/*----------------------------------------------------------------------*/
+
+
+.table_round
+{
+    border: 2px solid #000000;
+}
+.title_round
+{	
+    border: 1px solid #000000;
+    background-color: #090C14;
+    font-size: 18px;
+    padding-left: 5px;
+    color: #E4D9D3;
+}
+
+
+
+
+
+
+/*---------------------------------
+	Header and Rules
+----------------------------------*/
+#headerTournoi
+{
+    //width : 100%;
+    border: 3px solid #006792;
+    border-left: 0;
+    border-right: 0;
+}
+#headerTournoiImg
+{
+    width : 100%;
+}
+#reglementTournoi
+{
+    font-style: italic;
+    text-align: right;
+    font-weight: bold;
+    margin: 10px 20px;
+}
+
+
+
+
+
+
+/*****************************
+ARBRE
+******************************/
+
+.tr_arbre_vide{
+height:15px;
+}
+.td_arbre_vide{
+height:15px;
+/*width:200px;*/
+}
+.td_arbre_team1{
+background-color:#666666;
+font-size:14px;
+padding:2px;
+}
+.td_arbre_team2{
+background-color:#444444;
+font-size:14px;
+padding:2px;
+}
+.td_arbre_teamwin{
+background-color:#449944;
+font-size:14px;
+padding:2px;
+font-weight:bold;
+}
+.td_arbre_joueur{
+background-color:#444444;
+font-size:14px;
+padding:2px;
+}
+.td_arbre_score1{
+background-color:#666666;
+width:40px;
+text-align:center;
+font-size:14px;
+}
+.td_arbre_score2{
+background-color:#444444;
+width:40px;
+text-align:center;
+font-size:14px;
+}
+.td_arbre_joueur_score{
+background-color:#444444;
+width:40px;
+text-align:center;
+font-size:14px;
+}
+.td_arbre_joueur_total{
+background-color:#666666;
+width:40px;
+text-align:center;
+font-size:14px;
+font-weight:bold;
+}
+.td_arbre_scorewin{
+background-color:#449944;
+width:40px;
+text-align:center;
+font-size:14px;
+font-weight:bold;
+}
+.td_arbre_gauche{
+width:10px;
+}
+.td_arbre_droite{
+width:30px;
+}
+.td_finale_vide{
+text-align:center;
+font-size:14px;
+color:#9999FF;
+}
+.th_arbre_joueur{
+font-size:12px;
+background-color:#666666;
+}
