@@ -29,7 +29,7 @@ if(!$connected && !$allowed)
 /**********************************
  *	tournois avec equipes
  **********************************/
-$sql = 'SELECT id_tournoi, nomTournoi FROM tournoi WHERE joueurParTeam = 5';
+$sql = 'SELECT id_tournoi, nomTournoi FROM tournoi WHERE joueurParTeam != 1';
 $query = new Query($database, $sql);
 $query->execute();
 
@@ -48,7 +48,7 @@ $sql = $select.$lefton.' ORDER BY e.nom';
 $query = new Query($database, $sql);
 $query->execute();
 $donnees = $query->getResult();
-//print_r($donnees);
+
 
 
 
@@ -74,19 +74,10 @@ $sql = $select.$lefton.' ORDER BY j.pseudo';
 $query = new Query($database, $sql);
 $query->execute();
 $donneesJT = $query->getResult();  
-//print_r($donneesJT);
+
 				
 
 
-foreach ($donnees as $row)
-{
-    //print_r($donnees);
-    
-    echo '<br><br>';
-    print_r($row);
-    echo '<br><br>';
-
-}
 
 
 
