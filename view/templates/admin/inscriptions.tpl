@@ -21,9 +21,9 @@
                                     {foreach from=$donnees item=row}
                                         <div class="row teamItem">
                                             {if $row['id_tournoi'|cat:$ligne['1']] == $ligne['1']}
-                                                <label><input type='checkbox' checked value="{$row['id_equipes']}">{$row['nom']}</label><br>
+                                                <label class="col-lg-12"><input type='checkbox' checked value="{$row['id_equipes']}">{$row['nom']}</label><br>
                                             {else}
-                                                <label><input type='checkbox' value="{$row['id_equipes']}">{$row['nom']}</label><br>
+                                                <label class="col-lg-12"><input type='checkbox' value="{$row['id_equipes']}">{$row['nom']}</label><br>
                                             {/if}
                                         </div>
                                     {/foreach}
