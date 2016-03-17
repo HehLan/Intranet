@@ -4,7 +4,6 @@
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/joueurs.css" />
-        <script type="text/javascript" src="{#assets#}/js/joueurs.js"></script>
     </head>
 
     <body role="document">
@@ -137,5 +136,6 @@
 
         </div>
         {include file="default/footer.tpl"}
+		<script type="text/javascript" src="{#assets#}/js/joueurs.js"></script>
     </body>
 </html>

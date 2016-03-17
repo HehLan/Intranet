@@ -18,7 +18,7 @@
 					data-container="body" data-toggle="tooltip" data-placement="bottom" title="{$smarty.server.REMOTE_ADDR}">
 					<img src="{#assets#}/img/userbar/ip.png" alt="Votre adresse IP">
 				</a>
-				<a href="command.php"><img src="{#assets#}/img/userbar/command.png" alt="Se déconnecter"></a>
+				<a href="commande.php"><img src="{#assets#}/img/userbar/command.png" alt="Se déconnecter"></a>
 				<a href="common/logout.php"><img src="{#assets#}/img/userbar/logout.png" alt="Se déconnecter"></a>
 			</div>
         {else}
