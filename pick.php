@@ -14,6 +14,8 @@ $smarty = new Smarty_HEHLan();
 $connexion = $database->getConnection();
 $playerId = $_GET['id'];
 $matchId = $_GET['idMatch'];
+$opponentId = '';
+$opponentNickname = '';
 
 // eviter que qqn non logué y accède
 $connected = Auth::isLogged();
