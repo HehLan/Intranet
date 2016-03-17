@@ -18,6 +18,88 @@ USE `hehlanbd`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `articles`
+--
+
+DROP TABLE IF EXISTS `articles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `articles` (
+  `id_article` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nom` varchar(45) DEFAULT NULL,
+  `description` mediumtext,
+  `prix` float DEFAULT NULL,
+  PRIMARY KEY (`id_article`),
+  UNIQUE KEY `id_article_UNIQUE` (`id_article`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `articles`
+--
+
+LOCK TABLES `articles` WRITE;
+/*!40000 ALTER TABLE `articles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `articles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `commande_articles`
+--
+
+DROP TABLE IF EXISTS `commande_articles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `commande_articles` (
+  `id_commande` int(10) unsigned NOT NULL,
+  `id_article` int(10) unsigned NOT NULL,
+  `quantite` smallint(6) NOT NULL,
+  KEY `id_article` (`id_article`),
+  KEY `id_commande` (`id_commande`),
+  CONSTRAINT `id_article` FOREIGN KEY (`id_article`) REFERENCES `articles` (`id_article`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_commande` FOREIGN KEY (`id_commande`) REFERENCES `commandes` (`id_commande`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `commande_articles`
+--
+
+LOCK TABLES `commande_articles` WRITE;
+/*!40000 ALTER TABLE `commande_articles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `commande_articles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `commandes`
+--
+
+DROP TABLE IF EXISTS `commandes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `commandes` (
+  `id_commande` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_joueur` int(10) unsigned NOT NULL,
+  `total` float DEFAULT '0',
+  `disponible` bit(1) DEFAULT b'0',
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_commande`),
+  UNIQUE KEY `id_commandes_UNIQUE` (`id_commande`),
+  KEY `id_joueur_idx` (`id_joueur`),
+  CONSTRAINT `id_joueur` FOREIGN KEY (`id_joueur`) REFERENCES `joueurs` (`id_joueur`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `commandes`
+--
+
+LOCK TABLES `commandes` WRITE;
+/*!40000 ALTER TABLE `commandes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `commandes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `emplacement`
 --
 
@@ -247,6 +329,34 @@ INSERT INTO `joueurs_groupes` VALUES (6,60),(29,60),(51,60),(97,60),(106,60),(11
 UNLOCK TABLES;
 
 --
+-- Table structure for table `joueurs_notifications`
+--
+
+DROP TABLE IF EXISTS `joueurs_notifications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `joueurs_notifications` (
+  `id_joueurs` int(10) unsigned NOT NULL,
+  `id_notifications` int(10) unsigned NOT NULL,
+  `seen` bit(1) DEFAULT b'0',
+  KEY `id_joueurs_idx` (`id_joueurs`),
+  KEY `id_notifications_idx` (`id_notifications`),
+  CONSTRAINT `id_joueurs` FOREIGN KEY (`id_joueurs`) REFERENCES `joueurs` (`id_joueur`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_notifications` FOREIGN KEY (`id_notifications`) REFERENCES `notifications` (`id_notifications`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `joueurs_notifications`
+--
+
+LOCK TABLES `joueurs_notifications` WRITE;
+/*!40000 ALTER TABLE `joueurs_notifications` DISABLE KEYS */;
+INSERT INTO `joueurs_notifications` VALUES (2552,1,'\0'),(2553,1,'\0');
+/*!40000 ALTER TABLE `joueurs_notifications` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `joueurtournoi`
 --
 
@@ -458,6 +568,33 @@ INSERT INTO `news` VALUES (1,'Serveur fun en ligne','<H3>COD4 : </H3>\r\nIP : 19
 UNLOCK TABLES;
 
 --
+-- Table structure for table `notifications`
+--
+
+DROP TABLE IF EXISTS `notifications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notifications` (
+  `id_notifications` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `titre` varchar(45) NOT NULL,
+  `message` mediumtext,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_notifications`),
+  UNIQUE KEY `id_notifications_UNIQUE` (`id_notifications`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notifications`
+--
+
+LOCK TABLES `notifications` WRITE;
+/*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
+INSERT INTO `notifications` VALUES (1,'Hello World!','Ceci est un test',NULL),(2,'I\'m alive...','ALIVE!!!','2016-03-17 21:35:54');
+/*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sponsors`
 --
 
@@ -498,7 +635,7 @@ CREATE TABLE `tchat` (
   `message` char(255) NOT NULL,
   PRIMARY KEY (`id_chat`),
   KEY `quand` (`quand`)
-) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+) ENGINE=MEMORY AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -507,6 +644,7 @@ CREATE TABLE `tchat` (
 
 LOCK TABLES `tchat` WRITE;
 /*!40000 ALTER TABLE `tchat` DISABLE KEYS */;
+INSERT INTO `tchat` VALUES (1,2552,'skit','2016-03-17 17:40:02','rt');
 /*!40000 ALTER TABLE `tchat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -532,7 +670,7 @@ CREATE TABLE `tchat_users` (
 
 LOCK TABLES `tchat_users` WRITE;
 /*!40000 ALTER TABLE `tchat_users` DISABLE KEYS */;
-INSERT INTO `tchat_users` VALUES (2552,'skit','2016-03-13 13:47:00');
+INSERT INTO `tchat_users` VALUES (2552,'skit','2016-03-17 21:38:40');
 /*!40000 ALTER TABLE `tchat_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -604,4 +742,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-13 22:15:45
+-- Dump completed on 2016-03-17 21:38:40

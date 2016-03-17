@@ -46,23 +46,6 @@
                                 <strong>Sorry les gars ... le chat est désactivé :o/</strong>
                             </div>
                         {/if}
-                    {else}
-                        <h3 id="bloc_chat_titre">Connexion</h3>	
-                        <div id="row bloc_connexion">
-                            <form class="well col-lg-8" method="POST" id="bloc_connexion_form">
-                                <fieldset id="bloc_connexion_fieldset">
-                                    <div class="form-group">
-                                        <label for="login">Login </label>
-                                        <input id="login" class="form-control" type="text" name="login">  
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="pwd">Password </label>
-                                        <input id="pwd" class="form-control" type="password" name="pwd">  
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">Log on</button>
-                                </fieldset>                           
-                            </form>                            
-                        </div>
                     {/if}
                 </div>
             </div>			
