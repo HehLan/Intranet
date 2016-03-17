@@ -15,13 +15,13 @@
 }
 #header #login 
 {
-    padding-top: 10px;
+	padding: 0;
     float: right;
 	background: transparent url("../img/bg_menu.png") repeat-x top left;
 	background-size: auto 100%;
     border: 1px solid #353535;
     border-radius: 3px;
-    padding: 5px 0;
+    padding-bottom: 5px;
 	width: 280px;
 }
 #login p

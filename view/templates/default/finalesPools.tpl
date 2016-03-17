@@ -11,7 +11,6 @@
         
         
         <!-- jquery-bracket -->
-        <!--<script type="text/javascript" src="{#domain#}/lib/jQuery/jquery-1.6.2.min.js"></script>-->
         <link rel="stylesheet" type="text/css" href="{#domain#}/lib/jQuery/jquery.bracket.min.css" />
         
         

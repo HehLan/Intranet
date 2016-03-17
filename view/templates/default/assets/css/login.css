@@ -65,11 +65,14 @@ legend
 .ui-accordion-header
 {
 	color: #fff;
-    background-color: #337ab7;
+    background-color: #0076a3;
     border-color: #2e6da4;
 }
 
 .ui-widget-content {
-    background-color: #337ab7;
+    background-color: #0076a3;
     border-color: #2e6da4;
+}
+.btn-primary {
+	background-color: #0076a3;
 }
