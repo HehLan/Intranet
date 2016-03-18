@@ -11,7 +11,7 @@
         {include file="default/nav.tpl"  con=$con navTournois=$navTournois}
         <div class="container-fluid" id="container">
             <div class="row" id="contenu">
-                <div class="col-lg-offset-1 col-lg-8 col-xs-12 map_cafetaria">
+                <div class="col-lg-9 col-xs-12 map_cafetaria">
                     <img class="photo_cafetaria" src="{#assets#}/img/plan.jpg">
                     {section name=sec1 loop=$emplacements}
                         <div class='place' onclick='Click(this)' id="{$emplacements[sec1].id_emplacement}" style="
@@ -43,91 +43,84 @@
                                 <br>
                                 Equipe : {$emplacements1[sec1].team}
                                 <br>
-                                <u>Tournoi : {$emplacements1[sec1].nomTournoi}</u>
+                                <u>Tournois : {$emplacements1[sec1].nomTournoi}</u>
                             </span>
                         </div>
                     {/section}
                 </div>		
 
-                <div id="tabs" class="col-lg-2 col-xs-12">
-                    <div class="row">
-                        <div class="col-lg-6 col-xs-6">
-                            <a href="#" onclick="show_tab(1);">Joueur</a>
-                        </div>	
-                        <div class="col-lg-6 col-xs-6">
-                            <a href="#" onclick="show_tab(2);">Equipe</a>
-                        </div>
-                    </div>
+                <div id="tabs" class="col-lg-3 col-xs-12">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="col-lg-6 col-xs-6 active onglet">
+                            <a href="#tabs-1" aria-controls="tabs-1" role="tab" data-toggle="tab" onclick="show_tab(1);">Joueurs</a>
+                        </li>	
+                        <li role="presentation" class="col-lg-6 col-xs-6 onglet">
+                            <a href="#tabs-2" aria-controls="tabs-2" role="tab" data-toggle="tab" onclick="show_tab(2);">Equipes</a>
+                        </li>
+                    </ul>
 
                     <!-- Player Tab -->
-                    <div id="tabs-1">
+                    <div role="tabpanel" class="tab-pane fade in active" id="tabs-1">
                         <!-- Player Search Function -->
-                        <form>
+                        <form class="searchBox">
                             <label for="recherche_joueur">Rechercher un pseudo :</label>
                             <input type="text" name="recherche_joueur" id="recherche_joueur" />
                         </form>
-                        <br>
 
                         <!-- Result Displaying -->
                         <div id="results" style="display: none">
                             <strong>Pas de résultat</strong>
-                            <br>
-                            <br>
                         </div>                       
 
-                        <!-- Player List -->
+                        <!-- Joueur List -->
                         {foreach name=playerLoop from=$joueurs item=joueur}
                             {if $smarty.foreach.playerLoop.first}
-                                <div>
-                                    <u>Liste des joueurs :</u>
-                                </div>
-                                <br>
                                 <ul id="liste_joueur">
-                                {/if}
-                                <li>
-                                    <a class='ClassPseudo' 
-                                       {if $smarty.foreach.playerLoop.index % 2 == 0}
-                                           style='background-color:#212121'                                                             
-                                       {else}
-                                           style='background-color:#262626'
-                                       {/if}
-                                       value='{$joueur.id_emplacement}'>{$joueur.pseudo}
-                                    </a>
-                                </li>
-                                {if $smarty.foreach.playerLoop.last}
-                                </ul>
+							{/if}
+							<li>
+								<a class='ClassPseudo entry_tab_list {if $smarty.foreach.playerLoop.index % 2 == 0}even_entry_tab_list{else}odd_entry_tab_list{/if}'
+								   value='{$joueur.id_emplacement}'>
+								   {$joueur.pseudo}
+								</a>
+							</li>
+							{if $smarty.foreach.playerLoop.last}
+								</ul>
                             {/if} 
                         {foreachelse}
-                            <p>No players !</p>
+                            <p>Pas de joueur !</p>
                         {/foreach}               
                     </div>
 
                     <!-- Team Tab -->
-                    <div id="tabs-2" style="display:none;">
+                    <div role="tabpanel" class="tab-pane fade" id="tabs-2" style="display: none">
                         <!-- Team Search Function -->
-                        <form>
+                        <form class="searchBox">
                             <label for="recherche_equipe">Rechercher une équipe :</label>
                             <input type="text" name="recherche_equipe" id="recherche_equipe" />
                         </form>
-                        <br>
 
+						<!-- Result Displaying -->
                         <div id="results_equipe" style="display: none">
                             <strong>Pas de résultat</strong>
-                            <br>
-                            <br>
                         </div>
 
-                        <div>
-                            <div>
-                                <u>Liste des Equipes :</u>
-                            </div>
-                            <br>
-                            <ul id="liste_equipe">
-                                {section name=sec1 loop=$equipes}
-                                    <li><a class='ClassEquipe' value='{$equipes[sec1].id_equipes}'>{$equipes[sec1].nom}</a></li>
-                                    {/section}
-                            </ul>
-                        </div>
+						<!-- Equipe List -->
+						{foreach name=equipeLoop from=$equipes item=equipe}
+                            {if $smarty.foreach.equipeLoop.first}
+                                <ul id="liste_equipe">
+							{/if}
+							<li>
+								<a class='ClassEquipe entry_tab_list {if $smarty.foreach.equipeLoop.index % 2 == 0}even_entry_tab_list{else}odd_entry_tab_list{/if}'
+									value='{$equipe.id_equipes}'>
+									{$equipe.nom}
+								</a>
+							</li>
+							{if $smarty.foreach.equipeLoop.last}
+                                </ul>
+                            {/if} 
+                        {foreachelse}
+                            <p>Pas d'équipe !</p>
+                        {/foreach}
                     </div>							
                     <div id="dialogEquipe_Emplacement" style="display:none;"></div>
                     <div id="dialogPseudo_Emplacement" style="display:none;"></div>

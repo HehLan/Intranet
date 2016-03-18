@@ -6,7 +6,6 @@ require_once(DOCUMENT_ROOT.'/common/utils.php');
 require_once(DOCUMENT_ROOT.'/class/Database.class.php');
 require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
 require_once(DOCUMENT_ROOT.'/class/Query.class.php');
-require_once(SMARTY_DIR.'Smarty.class.php');
 require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
 
 
@@ -22,7 +21,7 @@ if($connected)
 else
 {
 	$ics = 0;
-    header('Location: '.DOCUMENT_ROOT.'/index.php');
+    //header('Location: '.DOCUMENT_ROOT.'/index.php');
 }
 
 // Assign variables to view

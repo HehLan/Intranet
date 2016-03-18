@@ -2,9 +2,20 @@
 /*                          LOGIN CSS                                  */
 /*----------------------------------------------------------------------*/
 
+html
+{
+	height: 100%
+}
+
+body
+{
+	height: 100%
+}
+
 #container
 {
-    margin-top: 100px;
+    padding-top: 100px;
+	min-height: 100%;
 }
 
 .logo-hehlan

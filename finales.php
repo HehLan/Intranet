@@ -22,7 +22,9 @@ if ($query->execute())
 }
 else
 {
-    echo 'ERREUR SQL TOURNOI';
+	global $glob_debug;
+	if($glob_debug)
+		echo 'ERREUR SQL TOURNOI';
     exit;
 }
 
@@ -33,7 +35,9 @@ $query = new Query($database, $sql);
 $query->bind('idt', $id_tournoi, PDO::PARAM_INT);
 if (!$query->execute())
 {
-    echo 'ERREUR SQL COUNT LB2';
+    global $glob_debug;
+	if($glob_debug)
+		echo 'ERREUR SQL COUNT LB2';
     exit;
 }
 else
@@ -48,7 +52,9 @@ $query = new Query($database, $sql);
 $query->bind('idt', $id_tournoi, PDO::PARAM_INT);
 if (!$query->execute())
 {
-    echo 'ERREUR SQL COUNT LB3';
+    global $glob_debug;
+	if($glob_debug)
+		echo 'ERREUR SQL COUNT LB3';
     exit;
 }
 else
