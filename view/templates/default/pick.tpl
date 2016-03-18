@@ -10,7 +10,6 @@
 
         <!-- le logo -->
         {include file="default/header.tpl"}
-
         <!-- CUSTOM NAVBAR TEMPLATE -->
         <nav id="navigation" class="navbar navbar-inverse" role="navigation" >
             <div class="container-fluid">
@@ -34,8 +33,8 @@
                     <div class="row">
                         {foreach from=$maps item=map}
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <div onclick="kickMap(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-value="1"> 
-                                    <img id="{$map['id']}" class="img-responsive" src="{$map['imgPath']}" alt="{$map['name']}" />
+                                <div id="{$map['id']}" onclick="kickMap(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
+                                    <img class="img-responsive" src="{$map['imgPath']}" alt="{$map['name']}" />
                                     <div class="thumbnailText">
                                         {$map['name']}
                                     </div>
@@ -57,8 +56,8 @@
 
 
         {include file="default/pick.js.tpl" playerId=$playerId playerNickname=$playerNickname 
-                                            opponentId=$opponentId opponentNickname=$opponentNickname
-                                            }
+            opponentId=$opponentId opponentNickname=$opponentNickname pickState=$pickState 
+            idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise}
 
     </body>
 </html>

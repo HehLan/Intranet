@@ -165,6 +165,7 @@ $smarty->assign('playerNickname', $playerNickname);
 $smarty->assign('opponentId', $opponentId);
 $smarty->assign('opponentNickname', $opponentNickname);
 $smarty->assign('pickState', $pickState);   // les id's des maps et etat checked(bool)
+$smarty->assign('idPlayerWhoMakeChoise', $idPlayerWhoMakeChoise);   
 
 $smarty->display('default/pick.tpl');
 ?>
