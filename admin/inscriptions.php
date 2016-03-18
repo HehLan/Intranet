@@ -12,7 +12,6 @@ require_once(DOCUMENT_ROOT.'/class/Query.class.php');
 
 $connected = false;
 $allowed = false;
-$chatIsActive = false;
 $database = new Database();
 $smarty = new Smarty_HEHLan();
 
@@ -30,7 +29,7 @@ if(!$connected && !$allowed)
 /**********************************
  *	tournois avec equipes
  **********************************/
-$sql = 'SELECT id_tournoi, nomTournoi FROM tournoi WHERE joueurParTeam = 5';
+$sql = 'SELECT id_tournoi, nomTournoi FROM tournoi WHERE joueurParTeam != 1';
 $query = new Query($database, $sql);
 $query->execute();
 
@@ -49,7 +48,7 @@ $sql = $select.$lefton.' ORDER BY e.nom';
 $query = new Query($database, $sql);
 $query->execute();
 $donnees = $query->getResult();
-//print_r($donnees);
+
 
 
 
@@ -75,14 +74,16 @@ $sql = $select.$lefton.' ORDER BY j.pseudo';
 $query = new Query($database, $sql);
 $query->execute();
 $donneesJT = $query->getResult();  
-//print_r($donneesJT);
+
 				
 
 
 
+
+
+
 // send to the template
-$smarty->assign("con", $connected);
-$smarty->assign("chat", $chatIsActive);
+$smarty->assign('con', $connected);
 $smarty->assign('tab', $tab);
 $smarty->assign('donnees', $donnees);
 $smarty->assign('tabJT', $tabJT);

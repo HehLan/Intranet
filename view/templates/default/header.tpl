@@ -7,11 +7,23 @@
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
         {if $con}
-            <p>Bienvenue {$smarty.session.login}, <a href="common/logout.php">se déconnecter</a></p>
+            <p>Bienvenue {$smarty.session.login} !</p>
+			<div id="userbar" class="" >
+				<a href="profile.php"><img src="{#assets#}/img/userbar/profile.png" alt="Votre profil"></a>
+				<a href="#" id="notifBlock"
+					data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" data-content="{$smarty.server.REMOTE_ADDR}">
+					<img src="{#assets#}/img/userbar/notif_off.png" alt="Vos Notifications">
+				</a>
+				<a href="#" class=""
+					data-container="body" data-toggle="tooltip" data-placement="bottom" title="{$smarty.server.REMOTE_ADDR}">
+					<img src="{#assets#}/img/userbar/ip.png" alt="Votre adresse IP">
+				</a>
+				<a href="commande.php"><img src="{#assets#}/img/userbar/command.png" alt="Se déconnecter"></a>
+				<a href="common/logout.php"><img src="{#assets#}/img/userbar/logout.png" alt="Se déconnecter"></a>
+			</div>
         {else}
-            <p>Bienvenue, <a href="{#domain#}/index.php">se connecter</a></p>
+            <p>Bienvenue, <a href="{#domain#}/modules/login.php">se connecter</a></p>
         {/if}
-        <p>Votre IP: {$smarty.server.REMOTE_ADDR}</p>
         {if $con & isset($next_matches) & !empty($next_matches)}
             <strong>Prochains matchs</strong><br>
             {section name=sec1 loop=$next_matches}

@@ -4,4 +4,3 @@ function news_toggle(idn)
     $(nom).toggle();
 }
 
-

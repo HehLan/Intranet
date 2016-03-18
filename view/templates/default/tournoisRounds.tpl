@@ -8,17 +8,18 @@
     <body>
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
         {include file="default/nav.tpl"  con=$con navTournois=$navTournois}
-		<!-- Header and Rules -->
-		{if isset($tournoi.header)}
-			<div id="headerTournoi">
-				<img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nomTournoi}" />
-			</div>
-		{/if}
-		{if isset($tournoi.reglement)}
-			<div id="reglementTournoi">
-				Pour consulter le règlement de ce tournoi, <a href="{#domain#}/src/{$tournoi.reglement}"> cliquez ici </a>
-			</div>
-		{/if}
+        
+        <!-- Header and Rules -->
+        {if isset($tournoi.header)}
+            <div id="headerTournoi">
+                <img id="headerTournoiImg" src="{#domain#}/src/{$tournoi.header}" alt="{$tournoi.nomTournoi}" />
+            </div>
+        {/if}
+        {if isset($tournoi.reglement)}
+            <div id="reglementTournoi">
+                Pour consulter le règlement de ce tournoi, <a href="{#domain#}/src/{$tournoi.reglement}"> cliquez ici </a>
+            </div>
+        {/if}
 				
         <div class="container-fluid" id="container">
 		
@@ -37,31 +38,31 @@
                     {/if}
                     <br>
                     {section name=groupe loop=$groupes}
-						<table class="table_round">
-							<tr>
-								<th class="title_round" colspan="{$tournoi.nombreManche+2}">
-									{$groupes[groupe].nom_groupe} ( {$groupes[groupe].jour} {$groupes[groupe].heure} )
-								</th>
-							</tr>
-							<tr>
-								<th class="th_manche_round" >
-									Participants
-								</th>
-								{for $idManche=1 to $tournoi.nombreManche}
-									<th class="th_manche_round">Manche {$idManche}</th>
-								{/for}
-								<th class="th_points_round">Points</th>
-							</tr>
-							{foreach from=$groupes[groupe].joueurs item=joueur}
-								<tr>
-									<td class="td_pseudo_round">{$joueur.pseudo}</td>
-									{for $idManche=1 to $tournoi.nombreManche}
-										<td class="td_score_round">{$joueur.scores[$idManche]}</td>
-									{/for}
-									<td class="td_total_round">{$joueur.total}</td>
-								</tr>
-							{/foreach}
-						</table><br><br>
+                        <table class="table_round">
+                            <tr>
+                                <th class="title_round" colspan="{$tournoi.nombreManche+2}">
+                                    {$groupes[groupe].nom_groupe} ( {$groupes[groupe].jour} {$groupes[groupe].heure} )
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="th_manche_round" >
+                                    Participants
+                                </th>
+                                {for $idManche=1 to $tournoi.nombreManche}
+                                    <th class="th_manche_round">Manche {$idManche}</th>
+                                {/for}
+                                <th class="th_points_round">Points</th>
+                            </tr>
+                                {foreach from=$groupes[groupe].joueurs item=joueur}
+                                        <tr>
+                                                <td class="td_pseudo_round">{$joueur.pseudo}</td>
+                                                {for $idManche=1 to $tournoi.nombreManche}
+                                                        <td class="td_score_round">{$joueur.scores[$idManche]}</td>
+                                                {/for}
+                                                <td class="td_total_round">{$joueur.total}</td>
+                                        </tr>
+                                {/foreach}
+                        </table><br><br>
                     {/section}
                 </div>
             </div>

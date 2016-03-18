@@ -11,10 +11,80 @@
 #logo 
 {
     padding-left: 40px;
+	width: auto;
 }
-#login 
+#header #login 
 {
-    padding-top: 10px;
+	padding: 0;
     float: right;
+	background: transparent url("../img/bg_menu.png") repeat-x top left;
+	background-size: auto 100%;
+    border: 1px solid #353535;
+    border-radius: 3px;
+    padding-bottom: 5px;
+	width: 280px;
+}
+#login p
+{
+	font-weight: bold;
+    margin: 10px 25px;
 }
 
+/*---------------------------------
+			UserBar
+----------------------------------*/
+#userbar{
+	width: 100%;
+	padding: 2px 0;
+	border: 1px solid #353535;
+    border-radius: 3px;	
+    background-color: #000;
+}
+
+#userbar a{
+	margin: 0 2px;
+	padding: 8px;
+}
+
+#userbar img{
+	width: 30px;
+	height: 30px;
+	padding: 0px;
+    overflow: hidden;
+}
+
+.popover{
+	color: black;
+}
+
+.popover-title{
+	font-weight: bold;
+}
+
+/*---------------------------------
+	Header Banner and Rules
+----------------------------------*/
+#headerTournoi
+{
+	width : 100%;
+	border: 3px solid #0076a3;
+	border-left: 0;
+	border-right: 0;
+	margin-top: -3px;
+}
+#headerTournoiImg
+{
+	width : 100%;
+}
+#reglementTournoi
+{
+	font-style: italic;
+    text-align: right;
+    font-weight: bold;
+	background: #0076a3;
+	padding-right: 20px;
+}
+#reglementTournoi a
+{
+	color: #1B2232;
+}

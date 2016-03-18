@@ -23,10 +23,11 @@
     font-size: 14px;
     cursor: pointer;
     color: #D1D1D1;
+	font-weight: bold;
 }
 #container #bloc_news .titre_news:hover
 {
-    color: #ff9900;
+    color: #0076a3;
 }
 #container #bloc_news .contenu_news
 {
@@ -44,24 +45,6 @@
     font-size: 10px;
     color: #999999;
 }
-
-
-
-/*------------ LOG ON ---------------------------------*/
-
-
-#bloc_connexion_form
-{
-    background-color: #111111;
-    border: 1px solid #353535;
-}
-
-input
-{
-    height: 20px;
-}
-
-
 
 
 /*------------ TCHAT ---------------------------------*/

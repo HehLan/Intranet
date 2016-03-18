@@ -8,48 +8,69 @@
     </head>
 
     <body role="document">
-        {include file="default/header.tpl" con=$con next_matches=$next_matches}
-        {include file="default/nav.tpl"  con=$con navTournois=$navTournois}
         <div class="container-fluid" id="container">
-            <div class="row" id="contenu">
-                <div id="infoZoneConnexion" >
 
-                </div>
-
-                <div id="formConnexion" title="Connexion">
-
-                    <div id="erreurLogin" >
-
-                    </div>
-                    <br >
-                    <label>Pseudo : <br >
-                    <input type="text" id="ConPseudo" /></label><br ><br > 
-                    <label>Mot de passe : <br >
-                    <input type="password" id="ConPwd" /></label><br ><br >
-
-                    <span id="afficheMDPoublie"> mot de passe oublié? </span><br ><br >
-                    <input type="button" id="validConnexion" value="Connexion" style="float: right;"/>
-                    <div id="repCon"></div>
-                </div>
-
-                <div id="formMDPoublie" title="Mot de passe oublié">
-                    <br >
-                    <div id="erreurMDPoublie" >
-
-                    </div>
-                    <div id="afficheFormMDPoublie">
-                        <br >
-                        <label>Pseudo : <br >
-                        <input type="text" id="pseudoOublie" /></label><br ><br > 
-                        <label>Email : <br >
-                        <input type="text" id="emailOublie" /></label><br ><br >
-                        <input type="text" name="adresse" id="adresse" style="display: none;"/>
-                        <input type="button" id="submitMDPoublie" value="Valider" style="float: right;"/>
-                    </div>
-                </div>              
-
+            <div class="logo-hehlan">
+                <img id="logo-hehlan-img" src="{#assets#}/img/private.png" alt="Logo HEHLan" title="Logo HEHLan"/>
             </div>
+
+            <div class="alert alert-warning alert-dismissable col-lg-4" style="display: none">
+                <button type="button" class="close">x</button>
+                <h4>Erreur !</h4>
+                Mauvais login ou mot de passe.
+            </div>
+
+            <div class="accordion">
+                <h3><legend>Connexion</legend></h3>
+                <div class="row" id="bloc_login">             
+                    <form class="well myform" method="POST"action="#">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="login">Pseudo </label>
+                                <input id="login" class="form-control" type="text" name="login">  
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Mot de Passe </label>
+                                <input id="pwd" class="form-control" type="password" name="pwd">  
+                            </div>
+                            <button class="btn btn-primary" type="submit">Connexion</button>
+                        </fieldset>                           
+                    </form>               
+                </div>
+                <h3><legend>Mot de Passe Oublié</legend></h3>
+                <div class="row" id="bloc_forgot">
+                    <form class="well myform" method="POST" action="../index.php">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="pseudo">Pseudo </label>
+                                <input id="pseudo" class="form-control" type="text" name="pseudo">  
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email </label>
+                                <input id="email" class="form-control" type="email" name="email">  
+                            </div>
+                            <button class="btn btn-primary" type="submit">Valider</button>
+                        </fieldset>                           
+                    </form>
+                </div> 
+            </div>			
         </div>
         {include file="default/footer.tpl"}
+		
+        {if $tried == 'true'}
+            <script>
+                $(function ()
+                {
+
+                    $(".alert").show("slow");
+
+                    $(".close").click(function ()
+                    {
+                        $(".alert").hide("slow");
+                        $("#afficher").show();
+                    });
+                });
+            </script>
+        {/if}
     </body>
 </html>

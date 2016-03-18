@@ -12,3 +12,17 @@
         </a>
     </div>
 </footer>
+
+
+
+<!-- JAVASCRIPT LIBRARIES -->
+<script type="text/javascript" src="{#domain#}/lib/jQuery/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="{#domain#}/lib/jQuery/jquery-ui.js"></script>
+<script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.media.js"></script>
+<script type="text/javascript" src="{#domain#}/lib/Bootstrap/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript" src="{#domain#}/src/js/menu.js"></script>
+<script type="text/javascript" src="{#domain#}/src/js/less.js"></script>
+<script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
+<script type="text/javascript" src="{#domain#}/src/js/init.js"></script>

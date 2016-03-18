@@ -3,6 +3,8 @@
 /*----------------------------------------------------------------------*/
 
 
+
+
 table, thead, tbody, td, th, tr
 {
     border: none;
@@ -12,8 +14,8 @@ table, thead, tbody, td, th, tr
 
 thead
 {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: gray;
 }
 
 .green
