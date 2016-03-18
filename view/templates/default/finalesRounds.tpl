@@ -4,8 +4,6 @@
     <head>
         {include file="default/meta.tpl"}
 	<link rel="stylesheet" type="text/css" href="{#assets#}/css/finalesRounds.css" />
-        <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.bracket.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="{#domain#}/lib/jQuery/jquery.bracket.min.css" />
        
         
         
@@ -135,25 +133,6 @@
         </div>
         {include file="default/footer.tpl"}
         
-        
-        <script>
-            
 
-var minimalData = {
-    teams : [
-      ["Team 1", "Team 2"], /* first matchup */
-      ["Team 3", "Team 4"]  /* second matchup */
-    ],
-    results : [
-      [[1,2], [3,4]],       /* first round */
-      [[4,6], [2,1]]        /* second round */
-    ]
-  }
- 
-$(function() {
-    $('#minimal .demo').bracket({
-      init: minimalData /* data to initialize the bracket with */ })
-  })
-        </script>
     </body>
 </html>

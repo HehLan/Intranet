@@ -29,7 +29,7 @@
                 </div>		
                 <div id="bloc_chat" class="col-lg-6 col-xs-12">
                     {if $con}
-                        <h3>HEHLan Chat</h3>
+                        <h3>HEHLan Tchat</h3>
                         {if $chat}
                             <div id="bloc_chat_box">
                                 <div id="bloc_chat_texte"></div>

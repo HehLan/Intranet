@@ -8,19 +8,19 @@
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
         {if $con}
             <p>Bienvenue {$smarty.session.login} !</p>
-			<div id="userbar" class="" >
-				<a href="profile.php"><img src="{#assets#}/img/userbar/profile.png" alt="Votre profil"></a>
-				<a href="#" id="notifBlock"
-					data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" data-content="{$smarty.server.REMOTE_ADDR}">
-					<img src="{#assets#}/img/userbar/notif_off.png" alt="Vos Notifications">
-				</a>
-				<a href="#" class=""
-					data-container="body" data-toggle="tooltip" data-placement="bottom" title="{$smarty.server.REMOTE_ADDR}">
-					<img src="{#assets#}/img/userbar/ip.png" alt="Votre adresse IP">
-				</a>
-				<a href="command.php"><img src="{#assets#}/img/userbar/command.png" alt="Se déconnecter"></a>
-				<a href="common/logout.php"><img src="{#assets#}/img/userbar/logout.png" alt="Se déconnecter"></a>
-			</div>
+            <div id="userbar" class="" >
+                <a href="profile.php"><img src="{#assets#}/img/userbar/profile.png" alt="Votre profil"></a>
+                <a href="#" id="notifBlock"
+                   data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" data-content="{$smarty.server.REMOTE_ADDR}">
+                    <img src="{#assets#}/img/userbar/notif_off.png" alt="Vos Notifications">
+                </a>
+                <a href="#" class=""
+                   data-container="body" data-toggle="tooltip" data-placement="bottom" title="{$smarty.server.REMOTE_ADDR}">
+                    <img src="{#assets#}/img/userbar/ip.png" alt="Votre adresse IP">
+                </a>
+                <a href="command.php"><img src="{#assets#}/img/userbar/command.png" alt="Se déconnecter"></a>
+                <a href="common/logout.php"><img src="{#assets#}/img/userbar/logout.png" alt="Se déconnecter"></a>
+            </div>
         {else}
             <p>Bienvenue, <a href="{#domain#}/modules/login.php">se connecter</a></p>
         {/if}
