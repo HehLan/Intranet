@@ -162,11 +162,15 @@ if ($nbrmatch > 0)
             }
             if ($score1 == '')
             {
-                $score1 = substr(get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']), 0, 3);
+                $score1=1;
+                //$score1 = substr(get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']), 0, 3);
+                
             }
             if ($score2 == '')
             {
-                $score2 = get_heure($matches[$tablo[$c][$m]]['heure']);
+                $score2=3;
+              
+                //$score2 = get_heure($matches[$tablo[$c][$m]]['heure']);
             }
 			
             $matches[$tablo[$c][$m]]['nom1'] = $nom1;
@@ -202,7 +206,9 @@ if (isset($matches) && isset($tablo))
             
             
             $teams[] = $matches[$tablo[$c][$m]]['nom1']; 
-            $teams[] = $matches[$tablo[$c][$m]]['nom2']; 
+            $teams[] = $matches[$tablo[$c][$m]]['nom2'];
+            $scores[] = $matches[$tablo[$c][$m]]['score1'];
+            $scores[] = $matches[$tablo[$c][$m]]['score2'];
             
 
             
@@ -221,10 +227,11 @@ if (isset($matches) && isset($tablo))
 
 //-------------------------------------------------------
 
+print_r($scores);
+//print_r($teams);
 
-print_r($teams);
 //print_r($team2_names);
-//print_r($scores1);
+//
 //print_r($scores2);
 
 
@@ -249,8 +256,7 @@ $smarty->assign('nbr_lb3', $nbr_lb3);
 // for jquery-bracket -------------------------------------------
 
 $smarty->assign('teams', $teams);
-$smarty->assign('scores1', $scores1);
-$smarty->assign('scores2', $scores2);
+$smarty->assign('scores', $scores);
 
 
 
