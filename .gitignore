@@ -6,3 +6,4 @@ class/var.conf.php
 *.orig
 view/configs/paths.conf
 /cache/
+doc/database/*

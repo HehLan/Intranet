@@ -9,17 +9,17 @@
         {if $con}
             <p>Bienvenue {$smarty.session.login} !</p>
 			<div id="userbar" class="" >
-				<a href="profile.php"><img src="{#assets#}/img/userbar/profile.png" alt="Votre profil"></a>
+				<a href="profile.php"><img src="{#assets#}/img/userbar/profile.png" alt="Votre profil" data-toggle="tooltip" data-placement="bottom" title="Votre profil"></a>
 				<a href="#" id="notifBlock"
 					data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" data-content="{$smarty.server.REMOTE_ADDR}">
-					<img src="{#assets#}/img/userbar/notif_off.png" alt="Vos Notifications">
+					<img src="{#assets#}/img/userbar/notif_off.png" alt="Vos Notifications" data-toggle="tooltip" data-placement="bottom" title="Vos notifications">
 				</a>
 				<a href="#" class=""
-					data-container="body" data-toggle="tooltip" data-placement="bottom" title="{$smarty.server.REMOTE_ADDR}">
-					<img src="{#assets#}/img/userbar/ip.png" alt="Votre adresse IP">
+					data-container="body" data-toggle="popover" data-placement="bottom" title="Votre adresse IP est" data-content="{$smarty.server.REMOTE_ADDR}">
+					<img src="{#assets#}/img/userbar/ip.png" alt="Votre adresse IP" data-toggle="tooltip" data-placement="bottom" title="Votre adresse IP">
 				</a>
-				<a href="commande.php"><img src="{#assets#}/img/userbar/command.png" alt="Se déconnecter"></a>
-				<a href="common/logout.php"><img src="{#assets#}/img/userbar/logout.png" alt="Se déconnecter"></a>
+				<a href="commande.php"><img src="{#assets#}/img/userbar/command.png" alt="Passer une commande" data-toggle="tooltip" data-placement="bottom" title="Passer une commande"></a>
+				<a href="common/logout.php"><img src="{#assets#}/img/userbar/logout.png" alt="Se déconnecter" data-toggle="tooltip" data-placement="bottom" title="Se déconnecter"></a>
 			</div>
         {else}
             <p>Bienvenue, <a href="{#domain#}/modules/login.php">se connecter</a></p>

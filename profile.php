@@ -1,26 +1,6 @@
 <?php
 
-session_start();
-require_once('class/var.conf.php');
-require_once(DOCUMENT_ROOT.'/common/utils.php');
-require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
-require_once(DOCUMENT_ROOT.'/class/Database.class.php');
-require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
-require_once(DOCUMENT_ROOT.'/class/Query.class.php');
-
-
-$connected = false;
-$chatIsActive = false;
-$database = new Database();
-$smarty = new Smarty_HEHLan();
-
-if (isset($_SESSION['id_joueur']))
-{
-    if (($_SESSION['id_joueur'] != 0))
-    {
-       $connected = true; 
-    }     
-}
+require_once('common/head.php');
 
 // This is an unknown user (no connected)
 if (!$connected)
@@ -101,7 +81,6 @@ $equipes = $query->getResult();
                                        
 
 
-$smarty->assign("con", $connected);
 $smarty->assign("next_matches", $database->getNextMatches($connected));
 $smarty->assign("navTournois", $database->getNavTournois());
 $smarty->assign("joueur", $joueur);

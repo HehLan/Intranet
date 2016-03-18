@@ -81,15 +81,12 @@ class Database
         $query = new Query($this, $sql); 
         $query->bind(':login', $login, PDO::PARAM_STR);
         $query->bind(':pwd', sha1($password), PDO::PARAM_STR);
+		$player = null;
         if($query->execute())
         {
-            if(!empty($query->getResult()))
+            if(!($query->getResult()==null))
             {
                 $player = new Player($query->getResult()[0]);
-            }
-            else
-            {
-                $player = null;
             }
         }
         else
@@ -407,25 +404,11 @@ class Database
             exit;
         }     
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-     
-    
+
     
 	
 	///////////////////////////////////////////////
-	///////////////////TOURNOI/////////////////////
+	///////////////////TOURNOIS////////////////////
 	///////////////////////////////////////////////
 	
 	public function getIdMatchEquipe($idGroup,$idTeam1,$idTeam2)
@@ -447,4 +430,65 @@ class Database
                 return 0;
             }
 	}
+
+	
+	///////////////////////////////////////////////
+	///////////////////NOTIFICATIONS///////////////
+	///////////////////////////////////////////////
+	public function getNotificationsJoueur($idJoueur)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/getNotifJoueurs.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idj', $idJoueur, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL JOUEUR NOTIFICATIONS';
+			return 0;
+		}
+	}
+	
+	public function setNotifAsSeen($idJoueur, $idNotif)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/setNotifJoueurAsSeen.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idj', $idJoueur, PDO::PARAM_INT);
+		$query->bind(':idn', $idNotif, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL MARK NOTIF AS SEEN';
+			return 0;
+		}
+	}
+	
+	public function delNotifJoueur($idJoueur, $idNotif)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/delNotifJoueurs.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idj', $idJoueur, PDO::PARAM_INT);
+		$query->bind(':idn', $idNotif, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL REMOVE NOTIF JOUEUR';
+			return 0;
+		}
+	}
+	
 }
