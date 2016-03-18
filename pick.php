@@ -148,9 +148,12 @@ else {
     }
     $req = $connexion->prepare($sql);
     $req->execute();
-
-    // ajouter des infos dans la table matchs
-    // TODO
+    
+    // recuperer les id's et les etats 'checked'
+    $sql = "SELECT mapId, checked FROM pick_$matchId";
+    $req = $connexion->prepare($sql);
+    $req->execute();
+    $pickState = $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
 // ********************** Applying Template **********************
