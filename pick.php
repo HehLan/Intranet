@@ -117,6 +117,9 @@ if (count($result) > 0) {
     }
     $req = $connexion->prepare($sql);
     $req->execute();
+    
+    // ajouter des infos dans la table matchs
+    // TODO
 }
 
 
