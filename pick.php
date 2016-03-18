@@ -12,10 +12,16 @@ require_once(DOCUMENT_ROOT . '/class/Query.class.php');
 $database = new Database();
 $smarty = new Smarty_HEHLan();
 $connexion = $database->getConnection();
-$playerId = $_GET['id'];
 $matchId = $_GET['idMatch'];
-$opponentId = '';
-$opponentNickname = '';
+$playerId = $_GET['id'];
+$playerNickname;
+$opponentId;
+$opponentNickname;
+$maps;
+$tableExist;
+$pickState;
+$idPlayerWhoMakeChoise;
+
 
 // eviter que qqn non logué y accède
 $connected = Auth::isLogged();
@@ -25,7 +31,6 @@ if (!$connected) {
 }
 
 // ********************** recuperer les maps **********************
-$maps;
 $sql = "select * from hotsmaps";
 $query = new Query($database, $sql);
 if ($query->execute()) {
@@ -39,7 +44,6 @@ if ($query->execute()) {
 }
 
 // ********************** get player nickname **********************
-$playerNickname;
 $sql = 'SELECT pseudo FROM joueurs WHERE id_joueur=:userId';
 $query = new Query($database, $sql);
 $query->bind(':userId', $playerId, PDO::PARAM_INT);
@@ -59,8 +63,7 @@ if ($query->execute()) {
 }
 
 // ********************** chercher l'id de l'adversaire **********************
-$opponentId;
-$opponentNickname;
+
 $sql = "SELECT joueurs.id_joueur, pseudo FROM matchs_equipes 
         LEFT JOIN equipes_joueur ON matchs_equipes.id_equipe=equipes_joueur.id_equipes
         LEFT JOIN joueurs  ON equipes_joueur.id_joueur=joueurs.id_joueur
@@ -83,8 +86,7 @@ foreach ($players as $player) {
     }
 }
 
-// ********************** verifier l'existence de la table temporaire, sinon creer **********************
-$tableExist;
+// ********************** verifier l'existence de la table temporaire **********************
 $sql = "SHOW TABLES LIKE 'pick_$matchId'";
 $query = new Query($database, $sql);
 if ($query->execute()) {
@@ -97,18 +99,34 @@ if ($query->execute()) {
     exit;
 }
 
-// si la table existe --> 
-// recuperer les id's et les etats 'checked'
-// determiner à qui est le tour
-$pickState;
-if ($tableExist) { 
-    $sql = "SELECT * FROM pick_$matchId";
+// si la table existe 
+if ($tableExist) {
+    // recuperer les id's et les etats 'checked'
+    $sql = "SELECT mapId, checked FROM pick_$matchId";
     $req = $connexion->prepare($sql);
     $req->execute();
     $pickState = $req->fetchAll(PDO::FETCH_ASSOC);
-} 
-// si la table n'exitste pas --> creer et remplire
-else { 
+
+    // determiner à qui est le tour
+    $sql = "SELECT idChief FROM matchs WHERE id_match=:idMatch";
+    $query = new Query($database, $sql);
+    $query->bind(':idMatch', $matchId, PDO::PARAM_INT);
+    if ($query->execute()) {
+        $idPlayerWhoMakeChoise = $query->getResult()[0]['idChief'];
+        if($idPlayerWhoMakeChoise == 0){ 
+            // si la tables n'est pas remplie, donc debut du pick
+            // on va choisir le joueur avc l'id le + petit qui va commencer le pick
+            $idPlayerWhoMakeChoise = ($playerId < $opponentId) ? $playerId : $opponentId;
+        }
+    } else {
+        global $glob_debug;
+        if ($glob_debug)
+            echo 'ERREUR SQL MAPS';
+        exit;
+    }
+}
+// si la table n'exitste pas
+else {
     // creation
     $sql = "CREATE TABLE hehlanbd.pick_$matchId ("
             . "mapId INT NOT NULL AUTO_INCREMENT, "
@@ -130,20 +148,20 @@ else {
     }
     $req = $connexion->prepare($sql);
     $req->execute();
-    
+
     // ajouter des infos dans la table matchs
     // TODO
 }
 
-
 // ********************** Applying Template **********************
 $smarty->assign('con', $connected);
-$smarty->assign('maps', $maps);
+$smarty->assign('matchId', $matchId);
+$smarty->assign('maps', $maps);         // les chemins vers les img des maps et les id's
 $smarty->assign('playerId', $playerId);
 $smarty->assign('playerNickname', $playerNickname);
 $smarty->assign('opponentId', $opponentId);
 $smarty->assign('opponentNickname', $opponentNickname);
-$smarty->assign('matchId', $matchId);
+$smarty->assign('pickState', $pickState);   // les id's des maps et etat checked(bool)
 
 $smarty->display('default/pick.tpl');
 ?>

@@ -53,10 +53,12 @@
         </div>
 
         {include file="default/footer.tpl"}
-        
-        
-        
-        {include file="default/pick.js.tpl" playerId=$playerId playerNickname=$playerNickname opponentId=$opponentId opponentNickname=$opponentNickname}
-        
+
+
+
+        {include file="default/pick.js.tpl" playerId=$playerId playerNickname=$playerNickname 
+                                            opponentId=$opponentId opponentNickname=$opponentNickname
+                                            }
+
     </body>
 </html>
