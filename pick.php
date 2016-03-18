@@ -2,10 +2,16 @@
 require_once('common/head.php');
 
 $connexion = $database->getConnection();
-$playerId = $_GET['id'];
 $matchId = $_GET['idMatch'];
-$opponentId = '';
-$opponentNickname = '';
+$playerId = $_GET['id'];
+$playerNickname;
+$opponentId;
+$opponentNickname;
+$maps;
+$tableExist;
+$pickState;
+$idPlayerWhoMakeChoise;
+
 
 
 // ********************** recuperer les maps **********************
@@ -63,11 +69,12 @@ foreach ($players as $player) {
     }
 }
 
-// ********************** verifier l'existence de la table temporaire, sinon creer **********************
-$sql = "SHOW TABLES LIKE 'temppick_$matchId'";
+// ********************** verifier l'existence de la table temporaire **********************
+$sql = "SHOW TABLES LIKE 'pick_$matchId'";
 $query = new Query($database, $sql);
 if ($query->execute()) {
     $result = $query->getResult();
+    $tableExist = (count($result) > 0) ? true : false;
 } else {
     global $glob_debug;
     if ($glob_debug)
@@ -75,15 +82,36 @@ if ($query->execute()) {
     exit;
 }
 
-// si la table existe --> recuperer les id's et les etats 'checked'
-if (count($result) > 0) { 
-    $sql = "SELECT mapId, checked FROM temppick_$matchId";
+// si la table existe 
+if ($tableExist) {
+    // recuperer les id's et les etats 'checked'
+    $sql = "SELECT mapId, checked FROM pick_$matchId";
+    $req = $connexion->prepare($sql);
+    $req->execute();
+    $pickState = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    // determiner à qui est le tour
+    $sql = "SELECT idChief FROM matchs WHERE id_match=:idMatch";
     $query = new Query($database, $sql);
-    echo 'table exists';
-    // TODO
-} else { // si la table n'exitste pas --> creer et remplire
+    $query->bind(':idMatch', $matchId, PDO::PARAM_INT);
+    if ($query->execute()) {
+        $idPlayerWhoMakeChoise = $query->getResult()[0]['idChief'];
+        if($idPlayerWhoMakeChoise == 0){ 
+            // si la tables n'est pas remplie, donc debut du pick
+            // on va choisir le joueur avc l'id le + petit qui va commencer le pick
+            $idPlayerWhoMakeChoise = ($playerId < $opponentId) ? $playerId : $opponentId;
+        }
+    } else {
+        global $glob_debug;
+        if ($glob_debug)
+            echo 'ERREUR SQL MAPS';
+        exit;
+    }
+}
+// si la table n'exitste pas
+else {
     // creation
-    $sql = "CREATE TABLE hehlanbd.temppick_$matchId ("
+    $sql = "CREATE TABLE hehlanbd.pick_$matchId ("
             . "mapId INT NOT NULL AUTO_INCREMENT, "
             . "checked BOOLEAN NOT NULL, "
             . "PRIMARY KEY (mapId))";
@@ -92,7 +120,7 @@ if (count($result) > 0) {
 
     // remplissage
     $counter = 0;
-    $sql = "INSERT INTO hehlanbd.temppick_$matchId (mapId, checked) VALUES ";
+    $sql = "INSERT INTO hehlanbd.pick_$matchId (mapId, checked) VALUES ";
     foreach ($maps as $map) {
         if ($counter < count($maps) - 1) {
             $sql .= " ('" . $map['id'] . "', FALSE),";
@@ -104,19 +132,23 @@ if (count($result) > 0) {
     $req = $connexion->prepare($sql);
     $req->execute();
     
-    // ajouter des infos dans la table matchs
-    // TODO
+    // recuperer les id's et les etats 'checked'
+    $sql = "SELECT mapId, checked FROM pick_$matchId";
+    $req = $connexion->prepare($sql);
+    $req->execute();
+    $pickState = $req->fetchAll(PDO::FETCH_ASSOC);
 }
-
 
 // ********************** Applying Template **********************
 $smarty->assign('con', $connected);
-$smarty->assign('maps', $maps);
+$smarty->assign('matchId', $matchId);
+$smarty->assign('maps', $maps);         // les chemins vers les img des maps et les id's
 $smarty->assign('playerId', $playerId);
 $smarty->assign('playerNickname', $playerNickname);
 $smarty->assign('opponentId', $opponentId);
 $smarty->assign('opponentNickname', $opponentNickname);
-$smarty->assign('matchId', $matchId);
+$smarty->assign('pickState', $pickState);   // les id's des maps et etat checked(bool)
+$smarty->assign('idPlayerWhoMakeChoise', $idPlayerWhoMakeChoise);   
 
 $smarty->display('default/pick.tpl');
 ?>
