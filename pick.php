@@ -63,7 +63,6 @@ if ($query->execute()) {
 }
 
 // ********************** chercher l'id de l'adversaire **********************
-
 $sql = "SELECT joueurs.id_joueur, pseudo FROM matchs_equipes 
         LEFT JOIN equipes_joueur ON matchs_equipes.id_equipe=equipes_joueur.id_equipes
         LEFT JOIN joueurs  ON equipes_joueur.id_joueur=joueurs.id_joueur

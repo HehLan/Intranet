@@ -35,18 +35,13 @@
 
     function initPickState() {
         pickState = {$pickState|json_encode};
-        /*
-         pickState.forEach(function (map) {
-         console.log(map.mapId + " " + map.checked);
-         });
-         */
     }
 
     // fonction qui va griser les maps deja "picked" --> si joueur doit reco pr quelconque raison
     function checkMaps() {
         pickState.forEach(function (map) {
             if(map.checked == true){
-                
+                griserMap($('#'+map.mapId));
             }
         });
     }
@@ -60,7 +55,7 @@
         grayBox.append('<div id="loadingCircle"><div class="circle"></div><div class="circle1"></div></div>');
         grayBox.append(grayBoxText);
 
-        grayBox.addClass("darkCover");
+        grayBox.addClass('darkCover');
         grayBoxText.text('En attente de  ' + opponentNickname);
 
         grayBox.hide();
@@ -77,13 +72,22 @@
     // suite a l'appuie sur l'image
     function kickMap(el) {
         var container = $(el);   // div containing img&text
-        
-        if(container.attr('data-checked') == 1)
+        if(container.attr('data-checked') == 1) // deja kicked
             return;
+        
         griserMap(container);
+        
+        // cacher les tuilles avec un delai --> just UI Exp 4 users
+        setTimeout(function () {
+            showGrayBox();
+        }, 350);
     }
 
     function griserMap(container) {
+        isGray = container.attr('data-checked');
+        if(isGray == 1) 
+            return;
+        
         container.attr('data-checked', 1);    // change div's value, to avoid it change css on mouseHower
 
         // faire disparaitre l'effet de survol, car apres avoir change 'data-value' l'effet "mouseLeave" 
@@ -95,14 +99,9 @@
 
         // griser l'image
         container.children('img').css({
-            '-webkit-filter': 'grayscale(1)',
-            'filter': 'grayscale(100%)'
+            '-webkit-filter': 'grayscale(1)',   // chrome
+            'filter': 'grayscale(100%)'         // ffox
         });
-
-        // cacher les tuilles
-        setTimeout(function () {
-            showGrayBox();
-        }, 350);
     }
 
     // highlighting text 
