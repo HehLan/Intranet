@@ -16,8 +16,8 @@
 
             <div class="alert alert-warning alert-dismissable col-lg-4" style="display: none">
                 <button type="button" class="close">x</button>
-                <h4>Error !</h4>
-                Bad login od bad password
+                <h4>Erreur !</h4>
+                Mauvais login ou mot de passe.
             </div>
 
             <div class="accordion">
@@ -55,9 +55,8 @@
                 </div> 
             </div>			
         </div>
-
-
-
+        {include file="default/footer.tpl"}
+		
         {if $tried == 'true'}
             <script>
                 $(function ()
@@ -73,8 +72,5 @@
                 });
             </script>
         {/if}
-
-        {include file="default/footer.tpl"}
-
     </body>
 </html>
