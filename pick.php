@@ -84,10 +84,12 @@ foreach ($players as $player) {
 }
 
 // ********************** verifier l'existence de la table temporaire, sinon creer **********************
+$tableExist;
 $sql = "SHOW TABLES LIKE 'pick_$matchId'";
 $query = new Query($database, $sql);
 if ($query->execute()) {
     $result = $query->getResult();
+    $tableExist = (count($result) > 0) ? true : false;
 } else {
     global $glob_debug;
     if ($glob_debug)
@@ -97,13 +99,13 @@ if ($query->execute()) {
 
 // si la table existe --> 
 // recuperer les id's et les etats 'checked'
-// determiner à qui le tour
-if (count($result) > 0) { 
-    $sql = "SELECT mapId, checked FROM pick_$matchId";
-    $query = new Query($database, $sql);
-    echo 'table exists';
-    $pickState = $query->getResult();
-    // TODO
+// determiner à qui est le tour
+$pickState;
+if ($tableExist) { 
+    $sql = "SELECT * FROM pick_$matchId";
+    $req = $connexion->prepare($sql);
+    $req->execute();
+    $pickState = $req->fetchAll(PDO::FETCH_ASSOC);
 } 
 // si la table n'exitste pas --> creer et remplire
 else { 
