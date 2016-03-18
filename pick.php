@@ -25,6 +25,7 @@ if (!$connected) {
 }
 
 // ********************** recuperer les maps **********************
+$maps;
 $sql = "select * from hotsmaps";
 $query = new Query($database, $sql);
 if ($query->execute()) {
@@ -38,6 +39,7 @@ if ($query->execute()) {
 }
 
 // ********************** get player nickname **********************
+$playerNickname;
 $sql = 'SELECT pseudo FROM joueurs WHERE id_joueur=:userId';
 $query = new Query($database, $sql);
 $query->bind(':userId', $playerId, PDO::PARAM_INT);
@@ -57,6 +59,8 @@ if ($query->execute()) {
 }
 
 // ********************** chercher l'id de l'adversaire **********************
+$opponentId;
+$opponentNickname;
 $sql = "SELECT joueurs.id_joueur, pseudo FROM matchs_equipes 
         LEFT JOIN equipes_joueur ON matchs_equipes.id_equipe=equipes_joueur.id_equipes
         LEFT JOIN joueurs  ON equipes_joueur.id_joueur=joueurs.id_joueur
@@ -80,7 +84,7 @@ foreach ($players as $player) {
 }
 
 // ********************** verifier l'existence de la table temporaire, sinon creer **********************
-$sql = "SHOW TABLES LIKE 'temppick_$matchId'";
+$sql = "SHOW TABLES LIKE 'pick_$matchId'";
 $query = new Query($database, $sql);
 if ($query->execute()) {
     $result = $query->getResult();
@@ -91,15 +95,20 @@ if ($query->execute()) {
     exit;
 }
 
-// si la table existe --> recuperer les id's et les etats 'checked'
+// si la table existe --> 
+// recuperer les id's et les etats 'checked'
+// determiner à qui le tour
 if (count($result) > 0) { 
-    $sql = "SELECT mapId, checked FROM temppick_$matchId";
+    $sql = "SELECT mapId, checked FROM pick_$matchId";
     $query = new Query($database, $sql);
     echo 'table exists';
+    $pickState = $query->getResult();
     // TODO
-} else { // si la table n'exitste pas --> creer et remplire
+} 
+// si la table n'exitste pas --> creer et remplire
+else { 
     // creation
-    $sql = "CREATE TABLE hehlanbd.temppick_$matchId ("
+    $sql = "CREATE TABLE hehlanbd.pick_$matchId ("
             . "mapId INT NOT NULL AUTO_INCREMENT, "
             . "checked BOOLEAN NOT NULL, "
             . "PRIMARY KEY (mapId))";
@@ -108,7 +117,7 @@ if (count($result) > 0) {
 
     // remplissage
     $counter = 0;
-    $sql = "INSERT INTO hehlanbd.temppick_$matchId (mapId, checked) VALUES ";
+    $sql = "INSERT INTO hehlanbd.pick_$matchId (mapId, checked) VALUES ";
     foreach ($maps as $map) {
         if ($counter < count($maps) - 1) {
             $sql .= " ('" . $map['id'] . "', FALSE),";
