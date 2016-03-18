@@ -1,5 +1,4 @@
 <?php
-require_once(dirname(__FILE__).'/var.conf.php');
 require_once(DOCUMENT_ROOT.'/class/objects/Player.class.php');
 require_once(DOCUMENT_ROOT.'/class/Query.class.php');
 

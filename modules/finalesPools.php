@@ -162,11 +162,15 @@ if ($nbrmatch > 0)
             }
             if ($score1 == '')
             {
-                $score1 = substr(get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']), 0, 3);
+                $score1=1;
+                //$score1 = substr(get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']), 0, 3);
+                
             }
             if ($score2 == '')
             {
-                $score2 = get_heure($matches[$tablo[$c][$m]]['heure']);
+                $score2=3;
+              
+                //$score2 = get_heure($matches[$tablo[$c][$m]]['heure']);
             }
 			
             $matches[$tablo[$c][$m]]['nom1'] = $nom1;
@@ -186,34 +190,49 @@ if ($nbrmatch > 0)
 
 //  for bracket js -------------------------------------------------------
 
-$c = 1;
-$m = 1;
+$team1_names = array();
+$team2_names = array();
+$scores1 = array();
+$scores2 = array();
 
-/*
-for ($c = $niveau; $c >= 0; $c--)
+if (isset($matches) && isset($tablo))
 {
-    for ($m = 1; $m <= $match_par_niveau[$c]; $m++)
-    {*/
-        $number = $tablo[$c][$m];
-        
-        $team1_clr = $matches[$tablo[$c][$m]]['clr1'];
-        $team1_name = $matches[$tablo[$c][$m]]['nom1']; 
-        $score1_clr = $matches[$tablo[$c][$m]]['clr1'];
-        $score1 = $matches[$tablo[$c][$m]]['score1'];
-        
-        $team2_clr = $matches[$tablo[$c][$m]]['clr2'];
-        $team2_name = $matches[$tablo[$c][$m]]['nom2']; 
-        $score2_clr = $matches[$tablo[$c][$m]]['clr2'];
-        $score2 = $matches[$tablo[$c][$m]]['score2'];
-        
-        $matches[$tablo[$c][$m]]['id_parent'];
-    //}
-//}     
+    for ($c = $niveau; $c >= 0; $c--)
+    {
+        for ($m = 1; $m <= $match_par_niveau[$c]; $m++)
+        {
+            $number = $tablo[$c][$m];
+            
+            
+            
+            $teams[] = $matches[$tablo[$c][$m]]['nom1']; 
+            $teams[] = $matches[$tablo[$c][$m]]['nom2'];
+            $scores[] = $matches[$tablo[$c][$m]]['score1'];
+            $scores[] = $matches[$tablo[$c][$m]]['score2'];
+            
+
+            
+            
+            $team1_clr = $matches[$tablo[$c][$m]]['clr1'];
+            $score1_clr = $matches[$tablo[$c][$m]]['clr1'];
+            $scores1[] = $matches[$tablo[$c][$m]]['score1'];
+            $team2_clr = $matches[$tablo[$c][$m]]['clr2'];            
+            $score2_clr = $matches[$tablo[$c][$m]]['clr2'];
+            $scores2[] = $matches[$tablo[$c][$m]]['score2'];
+
+            $matches[$tablo[$c][$m]]['id_parent'];
+        }
+    }
+}
 
 //-------------------------------------------------------
 
+print_r($scores);
+//print_r($teams);
 
-
+//print_r($team2_names);
+//
+//print_r($scores2);
 
 
 
@@ -225,18 +244,20 @@ if(isset($tablo))
     $smarty->assign('matches', $matches);
     $smarty->assign('tablo', $tablo);
 }
-$smarty->assign("con", $connected);
-$smarty->assign("next_matches", $database->getNextMatches($connected));
-$smarty->assign("navTournois", $database->getNavTournois());
-$smarty->assign("tournoi", $tournoi);
-$smarty->assign("nbr_lb2", $nbr_lb2);
-$smarty->assign("nbr_lb3", $nbr_lb3);
+$smarty->assign('con', $connected);
+$smarty->assign('next_matches', $database->getNextMatches($connected));
+$smarty->assign('navTournois', $database->getNavTournois());
+$smarty->assign('tournoi', $tournoi);
+$smarty->assign('nbr_lb2', $nbr_lb2);
+$smarty->assign('nbr_lb3', $nbr_lb3);
 
 
 
 // for jquery-bracket -------------------------------------------
 
-$smarty->assign("team1_name", $team1_name);
+$smarty->assign('teams', $teams);
+$smarty->assign('scores', $scores);
+
 
 
 //--------------------------------------------

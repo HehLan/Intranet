@@ -30,14 +30,8 @@ if($connected)
     header('Location: '.WEB_ROOT);
 }
 
-
-
-
 // Applying Template
 $smarty->assign('tried', $tried);
 
-
 $smarty->display('default/login.tpl');
-
-
 ?>
