@@ -5,7 +5,7 @@
         {include file="default/meta.tpl"}
 	<link rel="stylesheet" type="text/css" href="{#assets#}/css/finalesRounds.css" />
        
-        
+        <link rel="stylesheet" type="text/css" href="{#domain#}/lib/jQuery/jquery.bracket.min.css" />
         
     </head>
     <body>
@@ -131,8 +131,16 @@
                 </div>
             </div>
         </div>
+                
+             <div id="bracket-rounds" class="bracket"></div>    
+                
+                
+                
         {include file="default/footer.tpl"}
         
+        <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.bracket.min.js"></script>
+                <script type="text/javascript" src="{#assets#}/js/finalesRounds.js"></script>
+
 
     </body>
 </html>

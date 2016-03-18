@@ -17,13 +17,14 @@
     }
 
     alert(data_teams);  // fonctionne
-    
+
     //marche pas et pourquoi ?
     /*var data = {
-        teams : data_teams
-    }*/
+        teams : [data_teams]
+    };*/
     
     // marche mais il faut connaître le nombre d'index
+    
     var data = {
         teams : [
             data_teams[0],

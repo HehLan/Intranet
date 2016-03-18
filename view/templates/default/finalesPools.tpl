@@ -65,6 +65,8 @@
         
         <!-- jquery-bracket -->
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.bracket.min.js"></script>
+        
+        
         {include file="default/finalesPools.js.tpl" 
             niveau=$niveau  
             match_par_niveau=$match_par_niveau
@@ -77,10 +79,11 @@
             scores1=$scores1
             scores2=$scores2
         }
-        
-       
+               
    
        
+        <!-- côté admin : http://blog.jameskohli.com/post/79396109921/lets-build-a-march-madness-bracket-generator-or -->
+        
         
     </body>
 </html>
