@@ -1,3 +1,13 @@
+class Notifier{
+	constructor(){
+		this.cacheNotif = {
+			
+		}
+	}
+}
+
+$(new Notifier());
+
 // Refresh periodically the Joueur notification list
 var refreshPeriod = 1000;
 function notifTimer(){
@@ -32,7 +42,6 @@ function markAsSeen(id_notif){
 
 $('.notif-not-seen').click(function(){
 	var id_notif = $(this).attr('id-notif').val();
-	alert(id_notif+"hgjh");
 	markAsSeen(id_notif);
 });
 

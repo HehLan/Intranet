@@ -2,7 +2,10 @@
 
 
 // Includes
-session_start();
+
+
+require_once('../../common/head.php');
+
 require_once('../../common/utils.php'); // get some utility functions
 require_once('../../class/Smarty_HEHLan.class.php');
 require_once('../../class/Database.class.php');

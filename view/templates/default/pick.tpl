@@ -22,7 +22,7 @@
             <h2> </h2>
             <div class="row">
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
-                    <div id="iconPlayer1" class="glyphicon glyphicon-user" style="font-size:3em" ></div> 
+                    <div id="iconPlayer1" class="glyphicon glyphicon-user" style="font-size:3em;" ></div> 
                     <div>{$playerNickname}</div>
                     <br>
                     <br>
@@ -53,11 +53,9 @@
 
         {include file="default/footer.tpl"}
 
-
-
         {include file="default/pick.js.tpl" playerId=$playerId playerNickname=$playerNickname 
             opponentId=$opponentId opponentNickname=$opponentNickname pickState=$pickState 
-            idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise}
+            idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise matchId=$matchId}
 
     </body>
 </html>

@@ -1,6 +1,8 @@
 <?php
+
 require_once(dirname(dirname(__FILE__)).'/common/var.conf.php');
 require_once(SMARTY_DIR.'Smarty.class.php');
+
 
 // Smarty_HEHLan class
 class Smarty_HEHLan extends Smarty 
