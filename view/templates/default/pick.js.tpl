@@ -73,16 +73,19 @@
         updateDatabase(mapId);
         
         // notifier l'opponent --> sockets
+        var message = ["mapKicked", playerId, matchId];
+        socket.send(message);
     }
 
     function updateDatabase(mapId) {
         $.ajax({
             type: "POST",
-            url: "websockets/pickTools.php",
+            url: "common/pickTools.php",
             data: {
                 req: "updateDb",
                 mapId: mapId,
-                matchId : matchId
+                matchId : matchId,
+                opponentId : opponentId
             },
             success: function (res) {
                 console.log(res);

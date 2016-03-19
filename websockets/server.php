@@ -10,7 +10,9 @@ require_once('./websockets.php');
 
 class CustomServer extends WebSocketServer {
 
+    // array qui continet les objets de type User(genId, userId, matchId)
     protected $connectedUsers;
+    // array qui contient les objets de type Obj(matchId, palyer1_Id, player2_Id)
     protected $matchs_players;
 
     protected function process($user, $message) {
@@ -38,6 +40,16 @@ class CustomServer extends WebSocketServer {
                     array_push($this->connectedUsers, $user);
                 }
 
+                break;
+                
+            case "mapKicked":
+                $info = array(
+                    "playerId" => $parsedMessage[1],
+                    "matchId" => $parsedMessage[2]
+                );
+                $key = array_search('matchId', $this->matchs_players);
+                
+                
                 break;
 
             default:

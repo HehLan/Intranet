@@ -6,7 +6,10 @@ session_start();
 //require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/common/var.conf.php');
 
 // Corky
-require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'Intranet'.'/common/var.conf.php');
+//require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'Intranet'.'/common/var.conf.php');
+
+// Ivan
+require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/Intranet'.'/common/var.conf.php');
 
 
 require_once(DOCUMENT_ROOT.'/common/utils.php');
