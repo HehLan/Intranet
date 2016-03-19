@@ -11,7 +11,7 @@
 			<div id="userbar" class="" >
 				<a href="profile.php"><img src="{#assets#}/img/userbar/profile.png" alt="Votre profil" data-toggle="tooltip" data-placement="bottom" title="Votre profil"></a>
 				<a href="#" id="notifBlock"
-					data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" data-content="{$smarty.server.REMOTE_ADDR}">
+					data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" data-content="Aucune Notification">
 					<img src="{#assets#}/img/userbar/notif_off.png" alt="Vos Notifications" data-toggle="tooltip" data-placement="bottom" title="Vos notifications">
 				</a>
 				<a href="#" class=""

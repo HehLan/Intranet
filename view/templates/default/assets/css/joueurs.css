@@ -35,7 +35,7 @@ a.ClassEquipe
 {
 	font-size: 1em;
 }
-.tooltip
+.map_cafetaria>.tooltip
 {
     position: relative;
     background-color: initial;
@@ -47,7 +47,7 @@ a.ClassEquipe
     font-size: medium;
     z-index: 1300;  
 }
-.tooltip span
+.map_cafetaria>.tooltip span
 {
     visibility: hidden;
     position: absolute;
@@ -70,18 +70,18 @@ a.ClassEquipe
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
     box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
 }
-.tooltip:hover
+.map_cafetaria>.tooltip:hover
 {
     border: 0; /* IE6 fix */
 }
-.tooltip:hover span
+.map_cafetaria>.tooltip:hover span
 {
     visibility: visible;
     background-color:#0076a3;
     color: #fff;  
 }
-.tooltip span:before,
-.tooltip span:after
+.map_cafetaria>.tooltip span:before,
+.map_cafetaria>.tooltip span:after
 {
     position: absolute;
     z-index: 1100;
@@ -93,11 +93,11 @@ a.ClassEquipe
     border-right: 8px solid transparent;
     border-bottom: 0;
 }
-.tooltip span:after
+.map_cafetaria>.tooltip span:after
 {
     content: "";
 }
-.tooltip span:before
+.map_cafetaria>.tooltip span:before
 {
     border-top-color: #ccc;
     bottom: -8px;
