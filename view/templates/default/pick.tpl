@@ -53,11 +53,9 @@
 
         {include file="default/footer.tpl"}
 
-
-
         {include file="default/pick.js.tpl" playerId=$playerId playerNickname=$playerNickname 
             opponentId=$opponentId opponentNickname=$opponentNickname pickState=$pickState 
-            idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise}
+            idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise matchId=$matchId}
 
     </body>
 </html>

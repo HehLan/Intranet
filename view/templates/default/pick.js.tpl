@@ -1,5 +1,8 @@
 {* Smarty *}
 <script>
+    // Socket
+    var socket;
+
     // box gris qui apparait devant les tuilles
     var grayBox;
     var grayBoxText;
@@ -11,18 +14,66 @@
     var opponentNickname;
     var idPlayerWhoMakeChoise;
     var pickState;
+    var matchId;
 
     $(document).ready(function () {
+        matchId = "{$matchId}";
         initPlayers();
         initGrayBox();
         initPickState();
         checkMaps();
+        connectToSocketsServer();
 
         // si pas a moi de choisir --> cacher les maps
         if (idPlayerWhoMakeChoise !== playerId) {
             showGrayBox();
         }
     });
+
+    function connectToSocketsServer() {
+        var host = "ws://127.0.0.1:9000/websockets"; // SET THIS TO YOUR SERVER
+        try {
+            socket = new WebSocket(host);
+
+            socket.onopen = function () { /* TODO */
+            };
+            socket.onclose = function () { /* TODO */
+            };
+
+            // quand on recoit une notif du serveur 
+            socket.onmessage = function (msg) {
+                console.log("Socket - message received: " + msg.data);
+
+                switch (msg.data) {
+                    case "identificate" :
+                        var identifiants = ["identificate", playerId, matchId];
+                        socket.send(identifiants);
+                        break;
+
+                    case "":
+                        break;
+
+                    case "":
+                        break;
+
+                    case "":
+                        break;
+
+                    default:
+                        break;
+                }
+            };
+        } catch (ex) {
+            console.log(ex);
+        }
+    }
+
+    function closeConnectionWebSocket() {
+        if (socket != null) {
+            socket.close();
+            socket = null;
+        }
+    }
 
     function initPlayers() {
         playerId = "{$playerId}";
@@ -40,8 +91,8 @@
     // fonction qui va griser les maps deja "picked" --> si joueur doit reco pr quelconque raison
     function checkMaps() {
         pickState.forEach(function (map) {
-            if(map.checked == true){
-                griserMap($('#'+map.mapId));
+            if (map.checked == true) {
+                griserMap($('#' + map.mapId));
             }
         });
     }
@@ -72,11 +123,11 @@
     // suite a l'appuie sur l'image
     function kickMap(el) {
         var container = $(el);   // div containing img&text
-        if(container.attr('data-checked') == 1) // deja kicked
+        if (container.attr('data-checked') == 1) // deja kicked
             return;
-        
+
         griserMap(container);
-        
+
         // cacher les tuilles avec un delai --> just UI Exp 4 users
         setTimeout(function () {
             showGrayBox();
@@ -85,9 +136,9 @@
 
     function griserMap(container) {
         isGray = container.attr('data-checked');
-        if(isGray == 1) 
+        if (isGray == 1)
             return;
-        
+
         container.attr('data-checked', 1);    // change div's value, to avoid it change css on mouseHower
 
         // faire disparaitre l'effet de survol, car apres avoir change 'data-value' l'effet "mouseLeave" 
@@ -99,14 +150,14 @@
 
         // griser l'image
         container.children('img').css({
-            '-webkit-filter': 'grayscale(1)',   // chrome
-            'filter': 'grayscale(100%)'         // ffox
+            '-webkit-filter': 'grayscale(1)', // chrome
+            'filter': 'grayscale(100%)'       // ffox
         });
     }
 
     // highlighting text 
     function highlightUp(el) {
-        var container = $(el);              // div containing img&text
+        var container = $(el);                    // div containing img&text
         var checked = $(el).attr('data-checked'); // get its custom checked value
         if (checked == 0)
             container.children('div').css('background-color', 'rgba(214,251,251,0.3)');
@@ -117,4 +168,6 @@
         if (checked == 0)
             container.children('div').css('background-color', 'rgba(214,251,251,0)');
     }
+
+
 </script>

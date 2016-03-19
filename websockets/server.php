@@ -1,50 +1,74 @@
-#!/usr/bin/env php
 <?php
+
 require_once('./websockets.php');
+/*
+
+  cd htdocs\Intranet\websockets
+  php server.php
+
+ */
 
 class CustomServer extends WebSocketServer {
 
     protected $connectedUsers;
+    protected $matchs_players;
 
     protected function process($user, $message) {
-        $answer = "Your message was : " . $message;
+        // when receive message from client --> socket.send() at client side
+        // message received as string like --> "identificate,45,932"
+        $parsedMessage = explode(',', $message);
+
+        switch ($parsedMessage[0]) {
+            case "identificate":
+                $newUser = array(
+                    "dynamicId" => $user,
+                    "userId" => $parsedMessage[1],
+                    "matchId" => $parsedMessage[2]
+                );
+
+                foreach ($this->connectedUsers as $u) {
+                    if ($u['userId'] == $newUser['userId'] && $u['matchId'] == $newUser['matchId']) {
+                        $u['dynamicId'] = $newUser['dynamicId'];
+                    }
+                }
+
+                // quand un nouveau user se connecte
+                if (!in_array($user, $this->connectedUsers)) {
+
+                    array_push($this->connectedUsers, $user);
+                }
+
+                break;
+
+            default:
+                break;
+        }
 
         // respond to all clients in server memory
-        foreach ($this->connectedUsers as $u) {
-            // send to selected user
-            $this->send($u, $answer);
-        }
+//        foreach ($this->connectedUsers as $user) {
+//            // send to selected user
+//            $this->send($user, $answer);
+//        }
     }
 
-    // called when new user is connected
-    // here we initialise all values of the class, it's a kind of constructor
     protected function connected($user) {
-
         // *************** constructor **************
-        //init usersArray
         if ($this->connectedUsers == NULL)
             $this->connectedUsers = array();
-        // ******************************************
+        if ($this->matchs_players == NULL)
+            $this->matchs_players = array();
 
-        if (!in_array($user, $this->connectedUsers)) {
-            array_push($this->connectedUsers, $user);
-        }
-
-        // log on server side
-        echo "\n";
-        echo "User connected. \n";
-        echo "Array state :" . count($this->connectedUsers) . " users connected";
-        echo "\n";
+        // demander userId et matchId
+        $this->send($user, "identificate");
     }
 
-    // called when user closes the connection
     protected function closed($user) {
 
         $this->kickOfUser($user);
 
         // log on server side
         echo "\n";
-        echo "Array state :" . count($this->connectedUsers) . " users connected \n";
+        echo "Array state : " . count($this->connectedUsers) . " users connected \n";
         echo "\n";
     }
 
@@ -59,10 +83,10 @@ class CustomServer extends WebSocketServer {
 
 }
 
-$echo = new CustomServer("127.0.0.1", "9000");
-
+// launch websockets server
+$server = new CustomServer("127.0.0.1", "9000");
 try {
-    $echo->run();
+    $server->run();
 } catch (Exception $e) {
-    $echo->stdout($e->getMessage());
+    $server->stdout($e->getMessage());
 }
