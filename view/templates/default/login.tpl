@@ -4,7 +4,6 @@
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/login.css" />
-        <script type="text/javascript" src="{#assets#}/js/login.js"></script>
     </head>
 
     <body role="document">
@@ -72,7 +71,9 @@
             </div>			
         </div>
         {include file="default/footer.tpl"}
-		
+        
+	<script type="text/javascript" src="{#assets#}/js/login.js"></script>	
+        
         {if $tried == 'true'}
             <script>
                 $(function ()
