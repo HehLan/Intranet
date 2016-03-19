@@ -30,6 +30,141 @@
         }
     });
 
+    function initPlayers() {
+        playerId = "{$playerId}";
+        playerNickname = "{$playerNickname}";
+        opponentId = "{$opponentId}";
+        opponentNickname = "{$opponentNickname}";
+        idPlayerWhoMakeChoise = "{$idPlayerWhoMakeChoise}";
+        //alert("pl: " + playerNickname + ", id: " + playerId + "\nopp:" + opponentNickname + ", id:" + opponentId);
+    }
+
+    function initPickState() {
+        pickState = {$pickState|json_encode};
+    }
+
+    // **********************************************************************
+    // *************************** Utils ************************************
+    // **********************************************************************
+
+    // fonction qui va griser les maps deja "picked" --> si joueur doit reco pr quelconque raison
+    function checkMaps() {
+        pickState.forEach(function (map) {
+            if (map.checked == true) {
+                griserMap($('#' + map.mapId));
+            }
+        });
+    }
+
+    // suite a l'appuie sur l'image
+    function kickMap(el) {
+        var container = $(el);   // div containing img&text
+        if (container.attr('data-checked') == 1) // deja kicked
+            return;
+
+        griserMap(container);
+
+        // cacher les tuilles avec un delai --> just UI Exp 4 users
+        setTimeout(function () {
+            showGrayBox();
+        }, 350);
+        
+        mapId = container.attr('id');
+        updateDatabase(mapId);
+        
+        // notifier l'opponent --> sockets
+    }
+
+    function updateDatabase(mapId) {
+        $.ajax({
+            type: "POST",
+            url: "websockets/pickTools.php",
+            data: {
+                req: "updateDb",
+                mapId: mapId,
+                matchId : matchId
+            },
+            success: function (res) {
+                console.log(res);
+                if(res === 'success' ){
+                    // Do nothing 4 moment
+                }
+            },
+            /*
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            },
+            */
+            cache: false
+        });
+    }
+
+    // *****************************************************************
+    // ********************** visual / UI ******************************
+    // *****************************************************************
+
+    function griserMap(container) {
+        isGray = container.attr('data-checked');
+        if (isGray == 1)
+            return;
+
+        container.attr('data-checked', 1);    // change div's value, to avoid it change css on mouseHower
+
+        // faire disparaitre l'effet de survol, car apres avoir change 'data-value' l'effet "mouseLeave" 
+        // n'a plus d'effet. Du coup on le fait ici a la main
+        container.children('div').css('background-color', 'rgba(0,0,0,0)');
+
+        // griser le champ de texte
+        container.css('background-color', 'rgba(0,0,0,0.8)');
+
+        // griser l'image
+        container.children('img').css({
+            '-webkit-filter': 'grayscale(1)', // chrome
+            'filter': 'grayscale(100%)'       // ffox
+        });
+    }
+
+    // highlighting text 
+    function highlightUp(el) {
+        var container = $(el);                    // div containing img&text
+        var checked = $(el).attr('data-checked'); // get its custom checked value
+        if (checked == 0)
+            container.children('div').css('background-color', 'rgba(214,251,251,0.3)');
+    }
+    function highlightDown(el) {
+        var container = $(el);
+        var checked = $(el).attr('data-checked');
+        if (checked == 0)
+            container.children('div').css('background-color', 'rgba(214,251,251,0)');
+    }
+
+    // le div gris qui va cacher les tuilles pendant que Player1 attends la rep de l'opponent
+    function initGrayBox() {
+        grayBox = $('<div></div>');
+        grayBoxText = $('<span id="grayBoxText"></span>');
+
+        $('#middleDiv').prepend(grayBox);
+        grayBox.append('<div id="loadingCircle"><div class="circle"></div><div class="circle1"></div></div>');
+        grayBox.append(grayBoxText);
+
+        grayBox.addClass('darkCover');
+        grayBoxText.text('En attente de  ' + opponentNickname);
+
+        grayBox.hide();
+    }
+
+    function showGrayBox() {
+        grayBox.show();
+    }
+
+    function hideGrayBox() {
+        grayBox.hide();
+    }
+
+    // *************************************************************
+    // ******************** Sockets ********************************
+    // *************************************************************
+
     function connectToSocketsServer() {
         var host = "ws://127.0.0.1:9000/websockets"; // SET THIS TO YOUR SERVER
         try {
@@ -74,100 +209,5 @@
             socket = null;
         }
     }
-
-    function initPlayers() {
-        playerId = "{$playerId}";
-        playerNickname = "{$playerNickname}";
-        opponentId = "{$opponentId}";
-        opponentNickname = "{$opponentNickname}";
-        idPlayerWhoMakeChoise = "{$idPlayerWhoMakeChoise}";
-        //alert("pl: " + playerNickname + ", id: " + playerId + "\nopp:" + opponentNickname + ", id:" + opponentId);
-    }
-
-    function initPickState() {
-        pickState = {$pickState|json_encode};
-    }
-
-    // fonction qui va griser les maps deja "picked" --> si joueur doit reco pr quelconque raison
-    function checkMaps() {
-        pickState.forEach(function (map) {
-            if (map.checked == true) {
-                griserMap($('#' + map.mapId));
-            }
-        });
-    }
-
-    // le div gris qui va cacher les tuilles pendant que Player1 attends la rep de l'opponent
-    function initGrayBox() {
-        grayBox = $('<div></div>');
-        grayBoxText = $('<span id="grayBoxText"></span>');
-
-        $('#middleDiv').prepend(grayBox);
-        grayBox.append('<div id="loadingCircle"><div class="circle"></div><div class="circle1"></div></div>');
-        grayBox.append(grayBoxText);
-
-        grayBox.addClass('darkCover');
-        grayBoxText.text('En attente de  ' + opponentNickname);
-
-        grayBox.hide();
-    }
-
-    function showGrayBox() {
-        grayBox.show();
-    }
-
-    function hideGrayBox() {
-        grayBox.hide();
-    }
-
-    // suite a l'appuie sur l'image
-    function kickMap(el) {
-        var container = $(el);   // div containing img&text
-        if (container.attr('data-checked') == 1) // deja kicked
-            return;
-
-        griserMap(container);
-
-        // cacher les tuilles avec un delai --> just UI Exp 4 users
-        setTimeout(function () {
-            showGrayBox();
-        }, 350);
-    }
-
-    function griserMap(container) {
-        isGray = container.attr('data-checked');
-        if (isGray == 1)
-            return;
-
-        container.attr('data-checked', 1);    // change div's value, to avoid it change css on mouseHower
-
-        // faire disparaitre l'effet de survol, car apres avoir change 'data-value' l'effet "mouseLeave" 
-        // n'a plus d'effet. Du coup on le fait ici a la main
-        container.children('div').css('background-color', 'rgba(0,0,0,0)');
-
-        // griser le champ de texte
-        container.css('background-color', 'rgba(0,0,0,0.8)');
-
-        // griser l'image
-        container.children('img').css({
-            '-webkit-filter': 'grayscale(1)', // chrome
-            'filter': 'grayscale(100%)'       // ffox
-        });
-    }
-
-    // highlighting text 
-    function highlightUp(el) {
-        var container = $(el);                    // div containing img&text
-        var checked = $(el).attr('data-checked'); // get its custom checked value
-        if (checked == 0)
-            container.children('div').css('background-color', 'rgba(214,251,251,0.3)');
-    }
-    function highlightDown(el) {
-        var container = $(el);
-        var checked = $(el).attr('data-checked');
-        if (checked == 0)
-            container.children('div').css('background-color', 'rgba(214,251,251,0)');
-    }
-
 
 </script>
