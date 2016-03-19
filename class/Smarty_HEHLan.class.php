@@ -4,9 +4,17 @@
 //require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/common/var.conf.php');
 
 // Corky
-require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'Intranet'.'/common/var.conf.php');
+//require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'Intranet'.'/common/var.conf.php');
 
-require_once(SMARTY_DIR.'Smarty.class.php');
+
+// This is not working
+//require_once('../common/var.conf.php');
+
+
+// Error: SMARTY_DIR is undefined !
+require_once(SMARTY_DIR.'/Smarty.class.php');
+
+
 
 // Smarty_HEHLan class
 class Smarty_HEHLan extends Smarty 
