@@ -7,3 +7,4 @@ class/var.conf.php
 view/configs/paths.conf
 /cache/
 /doc/database/
+common/var.conf.php
