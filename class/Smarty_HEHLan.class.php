@@ -12,7 +12,13 @@
 
 
 // Error: SMARTY_DIR is undefined !
-require_once(SMARTY_DIR.'/Smarty.class.php');
+//require_once(SMARTY_DIR.'/Smarty.class.php');
+
+
+
+require_once($SMARTY_DIR.'/Smarty.class.php');
+
+
 
 
 
