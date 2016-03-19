@@ -1,6 +1,6 @@
 {* Smarty *}
 {foreach from=$notifications item=notification}
 	<div>
-		{var_dump($notification)}
+		{$notification}
 	</div>
 {/foreach}
