@@ -4,7 +4,6 @@
     <head>
         {include file="default/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/index.css" />
-        <script type="text/javascript" src="{#assets#}/js/index.js"></script>
     </head>
     <body role="document">
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
@@ -51,6 +50,7 @@
             </div>			
         </div>
         {include file="default/footer.tpl"}
+        <script type="text/javascript" src="{#assets#}/js/index.js"></script>
         {if $chat}
             <script type="text/javascript" src="{#assets#}/js/chat.js"></script>
         {/if}

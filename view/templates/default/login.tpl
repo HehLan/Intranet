@@ -4,7 +4,6 @@
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/login.css" />
-        <script type="text/javascript" src="{#assets#}/js/login.js"></script>
     </head>
 
     <body role="document">
@@ -29,9 +28,17 @@
                                 <label for="login">Pseudo </label>
                                 <input id="login" class="form-control" type="text" name="login">  
                             </div>
+                            <div class="alert alert-block alert-danger" style="display: none">
+                                <h4>Erreur</h4>
+                                Ce champ ne peut être vide
+                            </div>
                             <div class="form-group">
                                 <label for="pwd">Mot de Passe </label>
                                 <input id="pwd" class="form-control" type="password" name="pwd">  
+                            </div>
+                            <div class="alert alert-block alert-danger" style="display: none">
+                                <h4>Erreur</h4>
+                                Ce champ ne peut être vide
                             </div>
                             <button class="btn btn-primary" type="submit">Connexion</button>
                         </fieldset>                           
@@ -39,29 +46,38 @@
                 </div>
                 <h3><legend>Mot de Passe Oublié</legend></h3>
                 <div class="row" id="bloc_forgot">
-                    <form class="well myform" method="POST" action="../index.php">
+                    <form class="well myform" id="my_form_forgot" method="POST" action="../index.php">
                         <fieldset>
                             <div class="form-group">
-                                <label for="pseudo">Pseudo </label>
-                                <input id="pseudo" class="form-control" type="text" name="pseudo">  
+                                <label for="pseudo_forgot">Pseudo </label>
+                                <input id="pseudo_forgot" class="form-control" type="text" name="pseudo_forgot">  
+                            </div>
+                            <div class="alert alert-block alert-danger" style="display: none">
+                                <h4>Erreur</h4>
+                                Ce champ ne peut être vide
                             </div>
                             <div class="form-group">
-                                <label for="email">Email </label>
-                                <input id="email" class="form-control" type="email" name="email">  
+                                <label for="email_forgot">Email </label>
+                                <input id="email_forgot" class="form-control" type="email" name="email_forgot">  
                             </div>
-                            <button class="btn btn-primary" type="submit">Valider</button>
+                            <div class="alert alert-block alert-danger" style="display: none">
+                                <h4>Erreur</h4>
+                                Ce champ ne peut être vide
+                            </div>
+                            <button class="btn btn-primary" id="submit_forgot" type="submit">Valider</button>
                         </fieldset>                           
                     </form>
                 </div> 
             </div>			
         </div>
         {include file="default/footer.tpl"}
-		
+        
+	<script type="text/javascript" src="{#assets#}/js/login.js"></script>	
+        
         {if $tried == 'true'}
             <script>
                 $(function ()
                 {
-
                     $(".alert").show("slow");
 
                     $(".close").click(function ()
@@ -72,5 +88,20 @@
                 });
             </script>
         {/if}
+        <script>
+        $(function ()
+        {
+            $("form").on("submit", function ()
+            {
+                if($("input").val().length < 4)
+                {
+                    $("div.form-group").addClass("has-error");
+                    $("div.alert").show("slow").delay(4000).hide("slow");
+                    return false ;
+                }
+            });
+        });
+      </script>  
+        
     </body>
 </html>

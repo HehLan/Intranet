@@ -1,20 +1,5 @@
 <?php
-
-session_start();
-require_once('class/var.conf.php');
-require_once(DOCUMENT_ROOT.'/common/utils.php');
-require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
-require_once(DOCUMENT_ROOT.'/class/Database.class.php');
-require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
-require_once(DOCUMENT_ROOT.'/class/Query.class.php');
-
-
-$connected = false;
-//$nbrteam = 0;
-$database = new Database();
-$smarty = new Smarty_HEHLan();
-
-$connected = Auth::isLogged();
+require_once('common/head.php');
 
 $id_tournoi = 1;
 $looser = 0;
@@ -37,7 +22,9 @@ if ($query->execute())
 }
 else
 {
-    echo 'ERREUR SQL TOURNOI';
+	global $glob_debug;
+	if($glob_debug)
+		echo 'ERREUR SQL TOURNOI';
     exit;
 }
 
@@ -48,7 +35,9 @@ $query = new Query($database, $sql);
 $query->bind('idt', $id_tournoi, PDO::PARAM_INT);
 if (!$query->execute())
 {
-    echo 'ERREUR SQL COUNT LB2';
+    global $glob_debug;
+	if($glob_debug)
+		echo 'ERREUR SQL COUNT LB2';
     exit;
 }
 else
@@ -63,7 +52,9 @@ $query = new Query($database, $sql);
 $query->bind('idt', $id_tournoi, PDO::PARAM_INT);
 if (!$query->execute())
 {
-    echo 'ERREUR SQL COUNT LB3';
+    global $glob_debug;
+	if($glob_debug)
+		echo 'ERREUR SQL COUNT LB3';
     exit;
 }
 else

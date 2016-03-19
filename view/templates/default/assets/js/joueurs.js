@@ -1,4 +1,9 @@
 /**************************
+ Bootstrap tabs
+**************************/
+
+
+/**************************
  fonction recherche joueurs
  **************************/
 $(document).ready(function () {
@@ -38,7 +43,7 @@ $(document).ready(function () {
     $('div').delegate('.ClassPseudo', 'click', function (e)
     {
         $('.place').css({background: "none"});
-        $('#' + $(this).attr("value")).css({background: '#337ab7'});
+        $('#' + $(this).attr("value")).css({background: '#0076a3'});
     });
 
     // recupere id_equipes pour l'envoi en AJAX
@@ -48,7 +53,7 @@ $(document).ready(function () {
         $('.place').css({background: "none"});
         $.ajax({
             type: "POST",
-            url: "src/ajax/color_equipe.php",
+            url: "modules/color_equipe.php",
             data: "id_equipes=" + valeur,
             success: function (contenu, etat)
             {

@@ -1,44 +1,6 @@
 <?php
 
-session_start();
-require_once('class/var.conf.php');
-require_once(DOCUMENT_ROOT.'/common/utils.php');
-require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
-require_once(DOCUMENT_ROOT.'/class/Database.class.php');
-require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
-require_once(DOCUMENT_ROOT.'/class/Query.class.php');
-
-
-$connected = false;
-$chatIsActive = false;
-$database = new Database();
-$smarty = new Smarty_HEHLan();
-
-if (isset($_SESSION['id_joueur']))
-{
-    if (($_SESSION['id_joueur'] != 0))
-    {
-       $connected = true; 
-    }     
-}
-
-// This is an unknown user (no connected)
-if (!$connected)
-{
-    // The user has entered its login and password
-    if (isset($_POST['login']) && isset($_POST['pwd']))
-    {
-        $player = $database->getPlayer($_POST['login'], $_POST['pwd']);          
-        if (!is_null($player))
-        {
-            $_SESSION['id_joueur'] = $player->getIdJoueur();
-            $_SESSION['login'] = $player->getPseudo();
-            $_SESSION['level'] = $player->getLevel();
-            $_SESSION['password'] = $player->getPassword();
-            $connected = true;
-        }
-    }
-}
+require_once('common/head.php');
 
 function isPlay($idJoueur, $idTournoi, &$connexion, &$pseudoJeux)
 {
@@ -101,7 +63,6 @@ $equipes = $query->getResult();
                                        
 
 
-$smarty->assign("con", $connected);
 $smarty->assign("next_matches", $database->getNextMatches($connected));
 $smarty->assign("navTournois", $database->getNavTournois());
 $smarty->assign("joueur", $joueur);
