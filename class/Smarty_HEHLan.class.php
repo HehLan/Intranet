@@ -1,5 +1,11 @@
 <?php
-require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/common/var.conf.php');
+
+// Youness
+//require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/common/var.conf.php');
+
+// Corky
+require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'Intranet'.'/common/var.conf.php');
+
 require_once(SMARTY_DIR.'Smarty.class.php');
 
 // Smarty_HEHLan class

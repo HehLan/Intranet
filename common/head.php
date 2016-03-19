@@ -1,7 +1,14 @@
 <?php
 
 session_start();
-require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/common/var.conf.php');
+
+// Youness
+//require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/common/var.conf.php');
+
+// Corky
+require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'Intranet'.'/common/var.conf.php');
+
+
 require_once(DOCUMENT_ROOT.'/common/utils.php');
 require_once(DOCUMENT_ROOT.'/class/Database.class.php');
 require_once(DOCUMENT_ROOT.'/class/Auth.class.php');

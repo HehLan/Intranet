@@ -1,6 +1,6 @@
 <?php
-$domain = 'edsa-Intranet';
-define('DOCUMENT_ROOT', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
+$domain = 'Intranet';
+define('DOCUMENT_ROOT', $_SERVER['CONTEXT_DOCUMENT_ROOT'].$domain);
 define('ADMIN_DOCUMENT_ROOT', DOCUMENT_ROOT.'/admin');
 define('ADMIN_MODULES_DOCUMENT_ROOT', ADMIN_DOCUMENT_ROOT.'/modules');
 define('SMARTY_DIR', DOCUMENT_ROOT.'/lib/Smarty/');
@@ -20,3 +20,5 @@ $glob_pwd = '1234';
 $glob_debug = true;
 
 ?>
+
+
