@@ -1,12 +1,14 @@
 <?php
 
 require_once('../common/head.php');
-
-if(isset($_POST['id_notif']) && isset($_POST['type'])) 
+var_dump($_GET);
+// Les valeurs GET sont croisées avec la variable de session id_joueur
+// au lieu de renvoyer la valeur par GET pour des raisons de sécurité
+if(isset($_GET['id_notif']) && isset($_GET['type'])) 
 {
 	$idj = $_SESSION['id_joueur'];
-	$type = $_POST['type'];
-	$idn = $_POST['id_notif'];
+	$type = $_GET['type'];
+	$idn = $_GET['id_notif'];
 	if($type=="set")
 	{
 		$database->setNotifAsSeen($idj, $idn);
@@ -19,7 +21,6 @@ if(isset($_POST['id_notif']) && isset($_POST['type']))
 else
 {
 	$notifs = $database->getNotificationsJoueur($_SESSION['id_joueur']);
-	var_dump($notifs);
 }
 
 

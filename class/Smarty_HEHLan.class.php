@@ -1,15 +1,9 @@
 <?php
 
-// Youness
-//require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/common/var.conf.php');
-
-// Corky
-//require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'Intranet'.'/common/var.conf.php');
-
-// Ivan
-require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/Intranet'.'/common/var.conf.php');
-
+require_once(dirname(dirname(__FILE__)).'/common/var.conf.php');
 require_once(SMARTY_DIR.'Smarty.class.php');
+
+//require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'Intranet'.'/common/var.conf.php');
 
 // Smarty_HEHLan class
 class Smarty_HEHLan extends Smarty 

@@ -1,15 +1,7 @@
 <?php
 
 session_start();
-
-// Youness
-//require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/common/var.conf.php');
-
-// Corky
-//require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'Intranet'.'/common/var.conf.php');
-
-// Ivan
-require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/Intranet'.'/common/var.conf.php');
+require_once(dirname(__FILE__).'/var.conf.php');
 
 
 require_once(DOCUMENT_ROOT.'/common/utils.php');
@@ -27,7 +19,9 @@ $smarty = new Smarty_HEHLan();
 // Test if a user is connected
 $connected = Auth::isLogged();
 if($connected)
+{
 	$ics = $_SESSION['id_joueur'];
+}
 else
 {
 	$ics = 0;
