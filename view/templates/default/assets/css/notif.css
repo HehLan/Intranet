@@ -1,0 +1,17 @@
+/**********************************
+			NOTIFICATIONS
+				STYLE
+***********************************/
+
+.notif-box
+{
+	width: 100%;
+}
+.notif-head
+{
+	width: 100%;
+}
+.notif-not-seen
+{
+	background-color: red;
+}
