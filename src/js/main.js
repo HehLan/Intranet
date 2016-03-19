@@ -670,72 +670,6 @@ $(document).ready(function () {
     });
 
 
-    $('#submitChgtMDP').click(function () {
-
-        $("#password").css({background: "none"});
-        $("#password2").css({background: "none"});
-
-        var valid = true;
-        var erreur = '';
-
-        //password
-        if (!$('#password').val()) {
-            valid = false;
-            $("#password").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
-            erreur += "Vous n'avez pas rempli votre mot de passe <br \>";
-        } else if ($('#password').val().length < 8) {
-            valid = false;
-            $("#password").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
-            erreur += "Le mot de passe doit comporter au moins 8 caractères <br \>";
-        } else if ($('#password').val().length > 30) {
-            valid = false;
-            $("#password").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
-            erreur += "Le mot de passe est trop long<br \>";
-        } else if ($('#password').val() != $('#password2').val()) {
-            valid = false;
-            $("#password").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
-            $("#password2").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
-            erreur += "Les 2 mots de passe ne sont pas les mêmes <br \>";
-        }
-
-
-        if (valid) {
-            $("#infoChgtMDP").html("Vérification en cours...");
-            $("#infoChgtMDP").css({color: "#00f"});
-
-            var donnee = "password=" + $('#password').val()
-                    + "&password2=" + $("#password2").val()
-                    + "&passwordOld=" + $("#passwordOld").val();
-
-            $.ajax({
-                type: "POST",
-                url: "common/modifMDP.php",
-                data: donnee,
-                success: function (contenu, etat) {
-                    $("#dialogMessage").html(contenu);
-
-                    $("#dialogMessage").dialog({
-                        modal: true,
-                        title: "Information",
-                        close: function (event, ui) {
-                            location.reload();
-                        },
-                        buttons: {
-                            Ok: function () {
-                                $(this).dialog("close");
-                            }
-                        }
-                    });
-                }
-
-            });
-        }
-        else {
-            $("#infoChgtMDP").html(erreur);
-            $("#infoChgtMDP").css({color: "#f00"});
-        }
-
-    });
 
     $('#afficheModifProfil').click(function () {
 
@@ -816,6 +750,80 @@ $(document).ready(function () {
                 }
 
             }
+
+
+
+
+    $('#submitChgtMDP').click(function () {
+
+        $("#password").css({background: "none"});
+        $("#password2").css({background: "none"});
+
+        var valid = true;
+        var erreur = '';
+
+        //password
+        if (!$('#password').val()) {
+            valid = false;
+            $("#password").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
+            erreur += "Vous n'avez pas rempli votre mot de passe <br \>";
+        } else if ($('#password').val().length < 8) {
+            valid = false;
+            $("#password").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
+            erreur += "Le mot de passe doit comporter au moins 8 caractères <br \>";
+        } else if ($('#password').val().length > 30) {
+            valid = false;
+            $("#password").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
+            erreur += "Le mot de passe est trop long<br \>";
+        } else if ($('#password').val() != $('#password2').val()) {
+            valid = false;
+            $("#password").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
+            $("#password2").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
+            erreur += "Les 2 mots de passe ne sont pas les mêmes <br \>";
+        }
+
+
+        if (valid) {
+            $("#infoChgtMDP").html("Vérification en cours...");
+            $("#infoChgtMDP").css({color: "#00f"});
+
+            var donnee = "password=" + $('#password').val()
+                    + "&password2=" + $("#password2").val()
+                    + "&passwordOld=" + $("#passwordOld").val();
+
+            $.ajax({
+                type: "POST",
+                url: "common/modifMDP.php",
+                data: donnee,
+                success: function (contenu, etat) {
+                    $("#dialogMessage").html(contenu);
+
+                    $("#dialogMessage").dialog({
+                        modal: true,
+                        title: "Information",
+                        close: function (event, ui) {
+                            location.reload();
+                        },
+                        buttons: {
+                            Ok: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+
+            });
+        }
+        else {
+            $("#infoChgtMDP").html(erreur);
+            $("#infoChgtMDP").css({color: "#f00"});
+        }
+
+    });
+
+
+
+
 
 
 

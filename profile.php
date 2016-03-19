@@ -2,24 +2,6 @@
 
 require_once('common/head.php');
 
-// This is an unknown user (no connected)
-if (!$connected)
-{
-    // The user has entered its login and password
-    if (isset($_POST['login']) && isset($_POST['pwd']))
-    {
-        $player = $database->getPlayer($_POST['login'], $_POST['pwd']);          
-        if (!is_null($player))
-        {
-            $_SESSION['id_joueur'] = $player->getIdJoueur();
-            $_SESSION['login'] = $player->getPseudo();
-            $_SESSION['level'] = $player->getLevel();
-            $_SESSION['password'] = $player->getPassword();
-            $connected = true;
-        }
-    }
-}
-
 function isPlay($idJoueur, $idTournoi, &$connexion, &$pseudoJeux)
 {
     $sqlPlay = 'SELECT * FROM joueurtournoi WHERE id_joueur = :id_joueur AND id_tournoi = :id_tournoi';
