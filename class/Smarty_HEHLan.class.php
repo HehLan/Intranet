@@ -1,11 +1,10 @@
 <?php
-require_once(dirname(__FILE__).'/var.conf.php');
+require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/common/var.conf.php');
 require_once(SMARTY_DIR.'Smarty.class.php');
 
-
 // Smarty_HEHLan class
-class Smarty_HEHLan extends Smarty {
-    
+class Smarty_HEHLan extends Smarty 
+{    
     public function __construct()
     {
         parent::__construct();

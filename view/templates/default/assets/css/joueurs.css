@@ -1,10 +1,13 @@
 /*----------------------------------------------------------------------*/
 /*                      JOUEURS CSS                                     */
 /*----------------------------------------------------------------------*/
+#contenu
+{
+	padding-top: 20px;
+}
 a:hover
 {
     text-decoration: underline;
-    color: green;
     cursor:pointer;
 }   
 a.ClassPseudo
@@ -19,15 +22,20 @@ a.ClassEquipe
 {
     position: relative; 
     font-size: 8pt;
-    border-width: 1px;
+    border-width: 0px;
     border-style: solid;
+	padding: 0 10px;
 }
 .photo_cafetaria
 {
     width: 100%;
     height: 100%;
 }
-.tooltip
+.place
+{
+	font-size: 1em;
+}
+.map_cafetaria>.tooltip
 {
     position: relative;
     background-color: initial;
@@ -39,18 +47,17 @@ a.ClassEquipe
     font-size: medium;
     z-index: 1300;  
 }
-.tooltip span
+.map_cafetaria>.tooltip span
 {
     visibility: hidden;
     position: absolute;
-    bottom: 20px;
+    bottom: 100%;
     left: 50%;
     z-index: 1200;
     width: 230px;
     margin-left: -127px;
     padding: 10px;
     border: 2px solid #ccc;
-    opacity: .9;
     background-color: #ddd;
     background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
     background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
@@ -63,18 +70,18 @@ a.ClassEquipe
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
     box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
 }
-.tooltip:hover
+.map_cafetaria>.tooltip:hover
 {
     border: 0; /* IE6 fix */
 }
-.tooltip:hover span
+.map_cafetaria>.tooltip:hover span
 {
     visibility: visible;
-    background-color:#23527c;
+    background-color:#0076a3;
     color: #fff;  
 }
-.tooltip span:before,
-.tooltip span:after
+.map_cafetaria>.tooltip span:before,
+.map_cafetaria>.tooltip span:after
 {
     position: absolute;
     z-index: 1100;
@@ -86,11 +93,11 @@ a.ClassEquipe
     border-right: 8px solid transparent;
     border-bottom: 0;
 }
-.tooltip span:after
+.map_cafetaria>.tooltip span:after
 {
     content: "";
 }
-.tooltip span:before
+.map_cafetaria>.tooltip span:before
 {
     border-top-color: #ccc;
     bottom: -8px;
@@ -100,6 +107,8 @@ a.ClassEquipe
 {
     overflow: auto;
     height: 550px;
+	padding: 0;
+	margin-bottom: 0;
 }
 #liste_joueur li,
 #liste_equipe li
@@ -120,12 +129,12 @@ a.ClassEquipe
 }
 #liste_joueur li:hover
 {
-    color: orange;
+    color: #fff;
 }
 #liste_joueur li a:hover
 {
     text-decoration: none;
-    color: orange;
+    color: #fff;
     cursor: pointer;
 }
 #liste_equipe
@@ -135,13 +144,62 @@ a.ClassEquipe
 }
 #liste_equipe li:hover
 {
-    color: orange;
+    color: #fff;
     cursor: pointer;
 }
 #liste_equipe li a:hover
 {
     text-decoration: none;
-    color: orange;
+    color: #fff;
     cursor: pointer;
 }
 
+/**********
+	TABS
+**********/
+#tabs
+{
+	border: 2px solid #353535;
+    border-radius: 3px;
+	padding: 0;
+    padding-bottom: 5px;
+	background-color: #333;
+}
+
+.nav-tabs>li
+{
+	padding: 0;
+}
+
+.nav-tabs>li>a: hover
+{
+	color: #fff;
+}
+.nav-tabs>li>a
+{
+	margin: 0;
+	font-weight: bold;
+}
+
+.searchBox
+{
+	padding: 20px 10px;
+	background: #fff;
+	color: #000;
+	font-size: 10pt;
+}
+
+.entry_tab_list
+{
+	padding: 6px 12px;
+    font-weight: bold;
+}
+
+.odd_entry_tab_list
+{
+	background-color: #212121;
+}
+.even_entry_tab_list
+{
+	background-color: #262626;
+}
