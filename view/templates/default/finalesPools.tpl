@@ -51,11 +51,14 @@
                     {/if}
                     
                     
-                    <h1>Admin side</h1>
-                    <div id="bracket-pools-admin" class="bracket"></div> 
                     
-                    <h1>Client side</h1>
+                    
+                    <div id="bracket-pools-test" class="bracket"></div>
+                    
+                    
+
                     <div id="bracket-pools" class="bracket"></div>
+                    <p id="matchCallback"></p>
                 </div>
             </div>
         </div>
@@ -70,13 +73,10 @@
         <!-- jquery-bracket -->
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.bracket.min.js"></script>
         
-        
-        {include file="default/finalesPools.js.tpl" 
-            teams=$teams
-            scores=$scores
+        {include file="default/finalesPools.js_1.tpl"
+            tournoi=$tournoi
         }
-               
-   
+
        
         <!-- côté admin : http://blog.jameskohli.com/post/79396109921/lets-build-a-march-madness-bracket-generator-or -->
         

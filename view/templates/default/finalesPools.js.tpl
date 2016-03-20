@@ -1,5 +1,6 @@
 {* Smarty *}
 <script>
+    
     var teams = {$teams|@json_encode};
     var scores= {$scores|@json_encode};
     var data_teams = [];
@@ -38,10 +39,10 @@
     
     // For the moment, the results are put manually
     data.results = [
-          [[1,2], [3,4], [5,6], [7,8], [9,10], [11,12], [13,14], [15,16]],  // first round 
+          [[1,2,'Match 1'], [3,4], [5,6], [7,8], [9,10], [11,12], [13,14], [15,16]],  // first round 
           [[1,2], [3,4], [5,6], [7,8]], // second round
           [[1,2], [3,4]], // third round
-          [[1,2], [3,4]] // finales 
+          [[1,2,'Final'], [3,4,'Petite finale']] // finales 
     ];
     
 
@@ -64,55 +65,34 @@
         ]
     }*/
 
+    function onclick(str)
+    {
+        $('#matchCallback').text("Information : " + str);
+    }
+
+    function onhover(str)
+    {
+        $('#matchCallback').text("Information : " + str);
+    }
+
+
+
     $(function()
     {
         $("#bracket-pools").bracket
         ({
-            init: data // data to initialize the bracket with
+            init: data, // data to initialize the bracket with
+            onMatchClick: onclick,
+            onMatchHover: onhover
         });
     });
     
-    
-    
-    
-    // ADMIN -------------------------------------------------------------------
-    
-    
-    var saveData = {
-    teams : [
-      ["Team 1", "Team 2"], /* first matchup */
-      ["Team 3", "Team 4"]  /* second matchup */
-    ],
-    results : [[1,0], [2,7]]
-  }
  
-    /* Called whenever bracket is modified
-     *
-     * data:     changed bracket object in format given to init
-     * userData: optional data given when bracket is created.
-     */
-    function saveFn(data, userData) {
-      var json = jQuery.toJSON(data)
-      $('#saveOutput').text('POST '+userData+' '+json)
-      /* You probably want to do something like this
-      jQuery.ajax("rest/"+userData, contentType: 'application/json',
-                                    dataType: 'json',
-                                    type: 'post',
-                                    data: json)
-      */
-    }
+ 
 
-    $(function() {
-        var container = $('#bracket-pools-admin')
-        container.bracket({
-          init: saveData,
-          save: saveFn,
-          userData: "http://myapi"})
-
-        /* You can also inquiry the current data */
-        var data = container.bracket('data')
-        $('#dataOutput').text(jQuery.toJSON(data))
-      })
+    
+    
+    
     
     
     
