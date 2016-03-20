@@ -19,52 +19,35 @@
             arr[1] = teams[i+1];
             data_teams[count] = arr;
             
-            var arr1=[];
+            /*var arr1=[];
             arr1[0]= scores[i];
             arr1[1]= scores[i+1];
-            data_scores[count] = arr1;
+            data_scores[count] = arr1;*/
+            
             count++;
         }
     }
 
+
     for(i=0; i<8; i++)
     {
         data.teams[i] = data_teams[i];
-        data.results[i] = data_scores[i];
+        //data.results[i] = data_scores[i];
     }
     
     
+    // For the moment, the results are put manually
+    data.results = [
+          [[1,2], [3,4], [5,6], [7,8], [9,10], [11,12], [13,14], [15,16]],  // first round 
+          [[1,2], [3,4], [5,6], [7,8]], // second round
+          [[1,2], [3,4]], // third round
+          [[1,2], [3,4]] // finales 
+    ];
     
-/*data.teams[0] =data_teams[0];
-data.teams[1] =data_teams[1];
-data.teams[2] =data_teams[2];
-data.teams[3] =data_teams[3];
-data.teams[4] =data_teams[4];*/
-    //alert(data_teams);  // fonctionne
 
-    //marche pas et pourquoi ?
-    /*var data = {
-        teams : [data_teams]
-    };*/
-    
-    // marche mais il faut connaître le nombre d'index
-    
-    /*var data = {
-        teams : [
-            data_teams[0],
-            data_teams[1],
-            data_teams[2],
-            data_teams[3],
-            data_teams[4],
-            data_teams[1],
-            data_teams[2],
-            data_teams[3],
-            data_teams[4]
-        ]
-    };*/
 
-    // A quoi ça doit ressembler
-   /*var data = {
+    // Minimal Example from documentation
+    /*var data = {
         teams : [
           ["Team 1", "Team 2"], // first matchup 
           ["Team 3", "Team 4"],
@@ -88,4 +71,50 @@ data.teams[4] =data_teams[4];*/
             init: data // data to initialize the bracket with
         });
     });
+    
+    
+    
+    
+    // ADMIN -------------------------------------------------------------------
+    
+    
+    var saveData = {
+    teams : [
+      ["Team 1", "Team 2"], /* first matchup */
+      ["Team 3", "Team 4"]  /* second matchup */
+    ],
+    results : [[1,0], [2,7]]
+  }
+ 
+    /* Called whenever bracket is modified
+     *
+     * data:     changed bracket object in format given to init
+     * userData: optional data given when bracket is created.
+     */
+    function saveFn(data, userData) {
+      var json = jQuery.toJSON(data)
+      $('#saveOutput').text('POST '+userData+' '+json)
+      /* You probably want to do something like this
+      jQuery.ajax("rest/"+userData, contentType: 'application/json',
+                                    dataType: 'json',
+                                    type: 'post',
+                                    data: json)
+      */
+    }
+
+    $(function() {
+        var container = $('#bracket-pools-admin')
+        container.bracket({
+          init: saveData,
+          save: saveFn,
+          userData: "http://myapi"})
+
+        /* You can also inquiry the current data */
+        var data = container.bracket('data')
+        $('#dataOutput').text(jQuery.toJSON(data))
+      })
+    
+    
+    
+    
 </script>

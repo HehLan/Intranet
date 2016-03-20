@@ -51,6 +51,10 @@
                     {/if}
                     
                     
+                    <h1>Admin side</h1>
+                    <div id="bracket-pools-admin" class="bracket"></div> 
+                    
+                    <h1>Client side</h1>
                     <div id="bracket-pools" class="bracket"></div>
                 </div>
             </div>
