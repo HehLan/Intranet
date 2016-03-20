@@ -5,8 +5,10 @@
     var data_teams = [];
     var data_scores = [];
     var count = 0;
-       var data = { teams : [],
-              results : []};
+    var data = { 
+        teams : [],
+        results : []
+    };
     
     for (i=0; i<teams.length; i++)
     {
@@ -19,16 +21,20 @@
             
             var arr1=[];
             arr1[0]= scores[i];
-            arr1[1]=scores[i+1];
+            arr1[1]= scores[i+1];
             data_scores[count] = arr1;
             count++;
         }
     }
-    alert(scores);
-    for(i=0;i<8;i++){
-        data.teams[i] =data_teams[i];
+
+    for(i=0; i<8; i++)
+    {
+        data.teams[i] = data_teams[i];
         data.results[i] = data_scores[i];
     }
+    
+    
+    
 /*data.teams[0] =data_teams[0];
 data.teams[1] =data_teams[1];
 data.teams[2] =data_teams[2];

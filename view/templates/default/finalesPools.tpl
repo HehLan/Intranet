@@ -68,16 +68,8 @@
         
         
         {include file="default/finalesPools.js.tpl" 
-            niveau=$niveau  
-            match_par_niveau=$match_par_niveau
-            matches=$matches
-            tablo=$tablo
-            tournoi=$tournoi
-            nbr_lb2=$nbr_lb2
-            nbr_lb3=$nbr_lb3
             teams=$teams
-            scores1=$scores1
-            scores2=$scores2
+            scores=$scores
         }
                
    
