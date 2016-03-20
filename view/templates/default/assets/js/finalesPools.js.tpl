@@ -12,7 +12,7 @@
         {
             var data = JSON.parse(text);
 
-            $("#bracket-pools-test").bracket(
+            $("#bracket-pools").bracket(
                 {
                     init: data // data to initialize the bracket with
                 }

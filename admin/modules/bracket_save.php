@@ -27,17 +27,39 @@ if(!$connected && !$allowed)
 } 
 
 
+if(isset($_POST['data']) && isset($_POST['id_tournoi']))
+{
+    $sql = 'SELECT id_bracket, data
+            FROM brackets
+            WHERE id_tournoi=:id_tournoi';
+    $query = new Query($database, $sql);
+    $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
+    $query->execute();
+    $res = $query->getResult();
+    
+    if(empty($res))
+    {
+        $sql = 'INSERT INTO brackets
+                VALUES (NULL, :id_tournoi, :data)';
+        $query = new Query($database, $sql);
+        $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
+        $query->bind(':data', $_POST['data'], PDO::PARAM_STR);
+        $query->execute();
+    }
+    else
+    {
+        $sql = 'UPDATE brackets
+                SET data = :data
+                WHERE id_tournoi = :id_tournoi';
+
+        $query = new Query($database, $sql);
+        $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
+        $query->bind(':data', $_POST['data'], PDO::PARAM_STR);
+        $query->execute();        
+    }
+}
 
 
-$sql = 'UPDATE brackets
-    SET data = :data
-    WHERE id_tournoi = :id_tournoi';
-
-$query = new Query($database, $sql);
-$query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
-$query->bind(':data', $_POST['data'], PDO::PARAM_STR);
-
-$query->execute();
 
 
 

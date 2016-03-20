@@ -4,19 +4,19 @@
 #navigation 
 {
     background: transparent url("../img/bg_menu.png") repeat-x top left;
-	background-size: auto 100%;
-	padding-bottom: 4px;
+    background-size: auto 100%;
+    padding-bottom: 4px;
 }
-#navigation  li 
+#navigation li 
 {
     list-style: none;
-	background-color: #0076a3;
+    background-color: #0076a3;
     border: 2px solid #353535;
     border-radius: 3px;
     margin: 0;
     padding: 0px;
 }
-#navigation  li a 
+#navigation li a 
 {
     line-height: 50px;
     width: auto;
@@ -29,15 +29,15 @@
     font-size: 1.3em;
     text-shadow: 1px 1px 1px #353535;
 }
-#navigation  li a:hover,
-#navigation  li a.active 
+#navigation li a:hover,
+#navigation li a.active 
 {
     color: #fff;
     background: transparent url("../img/nav_hover.png") top center repeat-x;
 }
 .navbar
 {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 

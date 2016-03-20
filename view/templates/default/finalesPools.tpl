@@ -4,16 +4,7 @@
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/finalesPools.css" />		
-        
-        
-        <!-- jquery-bracket-world -->
-        <!--<link href="{#domain#}/lib/jQuery/jquery.bracket-world.css" rel="stylesheet">-->
-        
-        
-        <!-- jquery-bracket -->
         <link rel="stylesheet" type="text/css" href="{#domain#}/lib/jQuery/jquery.bracket.min.css" />
-        
-        
     </head>
     <body>
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
@@ -50,13 +41,6 @@
                         {/if}
                     {/if}
                     
-                    
-                    
-                    
-                    <div id="bracket-pools-test" class="bracket"></div>
-                    
-                    
-
                     <div id="bracket-pools" class="bracket"></div>
                     <p id="matchCallback"></p>
                 </div>
@@ -65,21 +49,12 @@
 
         {include file="default/footer.tpl"}
         
-        
-        <!-- jquery-bracket-world -->
-        <!--<script src="{#domain#}/lib/jQuery/jquery-2.0.3.min.js"></script>-->
-        <!--<script src="{#domain#}/lib/jQuery/jquery.bracket-world.min.js"></script>-->
-        
         <!-- jquery-bracket -->
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.bracket.min.js"></script>
         
-        {include file="default/finalesPools.js_1.tpl"
+        {include file="default/assets/js/finalesPools.js.tpl"
             tournoi=$tournoi
         }
 
-       
-        <!-- côté admin : http://blog.jameskohli.com/post/79396109921/lets-build-a-march-madness-bracket-generator-or -->
-        
-        
     </body>
 </html>
