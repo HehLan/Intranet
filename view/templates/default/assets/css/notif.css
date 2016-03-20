@@ -2,10 +2,16 @@
 			NOTIFICATIONS
 				STYLE
 ***********************************/
-
-.notif-box
+#notifPane
+{
+}
+#notifBox
 {
 	width: 100%;
+}
+.notifWidget
+{
+	
 }
 .notif-head
 {

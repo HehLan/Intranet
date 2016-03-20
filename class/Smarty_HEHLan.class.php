@@ -1,7 +1,7 @@
 <?php
 
 require_once(dirname(dirname(__FILE__)).'/common/var.conf.php');
-require_once($SMARTY_DIR.'Smarty.class.php');
+require_once(SMARTY_DIR.'Smarty.class.php');
 
 //require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'Intranet'.'/common/var.conf.php');
 

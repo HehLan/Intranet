@@ -18,14 +18,15 @@ $smarty = new Smarty_HEHLan();
 
 // Test if a user is connected
 $connected = Auth::isLogged();
-if($connected)
-{
+if($connected){
 	$ics = $_SESSION['id_joueur'];
 }
-else
-{
+elseif(preg_match('#login#i',$_SERVER['REQUEST_URI'])==0){
+	header('Location: '.WEB_ROOT.'/modules/login.php');
+}
+else{
+	
 	$ics = 0;
-    //header('Location: '.DOCUMENT_ROOT.'/index.php');
 }
 
 // Assign variables to view

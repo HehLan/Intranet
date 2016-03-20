@@ -1,9 +1,7 @@
 <?php
 
 require_once('../common/head.php');
-var_dump($_GET);
-// Les valeurs GET sont croisées avec la variable de session id_joueur
-// au lieu de renvoyer la valeur par GET pour des raisons de sécurité
+
 if(isset($_GET['id_notif']) && isset($_GET['type'])) 
 {
 	$idj = $_SESSION['id_joueur'];

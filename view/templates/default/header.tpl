@@ -11,8 +11,15 @@
 			<div id="userbar" class="" >
 				<a href="profile.php"><img src="{#assets#}/img/userbar/profile.png" alt="Votre profil" data-toggle="tooltip" data-placement="bottom" title="Votre profil"></a>
 				<a href="#" id="notifBlock"
-					data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" data-content="Aucune Notification">
+					data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" data-content='<div id="notifPane">Aucune notification</div>'>
 					<img src="{#assets#}/img/userbar/notif_off.png" alt="Vos Notifications" data-toggle="tooltip" data-placement="bottom" title="Vos notifications">
+					<!--<div id="notifPane" notif-lastUpdate="0" class="fade bottom in"> 
+						<div class="arrow" style="left:50%;"></div>
+						<h3 class="popover-title">Vos notifications</h3>
+						<div class="popover-content" id="notifBox">
+							Aucune notification trouvée
+						</div>
+					</div>-->
 				</a>
 				<a href="#" class=""
 					data-container="body" data-toggle="popover" data-placement="bottom" title="Votre adresse IP est" data-content="{$smarty.server.REMOTE_ADDR}">
@@ -21,6 +28,7 @@
 				<a href="commande.php"><img src="{#assets#}/img/userbar/command.png" alt="Passer une commande" data-toggle="tooltip" data-placement="bottom" title="Passer une commande"></a>
 				<a href="common/logout.php"><img src="{#assets#}/img/userbar/logout.png" alt="Se déconnecter" data-toggle="tooltip" data-placement="bottom" title="Se déconnecter"></a>
 			</div>
+			
         {else}
             <p>Bienvenue, <a href="{#domain#}/modules/login.php">se connecter</a></p>
         {/if}
