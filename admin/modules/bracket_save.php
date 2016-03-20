@@ -27,11 +27,16 @@ if(!$connected && !$allowed)
 } 
 
 
-$sql = 'INSERT INTO brackets (id_bracket, data)
-VALUES (NULL, :data)';
+
+
+$sql = 'UPDATE brackets
+    SET data = :data
+    WHERE id_tournoi = :id_tournoi';
 
 $query = new Query($database, $sql);
-$query->bind(':data', $_POST['data'], PDO::PARAM_INT);
+$query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
+$query->bind(':data', $_POST['data'], PDO::PARAM_STR);
+
 $query->execute();
 
 

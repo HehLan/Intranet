@@ -3,11 +3,9 @@
 
     var id = {$tournoi.id_tournoi};
 
-    alert(id);
-
     $.ajax(
     {
-        url: 'modules/get_bracket.php?id_tournoi' + id,
+        url: 'modules/bracket_get.php?id_tournoi=' + id,
         type: 'GET',
         dataType: 'text',
         success: function (text, status)

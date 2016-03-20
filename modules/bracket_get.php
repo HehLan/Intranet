@@ -15,16 +15,25 @@ $database = new Database();
 $smarty = new Smarty_HEHLan();
 
 
-$sql = 'SELECT data
-        FROM brackets';
-$query = new Query($database, $sql);
-$query->execute();
-$data = $query->getResult()[0];
 
 
+if(isset($_GET['id_tournoi']))
+{
+    $sql = 'SELECT data
+            FROM brackets
+            WHERE id_tournoi=:id_tournoi';
+    $query = new Query($database, $sql);
+    $query->bind(':id_tournoi', $_GET['id_tournoi'], PDO::PARAM_INT);
+    $query->execute();
+    $data = $query->getResult()[0];
 
+    echo $data['data'];
 
-echo $data['data'];
+}
+else
+{
+    echo 'error';
+}
 
 
 ?>

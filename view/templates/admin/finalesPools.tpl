@@ -177,19 +177,31 @@
 
                 <script> 
                     
-                $(document).ready(function()
-                {
-                    var saveData = {
-                      teams: [
-                          ["Team 1", "Team 2"], /* first matchup */
-                          ["Team 3", "Team 4"]  /* second matchup */
-                      ],
-                      results: [[1, 0], [2, 7]]
-                    };
                     
-                    //alert(saveData); // m'affiche [object Object]
-                    //alert(jQuery.toJSON(saveData)); // m'affiche rien
-                    alert(JSON.stringify(saveData)); // ca marche !!!!!!!!!!!!!!!!!!
+                    var id = {$tournoi.id_tournoi};
+                    var saveData = '';
+
+                    // Getting the bracket
+                    $.ajax(
+                    {
+                        url: 'modules/bracket_get.php?id_tournoi=' + id,
+                        type: 'GET',
+                        dataType: 'text',
+                        success: function (text, status)
+                        {
+                            saveData = JSON.parse(text);
+                        },
+                        error: function (resultat, statut, erreur)
+                        {
+
+                        },
+                        complete: function (resultat, statut)
+                        {
+
+                        },
+                        async: false
+                    }); 
+                                
                     
                     /* Called whenever bracket is modified
                      *
@@ -198,18 +210,17 @@
                      */
                     function saveFn(data, userData)
                     {
-                        // never called !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        var json = jQuery.toJSON(data);
-                        $('#saveOutput').text('POST '  + json);
-                        // You probably want to do something like this
-                        /*jQuery.ajax("rest/" + userData,
+                        alert('Votre modification a été apportée');
+                        //var json = jQuery.toJSON(data);
+                        //$('#saveOutput').text('POST '  + json);
+                        $.ajax(
                             {
-                                contentType: 'application/json',
-                                dataType: 'json',
-                                type: 'post',
-                                data: json
-                            }
-                        );*/
+                                url : 'modules/bracket_save.php',
+                                type : 'POST',
+                                data : "data=" + JSON.stringify(data) + "&id_tournoi=" + {$tournoi.id_tournoi},
+                                dataType : 'text'
+                            }                                         
+                        ); 
                     };
 
                     $(function ()
@@ -226,62 +237,8 @@
                         /* You can also inquiry the current data */
                         //var data = container.bracket('data');
                         
-                        $("#submit").click(function(data)
-                        {   
-                            //var json = jQuery.toJSON(data); does not work at all
-                            $.ajax(
-                                {
-                                    url : 'modules/save_bracket.php',
-                                    type : 'POST',
-                                    //data : "data=" + data, // this gives [object Object]                                   
-                                    //data: "data=" + JSON.stringify({ category: 42, sort: 3, type: "pdf" }), // this is working
-                                    data : "data=" + JSON.stringify(saveData),
-                                    dataType : 'text'
-                                }                                         
-                            );
-                            
-                            
-                            
-                            /*
-                            $.post(
-                                'modules/save_bracket.php', 
-                                {
-                                    test : 'coucou' 
-                                }, 
-                                function(data)
-                                {
-                                    if(data === 'coucou')
-                                    {
-                                        $("#resultat").html("<p>test réussi</p>");
-                                    }
-                                    else
-                                    {
-                                        $("#resultat").html("<p>erreur</p>");
-                                    }
-                                },
-                                'text'
-                             );*/
-                     
-                     
-
-                        });
-                        
-                        
                     });
-                      
-                      
-                      
-                      
-                      
-                    
 
-                });
-                   
-                                 
-                    
-                    
-                    
-                    
                 </script>
 
 
