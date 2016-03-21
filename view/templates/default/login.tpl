@@ -26,7 +26,7 @@
                         <fieldset>
                             <div class="form-group">
                                 <label for="login">Pseudo </label>
-                                <input id="login" class="form-control" type="text" name="login">  
+                                <input id="login" class="form-control" type="text" name="login" placeholder="Pseudo">  
                             </div>
                             <div class="alert alert-block alert-danger" style="display: none">
                                 <h4>Erreur</h4>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Mot de Passe </label>
-                                <input id="pwd" class="form-control" type="password" name="pwd">  
+                                <input id="pwd" class="form-control" type="password" name="pwd" placeholder="Mot de passe">  
                             </div>
                             <div class="alert alert-block alert-danger" style="display: none">
                                 <h4>Erreur</h4>
