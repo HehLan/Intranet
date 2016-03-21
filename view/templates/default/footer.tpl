@@ -21,7 +21,8 @@
 <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.media.js"></script>
 <script type="text/javascript" src="{#domain#}/lib/Bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{#domain#}/lib/Less/less.js"></script>
-
+<script type="text/javascript" src="{#domain#}/lib/lodash/lodash.js"></script>
+<script type="text/javascript" src="{#domain#}/lib/lodash/lodash.fp.js"></script>
 
 
 
