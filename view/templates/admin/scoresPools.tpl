@@ -14,19 +14,64 @@
                 
                 <h1>Qualifications de {$tournoi['nomTournoi']}</h1>
                 
-                <div class="row">
-                    <div id="components" class="col-lg-6">
-                        <h2>Editeur</h2>
-                        <div id="editor"></div>
-                        <h2>Vue de l'utilisateur</h2>
-                        <div id="view"></div>
-                    </div>  
-                    <div id="data" class="col-lg-6">
-                        <h2>Code JSON</h2>
-                        <p>Code JSON pour le stockage dans la base de données.</p>
-                        <pre id="state">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
-                    </div>                                      
-                </div>                  
+                
+                
+                {if $tournoi.id_tournoi != 2}
+                    <div id="bloc_tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#tab-group-1" aria-controls="tab-group-1" role="tab" data-toggle="tab">Groupe 1</a></li>
+                            <li role="presentation"><a href="#tab-group-2" aria-controls="tab-group-2" role="tab" data-toggle="tab">Groupe 2</a></li>
+                        </ul>
+                    </div>                
+                    <div class="tab-content">
+                        <!-- tab-group-1 -->
+                        <div role="tabpanel" class="tab-pane active" id="tab-group-1">
+                            <div class="row">
+                                <div id="components" class="col-lg-6">
+                                    <h2>Editeur</h2>
+                                    <div id="editor1"></div>
+                                    <h2>Vue de l'utilisateur</h2>
+                                    <div id="view1"></div>
+                                </div>  
+                                <div id="data1" class="col-lg-6">
+                                    <h2>Code JSON</h2>
+                                    <p>Code JSON pour le stockage dans la base de données.</p>
+                                    <pre id="state1">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
+                                </div>                                      
+                            </div> 
+                        </div>
+                        <!-- tab-group-2 -->
+                        <div role="tabpanel" class="tab-pane" id="tab-group-2">
+                            <div class="row">
+                                <div id="components" class="col-lg-6">
+                                    <h2>Editeur</h2>
+                                    <div id="editor2"></div>
+                                    <h2>Vue de l'utilisateur</h2>
+                                    <div id="view2"></div>
+                                </div>  
+                                <div id="data2" class="col-lg-6">
+                                    <h2>Code JSON</h2>
+                                    <p>Code JSON pour le stockage dans la base de données.</p>
+                                    <pre id="state2">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
+                                </div>                                      
+                            </div> 
+                        </div>
+                    </div>
+                {else}
+                    <div class="row">
+                        <div id="components" class="col-lg-6">
+                            <h2>Editeur</h2>
+                            <div id="editor1"></div>
+                            <h2>Vue de l'utilisateur</h2>
+                            <div id="view1"></div>
+                        </div>  
+                        <div id="data1" class="col-lg-6">
+                            <h2>Code JSON</h2>
+                            <p>Code JSON pour le stockage dans la base de données.</p>
+                            <pre id="state1">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
+                        </div>                                      
+                    </div> 
+                {/if}
             </div>
         </div>
 
@@ -40,13 +85,24 @@
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.group.min.js"></script>
 
         <script>
-            $('#editor').group({
-                save: function(state) {
+            $('#editor1').group({
+                save: function(state1) {
                   // Write your storage code here, now just display JSON above
-                  $('pre').text(JSON.stringify(state, undefined, 2));
+                  $('#state1').text(JSON.stringify(state1, undefined, 2));
                   // Reconstruct read-only version by initializing it with received state
-                  $('#view').empty().group({
-                    init: state
+                  $('#view1').empty().group({
+                    init: state1
+                  });
+                }
+            });
+            
+            $('#editor2').group({
+                save: function(state2) {
+                  // Write your storage code here, now just display JSON above
+                  $('#state2').text(JSON.stringify(state2, undefined, 2));
+                  // Reconstruct read-only version by initializing it with received state
+                  $('#view2').empty().group({
+                    init: state2
                   });
                 }
             });
