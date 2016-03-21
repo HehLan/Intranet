@@ -13,13 +13,6 @@
 				<a href="#" id="notifBlock"
 					data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" notif-lastUpdate="0" data-content='<div id="notifPane">Aucune notification</div>'>
 					<img src="{#assets#}/img/userbar/notif_off.png" alt="Vos Notifications" data-toggle="tooltip" data-placement="bottom" title="Vos notifications">
-					<!--<div id="notifPane" notif-lastUpdate="0" class="fade bottom in"> 
-						<div class="arrow" style="left:50%;"></div>
-						<h3 class="popover-title">Vos notifications</h3>
-						<div class="popover-content" id="notifBox">
-							Aucune notification trouvée
-						</div>
-					</div>-->
 				</a>
 				<a href="#" class=""
 					data-container="body" data-toggle="popover" data-placement="bottom" title="Votre adresse IP est" data-content="{$smarty.server.REMOTE_ADDR}">

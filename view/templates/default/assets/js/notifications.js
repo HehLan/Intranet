@@ -1,6 +1,19 @@
 var refreshPeriod = 5000,
-	notifPicOn = "img/userbar/notif_on.png",
-	notifPicOff = "img/userbar/notif_off.png";
+	notifPicOn = "notif_on.png",
+	notifPicOff = "notif_off.png";
+// Change notif icon
+function setNotifIconPath(nameFile){
+	var srcPath = $('#notifBlock>img').attr('src')
+	var justPath = srcPath.substring(-1,srcPath.lastIndexOf('/')+1);
+	$('#notifBlock>img').attr('src',justPath+nameFile);
+};
+function setNotifIcon(state){
+	if(state){
+		setNotifIconPath(notifPicOn);
+	} else {
+		setNotifIconPath(notifPicOff);
+	}
+}
 
 //
 // Load dynamically the notification list
@@ -12,9 +25,11 @@ $('#notifBlock').click(function(){
 		success: function(data) {
 			e.attr('notif-lastupdate', $.now());
 			$('#notifPane').html(data);
+			if(data.val().match('#notif-not-seen#i')){
+				setNotifIcon(true);
+			}
 		}
 	});
-	$('#notifBlock>img').attr('src',notifPicOff);
 }); 
 
 //
@@ -31,7 +46,7 @@ $(document).on('click','.notif-not-seen', function(e){
 		}
 	});
 	$(this).removeClass('notif-not-seen');
-	$('#notifBlock>img').attr('src',notifPicOff);
+	if($('.notif-not-seen').length==0){setNotifIcon(false)};
 });
 
 //
@@ -48,7 +63,7 @@ $(function refreshNotif(){
 			if($.trim(data).length != 0) {
 				$('#notifBlock').attr('notif-lastupdate', $.now());
 				$('#notifPane').prepend(data);
-				$('#notifBlock>img').attr('src',notifPicOn);
+				setNotifIcon(true);
 			};
 		}
 	});

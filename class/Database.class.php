@@ -471,6 +471,25 @@ class Database
 		}
 	}
 	
+	
+	public function getLastNotifJoueur($idJoueur)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/getLastNotifJoueur.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idj', $idJoueur, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL JOUEUR LAST NOTIFICATION';
+			return 0;
+		}
+	}
+	
 	public function setNotifAsSeen($idJoueur, $idNotif)
 	{
 		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/setNotifJoueurAsSeen.sql');
@@ -486,6 +505,24 @@ class Database
 			GLOBAL $glob_debug;
 			if ($glob_debug)
 					echo 'ERREUR SQL MARK NOTIF AS SEEN';
+			return 0;
+		}
+	}
+	
+	public function setLastNotifJoueur($idJoueur)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/setLastNotifJoueur.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idj', $idJoueur, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL LAST NOTIF JOUEUR';
 			return 0;
 		}
 	}
