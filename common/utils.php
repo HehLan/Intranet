@@ -377,6 +377,33 @@ function checkIsPickActive($dateTime_DebutMatch)
     }
 }
 
+function getRelativeTime($chaine)
+{
+	$diff = abs(time()-strtotime($chaine));
+	$retour = array();
+ 
+    $tmp = $diff;
+    $retour['s'] = $tmp % 60;
+ 
+    $tmp = floor( ($tmp - $retour['s']) /60 );
+    $retour['m'] = $tmp % 60;
+ 
+    $tmp = floor( ($tmp - $retour['m'])/60 );
+    $retour['h'] = $tmp % 24;
+ 
+    $tmp = floor( ($tmp - $retour['h'])  /24 );
+    $retour['d'] = $tmp;
+ 
+	if($retour['d']>0)
+		return $retour['d'].'j';
+	elseif($retour['h']>0)
+		return $retour['h'].'h';
+	elseif($retour['m']>0)
+		return $retour['m'].'m';
+	else
+		return $retour['s'].'s';
+}
+
 
 ?>
  

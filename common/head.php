@@ -29,8 +29,12 @@ else{
 	$ics = 0;
 }
 
+// Notif last seen
+$lastSeenNotif = $database->getLastNotifJoueur($ics);
+
 // Assign variables to view
 $smarty->assign('connected', $connected);
 $smarty->assign('con', $connected);
-$smarty->assign('$id_current_session', $ics);
+$smarty->assign('lastSeenNotif', $connected);
+$smarty->assign('id_current_session', $ics);
 ?>
