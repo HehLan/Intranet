@@ -16,7 +16,7 @@
                 {section name=sec1 loop=$navTournois}
                     <li><a href="{#domain#}/tournois.php?id={$navTournois[sec1].id_tournoi}">{$navTournois[sec1].nomTournoi}</a></li>
                 {/section}                    
-                <li><a href="{#domain#}/downloads.php">Downloads</a></li>   
+                <li><a href="{#domain#}/downloads.php">Téléchargements</a></li>   
                 {if $con}
                 <!--<li><a href="profile.php">Mon profil</a></li>-->
                     {if $smarty.session.level==1 || $smarty.session.level==2}

@@ -200,6 +200,7 @@ if ($nbrmatch > 0)
 
 //  for bracket js -------------------------------------------------------
 
+/*
 $teams = array();
 $scores = array();
 
@@ -217,7 +218,7 @@ $query->bind(':id_tournoi', $id_tournoi, PDO::PARAM_INT);
 
 if ($query->execute())
 {
-    print_r($query->getResult());
+    //print_r($query->getResult());
     foreach ($query->getResult() as $team)
     {
         $teams[] = $team['nom'];
@@ -225,6 +226,19 @@ if ($query->execute())
 }
 
 shuffle($teams);
+
+
+
+
+$sql = 'SELECT data
+        FROM brackets';
+$query = new Query($database, $sql);
+$query->execute();
+$data = $query->getResult()[0];
+
+print_r($data);
+*/
+
 
 //-------------------------------------------------------
 
@@ -251,11 +265,13 @@ $smarty->assign('nbr_lb3', $nbr_lb3);
 
 
 // for jquery-bracket -------------------------------------------
-
+/*
 $smarty->assign('teams', $teams);
 $smarty->assign('scores', $scores);
 
 
+$smarty->assign('data', $data);
+*/
 
 //--------------------------------------------
 
