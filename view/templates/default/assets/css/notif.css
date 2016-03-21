@@ -1,9 +1,19 @@
+.popover
+{
+	z-index: 1200;
+	margin-left: -2px;
+}
+
 /**********************************
 			NOTIFICATIONS
 				STYLE
 ***********************************/
 #notifPane
 {
+	width: 250px;
+    z-index: 999;
+    max-height: 200px;
+    overflow-y: scroll;
 }
 #notifBox
 {
@@ -16,6 +26,14 @@
 .notif-head
 {
 	width: 100%;
+}
+.notif-head i
+{
+	float: left;
+}
+.notifDate
+{
+	float: right;
 }
 .notif-not-seen
 {

@@ -452,6 +452,25 @@ class Database
 		}
 	}
 	
+	public function getNotificationsJoueurFrom($idJoueur, $fromDate)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/getNotifJoueursFrom.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idj', $idJoueur, PDO::PARAM_INT);
+		$query->bind(':fd', $fromDate, PDO::PARAM_STR);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL JOUEUR NOTIFICATIONS';
+			return 0;
+		}
+	}
+	
 	public function setNotifAsSeen($idJoueur, $idNotif)
 	{
 		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/setNotifJoueurAsSeen.sql');
