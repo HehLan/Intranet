@@ -33,20 +33,21 @@ class CustomServer extends WebSocketServer {
                 );
 
                 // gerer si reconnection --> user ayant pas fini le pick
-                var_dump($this->connectedUsersArray);
-                $key = array_search($newUser['userId'], array_column($this->connectedUsersArray, 'userId'));
-                var_dump($key);
-                if ($key != NULL) {
-                    // reconnection
-                    echo '<br> Enter in NOT NULL';
-                    $this->connectedUsersArray[$key]['genId'] = $newUser['genId'];
-                } else {
-                    // new user
-                    echo '<br> Enter in NULL KEY';
-                    array_push($this->connectedUsersArray, $newUser);
-                }
-                var_dump($this->connectedUsersArray);
 
+                $tempKey = NULL;
+                foreach ($this->connectedUsersArray as $key => $user) {
+                    if ($user['userId'] === $newUser['userId']) {
+                        $tempKey = $key;
+                        break;
+                    }
+                }
+                if ($tempKey === NULL) {
+                    //insert new user
+                    array_push($this->connectedUsersArray, $newUser);
+                } else {
+                    // reconnection --> modify user genId
+                    $this->connectedUsersArray[$key]['genId'] = $newUser['genId'];
+                }
                 break;
 
             // suite au mapKick de l'un des players
@@ -105,14 +106,14 @@ class CustomServer extends WebSocketServer {
 
         // log on server side
         echo "\n";
-        echo "Array state : " . count($this->connectedUsers) . " users connected \n";
-        echo "\n";
+        echo "Array state : " . count($this->connectedUsersArray) . " users connected \n";
+        echo "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DISCONNECT !!!!!!\n\n\n";
     }
 
     // delete user from "connectedUsers" array when user disconnects
     protected function kickOfUser($user) {
-        if (($key = array_search($user, $this->connectedUsers)) !== false) {
-            unset($this->connectedUsers[$key]);
+        if (($key = array_search($user, $this->connectedUsersArray)) !== false) {
+            unset($this->connectedUsersArray[$key]);
         }
         echo "\n";
         echo "User disconnected \n";

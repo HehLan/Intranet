@@ -26,10 +26,10 @@
                     <div>{$playerNickname}</div>
                     <br>
                     <br>
-                    <button onclick="hideGrayBox();">hide grayBox</button>
+                    <button onclick="hideGrayBox();">hide grayBox --> useless</button>
                     <br>
                     <br>
-                    <button onclick="phpToJavascript();">test returner data from php to javascritp</button>
+                    <button onclick="phpToJavascript();">simulate receiving "mapKicked" message</button>
                 </div>
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10" id="middleDiv">
