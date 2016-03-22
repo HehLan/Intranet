@@ -10,15 +10,26 @@ require_once('./websockets.php');
 
 class CustomServer extends WebSocketServer {
 
-    // array qui continet les objets de type User(genId, userId, matchId)
-    // stocking object type { generatedId : $var, databaseId : $var, matchId : $var}
+    // array qui continet les objets de type User(genId, userId)
+    // stocking object type { generatedId : $var, databaseId : $var }
     protected $connectedUsersArray;
     // array qui contient les objets de type Obj(matchId, [palyer1_Id, player2_Id])
     // objets type { matchId : $var, duo : { databaseUserId1 : $var, databaseUserId2 : $var }
-    protected $matchs_playersArray;
+    protected $match_playersArray;
+    
+    protected function connected($user) {
+        // *************** constructor **************
+        if ($this->connectedUsersArray == NULL)
+            $this->connectedUsersArray = array();
+        if ($this->match_playersArray == NULL)
+            $this->match_playersArray = array();
+
+        // demander userId et matchId
+        $this->send($user, "identificate");
+    }
 
     protected function process($user, $message) {
-        
+
         // when receive message from client --> socket.send() at client side
         // message received as string like --> "identificate,45,932"
         $parsedMessage = explode(',', $message);
@@ -27,54 +38,47 @@ class CustomServer extends WebSocketServer {
 
             // nouveau joueur demande de s'enregistrer
             case "identificate":
-                
-                $newUser = array(
-                    "genId" => $user,
-                    "userId" => $parsedMessage[1],
-                    "matchId" => $parsedMessage[2]
-                );
+                $genId = $user;
+                $userId = $parsedMessage[1];
+                $matchId = $parsedMessage[2];
 
-                // touver le key de l'objet qui nous interesse 
                 $tempKey = NULL;
                 foreach ($this->connectedUsersArray as $key => $user) {
-                    if ($user['userId'] === $newUser['userId']) {
+                    if ($user['userId'] === $userId) {
                         $tempKey = $key;
                         break;
                     }
                 }
-                
-                // gerer si reconnection --> user ayant pas fini le pick
+
                 if ($tempKey === NULL) {
-                    //insert new user
-                    array_push($this->connectedUsersArray, $newUser);
+                    $this->insertNewUser($genId, $userId);
                 } else {
                     // reconnection --> modify user genId
-                    $this->connectedUsersArray[$key]['genId'] = $newUser['genId'];
+                    $this->connectedUsersArray[$key]['genId'] = $genId;
                 }
-                
+
+                $this->insertInMatchPlayersArray($userId, $matchId);
+
                 break;
 
             // suite au mapKick de l'un des players
             case "mapKicked":
-                
-                $info = array(
-                    "playerId" => $parsedMessage[1],
-                    "matchId" => $parsedMessage[2]
-                );
-                
+                $playerId = $parsedMessage[1];
+                $matchId = $parsedMessage[2];
+
                 // touver le key de l'objet qui nous interesse 
                 $tempKey = NULL;
-                foreach ($this->matchs_playersArray as $key => $object) {
-                    if ($object['matchId'] === $newUser['matchId']) {
+                foreach ($this->match_playersArray as $key => $object) {
+                    if ($object['matchId'] === $info['matchId']) {
                         $tempKey = $key;
                         break;
                     }
                 }
-
+                
                 echo 'matchs_players: \n';
-                var_dump($this->matchs_playersArray);
+                var_dump($this->match_playersArray);
                 echo '\n duo : \n';
-                $duo = $this->matchs_playersArray[$tempKey]['duo'];
+                $duo = $this->match_playersArray[$tempKey]['duo'];
                 foreach ($duo as $key => $userId) {
                     // trouver l'opponentId
                     if ($userId != $info['playerId']) {
@@ -97,37 +101,70 @@ class CustomServer extends WebSocketServer {
             default:
                 break;
         }
-
-        // respond to all clients in server memory
-//        foreach ($this->connectedUsers as $user) {
-//            // send to selected user
-//            $this->send($user, $answer);
-//        }
-    }
-
-    protected function connected($user) {
-        // *************** constructor **************
-        if ($this->connectedUsersArray == NULL)
-            $this->connectedUsersArray = array();
-        if ($this->matchs_playersArray == NULL)
-            $this->matchs_playersArray = array();
-
-        // demander userId et matchId
-        $this->send($user, "identificate");
     }
 
     protected function closed($user) {
-
-        $this->kickOfUser($user);
-
+        $this->kickUserOut($user);
         // log on server side
-        echo "\n";
-        echo "Array state : " . count($this->connectedUsersArray) . " users connected \n";
+        echo "\n Array state : " . count($this->connectedUsersArray) . " users connected \n";
         echo "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DISCONNECT !!!!!!\n\n\n";
+    }
+    
+    // ******************************************************
+    // ********************* FUNCTIONS **********************
+    // ******************************************************
+
+    protected function insertNewUser($genId, $userId) {
+        $newUser = array(
+            "genId" => $genId,
+            "userId" => $userId
+        );
+        array_push($this->connectedUsersArray, $newUser);
+    }
+
+    protected function insertInMatchPlayersArray($userId, $matchId) {
+        $tempKey = NULL;
+        foreach ($this->match_playersArray as $key => $obj) {
+            if ($obj['matchId'] === $matchId) {
+                $tempKey = $key;
+                break;
+            }
+        }
+        
+//        echo "match_playersArray : \n";
+//        var_dump($this->match_playersArray);
+//        echo "\nkey ";
+//        var_dump($tempKey);
+        
+        // si pas de ref
+        if ($tempKey === NULL) {
+            // create new obj
+//            echo "\n create new obj \n";
+            $obj = array(
+                "matchId" => $matchId,
+                "duo" => [$userId]
+            );
+            // insert new obj
+            array_push($this->match_playersArray, $obj);
+        } else {
+            echo "edit obj \n";
+            // c'est que le match existe déjà
+            // c'est que le binome de pick a été le premier à init l'objet
+            // du coup on insert que notre id dans ce match
+//            echo "duo: \n";
+//            var_dump($this->match_playersArray[$tempKey]['duo']);
+            
+            if (!in_array($userId, $this->match_playersArray[$tempKey]['duo'])) {
+                array_push($this->match_playersArray[$tempKey]['duo'], $userId);
+            }
+        }
+
+//        echo "match_playersArray after insertion : \n";
+//        var_dump($this->match_playersArray);
     }
 
     // delete user from "connectedUsers" array when user disconnects
-    protected function kickOfUser($user) {
+    protected function kickUserOut($user) {
         if (($key = array_search($user, $this->connectedUsersArray)) !== false) {
             unset($this->connectedUsersArray[$key]);
         }
@@ -136,6 +173,10 @@ class CustomServer extends WebSocketServer {
     }
 
 }
+/*
+  cd htdocs\Intranet\websockets
+  php server.php
+ */
 
 // launch websockets server
 $server = new CustomServer("127.0.0.1", "9000");
