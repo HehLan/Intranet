@@ -21,7 +21,7 @@
         initPlayers();
         initGrayBox();
         initPickState();
-        checkMaps();
+        updateMapsUI();
         connectToSocketsServer();
 
         // si pas a moi de choisir --> cacher les maps
@@ -50,7 +50,7 @@
     // **********************************************************************
 
     // fonction qui va griser les maps deja "picked"
-    function checkMaps() {
+    function updateMapsUI() {
         pickState.forEach(function (map) {
             if (map.checked == true) {
                 griserMap($('#' + map.mapId));
@@ -63,7 +63,7 @@
         var container = $(el);   // div containing img&text
         if (container.attr('data-checked') == 1) // deja kicked
             return;
-        if(checkedMapsCount() >= 9)
+        if (checkedMapsCount() >= 9)
             return;
 
         griserMap(container);
@@ -85,6 +85,7 @@
             var message = ['mapsTerminated'];
             socket.send(message);
             loadChampions();
+            // ***********************************************************************************************
         }
     }
 
@@ -113,7 +114,7 @@
         });
     }
 
-    function updateLocalData() {
+    function updatePickState() {
         $.ajax({
             type: "POST",
             url: "common/pickTools.php",
@@ -123,8 +124,6 @@
             },
             success: function (data) {
                 pickState = JSON.parse(data);
-                checkMaps();
-                hideGrayBox();
             },
             cache: false
         });
@@ -140,15 +139,13 @@
             },
             success: function (data) {
                 pickState = JSON.parse(data);
-                console.log(pickState);
-                checkMaps();
+                //console.log(pickState);
+                updateMapsUI();
                 hideGrayBox();
             },
             cache: false
         });
     }
-
-
 
     // *************************************************************
     // ******************** Sockets ********************************
@@ -173,9 +170,12 @@
                         break;
 
                     case "mapKicked":
-                        updateLocalData();
-                        updateView();
-                        // hide grayBox
+                        updatePickState();
+                        updateMapsUI();
+                        hideGrayBox();
+                        break;
+
+                    case "mapsTerminated":
                         break;
 
                     default:
@@ -255,9 +255,9 @@
     function hideGrayBox() {
         grayBox.hide();
     }
-    
-    function loadChampions(){
+
+    function loadChampions() {
         $("#grayBoxText").hide();
     }
-                
+
 </script>

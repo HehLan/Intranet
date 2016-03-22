@@ -46,10 +46,9 @@
                     <div class="row" id="championsContainer" style="display: none;">
                         {foreach from=$maps item=map}
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <div id="{$map['id']}" onclick="kickMap(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
-                                    <img class="img-responsive" src="{$map['imgPath']}" alt="{$map['name']}" />
+                                <div id="" onclick="kickMap(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
+                                    <img class="img-responsive" src="" alt=""/>
                                     <div class="thumbnailText">
-                                        {$map['name']}
                                     </div>
                                 </div>
                             </div>
