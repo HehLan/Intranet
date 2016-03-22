@@ -16,7 +16,6 @@ $smarty = new Smarty_HEHLan();
 
 
 
-
 if(isset($_GET['id_tournoi']) && isset($_GET['group_number']))
 {
     // Get bracket for group
@@ -30,11 +29,18 @@ if(isset($_GET['id_tournoi']) && isset($_GET['group_number']))
     $query->bind(':type', $_GET['type'], PDO::PARAM_INT);
     $query->bind(':group_number', $_GET['group_number'], PDO::PARAM_INT);
     $query->execute();
-    $data = $query->getResult()[0];
-
-    echo $data['json'];
+    $data = $query->getResult();
+    if(!empty($data))
+    {
+        echo $data[0]['json'];
+    }
+    else
+    {
+        echo 'error';
+    }
 }
-else if(isset($_GET['id_tournoi']) && isset($_GET['finales_number']))
+
+if(isset($_GET['id_tournoi']) && isset($_GET['finales_number']))
 {
     // Get bracket for finales
     $sql = 'SELECT json
@@ -50,10 +56,6 @@ else if(isset($_GET['id_tournoi']) && isset($_GET['finales_number']))
     $data = $query->getResult()[0];
 
     echo $data['json'];
-}
-else
-{
-    echo 'error';
 }
 
 

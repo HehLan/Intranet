@@ -12,51 +12,44 @@
         <div id="container" class="container-fluid">
             <div id="contenu" class="row">
                 
-                <h1>Qualifications de {$tournoi['nomTournoi']}</h1>
+                <h1>Qualifications de {$tournoi['nomTournoi']}</h1> 
                 
-                {if $tournoi.id_tournoi != 2}
+                
+                {if $tournoi.id_tournoi != 2}                    
                     <div id="bloc_tab">
                         <ul class="nav nav-tabs" role="tablist">
-                            
-                            
-                            
-                            <li role="presentation" class="active"><a href="#tab-group-1" aria-controls="tab-group-1" role="tab" data-toggle="tab">Groupe 1</a></li>
-                            <li role="presentation"><a href="#tab-group-2" aria-controls="tab-group-2" role="tab" data-toggle="tab">Groupe 2</a></li>
+                            {foreach name=playerLoop from=$groupes item=groupe}
+                                {if $smarty.foreach.playerLoop.first}
+                                    <li role="presentation" id="nav-tab-{$groupe['id_groupe']}" class="active"><a href="#tab-{$groupe['id_groupe']}" aria-controls="tab-{$groupe['id_groupe']}" role="tab" data-toggle="tab">{$groupe['nom_groupe']}</a></li>
+                                {else}  
+                                    <li role="presentation" id="nav-tab-{$groupe['id_groupe']}"><a href="#tab-{$groupe['id_groupe']}" aria-controls="tab-{$groupe['id_groupe']}" role="tab" data-toggle="tab">{$groupe['nom_groupe']}</a></li>
+                                {/if}
+                            {/foreach}
                         </ul>
-                    </div>                
+                    </div>                          
+                            
                     <div class="tab-content">
-                        <!-- tab-group-1 -->
-                        <div role="tabpanel" class="tab-pane active" id="tab-group-1">
-                            <div class="row">
-                                <div id="components" class="col-lg-6">
-                                    <h2>Editeur</h2>
-                                    <div id="editor1"></div>
-                                    <h2>Vue de l'utilisateur</h2>
-                                    <div id="view1"></div>
-                                </div>  
-                                <div id="data1" class="col-lg-6">
-                                    <h2>Code JSON</h2>
-                                    <p>Code JSON pour le stockage dans la base de données.</p>
-                                    <pre id="state1">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
-                                </div>                                      
-                            </div> 
-                        </div>
-                        <!-- tab-group-2 -->
-                        <div role="tabpanel" class="tab-pane" id="tab-group-2">
-                            <div class="row">
-                                <div id="components" class="col-lg-6">
-                                    <h2>Editeur</h2>
-                                    <div id="editor2"></div>
-                                    <h2>Vue de l'utilisateur</h2>
-                                    <div id="view2"></div>
-                                </div>  
-                                <div id="data2" class="col-lg-6">
-                                    <h2>Code JSON</h2>
-                                    <p>Code JSON pour le stockage dans la base de données.</p>
-                                    <pre id="state2">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
-                                </div>                                      
-                            </div> 
-                        </div>
+                        {foreach name=playerLoop from=$groupes item=groupe}
+                            {if $smarty.foreach.playerLoop.first}
+                                <div role="tabpanel" class="tab-pane active" id="tab-{$groupe['id_groupe']}">     
+                            {else}                            
+                                <div role="tabpanel" class="tab-pane" id="tab-{$groupe['id_groupe']}">
+                            {/if}
+                                    <div class="row">
+                                        <div id="components" class="col-lg-6">
+                                            <h2>Editeur</h2>
+                                            <div id="editor-{$groupe['id_groupe']}"></div>
+                                            <h2>Vue de l'utilisateur</h2>
+                                            <div id="view-{$groupe['id_groupe']}"></div>
+                                        </div>  
+                                        <div id="data-{$groupe['id_groupe']}" class="col-lg-6">
+                                            <h2>Code JSON</h2>
+                                            <p>Code JSON pour le stockage dans la base de données.</p>
+                                            <pre id="state-{$groupe['id_groupe']}">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
+                                        </div>
+                                    </div>
+                                </div>
+                        {/foreach}
                     </div>
                 {else}
                     <div class="row">
@@ -75,7 +68,6 @@
                 {/if}
             </div>
         </div>
-
         
 	{include file="admin/footer.tpl"}
 
@@ -85,9 +77,12 @@
         <script type="text/javascript" src="{#domain#}/lib/handlebars/handlebars.1.0.0.js"></script>
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.group.min.js"></script>
 
-        {include file="admin/assets/js/scoresPools.js.tpl"
-            tournoi=$tournoi
-        }
+        {foreach from=$groupes item=groupe}
+            {include file="admin/assets/js/scoresPools.js.tpl"
+                tournoi=$tournoi
+                groupe=$groupe
+            }
+        {/foreach}
 
     </body>
 </html>

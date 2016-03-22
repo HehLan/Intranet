@@ -1,23 +1,29 @@
 {* Smarty *}
 <script>
-    var id = {$tournoi.id_tournoi};
     
     // Initial data if is not encoded in the database
-    var groupData = null;
+    var groupData_{$groupe.id_groupe} = null;
 
     // Getting the bracket - the group_number must be dynamic
     $.ajax(
         {
-            url: '../common/bracket_get.php?id_tournoi=' + id + "&type=1" + "&group_number=1",
+            url: '../common/bracket_get.php?id_tournoi={$tournoi.id_tournoi}&type=1&group_number={$groupe.id_groupe}',
             type: 'GET',
             dataType: 'text',
             success: function (text, status)
             {
-                groupData = JSON.parse(text);  
+                if(text.contains("error"))
+                {
+                    groupData_{$groupe.id_groupe} = null;
+                }
+                else
+                {
+                    groupData_{$groupe.id_groupe} = JSON.parse(text);
+                }
             },
             error: function (resultat, statut, erreur)
             {
-                
+                groupData_{$groupe.id_groupe} = null;
             },
             complete: function (resultat, statut)
             {
@@ -26,20 +32,21 @@
             async: false
         }
     );
+    
 
-    function saveFn(state1)
+    function saveFn_{$groupe.id_groupe}(state)
     {
         // Write your storage code here, now just display JSON above
-        $('#state1').text(JSON.stringify(state1, undefined, 2));
+        $("#state-{$groupe.id_groupe}").text(JSON.stringify(state, undefined, 2));
         // Reconstruct read-only version by initializing it with received state
-        $('#view1').empty().group({
-            init: state1
+        $("#view-{$groupe.id_groupe}").empty().group({
+            init: state
         });  
         $.ajax(
             {
                 url: 'modules/bracket_save.php',
                 type: 'POST',
-                data: "json=" + $('#state1').text() + "&id_tournoi=" + id + "&type=1" + "&group_number=1", 
+                data: "json=" + $("#state-{$groupe.id_groupe}").text() + "&id_tournoi={$tournoi.id_tournoi}&type=1&group_number={$groupe.id_groupe}", 
                 dataType: 'text'
             }
         );      
@@ -47,16 +54,16 @@
 
     $(function ()
     {
-        var container = $('#editor1');
-        container.group(
+        var container_{$groupe.id_groupe} = $("#editor-{$groupe.id_groupe}");
+        container_{$groupe.id_groupe}.group(
             {
-                init: groupData,
-                save: saveFn
+                init: groupData_{$groupe.id_groupe},
+                save: saveFn_{$groupe.id_groupe}
             }
         );
-        $('#view1').group(
+        $("#view-{$groupe.id_groupe}").group(
             {
-                init: groupData
+                init: groupData_{$groupe.id_groupe}
             }
         );
 

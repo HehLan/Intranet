@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 foreach($groupes as $groupe)
 {
     $sql = 'SELECT e.id_equipes as id, e.nom as nom
@@ -108,7 +105,6 @@ foreach($groupes as $keyGroupe => $groupe)
 }
 
 
-print_r($groupes);
 
 
 // send to the template

@@ -56,8 +56,14 @@
                         </div>                
                         <div class="tab-content">
                             <!-- tab-group-1 -->
-                            <div role="tabpanel" class="tab-pane active" id="tab-group-1">
+                            <div role="tabpanel" class="tab-pane active" id="tab-group-1">                                
                                 <div id="bracket"></div>
+                                <h4>Dates des matchs</h4>
+                                <ul>
+                                    <li>Round 1 : vendredi hh:mm</li>
+                                    <li>Round 2 : vendredi hh:mm</li>
+                                    <li>Round 3 : samedi hh:mm</li>
+                                </ul>
                             </div>
                             <!-- tab-group-2 -->
                             <div role="tabpanel" class="tab-pane" id="tab-group-2">
