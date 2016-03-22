@@ -19,15 +19,17 @@ $smarty = new Smarty_HEHLan();
 
 if(isset($_GET['id_tournoi']))
 {
-    $sql = 'SELECT data
+    $sql = 'SELECT json
             FROM brackets
-            WHERE id_tournoi=:id_tournoi';
+            WHERE id_tournoi=:id_tournoi
+            AND type=:type';
     $query = new Query($database, $sql);
     $query->bind(':id_tournoi', $_GET['id_tournoi'], PDO::PARAM_INT);
+    $query->bind(':type', $_GET['type'], PDO::PARAM_INT);
     $query->execute();
     $data = $query->getResult()[0];
 
-    echo $data['data'];
+    echo $data['json'];
 
 }
 else

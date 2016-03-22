@@ -1,26 +1,19 @@
 {* Smarty *}
 <script>
-
     var id = {$tournoi.id_tournoi};
-
+    
     // Initial data if is not encoded in the database
-    var saveData = {
-        teams: [
-            ["Team 1", "Team 2"], 
-            ["Team 3", "Team 4"] 
-        ],
-        results: [[1, 0], [2, 7]]
-    }; 
+    var groupData = null;
 
-    // Getting the bracket
+    // Getting the bracket - must use the number of group as type
     $.ajax(
         {
-            url: 'modules/bracket_get.php?id_tournoi=' + id + "&type=0" ,
+            url: 'modules/bracket_get.php?id_tournoi=' + id + "&type=1" ,
             type: 'GET',
             dataType: 'text',
             success: function (text, status)
             {
-                saveData = JSON.parse(text);
+                groupData = JSON.parse(text);
             },
             error: function (resultat, statut, erreur)
             {
@@ -33,38 +26,52 @@
             async: false
         }
     );
-    
+
     function saveFn(state1)
     {
         // Write your storage code here, now just display JSON above
         $('#state1').text(JSON.stringify(state1, undefined, 2));
         // Reconstruct read-only version by initializing it with received state
-        $('#view1').empty().bracket({
+        $('#view1').empty().group({
             init: state1
         });
         $.ajax(
             {
                 url: 'modules/bracket_save.php',
                 type: 'POST',
-                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=0", 
+                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=1", 
                 dataType: 'text'
             }
         );
-    };     
-
+    };   
+   
     $(function ()
     {
         var container = $('#editor1');
-        container.bracket(
-            {
-                init: saveData,
-                save: saveFn
-            }
-        );
+        if(groupData !== null)
+        {
+            container.group(
+                {
+                    init: groupData,
+                    save: saveFn
+                }
+            );
+        }
+        else
+        { 
+            container.group(
+                {
+                    save: saveFn
+                }
+            );
+        }
 
-        /* You can also inquiry the current data */
+        //You can also inquiry the current data 
         //var data = container.bracket('data');
 
     });
+   
+
+
 
 </script>

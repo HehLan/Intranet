@@ -84,29 +84,9 @@
         <script type="text/javascript" src="{#domain#}/lib/handlebars/handlebars.1.0.0.js"></script>
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.group.min.js"></script>
 
-        <script>
-            $('#editor1').group({
-                save: function(state1) {
-                  // Write your storage code here, now just display JSON above
-                  $('#state1').text(JSON.stringify(state1, undefined, 2));
-                  // Reconstruct read-only version by initializing it with received state
-                  $('#view1').empty().group({
-                    init: state1
-                  });
-                }
-            });
-            
-            $('#editor2').group({
-                save: function(state2) {
-                  // Write your storage code here, now just display JSON above
-                  $('#state2').text(JSON.stringify(state2, undefined, 2));
-                  // Reconstruct read-only version by initializing it with received state
-                  $('#view2').empty().group({
-                    init: state2
-                  });
-                }
-            });
-        </script>
+        {include file="admin/scoresPools.js.tpl"
+            tournoi=$tournoi
+        }
 
     </body>
 </html>

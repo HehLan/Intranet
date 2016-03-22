@@ -35,6 +35,8 @@ Table of contents
     - [Src directory](#src-directory)
     - [View directory](#view-directory)
     - [Websockets directory](#websockets-directory)
+- [Database] (#database)
+    - [brackets] (#db-brackets)
 - [Test](#test)
 - [Dependencies](#dependencies)
 - [Libraries](#libraries)
@@ -100,10 +102,29 @@ Websockets directory
 --------------------
 
 
+Database
+========
+
+brackets
+--------
+
+- id_bracket: id
+- id_tournoi: id of the tournament
+- json: JSON data
+- type: >0 for qualification groups number and 0 for finales brackets
+
 
 
 Test
 ====
+
+scores.php
+----------
+
+Pour créer les groupes de qualifications côté admin, il faut d'abord ajouter les équipes.
+Les différentes rencontres vont alors apparaître dans l'onglet "Unassigned".
+Il faut ensuite les attribuer à des rounds (date et heure).
+La saisie des résultats met automatiquement à jour l'affichage.
 
 
 Dependencies
