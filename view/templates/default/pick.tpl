@@ -26,14 +26,11 @@
                     <div>{$playerNickname}</div>
                     <br>
                     <br>
-                    <button onclick="hideGrayBox();">hide grayBox --> useless</button>
-                    <br>
-                    <br>
                     <button onclick="phpToJavascript();">simulate receiving "mapKicked" message</button>
                 </div>
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10" id="middleDiv">
-                    <div class="row">
+                    <div class="row" id="mapsContainer">
                         {foreach from=$maps item=map}
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
                                 <div id="{$map['id']}" onclick="kickMap(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
@@ -45,6 +42,19 @@
                             </div>
                         {/foreach}
                     </div>
+                    <div class="row" id="mapsContainer" style="visibility: hidden;">
+                        {foreach from=$maps item=map}
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
+                                <div id="{$map['id']}" onclick="kickMap(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
+                                    <img class="img-responsive" src="{$map['imgPath']}" alt="{$map['name']}" />
+                                    <div class="thumbnailText">
+                                        {$map['name']}
+                                    </div>
+                                </div>
+                            </div>
+                        {/foreach}
+                    </div>
+                    
                 </div>
 
                 <div id="iconPlayer2" class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">

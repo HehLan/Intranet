@@ -63,40 +63,33 @@
         var container = $(el);   // div containing img&text
         if (container.attr('data-checked') == 1) // deja kicked
             return;
-
-        if (checkedMapsCount() < 9) { // si déjà 9 maps séléctionnées
-
-            griserMap(container);
-
-            // cacher les tuilles avec un delai --> just UI Exp 4 users
-            setTimeout(function () {
-                showGrayBox();
-            }, 350);
-
-            mapId = container.attr('id');
-            updateDatabase(mapId);
-
-            if (checkedMapsCount() == 9) {
-                // notifier l'opponent que le "pick" des maps est terminé
-                var message = ['mapsTerminated'];
-                socket.send(message);
-            } else {
-                // notifier l'opponent qu'une map a été "kick" et c'est son tour
-                var message = ["mapKicked", playerId, matchId];
-                socket.send(message);
-            }
-        } else {
-            // régler le problèmme de grisage à 9 mamp
-            griserMap(container);
-            setTimeout(function () {
-                showGrayBox();
-            }, 350);
+        if(checkedMapsCount() >= 9)
             return;
+
+        griserMap(container);
+
+        // cacher les tuilles avec un delai --> just UI Exp 4 users
+        setTimeout(function () {
+            showGrayBox();
+        }, 350);
+
+        mapId = container.attr('id');
+        updateDatabase(mapId);
+
+        if (checkedMapsCount() <= 7) {
+            // notifier l'opponent qu'une map a été "kick" et c'est son tour
+            var message = ["mapKicked", playerId, matchId];
+            socket.send(message);
+        } else {
+            // notifier l'opponent que le "pick" des maps est terminé on a pick la 9ème map
+            var message = ['mapsTerminated'];
+            socket.send(message);
+            loadChampions();
         }
     }
 
     function checkedMapsCount() {
-        this.counter = 1;
+        this.counter = 0;
         pickState.forEach(function (map) {
             if (map.checked == true) {
                 this.counter++;
@@ -262,4 +255,9 @@
     function hideGrayBox() {
         grayBox.hide();
     }
+    
+    function loadChampions(){
+        $("#grayBoxText").hide();
+    }
+                
 </script>

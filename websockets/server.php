@@ -18,6 +18,7 @@ class CustomServer extends WebSocketServer {
     protected $matchs_playersArray;
 
     protected function process($user, $message) {
+        
         // when receive message from client --> socket.send() at client side
         // message received as string like --> "identificate,45,932"
         $parsedMessage = explode(',', $message);
@@ -26,14 +27,14 @@ class CustomServer extends WebSocketServer {
 
             // nouveau joueur demande de s'enregistrer
             case "identificate":
+                
                 $newUser = array(
                     "genId" => $user,
                     "userId" => $parsedMessage[1],
                     "matchId" => $parsedMessage[2]
                 );
 
-                // gerer si reconnection --> user ayant pas fini le pick
-
+                // touver le key de l'objet qui nous interesse 
                 $tempKey = NULL;
                 foreach ($this->connectedUsersArray as $key => $user) {
                     if ($user['userId'] === $newUser['userId']) {
@@ -41,6 +42,8 @@ class CustomServer extends WebSocketServer {
                         break;
                     }
                 }
+                
+                // gerer si reconnection --> user ayant pas fini le pick
                 if ($tempKey === NULL) {
                     //insert new user
                     array_push($this->connectedUsersArray, $newUser);
@@ -48,17 +51,30 @@ class CustomServer extends WebSocketServer {
                     // reconnection --> modify user genId
                     $this->connectedUsersArray[$key]['genId'] = $newUser['genId'];
                 }
+                
                 break;
 
             // suite au mapKick de l'un des players
             case "mapKicked":
+                
                 $info = array(
                     "playerId" => $parsedMessage[1],
                     "matchId" => $parsedMessage[2]
                 );
+                
+                // touver le key de l'objet qui nous interesse 
+                $tempKey = NULL;
+                foreach ($this->matchs_playersArray as $key => $object) {
+                    if ($object['matchId'] === $newUser['matchId']) {
+                        $tempKey = $key;
+                        break;
+                    }
+                }
 
-                $key = array_search($info['matchId'], array_column($this->matchs_playersArray, 'matchId'));
-                $duo = $this->matchs_playersArray[$key]['duo'];
+                echo 'matchs_players: \n';
+                var_dump($this->matchs_playersArray);
+                echo '\n duo : \n';
+                $duo = $this->matchs_playersArray[$tempKey]['duo'];
                 foreach ($duo as $key => $userId) {
                     // trouver l'opponentId
                     if ($userId != $info['playerId']) {
