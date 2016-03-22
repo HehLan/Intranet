@@ -14,8 +14,6 @@
                 
                 <h1>Qualifications de {$tournoi['nomTournoi']}</h1>
                 
-                
-                
                 {if $tournoi.id_tournoi != 2}
                     <div id="bloc_tab">
                         <ul class="nav nav-tabs" role="tablist">

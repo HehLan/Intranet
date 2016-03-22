@@ -14,11 +14,12 @@
             success: function (text, status)
             {
                 groupData = JSON.parse(text);
+                $('#state1').text(JSON.stringify(groupData, undefined, 2));
                 $('#bracket').group(
-                {
-                    init: groupData
-                }
-            );
+                    {
+                        init: groupData
+                    }
+                );                
             },
             error: function (resultat, statut, erreur)
             {

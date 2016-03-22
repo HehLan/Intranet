@@ -5,17 +5,28 @@
         {include file="admin/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/tournois.css" >
         <script type="text/javascript" src="{#adminAssets#}/js/tournois.js"></script>
-        
-        
-        <!-- jquery-bracket -->
-        <link rel="stylesheet" type="text/css" href="{#domain#}/lib/jQuery/jquery.bracket.min.css" />
-        
     </head>
     <body role="document">
         {include file="admin/header.tpl" con=$con }
         {include file="admin/nav.tpl"  con=$con }	
-        <div id="container">
-            <div id="contenu">
+        <div class="container" id="container">
+            <div class="row" id="contenu">
+                    
+                <div id="bloc_tab">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#tab-infos" aria-controls="tab-infos" role="tab" data-toggle="tab">Infos</a></li>
+                        <li role="presentation"><a href="#tab-games" aria-controls="tab-games" role="tab" data-toggle="tab">Jeux</a></li>
+                        <li role="presentation"><a href="#tab-teams" aria-controls="tab-teams" role="tab" data-toggle="tab">Teams</a></li>
+                        <li role="presentation"><a href="#tab-stats" aria-controls="tab-stats" role="tab" data-toggle="tab">Stats</a></li>
+                    </ul>
+                </div>
+                
+                
+                
+                
+                
+                
+                
                 <table id="adm_tablo">
                     <tr>
                         <th>id</th>
@@ -109,18 +120,7 @@
             </div>
         </div>
                 
-                
-        <div id="bracket-pools" class="bracket"></div>        
-                
-                
-                
-        <!-- gap to have the footer in the bottom of the window -->
-        <div style="height: 390px;">
 
-        </div>
-
-        
-        
         
         {include file="admin/footer.tpl"}
 

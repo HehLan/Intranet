@@ -58,6 +58,7 @@
                             <!-- tab-group-1 -->
                             <div role="tabpanel" class="tab-pane active" id="tab-group-1">
                                 <div id="bracket"></div>
+                                <pre id="state1"></pre> 
                             </div>
                             <!-- tab-group-2 -->
                             <div role="tabpanel" class="tab-pane" id="tab-group-2">

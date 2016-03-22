@@ -13,7 +13,7 @@
             dataType: 'text',
             success: function (text, status)
             {
-                groupData = JSON.parse(text);
+                groupData = JSON.parse(text);  
             },
             error: function (resultat, statut, erreur)
             {
@@ -34,44 +34,38 @@
         // Reconstruct read-only version by initializing it with received state
         $('#view1').empty().group({
             init: state1
-        });
+        });  
         $.ajax(
             {
                 url: 'modules/bracket_save.php',
                 type: 'POST',
-                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=1" + "&group_number=1", 
+                data: "json=" + $('#state1').text() + "&id_tournoi=" + id + "&type=1" + "&group_number=1", 
                 dataType: 'text'
             }
-        );
+        );      
     };   
-   
+
     $(function ()
     {
         var container = $('#editor1');
-        if(groupData !== null)
-        {
-            container.group(
-                {
-                    init: groupData,
-                    save: saveFn
-                }
-            );
-        }
-        else
-        { 
-            container.group(
-                {
-                    save: saveFn
-                }
-            );
-        }
+        container.group(
+            {
+                init: groupData,
+                save: saveFn
+            }
+        );
+        $('#view1').group(
+            {
+                init: groupData
+            }
+        );
 
         //You can also inquiry the current data 
         //var data = container.bracket('data');
 
     });
    
-
+    
 
 
 </script>
