@@ -41,13 +41,15 @@
 
     function initPickState() {
         pickState = {$pickState|json_encode};
+        //console.log("pick state: \n");
+        //console.log(pickState);
     }
 
     // **********************************************************************
     // *************************** Utils ************************************
     // **********************************************************************
 
-    // fonction qui va griser les maps deja "picked" --> si joueur doit reco pr quelconque raison
+    // fonction qui va griser les maps deja "picked"
     function checkMaps() {
         pickState.forEach(function (map) {
             if (map.checked == true) {
@@ -68,10 +70,10 @@
         setTimeout(function () {
             showGrayBox();
         }, 350);
-        
+
         mapId = container.attr('id');
         updateDatabase(mapId);
-        
+
         // notifier l'opponent --> sockets
         var message = ["mapKicked", playerId, matchId];
         socket.send(message);
@@ -84,22 +86,94 @@
             data: {
                 req: "updateDb",
                 mapId: mapId,
-                matchId : matchId,
-                opponentId : opponentId
+                matchId: matchId,
+                opponentId: opponentId
             },
             success: function (res) {
-                console.log(res);
-                if(res === 'success' ){
-                    // Do nothing 4 moment
-                }
+                console.log("databaseUpdated");
+                if (res === 'success'){}
+                // Do nothing 4 moment
             },
-            /*
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
-            },
-            */
             cache: false
         });
+    }
+
+    function updateLocalData() {
+        $.ajax({
+            type: "POST",
+            url: "common/pickTools.php",
+            data: {
+                req: "getData",
+                matchId: matchId
+            },
+            success: function (data) {
+                pickState = JSON.parse(data);
+                checkMaps();
+            },
+            cache: false
+        });
+    }
+    
+    function phpToJavascript(){
+         $.ajax({
+            type: "POST",
+            url: "common/pickTools.php",
+            data: {
+                req: "fromPhpToJavascriptDataTransactionTest",
+                matchId: matchId
+            },
+            success: function (data) {
+                pickState = JSON.parse(data);
+                console.log(pickState);
+                checkMaps();
+                hideGrayBox();
+            },
+            cache: false
+        });
+    }
+    
+    // *************************************************************
+    // ******************** Sockets ********************************
+    // *************************************************************
+
+    function connectToSocketsServer() {
+        var host = "ws://127.0.0.1:9000/websockets"; // SET THIS TO YOUR SERVER
+        try {
+            socket = new WebSocket(host);
+
+            socket.onclose = function () { /* TODO */
+            };
+
+            // quand on recoit une notif du serveur 
+            socket.onmessage = function (msg) {
+                console.log("Socket - message received: " + msg.data);
+
+                switch (msg.data) {
+                    case "identificate" :
+                        var identifiants = ["identificate", playerId, matchId];
+                        socket.send(identifiants);
+                        break;
+
+                    case "mapKicked":
+                        updateLocalData();
+                        updateView();
+                        // hide grayBox
+                        break;
+
+                    default:
+                        break;
+                }
+            };
+        } catch (ex) {
+            console.log(ex);
+        }
+    }
+
+    function closeConnectionWebSocket() {
+        if (socket != null) {
+            socket.close();
+            socket = null;
+        }
     }
 
     // *****************************************************************
@@ -163,54 +237,4 @@
     function hideGrayBox() {
         grayBox.hide();
     }
-
-    // *************************************************************
-    // ******************** Sockets ********************************
-    // *************************************************************
-
-    function connectToSocketsServer() {
-        var host = "ws://127.0.0.1:9000/websockets"; // SET THIS TO YOUR SERVER
-        try {
-            socket = new WebSocket(host);
-
-            socket.onopen = function () { /* TODO */
-            };
-            socket.onclose = function () { /* TODO */
-            };
-
-            // quand on recoit une notif du serveur 
-            socket.onmessage = function (msg) {
-                console.log("Socket - message received: " + msg.data);
-
-                switch (msg.data) {
-                    case "identificate" :
-                        var identifiants = ["identificate", playerId, matchId];
-                        socket.send(identifiants);
-                        break;
-
-                    case "":
-                        break;
-
-                    case "":
-                        break;
-
-                    case "":
-                        break;
-
-                    default:
-                        break;
-                }
-            };
-        } catch (ex) {
-            console.log(ex);
-        }
-    }
-
-    function closeConnectionWebSocket() {
-        if (socket != null) {
-            socket.close();
-            socket = null;
-        }
-    }
-
 </script>

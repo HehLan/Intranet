@@ -11,9 +11,11 @@ require_once('./websockets.php');
 class CustomServer extends WebSocketServer {
 
     // array qui continet les objets de type User(genId, userId, matchId)
-    protected $connectedUsers;
-    // array qui contient les objets de type Obj(matchId, palyer1_Id, player2_Id)
-    protected $matchs_players;
+    // stocking object type { generatedId : $var, databaseId : $var, matchId : $var}
+    protected $connectedUsersArray;
+    // array qui contient les objets de type Obj(matchId, [palyer1_Id, player2_Id])
+    // objets type { matchId : $var, duo : { databaseUserId1 : $var, databaseUserId2 : $var }
+    protected $matchs_playersArray;
 
     protected function process($user, $message) {
         // when receive message from client --> socket.send() at client side
@@ -21,35 +23,54 @@ class CustomServer extends WebSocketServer {
         $parsedMessage = explode(',', $message);
 
         switch ($parsedMessage[0]) {
+            
+            // nouveau joueur demande de s'enregistrer
             case "identificate":
                 $newUser = array(
-                    "dynamicId" => $user,
+                    "genId" => $user,
                     "userId" => $parsedMessage[1],
                     "matchId" => $parsedMessage[2]
                 );
 
-                foreach ($this->connectedUsers as $u) {
-                    if ($u['userId'] == $newUser['userId'] && $u['matchId'] == $newUser['matchId']) {
-                        $u['dynamicId'] = $newUser['dynamicId'];
-                    }
+                // gerer si reconnection --> user ayant pas fini le pick
+                var_dump($this->connectedUsersArray);
+                $key = array_search($newUser['userId'], array_column($this->connectedUsersArray, 'userId'));
+                var_dump($key);
+                if ($key != NULL) {
+                    // reconnection
+                    echo '<br> Enter in NOT NULL';
+                    $this->connectedUsersArray[$key]['genId'] = $newUser['genId'];
+                } else {
+                    // new user
+                    echo '<br> Enter in NULL KEY';
+                    array_push($this->connectedUsersArray, $newUser);
                 }
-
-                // quand un nouveau user se connecte
-                if (!in_array($user, $this->connectedUsers)) {
-
-                    array_push($this->connectedUsers, $user);
-                }
+                var_dump($this->connectedUsersArray);
 
                 break;
-                
+
+            // suite au mapKick de l'un des players
             case "mapKicked":
                 $info = array(
                     "playerId" => $parsedMessage[1],
                     "matchId" => $parsedMessage[2]
                 );
-                $key = array_search('matchId', $this->matchs_players);
-                
-                
+
+                $key = array_search($info['matchId'], array_column($this->matchs_playersArray, 'matchId'));
+                $duo = $this->matchs_playersArray[$key]['duo'];
+                foreach ($duo as $key => $userId) {
+                    // trouver l'opponentId
+                    if ($userId != $info['playerId']){
+                        // aller chercher son genId et le notifier
+                        $key = array_search($userId, array_column($this->connectedUsersArray, 'userId'));
+                        $opponentSocketId = $this->connectedUsersArray[$key]['genId'];
+                        $this->send($opponentSocketId, "mapKicked");
+                    }
+                }
+
+                break;
+
+            case "onclose":
                 break;
 
             default:
@@ -65,10 +86,10 @@ class CustomServer extends WebSocketServer {
 
     protected function connected($user) {
         // *************** constructor **************
-        if ($this->connectedUsers == NULL)
-            $this->connectedUsers = array();
-        if ($this->matchs_players == NULL)
-            $this->matchs_players = array();
+        if ($this->connectedUsersArray == NULL)
+            $this->connectedUsersArray = array();
+        if ($this->matchs_playersArray == NULL)
+            $this->matchs_playersArray = array();
 
         // demander userId et matchId
         $this->send($user, "identificate");

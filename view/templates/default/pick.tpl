@@ -27,6 +27,9 @@
                     <br>
                     <br>
                     <button onclick="hideGrayBox();">hide grayBox</button>
+                    <br>
+                    <br>
+                    <button onclick="phpToJavascript();">test returner data from php to javascritp</button>
                 </div>
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10" id="middleDiv">
