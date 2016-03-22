@@ -3,7 +3,7 @@
 <html>
     <head>
         {include file="default/meta.tpl"}  
-        <link rel="stylesheet" type="text/css" href="{#assets#}/css/finalesPools.css" />
+        <link rel="stylesheet" type="text/css" href="{#assets#}/css/tournoisPools.css" />
         <link type="text/css" rel="stylesheet" href="{#domain#}/lib/jQuery/jquery.group.min.css" />
     </head>
     <body>

@@ -17,6 +17,9 @@
                 {if $tournoi.id_tournoi != 2}
                     <div id="bloc_tab">
                         <ul class="nav nav-tabs" role="tablist">
+                            
+                            
+                            
                             <li role="presentation" class="active"><a href="#tab-group-1" aria-controls="tab-group-1" role="tab" data-toggle="tab">Groupe 1</a></li>
                             <li role="presentation"><a href="#tab-group-2" aria-controls="tab-group-2" role="tab" data-toggle="tab">Groupe 2</a></li>
                         </ul>

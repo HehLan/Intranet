@@ -2,6 +2,36 @@
 /*                          TOURNOIS POOL CSS                           */
 /*----------------------------------------------------------------------*/
 
+
+input
+{
+    color: black;
+}
+
+.label
+{
+    color: black;
+}
+
+header
+{
+    color: black;
+}
+
+colgroup > col
+{
+    background-color: gray;
+}
+
+.roundsHeader
+{
+    color: #0076a3;
+}
+
+
+
+/*
+
 .table_pool_row
 {
     margin-bottom: 30px;
@@ -85,4 +115,4 @@
     font-size: 16px;
     font-weight: bold;
     color: black;
-}
+}*/

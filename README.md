@@ -125,7 +125,12 @@ scores.php
 
 Pour créer les groupes de qualifications côté admin, il faut d'abord ajouter les équipes.
 Les différentes rencontres vont alors apparaître dans l'onglet "Unassigned".
-Il faut ensuite les attribuer à des rounds (date et heure).
+Il faut ensuite les attribuer à des rounds. Chaque round correspond à un jour et une heure.
+Pour l'attribution à des rounds:
+- round 1: team A vs team B
+- round 2 : team A vs team C
+- ....
+Les autres teams suivent une alternance cyclique
 La saisie des résultats met automatiquement à jour l'affichage.
 
 
