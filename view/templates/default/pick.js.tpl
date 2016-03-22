@@ -14,6 +14,7 @@
     var opponentNickname;
     var idPlayerWhoMakeChoise;
     var pickState;
+    var checkedMapCounter;
     var matchId;
 
     $(document).ready(function () {
@@ -54,6 +55,7 @@
         pickState.forEach(function (map) {
             if (map.checked == true) {
                 griserMap($('#' + map.mapId));
+                checkedMapCounter++;
             }
         });
     }
@@ -62,6 +64,8 @@
     function kickMap(el) {
         var container = $(el);   // div containing img&text
         if (container.attr('data-checked') == 1) // deja kicked
+            return;
+        if (checkedMapCounter == 9) // si déjà 9 maps séléctionnées
             return;
 
         griserMap(container);
@@ -74,9 +78,15 @@
         mapId = container.attr('id');
         updateDatabase(mapId);
 
-        // notifier l'opponent --> sockets
-        var message = ["mapKicked", playerId, matchId];
-        socket.send(message);
+        if (checkedMapCounter == 9) {
+            // notifier l'opponent que le "pick" des maps est terminé
+            var message = ['mapsTerminated'];
+            socket.send(message);
+        } else {
+            // notifier l'opponent qu'une map a été "kick" et c'est son tour
+            var message = ["mapKicked", playerId, matchId];
+            socket.send(message);
+        }
     }
 
     function updateDatabase(mapId) {
@@ -88,11 +98,6 @@
                 mapId: mapId,
                 matchId: matchId,
                 opponentId: opponentId
-            },
-            success: function (res) {
-                console.log("databaseUpdated");
-                if (res === 'success'){}
-                // Do nothing 4 moment
             },
             cache: false
         });
@@ -113,9 +118,9 @@
             cache: false
         });
     }
-    
-    function phpToJavascript(){
-         $.ajax({
+
+    function phpToJavascript() {
+        $.ajax({
             type: "POST",
             url: "common/pickTools.php",
             data: {
@@ -131,7 +136,9 @@
             cache: false
         });
     }
-    
+
+
+
     // *************************************************************
     // ******************** Sockets ********************************
     // *************************************************************

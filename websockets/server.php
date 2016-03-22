@@ -23,7 +23,7 @@ class CustomServer extends WebSocketServer {
         $parsedMessage = explode(',', $message);
 
         switch ($parsedMessage[0]) {
-            
+
             // nouveau joueur demande de s'enregistrer
             case "identificate":
                 $newUser = array(
@@ -60,7 +60,7 @@ class CustomServer extends WebSocketServer {
                 $duo = $this->matchs_playersArray[$key]['duo'];
                 foreach ($duo as $key => $userId) {
                     // trouver l'opponentId
-                    if ($userId != $info['playerId']){
+                    if ($userId != $info['playerId']) {
                         // aller chercher son genId et le notifier
                         $key = array_search($userId, array_column($this->connectedUsersArray, 'userId'));
                         $opponentSocketId = $this->connectedUsersArray[$key]['genId'];
@@ -68,6 +68,10 @@ class CustomServer extends WebSocketServer {
                     }
                 }
 
+                break;
+
+            case "mapsTerminated":
+                // TODO
                 break;
 
             case "onclose":
