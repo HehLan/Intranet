@@ -15,7 +15,7 @@
     // Getting the bracket
     $.ajax(
         {
-            url: 'modules/bracket_get.php?id_tournoi=' + id + "&type=0" ,
+            url: 'modules/bracket_get.php?id_tournoi=' + id + "&type=2" + "&finales_number=1",
             type: 'GET',
             dataType: 'text',
             success: function (text, status)
@@ -46,7 +46,7 @@
             {
                 url: 'modules/bracket_save.php',
                 type: 'POST',
-                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=0", 
+                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=2" + "&finales_number=1", 
                 dataType: 'text'
             }
         );
@@ -59,6 +59,11 @@
             {
                 init: saveData,
                 save: saveFn
+            }
+        );
+        $('#view1').bracket(
+            {
+                init: saveData
             }
         );
 

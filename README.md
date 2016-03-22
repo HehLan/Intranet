@@ -111,7 +111,9 @@ brackets
 - id_bracket: id
 - id_tournoi: id of the tournament
 - json: JSON data
-- type: >0 for qualification groups number and 0 for finales brackets
+- type: 1 for qualification groups number and 2 for finales brackets
+- group_number: number of the group if type is of 1
+- finales_number: number of the finales if type is of 2
 
 
 

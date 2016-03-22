@@ -5,10 +5,10 @@
     // Initial data if is not encoded in the database
     var groupData = null;
 
-    // Getting the bracket - must use the number of group as type
+    // Getting the bracket - the group_number must be dynamic
     $.ajax(
         {
-            url: 'modules/bracket_get.php?id_tournoi=' + id + "&type=1" ,
+            url: 'modules/bracket_get.php?id_tournoi=' + id + "&type=1" + "&group_number=1",
             type: 'GET',
             dataType: 'text',
             success: function (text, status)
@@ -39,7 +39,7 @@
             {
                 url: 'modules/bracket_save.php',
                 type: 'POST',
-                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=1", 
+                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=1" + "&group_number=1", 
                 dataType: 'text'
             }
         );
