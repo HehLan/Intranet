@@ -41,7 +41,7 @@
                         {/if}
                     {/if}
                     
-                    <div id="bracket-pools" class="bracket"></div>
+                    <div id="bracket" class="bracket"></div>
                     <p id="matchCallback"></p>
                 </div>
             </div>

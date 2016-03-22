@@ -84,7 +84,7 @@
         <script type="text/javascript" src="{#domain#}/lib/handlebars/handlebars.1.0.0.js"></script>
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.group.min.js"></script>
 
-        {include file="admin/scoresPools.js.tpl"
+        {include file="admin/assets/js/scoresPools.js.tpl"
             tournoi=$tournoi
         }
 

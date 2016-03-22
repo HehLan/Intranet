@@ -1,19 +1,26 @@
 {* Smarty *}
 <script>
-    var id = {$tournoi.id_tournoi};
-    
-    // Initial data if is not encoded in the database
-    var groupData = null;
 
-    // Getting the bracket - the group_number must be dynamic
+    var id = {$tournoi.id_tournoi};
+
+    // Initial data if is not encoded in the database
+    var saveData = {
+        teams: [
+            ["Team 1", "Team 2"], 
+            ["Team 3", "Team 4"] 
+        ],
+        results: [[1, 0], [2, 7]]
+    }; 
+
+    // Getting the bracket
     $.ajax(
         {
-            url: 'modules/bracket_get.php?id_tournoi=' + id + "&type=1" + "&group_number=1",
+            url: '../common/bracket_get.php?id_tournoi=' + id + "&type=2" + "&finales_number=1",
             type: 'GET',
             dataType: 'text',
             success: function (text, status)
             {
-                groupData = JSON.parse(text);
+                saveData = JSON.parse(text);
             },
             error: function (resultat, statut, erreur)
             {
@@ -26,52 +33,43 @@
             async: false
         }
     );
-
+    
     function saveFn(state1)
     {
         // Write your storage code here, now just display JSON above
         $('#state1').text(JSON.stringify(state1, undefined, 2));
         // Reconstruct read-only version by initializing it with received state
-        $('#view1').empty().group({
+        $('#view1').empty().bracket({
             init: state1
         });
         $.ajax(
             {
                 url: 'modules/bracket_save.php',
                 type: 'POST',
-                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=1" + "&group_number=1", 
+                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=2" + "&finales_number=1", 
                 dataType: 'text'
             }
         );
-    };   
-   
+    };     
+
     $(function ()
     {
         var container = $('#editor1');
-        if(groupData !== null)
-        {
-            container.group(
-                {
-                    init: groupData,
-                    save: saveFn
-                }
-            );
-        }
-        else
-        { 
-            container.group(
-                {
-                    save: saveFn
-                }
-            );
-        }
+        container.bracket(
+            {
+                init: saveData,
+                save: saveFn
+            }
+        );
+        $('#view1').bracket(
+            {
+                init: saveData
+            }
+        );
 
-        //You can also inquiry the current data 
+        /* You can also inquiry the current data */
         //var data = container.bracket('data');
 
     });
-   
-
-
 
 </script>

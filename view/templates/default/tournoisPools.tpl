@@ -57,7 +57,7 @@
                         <div class="tab-content">
                             <!-- tab-group-1 -->
                             <div role="tabpanel" class="tab-pane active" id="tab-group-1">
-                                <div id="bracket-1"></div>
+                                <div id="bracket"></div>
                             </div>
                             <!-- tab-group-2 -->
                             <div role="tabpanel" class="tab-pane" id="tab-group-2">
@@ -83,152 +83,9 @@
         
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.group.min.js"></script>
      
-        <script>
-            var groupData = {
-                teams: [
-                    { id: 10, name: "YoDa", faction: "t" },
-                    { id: 11, name: "First", faction: "p" },
-                    { id: 12, name: "MC", faction: "p" },
-                    { id: 13, name: "Ret", faction: "z" },
-                    { id: 14, name: "Kas", faction: "t" },
-                    { id: 15, name: "XIorD", faction: "z" }
-                ],
-                matches: [
-                    { "id": 0, "round": 1, "a": { "team": 0, "score": 1 }, "b": { "team": 1, "score": 2 } },
-                    { "id": 1, "round": 1, "a": { "team": 0, "score": 2 }, "b": { "team": 2, "score": 1 } },
-                    { "id": 2, "round": 1, "a": { "team": 1, "score": 2 }, "b": { "team": 2, "score": 1 } },
-                    { "id": 3, "round": 2, "a": { "team": 0, "score": 2 }, "b": { "team": 3, "score": 0 } },
-                    { "id": 4, "round": 2, "a": { "team": 1, "score": 0 }, "b": { "team": 3, "score": 2 } },
-                    { "id": 5, "round": 2, "a": { "team": 2, "score": 0 }, "b": { "team": 3, "score": 2 } },
-                    { "id": 6, "round": 3, "a": { "team": 0, "score": 2 }, "b": { "team": 4, "score": 1 } },
-                    { "id": 7, "round": 3, "a": { "team": 1, "score": 2 }, "b": { "team": 4, "score": 0 } },
-                    { "id": 8, "round": 3, "a": { "team": 2, "score": 2 }, "b": { "team": 4, "score": 0 } },
-                    { "id": 9, "round": 4, "a": { "team": 3, "score": 2 }, "b": { "team": 4, "score": 1 } },
-                    { "id": 10, "round": 4, "a": { "team": 0, "score": 2 }, "b": { "team": 5, "score": 0 } },
-                    { "id": 11, "round": 4, "a": { "team": 1, "score": 2 }, "b": { "team": 5, "score": 1 } },
-                    { "id": 12, "round": 5, "a": { "team": 2, "score": 2 }, "b": { "team": 5, "score": 1 } },
-                    { "id": 13, "round": 5, "a": { "team": 3, "score": 2 }, "b": { "team": 5, "score": 0 } },
-                    { "id": 14, "round": 5, "a": { "team": 4, "score": 2 }, "b": { "team": 5, "score": 1 } }
-                ]
-            };
-
-            function faction(faction) {
-                colors = { 't': "blue", 'z': "purple", 'p': "goldenrod" };
-                return '<span style="padding: 2px; color: white;'
-                        + 'display: inline-block; text-align: center;'
-                        + 'font-size: 10px; width: 12px; margin: 0 3px;'
-                        + 'background-color: ' + colors[faction] + '">' + faction + '</span>';
-            };
-
-            function customLabeler(team) {
-                return faction(team.faction) + ' ' + team.name;
-            }
-
-            $(function () {
-                $('#bracket-1').group({
-                    init: groupData, labeler: customLabeler
-                });
-            });
-        </script>
-        
-        
-        <script>
-            var groupData2 = {
-                teams: [
-                    { id: 10, name: "gfdgfda", faction: "t" },
-                    { id: 11, name: "Firgfdgfdst", faction: "p" },
-                    { id: 12, name: "MfdgdC", faction: "p" },
-                    { id: 13, name: "Rfdgfet", faction: "z" },
-                    { id: 14, name: "Kdgdfas", faction: "t" },
-                    { id: 15, name: "XIdfgdorD", faction: "z" }
-                ],
-                matches: [
-                    { "id": 0, "round": 1, "a": { "team": 0, "score": 1 }, "b": { "team": 1, "score": 2 } },
-                    { "id": 1, "round": 1, "a": { "team": 0, "score": 2 }, "b": { "team": 2, "score": 1 } },
-                    { "id": 2, "round": 1, "a": { "team": 1, "score": 2 }, "b": { "team": 2, "score": 1 } },
-                    { "id": 3, "round": 2, "a": { "team": 0, "score": 2 }, "b": { "team": 3, "score": 0 } },
-                    { "id": 4, "round": 2, "a": { "team": 1, "score": 0 }, "b": { "team": 3, "score": 2 } },
-                    { "id": 5, "round": 2, "a": { "team": 2, "score": 0 }, "b": { "team": 3, "score": 2 } },
-                    { "id": 6, "round": 3, "a": { "team": 0, "score": 2 }, "b": { "team": 4, "score": 1 } },
-                    { "id": 7, "round": 3, "a": { "team": 1, "score": 2 }, "b": { "team": 4, "score": 0 } },
-                    { "id": 8, "round": 3, "a": { "team": 2, "score": 2 }, "b": { "team": 4, "score": 0 } },
-                    { "id": 9, "round": 4, "a": { "team": 3, "score": 2 }, "b": { "team": 4, "score": 1 } },
-                    { "id": 10, "round": 4, "a": { "team": 0, "score": 2 }, "b": { "team": 5, "score": 0 } },
-                    { "id": 11, "round": 4, "a": { "team": 1, "score": 2 }, "b": { "team": 5, "score": 1 } },
-                    { "id": 12, "round": 5, "a": { "team": 2, "score": 2 }, "b": { "team": 5, "score": 1 } },
-                    { "id": 13, "round": 5, "a": { "team": 3, "score": 2 }, "b": { "team": 5, "score": 0 } },
-                    { "id": 14, "round": 5, "a": { "team": 4, "score": 2 }, "b": { "team": 5, "score": 1 } }
-                ]
-            };
-
-            function faction(faction) {
-                colors = { 't': "blue", 'z': "purple", 'p': "goldenrod" };
-                return '<span style="padding: 2px; color: white;'
-                        + 'display: inline-block; text-align: center;'
-                        + 'font-size: 10px; width: 12px; margin: 0 3px;'
-                        + 'background-color: ' + colors[faction] + '">' + faction + '</span>';
-            };
-
-            function customLabeler(team) {
-                return faction(team.faction) + ' ' + team.name;
-            }
-
-            $(function () {
-                $('#bracket-2').group({
-                    init: groupData2, labeler: customLabeler
-                });
-            });
-        </script>
-
-        
-        <script>
-            var groupData3 = {
-                teams: [
-                    { id: 10, name: "gfdsdqsdqsgfda", faction: "t" },
-                    { id: 11, name: "Fisqdqdqrgfdgfdst", faction: "p" },
-                    { id: 12, name: "MfdqsdqsdgdC", faction: "p" },
-                    { id: 13, name: "Rfdsqdqsdgfet", faction: "z" },
-                    { id: 14, name: "Kdqsdqsdgdfas", faction: "t" },
-                    { id: 15, name: "XIddqsdqfgdorD", faction: "z" }
-                ],
-                matches: [
-                    { "id": 0, "round": 1, "a": { "team": 0, "score": 1 }, "b": { "team": 1, "score": 2 } },
-                    { "id": 1, "round": 1, "a": { "team": 0, "score": 2 }, "b": { "team": 2, "score": 1 } },
-                    { "id": 2, "round": 1, "a": { "team": 1, "score": 2 }, "b": { "team": 2, "score": 1 } },
-                    { "id": 3, "round": 2, "a": { "team": 0, "score": 2 }, "b": { "team": 3, "score": 0 } },
-                    { "id": 4, "round": 2, "a": { "team": 1, "score": 0 }, "b": { "team": 3, "score": 2 } },
-                    { "id": 5, "round": 2, "a": { "team": 2, "score": 0 }, "b": { "team": 3, "score": 2 } },
-                    { "id": 6, "round": 3, "a": { "team": 0, "score": 2 }, "b": { "team": 4, "score": 1 } },
-                    { "id": 7, "round": 3, "a": { "team": 1, "score": 2 }, "b": { "team": 4, "score": 0 } },
-                    { "id": 8, "round": 3, "a": { "team": 2, "score": 2 }, "b": { "team": 4, "score": 0 } },
-                    { "id": 9, "round": 4, "a": { "team": 3, "score": 2 }, "b": { "team": 4, "score": 1 } },
-                    { "id": 10, "round": 4, "a": { "team": 0, "score": 2 }, "b": { "team": 5, "score": 0 } },
-                    { "id": 11, "round": 4, "a": { "team": 1, "score": 2 }, "b": { "team": 5, "score": 1 } },
-                    { "id": 12, "round": 5, "a": { "team": 2, "score": 2 }, "b": { "team": 5, "score": 1 } },
-                    { "id": 13, "round": 5, "a": { "team": 3, "score": 2 }, "b": { "team": 5, "score": 0 } },
-                    { "id": 14, "round": 5, "a": { "team": 4, "score": 2 }, "b": { "team": 5, "score": 1 } }
-                ]
-            };
-
-            function faction(faction) {
-                colors = { 't': "blue", 'z': "purple", 'p': "goldenrod" };
-                return '<span style="padding: 2px; color: white;'
-                        + 'display: inline-block; text-align: center;'
-                        + 'font-size: 10px; width: 12px; margin: 0 3px;'
-                        + 'background-color: ' + colors[faction] + '">' + faction + '</span>';
-            };
-
-            function customLabeler(team) {
-                return faction(team.faction) + ' ' + team.name;
-            }
-
-            $(function () {
-                $('#bracket-3').group({
-                    init: groupData3, labeler: customLabeler
-                });
-            });
-        </script>
-        
+        {include file="default/assets/js/tournoisPools.js.tpl"
+            tournoi=$tournoi
+        }        
         
         
     </body>

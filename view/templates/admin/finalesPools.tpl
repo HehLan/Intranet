@@ -71,7 +71,7 @@
         <!-- jquery-bracket -->
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.bracket.min.js"></script>
 
-        {include file="admin/finalesPools.js.tpl"
+        {include file="admin/assets/js/finalesPools.js.tpl"
             tournoi=$tournoi
         }
 
