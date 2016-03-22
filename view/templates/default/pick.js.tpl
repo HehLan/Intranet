@@ -14,7 +14,6 @@
     var opponentNickname;
     var idPlayerWhoMakeChoise;
     var pickState;
-    var checkedMapCounter;
     var matchId;
 
     $(document).ready(function () {
@@ -55,7 +54,6 @@
         pickState.forEach(function (map) {
             if (map.checked == true) {
                 griserMap($('#' + map.mapId));
-                checkedMapCounter++;
             }
         });
     }
@@ -65,7 +63,7 @@
         var container = $(el);   // div containing img&text
         if (container.attr('data-checked') == 1) // deja kicked
             return;
-        if (checkedMapCounter == 9) // si déjà 9 maps séléctionnées
+        if (checkedMapCount() == 9) // si déjà 9 maps séléctionnées
             return;
 
         griserMap(container);
@@ -78,7 +76,7 @@
         mapId = container.attr('id');
         updateDatabase(mapId);
 
-        if (checkedMapCounter == 9) {
+        if (checkedMapCount() == 9) {
             // notifier l'opponent que le "pick" des maps est terminé
             var message = ['mapsTerminated'];
             socket.send(message);
@@ -87,6 +85,16 @@
             var message = ["mapKicked", playerId, matchId];
             socket.send(message);
         }
+    }
+    
+    function checkedMapsCount(){
+        var counter;
+        pickState.forEach(function (map) {
+            if (map.checked == true) {
+                counter++;
+            }
+        });
+        return counter;
     }
 
     function updateDatabase(mapId) {
