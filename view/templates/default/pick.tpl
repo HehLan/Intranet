@@ -42,7 +42,7 @@
                             </div>
                         {/foreach}
                     </div>
-                    <div class="row" id="mapsContainer" style="visibility: hidden;">
+                    <div class="row" id="championsContainer" style="visibility: hidden;">
                         {foreach from=$maps item=map}
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
                                 <div id="{$map['id']}" onclick="kickMap(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
