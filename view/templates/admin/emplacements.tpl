@@ -4,7 +4,6 @@
     <head>
         {include file="admin/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/emplacements.css" >
-        <script type="text/javascript" src="{#adminAssets#}/js/emplacements.js"></script>	
 </head>
 
 <body role="document">
@@ -70,40 +69,37 @@
                 border-width: 1px;
                 border-style: solid;">
                 <img class="photo" src="{#src#}/img/plan.jpg" width="100%" height="100%" >
-                {foreach from=$locations item=location}
-                    <div class="place" id="{$location['id_emplacement']}"
+                {foreach from=$emplacements item=emplacement}
+                    <div class="place" id="{$emplacement['id_emplacement']}"
                            style="
                               position:absolute;
-                              top:{$location['top']}%;
-                              left:{$location['xy_left']}%;
-                              width:{$location['width']}%;
-                              height:{$location['height']}%;
+                              top:{$emplacement['top']}%;
+                              left:{$emplacement['xy_left']}%;
+                              width:{$emplacement['width']}%;
+                              height:{$emplacement['height']}%;
                               border:0.1em solid #000;
                               text-align: center;
                               color: #000000;">
-                      {$location['numero']}                          
+                      {$emplacement['numero']}                          
                     </div>
                 {/foreach}                        
-                {foreach from=$locations_1 item=location_1}
-                    <div class="place" id="info"
-                         style="
-                         position:absolute;
-                         top:{$location_1['top']}%;
-                         left:{$location_1['xy_left']}%;
-                         width:{$location_1['width']}%;
-                         height:{$location_1['height']}%;
-                         border:0.1em solid red;
-                         background:rgba(100,100,100,0.3);
-                         text-align:center;"
-                         >
-                        
-                        
-                        
-                        <span><u>pseudo :</u>{$location_1['pseudo']}<br>
-                            <u>Equipe :</u>
-                                {', '|implode:$teams}
-                        </span></a>
-                    </div>
+                {foreach from=$emplacements1 item=emplacement_1}
+                    <div class='tooltip' style='position:absolute;
+                             top: {$emplacements1[sec1].top}%;
+                             left: {$emplacements1[sec1].xy_left}%;
+                             width: {$emplacements1[sec1].width}%;
+                             height: {$emplacements1[sec1].height}%;
+                             text-align:center;'>
+                            <span>
+                                pseudo : <strong> {$emplacements1[sec1].pseudo}</strong>
+                                <br>
+                                Equipe : {$emplacements1[sec1].team}
+                                <br>
+                                <u>Tournois : {$emplacements1[sec1].nomTournoi}</u>
+                                <br>
+                                <u>IP : {$emplacements1[sec1].IP}</u>
+                            </span>
+					</div>
                 {/foreach}                        
                 <div id="cadre"</div>
             </div>
@@ -114,5 +110,6 @@
         <div style="height: 450px;"></div>
         
 	{include file="admin/footer.tpl"}
+	<script type="text/javascript" src="{#adminAssets#}/js/emplacements.js"></script>	
     </body>
 </html>

@@ -1,0 +1,4 @@
+{* Smarty *}
+{foreach $ item=}
+
+{/foreach}

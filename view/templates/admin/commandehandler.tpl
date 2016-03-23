@@ -34,8 +34,9 @@
 						Les commandes joueurs
 					</div>
 					<div role="tabpanel" class="tab-pane" id="commandesArticlesPane">
-						La liste des articles et les suppléments à commander
-						(=> supplément est un groupe tout comme taille, non?)
+						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							Aucun article trouvé
+						</div>
 					</div>
 					<div role="tabpanel" class="tab-pane" id="commandesGroupPane">
 						Les groupes d'articles et leur prix

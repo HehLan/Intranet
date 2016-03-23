@@ -1,0 +1,1 @@
+SELECT * FROM joueurs WHERE id_emplacement = :idp;

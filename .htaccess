@@ -1,2 +1,5 @@
 ErrorDocument 404 /error.html
 ErrorDocument 403 /error.html
+
+RewriteEngine On
+RewriteRule error.html$ view/templates/default/error.html [NC]

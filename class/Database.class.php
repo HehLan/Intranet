@@ -288,7 +288,7 @@ class Database
     
     public function getLocations_2($idPlayer)
     {
-        $sql = file_get_contents('src/sql/getLocations_2.sql');
+        $sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/getLocations_2.sql');
         $query = new Query($this, $sql);
         $query->bind(':idPlayer', $idPlayer, PDO::PARAM_INT);
         if($query->execute())
@@ -305,7 +305,7 @@ class Database
     
     public function getLocations_3($idPlayer)
     {
-        $sql = file_get_contents('src/sql/getLocations_3.sql');
+        $sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/getLocations_3.sql');
         $query = new Query($this, $sql);
         $query->bind(':idPlayer', $idPlayer, PDO::PARAM_INT);
         if($query->execute())
@@ -542,6 +542,74 @@ class Database
 			GLOBAL $glob_debug;
 			if ($glob_debug)
 					echo 'ERREUR SQL REMOVE NOTIF JOUEUR';
+			return 0;
+		}
+	}
+	
+	///////////////////////////////////////////////
+	///////////////////////PLACES//////////////////
+	///////////////////////////////////////////////
+	public function getPlaceJoueurData($idPlace)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/getJoueurData.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idp', $idPlace, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET JOUEUR DATA FROM EMPLACEMENT';
+			return 0;
+		}
+	}
+	public function getPlaceNumero($idPlace)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/getNumeroEmplacement.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idp', $idPlace, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET NUMERO EMPLACEMENT';
+			return 0;
+		}
+	}
+	public function getPlaceJoueur($idPlace)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/getJoueur.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idp', $idPlace, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET JOUEUR EMPLACEMENT';
+			return 0;
+		}
+	}
+	public function setPlace($idPlace, $pseudoJoueur)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/updateEmplacement.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idp', $idPlace, PDO::PARAM_INT);
+		$query->bind(':p', $pseudoJoueur, PDO::PARAM_STR);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL SET EMPLACEMENT';
 			return 0;
 		}
 	}
