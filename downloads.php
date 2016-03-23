@@ -11,9 +11,7 @@ $downloads = $query->getResult();
 
 
 
-// Applying Template
-$smarty->assign('next_matches', $database->getNextMatches($connected));
-$smarty->assign('navTournois', $database->getNavTournois());        
+// Applying Template       
 $smarty->assign('downloads', $downloads);
 
 

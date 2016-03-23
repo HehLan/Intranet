@@ -1,3 +1,4 @@
+{* Smarty *}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -14,13 +15,15 @@
                 
                 <h1>Qualifications de {$tournoi['nomTournoi']}</h1> 
                 
-                
+
                 {if $tournoi.id_tournoi != 2}                    
                     <div id="bloc_tab">
                         <ul class="nav nav-tabs" role="tablist">
-                            {foreach name=playerLoop from=$groupes item=groupe}
-                                {if $smarty.foreach.playerLoop.first}
-                                    <li role="presentation" id="nav-tab-{$groupe['id_groupe']}" class="active"><a href="#tab-{$groupe['id_groupe']}" aria-controls="tab-{$groupe['id_groupe']}" role="tab" data-toggle="tab">{$groupe['nom_groupe']}</a></li>
+                            {foreach name=groupLoop from=$groupes item=groupe}
+                                {if $smarty.foreach.groupLoop.first}
+                                    <!-- DO NOT set the tab active because we need to click on the tab to load its content otherwise others tabs will be empty -->
+                                    {* <li role="presentation" id="nav-tab-{$groupe['id_groupe']}" class="active"><a href="#tab-{$groupe['id_groupe']}" aria-controls="tab-{$groupe['id_groupe']}" role="tab" data-toggle="tab">{$groupe['nom_groupe']}</a></li> *}
+                                    <li role="presentation" id="nav-tab-{$groupe['id_groupe']}"><a href="#tab-{$groupe['id_groupe']}" aria-controls="tab-{$groupe['id_groupe']}" role="tab" data-toggle="tab">{$groupe['nom_groupe']}</a></li>
                                 {else}  
                                     <li role="presentation" id="nav-tab-{$groupe['id_groupe']}"><a href="#tab-{$groupe['id_groupe']}" aria-controls="tab-{$groupe['id_groupe']}" role="tab" data-toggle="tab">{$groupe['nom_groupe']}</a></li>
                                 {/if}
@@ -29,9 +32,11 @@
                     </div>                          
                             
                     <div class="tab-content">
-                        {foreach name=playerLoop from=$groupes item=groupe}
-                            {if $smarty.foreach.playerLoop.first}
-                                <div role="tabpanel" class="tab-pane active" id="tab-{$groupe['id_groupe']}">     
+                        {foreach name=groupLoop from=$groupes item=groupe}
+                            {if $smarty.foreach.groupLoop.first}
+                                <!-- DO NOT set the tab active because we need to click on the tab to load its content otherwise others tabs will be empty -->
+                                {* <div role="tabpanel" class="tab-pane active" id="tab-{$groupe['id_groupe']}"> *}
+                                <div role="tabpanel" class="tab-pane" id="tab-{$groupe['id_groupe']}">
                             {else}                            
                                 <div role="tabpanel" class="tab-pane" id="tab-{$groupe['id_groupe']}">
                             {/if}
@@ -77,12 +82,12 @@
         <script type="text/javascript" src="{#domain#}/lib/handlebars/handlebars.1.0.0.js"></script>
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.group.min.js"></script>
 
-        {foreach from=$groupes item=groupe}
+        
             {include file="admin/assets/js/scoresPools.js.tpl"
                 tournoi=$tournoi
-                groupe=$groupe
+                groupes=$groupes
             }
-        {/foreach}
+        
 
     </body>
 </html>
