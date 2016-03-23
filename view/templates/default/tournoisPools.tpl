@@ -65,15 +65,53 @@
                                     <div role="tabpanel" class="tab-pane" id="tab-{$groupe['id_groupe']}">
                                 {/if}
                                         <div class="row">
-                                            <div id="components">
-                                                <div id="bracket-{$groupe['id_groupe']}"></div>
-                                                <h4>Dates des matchs</h4>
+                                            <div id="components" class="col-lg-8">
+                                                <h4>Classement et matchs</h4>
+                                                <div id="bracket-{$groupe['id_groupe']}"></div>                                            
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Informations pratiques</h4>  
                                                 <ul>
                                                     <li>Round 1 : vendredi hh:mm</li>
                                                     <li>Round 2 : vendredi hh:mm</li>
                                                     <li>Round 3 : samedi hh:mm</li>
                                                 </ul>
-                                            </div> 
+                                            </div>
+                                        </div>
+                                        <div class="row table_pool_row">
+                                            <table class="col-lg-12 table_pool">
+                                                <tr>
+                                                    <th class="th_title_pool">{$groupe.nom_groupe}</th>
+                                                    {section name=sec1 loop=$groupe.teams}
+                                                        <th class="th_team2_pool">{$groupe.teams[sec1].nom}</th>
+                                                    {/section}
+                                                    <th class="th_score_pool">Scores</th>
+                                                </tr>
+                                                {section name=sec1 loop=$groupe.teams}
+                                                    <tr class="tr_pool">
+                                                        <th class="th_team_pool">{$groupe.teams[sec1].nom}</th>
+                                                        {section name=sec2 loop=$groupe.teams}
+                                                            {if $groupe.teams[sec1].id == $groupe.teams[sec2].id}
+                                                                <td class="td_x_pool">X</td>
+                                                            {else}
+                                                                <td class="td_{$groupe.resultTeams[sec1][sec2].couleur}pool">
+                                                                    {$groupe.resultTeams[sec1][sec2].valeur}
+
+                                                                    <!-- manage link to access the pick -->
+                                                                    {if $groupe.resultTeams[sec1][sec2].isPickActive && 
+                                                                        ($groupe.teams[sec1].nom == $peekData.teamName 
+                                                                        || $groupe.teams[sec2].nom == $peekData.teamName)}
+                                                                        <div>
+                                                                            <a target="_blank" href="pick.php?id={$peekData.userId}&idMatch={$groupe.resultTeams[sec1][sec2].id_match}">Pick !</a>
+                                                                        </div>
+                                                                    {/if}
+                                                                </td>
+                                                            {/if}
+                                                        {/section}
+                                                        <td class="td_score_pool">{$totaux[$groupe.teams[sec1].id]}</td>
+                                                    </tr>
+                                                {/section}
+                                            </table>
                                         </div>
                                     </div>
                             {/foreach}
@@ -88,6 +126,12 @@
                             </div>                                       
                         </div> 
                     {/if}
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>
             </div>
         </div>

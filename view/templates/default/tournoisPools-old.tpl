@@ -39,6 +39,7 @@
                         {/if}
                     {/if}
                     <br>
+                    
                     {section name=groupe loop=$groupes}
                         <div class="row table_pool_row">
                             <table class="col-lg-12 table_pool">
