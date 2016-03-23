@@ -32,10 +32,11 @@ $(document).ready(function()
         $("#dialogInfo_joueur").css({display :"none"});
         $('.place').css({background : "none"});
         valeur=$('#SelectEquipe').val();
+		console.log(valeur);
         $.ajax(
         { 
             type: "POST", 
-            url: "modules/color_equipe.php",
+            url: "../modules/color_equipe.php",
             data: "id_equipes=" + valeur,
             success : function(contenu,etat)
             { 
@@ -45,5 +46,3 @@ $(document).ready(function()
         });  
    });
 });
-
-

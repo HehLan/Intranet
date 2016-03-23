@@ -58,8 +58,8 @@
                     <br><br>
                     <p><center><input class="submit" type="submit" value="Valider" /></center></p>
                 </form>
-                <div id="dialogInfo_joueur"></div>
-                <div id="dialogInfo_equipe"></div>
+                <!--<div id="dialogInfo_joueur"></div>
+                <div id="dialogInfo_equipe"></div>-->
             </div>
             <div class="col-lg-10" style="position: relative;
                 float:right; 
@@ -83,21 +83,26 @@
                       {$emplacement['numero']}                          
                     </div>
                 {/foreach}                        
-                {foreach from=$emplacements1 item=emplacement_1}
-                    <div class='tooltip' style='position:absolute;
-                             top: {$emplacements1[sec1].top}%;
-                             left: {$emplacements1[sec1].xy_left}%;
-                             width: {$emplacements1[sec1].width}%;
-                             height: {$emplacements1[sec1].height}%;
-                             text-align:center;'>
+                {foreach from=$emplacements1 item=emplacement1}
+                    <div class="place" id="info" style='position:absolute;
+                             top: {$emplacement1.top}%;
+                             left: {$emplacement1.xy_left}%;
+                             width: {$emplacement1.width}%;
+                             height: {$emplacement1.height}%;
+                             border:0.1em solid red;
+							background:rgba(100,100,100,0.3);
+							text-align:center;'>
                             <span>
-                                pseudo : <strong> {$emplacements1[sec1].pseudo}</strong>
+                                Pseudo : <strong> {$emplacement1.pseudo}</strong>
                                 <br>
-                                Equipe : {$emplacements1[sec1].team}
+                                Prénom : <strong> {$emplacement1.prenom}</strong>
                                 <br>
-                                <u>Tournois : {$emplacements1[sec1].nomTournoi}</u>
+                                Nom : <strong> {$emplacement1.nom}</strong>
                                 <br>
-                                <u>IP : {$emplacements1[sec1].IP}</u>
+                                Equipe : {$emplacement1.team}
+                                <br>
+                                <u>Tournois : {$emplacement1.nomTournoi}</u>
+                                <br>
                             </span>
 					</div>
                 {/foreach}                        
@@ -107,7 +112,7 @@
     </div>
 	
         <!-- gap to have the footer in the bottom of the window -->
-        <div style="height: 450px;"></div>
+        <!--<div style="height: 450px;"></div>-->
         
 	{include file="admin/footer.tpl"}
 	<script type="text/javascript" src="{#adminAssets#}/js/emplacements.js"></script>	

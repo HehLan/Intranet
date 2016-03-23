@@ -15,7 +15,6 @@ $query->execute();
 $joueurs_autre = $query->getResult();
 
 
-
 // send to the template
 $smarty->assign("emplacements", $locations);
 $smarty->assign("emplacements1", $locations_1);
