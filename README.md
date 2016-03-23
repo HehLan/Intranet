@@ -1,7 +1,7 @@
 HehLan
 ======
 
-<img src="https://raw.github.com/HehLan/Intranet-5.0/master/logoheh.png" align="right" width="300px" />
+<img src="https://raw.github.com/HehLan/Intranet-5.0/master/logo.png" align="right" width="300px" />
 
 This project contains the code of the intranet for the HEH LAN Party 2015-2016 at ISIMs School.
 
@@ -10,10 +10,9 @@ Here's the stuff.
 
 - [Homepage](https://github.com/HehLan)
 - [Source files](https://github.com/HehLan/Intranet-5.0)
-- [Wiki]() with more docs, related projects and more
 - [Website](http://www.hehlan.be/)
-- [Facebook] (https://www.facebook.com/hehlan/)
-- [Trello] (https://trello.com/b/xPqJKf0i/ze-intranet) for project management.
+- [Facebook](https://www.facebook.com/hehlan/)
+- [Trello](https://trello.com/b/xPqJKf0i/ze-intranet) for project management.
 
 
 Table of contents
@@ -41,6 +40,17 @@ Table of contents
 - [Test](#test)
 - [Dependencies](#dependencies)
 - [Libraries](#libraries)
+    - [Bootstrap](#lib-bootstrap)
+    - [Doxygen](#lib-doxygen)
+    - [FontAwesome](#lib-fontawesome)
+    - [JpGraph](#lib-jpgraph)
+    - [Less](#lib-less)
+    - [Smarty](#lib-smarty)
+    - [baconjs](#lib-baconjs)
+    - [handlebars](#lib-handlebars)
+    - [jQuery](#lib-jquery)
+    - [live](#lib-live)
+    - [lodash](#lib-lodash)
 - [Compatibility with browsers](#compatibility-with-browsers)
 - [Contribute](#contribute)
 - [Sponsors](#sponsors)
@@ -149,6 +159,50 @@ Dependencies
 Libraries
 =========
 
+Bootstrap
+---------
+
+The bootstrap library permits to simplify the CSS design.
+
+Doxygen
+-------
+
+The Doxygen library permits to generate the complete documentation of the code by using appropriate comments.
+
+FontAwesome
+-----------
+
+The FontAwesome library allows us to choose pretty designed icons.
+
+JpGraph
+-------
+
+The JpGraph library permits to create statistics graphs.
+
+Less
+----
+
+Smarty
+------
+
+The Smarty library is a template engine which permits to have templated views using only HTML.
+
+baconjs
+-------
+
+handlebars
+----------
+
+jQuery
+------
+
+live
+----
+
+lodash
+------
+
+
 
 
 Compatibility with browsers
@@ -158,6 +212,16 @@ Compatibility with browsers
 
 Contribute
 ==========
+
+People who directly contributed to the project are :
+- El Mouhafidi Youness
+- [Maigre Corky] (https://github.com/CorkyMaigre)
+- Okulichev Youness
+
+People who helped us solving some bugs during the project are :
+- Jacquemin Geoffrey
+- Laurent Jonathan
+
 
 
 Sponsors

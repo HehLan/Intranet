@@ -54,7 +54,7 @@
                             <tr>
                                 {for $c=$niveau to 0 step -1}
                                     <td>
-                                        <table class="table_round">
+                                        <table>
                                             {for $m=1 to $match_par_niveau[$c]}
                                                 {for $j=1 to $matches[$tablo[$c][$m]]['maxj']}
                                                     {if $j==1}

@@ -68,14 +68,14 @@
                     <div class="row">
                         <div id="components" class="col-lg-6">
                             <h2>Editeur</h2>
-                            <div id="editor1"></div>
+                            <div id="editor"></div>
                             <h2>Vue de l'utilisateur</h2>
-                            <div id="view1"></div>
+                            <div id="view"></div>
                         </div>  
-                        <div id="data1" class="col-lg-6">
+                        <div id="data" class="col-lg-6">
                             <h2>Code JSON</h2>
                             <p>Code JSON pour le stockage dans la base de données.</p>
-                            <pre id="state1">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
+                            <pre id="state">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
                         </div>                                      
                     </div> 
                 {/if}

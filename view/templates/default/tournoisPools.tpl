@@ -118,13 +118,19 @@
                         </div>
                     {else}
                         <div class="row">
-                            <div id="components">
-                                <h2>Editeur</h2>
-                                <div id="editor1"></div>
-                                <h2>Vue de l'utilisateur</h2>
-                                <div id="view1"></div>
-                            </div>                                       
-                        </div> 
+                            <div id="components" class="col-lg-8">
+                                <h4>Classement et matchs</h4>
+                                <div id="bracket"></div>                                            
+                            </div>
+                            <div class="col-lg-4">
+                                <h4>Informations pratiques</h4>  
+                                <ul>
+                                    <li>Round 1 : vendredi hh:mm</li>
+                                    <li>Round 2 : vendredi hh:mm</li>
+                                    <li>Round 3 : samedi hh:mm</li>
+                                </ul>
+                            </div>
+                        </div>
                     {/if}
                     
                     
