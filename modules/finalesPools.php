@@ -2,7 +2,7 @@
 //-----------------TOURNOI TYPE LOL COD-----------------
 
 
-/*
+
 
 $sql = 'SELECT m.id_match, m.nom_match, m.heure, m.id_parent, m.id_enfant1, m.id_enfant2, m.nbr_manche, m.teamParMatch
         FROM matchs AS m
@@ -15,9 +15,7 @@ $finale = 0;
 $petite_finale = 0;
 if ($query->execute())
 {
-    
-    print_r($query->getResult());
-    
+        
     foreach ($query->getResult() as $match)
     {
         $matches[$match['id_match']]['id'] = $match['id_match'];
@@ -172,15 +170,15 @@ if ($nbrmatch > 0)
             }
             if ($score1 == '')
             {
-                $score1=1;
-                //$score1 = substr(get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']), 0, 3);
+                //$score1=1; // for jbracket
+                $score1 = substr(get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']), 0, 3);
                 
             }
             if ($score2 == '')
             {
-                $score2=3;
+                //$score2=3; // for jbracket
               
-                //$score2 = get_heure($matches[$tablo[$c][$m]]['heure']);
+                $score2 = get_heure($matches[$tablo[$c][$m]]['heure']);
             }
 			
             $matches[$tablo[$c][$m]]['nom1'] = $nom1;
@@ -195,7 +193,7 @@ if ($nbrmatch > 0)
 }
 
 
-*/
+
 
 
 //  for bracket js -------------------------------------------------------
