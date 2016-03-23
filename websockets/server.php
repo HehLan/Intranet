@@ -10,11 +10,9 @@ require_once('./websockets.php');
 
 class CustomServer extends WebSocketServer {
 
-    // array qui continet les objets de type User(genId, userId)
-    // stocking object type { genId : $var, userId : $var }
+    // stocking object type "array(){ genId : $var, userId : $var }"
     protected $connectedUsersArray;
-    // array qui contient les objets de type Obj(matchId, [palyer1_Id, player2_Id])
-    // objets type { matchId : $var, duo : [$user1Id, $user2Id] }
+    // objets type "array(){ matchId : $var, duo : [$user1Id, $user2Id] }"
     protected $match_playersArray;
 
     protected function connected($user) {
