@@ -23,14 +23,6 @@ switch ($req) {
         echo json_encode($pickState);
         break;
 
-    case "fromPhpToJavascriptDataTransactionTest":
-        $matchId = $_POST['matchId'];
-        $pickState = getData($matchId, $connexion);
-        $out = array_values($pickState);
-        $pickState = json_encode($out);
-        echo $pickState;
-        break;
-
     default :
         break;
 }
