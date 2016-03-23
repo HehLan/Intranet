@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="navbar-header" style="width:100%; height:50px;"/>
                 <div class="collapse navbar-collapse"/>
-            </div>			
+            </div>		
         </nav>
 
         <div class="container-fluid">
@@ -24,6 +24,11 @@
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
                     <div id="iconPlayer1" class="glyphicon glyphicon-user" style="font-size:3em;" ></div> 
                     <div>{$playerNickname}</div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <button onclick="saveChoosenHeroes();">test</button>
                     <br>
                     <br>
                     <button onclick="hideBox();">hide grayBox</button>
@@ -42,8 +47,7 @@
                             </div>
                         {/foreach}
                     </div>
-                    <!-- style="display: none;"-->
-                    <div class="row" id="heroesContainer">
+                    <div class="row" id="heroesContainer" style="display: none;">
                         {foreach from=$heroes item=hero}
                             <div class="col-xs-3 col-sm-2 col-md-2 col-lg2">
                                 <div id="{$hero['id']}" onclick="kickHero(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
@@ -67,8 +71,8 @@
         {include file="default/footer.tpl"}
 
         {include file="default/assets/js/pick.js.tpl" playerId=$playerId playerNickname=$playerNickname 
-            opponentId=$opponentId opponentNickname=$opponentNickname pickState=$pickState 
-            idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise matchId=$matchId}
+            opponentId=$opponentId opponentNickname=$opponentNickname pickStateMaps=$pickStateMaps pickStateHeroes=$pickStateHeroes
+            idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise matchId=$matchId phase=$phase }
 
     </body>
 </html>

@@ -56,60 +56,36 @@ class CustomServer extends WebSocketServer {
                 }
 
                 $this->insertInMatchPlayersArray($userId, $matchId);
-
+                echo "\n Array state : " . count($this->connectedUsersArray) . " users connected \n";
                 break;
 
             // suite au mapKick de l'un des players
             case "mapKicked":
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
-
-                // touver le key de l'objet qui nous interesse 
-                $tempKey = NULL;
-                foreach ($this->match_playersArray as $key => $obj) {
-                    if ($obj['matchId'] === $matchId) {
-                        $tempKey = $key;
-                        break;
-                    }
-                }
-
-//                echo "temp key\n"; 
-//                var_dump($tempKey);
-//                echo "\nmatchs_players: \n";
-//                var_dump($this->match_playersArray);
-//                echo "\n duo : \n";
-                $duo = $this->match_playersArray[$tempKey]['duo'];
-//                var_dump($duo);
-
-                $opponentId = '';
-                foreach ($duo as $key => $userId) {
-                    // trouver l'opponentId
-                    if ($userId != $playerId) {
-                        $opponentId = $userId;
-                    }
-                }
-
-//                echo "\nopponentId : " . $opponentId;
-
-                // aller chercher son genId
-                $opponentSocketId = '';
-                foreach ($this->connectedUsersArray as $key => $value) {
-                    if($value['userId'] === $opponentId){
-                        $opponentSocketId = $value['genId'];
-//                        echo "\ngenId\n";
-//                        var_dump($opponentSocketId);
-                        break;
-                    }
-                }
-                
-                // notifier
+                $opponentSocketId = $this->findOpponentGenId($matchId, $userId);
                 $this->send($opponentSocketId, "mapKicked");
-
                 break;
 
             case "mapsTerminated":
-                echo "Maps terminated received!!!";
-                // TODO
+                $playerId = $parsedMessage[1];
+                $matchId = $parsedMessage[2];
+                $opponentSocketId = $this->findOpponentGenId($matchId, $userId);
+                $this->send($opponentSocketId, "mapsTerminated");
+                break;
+            
+            case "heroKicked":
+                $playerId = $parsedMessage[1];
+                $matchId = $parsedMessage[2];
+                $opponentSocketId = $this->findOpponentGenId($matchId, $userId);
+                $this->send($opponentSocketId, "heroKicked");
+                break;
+            
+            case "heroesTerminated":
+                $playerId = $parsedMessage[1];
+                $matchId = $parsedMessage[2];
+                $opponentSocketId = $this->findOpponentGenId($matchId, $userId);
+                $this->send($opponentSocketId, "heroesTerminated");
                 break;
 
             case "onclose":
@@ -124,7 +100,7 @@ class CustomServer extends WebSocketServer {
         $this->kickUserOut($user);
         // log on server side
         echo "\n Array state : " . count($this->connectedUsersArray) . " users connected \n";
-        echo "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DISCONNECT !!!!!!\n\n\n";
+        echo " *********************** DISCONNECT !!!!!! *********************** \n\n\n";
     }
 
     // ******************************************************
@@ -179,6 +155,47 @@ class CustomServer extends WebSocketServer {
 //        var_dump($this->match_playersArray);
     }
 
+    protected function findOpponentGenId($matchId, $userId) {
+        // touver le key de l'objet qui nous interesse 
+        $tempKey = NULL;
+        foreach ($this->match_playersArray as $key => $obj) {
+            if ($obj['matchId'] === $matchId) {
+                $tempKey = $key;
+                break;
+            }
+        }
+
+//        echo "temp key\n"; 
+//        var_dump($tempKey);
+//        echo "\nmatchs_players: \n";
+//        var_dump($this->match_playersArray);
+//        echo "\n duo : \n";
+        $duo = $this->match_playersArray[$tempKey]['duo'];
+//        var_dump($duo);
+
+        $opponentId = '';
+        foreach ($duo as $key => $userId) {
+            // trouver l'opponentId
+            if ($userId != $playerId) {
+                $opponentId = $userId;
+            }
+        }
+
+//       echo "\nopponentId : " . $opponentId;
+        // aller chercher son genId
+        $opponentSocketId = '';
+        foreach ($this->connectedUsersArray as $key => $value) {
+            if ($value['userId'] === $opponentId) {
+                $opponentSocketId = $value['genId'];
+//                echo "\ngenId\n";
+//                var_dump($opponentSocketId);
+                break;
+            }
+        }
+
+        return $opponentSocketId;
+    }
+
     // delete user from "connectedUsers" array when user disconnects
     protected function kickUserOut($user) {
         if (($key = array_search($user, $this->connectedUsersArray)) !== false) {
@@ -189,11 +206,6 @@ class CustomServer extends WebSocketServer {
     }
 
 }
-
-/*
-  cd htdocs\Intranet\websockets
-  php server.php
- */
 
 // launch websockets server
 $server = new CustomServer("127.0.0.1", "9000");

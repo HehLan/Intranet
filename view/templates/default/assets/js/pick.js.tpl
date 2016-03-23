@@ -13,18 +13,21 @@
     var opponentId;
     var opponentNickname;
     var idPlayerWhoMakeChoise;
-    var pickState;
+    var pickStateMaps;
+    var pickStateHeroes;
     var matchId;
 
     $(document).ready(function () {
-        matchId = "{$matchId}";
+        matchId = "{$matchId}"; // initMatchID
+
         initPlayers();
         initGrayBox();
-        initPickState();
-        updateMapsUI();
+        initPickStateMaps();
+        initPickStateHeroes();
+        initPhase();
         connectToSocketsServer();
 
-        // si pas a moi de choisir --> cacher les maps
+        // si pas a moi de choisir --> cacher les maps/heroes
         if (idPlayerWhoMakeChoise !== playerId) {
             showGrayBox();
         }
@@ -36,13 +39,26 @@
         opponentId = "{$opponentId}";
         opponentNickname = "{$opponentNickname}";
         idPlayerWhoMakeChoise = "{$idPlayerWhoMakeChoise}";
-        //alert("pl: " + playerNickname + ", id: " + playerId + "\nopp:" + opponentNickname + ", id:" + opponentId);
     }
 
-    function initPickState() {
-        pickState = {$pickState|json_encode};
-        //console.log("pick state: \n");
-        //console.log(pickState);
+    function initPickStateMaps() {
+        pickStateMaps = {$pickStateMaps|json_encode};
+    }
+
+    function initPickStateHeroes() {
+        pickStateHeroes = {$pickStateHeroes|json_encode};
+    }
+
+    function initPhase() {
+        phase = "{$phase}";
+        if (phase === "maps") {
+            updateMapsUI();
+        }
+        if (phase === "heroes") {
+            hideMaps();
+            showHeroes();
+            updateHeroesUI();
+        }
     }
 
     // **********************************************************************
@@ -51,9 +67,18 @@
 
     // fonction qui va griser les maps deja "picked"
     function updateMapsUI() {
-        pickState.forEach(function (map) {
+        pickStateMaps.forEach(function (map) {
             if (map.checked == 1) {
                 griserMap($('#' + map.mapId));
+            }
+        });
+    }
+
+    // fonction qui va griser les heros deja "picked"
+    function updateHeroesUI() {
+        pickStateHeroes.forEach(function (hero) {
+            if (hero.checked == 1) {
+                griserMap($('#' + hero.heroId));
             }
         });
     }
@@ -81,19 +106,70 @@
                 var message = ["mapKicked", playerId, matchId];
                 socket.send(message);
             } else {
-                // notifier l'opponent que le "pick" des maps est terminé on a pick la 9ème map
-                var message = ['mapsTerminated', playerId, matchId];
+                // on savegarde la map et notifie l'opponent de changer de phase de pick (passer au heroes)
+                $.when(saveChoosenMap()).done(function () {
+                    // notifier l'opponent que le "pick" des maps est terminé
+                    var message = ['mapsTerminated', playerId, matchId];
+                    socket.send(message);
+                    hideMaps();
+                    showHeroes();
+                });
+            }
+        });
+    }
+
+    function kickHero(el) {
+        var container = $(el);   // div containing img&text
+        if (container.attr('data-checked') == 1) // deja kicked
+            return;
+        if (checkedHeroesCount()() >= 6)
+            return;
+
+        // bon ici on appele griser map, mais en fait la fct griserMap grise n'importe quel el qui lui passé en param
+        // juste la flemme de refactor dans tt le code ici en changeant le mon de la fct. Si t'as envie --> have fun ^^
+        griserMap(container);
+
+        // cacher les tuilles avec un delai --> just UI Exp 4 users
+        setTimeout(function () {
+            showGrayBox();
+        }, 350);
+
+        heroId = container.attr('id');
+
+        $.when(updateDatabaseHeroes(heroId)).done(function () {
+            if (checkedHeroesCount()() <= 5) {
+                // notifier l'opponent qu'un hero a été "kick" et c'est son tour
+                var message = ["heroKicked", playerId, matchId];
                 socket.send(message);
-                loadChampions();
-                // ***********************************************************************************************
+            } else {
+                $.when(saveChoosenHeroes()).done(function () {
+                    // notifier l'opponent que le "pick" des heros est terminé on a pick 6 
+                    var message = ['heroesTerminated', playerId, matchId];
+                    socket.send(message);
+
+                    // fermer la connection
+                    message = ['close', playerId, matchId];
+                    socket.send(message);
+                });
             }
         });
     }
 
     function checkedMapsCount() {
         this.counter = 0;
-        pickState.forEach(function (map) {
+        pickStateMaps.forEach(function (map) {
             if (map.checked == true) {
+                this.counter++;
+            }
+        });
+        console.log("\n maps selected counter : \n" + this.counter);
+        return this.counter;
+    }
+
+    function checkedHeroesCount() {
+        this.counter = 0;
+        pickStateHeroes.forEach(function (hero) {
+            if (hero.checked == true) {
                 this.counter++;
             }
         });
@@ -119,16 +195,81 @@
         });
     }
 
-    function updatePickState() {
+    function updateDatabaseHeroes(heroId) {
         return $.ajax({
             type: "POST",
             url: "common/pickTools.php",
             data: {
-                req: "getData",
+                req: "updateDbHeroes",
+                heroId: heroId,
+                matchId: matchId,
+                opponentId: opponentId
+            },
+            success: function (data) {
+                console.log(data);
+                // do nothing, just for waiting call ends
+            },
+            cache: false
+        });
+    }
+
+    function saveChoosenMap() {
+        return $.ajax({
+            type: "POST",
+            url: "common/pickTools.php",
+            data: {
+                req: "saveMap",
                 matchId: matchId
             },
             success: function (data) {
-                pickState = JSON.parse(data);
+                console.log(data);
+                // do nothing, just for waiting call ends
+            },
+            cache: false
+        });
+    }
+    
+    function saveChoosenHeroes(){
+        return $.ajax({
+            type: "POST",
+            url: "common/pickTools.php",
+            data: {
+                req: "saveHeroes",
+                matchId: matchId
+            },
+            success: function (data) {
+                console.log(data);
+                // do nothing, just for waiting call ends
+            },
+            cache: false
+        });
+    }
+
+    function updatePickStateMaps() {
+        return $.ajax({
+            type: "POST",
+            url: "common/pickTools.php",
+            data: {
+                req: "getDataMaps",
+                matchId: matchId
+            },
+            success: function (data) {
+                pickStateMaps = JSON.parse(data);
+            },
+            cache: false
+        });
+    }
+
+    function updatePickStateHeroes() {
+        return $.ajax({
+            type: "POST",
+            url: "common/pickTools.php",
+            data: {
+                req: "getDataHeroes",
+                matchId: matchId
+            },
+            success: function (data) {
+                pickStateHeroes = JSON.parse(data);
             },
             cache: false
         });
@@ -161,13 +302,32 @@
                         break;
 
                     case "mapKicked":
-                        $.when(updatePickState()).done(function () {
+                        $.when(updatePickStateMaps()).done(function () {
                             updateMapsUI();
                             hideGrayBox();
                         });
                         break;
 
+                    case "heroKicked":
+                        $.when(updatePickStateHeroes()()).done(function () {
+                            updateHeroesUI();
+                            hideGrayBox();
+                        });
+                        break;
+
                     case "mapsTerminated":
+                        $.when(updatePickStateMaps()).done(function () {
+                            updateMapsUI();
+                        });
+
+                        setTimeout(function () {
+                            hideMaps();
+                            showHeroes();
+                            hideGrayBox();
+                        }, 2000);
+                        break;
+                        
+                    case "heroesTerminated":
                         break;
 
                     default:
@@ -248,8 +408,12 @@
         grayBox.hide();
     }
 
-    function loadChampions() {
-        $("#grayBoxText").hide();
+    function hideMaps() {
+        $('#mapsContainer').css('display', 'none');
+    }
+
+    function showHeroes() {
+        $("#heroesContainer").css('display', 'block');
     }
 
 </script>
