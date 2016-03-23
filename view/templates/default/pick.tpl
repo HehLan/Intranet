@@ -65,7 +65,7 @@
 
         {include file="default/footer.tpl"}
 
-        {include file="default/pick.js.tpl" playerId=$playerId playerNickname=$playerNickname 
+        {include file="default/assets/js/pick.js.tpl" playerId=$playerId playerNickname=$playerNickname 
             opponentId=$opponentId opponentNickname=$opponentNickname pickState=$pickState 
             idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise matchId=$matchId}
 

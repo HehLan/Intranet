@@ -18,18 +18,23 @@ $smarty = new Smarty_HEHLan();
 
 // Test if a user is connected
 $connected = Auth::isLogged();
-if($connected)
-{
+if($connected){
 	$ics = $_SESSION['id_joueur'];
 }
-else
-{
-	$ics = 0;
-    //header('Location: '.DOCUMENT_ROOT.'/index.php');
+elseif(preg_match('#login#i',$_SERVER['REQUEST_URI'])==0){
+	header('Location: '.WEB_ROOT.'/modules/login.php');
 }
+else{
+	
+	$ics = 0;
+}
+
+// Notif last seen
+$lastSeenNotif = $database->getLastNotifJoueur($ics);
 
 // Assign variables to view
 $smarty->assign('connected', $connected);
 $smarty->assign('con', $connected);
-$smarty->assign('$id_current_session', $ics);
+$smarty->assign('lastSeenNotif', $connected);
+$smarty->assign('id_current_session', $ics);
 ?>

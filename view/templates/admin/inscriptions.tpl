@@ -3,8 +3,7 @@
 <html lang="fr">
     <head>
         {include file="admin/meta.tpl"} 
-        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/inscriptions.css" >
-        <script type="text/javascript" src="{#adminAssets#}/js/inscriptions.js"></script> 
+        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/inscriptions.css" > 
     </head>
     <body role="document">
         {include file="admin/header.tpl" con=$con }
@@ -62,5 +61,6 @@
     
 	{include file="admin/footer.tpl"}
 
+        <script type="text/javascript" src="{#adminAssets#}/js/inscriptions.js"></script>
     </body>
 </html>

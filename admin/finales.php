@@ -27,7 +27,7 @@ if(!$connected && !$allowed)
 } 
 
 
-$id_tournoi = 1;
+
 $looser = 0;
 $creer = false;
 
@@ -67,9 +67,11 @@ if(isset($_POST['id_tournoi']))
     }
 }
 
+
+
 $sql = 'SELECT * FROM tournoi WHERE id_tournoi=:id';
 $query = new Query($database, $sql);
-$query->bind('id', $id_tournoi, PDO::PARAM_INT);	
+$query->bind(':id', $id_tournoi, PDO::PARAM_INT);	
 if($query->execute())
 {
     $tournoi = $query->getResult()[0];

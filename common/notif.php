@@ -1,9 +1,7 @@
 <?php
-
 require_once('../common/head.php');
-var_dump($_GET);
-// Les valeurs GET sont croisées avec la variable de session id_joueur
-// au lieu de renvoyer la valeur par GET pour des raisons de sécurité
+
+$notifs = '';
 if(isset($_GET['id_notif']) && isset($_GET['type'])) 
 {
 	$idj = $_SESSION['id_joueur'];
@@ -18,14 +16,23 @@ if(isset($_GET['id_notif']) && isset($_GET['type']))
 		$database->delNotifJoueur($idj, $idn);
 	}
 }
+elseif(isset($_GET['lastUpdate']))
+{
+	$dateConverted = date("Y-m-d h:i:s",$_GET['lastUpdate']/1000);
+	$notifs = $database->getNotificationsJoueurFrom($_SESSION['id_joueur'], $dateConverted);
+}
 else
 {
 	$notifs = $database->getNotificationsJoueur($_SESSION['id_joueur']);
+	
 }
 
-
 // Applying Template
-$smarty->assign('notifications', $notifs);
-
-$smarty->display('default/notif.tpl');
+if(!empty($notifs))
+{
+	foreach($notifs as $k=>$v)
+		$notifs[$k]['date'] = getRelativeTime($v['date']);
+	$smarty->assign('notifications', $notifs);
+	$smarty->display('default/notif.tpl');
+}
 ?>

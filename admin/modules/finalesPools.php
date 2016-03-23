@@ -215,6 +215,10 @@ if($nbrmatch > 0)
 
 
 
+//print_r($tournoi);
+
+
+
 
 // Applying Template
 if(isset($tablo))

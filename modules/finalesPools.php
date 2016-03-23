@@ -1,17 +1,21 @@
 <?php
 //-----------------TOURNOI TYPE LOL COD-----------------
 
-$sql = 'SELECT m.id_match,m.nom_match,m.heure,m.id_parent,m.id_enfant1, m.id_enfant2, m.nbr_manche
-FROM matchs as m
-WHERE m.id_tournoi=:idt AND m.id_groupe IS NULL AND m.looser_bracket=:looser
-ORDER BY m.id_parent';
+
+
+
+$sql = 'SELECT m.id_match, m.nom_match, m.heure, m.id_parent, m.id_enfant1, m.id_enfant2, m.nbr_manche, m.teamParMatch
+        FROM matchs AS m
+        WHERE m.id_tournoi=:id_tournoi AND m.id_groupe IS NULL AND m.looser_bracket=:looser
+        ORDER BY m.id_parent';
 $query = new Query($database, $sql);
-$query->bind(':idt', $id_tournoi, PDO::PARAM_INT);
+$query->bind(':id_tournoi', $id_tournoi, PDO::PARAM_INT);
 $query->bind(':looser', $looser, PDO::PARAM_INT);
 $finale = 0;
 $petite_finale = 0;
 if ($query->execute())
 {
+        
     foreach ($query->getResult() as $match)
     {
         $matches[$match['id_match']]['id'] = $match['id_match'];
@@ -33,12 +37,12 @@ if ($query->execute())
             }
         }
         $nbrmatch++;
-        $sql2 = 'SELECT mte.id_equipe,e.nom,
-                (SELECT SUM(ma.score) FROM manches_equipes as ma 
+        $sql2 = 'SELECT mte.id_equipe, e.nom, (SELECT SUM(ma.score)
+                FROM manches_equipes AS ma 
                 WHERE ma.id_match=:idm AND ma.id_equipe=mte.id_equipe
-                GROUP BY ma.id_equipe) as score
-                FROM matchs_equipes as mte, equipes as e 
-                WHERE mte.id_match=:idm and e.id_equipes=mte.id_equipe';
+                GROUP BY ma.id_equipe) AS score
+                FROM matchs_equipes AS mte, equipes AS e 
+                WHERE mte.id_match=:idm AND e.id_equipes=mte.id_equipe';
         $query2 = new Query($database, $sql2);
         $query2->bind(':idm', $match['id_match'], PDO::PARAM_INT);
         if ($query2->execute())
@@ -72,6 +76,10 @@ else
     }
     exit;
 }
+
+
+
+
 if ($nbrmatch > 0)
 {
     $esc = 0;
@@ -162,15 +170,15 @@ if ($nbrmatch > 0)
             }
             if ($score1 == '')
             {
-                $score1=1;
-                //$score1 = substr(get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']), 0, 3);
+                //$score1=1; // for jbracket
+                $score1 = substr(get_jour_de_la_semaine($matches[$tablo[$c][$m]]['heure']), 0, 3);
                 
             }
             if ($score2 == '')
             {
-                $score2=3;
+                //$score2=3; // for jbracket
               
-                //$score2 = get_heure($matches[$tablo[$c][$m]]['heure']);
+                $score2 = get_heure($matches[$tablo[$c][$m]]['heure']);
             }
 			
             $matches[$tablo[$c][$m]]['nom1'] = $nom1;
@@ -190,49 +198,50 @@ if ($nbrmatch > 0)
 
 //  for bracket js -------------------------------------------------------
 
-$team1_names = array();
-$team2_names = array();
-$scores1 = array();
-$scores2 = array();
+/*
+$teams = array();
+$scores = array();
 
-if (isset($matches) && isset($tablo))
+
+// Warning: the number of teams must be a power of two or see the doc for another tournament
+
+// SQL to get teams particaping to the tournament
+$sql = 'SELECT equipes.id_equipes, equipes.nom
+    FROM equipes
+    LEFT JOIN equipes_tournoi
+    ON equipes.id_equipes = equipes_tournoi.id_equipe
+    WHERE id_tournoi=:id_tournoi';
+$query = new Query($database, $sql);
+$query->bind(':id_tournoi', $id_tournoi, PDO::PARAM_INT);
+
+if ($query->execute())
 {
-    for ($c = $niveau; $c >= 0; $c--)
+    //print_r($query->getResult());
+    foreach ($query->getResult() as $team)
     {
-        for ($m = 1; $m <= $match_par_niveau[$c]; $m++)
-        {
-            $number = $tablo[$c][$m];
-            
-            
-            
-            $teams[] = $matches[$tablo[$c][$m]]['nom1']; 
-            $teams[] = $matches[$tablo[$c][$m]]['nom2'];
-            $scores[] = $matches[$tablo[$c][$m]]['score1'];
-            $scores[] = $matches[$tablo[$c][$m]]['score2'];
-            
-
-            
-            
-            $team1_clr = $matches[$tablo[$c][$m]]['clr1'];
-            $score1_clr = $matches[$tablo[$c][$m]]['clr1'];
-            $scores1[] = $matches[$tablo[$c][$m]]['score1'];
-            $team2_clr = $matches[$tablo[$c][$m]]['clr2'];            
-            $score2_clr = $matches[$tablo[$c][$m]]['clr2'];
-            $scores2[] = $matches[$tablo[$c][$m]]['score2'];
-
-            $matches[$tablo[$c][$m]]['id_parent'];
-        }
+        $teams[] = $team['nom'];
     }
 }
 
+shuffle($teams);
+
+
+
+
+$sql = 'SELECT data
+        FROM brackets';
+$query = new Query($database, $sql);
+$query->execute();
+$data = $query->getResult()[0];
+
+print_r($data);
+*/
+
+
 //-------------------------------------------------------
 
-print_r($scores);
-//print_r($teams);
 
-//print_r($team2_names);
-//
-//print_r($scores2);
+
 
 
 
@@ -254,11 +263,13 @@ $smarty->assign('nbr_lb3', $nbr_lb3);
 
 
 // for jquery-bracket -------------------------------------------
-
+/*
 $smarty->assign('teams', $teams);
 $smarty->assign('scores', $scores);
 
 
+$smarty->assign('data', $data);
+*/
 
 //--------------------------------------------
 

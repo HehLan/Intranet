@@ -69,7 +69,7 @@
                 font-size:10px;
                 border-width: 1px;
                 border-style: solid;">
-                <img class="photo" src="{#assets#}/img/plan.jpg" width="100%" height="100%" >
+                <img class="photo" src="{#src#}/img/plan.jpg" width="100%" height="100%" >
                 {foreach from=$locations item=location}
                     <div class="place" id="{$location['id_emplacement']}"
                            style="

@@ -4,16 +4,7 @@
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/finalesPools.css" />		
-        
-        
-        <!-- jquery-bracket-world -->
-        <!--<link href="{#domain#}/lib/jQuery/jquery.bracket-world.css" rel="stylesheet">-->
-        
-        
-        <!-- jquery-bracket -->
         <link rel="stylesheet" type="text/css" href="{#domain#}/lib/jQuery/jquery.bracket.min.css" />
-        
-        
     </head>
     <body>
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
@@ -43,47 +34,27 @@
                     {if $tournoi.id_tournoi != 2}
                         <p>Cliquez ici pour voir les <a href="tournois.php?id={$tournoi.id_tournoi}">QUALIFICATIONS</a></p>
                         {if $nbr_lb2>0}
-                            <p>Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=2">FINALES DES LOSERS (silver)</a>
+                            <p>Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=2">FINALES DES LOSERS (silver)</a></p>
                         {/if}
                         {if $nbr_lb3>0}
-                            <p>Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=3">FINALES DES NOOBS (bronze)</a>
+                            <p>Cliquez ici pour voir les <a href="finales.php?id={$tournoi.id_tournoi}&lb=3">FINALES DES NOOBS (bronze)</a></p>
                         {/if}
                     {/if}
                     
-                    
-                    <div id="bracket-pools" class="bracket"></div>
+                    <div id="bracket" class="bracket"></div>
+                    <p id="matchCallback"></p>
                 </div>
             </div>
         </div>
 
         {include file="default/footer.tpl"}
         
-        
-        <!-- jquery-bracket-world -->
-        <!--<script src="{#domain#}/lib/jQuery/jquery-2.0.3.min.js"></script>-->
-        <!--<script src="{#domain#}/lib/jQuery/jquery.bracket-world.min.js"></script>-->
-        
         <!-- jquery-bracket -->
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.bracket.min.js"></script>
         
-        
-        {include file="default/finalesPools.js.tpl" 
-            niveau=$niveau  
-            match_par_niveau=$match_par_niveau
-            matches=$matches
-            tablo=$tablo
+        {include file="default/assets/js/finalesPools.js.tpl"
             tournoi=$tournoi
-            nbr_lb2=$nbr_lb2
-            nbr_lb3=$nbr_lb3
-            teams=$teams
-            scores1=$scores1
-            scores2=$scores2
         }
-               
-   
-       
-        <!-- côté admin : http://blog.jameskohli.com/post/79396109921/lets-build-a-march-madness-bracket-generator-or -->
-        
-        
+
     </body>
 </html>
