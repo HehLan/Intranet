@@ -11,7 +11,7 @@
 	<div id="container">
 		<div id="contenu">
 			<h1>Qualifications {$tournoi['nomTournoi']}</h1>
-			<form method="POST" action="scores_save.php">
+			<form method="POST" action="modules/scores_save.php">
 				<input type="hidden" name="id_tournoi" value="{$tournoi.id_tournoi}">
 				<input type="SUBMIT" value="Enregistrer">
 				<br>
@@ -43,7 +43,7 @@
 												value="1" onclick="active_score({$matchs[$team['id']][$team2['id']]['id_match']},{$team['id']})" />
 											<input type="text" name="score_m_{$matchs[$team['id']][$team2['id']]['id_match']}_p_{$team['id']}" 
 												id="score_m_{$matchs[$team['id']][$team2['id']]['id_match']}_p_{$team['id']}" 
-												value="{$matchs[$team['id']][$team2['id']]['score']}" size="4" disabled="disabled" />
+												value="{$matchs[$team['id']][$team2['id']]['score']}" size="4" />
 										</td>
 									{/if}
 								{/foreach}	
