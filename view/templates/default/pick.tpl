@@ -42,13 +42,14 @@
                             </div>
                         {/foreach}
                     </div>
-                    
-                    <div class="row" id="championsContainer" style="display: none;">
-                        {foreach from=$maps item=map}
-                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <div id="" onclick="kickMap(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
-                                    <img class="img-responsive" src="" alt=""/>
+                    <!-- style="display: none;"-->
+                    <div class="row" id="heroesContainer">
+                        {foreach from=$heroes item=hero}
+                            <div class="col-xs-3 col-sm-2 col-md-2 col-lg2">
+                                <div id="{$hero['id']}" onclick="kickHero(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
+                                    <img class="img-responsive" src="{$hero['imgPath']}" alt="{$hero['name']}"/>
                                     <div class="thumbnailText">
+                                        {$hero['name']}
                                     </div>
                                 </div>
                             </div>

@@ -97,7 +97,7 @@
                 this.counter++;
             }
         });
-        console.log("\n final counter : " + this.counter);
+        console.log("\n maps selected counter : \n" + this.counter);
         return this.counter;
     }
 
@@ -120,8 +120,6 @@
     }
 
     function updatePickState() {
-        console.log("pick in fonction \n");
-        console.log(pickState);
         return $.ajax({
             type: "POST",
             url: "common/pickTools.php",
@@ -130,11 +128,7 @@
                 matchId: matchId
             },
             success: function (data) {
-                console.log("pick in ajax.success \n");
-                console.log(pickState);
                 pickState = JSON.parse(data);
-                console.log("pick in ajax.success apres JSON \n");
-                console.log(pickState);
             },
             cache: false
         });

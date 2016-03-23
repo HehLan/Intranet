@@ -9,6 +9,7 @@ $playerNickname;
 $opponentId;
 $opponentNickname;
 $maps;
+$heroes;
 $tableExist;
 $pickState;
 $idPlayerWhoMakeChoise;
@@ -19,6 +20,20 @@ $sql = "select * from hotsmaps";
 $query = new Query($database, $sql);
 if ($query->execute()) {
     $maps = $query->getResult();
+} else {
+    global $glob_debug;
+    if ($glob_debug) {
+        echo 'ERREUR SQL MAPS';
+    }
+    exit;
+}
+
+
+// ********************** recuperer les heros **********************
+$sql = "select * from hotsheroes";
+$query = new Query($database, $sql);
+if ($query->execute()) {
+    $heroes = $query->getResult();
 } else {
     global $glob_debug;
     if ($glob_debug) {
@@ -143,6 +158,7 @@ else {
 $smarty->assign('con', $connected);
 $smarty->assign('matchId', $matchId);
 $smarty->assign('maps', $maps);         // les chemins vers les img des maps et les id's
+$smarty->assign('heroes', $heroes);
 $smarty->assign('playerId', $playerId);
 $smarty->assign('playerNickname', $playerNickname);
 $smarty->assign('opponentId', $opponentId);
