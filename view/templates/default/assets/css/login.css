@@ -45,7 +45,7 @@ body
 #bloc_login, #bloc_forgot
 {
     display: block;
-    width: 375px;
+    width: 500px;
     margin: 0;
 	padding: 0;
 	height: auto;
@@ -70,7 +70,7 @@ legend
 
 .accordion
 {
-	width: 375px;
+	width: 500px;
 	margin: auto;
 }
 .ui-accordion-header
@@ -86,4 +86,7 @@ legend
 }
 .btn-primary {
 	background-color: #0076a3;
+}
+.well {
+	padding: 18px 90px;
 }

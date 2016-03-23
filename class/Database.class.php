@@ -546,4 +546,89 @@ class Database
 		}
 	}
 	
+	///////////////////////////////////////////////
+	/////////////////////COMMANDES/////////////////
+	///////////////////////////////////////////////
+	public function getArticles()
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/getArticles.sql');
+		$query = new Query($this,$sql);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET ARTICLES';
+			return 0;
+		}
+	}
+	public function getGroupes()
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/getGroupes.sql');
+		$query = new Query($this,$sql);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET GROUPES';
+			return 0;
+		}
+	}
+	public function getCommandes()
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/getCommandes.sql');
+		$query = new Query($this,$sql);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET COMMANDES';
+			return 0;
+		}
+	}
+	public function getCommande($idCommande)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/getCommande.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idc', $idCommande, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET COMMANDE FROM ID';
+			return 0;
+		}
+	}
+	public function getJoueurCommandes($idJoueur)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/getJoueurCommandes.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idj', $idJoueur, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET COMMANDES FROM JOUEUR';
+			return 0;
+		}
+	}
 }

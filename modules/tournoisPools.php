@@ -122,7 +122,7 @@ foreach ($groupes as $itGroupe => $groupe)
     {
         foreach ($teams as $team)
         {
-            $sql = 'SELECT me.id_match,m.heure, SUM(me.score) as score, 
+            $sql = 'SELECT m.id_match,m.heure, SUM(me.score) as score, 
 				(SELECT mte2.id_equipe FROM matchs_equipes as mte2 WHERE mte2.id_match=m.id_match AND mte2.id_equipe<>:ide LIMIT 0,1) as team2 
 			FROM (matchs_equipes as mte, matchs as m) 
 			LEFT JOIN (manches_equipes as me)
@@ -207,7 +207,6 @@ foreach ($groupes as $itGroupe => $groupe)
                         $isPickActive = checkIsPickActive($dateTime_DebutMatch);
                     }
                 }
-
                 // recuperer l'id du match
                 if (isset($scores[$team2['id']][$team['id']]['id_match']))
                 {
@@ -217,23 +216,18 @@ foreach ($groupes as $itGroupe => $groupe)
                 {
                     $id_match = 0;
                 }
-
                 $resultTeam[] = array(
                     "id_match" => $database->getIdMatchEquipe($groupe['id_groupe'], $team['id'], $team2['id']),
                     "couleur" => $couleur,
                     "valeur" => $valeur,
-                    "isPickActive" => $isPickActive,
-                    "id_match" => $id_match);
+                    "isPickActive" => $isPickActive);
             }
             else
             {
                 $resultTeam[] = array();
             }
         }
-        if (!empty($resultTeam))
-        {
-            $resultTeams[] = $resultTeam;
-        }
+		$resultTeams[] = $resultTeam;
     }
     $groupes[$itGroupe]['resultTeams'] = $resultTeams;
 }

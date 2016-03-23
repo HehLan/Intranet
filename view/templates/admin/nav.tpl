@@ -11,15 +11,16 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="../index.php">Back</a></li>
-                <li><a href="index.php">Overview</a></li>
+                <li><a href="../index.php">Site</a></li>
+                <li><a href="index.php">Accueil</a></li>
                 <li><a href="news.php">News</a></li>
                 <li><a href="joueurs.php">Joueurs</a></li>                
                 <li><a href="equipes.php">Equipes</a></li>
                 <li><a href="emplacements.php">Emplacements</a></li>
                 <li><a href="inscriptions.php">Inscriptions</a></li>
                 <li><a href="tournois.php">Tournois</a></li> 
-                <li><a href="registrations.php">Registrations</a></li>
+                <li><a href="registrations.php">Enregistrements</a></li>
+                <li><a href="commandehandler.php">Commandes</a></li>
                 <li><a href="downloads.php">Téléchargements</a></li>
             </ul>
         </div>

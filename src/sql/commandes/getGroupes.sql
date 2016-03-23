@@ -1,0 +1,1 @@
+SELECT id_article_groupes, nom FROM article_groupes;
