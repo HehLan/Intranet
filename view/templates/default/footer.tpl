@@ -4,11 +4,11 @@
         <p>HEHLan All Rights Reserved Copyright 2016</p>
     </div>
     <div id="ceheh" class="col-lg-offset-2 col-lg-2 col-sm-12 col-xs-12">
-        <img src="{#assets#}/img/logo3.png" alt="CEHECOFH">
+        <img src="{#assets#}/img/logos/logo-ceheh.png" alt="CEHECOFH">
     </div>
     <div id="campus_technique" class="col-lg-offset-3 col-lg-2 col-sm-12 col-xs-12">
         <a href="http://www.heh.be" target="_blank">
-            <img src="{#assets#}/img/logo4.png" alt="HeH">
+            <img src="{#assets#}/img/logos/logo-campus-technique.png" alt="HeH">
         </a>
     </div>
 </footer>
@@ -21,6 +21,14 @@
 <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.media.js"></script>
 <script type="text/javascript" src="{#domain#}/lib/Bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{#domain#}/lib/Less/less.js"></script>
+
+
+<script type="text/javascript" src="{#domain#}/lib/baconjs/Bacon-1ab32ffb.min.js"></script>
+<script type="text/javascript" src="{#domain#}/lib/lodash/lodash-2.2.1.min.js"></script>
+<script type="text/javascript" src="{#domain#}/lib/live/live.js"></script>
+<script type="text/javascript" src="{#domain#}/lib/handlebars/handlebars.1.0.0.js"></script>
+<script type="text/javascript" src="{#domain#}/lib/jquery.group.min.js"></script>
+
 
 
 

@@ -15,7 +15,7 @@
     // Getting the bracket
     $.ajax(
         {
-            url: 'modules/bracket_get.php?id_tournoi=' + id,
+            url: '../common/bracket_get.php?id_tournoi=' + id + "&type=2" + "&finales_number=1",
             type: 'GET',
             dataType: 'text',
             success: function (text, status)
@@ -33,33 +33,37 @@
             async: false
         }
     );
-
-    /* Called whenever bracket is modified
-     *
-     * data:     changed bracket object in format given to init
-     * userData: optional data given when bracket is created.
-     */
-    function saveFn(data, userData)
+    
+    function saveFn(state1)
     {
-        $('#saveOutput').text(JSON.stringify(data));
+        // Write your storage code here, now just display JSON above
+        $('#state1').text(JSON.stringify(state1, undefined, 2));
+        // Reconstruct read-only version by initializing it with received state
+        $('#view1').empty().bracket({
+            init: state1
+        });
         $.ajax(
             {
                 url: 'modules/bracket_save.php',
                 type: 'POST',
-                data: "data=" + JSON.stringify(data) + "&id_tournoi=" + id,
+                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=2" + "&finales_number=1", 
                 dataType: 'text'
             }
         );
-    };
+    };     
 
     $(function ()
     {
-        var container = $('#bracket-pools-admin');
+        var container = $('#editor1');
         container.bracket(
             {
                 init: saveData,
-                save: saveFn,
-                userData: "http://myapi"
+                save: saveFn
+            }
+        );
+        $('#view1').bracket(
+            {
+                init: saveData
             }
         );
 

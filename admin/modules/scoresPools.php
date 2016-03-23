@@ -104,11 +104,16 @@ foreach($groupes as $keyGroupe => $groupe)
     }
 }
 
+
+
+
 // send to the template
 $smarty->assign('con', $connected);
-$smarty->assign('participants', $participants);
+//$smarty->assign('participants', $participants);
 $smarty->assign('tournoi', $tournoi);
+
 $smarty->assign('groupes', $groupes);
+
 $smarty->assign('matchs', $matchs);
 $smarty->assign('totaux', $totaux);
 $smarty->assign('couleur', $couleur);

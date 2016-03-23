@@ -2,7 +2,7 @@
 <header id="header" class="row" >
     <div id="logo" class="col-lg-9 col-sm-9 col-xs-12" >
         <a href="index.php">
-            <img src="{#assets#}/img/logoheh.png" alt="HEHLan" width="250px">
+            <img src="{#assets#}/img/logos/logo-hehlan.png" alt="HEHLan" width="250px">
         </a>
     </div>
     <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >

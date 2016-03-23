@@ -3,6 +3,27 @@
 /*----------------------------------------------------------------------*/
 
 
-input {
+input
+{
     color: black;
+}
+
+.label
+{
+    color: black;
+}
+
+header
+{
+    color: black;
+}
+
+colgroup > col
+{
+    background-color: gray;
+}
+
+.roundsHeader
+{
+    color: #0076a3;
 }
