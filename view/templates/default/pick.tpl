@@ -26,7 +26,7 @@
                     <div>{$playerNickname}</div>
                     <br>
                     <br>
-                    <button onclick="phpToJavascript();">simulate receiving "mapKicked" message</button>
+                    <button onclick="hideBox();">hide grayBox</button>
                 </div>
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10" id="middleDiv">

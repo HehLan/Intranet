@@ -140,22 +140,8 @@
         });
     }
 
-    function phpToJavascript() {
-        $.ajax({
-            type: "POST",
-            url: "common/pickTools.php",
-            data: {
-                req: "fromPhpToJavascriptDataTransactionTest",
-                matchId: matchId
-            },
-            success: function (data) {
-                pickState = JSON.parse(data);
-                //console.log(pickState);
-                updateMapsUI();
-                hideGrayBox();
-            },
-            cache: false
-        });
+    function hideBox() {
+        hideGrayBox();
     }
 
     // *************************************************************

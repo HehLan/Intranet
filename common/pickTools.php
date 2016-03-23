@@ -20,17 +20,7 @@ switch ($req) {
     case "getData":
         $matchId = $_POST['matchId'];
         $pickState = getData($matchId, $connexion);
-        $out = array_values($pickState);
-        $pickState = json_encode($pickState);
-        echo $pickState;
-        break;
-
-    case "fromPhpToJavascriptDataTransactionTest":
-        $matchId = $_POST['matchId'];
-        $pickState = getData($matchId, $connexion);
-        $out = array_values($pickState);
-        $pickState = json_encode($out);
-        echo $pickState;
+        echo json_encode($pickState);
         break;
 
     default :
