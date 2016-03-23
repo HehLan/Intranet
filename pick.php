@@ -14,7 +14,6 @@ $pickState;
 $idPlayerWhoMakeChoise;
 
 
-
 // ********************** recuperer les maps **********************
 $sql = "select * from hotsmaps";
 $query = new Query($database, $sql);
