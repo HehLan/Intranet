@@ -45,7 +45,7 @@ if(isset($_POST['json']) && isset($_POST['id_tournoi']) && isset($_POST['type'])
     if(empty($res))
     {
         $sql = 'INSERT INTO brackets
-                VALUES (NULL, :id_tournoi, :json, :type, :group_number, NULL)';
+                VALUES (NULL, :id_tournoi, :json, :type, :group_number, 0)';
         $query = new Query($database, $sql);
         $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
         $query->bind(':json', $_POST['json'], PDO::PARAM_STR);
@@ -89,7 +89,7 @@ if(isset($_POST['json']) && isset($_POST['id_tournoi']) && isset($_POST['type'])
     if(empty($res))
     {
         $sql = 'INSERT INTO brackets
-                VALUES (NULL, :id_tournoi, :json, :type, NULL, finales_number)';
+                VALUES (NULL, :id_tournoi, :json, :type, 0, finales_number)';
         $query = new Query($database, $sql);
         $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
         $query->bind(':json', $_POST['json'], PDO::PARAM_STR);

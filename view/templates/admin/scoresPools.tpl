@@ -39,7 +39,7 @@
                                         <div id="components" class="col-lg-6">
                                             <h2>Editeur</h2>
                                             <div id="editor-{$groupe['id_groupe']}"></div>
-                                            <h2>Vue de l'utilisateur</h2>
+                                            <h2>Aperçu</h2>
                                             <div id="view-{$groupe['id_groupe']}"></div>
                                         </div>  
                                         <div id="data-{$groupe['id_groupe']}" class="col-lg-6">
