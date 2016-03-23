@@ -41,12 +41,20 @@
                                 <div role="tabpanel" class="tab-pane" id="tab-{$groupe['id_groupe']}">
                             {/if}
                                     <div class="row">
-                                        <div id="components" class="col-lg-6">
-                                            <h2>Editeur</h2>
-                                            <div id="editor-{$groupe['id_groupe']}"></div>
-                                            <h2>Aperçu</h2>
-                                            <div id="view-{$groupe['id_groupe']}"></div>
-                                        </div>  
+                                        <div class="col-lg-6">
+                                            <h2>Liste des équipes sélectionnables</h2>
+                                            <ul>
+                                            {foreach from=$groupe.teams item=team}
+                                                <li>{$team.nom}</li>
+                                            {/foreach}
+                                            </ul>
+                                            <div id="components">
+                                                <h2>Editeur</h2>
+                                                <div id="editor-{$groupe['id_groupe']}"></div>
+                                                <h2>Aperçu</h2>
+                                                <div id="view-{$groupe['id_groupe']}"></div>
+                                            </div>
+                                        </div>
                                         <div id="data-{$groupe['id_groupe']}" class="col-lg-6">
                                             <h2>Code JSON</h2>
                                             <p>Code JSON pour le stockage dans la base de données.</p>

@@ -37,6 +37,7 @@ Table of contents
     - [Websockets directory](#websockets-directory)
 - [Database] (#database)
     - [brackets] (#db-brackets)
+    - [downloads] (#db-downloads)
 - [Test](#test)
 - [Dependencies](#dependencies)
 - [Libraries](#libraries)
@@ -115,7 +116,14 @@ brackets
 - group_number: number of the group if type is of 1
 - finales_number: number of the finales if type is of 2
 
+downloads
+---------
 
+- id_downloads: id
+- title: title of the file to be downloaded
+- src: filepath
+- published_date: date
+- invisible: invisible
 
 Test
 ====
