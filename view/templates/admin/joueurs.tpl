@@ -4,7 +4,6 @@
     <head> 
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/joueurs.css" >
-        <script type="text/javascript" src="{#adminAssets#}/js/joueurs.js"></script> 
     </head>
 
     <body role="document">
@@ -64,5 +63,6 @@
         </div>
 
         {include file="admin/footer.tpl"  con=$con } 
-    </body>
+		<script type="text/javascript" src="{#adminAssets#}/js/joueurs.js"></script> 
+	</body>
 </html>

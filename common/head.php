@@ -35,6 +35,8 @@ $lastSeenNotif = $database->getLastNotifJoueur($ics);
 // Assign variables to view
 $smarty->assign('connected', $connected);
 $smarty->assign('con', $connected);
+$smarty->assign('next_matches', $database->getNextMatches($connected));
+$smarty->assign('navTournois', $database->getNavTournois()); 
 $smarty->assign('lastSeenNotif', $connected);
 $smarty->assign('id_current_session', $ics);
 ?>

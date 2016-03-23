@@ -67,6 +67,9 @@ $(function refreshNotif(){
 			};
 		}
 	});
+	// conditionner par un bool dans success
+	// sinon la fonction ne complete jamais car elle se rappelle 
+	// sans jamais finir tant que ses processus enfants en appellent de nouveaux
 	setTimeout(refreshNotif, refreshPeriod);
 });
 

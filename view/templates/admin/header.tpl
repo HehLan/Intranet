@@ -1,7 +1,7 @@
 {* Smarty *}
 <header id="header" class="row" >
     <div id="logo" class="col-lg-9 col-sm-9 col-xs-12" >
-        <a href="index.php">
+        <a href="../index.php">
             <img src="{#adminAssets#}/img/logoheh.png" alt="HEHLan" width="250px">
         </a>
     </div>
