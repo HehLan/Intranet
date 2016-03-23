@@ -52,7 +52,7 @@
     // fonction qui va griser les maps deja "picked"
     function updateMapsUI() {
         pickState.forEach(function (map) {
-            if (map.checked == true) {
+            if (map.checked == 1) {
                 griserMap($('#' + map.mapId));
             }
         });
@@ -74,19 +74,20 @@
         }, 350);
 
         mapId = container.attr('id');
-        updateDatabase(mapId);
 
-        if (checkedMapsCount() <= 7) {
-            // notifier l'opponent qu'une map a été "kick" et c'est son tour
-            var message = ["mapKicked", playerId, matchId];
-            socket.send(message);
-        } else {
-            // notifier l'opponent que le "pick" des maps est terminé on a pick la 9ème map
-            var message = ['mapsTerminated'];
-            socket.send(message);
-            loadChampions();
-            // ***********************************************************************************************
-        }
+        $.when(updateDatabase(mapId)).done(function () {
+            if (checkedMapsCount() <= 7) {
+                // notifier l'opponent qu'une map a été "kick" et c'est son tour
+                var message = ["mapKicked", playerId, matchId];
+                socket.send(message);
+            } else {
+                // notifier l'opponent que le "pick" des maps est terminé on a pick la 9ème map
+                var message = ['mapsTerminated', playerId, matchId];
+                socket.send(message);
+                loadChampions();
+                // ***********************************************************************************************
+            }
+        });
     }
 
     function checkedMapsCount() {
@@ -101,7 +102,7 @@
     }
 
     function updateDatabase(mapId) {
-        $.ajax({
+        return $.ajax({
             type: "POST",
             url: "common/pickTools.php",
             data: {
@@ -110,12 +111,18 @@
                 matchId: matchId,
                 opponentId: opponentId
             },
+            success: function (data) {
+                console.log(data);
+                // do nothing, just for waiting call ends
+            },
             cache: false
         });
     }
 
     function updatePickState() {
-        $.ajax({
+        console.log("pick in fonction \n");
+        console.log(pickState);
+        return $.ajax({
             type: "POST",
             url: "common/pickTools.php",
             data: {
@@ -123,7 +130,11 @@
                 matchId: matchId
             },
             success: function (data) {
+                console.log("pick in ajax.success \n");
+                console.log(pickState);
                 pickState = JSON.parse(data);
+                console.log("pick in ajax.success apres JSON \n");
+                console.log(pickState);
             },
             cache: false
         });
@@ -170,9 +181,10 @@
                         break;
 
                     case "mapKicked":
-                        updatePickState();
-                        updateMapsUI();
-                        hideGrayBox();
+                        $.when(updatePickState()).done(function () {
+                            updateMapsUI();
+                            hideGrayBox();
+                        });
                         break;
 
                     case "mapsTerminated":

@@ -15,14 +15,15 @@ switch ($req) {
         $opponentId = $_POST['opponentId'];
         updatePickTable($matchId, $mapId, $connexion);
         updateMatchsTable($matchId, $opponentId, $connexion);
-        break;
+        return "db updated";
 
     case "getData":
         $matchId = $_POST['matchId'];
         $pickState = getData($matchId, $connexion);
         $out = array_values($pickState);
-        $pickState = json_encode($out);
+        $pickState = json_encode($pickState);
         echo $pickState;
+        break;
 
     case "fromPhpToJavascriptDataTransactionTest":
         $matchId = $_POST['matchId'];
@@ -30,6 +31,7 @@ switch ($req) {
         $out = array_values($pickState);
         $pickState = json_encode($out);
         echo $pickState;
+        break;
 
     default :
         break;
@@ -40,7 +42,6 @@ function updatePickTable($matchId, $mapId, $connexion) {
     $sql = "UPDATE pick_$matchId SET checked=TRUE WHERE mapId=$mapId";
     $req = $connexion->prepare($sql);
     $req->execute();
-    echo 'map kicked <br>';
 }
 
 // fonction va écrire dans la table matchs l'id de joueur à qui faire le pick suivant 
@@ -48,7 +49,6 @@ function updateMatchsTable($matchId, $opponentId, $connexion) {
     $sql = "UPDATE matchs SET idChief=$opponentId WHERE id_match=$matchId";
     $req = $connexion->prepare($sql);
     $req->execute();
-    echo 'choice updated <br>';
 }
 
 // fonction qui va recuperer les id's et les etats 'checked' pour le match
