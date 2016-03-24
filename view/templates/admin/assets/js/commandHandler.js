@@ -8,7 +8,7 @@ function getArticles(){
 			'action' : 'getArticles'
 		},
 		function(data){
-			$('#commandesArticlesPane').html(data);
+			$('#commandesArticlesList').html(data);
 		}
 	);
 };
@@ -19,7 +19,7 @@ function getGroupes(){
 			'action' : 'getGroupes'
 		},
 		function(data){
-			$('#commandesGroupPane').html(data);
+			$('#commandesGroupList').html(data);
 		}
 	);
 };
@@ -30,7 +30,7 @@ function getCommandes(){
 			'action' : 'getCommandes'
 		},
 		function(data){
-			$('#commandesPane').html(data);
+			$('#commandesList').html(data);
 		}
 	);
 };
@@ -50,3 +50,27 @@ $("#btn-add-article").click(function(){
 $(document).on("click","#btn-add-article .remove",function(){
 	console.log("test");
 });
+/*$(document).on("dblclick",".article-nom",function(){
+	 $('.article-nom').each(
+        function(){
+			var e = $(this);
+            if (e.find('input').length){
+                e.text(e.find('input').val());
+            }
+            else {
+                var t = e.text();
+                e.html($('<input />',{'value' : t}).val(t));
+            }
+        });
+});*/
+$(document).on("dblclick",".article-nom, .article-description",function(){
+	var e = $(this);
+	if (e.find('input').length){
+		e.text(e.find('input').val());
+	}
+	else {
+		var t = e.text();
+		e.html($('<input />',{'value' : t}).val(t));
+	}
+});
+// validate modification

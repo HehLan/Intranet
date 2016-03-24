@@ -29,27 +29,30 @@
 						</a>
 					</li>
 				</ul>
-				<!--<div class="tab-content">
-					<div role="tabpanel" id="commandesPane">
-						<button class="btn btn-primary" id="btn-add-article">
-							Ajouter un article
-						</button>
-						<div role="tablist" class="panel-group tab-pane" id="commandesList">
+				<div class="tab-content">
+					<div role="tabpanel" id="commandesPane" class="tab-pane">
+						<div role="tablist" class="panel-group" id="commandesList">
 							Aucune commande trouvée
 						</div>
 					</div>
-					<div role="tabpanel" id="commandesArticlesPane">
-						<div role="tablist" class="panel-group tab-pane active" id="commandesArticlesList">
+					<div role="tabpanel" id="commandesArticlesPane" class="tab-pane active">
+						<button class="btn btn-primary" id="btn-add-article">
+							Ajouter un article
+						</button>
+						<div role="tablist" class="panel-group" id="commandesArticlesList">
 							Aucun article trouvé
 						</div>
 					</div>
-					<div role="tabpanel" id="commandesGroupPane">
-						<div role="tablist" class="panel-group tab-pane" id="commandesGroupList">
+					<div role="tabpanel" id="commandesGroupPane" class="tab-pane">
+						<div role="tablist" class="panel-group" id="commandesGroupList">
 							Aucun groupe trouvé
 						</div>
 					</div>
-				</div>-->
-				<div class="tab-content">
+				</div>
+				<!--<div class="tab-content">
+					<button class="btn btn-primary" id="btn-add-article">
+						Ajouter un article
+					</button>
 					<div role="tabpanel" class="panel-group tab-pane" id="commandesPane">
 						Aucune commande trouvée
 					</div>
@@ -59,7 +62,7 @@
 					<div role="tabpanel" class="panel-group tab-pane" id="commandesGroupPane">
 						Aucun groupe trouvé
 					</div>
-				</div>
+				</div>-->
             </div>
         </div>
 	{include file="admin/footer.tpl"}
