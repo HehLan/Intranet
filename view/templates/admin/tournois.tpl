@@ -52,7 +52,8 @@
                                         <h4>Qualifications</h4>
                                         {* if it is not TM *}
                                         {if $tournoi['id_tournoi'] != 3}
-                                            <button class="btn btn-primary" onclick="document.location.href = 'scores.php?id_tournoi={$tournoi['id_tournoi']}'">Modifier</button>
+                                            <button class="btn btn-primary" onclick="document.location.href = 'scores-old.php?id_tournoi={$tournoi['id_tournoi']}'">Manage with old system</button>
+                                            <button class="btn btn-primary" onclick="document.location.href = 'scores.php?id_tournoi={$tournoi['id_tournoi']}'">Manage with brackets</button>
                                             <button class="btn btn-primary" onclick="document.location.href = 'groupes.php?id_tournoi={$tournoi['id_tournoi']}'">Groupes</button>
                                         {else}                                        
                                             {if !($tournoi['exist_manche_qualif0'])}
