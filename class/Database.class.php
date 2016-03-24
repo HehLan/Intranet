@@ -701,7 +701,7 @@ class Database
 	}
 	public function updateArticleNom($idArticle, $nomArticle)
 	{
-		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/updateArticleNom.sql');
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/updateArticleNom.sql');
 		$query = new Query($this,$sql);
 		$query->bind(':ida', $idArticle, PDO::PARAM_INT);
 		$query->bind(':nom', $nomArticle, PDO::PARAM_STR);
@@ -714,7 +714,7 @@ class Database
 	}	
 	public function updateArticleDescription($idArticle, $descriptionArticle)
 	{
-		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/updateArticleDescription.sql');
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/updateArticleDescription.sql');
 		$query = new Query($this,$sql);
 		$query->bind(':ida', $idArticle, PDO::PARAM_INT);
 		$query->bind(':desc', $descriptionArticle, PDO::PARAM_STR);
@@ -722,6 +722,29 @@ class Database
 			GLOBAL $glob_debug;
 			if ($glob_debug)
 					echo 'ERREUR SQL SET DESCRIPTION ARTICLE';
+			return 0;
+		}
+	}	
+	public function insertArticle()
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/insertArticle.sql');
+		$query = new Query($this,$sql);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL INSERT ARTICLE';
+			return 0;
+		}
+	}
+	public function removeArticle($idArticle)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/delArticle.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':ida', $idArticle, PDO::PARAM_INT);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL REMOVE ARTICLE';
 			return 0;
 		}
 	}

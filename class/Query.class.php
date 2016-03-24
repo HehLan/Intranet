@@ -37,7 +37,7 @@ class Query
         }
         if($this->executed_query = $this->prepared_query->execute())
         {        
-            if (!preg_match('#INSERT|UPDATE#i',$this->sql))
+            if (!preg_match('#INSERT|UPDATE|DELETE#i',$this->sql))
             {
                 try
                 {

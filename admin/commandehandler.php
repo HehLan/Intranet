@@ -18,12 +18,20 @@
 				$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/commandListCommandes.tpl');
 				break;
 			case "updateArticleNom":
+				echo "ononjo";
 				if(isset($_POST['idArticle']) && isset($_POST['nomArticle']))
-					$database->updateArticleNom($idArticle, $nomArticle);
+					$database->updateArticleNom($_POST['idArticle'], $_POST['nomArticle']);
 				break;
 			case "updateArticleDesc":
 				if(isset($_POST['idArticle']) && isset($_POST['descArticle']))
-					$database->updateArticleNom($idArticle, $descArticle);
+					$database->updateArticleDescription($_POST['idArticle'], $_POST['descArticle']);
+				break;
+			case "insertArticle":
+				$database->insertArticle();
+				break;
+			case "removeArticle":
+				if(isset($_POST['idArticle']))
+				$database->removeArticle($_POST['idArticle']);
 				break;
 			default:
 				break;
