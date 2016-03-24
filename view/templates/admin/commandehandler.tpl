@@ -13,12 +13,12 @@
             <div id="contenu" class="col-lg-offset-2 col-lg-8">
                 <h2>Gestionnaire de Commandes</h2>
 				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active">
+					<li role="presentation" class="">
 						<a href="#commandesPane" aria-controls="commandesPane" role="tab" data-toggle="tab">
 							Commandes
 						</a>
 					</li>
-					<li role="presentation" class="">
+					<li role="presentation" class="active">
 						<a href="#commandesArticlesPane" aria-controls="commandesArticlesPane" role="tab" data-toggle="tab">
 							Articles
 						</a>
@@ -29,17 +29,35 @@
 						</a>
 					</li>
 				</ul>
-				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane active" id="commandesPane">
-						Les commandes joueurs
+				<!--<div class="tab-content">
+					<div role="tabpanel" id="commandesPane">
+						<button class="btn btn-primary" id="btn-add-article">
+							Ajouter un article
+						</button>
+						<div role="tablist" class="panel-group tab-pane" id="commandesList">
+							Aucune commande trouvée
+						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="commandesArticlesPane">
-						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<div role="tabpanel" id="commandesArticlesPane">
+						<div role="tablist" class="panel-group tab-pane active" id="commandesArticlesList">
 							Aucun article trouvé
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="commandesGroupPane">
-						Les groupes d'articles et leur prix
+					<div role="tabpanel" id="commandesGroupPane">
+						<div role="tablist" class="panel-group tab-pane" id="commandesGroupList">
+							Aucun groupe trouvé
+						</div>
+					</div>
+				</div>-->
+				<div class="tab-content">
+					<div role="tabpanel" class="panel-group tab-pane" id="commandesPane">
+						Aucune commande trouvée
+					</div>
+					<div role="tabpanel" class="panel-group tab-pane active" id="commandesArticlesPane">
+						Aucun article trouvé
+					</div>
+					<div role="tabpanel" class="panel-group tab-pane" id="commandesGroupPane">
+						Aucun groupe trouvé
 					</div>
 				</div>
             </div>

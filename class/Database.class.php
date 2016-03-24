@@ -633,7 +633,7 @@ class Database
 			return 0;
 		}
 	}
-	public function getGroupes()
+	public function getGroupesArticles()
 	{
 		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/getGroupes.sql');
 		$query = new Query($this,$sql);
