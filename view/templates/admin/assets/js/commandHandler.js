@@ -57,8 +57,8 @@ function validateArtTitle(e){
 			'nomArticle' : content
 		},
 		function(data) {
-			getArticles();
-			e.text(content);
+			// revert to display
+			e.text(content.replace('/\n/g', "<br />"))
 		}
 	);
 };
@@ -73,13 +73,13 @@ function validateArtDescription(e){
 			'descArticle' : content
 		},
 		function(data) {
-			getArticles();
-			e.text(content);
+			// revert to display
+			e.text(content.replace('/\n/g', "<br />"));
 		}
 	);
 };
 
-// show add article form
+// add empty article
 $("#btn-add-article").click(function(){
 	$.post(
 		'commandehandler.php',
@@ -93,7 +93,8 @@ $("#btn-add-article").click(function(){
 });
 // delete article
 $(document).on("click",".remove",function(){
-	var idArt = $(this).closest('.panel').attr("id-article");
+	var itemArt = $(this).closest('.panel'),
+		idArt = itemArt.attr("id-article");
 	$.post(
 		'commandehandler.php',
 		{
@@ -101,17 +102,33 @@ $(document).on("click",".remove",function(){
 			'idArticle' : idArt
 		}
 	);
-	getArticles();
+	$(itemArt).remove();
 });
+
+// animate the glyphicon
+$(document).on('click','.articleExpander', function(){
+	var classCollapse = "glyphicon-chevron-up",
+		classExpand = "glyphicon-chevron-down";
+	if($(this).hasClass(classCollapse)){
+		$(this).removeClass(classCollapse);
+		$(this).addClass(classExpand);
+	} 
+	else {
+		$(this).removeClass(classExpand);
+		$(this).addClass(classCollapse);
+	}
+});
+
 // make the nom of article editable
 $(document).on("dblclick","#commandesArticlesList .panel-heading",function(){
 	var e = $(this).children().find('.article-nom');
-	console.log(e);
 	if (e.find('input').length){
+		// valid the modifications
 		validateArtTitle(e);
 	}
 	else {
-		var t = e.text();
+		//make the input editable
+		var t = e.text().replace(/<br \/>/g, "\n");
 		e.html($('<input />',{'value' : t}).val(t));
 	}
 });
@@ -135,10 +152,11 @@ $(document).on("keypress",".article-nom", function(k){
 		}
 	}
 });
-$(document).on("keypress",".article-description", function(k){
+$(document).on("keydown",".article-description", function(k){
+	// allow to edit by maintenaing shift+enter
 	if(k.which==13) {
 		var e = $(this);
-		if (e.find('textarea').length){
+		if((!k.shiftKey) && (e.find('textarea').length)){
 			validateArtDescription(e);
 		}
 	}

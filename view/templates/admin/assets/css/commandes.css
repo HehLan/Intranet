@@ -4,3 +4,6 @@
 .remove {
 	float: right;
 }
+.article-description textarea {
+	width: 100%;
+}
