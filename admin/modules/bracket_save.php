@@ -27,30 +27,30 @@ if(!$connected && !$allowed)
 } 
 
 
-if(isset($_POST['json']) && isset($_POST['id_tournoi']) && isset($_POST['type']) && isset($_POST['group_number']))
+if(isset($_POST['json']) && isset($_POST['id_tournoi']) && isset($_POST['type']) && isset($_POST['number']))
 {   
     // Get bracket for group
     $sql = 'SELECT json
             FROM brackets
             WHERE id_tournoi = :id_tournoi
             AND type = :type
-            AND group_number = :group_number';
+            AND number = :number';
     $query = new Query($database, $sql);
     $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
     $query->bind(':type', $_POST['type'], PDO::PARAM_INT);
-    $query->bind(':group_number', $_POST['group_number'], PDO::PARAM_INT);
+    $query->bind(':number', $_POST['number'], PDO::PARAM_INT);
     $query->execute();
     $res = $query->getResult();
 
     if(empty($res))
     {
         $sql = 'INSERT INTO brackets
-                VALUES (NULL, :id_tournoi, :json, :type, :group_number, 0)';
+                VALUES (NULL, :id_tournoi, :json, :type, :number)';
         $query = new Query($database, $sql);
         $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
         $query->bind(':json', $_POST['json'], PDO::PARAM_STR);
         $query->bind(':type', $_POST['type'], PDO::PARAM_INT);
-        $query->bind(':group_number', $_POST['group_number'], PDO::PARAM_INT);
+        $query->bind(':number', $_POST['number'], PDO::PARAM_INT);
         $query->execute();
     }
     else
@@ -59,59 +59,17 @@ if(isset($_POST['json']) && isset($_POST['id_tournoi']) && isset($_POST['type'])
                 SET json = :json
                 WHERE id_tournoi = :id_tournoi
                 AND type = :type
-                AND group_number = :group_number';
+                AND number = :number';
         $query = new Query($database, $sql);
         $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
         $query->bind(':json', $_POST['json'], PDO::PARAM_STR);
         $query->bind(':type', $_POST['type'], PDO::PARAM_INT);
-        $query->bind(':group_number', $_POST['group_number'], PDO::PARAM_INT);
+        $query->bind(':number', $_POST['number'], PDO::PARAM_INT);
         $query->execute();        
     }
 }
 
 
-
-if(isset($_POST['json']) && isset($_POST['id_tournoi']) && isset($_POST['type']) && isset($_POST['finales_number']))
-{   
-    // Get bracket for group
-    $sql = 'SELECT json
-            FROM brackets
-            WHERE id_tournoi = :id_tournoi
-            AND type = :type
-            AND finales_number = :finales_number';
-    $query = new Query($database, $sql);
-    $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
-    $query->bind(':type', $_POST['type'], PDO::PARAM_INT);
-    $query->bind(':finales_number', $_POST['finales_number'], PDO::PARAM_INT);
-    $query->execute();
-    $res = $query->getResult();
-
-    if(empty($res))
-    {
-        $sql = 'INSERT INTO brackets
-                VALUES (NULL, :id_tournoi, :json, :type, 0, finales_number)';
-        $query = new Query($database, $sql);
-        $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
-        $query->bind(':json', $_POST['json'], PDO::PARAM_STR);
-        $query->bind(':type', $_POST['type'], PDO::PARAM_INT);
-        $query->bind(':finales_number', $_POST['finales_number'], PDO::PARAM_INT);
-        $query->execute();
-    }
-    else
-    {
-        $sql = 'UPDATE brackets
-                SET json = :json
-                WHERE id_tournoi = :id_tournoi
-                AND type = :type
-                AND finales_number = :finales_number';
-        $query = new Query($database, $sql);
-        $query->bind(':id_tournoi', $_POST['id_tournoi'], PDO::PARAM_INT);
-        $query->bind(':json', $_POST['json'], PDO::PARAM_STR);
-        $query->bind(':type', $_POST['type'], PDO::PARAM_INT);
-        $query->bind(':finales_number', $_POST['finales_number'], PDO::PARAM_INT);
-        $query->execute();        
-    }
-}
 
 
 

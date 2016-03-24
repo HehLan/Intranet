@@ -1,7 +1,7 @@
 {* Smarty *}
 <footer id="footer" class="row">
     <div id="copyright" class="col-lg-3 col-sm-12 col-xs-12">
-        <p>HEHLan All Rights Reserved Copyright 2016</p>
+        <p>HEHLan All Rights Reserved <i class="fa fa-copyright"></i> 2016</p>
     </div>
     <div id="ceheh" class="col-lg-offset-2 col-lg-2 col-sm-12 col-xs-12">
         <img src="{#adminAssets#}/img/logo3.png" alt="CEHECOFH">

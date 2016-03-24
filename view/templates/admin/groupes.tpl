@@ -9,13 +9,13 @@
         {include file="admin/header.tpl" con=$con }
         {include file="admin/nav.tpl"  con=$con }         
 
-	<div id="container" class="container-fluid">
+	<div id="container" class="container">
             <div id="contenu">
                 <h1>Groupes {$tournoi['nomTournoi']}</h1>
                     
-                    <table id="adm_tablo">
-                        <form method="POST" action="modules/inscrire_groupes.php">
-                            <input type="hidden" name="id_tournoi" value="{$tournoi['id_tournoi']}" />
+                <form method="POST" action="modules/inscrire_groupes.php">
+                    <table>
+                        <input type="hidden" name="id_tournoi" value="{$tournoi['id_tournoi']}" />
                         <tr>
                             <th>Participants</th>
                             {foreach from=$groupes item=groupe}
@@ -37,22 +37,12 @@
                                 <input type="submit" value="Enregistrer" />
                             </td>
                         </tr>
-                    </table>		
-				
-			
-                        
-                        
-                     
+                    </table>	
+                </form>
+   
             </div>
 	</div>
-	
-	
-    <!-- gap to have the footer in the bottom of the window -->
-	<div style="height: 450px;">
-	
-	</div>
-    
-	
+
         {include file="admin/footer.tpl"  con=$con } 
     </body>
 </html>

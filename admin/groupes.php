@@ -25,8 +25,9 @@ if(!$connected && !$allowed)
     header('Location: ../index.php');
 } 
 
-$id_tournoi = 0;
 
+
+$id_tournoi = 0;
 
 if(isset($_GET['id_tournoi']))
 {
@@ -35,12 +36,13 @@ if(isset($_GET['id_tournoi']))
 
 if(isset($_POST['id_tournoi']) && isset($_POST['nbrgroupes']) )
 {
+    
     $nbr_grp = $_POST['nbrgroupes'];
     $id_tournoi = $_POST['id_tournoi'];
 
     $sql = 'DELETE FROM groupes_pool WHERE id_tournoi=:id';
     $query = new Query($database, $sql);
-    $query->bind('id', $id_tournoi, PDO::PARAM_INT);
+    $query->bind(':id', $id_tournoi, PDO::PARAM_INT);
 
 
     if(!$query->execute())
