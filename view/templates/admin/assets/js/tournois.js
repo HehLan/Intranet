@@ -1,6 +1,6 @@
 function go_groupes(id)
 {
-    document.location='groupes.php?id='+id;
+    document.location='groupes.php?id_tournoi='+id;
 }
 function go_finales(id,parts,lb)
 {
