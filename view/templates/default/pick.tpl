@@ -28,9 +28,7 @@
                     <br>
                     <br>
                     <br>
-                    <!--
                     <button onclick="saveChoosenHeroes();">test</button>
-                    -->
                     <br>
                     <br>
                     <button onclick="hideBox();">hide grayBox</button>

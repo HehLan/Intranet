@@ -76,10 +76,8 @@
 
     // fonction qui va griser les heros deja "picked"
     function updateHeroesUI() {
-        console.log("on est dans updateHeroesUI\n");
         pickStateHeroes.forEach(function (hero) {
             if (hero.checked == 1) {
-                console.log(hero.heroId);
                 griserMap($('#' + hero.heroId + 'h'));
             }
         });
@@ -127,6 +125,7 @@
         if (checkedHeroesCount() >= 6)
             return;
 
+
         // bon ici on appele griser map, mais en fait la fct griserMap grise n'importe quel el qui lui passé en param
         // juste la flemme de refactor dans tt le code ici en changeant le mon de la fct. Si t'as envie --> have fun ^^
         griserMap(container);
@@ -139,12 +138,12 @@
         heroId = container.attr('id').slice(0, -1);
 
         $.when(updateDatabaseHeroes(heroId)).done(function () {
-            if (checkedHeroesCount() <= 5) {
+            if (checkedHeroesCount() <= 4) {
                 // notifier l'opponent qu'un hero a été "kick" et c'est son tour
                 var message = ["heroKicked", playerId, matchId];
                 socket.send(message);
             } else {
-                $.when(saveChoosenHeroes()).done(function () {
+                $.when(updatePickStateHeroes(), saveChoosenHeroes()).done(function () {
                     // notifier l'opponent que le "pick" des heros est terminé on a pick 6 
                     var message = ['heroesTerminated', playerId, matchId];
                     socket.send(message);
@@ -152,6 +151,8 @@
                     // fermer la connection
                     message = ['close', playerId, matchId];
                     socket.send(message);
+
+                    hideGrayBox();
                 });
             }
         });
@@ -164,7 +165,6 @@
                 this.counter++;
             }
         });
-        console.log("\n maps selected counter : \n" + this.counter);
         return this.counter;
     }
 
@@ -175,7 +175,6 @@
                 this.counter++;
             }
         });
-        console.log("\n maps selected counter : \n" + this.counter);
         return this.counter;
     }
 
@@ -230,8 +229,9 @@
             cache: false
         });
     }
-    
-    function saveChoosenHeroes(){
+
+    function saveChoosenHeroes() {
+        console.log("dans saveChoosenHeroes");
         return $.ajax({
             type: "POST",
             url: "common/pickTools.php",
@@ -240,11 +240,13 @@
                 matchId: matchId
             },
             success: function (data) {
+                console.log("data recu du serv");
                 console.log(data);
                 // do nothing, just for waiting call ends
             },
             cache: false
         });
+        console.log("fin saveChoosenHeroes");
     }
 
     function updatePickStateMaps() {
@@ -328,8 +330,12 @@
                             hideGrayBox();
                         }, 2000);
                         break;
-                        
+
                     case "heroesTerminated":
+                        $.when(updatePickStateHeroes()).done(function () {
+                            updateHeroesUI();
+                            hideGrayBox();
+                        });
                         break;
 
                     default:

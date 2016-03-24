@@ -46,7 +46,7 @@ switch ($req) {
     case "saveHeroes":
         $matchId = $_POST['matchId'];
         saveHeroes($matchId, $connexion);
-        return "map saved";
+        return "heroes saved";
     
     default :
         break;
