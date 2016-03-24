@@ -26,7 +26,7 @@ switch ($req) {
         updateMatchsTable($matchId, $opponentId, $connexion);
         return "db updated";    
 
-    case "getData":
+    case "getDataMaps":
         $matchId = $_POST['matchId'];
         $pickState = getDataMaps($matchId, $connexion);
         echo json_encode($pickState);

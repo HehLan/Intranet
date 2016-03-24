@@ -63,28 +63,28 @@ class CustomServer extends WebSocketServer {
             case "mapKicked":
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
-                $opponentSocketId = $this->findOpponentGenId($matchId, $userId);
+                $opponentSocketId = $this->findOpponentGenId($matchId, $playerId);
                 $this->send($opponentSocketId, "mapKicked");
                 break;
 
             case "mapsTerminated":
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
-                $opponentSocketId = $this->findOpponentGenId($matchId, $userId);
+                $opponentSocketId = $this->findOpponentGenId($matchId, $playerId);
                 $this->send($opponentSocketId, "mapsTerminated");
                 break;
             
             case "heroKicked":
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
-                $opponentSocketId = $this->findOpponentGenId($matchId, $userId);
+                $opponentSocketId = $this->findOpponentGenId($matchId, $playerId);
                 $this->send($opponentSocketId, "heroKicked");
                 break;
             
             case "heroesTerminated":
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
-                $opponentSocketId = $this->findOpponentGenId($matchId, $userId);
+                $opponentSocketId = $this->findOpponentGenId($matchId, $playerId);
                 $this->send($opponentSocketId, "heroesTerminated");
                 break;
 
@@ -155,7 +155,7 @@ class CustomServer extends WebSocketServer {
 //        var_dump($this->match_playersArray);
     }
 
-    protected function findOpponentGenId($matchId, $userId) {
+    protected function findOpponentGenId($matchId, $playerId) {
         // touver le key de l'objet qui nous interesse 
         $tempKey = NULL;
         foreach ($this->match_playersArray as $key => $obj) {

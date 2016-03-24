@@ -76,9 +76,11 @@
 
     // fonction qui va griser les heros deja "picked"
     function updateHeroesUI() {
+        console.log("on est dans updateHeroesUI\n");
         pickStateHeroes.forEach(function (hero) {
             if (hero.checked == 1) {
-                griserMap($('#' + hero.heroId));
+                console.log(hero.heroId);
+                griserMap($('#' + hero.heroId + 'h'));
             }
         });
     }
@@ -122,7 +124,7 @@
         var container = $(el);   // div containing img&text
         if (container.attr('data-checked') == 1) // deja kicked
             return;
-        if (checkedHeroesCount()() >= 6)
+        if (checkedHeroesCount() >= 6)
             return;
 
         // bon ici on appele griser map, mais en fait la fct griserMap grise n'importe quel el qui lui passé en param
@@ -134,10 +136,10 @@
             showGrayBox();
         }, 350);
 
-        heroId = container.attr('id');
+        heroId = container.attr('id').slice(0, -1);
 
         $.when(updateDatabaseHeroes(heroId)).done(function () {
-            if (checkedHeroesCount()() <= 5) {
+            if (checkedHeroesCount() <= 5) {
                 // notifier l'opponent qu'un hero a été "kick" et c'est son tour
                 var message = ["heroKicked", playerId, matchId];
                 socket.send(message);
@@ -309,7 +311,7 @@
                         break;
 
                     case "heroKicked":
-                        $.when(updatePickStateHeroes()()).done(function () {
+                        $.when(updatePickStateHeroes()).done(function () {
                             updateHeroesUI();
                             hideGrayBox();
                         });

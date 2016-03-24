@@ -28,7 +28,9 @@
                     <br>
                     <br>
                     <br>
+                    <!--
                     <button onclick="saveChoosenHeroes();">test</button>
+                    -->
                     <br>
                     <br>
                     <button onclick="hideBox();">hide grayBox</button>
@@ -50,7 +52,7 @@
                     <div class="row" id="heroesContainer" style="display: none;">
                         {foreach from=$heroes item=hero}
                             <div class="col-xs-3 col-sm-2 col-md-2 col-lg2">
-                                <div id="{$hero['id']}" onclick="kickHero(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
+                                <div id="{$hero['id']}h" onclick="kickHero(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
                                     <img class="img-responsive" src="{$hero['imgPath']}" alt="{$hero['name']}"/>
                                     <div class="thumbnailText">
                                         {$hero['name']}
