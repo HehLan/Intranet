@@ -42,13 +42,14 @@ function isPlay($idJoueur, $idTournoi, &$connexion, &$pseudoJeux)
         if(empty($jeux))
         {            
             //ne joue pas a ce jeux
-            return DOCUMENT_ROOT.'view/templates/admin/assets/img'.'cross.png';
+            
             $pseudoJeux='';
+            return 'cross.png';
         }
         else {
             $pseudoJeux=$jeux['pseudoJeux'];
             //joue a ce jeux
-            return DOCUMENT_ROOT.'view/templates/admin/assets/img'.'check.png';
+            return 'check.png';
         }
     }
     
