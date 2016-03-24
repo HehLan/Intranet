@@ -119,12 +119,12 @@ Database
 brackets
 --------
 
-- id_bracket: id
+- id_bracket: id of the bracket
 - id_tournoi: id of the tournament
-- json: JSON data
+- json: JSON data for creating the bracket
 - type: 1 for qualification groups number and 2 for finales brackets
-- group_number: number of the group if type is of 1
-- finales_number: number of the finales if type is of 2
+- number: number of the group (0 = no groups, 1 to INF) or the finale (1 = winner bracket, 2 = looser bracket 1, 3 = looser bracket 2, ...)
+
 
 downloads
 ---------

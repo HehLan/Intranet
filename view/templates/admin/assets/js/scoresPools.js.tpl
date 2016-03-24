@@ -1,7 +1,7 @@
 {* Smarty *}
 <script>
 
-{if $tournoi.id_tournoi != 2} 
+    {* /*groups*/ {if $tournoi.id_tournoi != 2} *}
             
     {foreach from=$groupes item=groupe}
         function getBracket_{$groupe.id_groupe}()
@@ -99,7 +99,8 @@
             ); 
         {/foreach}
     }); 
-
+    
+    {* //no groups 
 {else}
 
     function getBracket()
@@ -181,5 +182,7 @@
         );
 
     });
-{/if}
+{/if} *}
+
+
 </script>

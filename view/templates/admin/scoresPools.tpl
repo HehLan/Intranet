@@ -16,7 +16,7 @@
                 <h1>Qualifications de {$tournoi['nomTournoi']}</h1> 
                 
 
-                {if $tournoi.id_tournoi != 2}                    
+                {* <!-- no groups --> {if $tournoi.id_tournoi != 2} *}
                     <div id="bloc_tab">
                         <ul class="nav nav-tabs" role="tablist">
                             {foreach name=groupLoop from=$groupes item=groupe}
@@ -64,6 +64,7 @@
                                 </div>
                         {/foreach}
                     </div>
+                {* <!-- no groups --> 
                 {else}
                     <div class="row">
                         <div id="components" class="col-lg-6">
@@ -78,7 +79,7 @@
                             <pre id="state">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
                         </div>                                      
                     </div> 
-                {/if}
+                {/if} *}
             </div>
         </div>
         

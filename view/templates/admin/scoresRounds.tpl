@@ -39,10 +39,10 @@
 							{for $i=1 to $groupe.nbr_manches}
 								<td class="td_score_pool_tm">
 									<input type="checkbox" 
-										name="cb_m_{$groupe.id_match}_ma_{$i}_p_{$joueur['id_joueur']}" value="1" 
+										name="cb_m_{$groupe['id_match']}_ma_{$i}_p_{$joueur['id_joueur']}" value="1" 
 										onclick="active_score2({$groupe.id_match},{$i},{$joueur['id_joueur']})"> 
 									<input type="text" name="score_m_{$groupe.id_match}_ma_{$i}_p_{$joueur['id_joueur']}" 
-										id="score_m_{$groupe.id_match}_ma_{$i}_p_{$joueur['id_joueur']}" 
+										id="score_m_{$groupe['id_match']}_ma_{$i}_p_{$joueur['id_joueur']}" 
 										
 										{if isset($groupe.inscrits[$joueur['id_joueur']]['scores'][$i])}
 											value="{$groupe.inscrits[$joueur['id_joueur']]['scores'][$i]}"
@@ -61,10 +61,10 @@
 								<td class="td_pseudo_pool_tm">{$inscrit.nom}</td>
 								{for $i=1 to $groupe.nbr_manches}
 									<td class="td_score_pool_tm">
-										<input type="checkbox" name="cb_m_{$id_match}_ma_{$i}_p_{$inscrit['id']}" 
-										value="1" onclick="active_score2({$id_match},{$i},{$inscrit['id']})"> 
-										<input type="text" name="score_m_{$id_match}_ma_{$i}_p_{$inscrit['id']}" 
-										id="score_m_{$id_match}_ma_{$i}_p_{$inscrit['id']}" value="" size="4" disabled="disabled">
+										<input type="checkbox" name="cb_m_{$groupe['id_match']}_ma_{$i}_p_{$inscrit['id']}" 
+										value="1" onclick="active_score2({$groupe['id_match']},{$i},{$inscrit['id']})"> 
+										<input type="text" name="score_m_{$groupe['id_match']}_ma_{$i}_p_{$inscrit['id']}" 
+										id="score_m_{$groupe['id_match']}_ma_{$i}_p_{$inscrit['id']}" value="" size="4" disabled="disabled">
 									</td>
 								{/for}
 								<td class="td_total_pool_tm"></td>

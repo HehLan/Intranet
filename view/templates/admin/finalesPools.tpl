@@ -27,7 +27,7 @@
                 </div>                
                 <div class="tab-content">
                     <!-- tab-bracket-winner -->
-                    <div role="tabpanel" class="tab-pane active" id="tab-group-1">
+                    <div role="tabpanel" class="tab-pane active" id="tab-bracket-winner">
                         <div class="row">
                             <div id="components" class="col-lg-6">
                                 <h2>Editeur</h2>
@@ -43,23 +43,12 @@
                         </div> 
                     </div>
                     <!-- tab-bracket-looser -->
-                    {* <div role="tabpanel" class="tab-pane" id="tab-group-2">
+                    <div role="tabpanel" class="tab-pane" id="tab-bracket-looser">
                         <div class="row">
-                            <div id="components" class="col-lg-6">
-                                <h2>Editeur</h2>
-                                <div id="editor2"></div>
-                                <h2>Vue de l'utilisateur</h2>
-                                <div id="view2"></div>
-                            </div>  
-                            <div id="data2" class="col-lg-6">
-                                <h2>Code JSON</h2>
-                                <p>Code JSON pour le stockage dans la base de données.</p>
-                                <pre id="state2">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
-                            </div>                                      
+                            <p>No looser bracket man !</p>                                     
                         </div> 
-                    </div>*}
-                </div>
-                
+                    </div>
+                </div>             
                 
             </div>
         </div>

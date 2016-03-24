@@ -29,24 +29,26 @@ if(isset($_GET['id_tournoi']))
     $id_tournoi = $_GET['id_tournoi'];
 }
 
-/*
-// Get the Tournoi information
-$sql = 'SELECT * FROM tournoi WHERE id_tournoi=:id';
-$query = new Query($database, $sql);
-$query->bind(':id', $id_tournoi, PDO::PARAM_INT);
-if($query->execute())
+if($id_tournoi == 3)
 {
-    $tournoi = $query->getResult()[0];
-}
-else
-{
-    global $glob_debug;
-    if($glob_debug)
+    // Get the Tournoi information
+    $sql = 'SELECT * FROM tournoi WHERE id_tournoi=:id';
+    $query = new Query($database, $sql);
+    $query->bind(':id', $id_tournoi, PDO::PARAM_INT);
+    if($query->execute())
     {
-        echo 'ERREUR - SQL TOURNOI';
+        $tournoi = $query->getResult()[0];
     }
-    exit;     
-}*/
+    else
+    {
+        global $glob_debug;
+        if($glob_debug)
+        {
+            echo 'ERREUR - SQL TOURNOI';
+        }
+        exit;     
+    }
+}
 
 //SQL Query to select pools for this tournament
 $groupes = '';
