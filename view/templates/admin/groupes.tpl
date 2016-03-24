@@ -28,7 +28,7 @@
                                     <td>{$participant['nom']}</td>
                                     {foreach from=$groupes item=groupe}
                                         <td>
-                                            <input type="radio" name="parti_{$participant['id']}" value="{$groupe['id_groupe']}" >
+                                            <input type="radio" name="parti_{$participant['id']}" value="{$groupe['id_groupe']}" />
                                         </td>
                                     {/foreach}
                                 </tr>

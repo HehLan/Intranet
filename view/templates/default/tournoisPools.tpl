@@ -76,10 +76,16 @@
                                             </div>
                                             <div class="col-lg-8">
                                                 <h4>Informations pratiques</h4>  
-                                                <ul>
-                                                    <li>Round 1 : vendredi hh:mm</li>
-                                                    <li>Round 2 : vendredi hh:mm</li>
-                                                    <li>Round 3 : samedi hh:mm</li>
+                                                <ul> 
+                                                    {$i = 0}
+                                                    {section name=sec1 loop=$groupe.teams}                                                        
+                                                        {section name=sec2 loop=$groupe.teams}
+                                                            {if $groupe.teams[sec1].id > $groupe.teams[sec2].id}
+                                                                {$i = $i + 1}
+                                                                <li> Round {$i} : {$groupe.resultTeams[sec1][sec2].valeur}</li>                                                                
+                                                            {/if}                                                            
+                                                        {/section}                                                 
+                                                    {/section}
                                                 </ul>
                                                 <h4>Matches</h4>
                                                 <table class="col-lg-12 table_pool">

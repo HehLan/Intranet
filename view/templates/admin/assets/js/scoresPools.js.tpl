@@ -75,8 +75,8 @@
             groupData_{$groupe.id_groupe} = getBracket_{$groupe.id_groupe}();
         {/foreach}  
             
-        {foreach from=$groupes item=groupe}  
-            $("#nav-tab-{$groupe.id_groupe}").click(function()
+        {foreach name=groupLoop from=$groupes item=groupe}
+            $("#nav-tab-{$groupe.id_groupe}").click(function ()
                 {
                     var groupData_{$groupe.id_groupe} = null;
                     groupData_{$groupe.id_groupe} = getBracket_{$groupe.id_groupe}();
@@ -100,6 +100,7 @@
                 }
             ); 
         {/foreach}
+    
     }); 
     
     {* //no groups 

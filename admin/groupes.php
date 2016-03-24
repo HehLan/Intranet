@@ -86,9 +86,10 @@ $nomt = $tournoi['nomTournoi'];
 $participants = '';
 if($jpt > 1)
 {
-    $sql = 'SELECT et.id_equipe, e.nom FROM equipes_tournoi as et, equipes as e
-    WHERE et.id_tournoi=:id AND e.id_equipes=et.id_equipe
-    ORDER BY e.nom';
+    $sql = 'SELECT et.id_equipe, e.nom
+        FROM equipes_tournoi as et, equipes as e
+        WHERE et.id_tournoi=:id AND e.id_equipes=et.id_equipe
+        ORDER BY e.nom';
     $query = new Query($database, $sql);
     $query->bind('id', $id_tournoi, PDO::PARAM_INT);	
     if($query->execute())
@@ -113,7 +114,7 @@ else
     WHERE jt.id_tournoi=:id AND j.id_joueur=jt.id_joueur
     ORDER BY j.pseudo';
     $query = new Query($database, $sql);
-    $query->bind('id', $id_tournoi, PDO::PARAM_INT);
+    $query->bind(':id', $id_tournoi, PDO::PARAM_INT);
     if($query->execute())
     {
         $i = 0;
@@ -134,7 +135,7 @@ else
 
 $sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id ORDER BY nom_groupe';
 $query = new Query($database, $sql);
-$query->bind('id', $id_tournoi, PDO::PARAM_INT);	
+$query->bind(':id', $id_tournoi, PDO::PARAM_INT);	
 if($query->execute())
 {
     $groupes = $query->getResult();
