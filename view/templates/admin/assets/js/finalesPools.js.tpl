@@ -4,7 +4,13 @@
     function getBracket()
     {
         // Initial data if is not encoded in the database
-        var result = null;
+        var result =  {
+            teams: [
+                ["Team 1", "Team 2"], 
+                ["Team 3", "Team 4"] 
+            ],
+            results: [[1, 0], [2, 7]]
+        };
     
         // Getting the bracket - the group_number must be dynamic
         $.ajax(
@@ -14,7 +20,7 @@
                 dataType: 'text',
                 success: function (text, status)
                 {
-                    if(text.contains("error"))
+                    /*if(text.contains("error"))
                     {
                         result = {
                             teams: [
@@ -23,15 +29,22 @@
                             ],
                             results: [[1, 0], [2, 7]]
                         };
-                    }
-                    else
-                    {
+                    }*/
+                    //else
+                    //{
                         result = JSON.parse(text);
-                    }
+                    //}
+ 
                 },
                 error: function (resultat, statut, erreur)
                 {
-
+                    result = {
+                            teams: [
+                                ["Team 1", "Team 2"], 
+                                ["Team 3", "Team 4"] 
+                            ],
+                            results: [[1, 0], [2, 7]]
+                        };
                 },
                 complete: function (resultat, statut)
                 {

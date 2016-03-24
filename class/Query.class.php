@@ -37,7 +37,7 @@ class Query
         }
         if($this->executed_query = $this->prepared_query->execute())
         {        
-            if (!preg_match('#INSERT#i',$this->sql))
+            if (!preg_match('#INSERT|UPDATE|DELETE#i',$this->sql))
             {
                 try
                 {
@@ -51,6 +51,8 @@ class Query
 					if ($glob_debug)
 						echo $e;
                 }
+            } else {
+                return true;
             }
         }
         else

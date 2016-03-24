@@ -50,30 +50,30 @@
                                         
                                         <!-- MANAGE POOLS -->
                                         <h4>Qualifications</h4>
-                                        {* if it is not TM *}
-                                        {if $tournoi['id_tournoi'] != 3}
+                                            <h6>New system</h6>
                                             <button class="btn btn-primary" onclick="document.location.href = 'scores-old.php?id_tournoi={$tournoi['id_tournoi']}'">Manage with old system</button>
                                             <button class="btn btn-primary" onclick="document.location.href = 'scores.php?id_tournoi={$tournoi['id_tournoi']}'">Manage with brackets</button>
-                                            <button class="btn btn-primary" onclick="document.location.href = 'groupes.php?id_tournoi={$tournoi['id_tournoi']}'">Groupes</button>
-                                        {else}                                        
+                                            <button class="btn btn-primary" onclick="document.location.href = 'groupes.php?id_tournoi={$tournoi['id_tournoi']}'">Manage groups</button>
+                                            
+                                            <h6>Old system</h6>
                                             {if !($tournoi['exist_manche_qualif0'])}
                                                 <input type="button" value="Créer" onclick="go_groupes({$tournoi['id_tournoi']},{$participants['nbr']})"/>
                                             {else}
-                                                <input type="button" value="Gérer" onclick="document.location.href = 'scores.php?id_tournoi={$tournoi['id_tournoi']}'" />
+                                                <input type="button" value="Gérer" onclick="document.location.href = 'scores-old.php?id_tournoi={$tournoi['id_tournoi']}'" />
                                                 <input type="button" value="Effacer" onclick="reset_groupes({$tournoi['id_tournoi']}, 'group', 0)"/> 
                                                 <form method="POST" action="groupes.php?id_tournoi={$tournoi['id_tournoi']}">
                                                     <button type="submit">Groupes</button>
                                                 </form>
                                             {/if}
-                                        {/if}
+                                        
                                         
                                         
                                         <!-- MANAGE FINALS -->
                                         <h4>Finales</h4>
-                                        {* if it is not TM *}
-                                        {if $tournoi['id_tournoi'] != 3}
+                                            <h6>New system</h6>
                                             <button class="btn btn-primary" onclick="document.location.href = 'finales.php?id_tournoi={$tournoi['id_tournoi']}'">Modifier</button>
-                                        {else}
+                                        
+                                            <h6>Old system</h6>
                                             {if !($tournoi['exist_manche_final0'])}
                                                 {if $tournoi['joueurParTeam']>1}
                                                     <input type="button" value="Créer" onclick="go_finales({$tournoi['id_tournoi']},{$participants['nbr']}, 0)"/>
@@ -94,7 +94,7 @@
                                                 <input type="button" value="Gérer" onclick="document.location.href = 'finales.php?id_tournoi={$tournoi['id_tournoi']}&looser=2'" />
                                                 <input type="button" value="Effacer" onclick="reset_groupes({$tournoi['id_tournoi']}, 'looser1', 2)"/>
                                             {/if} 
-                                        {/if}
+                                       
                                         
                                                 
                                         <!-- MANAGE LOOSER BRACKETS -->

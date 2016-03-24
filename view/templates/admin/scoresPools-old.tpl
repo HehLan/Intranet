@@ -1,10 +1,9 @@
-{* Smarty *}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 	{include file="admin/meta.tpl"}
-	<link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/scores.css" />
-	<script type="text/javascript" src="{#adminAssets#}/js/scores.js"></script>
+	<link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/score.css" />
+	<script type="text/javascript" src="{#domain#}/src/js/score_state.js"></script>
 </head>
 <body role="document">
 	{include file="admin/header.tpl" con=$con }
@@ -12,7 +11,7 @@
 	<div id="container">
 		<div id="contenu">
 			<h1>Qualifications {$tournoi['nomTournoi']}</h1>
-			<form method="POST" action="modules/scores_save.php">
+			<form method="POST" action="scores_save.php">
 				<input type="hidden" name="id_tournoi" value="{$tournoi.id_tournoi}">
 				<input type="SUBMIT" value="Enregistrer">
 				<br>
@@ -44,7 +43,7 @@
 												value="1" onclick="active_score({$matchs[$team['id']][$team2['id']]['id_match']},{$team['id']})" />
 											<input type="text" name="score_m_{$matchs[$team['id']][$team2['id']]['id_match']}_p_{$team['id']}" 
 												id="score_m_{$matchs[$team['id']][$team2['id']]['id_match']}_p_{$team['id']}" 
-												value="{$matchs[$team['id']][$team2['id']]['score']}" size="4" />
+												value="{$matchs[$team['id']][$team2['id']]['score']}" size="4" disabled="disabled" />
 										</td>
 									{/if}
 								{/foreach}	
@@ -66,7 +65,7 @@
 
 	<div id="div_popup" class="popup_centree" style="height:200px;width:600px;margin-top:-100px;margin-left:-300px;">
 		<input type="button" value="annuler" onclick="popup_close()" />
-		<form method="POST" action="{#domain#}/admin/modules/modifier_heure.php">
+		<form method="POST" action="modifier_heure.php">
 		<input type="hidden" name="id_match" id="input_id_match" value="0" />
 		<input type="hidden" name="id_tournoi" value="{$tournoi.id_tournoi}" />
 		<input type="hidden" name="page" value="scores" />

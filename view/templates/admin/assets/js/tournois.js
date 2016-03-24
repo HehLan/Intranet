@@ -33,7 +33,7 @@ function popup_close()
     document.getElementById('div_popup3').style.visibility = 'hidden';		
 }
 
-function erase_tournoi(var idt)
+function erase_tournoi(idt)
 {
     var r = confirm("Voulez-vous vraiment supprimer le tournoi ayant l'id " + idt + " ?");
     if (r == true)

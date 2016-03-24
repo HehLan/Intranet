@@ -79,7 +79,6 @@ else
 $nbr_groupes = count($groupes);
 
 
-
 foreach($groupes  as $groupe)
 {
 
@@ -147,7 +146,7 @@ foreach($groupes  as $groupe)
                         global $glob_debug;
                         if($glob_debug)
                         {
-                            echo 'ERREUR INSERT PARTICIPANTS GROUPE';
+                            echo 'ERREUR INSERT PARTICIPANTS GROUPE2';
                         }
                         exit;  
                     }
@@ -385,6 +384,6 @@ foreach($groupes  as $groupe)
 	}
 	
 }
-//header('Location: tournois.php');
+header('Location: ../tournois.php');
 
 ?>
