@@ -1,2 +1,35 @@
-ErrorDocument 404 /error.html
-ErrorDocument 403 /error.html
+ErrorDocument 400 http://intranet.hehlan.intra/common/error.php?id=400&msg=Bad-Request
+ErrorDocument 401 http://intranet.hehlan.intra/common/error.php?id=401&msg=Unauthorized-Access
+ErrorDocument 402 http://intranet.hehlan.intra/common/error.php?id=402&msg=Payment-Required
+ErrorDocument 403 http://intranet.hehlan.intra/common/error.php?id=403&msg=Access-Forbidden
+ErrorDocument 404 http://intranet.hehlan.intra/common/error.php?id=404&msg=Page-Not-Found
+ErrorDocument 405 http://intranet.hehlan.intra/common/error.php?id=405&msg=Method-Not-Allowed
+ErrorDocument 406 http://intranet.hehlan.intra/common/error.php?id=406&msg=Not-Acceptable
+ErrorDocument 407 http://intranet.hehlan.intra/common/error.php?id=407&msg=Proxy-Authentification-Required
+ErrorDocument 408 http://intranet.hehlan.intra/common/error.php?id=408&msg=Request-Timeout
+ErrorDocument 409 http://intranet.hehlan.intra/common/error.php?id=409&msg=Conflict
+ErrorDocument 410 http://intranet.hehlan.intra/common/error.php?id=410&msg=Gone
+ErrorDocument 411 http://intranet.hehlan.intra/common/error.php?id=411&msg=Length-Required
+ErrorDocument 412 http://intranet.hehlan.intra/common/error.php?id=412&msg=Precondition-Failed
+ErrorDocument 413 http://intranet.hehlan.intra/common/error.php?id=413&msg=Request-Entity-Too-Large
+ErrorDocument 414 http://intranet.hehlan.intra/common/error.php?id=414&msg=Request-URI-Too-Long
+ErrorDocument 415 http://intranet.hehlan.intra/common/error.php?id=415&msg=Unsupported-Media-Type
+ErrorDocument 416 http://intranet.hehlan.intra/common/error.php?id=416&msg=Requested-Range-Not-Satisfiable
+ErrorDocument 417 http://intranet.hehlan.intra/common/error.php?id=417&msg=Expectation-Failed
+
+
+ErrorDocument 500 http://intranet.hehlan.intra/common/error.php?id=500&msg=Internal-Server-Error
+ErrorDocument 501 http://intranet.hehlan.intra/common/error.php?id=501&msg=Not-Implemented
+ErrorDocument 502 http://intranet.hehlan.intra/common/error.php?id=502&msg=Bad-Gateway
+ErrorDocument 503 http://intranet.hehlan.intra/common/error.php?id=503&msg=Service-Unavailable
+ErrorDocument 504 http://intranet.hehlan.intra/common/error.php?id=504&msg=Gateway-Timeout
+ErrorDocument 505 http://intranet.hehlan.intra/common/error.php?id=505&msg=HTTP-Version-Not-Supported
+
+
+
+
+
+
+
+
+

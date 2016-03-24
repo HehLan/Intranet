@@ -35,7 +35,7 @@
                                 <div class="row my-tab-content">
                                     <div class="col-lg-6">
                                         <h3>Informations</h3>
-                                        <ul>
+                                        <ul class="list-unstyled">
                                             <li>id: {$tournoi['id_tournoi']}</li>
                                             <li>Participants: {$participants['nbr']}</li>
                                             <li>Joueurs par team: {$tournoi['joueurParTeam']}</li>
