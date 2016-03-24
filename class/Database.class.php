@@ -699,4 +699,30 @@ class Database
 			return 0;
 		}
 	}
+	public function updateArticleNom($idArticle, $nomArticle)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/updateArticleNom.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':ida', $idArticle, PDO::PARAM_INT);
+		$query->bind(':nom', $nomArticle, PDO::PARAM_STR);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL SET NOM ARTICLE';
+			return 0;
+		}
+	}	
+	public function updateArticleDescription($idArticle, $descriptionArticle)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/updateArticleDescription.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':ida', $idArticle, PDO::PARAM_INT);
+		$query->bind(':desc', $descriptionArticle, PDO::PARAM_STR);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL SET DESCRIPTION ARTICLE';
+			return 0;
+		}
+	}
 }

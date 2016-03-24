@@ -17,6 +17,14 @@
 				$smarty->assign('commandes', $database->getCommandes());
 				$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/commandListCommandes.tpl');
 				break;
+			case "updateArticleNom":
+				if(isset($_POST['idArticle']) && isset($_POST['nomArticle']))
+					$database->updateArticleNom($idArticle, $nomArticle);
+				break;
+			case "updateArticleDesc":
+				if(isset($_POST['idArticle']) && isset($_POST['descArticle']))
+					$database->updateArticleNom($idArticle, $descArticle);
+				break;
 			default:
 				break;
 		}

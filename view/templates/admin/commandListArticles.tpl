@@ -1,6 +1,6 @@
 {* Smarty *}
 {foreach $articles item=article}
-	<div class="panel panel-default">
+	<div class="panel panel-default" id-article="{$article.id_article}">
 		<div class="panel-heading" role="tab" id="headingArt{$article.id_article}"
 			data-toggle="collapse" 
 			data-parent="#commandesArticlesList" href="#collapseArt{$article.id_article}" 
