@@ -18,7 +18,23 @@ $tableExist;
 $pickStateMaps;
 $idPlayerWhoMakeChoise = '';
 
-// 
+
+// si pick terminé rediriger vers les resultats
+$sql = "SELECT heroes FROM matchs WHERE id_match=:idMatch";
+$query = new Query($database, $sql);
+$query->bind(':idMatch', $matchId, PDO::PARAM_INT);
+if ($query->execute()) {
+    $truc = $query->getResult();
+    if($truc != NULL)
+        header('Location: pickResults.php?matchId='.$matchId);
+} else {
+    global $glob_debug;
+    if ($glob_debug) {
+        echo 'ERREUR SQL MAPS';
+    }
+    exit;
+}
+
 
 // ********************** recuperer les maps **********************
 $sql = "select * from hotsmaps";
