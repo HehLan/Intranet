@@ -57,41 +57,11 @@
                     </select>
                     <br>
                     <br>
-                    <!-- Equipe -->
-                    Equipe :
-                    <select id="SelectEquipe">
-                        <option value="" selected ></option>
-                        {foreach from=$equipes item=equipe}
-                            <option value="{$equipe['id_equipes']}">{$equipe['nom']}</option>
-                        {/foreach}           
-                    </select>
-                    <div id="dialogEquipe_Emplacement"></div>
-                    <br>
-                    <br>
-                    <!-- AJOUTER PLACE AU JOUEUR -->                                                                                       
-                    <form method="post" action="place.php">
-                        <b><u><center>Associer la place :</center></u></b></b>
-                        <br><br> 
-                        Emplacement :
-                        <select name="SelectEmplacement" id="SelectEmplacement">	
-                            {foreach from=$emplacements item=emplacement}
-                                <option value="{$emplacement['id_emplacement']}">{$emplacement['numero']}</option>"; 
-                            {/foreach}	
-                        </select> 
-                        <br><br>
-                        Pseudo :
-                        <select name="SelectPseudo" id="SelectPseudo">
-                            <option value="" selected ></option>
-                            {foreach from=$joueurs_autre item=joueur_autre}
-                                <option value="{$joueur_autre['pseudo']}">{$joueur_autre["pseudo"]}</option>
-                            {/foreach}
-                        </select>
-                        <br><br>
-                        <p><center><input class="submit" type="submit" value="Valider" /></center></p>
-                    </form>
-                    <div id="dialogInfo_joueur"></div>
-                    <div id="dialogInfo_equipe"></div>
-                </div>
+                    <p><center><input class="submit" type="submit" value="Valider" /></center></p>
+                </form>
+                <!--<div id="dialogInfo_joueur"></div>
+                <div id="dialogInfo_equipe"></div>-->
+            </div>
                 <div class="col-lg-10" style="position: relative;
                     float:right; 
                     height: 110%;
