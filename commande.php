@@ -5,7 +5,15 @@ if(isset($_POST['action']))
 {
 	switch($_POST['action']) {
 		case "insertCommande":
-			if($_POST[)
+			$idCommande = $database->insertCommande($_SESSION['id_joueur'], $comment, $total);
+			foreach($addedArticles as $aa)
+			{
+				$database->insertCommandeArticle($idCommande, $quantite, $idGroupeArticle);
+			}
+			break;
+		case "removeCommande":
+			if(isset($_POST['idCommande']))
+				$database->removeCommande($_POST['idCommande']);
 			break;
 		case "getCommandes":
 			$commandesList = $database->getJoueurCommandes($_SESSION['id_joueur']);

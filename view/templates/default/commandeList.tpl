@@ -22,7 +22,7 @@
 					{if $commande.disponible}style="color:darkgreen"{/if}>
 				</span>
 				{if !$commande.commanded}
-					<span class="remove glyphicon glyphicon-remove-sign"></span>
+					<span class="remove-commande glyphicon glyphicon-remove-sign"></span>
 				{/if}
 			</span>
 		  </h4>

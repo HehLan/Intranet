@@ -67,7 +67,7 @@
 									<button type="button" class="btn btn-default" data-dismiss="modal">
 										Fermer
 									</button>
-									<button type="button" class="btn btn-primary">
+									<button type="button" class="button-validate-commande btn btn-primary">
 										Ajouter
 									</button>
 								</div>

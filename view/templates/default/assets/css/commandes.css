@@ -12,11 +12,12 @@
 }
 .commande-closing-items {
 }
-.commandeExpander {
+.commandeExpander, .remove-commande {
 	cursor: pointer;
 }
 
 #side_command_group {
+	display: inherit;
 }
 .float-me {
 	float: right;
@@ -27,4 +28,8 @@
 
 #commande-form {
 	color: #000;
+}
+
+.panel-title .glyphicon {
+	margin: 0 10px;
 }
