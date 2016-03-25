@@ -12,18 +12,18 @@ switch ($req) {
         // $_POST[] --> {mapId, matchId, opponentId}
         $matchId = $_POST['matchId'];
         $mapId = $_POST['mapId'];
-        $opponentId = $_POST['opponentId'];
+        $playerId = $_POST['playerId'];
         updatePickTable($matchId, $mapId, $connexion);
-        updateMatchsTable($matchId, $opponentId, $connexion);
+        updateMatchsTable($matchId, $playerId, $connexion);
         return "db updated";
 
     case "updateDbHeroes":
         // $_POST[] --> {heroId, matchId, opponentId}
         $matchId = $_POST['matchId'];
         $heroId = $_POST['heroId'];
-        $opponentId = $_POST['opponentId'];
+        $playerId = $_POST['playerId'];
         updatePickTableHeroes($matchId, $heroId, $connexion);
-        updateMatchsTable($matchId, $opponentId, $connexion);
+        updateMatchsTable($matchId, $playerId, $connexion);
         return "db updated";
 
     case "getDataMaps":
@@ -77,8 +77,8 @@ function updatePickTableHeroes($matchId, $heroId, $connexion) {
 }
 
 // fonction va écrire dans la table matchs l'id de joueur à qui faire le pick suivant 
-function updateMatchsTable($matchId, $opponentId, $connexion) {
-    $sql = "UPDATE matchs SET idChief=$opponentId WHERE id_match=$matchId";
+function updateMatchsTable($matchId, $playerId, $connexion) {
+    $sql = "UPDATE matchs SET idChief=$playerId, checked=TRUE WHERE id_match=$matchId";
     $req = $connexion->prepare($sql);
     $req->execute();
 }

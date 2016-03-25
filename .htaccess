@@ -1,11 +1,14 @@
+
 RewriteEngine On
 RewriteRule error.html$ view/templates/default/error.html [NC]
 
-#ErrorDocument 400 http://intranet.hehlan.intra/common/error.php?id=400&msg=Bad-Request
-#ErrorDocument 401 http://intranet.hehlan.intra/common/error.php?id=401&msg=Unauthorized-Access
-#ErrorDocument 402 http://intranet.hehlan.intra/common/error.php?id=402&msg=Payment-Required
-#ErrorDocument 403 http://intranet.hehlan.intra/common/error.php?id=403&msg=Access-Forbidden
-#ErrorDocument 404 http://intranet.hehlan.intra/common/error.php?id=404&msg=Page-Not-Found
+
+ErrorDocument 400 http://intranet.hehlan.intra/common/error.php?id=400&msg=Bad-Request
+ErrorDocument 401 http://intranet.hehlan.intra/common/error.php?id=401&msg=Unauthorized-Access
+ErrorDocument 402 http://intranet.hehlan.intra/common/error.php?id=402&msg=Payment-Required
+ErrorDocument 403 http://intranet.hehlan.intra/common/error.php?id=403&msg=Access-Forbidden
+ErrorDocument 404 http://intranet.hehlan.intra/common/error.php?id=404&msg=Page-Not-Found
+
 ErrorDocument 405 http://intranet.hehlan.intra/common/error.php?id=405&msg=Method-Not-Allowed
 ErrorDocument 406 http://intranet.hehlan.intra/common/error.php?id=406&msg=Not-Acceptable
 ErrorDocument 407 http://intranet.hehlan.intra/common/error.php?id=407&msg=Proxy-Authentification-Required

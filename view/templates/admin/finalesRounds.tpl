@@ -5,7 +5,6 @@
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/finalesRounds.css" >
         <script type="text/javascript" src="{#adminAssets#}/js/finales.js"></script>
-        <script type="text/javascript" src="{#domain#}/lib/jQuery/bracket/jquery.gracket.js"></script>  
     </head>
     <body role="document">
         {include file="admin/header.tpl" con=$con }
@@ -84,7 +83,7 @@
                                                             <td class="td_arbre_joueur_score{$clr[$j]}">
                                                                 <input type="text" name="s_{$tablo[$c][$m]}_{$j}_{$ma}"
                                                                     id="s_{$tablo[$c][$m]}_{$j}_{$ma}"
-                                                                    value="beuh" size="4" disabled="disabled">
+                                                                    value="beuh" size="4" >
 
                                                             </td>
                                                         {/for}

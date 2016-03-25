@@ -233,19 +233,21 @@ foreach ($groupes as $itGroupe => $groupe)
 }
 
 
-
-
 // ***************************************************************************
-$userId = $_GET['id'];
+//$userId = $_GET['user'];  //debug
+$userId = $_SESSION['id_joueur'];
+
 // faire la fonc ici qui va aller recuperer cette info dans la db
-$isChiefOfTeam = true; // pour l'intant true pour les tests
+$isChiefOfTeam = isChiefOfTeam($_SESSION['level']); //pour l'intant true pour les tests
+
 // faire la fonc qui va aller recuperer le nom de la team du gars en fct de son ID
-$teamName = 'BIT1';
+$teamName = getTeamName($userId, $database);
 
 $peekData = array(
     "userId" => $userId,
     "isChief" => $isChiefOfTeam,
-    "teamName" => $teamName);
+    "teamName" => $teamName,
+    "idTournoi" => $id_tournoi);
 // ***************************************************************************
 // Applying Template
 $smarty->assign("con", $connected);

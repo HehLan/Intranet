@@ -349,11 +349,14 @@ function get_day_from_string($chaine)
 function checkIsPickActive($dateTime_DebutMatch)
 { 
     // ********************************** test proposals
-                        return true;
+    //                  return true;
     // *************************************************
 
     // recuperer les valeures des jours et des heures
     $dateTime_Maintenant = date('Y-m-j H:i:s');
+    // debug to see it works    
+    //$dateTime_Maintenant = "2016-03-26 16:59:00";
+    //$dateTime_DebutMatch = "2016-03-26 17:00:00";
     $heure_DebutMatch = get_hour_from_string($dateTime_DebutMatch);
     $heure_Maintenant = get_hour_from_string($dateTime_Maintenant);
     $jour_DebutMatch = get_day_from_string($dateTime_DebutMatch);
@@ -404,6 +407,28 @@ function getRelativeTime($chaine)
 		return $retour['s'].'s';
 }
 
+function getTeamName($userId, $database){
+    $sql_func = 'SELECT nom FROM equipes_joueur LEFT JOIN equipes ON equipes_joueur.id_equipes=equipes.id_equipes WHERE id_joueur=:userId';
+    $query_func = new Query($database, $sql_func);
+    $query_func->bind(':userId', $userId, PDO::PARAM_STR);
+    if (!$query_func->execute())
+    {
+        global $glob_debug;
+        if($glob_debug)
+        {
+            echo 'ERREUR - SELECT VALEUR';
+        }
+        return "sans equipe";
+    }
+    $nom = $query_func->getResult()[0]['nom'];
+    return $nom;
+}
 
+function isChiefOfTeam($level){
+    if($level == 1)
+        return true;
+    else
+        return false;
+}
 ?>
  

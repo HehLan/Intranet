@@ -27,14 +27,17 @@
         initPickStateHeroes();
         initPhase();
         connectToSocketsServer();
+        
+        console.log("id : " + idPlayerWhoMakeChoise);
+        console.log("player" + playerId);
 
         // si pas a moi de choisir --> cacher les maps/heroes
-        if (idPlayerWhoMakeChoise !== playerId) {
+        if (idPlayerWhoMakeChoise === playerId) {
             showGrayBox();
         }
-        
-        window.onbeforeunload = function() {
-            if(pickDone)
+
+        window.onbeforeunload = function () {
+            if (pickDone)
                 deleteTempTables();
         };
     });
@@ -159,7 +162,7 @@
                     // terminer la session de pick pour les deux users
                     message = ['pickTerminated', playerId, matchId];
                     socket.send(message);
-                    
+
                     pickDone = true;
                     closeSocketConnection();
                     showResultsOfPick();
@@ -196,7 +199,7 @@
                 req: "updateDb",
                 mapId: mapId,
                 matchId: matchId,
-                opponentId: opponentId
+                playerId: playerId
             },
             success: function (data) {
                 console.log(data);
@@ -214,7 +217,7 @@
                 req: "updateDbHeroes",
                 heroId: heroId,
                 matchId: matchId,
-                opponentId: opponentId
+                playerId: playerId
             },
             success: function (data) {
                 console.log(data);
@@ -254,8 +257,8 @@
             cache: false
         });
     }
-    
-    function deleteTempTables(){
+
+    function deleteTempTables() {
         $.ajax({
             type: "POST",
             url: "common/pickTools.php",
@@ -310,7 +313,7 @@
             hideHeroes();
             hideGrayBox();
         }, 1500);
-        
+
 
         $.ajax({
             type: "POST",
@@ -328,7 +331,8 @@
     }
 
     function callback(paths) {
-        // freestyle here --> no more time to code clean :(
+        // freestyle here --> no more time to code clean :(  
+        // deal with it and have fun ^^
         var pickResultsDiv = $('#pickResults');
         var heroesPaths = paths;
         var mapPath = heroesPaths.pop();
@@ -347,7 +351,7 @@
                     '</div>');
             pickResultsDiv.append(selectedHero);
         });
-        
+
         pickResultsDiv.show();
     }
 

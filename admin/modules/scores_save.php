@@ -95,7 +95,7 @@ if($jpt > 1)
                 {
                     echo 'ERREUR SQL INSERT SCORE TEAM';
                 }
-                exit; 
+                exit;
             }
         }
     }
@@ -150,6 +150,6 @@ else
     }
 }
 
-header('Location: ../scores.php?id='.$id_tournoi);
+header('Location: ../scores.php?id_tournoi='.$id_tournoi);
 
 ?>
