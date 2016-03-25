@@ -105,10 +105,10 @@
 
                                                                     <!-- manage link to access the pick -->
                                                                     {if $groupe.resultTeams[sec1][sec2].isPickActive && 
-                                                                        ($groupe.teams[sec1].nom == $peekData.teamName 
-                                                                        || $groupe.teams[sec2].nom == $peekData.teamName)}
+                                                                        ($groupe.teams[sec1].nom == $peekData.teamName || $groupe.teams[sec2].nom == $peekData.teamName) && 
+                                                                        ($peekData.idTournoi == 1)}
                                                                         <div>
-                                                                            <a target="_blank" href="pick.php?id={$peekData.userId}&idMatch={$groupe.resultTeams[sec1][sec2].id_match}">Pick !</a>
+                                                                            <a target="_blank" href="pick.php?id={$peekData.userId}&idMatch={$groupe.resultTeams[sec1][sec2].id_match}" style="color : red;">Pick</a>
                                                                         </div>
                                                                     {/if}
                                                                 </td>

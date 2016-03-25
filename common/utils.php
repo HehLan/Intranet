@@ -423,5 +423,12 @@ function getTeamName($userId, $database){
     $nom = $query_func->getResult()[0]['nom'];
     return $nom;
 }
+
+function isChiefOfTeam($level){
+    if($level == 1)
+        return true;
+    else
+        return false;
+}
 ?>
  
