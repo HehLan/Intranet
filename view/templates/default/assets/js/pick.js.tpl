@@ -153,7 +153,8 @@
                     // terminer la session de pick pour les deux users
                     message = ['pickTerminated', playerId, matchId];
                     socket.send(message);
-
+                    
+                    deleteTempTables();
                     closeSocketConnection();
                     showResultsOfPick();
                 });
@@ -247,6 +248,22 @@
             cache: false
         });
     }
+    
+    function deleteTempTables(){
+        $.ajax({
+            type: "POST",
+            url: "common/pickTools.php",
+            data: {
+                req: "deleteTempTables",
+                matchId: matchId
+            },
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                // do nothing, just for waiting call ends
+            }
+        });
+    }
 
     function updatePickStateMaps() {
         return $.ajax({
@@ -283,8 +300,11 @@
     }
 
     function showResultsOfPick() {
-        hideHeroes();
-        hideGrayBox();
+        setTimeout(function () {
+            hideHeroes();
+            hideGrayBox();
+        }, 1500);
+        
 
         $.ajax({
             type: "POST",
@@ -302,9 +322,8 @@
     }
 
     function callback(paths) {
-        // freestyle here --> no more time :(
+        // freestyle here --> no more time to code clean :(
         var pickResultsDiv = $('#pickResults');
-
         var heroesPaths = paths;
         var mapPath = heroesPaths.pop();
 
@@ -324,7 +343,6 @@
         });
         
         pickResultsDiv.show();
-
     }
 
 

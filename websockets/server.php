@@ -39,6 +39,7 @@ class CustomServer extends WebSocketServer {
 
             // nouveau joueur demande de s'enregistrer
             case "identificate":
+                echo "\n identificate reveived\n";
                 $genId = $user;
                 $userId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
@@ -64,6 +65,7 @@ class CustomServer extends WebSocketServer {
 
             // suite au mapKick de l'un des players
             case "mapKicked":
+                echo "\n mapKicked reveived\n";
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
                 $opponentSocketId = $this->findOpponentGenId($matchId, $playerId);
@@ -71,6 +73,7 @@ class CustomServer extends WebSocketServer {
                 break;
 
             case "mapsTerminated":
+                echo "\n mapsTerminated reveived\n";
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
                 $opponentSocketId = $this->findOpponentGenId($matchId, $playerId);
@@ -78,6 +81,7 @@ class CustomServer extends WebSocketServer {
                 break;
 
             case "heroKicked":
+                echo "\n heroKicked reveived\n";
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
                 $opponentSocketId = $this->findOpponentGenId($matchId, $playerId);
@@ -93,6 +97,7 @@ class CustomServer extends WebSocketServer {
                 break;
 
             case "pickTerminated":
+                echo "\n pickTerminated reveived\n";
                 // supprimer les données des arrays
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
@@ -101,8 +106,8 @@ class CustomServer extends WebSocketServer {
                 $player2 = '';
                 
                 echo "pickTerminated received / matchId=".$matchId;
-                // supprimer les info concernant match
-                foreach ($this->connectedUsersArray as $value) {
+                // rechercher les ids des players pour ce math
+                foreach ($this->match_playersArray as $value) {
                     if($value['matchId'] === $matchId ){
                         // parser le duo et recuperer les ids
                         $player1 = $value['duo'][0];
@@ -113,26 +118,31 @@ class CustomServer extends WebSocketServer {
                     }
                 }
                 
-                echo "\n berore cleaning matchs\n";
-                echo count($this->match_playersArray);
+//                echo "\n berore cleaning matchs\n";
+//                echo count($this->match_playersArray);
                 
-                unset($this->match_playersArray[$matchId]);
+                // supprimer les info concernant match
+                foreach ($this->match_playersArray as $key => $match) {
+                    if($match['matchId'] === $matchId){
+                        unset($this->match_playersArray[$key]);
+                        break;
+                    }
+                }
                 
-                echo "\n after cleaning matchs\n";
-                echo count($this->match_playersArray);
+//                echo "\n after cleaning matchs\n";
+//                echo count($this->match_playersArray);
+//                
+//                echo "\n berore cleaning players\n";
+//                echo count($this->connectedUsersArray);
                 
-                echo "\n berore cleaning players\n";
-                echo count($this->connectedUsersArray);
+                foreach ($this->connectedUsersArray as $key => $player) {
+                    if($player['userId'] === $player1 || $player['userId'] === $player2){
+                        unset($this->connectedUsersArray[$key]);
+                    }
+                }
                 
-                unset($this->connectedUsersArray[$player1]);
-                
-                echo "\nplayer1 deleted\n";
-                echo count($this->connectedUsersArray);
-                
-                unset($this->connectedUsersArray[$player2]);
-                
-                echo "\nplayer2 deleted\n";
-                echo count($this->connectedUsersArray);
+//                echo "\nplayers deleted\n";
+//                echo count($this->connectedUsersArray);
                 
                 break;
 
@@ -142,8 +152,8 @@ class CustomServer extends WebSocketServer {
     }
 
     protected function closed($user) {
-        // log on server side
-        echo "\n Array state : " . count($this->connectedUsersArray) . " users connected \n";
+        echo "\n closeConnection reveived\n";
+        echo "\n Stats : " . count($this->connectedUsersArray) . " users connected \n";
     }
     
     

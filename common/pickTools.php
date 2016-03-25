@@ -53,6 +53,11 @@ switch ($req) {
         $pickResult = getPickResults($matchId, $connexion);
         echo $pickResult;
         break;
+    
+    case"deleteTempTables":
+        $matchId = $_POST['matchId'];
+        deleteTempTables($matchId, $connexion);
+        return "temp tables deleted";
 
     default :
         break;
@@ -159,6 +164,18 @@ function getPickResults($matchId, $connexion) {
     array_push($paths, $mapPath);
 
     return json_encode($paths);
+}
+
+function deleteTempTables($matchId, $connexion){
+    // delete table des maps
+    $sql = "DROP TABLE pick_$matchId";
+    $req = $connexion->prepare($sql);
+    $req->execute();
+    
+    // delete table des heroes
+    $sql = "DROP TABLE pickhero_$matchId";
+    $req = $connexion->prepare($sql);
+    $req->execute();
 }
 
 ?>
