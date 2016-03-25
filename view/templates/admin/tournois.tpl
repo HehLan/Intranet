@@ -52,7 +52,7 @@
                                         <button class="btn btn-primary" onclick="document.location.href = 'scores.php?id_tournoi={$tournoi['id_tournoi']}'">Gestion des pools brackets</button>
                                         <button class="btn btn-primary" onclick="document.location.href = 'groupes.php?id_tournoi={$tournoi['id_tournoi']}'">Gestion des groupes</button>
                                         {if $tournoi.id_tournoi != 3}
-                                            <button style="background-color: red" class="btn btn-primary" onclick="document.location.href = 'scores-old.php?id_tournoi={$tournoi['id_tournoi']}'">Gestion des pools (old)</button>
+                                            <button class="btn btn-primary" onclick="document.location.href = 'scores-old.php?id_tournoi={$tournoi['id_tournoi']}'">Gestion des pools (old)</button>
                                         {/if}
                                         
                                         <!-- MANAGE FINALS -->
@@ -130,7 +130,7 @@
         </div>
 
         
-        {include file="admin/footer.tpl"}
+        
 
 
         <div id="shadowing"></div>
@@ -168,6 +168,8 @@
                 <input type="submit" value="Créer" /><br>
             </form>
         </div>	
+        
+        {include file="admin/footer.tpl"}
 
     </body>
 </html>

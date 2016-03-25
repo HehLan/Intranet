@@ -105,7 +105,7 @@
                             </span></a>
                         </div>
                     {/foreach}                        
-                    <div id="cadre"</div>
+                    <div id="cadre"></div>
                 </div>
             </div>	
         </div>

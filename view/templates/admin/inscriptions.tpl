@@ -45,7 +45,7 @@
                                             {else}
                                                 <label class="col-lg-6"><input type="checkbox" value="{$row['id_joueur']}">{$row['pseudo']}</label>                                    
                                             {/if}
-                                            <input class="col-lg-5" type="text" id="Joueur{$ligne['1']}{$row['id_joueur']}" value="{$row['pseudoJeux'|cat:$ligne['1']]}">
+                                            <input class="col-lg-5" type="text" id="Joueur{$ligne['1']}{$row['id_joueur']}" disabled readonly value="{$row['pseudoJeux'|cat:$ligne['1']]}">
                                         </div>
                                     {/foreach}
                                 </div>

@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/common/var.conf.php');
+require_once(dirname(dirname(dirname(__FILE__))).'/common/var.conf.php');
 require_once(DOCUMENT_ROOT.'/common/utils.php');
 require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
 require_once(DOCUMENT_ROOT.'/class/Database.class.php');

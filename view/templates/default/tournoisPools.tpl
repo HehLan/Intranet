@@ -55,24 +55,36 @@
                             {else}                            
                                 <div role="tabpanel" class="tab-pane" id="tab-{$groupe['id_groupe']}">
                             {/if}
-                                    <div class="row">
-                                        <div id="components" class="col-lg-4">
-                                            <h4>Classement et résultats</h4>
-                                            <div id="bracket-{$groupe['id_groupe']}"></div>                                            
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <h4>Informations pratiques</h4>  
-                                            <ul> 
-                                                {$i = 0}
-                                                {section name=sec1 loop=$groupe.teams}                                                        
-                                                    {section name=sec2 loop=$groupe.teams}
-                                                        {if $groupe.teams[sec1].id < $groupe.teams[sec2].id}
-                                                            {$i = $i + 1}
-                                                            <li> Round {$i} : {$groupe.resultTeams[sec1][sec2].valeur}</li>                                                                
-                                                        {/if}                                                            
-                                                    {/section}                                                 
+                                    <div class="row">    
+                                        
+                                        <!-- Old system -->
+                                        <div class="col-lg-12">
+                                            {* <h4>Informations pratiques</h4> *}
+                                            {* <ul>  *}
+                                                {$n = 0} {* nombre d'équipe *}
+                                                {$r = 0} {* nombre de rounds *}
+                                                {section name=sec1 loop=$groupe.teams}  
+                                                    {$n = $n + 1}                                                 
                                                 {/section}
-                                            </ul>
+                                                {if $n % 2 == 0} {* si pair *}
+                                                    {$r = $n - 1}
+                                                {else} {* si impair *}
+                                                    {$r = $n}
+                                                {/if}
+                                                    
+                                                {* Parcours de la matrice *}
+                                                {for $a=1 to $n}
+                                                    {for $b=1 to $n}
+                                                        {* How to get hours here ? *}
+                                                    {/for}
+                                                {/for}
+                                                
+                                                {for $i=1 to $r}
+                                                    {* <li> Round {$i} : How to set the hours here ? </li> *}
+                                                {/for}                                                                                                  
+                                               
+                                            {* </ul> *}                                            
+                                            
                                             <h4>Matches</h4>
                                             <table class="col-lg-12 table_pool">
                                                 <tr>
@@ -105,6 +117,12 @@
                                                     </tr>
                                                 {/section}
                                             </table>
+                                        </div>
+                                           
+                                        <!-- New System -->
+                                        <div id="components" class="col-lg-12">
+                                            <h4>Classement et résultats</h4>
+                                            <div id="bracket-{$groupe['id_groupe']}"></div>                                            
                                         </div>
                                     </div>
                                 </div>

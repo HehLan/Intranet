@@ -3,8 +3,8 @@
 <html lang="fr">
     <head>
         {include file="admin/meta.tpl"}
-        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/score.css" />
-        <script type="text/javascript" src="{#domain#}/src/js/score_state.js"></script>
+        <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/scoresPools-old.css" />
+        <script type="text/javascript" src="{#adminAssets#}/js/scoresPools-old.js"></script>
     </head>
     <body role="document">
         {include file="admin/header.tpl" con=$con }
@@ -12,9 +12,9 @@
         <div id="container" class="container">
             <div id="contenu" class="row">
                 <h1>Qualifications {$tournoi['nomTournoi']}</h1>
-                <form method="POST" action="scores_save.php">
+                <form method="POST" action="modules/scores_save.php">
                     <input type="hidden" name="id_tournoi" value="{$tournoi.id_tournoi}">
-                    <input type="SUBMIT" value="Enregistrer">
+                    <input type="submit" value="Enregistrer">
                     <br>
                     {foreach from=$groupes item=groupe}
                         <table class="table_pool_lol">
@@ -44,7 +44,7 @@
                                                        value="1" onclick="active_score({$matchs[$team['id']][$team2['id']]['id_match']},{$team['id']})" />
                                                 <input type="text" name="score_m_{$matchs[$team['id']][$team2['id']]['id_match']}_p_{$team['id']}" 
                                                        id="score_m_{$matchs[$team['id']][$team2['id']]['id_match']}_p_{$team['id']}" 
-                                                       value="{$matchs[$team['id']][$team2['id']]['score']}" size="4" disabled="disabled" />
+                                                       value="{$matchs[$team['id']][$team2['id']]['score']}" size="4" />
                                             </td>
                                         {/if}
                                     {/foreach}	

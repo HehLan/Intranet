@@ -5,7 +5,7 @@
 
     $.ajax(
         {
-            url: 'common/bracket_get.php?id_tournoi=' + id + "&type=2" + "&finales_number=1",
+            url: 'common/bracket_get.php?id_tournoi=' + id + "&type=2" + "&number=1",
             type: 'GET',
             dataType: 'text',
             success: function (text, status)
