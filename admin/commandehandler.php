@@ -14,7 +14,15 @@
 				$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/commandListGroupes.tpl');
 				break;
 			case "getCommandes":
-				$smarty->assign('commandes', $database->getCommandes());
+				$commandes = $database->getCommandes();
+				foreach($commandes as $kc=>$commande)
+				{
+					$commandes[$kc]['joueur'] = $database->getJoueur($commande['id_joueur']);
+					$commandes[$kc]['date'] = getRelativeTime($commande['date']);
+					$commandes[$kc]['commande'] = $database->getCommande($commande['id_commande']);
+				}
+				//var_dump($commandes);
+				$smarty->assign('commandes', $commandes);
 				$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/commandListCommandes.tpl');
 				break;
 			case "updateArticleNom":

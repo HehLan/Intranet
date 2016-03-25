@@ -1,17 +1,41 @@
 {* Smarty *}
 {foreach $commandes item=commande}
-	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="headingOne">
+	<div class="panel panel-default" id-commande="{$commande.id_commande}">
+		<div class="panel-heading">
 		  <h4 class="panel-title">
-			<a role="button" data-toggle="collapse" data-parent="accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-			  Collapsible Group Item #1
-			</a>
+			<span class="glyphicon glyphicon-chevron-down commandeExpander glyphicon-white" 
+				role="tab" id="headingComm{$commande.id_commande}"
+				data-toggle="collapse" 
+				data-parent="#commandesList" href="#collapseComm{$commande.id_commande}" 
+				aria-expanded="true">
+			</span>
+			<span class="commande-nom">{$commande.joueur.pseudo}</span>
+			<div class="float-me">
+				<span class="commande-date">il y a {$commande.date}</span>
+				<i class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i>
+			</span>
 		  </h4>
 		</div>
-		<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-		  <div class="panel-body">
-			Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-		  </div>
+		<div id="collapseComm{$commande.id_commande}" class="panel-collapse collapse in" 
+			role="tabpanel" aria-labelledby="headingComm{$commande.id_commande}">
+			<div class="panel-body">
+				<div class="commande-description">
+					<div class="commande-items">
+					{foreach $commande.commande item=item}
+						<div class="commande-item">
+							<div class="commande-item-quantite col-md-2">{$item.quantite}X</div>
+							<div class="commande-item-nom col-md-4">{$item.nom}</div>
+							<div class="commande-item-grp col-md-4">{$item.grp}</div>
+							<div class="commande-item-prix col-md-2">{$item.prix} €</div>
+						</div>
+					{/foreach}
+					</div>
+					<div class="commande-closing-items">
+						<div class="commande-comment col-md-offset-1 col-md-8">{$commande.comment}</div>
+						<div class="commande-total col-md-2">TOTAL {$commande.total}€</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 {/foreach}

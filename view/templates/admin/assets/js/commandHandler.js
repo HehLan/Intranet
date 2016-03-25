@@ -106,7 +106,7 @@ $(document).on("click",".remove",function(){
 });
 
 // animate the glyphicon
-$(document).on('click','.articleExpander', function(){
+$(document).on('click','.articleExpander, .commandeExpander', function(){
 	var classCollapse = "glyphicon-chevron-up",
 		classExpand = "glyphicon-chevron-down";
 	if($(this).hasClass(classCollapse)){

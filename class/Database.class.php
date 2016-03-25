@@ -97,6 +97,28 @@ class Database
         }
         return $player;
     }    
+    public function getJoueur($idJoueur)
+    {
+        $sql = 'SELECT * FROM joueurs WHERE id_joueur=:idj';       
+        $query = new Query($this, $sql); 
+        $query->bind(':idj', $idJoueur, PDO::PARAM_INT);
+		$player = null;
+        if($query->execute())
+        {
+            if(!($query->getResult()==null))
+            {
+                $player = $query->getResult()[0];
+            }
+        }
+        else
+        {
+            GLOBAL $glob_debug;
+            if ($glob_debug)
+                    echo 'ERROR GET JOUEUR';
+            exit; 
+        }
+        return $player;
+    }    
     
     public function getNavTournois()
     {
