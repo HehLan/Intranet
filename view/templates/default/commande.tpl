@@ -12,7 +12,9 @@
             <div class="row" id="contenu">
                 <h2>Commande</h2>
                 <div id="commandList">
-                    {include file="default/commandeList.tpl"}
+                    <div class="panel-group" id="commandesList">
+							Aucune commande trouvée
+					</div>
                 </div>
             </div>
         </div>                

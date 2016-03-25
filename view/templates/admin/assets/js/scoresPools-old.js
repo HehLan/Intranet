@@ -20,6 +20,7 @@ function active_score2(idm, m, idt)
         document.getElementById('score_m_' + idm + '_ma_' + m + '_p_' + idt).disabled = true;
     }
 }
+
 function popup_heure(idm)
 {
     document.getElementById('input_id_match').value = idm;
