@@ -85,7 +85,7 @@
                                                
                                             {* </ul> *}                                            
                                             
-                                            <h4>Matches</h4>
+                                            <h2>Matches</h2>
                                             <table class="col-lg-12 table_pool">
                                                 <tr>
                                                     <th class="th_title_pool"></th>
@@ -121,7 +121,7 @@
                                            
                                         <!-- New System -->
                                         <div id="components" class="col-lg-12">
-                                            <h4>Classement et résultats</h4>
+                                            <h2>Classement et résultats</h2>
                                             <div id="bracket-{$groupe['id_groupe']}"></div>                                            
                                         </div>
                                     </div>
