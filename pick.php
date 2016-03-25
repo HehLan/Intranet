@@ -2,9 +2,14 @@
 
 require_once('common/head.php');
 
+// protection ici pour voir si le match "matche" (vive la tautologie) bien avec le joueur
+// TODO
+// aller chequer dans la db si idPlayer&&idMatch "exists" or smth like that
+
 $connexion = $database->getConnection();
 $matchId = $_GET['idMatch'];
 $playerId = $_GET['id'];
+//$playerId = $_SESSION['idJoueur']; // can't --> problem with something, to lazy to debug
 $playerNickname;
 $opponentId;
 $opponentNickname;

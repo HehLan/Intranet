@@ -1,7 +1,8 @@
 <?php
 
 require_once('./websockets.php');
-/*
+
+/*  dans le shell de apache
 
   cd htdocs\Intranet\websockets
   php server.php
@@ -14,6 +15,7 @@ class CustomServer extends WebSocketServer {
     protected $connectedUsersArray;
     // objets type "array(){ matchId : $var, duo : [$user1Id, $user2Id] }"
     protected $match_playersArray;
+    
 
     protected function connected($user) {
         // *************** constructor **************
@@ -21,6 +23,7 @@ class CustomServer extends WebSocketServer {
             $this->connectedUsersArray = array();
         if ($this->match_playersArray == NULL)
             $this->match_playersArray = array();
+        // ******************************************
 
         // demander userId et matchId
         $this->send($user, "identificate");
@@ -73,14 +76,14 @@ class CustomServer extends WebSocketServer {
                 $opponentSocketId = $this->findOpponentGenId($matchId, $playerId);
                 $this->send($opponentSocketId, "mapsTerminated");
                 break;
-            
+
             case "heroKicked":
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
                 $opponentSocketId = $this->findOpponentGenId($matchId, $playerId);
                 $this->send($opponentSocketId, "heroKicked");
                 break;
-            
+
             case "heroesTerminated":
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
@@ -88,7 +91,48 @@ class CustomServer extends WebSocketServer {
                 $this->send($opponentSocketId, "heroesTerminated");
                 break;
 
-            case "onclose":
+            case "pickTerminated":
+                // supprimer les données des arrays
+                $playerId = $parsedMessage[1];
+                $matchId = $parsedMessage[2];
+
+                $player1 = '';
+                $player2 = '';
+                
+                echo "pickTerminated received / matchId=".$matchId;
+                // supprimer les info concernant match
+                foreach ($this->connectedUsersArray as $key => $value) {
+                    if($value['matchId'] === $matchId ){
+                        // parser le duo et recuperer les ids
+                        $player1 = $value['duo'][0];
+                        $player2 = $value['duo'][1];
+                        echo "\n p1=".$player1;
+                        echo "\n p2=".$player2;
+                        break;;
+                    }
+                }
+                
+                echo "\n berore cleaning matchs\n";
+                var_dump($this->match_playersArray);
+                
+                unset($this->match_playersArray[$matchId]);
+                
+                echo "\n after cleaning matchs\n";
+                var_dump($this->match_playersArray);
+                
+                echo "\n berore cleaning players\n";
+                var_dump($this->connectedUsersArray);
+                
+                unset($this->connectedUsersArray[$player1]);
+                
+                echo "\nplayer1 deleted\n";
+                var_dump($this->connectedUsersArray);
+                
+                unset($this->connectedUsersArray[$player2]);
+                
+                echo "\nplayer2 deleted\n";
+                var_dump($this->connectedUsersArray);
+                
                 break;
 
             default:
@@ -97,11 +141,13 @@ class CustomServer extends WebSocketServer {
     }
 
     protected function closed($user) {
-        $this->kickUserOut($user);
         // log on server side
         echo "\n Array state : " . count($this->connectedUsersArray) . " users connected \n";
-        echo " *********************** DISCONNECT !!!!!! *********************** \n\n\n";
     }
+    
+    
+    
+    
 
     // ******************************************************
     // ********************* FUNCTIONS **********************
@@ -195,17 +241,12 @@ class CustomServer extends WebSocketServer {
 
         return $opponentSocketId;
     }
-
-    // delete user from "connectedUsers" array when user disconnects
-    protected function kickUserOut($user) {
-        if (($key = array_search($user, $this->connectedUsersArray)) !== false) {
-            unset($this->connectedUsersArray[$key]);
-        }
-        echo "\n";
-        echo "User disconnected \n";
-    }
-
 }
+
+
+
+
+
 
 // launch websockets server
 $server = new CustomServer("127.0.0.1", "9000");

@@ -106,7 +106,7 @@ function saveMap($matchId, $connexion){
     $req->execute();
 }
 
-// fonction qui va sauvegarder la map restante dans la table matchs
+// fonction qui va sauvegarder les heros sous JSON dans la table matchs
 function saveHeroes($matchId, $connexion){
     $sql = "SELECT heroId FROM pickhero_$matchId WHERE checked=TRUE";
     $req = $connexion->prepare($sql);

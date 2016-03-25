@@ -142,17 +142,26 @@
                 // notifier l'opponent qu'un hero a été "kick" et c'est son tour
                 var message = ["heroKicked", playerId, matchId];
                 socket.send(message);
-            } else {
-                $.when(updatePickStateHeroes(), saveChoosenHeroes()).done(function () {
-                    // notifier l'opponent que le "pick" des heros est terminé on a pick 6 
+            } else
+            {
+                // sauvegarder les données sous JSON dans la bd
+                $.when(saveChoosenHeroes()).done(function () {
+                    // notifier l'opponent que le "pick" des heros est terminé on a pick 6 heroes
                     var message = ['heroesTerminated', playerId, matchId];
                     socket.send(message);
 
-                    // fermer la connection
-                    message = ['close', playerId, matchId];
+                    // terminer la session de pick pour les deux users
+                    message = ['pickTerminated', playerId, matchId];
                     socket.send(message);
 
-                    hideGrayBox();
+                    // faire ça pour eviter que lorsque le garybox est hide,  
+                    // user click provque un quelconque event. (see line 125)
+                    $.when(updatePickStateHeroes()).done(function () {
+                        grayBox.hide();
+                    });
+                    
+                    closeSocketConnection();
+                    //showResultsOfPick();
                 });
             }
         });
@@ -231,7 +240,6 @@
     }
 
     function saveChoosenHeroes() {
-        console.log("dans saveChoosenHeroes");
         return $.ajax({
             type: "POST",
             url: "common/pickTools.php",
@@ -239,14 +247,11 @@
                 req: "saveHeroes",
                 matchId: matchId
             },
-            success: function (data) {
-                console.log("data recu du serv");
-                console.log(data);
+            success: function () {
                 // do nothing, just for waiting call ends
             },
             cache: false
         });
-        console.log("fin saveChoosenHeroes");
     }
 
     function updatePickStateMaps() {
@@ -279,9 +284,7 @@
         });
     }
 
-    function hideBox() {
-        hideGrayBox();
-    }
+
 
     // *************************************************************
     // ******************** Sockets ********************************
@@ -332,10 +335,9 @@
                         break;
 
                     case "heroesTerminated":
-                        $.when(updatePickStateHeroes()).done(function () {
-                            updateHeroesUI();
-                            hideGrayBox();
-                        });
+                        console.log("heroesTerminated received");
+                        closeSocketConnection();
+                        //showResultsOfPick();
                         break;
 
                     default:
@@ -347,7 +349,7 @@
         }
     }
 
-    function closeConnectionWebSocket() {
+    function closeSocketConnection() {
         if (socket != null) {
             socket.close();
             socket = null;
@@ -422,6 +424,14 @@
 
     function showHeroes() {
         $("#heroesContainer").css('display', 'block');
+    }
+
+    function hideHeroes() {
+        $('#heroesContainer').css('display', 'none');
+    }
+
+    function showResultsOfPick() {
+
     }
 
 </script>
