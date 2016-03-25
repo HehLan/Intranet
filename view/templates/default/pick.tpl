@@ -29,6 +29,7 @@
                     <br>
                     <br>
                     <button onclick="hideBox();">hide grayBox</button>
+                    <button onclick="showResultsOfPick();">test</button>
                 </div>
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10" id="middleDiv">
@@ -56,6 +57,9 @@
                             </div>
                         {/foreach}
                     </div>
+                    <div class="row" id="pickResults" style="display: none;">
+                    </div>
+                    
                 </div>
 
                 <div id="iconPlayer2" class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">

@@ -154,14 +154,8 @@
                     message = ['pickTerminated', playerId, matchId];
                     socket.send(message);
 
-                    // faire ça pour eviter que lorsque le garybox est hide,  
-                    // user click provque un quelconque event. (see line 125)
-                    $.when(updatePickStateHeroes()).done(function () {
-                        grayBox.hide();
-                    });
-                    
                     closeSocketConnection();
-                    //showResultsOfPick();
+                    showResultsOfPick();
                 });
             }
         });
@@ -284,7 +278,40 @@
         });
     }
 
+    function hideBox() {
+        grayBox.hide();
+    }
 
+    function showResultsOfPick() {
+        hideHeroes();
+        hideGrayBox();
+
+        var pickResultsDiv = $('#pickResults');
+
+        paths = [];
+        
+
+        $.ajax({
+            type: "POST",
+            url: "common/pickTools.php",
+            data: {
+                req: "getResultsOfPick",
+                matchId: matchId
+            },
+            cache: false,
+            success: function (data) {
+                paths = JSON.parse(data);
+                console.log(paths);
+
+                //mapPath = data[0];
+                //console.log(mapPath);
+
+                //heroesPaths.push();
+                //console.log(data);
+                // do nothing, just for waiting call ends
+            },
+        });
+    }
 
     // *************************************************************
     // ******************** Sockets ********************************
@@ -337,7 +364,7 @@
                     case "heroesTerminated":
                         console.log("heroesTerminated received");
                         closeSocketConnection();
-                        //showResultsOfPick();
+                        showResultsOfPick();
                         break;
 
                     default:
@@ -430,8 +457,6 @@
         $('#heroesContainer').css('display', 'none');
     }
 
-    function showResultsOfPick() {
 
-    }
 
 </script>

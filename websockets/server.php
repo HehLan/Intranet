@@ -85,6 +85,7 @@ class CustomServer extends WebSocketServer {
                 break;
 
             case "heroesTerminated":
+                echo "\n heroesTerminated reveived\n";
                 $playerId = $parsedMessage[1];
                 $matchId = $parsedMessage[2];
                 $opponentSocketId = $this->findOpponentGenId($matchId, $playerId);
@@ -101,7 +102,7 @@ class CustomServer extends WebSocketServer {
                 
                 echo "pickTerminated received / matchId=".$matchId;
                 // supprimer les info concernant match
-                foreach ($this->connectedUsersArray as $key => $value) {
+                foreach ($this->connectedUsersArray as $value) {
                     if($value['matchId'] === $matchId ){
                         // parser le duo et recuperer les ids
                         $player1 = $value['duo'][0];
@@ -113,25 +114,25 @@ class CustomServer extends WebSocketServer {
                 }
                 
                 echo "\n berore cleaning matchs\n";
-                var_dump($this->match_playersArray);
+                echo count($this->match_playersArray);
                 
                 unset($this->match_playersArray[$matchId]);
                 
                 echo "\n after cleaning matchs\n";
-                var_dump($this->match_playersArray);
+                echo count($this->match_playersArray);
                 
                 echo "\n berore cleaning players\n";
-                var_dump($this->connectedUsersArray);
+                echo count($this->connectedUsersArray);
                 
                 unset($this->connectedUsersArray[$player1]);
                 
                 echo "\nplayer1 deleted\n";
-                var_dump($this->connectedUsersArray);
+                echo count($this->connectedUsersArray);
                 
                 unset($this->connectedUsersArray[$player2]);
                 
                 echo "\nplayer2 deleted\n";
-                var_dump($this->connectedUsersArray);
+                echo count($this->connectedUsersArray);
                 
                 break;
 
