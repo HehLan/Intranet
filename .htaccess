@@ -1,3 +1,6 @@
+RewriteEngine On
+RewriteRule error.html$ view/templates/default/error.html [NC]
+
 ErrorDocument 400 http://intranet.hehlan.intra/common/error.php?id=400&msg=Bad-Request
 ErrorDocument 401 http://intranet.hehlan.intra/common/error.php?id=401&msg=Unauthorized-Access
 ErrorDocument 402 http://intranet.hehlan.intra/common/error.php?id=402&msg=Payment-Required
@@ -24,12 +27,3 @@ ErrorDocument 502 http://intranet.hehlan.intra/common/error.php?id=502&msg=Bad-G
 ErrorDocument 503 http://intranet.hehlan.intra/common/error.php?id=503&msg=Service-Unavailable
 ErrorDocument 504 http://intranet.hehlan.intra/common/error.php?id=504&msg=Gateway-Timeout
 ErrorDocument 505 http://intranet.hehlan.intra/common/error.php?id=505&msg=HTTP-Version-Not-Supported
-
-
-
-
-
-
-
-
-

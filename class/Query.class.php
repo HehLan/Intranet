@@ -52,8 +52,9 @@ class Query
 						echo $e;
                 }
             } else {
-                return true;
-            }
+				// Validate outcome for insert and update (no output to fetch)
+				return true;
+			}
         }
         else
         {

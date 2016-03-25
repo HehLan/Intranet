@@ -142,7 +142,7 @@
     border-radius: 3px;
     padding: 0 15px;
 }
-::-webkit-scrollbar
+/*::-webkit-scrollbar
 {
     color: #fff;
     background-color: #000;
@@ -167,4 +167,4 @@
 }
 #liste_joueur::-webkit-scrollbar-thumb:hover {
     background-color: #aaa;
-}
+}*/

@@ -1,86 +1,83 @@
 <?php
+require_once('../common/head.php');
 
-session_start();
-require_once('../../common/var.conf.php');
-require_once(DOCUMENT_ROOT.'/common/utils.php');
-require_once(DOCUMENT_ROOT.'/class/Smarty_HEHLan.class.php');
-require_once(DOCUMENT_ROOT.'/class/Database.class.php');
-require_once(DOCUMENT_ROOT.'/class/Auth.class.php');
-require_once(DOCUMENT_ROOT.'/class/Query.class.php');
+$id_equipes = $_POST['id_equipes'];
 
-$connected = false;
-$allowed = false;
-$chatIsActive = false;
-$database = new Database();
-$smarty = new Smarty_HEHLan();
-
-
-$connexion = $database->getConnection();
-
-
-$id_equipes=$_POST['id_equipes'];
-
-require_once("connect.php");
-$query="SELECT j.pseudo, empl.id_emplacement, e.nom
-FROM `equipes_joueur` AS `ej` , `joueurs` AS `j` , `equipes` AS `e` , `emplacement` AS `empl`
-WHERE ej.id_joueur = j.id_joueur
-AND ej.id_equipes = :id_equipes
-AND ej.id_equipes = e.id_equipes
-AND j.id_emplacement = empl.id_emplacement";
-
-$requete_preparee=$connexion->prepare($query);
-$requete_preparee->bindValue("id_equipes",$id_equipes,PDO::PARAM_INT);
-$requete_preparee->execute();
-echo "<script type='text/javascript'>";
-
-while($emplacements=$requete_preparee->fetch()) 
-
+$sql = "SELECT j.pseudo, empl.id_emplacement, e.nom
+	FROM `equipes_joueur` AS `ej` , `joueurs` AS `j` , `equipes` AS `e` , `emplacement` AS `empl`
+	WHERE ej.id_joueur = j.id_joueur
+	AND ej.id_equipes = :id_equipes
+	AND ej.id_equipes = e.id_equipes
+	AND j.id_emplacement = empl.id_emplacement";
+$query = new Query($database, $sql);
+$query->bind('id_equipes', $id_equipes, PDO::PARAM_INT);
+if ($query->execute())
 {
-    echo "$('#".$emplacements['id_emplacement']."').css({background : '#ffaca3'});"; 
-   
+    $emplacements = $query->getResult();
 }
-echo "$('#dialogInfo_equipe').css({display:'block'});";
-echo "</script>";
-
-echo "<center><u>Information equipe :</u></center>";   
-
-$query2="SELECT equipes.nom,pseudo FROM (equipes) LEFT JOIN (equipes_joueur,joueurs) 
-ON (joueurs.id_joueur=equipes_joueur.id_joueur and equipes_joueur.id_equipes='$id_equipes') 
-WHERE  equipes.id_equipes='$id_equipes' ORDER BY pseudo ASC ";
- 
-$requete_preparee1=$connexion->prepare($query2);
-$requete_preparee1->bindValue("id_equipes",$id_equipes,PDO::PARAM_INT);
-$requete_preparee1->execute();
-
-$pseudo=array();
-$nomequipes=array();
-$nbre=0;
-while($equipe=$requete_preparee1->fetch()) 
-
+else
 {
-    $nomequipes[]=$equipe['nom'];
-    $pseudo[]=$equipe['pseudo'];$nbre++;
+	global $glob_debug;
+	if($glob_debug)
+		echo 'ERREUR SQL EMPLACEMENTS EQUIPE';
+    exit;
 }
-echo "<u>Team :</u>";
-if($nbre>0) echo $nomequipes[0];
- echo "<br>";
-echo "<u>Pseudo Joueur :</u>";
-echo implode(', ', $pseudo);
 
 
-$query2="SELECT nomTournoi FROM equipes_tournoi,tournoi where equipes_tournoi.id_equipe='$id_equipes' and tournoi.id_tournoi=equipes_tournoi.id_tournoi";
- 
-$requete_preparee2=$connexion->prepare($query2);
-$requete_preparee2->bindValue("id_equipes",$id_equipes,PDO::PARAM_INT);
-$requete_preparee2->execute();
-   echo "<br>";
-    echo "<u>Tournoi :</u>";
-    $nomTournoi=array();
-while($equipe1=$requete_preparee2->fetch()) 
-
+$pseudo = array();
+$nomequipes = array();
+$sql = "SELECT pseudo,equipes.nom 
+	FROM equipes_joueur,joueurs,equipes 
+	WHERE joueurs.id_joueur=equipes_joueur.id_joueur 
+	AND equipes_joueur.id_equipes=:id_equipes 
+	AND equipes.id_equipes=equipes_joueur.id_equipes 
+	ORDER BY pseudo ASC ";
+$query = new Query($database, $sql);
+$query->bind('id_equipes', $id_equipes, PDO::PARAM_INT);
+if ($query->execute())
 {
-    $nomTournoi[]=$equipe1['nomTournoi']; 
-} 
-echo implode(', ', $nomTournoi);
+    $equipes = $query->getResult();
+	foreach($equipes as $equipe) {
+		$nomequipes[] = $equipe['nom'];
+		$pseudo[] = $equipe['pseudo'];
+	}
+}
+else
+{
+	global $glob_debug;
+	if($glob_debug)
+		echo 'ERREUR SQL PSEUDO EQUIPE';
+    exit;
+}
 
+
+$nomTournoi = array();
+$sql = "SELECT nomTournoi 
+	FROM equipes_tournoi, tournoi 
+	WHERE equipes_tournoi.id_equipe=:id_equipes 
+	AND tournoi.id_tournoi=equipes_tournoi.id_tournoi";
+$query = new Query($database, $sql);
+$query->bind('id_equipes', $id_equipes, PDO::PARAM_INT);
+if ($query->execute())
+{
+    $tournois = $query->getResult();
+	foreach($tournois as $tournoi) {
+		$nomTournoi[] = $tournoi['nomTournoi'];
+	}
+}
+else
+{
+	global $glob_debug;
+	if($glob_debug)
+		echo 'ERREUR SQL TOURNOIS EQUIPE';
+    exit;
+}
+
+
+$smarty->assign('emplacements',$emplacements);
+$smarty->assign('nomequipe',$nomequipes[0]);
+$smarty->assign('pseudo',implode(', ', $pseudo));
+$smarty->assign('nomtournoi',implode(', ', $nomTournoi));
+
+$smarty->display('admin/color_equipe.tpl');
 ?>

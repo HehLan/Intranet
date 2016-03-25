@@ -1,0 +1,1 @@
+SELECT numero FROM emplacement WHERE id_emplacement=:idp;

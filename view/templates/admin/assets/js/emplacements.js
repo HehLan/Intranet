@@ -7,16 +7,6 @@ $(document).ready(function()
         $('.place').css({background : "none"});
         $('#'+$('#SelectPseudo').val()).css({background : "#9ba0ee"});
         valeur = $('#SelectPseudo').val();
-        $.ajax(
-        { 
-            type: "POST", 
-            url: "modules/info_joueur.php",
-            data: "id_emplacement=" + valeur,
-            success : function(contenu,etat)
-            { 
-                $("#dialogInfo_joueur").html(contenu);
-            }
-        });
     });
    
     //colorie la place pour le select emplacement
@@ -32,10 +22,11 @@ $(document).ready(function()
         $("#dialogInfo_joueur").css({display :"none"});
         $('.place').css({background : "none"});
         valeur=$('#SelectEquipe').val();
+		console.log(valeur);
         $.ajax(
         { 
             type: "POST", 
-            url: "modules/color_equipe.php",
+            url: "../modules/color_equipe.php",
             data: "id_equipes=" + valeur,
             success : function(contenu,etat)
             { 
@@ -45,5 +36,3 @@ $(document).ready(function()
         });  
    });
 });
-
-

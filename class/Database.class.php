@@ -97,6 +97,28 @@ class Database
         }
         return $player;
     }    
+    public function getJoueur($idJoueur)
+    {
+        $sql = 'SELECT * FROM joueurs WHERE id_joueur=:idj';       
+        $query = new Query($this, $sql); 
+        $query->bind(':idj', $idJoueur, PDO::PARAM_INT);
+		$player = null;
+        if($query->execute())
+        {
+            if(!($query->getResult()==null))
+            {
+                $player = $query->getResult()[0];
+            }
+        }
+        else
+        {
+            GLOBAL $glob_debug;
+            if ($glob_debug)
+                    echo 'ERROR GET JOUEUR';
+            exit; 
+        }
+        return $player;
+    }    
     
     public function getNavTournois()
     {
@@ -288,7 +310,7 @@ class Database
     
     public function getLocations_2($idPlayer)
     {
-        $sql = file_get_contents('src/sql/getLocations_2.sql');
+        $sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/getLocations_2.sql');
         $query = new Query($this, $sql);
         $query->bind(':idPlayer', $idPlayer, PDO::PARAM_INT);
         if($query->execute())
@@ -305,7 +327,7 @@ class Database
     
     public function getLocations_3($idPlayer)
     {
-        $sql = file_get_contents('src/sql/getLocations_3.sql');
+        $sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/getLocations_3.sql');
         $query = new Query($this, $sql);
         $query->bind(':idPlayer', $idPlayer, PDO::PARAM_INT);
         if($query->execute())
@@ -547,6 +569,74 @@ class Database
 	}
 	
 	///////////////////////////////////////////////
+	///////////////////////PLACES//////////////////
+	///////////////////////////////////////////////
+	public function getPlaceJoueurData($idPlace)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/getJoueurData.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idp', $idPlace, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET JOUEUR DATA FROM EMPLACEMENT';
+			return 0;
+		}
+	}
+	public function getPlaceNumero($idPlace)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/getNumeroEmplacement.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idp', $idPlace, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET NUMERO EMPLACEMENT';
+			return 0;
+		}
+	}
+	public function getPlaceJoueur($idPlace)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/getJoueur.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idp', $idPlace, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL GET JOUEUR EMPLACEMENT';
+			return 0;
+		}
+	}
+	public function setPlace($idPlace, $pseudoJoueur)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/place/updateEmplacement.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idp', $idPlace, PDO::PARAM_INT);
+		$query->bind(':p', $pseudoJoueur, PDO::PARAM_STR);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL SET EMPLACEMENT';
+			return 0;
+		}
+	}
+	
+	///////////////////////////////////////////////
 	/////////////////////COMMANDES/////////////////
 	///////////////////////////////////////////////
 	public function getArticles()
@@ -565,7 +655,7 @@ class Database
 			return 0;
 		}
 	}
-	public function getGroupes()
+	public function getGroupesArticles()
 	{
 		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/getGroupes.sql');
 		$query = new Query($this,$sql);
@@ -628,6 +718,106 @@ class Database
 			GLOBAL $glob_debug;
 			if ($glob_debug)
 					echo 'ERREUR SQL GET COMMANDES FROM JOUEUR';
+			return 0;
+		}
+	}
+	public function updateArticleNom($idArticle, $nomArticle)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/updateArticleNom.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':ida', $idArticle, PDO::PARAM_INT);
+		$query->bind(':nom', $nomArticle, PDO::PARAM_STR);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL SET NOM ARTICLE';
+			return 0;
+		}
+	}	
+	public function updateArticleDescription($idArticle, $descriptionArticle)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/updateArticleDescription.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':ida', $idArticle, PDO::PARAM_INT);
+		$query->bind(':desc', $descriptionArticle, PDO::PARAM_STR);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL SET DESCRIPTION ARTICLE';
+			return 0;
+		}
+	}	
+	public function insertArticle()
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/insertArticle.sql');
+		$query = new Query($this,$sql);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL INSERT ARTICLE';
+			return 0;
+		}
+	}
+	public function removeArticle($idArticle)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/delArticle.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':ida', $idArticle, PDO::PARAM_INT);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL REMOVE ARTICLE';
+			return 0;
+		}
+	}
+	public function setCommandeAsDisponible($idCommande)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/setDisponible.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idc', $idCommande, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL MARK COMMANDE AS DISPONIBLE';
+			return 0;
+		}
+	}
+	public function setCommandeAsPaye($idCommande)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/setPaye.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idc', $idCommande, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL MARK COMMANDE AS PAYE';
+			return 0;
+		}
+	}
+	public function setCommandeAsCommanded($idCommande)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/setCommanded.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idc', $idCommande, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL MARK COMMANDE AS COMMANDED';
 			return 0;
 		}
 	}

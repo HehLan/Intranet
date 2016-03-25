@@ -8,8 +8,6 @@ $players = $database->getLogins();
 $teams = $database->getTeams();
 
 // Applying Template
-$smarty->assign("next_matches", $database->getNextMatches($connected));
-$smarty->assign("navTournois", $database->getNavTournois());
 $smarty->assign("emplacements", $locations);
 $smarty->assign("emplacements1", $locations_1);
 $smarty->assign("joueurs", $players);
