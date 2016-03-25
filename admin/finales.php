@@ -476,7 +476,7 @@ if( $tournoi['joueurParTeam'] > 1)
 }
 else
 {
-    include_once('/modules/finalesRounds.php');
+    include_once('/modules/finalesRounds-old.php');
 }
 
 ?>

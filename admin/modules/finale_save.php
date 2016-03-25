@@ -280,6 +280,6 @@ else
 	}		
     }
 }
-header('Location: finales.php?id_tournoi='.$id_tournoi.'&looser='.$_POST['looser']);
+header('Location: ../finales.php?id_tournoi='.$id_tournoi.'&looser='.$_POST['looser']);
 
 ?>

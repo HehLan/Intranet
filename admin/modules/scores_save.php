@@ -95,7 +95,7 @@ if($jpt > 1)
                 {
                     echo 'ERREUR SQL INSERT SCORE TEAM';
                 }
-                exit; 
+                exit;
             }
         }
     }
