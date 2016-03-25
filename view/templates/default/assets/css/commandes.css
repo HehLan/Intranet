@@ -12,7 +12,7 @@
 }
 .commande-closing-items {
 }
-.glyphicon {
+.commandeExpander {
 	cursor: pointer;
 }
 
@@ -21,6 +21,10 @@
 .float-me {
 	float: right;
 }
-.float-me span {
+.float-me .commandeExpander {
 	padding: 0 10px;
+}
+
+#commande-form {
+	color: #000;
 }

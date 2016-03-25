@@ -22,15 +22,6 @@
 <script type="text/javascript" src="{#domain#}/lib/Bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{#domain#}/lib/Less/less.js"></script>
 
-
-<script type="text/javascript" src="{#domain#}/lib/baconjs/Bacon-1ab32ffb.min.js"></script>
-<script type="text/javascript" src="{#domain#}/lib/lodash/lodash-2.2.1.min.js"></script>
-<script type="text/javascript" src="{#domain#}/lib/live/live.js"></script>
-<script type="text/javascript" src="{#domain#}/lib/handlebars/handlebars.1.0.0.js"></script>
-<script type="text/javascript" src="{#domain#}/lib/jquery.group.min.js"></script>
-
-
-
 <script type="text/javascript" src="{#domain#}/src/js/menu.js"></script>
 <script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
 <script type="text/javascript" src="{#domain#}/src/js/init.js"></script>

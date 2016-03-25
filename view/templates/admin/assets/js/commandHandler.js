@@ -94,7 +94,7 @@ $(document).on('click','.commanded',function(){
 				'idCommande' : idCom
 			},
 			function(data){
-				e.css({'color' : 'darkblue'});
+				e.css({'color' : 'blue'});
 			}
 		);
 	}
