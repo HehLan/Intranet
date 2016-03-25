@@ -49,7 +49,7 @@
                                                    {else}
                                                        value=""
                                                    {/if}
-                                                   size="4" disabled="disabled">								
+                                                   size="4">								
                                         </td>
                                     {/for}
                                     <td class="td_total_pool_tm">{$joueur['total']}</td>
@@ -64,7 +64,7 @@
                                                 <input type="checkbox" name="cb_m_{$groupe['id_match']}_ma_{$i}_p_{$inscrit['id']}" 
                                                        value="1" onclick="active_score2({$groupe['id_match']},{$i},{$inscrit['id']})"> 
                                                 <input type="text" name="score_m_{$groupe['id_match']}_ma_{$i}_p_{$inscrit['id']}" 
-                                                       id="score_m_{$groupe['id_match']}_ma_{$i}_p_{$inscrit['id']}" value="" size="4" disabled="disabled">
+                                                       id="score_m_{$groupe['id_match']}_ma_{$i}_p_{$inscrit['id']}" value="" size="4">
                                             </td>
                                         {/for}
                                         <td class="td_total_pool_tm"></td>
