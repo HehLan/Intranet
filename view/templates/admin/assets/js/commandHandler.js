@@ -42,6 +42,67 @@ $(function(){
 });
 
 ///////////////////
+//	COMMANDES
+///////////////////
+
+$(document).on('click','.paid',function(){
+	var e =$(this),
+		idCom = e.closest('.panel').attr("id-commande"),
+		state = e.attr("commande-status");
+	if(state='0')
+	{		
+		$.post(
+			'commandehandler.php',
+			{
+				'action' : 'isPaye',
+				'idCommande' : idCom
+			},
+			function(data){
+				e.css({'color' : 'goldenrod'});
+			}
+		);
+	}
+});
+$(document).on('click','.received',function(){
+	var e =$(this),
+		idCom = e.closest('.panel').attr("id-commande"),
+		state = e.attr("commande-status");
+	if(state='0')
+	{		
+		$.post(
+			'commandehandler.php',
+			{
+				'action' : 'isDisponible',
+				'idCommande' : idCom
+			},
+			function(data){
+				e.css({'color' : 'darkgreen'});
+			}
+		);
+	}
+});
+$(document).on('click','.commanded',function(){
+	var e =$(this),
+		idCom = e.closest('.panel').attr("id-commande"),
+		state = e.attr("commande-status");
+	if(state='0')
+	{		
+		$.post(
+			'commandehandler.php',
+			{
+				'action' : 'isCommanded',
+				'idCommande' : idCom
+			},
+			function(data){
+				e.css({'color' : 'darkblue'});
+			}
+		);
+	}
+});
+
+
+
+///////////////////
 //	ARTICLES
 ///////////////////
 

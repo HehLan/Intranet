@@ -12,7 +12,15 @@
 			<span class="commande-nom">{$commande.joueur.pseudo}</span>
 			<div class="float-me">
 				<span class="commande-date">il y a {$commande.date}</span>
-				<i class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i>
+				<span class="paid glyphicon glyphicon-euro" commande-status="{$commande.paye}"
+					{if $commande.paye}style="color:goldenrod"{/if}>
+				</span>
+				<span class="commanded glyphicon glyphicon-earphone" commande-status="{$commande.commanded}"
+					{if $commande.commanded}style="color:darkblue"{/if}>
+				</span>
+				<span class="received glyphicon glyphicon-ok" commande-status="{$commande.disponible}"
+					{if $commande.disponible}style="color:darkgreen"{/if}>
+				</span>
 			</span>
 		  </h4>
 		</div>

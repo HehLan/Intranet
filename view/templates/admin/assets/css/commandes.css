@@ -12,10 +12,15 @@
 }
 .commande-closing-items {
 }
-
+.glyphicon {
+	cursor: pointer;
+}
 
 #side_command_group {
 }
 .float-me {
 	float: right;
+}
+.float-me span {
+	padding: 0 10px;
 }

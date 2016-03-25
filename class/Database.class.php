@@ -770,4 +770,55 @@ class Database
 			return 0;
 		}
 	}
+	public function setCommandeAsDisponible($idCommande)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/setDisponible.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idc', $idCommande, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL MARK COMMANDE AS DISPONIBLE';
+			return 0;
+		}
+	}
+	public function setCommandeAsPaye($idCommande)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/setPaye.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idc', $idCommande, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL MARK COMMANDE AS PAYE';
+			return 0;
+		}
+	}
+	public function setCommandeAsCommanded($idCommande)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/setCommanded.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idc', $idCommande, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL MARK COMMANDE AS COMMANDED';
+			return 0;
+		}
+	}
 }

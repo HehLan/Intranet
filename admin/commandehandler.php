@@ -4,6 +4,7 @@
 	{
 		$act = $_POST['action'];
 		switch($act){
+			// init
 			case "getArticles":
 				$smarty->assign('articles', $database->getArticles());
 				$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/commandListArticles.tpl');
@@ -21,12 +22,24 @@
 					$commandes[$kc]['date'] = getRelativeTime($commande['date']);
 					$commandes[$kc]['commande'] = $database->getCommande($commande['id_commande']);
 				}
-				//var_dump($commandes);
 				$smarty->assign('commandes', $commandes);
 				$smarty->display(DOCUMENT_ROOT.'/view/templates/admin/commandListCommandes.tpl');
 				break;
+			// commandes
+			case "isPaye":
+				if(isset($_POST['idCommande']))
+					$database->setCommandeAsPaye($_POST['idCommande']);
+				break;
+			case "isCommanded":
+				if(isset($_POST['idCommande']))
+					$database->setCommandeAsCommanded($_POST['idCommande']);
+				break;
+			case "isDisponible":
+				if(isset($_POST['idCommande']))
+					$database->setCommandeAsDisponible($_POST['idCommande']);
+				break;
+			//articles
 			case "updateArticleNom":
-				echo "ononjo";
 				if(isset($_POST['idArticle']) && isset($_POST['nomArticle']))
 					$database->updateArticleNom($_POST['idArticle'], $_POST['nomArticle']);
 				break;
