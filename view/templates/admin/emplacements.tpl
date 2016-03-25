@@ -6,53 +6,22 @@
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/emplacements.css" >
 </head>
 
-<body role="document">
-    {include file="admin/header.tpl" con=$con }
-    {include file="admin/nav.tpl"  con=$con }      
+    <body role="document">
+        {include file="admin/header.tpl" con=$con }
+        {include file="admin/nav.tpl"  con=$con }      
 
-    <div id="container" class="container-fluid">
-        <div id="contenu" class="row">
-            <div class="col-lg-2">
-                <!-- VISIONNER LA PLACE DU JOUEUR -->    
-                <b><u><center>Consulter la place :</center></u></b></b>
-                <br><br>
-                <!-- PSEUDO -->
-                Pseudo :
-                <select class="SelectPseudo" name="SelectPseudo" id="SelectPseudo">
-                    <option value="" selected ></option>
-                    {foreach from=$joueurs item=joueur}
-                        <option value="{$joueur['id_emplacement']}">{$joueur['pseudo']}</option>
-                    {/foreach}
-                </select>
-                <br>
-                <br>
-                <!-- Equipe -->
-                Equipe :
-                <select id="SelectEquipe">
-                    <option value="" selected ></option>
-                    {foreach from=$equipes item=equipe}
-                        <option value="{$equipe['id_equipes']}">{$equipe['nom']}</option>
-                    {/foreach}           
-                </select>
-                <div id="dialogEquipe_Emplacement"></div>
-                <br>
-                <br>
-                <!-- AJOUTER PLACE AU JOUEUR -->                                                                                       
-                <form method="post" action="place.php">
-                    <b><u><center>Associer la place :</center></u></b></b>
-                    <br><br> 
-                    Emplacement :
-                    <select name="SelectEmplacement" id="SelectEmplacement">	
-                        {foreach from=$emplacements item=emplacement}
-                            <option value="{$emplacement['id_emplacement']}">{$emplacement['numero']}</option>"; 
-                        {/foreach}	
-                    </select> 
+        <div id="container" class="container-fluid">
+            <div id="contenu" class="row">
+                <div class="col-lg-2">
+                    <!-- VISIONNER LA PLACE DU JOUEUR -->    
+                    <b><u><center>Consulter la place :</center></u></b></b>
                     <br><br>
+                    <!-- PSEUDO -->
                     Pseudo :
-                    <select name="SelectPseudo" id="SelectPseudo">
+                    <select class="SelectPseudo" name="SelectPseudo" id="SelectPseudo">
                         <option value="" selected ></option>
-                        {foreach from=$joueurs_autre item=joueur_autre}
-                            <option value="{$joueur_autre['pseudo']}">{$joueur_autre["pseudo"]}</option>
+                        {foreach from=$joueurs item=joueur}
+                            <option value="{$joueur['id_emplacement']}">{$joueur['pseudo']}</option>
                         {/foreach}
                     </select>
                     <br><br>

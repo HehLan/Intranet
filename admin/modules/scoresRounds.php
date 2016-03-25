@@ -121,10 +121,14 @@ foreach($groupes as $keyGroupe => $groupe)
     $groupes[$keyGroupe]['inscrits'] = $inscrits;
 }
 
+
+
 // send to the template
 $smarty->assign('con', $connected);
 $smarty->assign('tournoi', $tournoi);
 $smarty->assign('groupes', $groupes);
 
+
 $smarty->display(DOCUMENT_ROOT.'/view/templates/admin/scoresRounds.tpl');
+
 ?>

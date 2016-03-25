@@ -2,23 +2,41 @@
 
 require_once('common/head.php');
 
+// protection ici pour voir si le match "matche" (vive la tautologie) bien avec le joueur
+// TODO
+// aller chequer dans la db si idPlayer&&idMatch "exists" or smth like that
+
 $connexion = $database->getConnection();
 $matchId = $_GET['idMatch'];
 $playerId = $_GET['id'];
+//$playerId = $_SESSION['idJoueur']; // can't --> problem with something, to lazy to debug
 $playerNickname;
 $opponentId;
 $opponentNickname;
 $maps;
+$heroes;
 $tableExist;
-$pickState;
+$pickStateMaps;
 $idPlayerWhoMakeChoise;
-
 
 // ********************** recuperer les maps **********************
 $sql = "select * from hotsmaps";
 $query = new Query($database, $sql);
 if ($query->execute()) {
     $maps = $query->getResult();
+} else {
+    global $glob_debug;
+    if ($glob_debug) {
+        echo 'ERREUR SQL MAPS';
+    }
+    exit;
+}
+
+// ********************** recuperer les heros **********************
+$sql = "select * from hotsheroes";
+$query = new Query($database, $sql);
+if ($query->execute()) {
+    $heroes = $query->getResult();
 } else {
     global $glob_debug;
     if ($glob_debug) {
@@ -66,6 +84,7 @@ foreach ($players as $player) {
     if ($player['id_joueur'] != $playerId) {
         $opponentNickname = $player['pseudo'];
         $opponentId = $player['id_joueur'];
+        break;
     }
 }
 
@@ -84,33 +103,21 @@ if ($query->execute()) {
 
 // si la table existe 
 if ($tableExist) {
-    // recuperer les id's et les etats 'checked'
+    // recuperer les id's et les etats 'checked' des maps
     $sql = "SELECT mapId, checked FROM pick_$matchId";
     $req = $connexion->prepare($sql);
     $req->execute();
-    $pickState = $req->fetchAll(PDO::FETCH_ASSOC);
+    $pickStateMaps = $req->fetchAll(PDO::FETCH_ASSOC);
 
-    // determiner à qui est le tour
-    $sql = "SELECT idChief FROM matchs WHERE id_match=:idMatch";
-    $query = new Query($database, $sql);
-    $query->bind(':idMatch', $matchId, PDO::PARAM_INT);
-    if ($query->execute()) {
-        $idPlayerWhoMakeChoise = $query->getResult()[0]['idChief'];
-        if($idPlayerWhoMakeChoise == 0){ 
-            // si la tables n'est pas remplie, donc debut du pick
-            // on va choisir le joueur avc l'id le + petit qui va commencer le pick
-            $idPlayerWhoMakeChoise = ($playerId < $opponentId) ? $playerId : $opponentId;
-        }
-    } else {
-        global $glob_debug;
-        if ($glob_debug)
-            echo 'ERREUR SQL MAPS';
-        exit;
-    }
+    // recuperer les id's et les etats 'checked' des heroes
+    $sql = "SELECT heroId, checked FROM pickhero_$matchId";
+    $req = $connexion->prepare($sql);
+    $req->execute();
+    $pickStateHeroes = $req->fetchAll(PDO::FETCH_ASSOC);
 }
 // si la table n'exitste pas
 else {
-    // creation
+    // creation de la table pickmaps_n
     $sql = "CREATE TABLE hehlanbd.pick_$matchId ("
             . "mapId INT NOT NULL AUTO_INCREMENT, "
             . "checked BOOLEAN NOT NULL, "
@@ -118,7 +125,15 @@ else {
     $req = $connexion->prepare($sql);
     $req->execute();
 
-    // remplissage
+    // creation de la table pickheroes_n
+    $sql = "CREATE TABLE hehlanbd.pickhero_$matchId ("
+            . "heroId INT NOT NULL AUTO_INCREMENT, "
+            . "checked BOOLEAN NOT NULL, "
+            . "PRIMARY KEY (heroId))";
+    $req = $connexion->prepare($sql);
+    $req->execute();
+
+    // remplissage maps
     $counter = 0;
     $sql = "INSERT INTO hehlanbd.pick_$matchId (mapId, checked) VALUES ";
     foreach ($maps as $map) {
@@ -132,23 +147,87 @@ else {
     $req = $connexion->prepare($sql);
     $req->execute();
     
-    // recuperer les id's et les etats 'checked'
+    // remplissage heroes
+    $counter = 0;
+    $sql = "INSERT INTO hehlanbd.pickhero_$matchId (heroId, checked) VALUES ";
+    foreach ($heroes as $hero) {
+        if ($counter < count($heroes) - 1) {
+            $sql .= " ('" . $hero['id'] . "', FALSE),";
+            $counter++;
+        } else {
+            $sql .= " ('" . $hero['id'] . "', FALSE)";
+        }
+    }
+    $req = $connexion->prepare($sql);
+    $req->execute();
+
+    // recuperer les id's et les etats 'checked' des maps
     $sql = "SELECT mapId, checked FROM pick_$matchId";
     $req = $connexion->prepare($sql);
     $req->execute();
-    $pickState = $req->fetchAll(PDO::FETCH_ASSOC);
+    $pickStateMaps = $req->fetchAll(PDO::FETCH_ASSOC);
+    
+    // recuperer les id's et les etats 'checked' des heroes
+    $sql = "SELECT heroId, checked FROM pickhero_$matchId";
+    $req = $connexion->prepare($sql);
+    $req->execute();
+    $pickStateHeroes = $req->fetchAll(PDO::FETCH_ASSOC);
 }
+
+// ********************** determiner à qui est le tour **********************
+$sql = "SELECT idChief FROM matchs WHERE id_match=:idMatch";
+$query = new Query($database, $sql);
+$query->bind(':idMatch', $matchId, PDO::PARAM_INT);
+if ($query->execute()) {
+    $idPlayerWhoMakeChoise = $query->getResult()[0]['idChief'];
+    if ($idPlayerWhoMakeChoise == 0) {
+        // si la tables n'est pas remplie, donc debut du pick
+        // on va choisir le joueur avc l'id le + petit qui va commencer le pick
+        $idPlayerWhoMakeChoise = ($playerId < $opponentId) ? $playerId : $opponentId;
+    }
+} else {
+    global $glob_debug;
+    if ($glob_debug)
+        echo 'ERREUR SQL MAPS';
+    exit;
+}
+
+$phase;
+// determiner la phase du pick
+$sql = "SELECT idMap FROM matchs WHERE id_match=:idMatch";
+$query = new Query($database, $sql);
+$query->bind(':idMatch', $matchId, PDO::PARAM_INT);
+if ($query->execute()) {
+    $idMap = $query->getResult()[0]['idMap'];
+    if ($idMap == 0) {
+        // on est tjs au stade de pick les maps
+        $phase = "maps";
+    } 
+    // on est au stade de pick les heros
+    else { 
+        $phase = "heroes";
+    }
+} else {
+    global $glob_debug;
+    if ($glob_debug)
+        echo 'ERREUR SQL MAPS';
+    exit;
+}
+
 
 // ********************** Applying Template **********************
 $smarty->assign('con', $connected);
 $smarty->assign('matchId', $matchId);
 $smarty->assign('maps', $maps);         // les chemins vers les img des maps et les id's
+$smarty->assign('heroes', $heroes);
 $smarty->assign('playerId', $playerId);
 $smarty->assign('playerNickname', $playerNickname);
 $smarty->assign('opponentId', $opponentId);
 $smarty->assign('opponentNickname', $opponentNickname);
-$smarty->assign('pickState', $pickState);   // les id's des maps et etat checked(bool)
-$smarty->assign('idPlayerWhoMakeChoise', $idPlayerWhoMakeChoise);   
+$smarty->assign('pickStateMaps', $pickStateMaps);   // les id's des maps et etat checked(bool)
+$smarty->assign('pickStateHeroes', $pickStateHeroes);   // les id's des heroes et etat checked(bool)
+$smarty->assign('idPlayerWhoMakeChoise', $idPlayerWhoMakeChoise);
+$smarty->assign('phase', $phase);
 
 $smarty->display('default/pick.tpl');
 ?>

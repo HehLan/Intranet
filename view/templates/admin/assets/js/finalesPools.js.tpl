@@ -1,74 +1,111 @@
 {* Smarty *}
 <script>
 
-    var id = {$tournoi.id_tournoi};
-
-    // Initial data if is not encoded in the database
-    var saveData = {
-        teams: [
-            ["Team 1", "Team 2"], 
-            ["Team 3", "Team 4"] 
-        ],
-        results: [[1, 0], [2, 7]]
-    }; 
-
-    // Getting the bracket
-    $.ajax(
-        {
-            url: '../common/bracket_get.php?id_tournoi=' + id + "&type=2" + "&finales_number=1",
-            type: 'GET',
-            dataType: 'text',
-            success: function (text, status)
-            {
-                saveData = JSON.parse(text);
-            },
-            error: function (resultat, statut, erreur)
-            {
-                
-            },
-            complete: function (resultat, statut)
-            {
-
-            },
-            async: false
-        }
-    );
+    function getBracket()
+    {
+        // Initial data if is not encoded in the database
+        var result =  {
+            teams: [
+                ["Team 1", "Team 2"], 
+                ["Team 3", "Team 4"] 
+            ],
+            results: [[1, 0], [2, 7]]
+        };
     
-    function saveFn(state1)
+        // Getting the bracket - the group_number must be dynamic
+        $.ajax(
+            {
+                url: '../common/bracket_get.php?id_tournoi={$tournoi.id_tournoi}&type=2&number=1',
+                type: 'GET',
+                dataType: 'text',
+                success: function (text, status)
+                {
+                    /*if(text.contains("error"))
+                    {
+                        result = {
+                            teams: [
+                                ["Team 1", "Team 2"], 
+                                ["Team 3", "Team 4"] 
+                            ],
+                            results: [[1, 0], [2, 7]]
+                        };
+                    }*/
+                    //else
+                    //{
+                        result = JSON.parse(text);
+                    //}
+ 
+                },
+                error: function (resultat, statut, erreur)
+                {
+                    result = {
+                            teams: [
+                                ["Team 1", "Team 2"], 
+                                ["Team 3", "Team 4"] 
+                            ],
+                            results: [[1, 0], [2, 7]]
+                        };
+                },
+                complete: function (resultat, statut)
+                {
+
+                },
+                async: false
+            }
+        );
+        return result;
+    }
+        
+    function saveBracket(state)
     {
         // Write your storage code here, now just display JSON above
-        $('#state1').text(JSON.stringify(state1, undefined, 2));
+        $('#state').text(JSON.stringify(state, undefined, 2));
         // Reconstruct read-only version by initializing it with received state
-        $('#view1').empty().bracket({
-            init: state1
+        $('#view').empty().bracket({
+            init: state
         });
         $.ajax(
             {
                 url: 'modules/bracket_save.php',
                 type: 'POST',
-                data: "json=" + JSON.stringify(state1) + "&id_tournoi=" + id + "&type=2" + "&finales_number=1", 
+                data: "json=" + $("#state").text() + "&id_tournoi={$tournoi.id_tournoi}&type=2&number=1", 
                 dataType: 'text'
             }
-        );
-    };     
-
+        );      
+    }; 
+    
+    // Function when document is ready
     $(function ()
-    {
-        var container = $('#editor1');
-        container.bracket(
-            {
-                init: saveData,
-                save: saveFn
-            }
-        );
-        $('#view1').bracket(
-            {
-                init: saveData
+    {       
+        // Initial data if is not encoded in the database
+        var bracketData = {
+            teams: [
+                ["Team 1", "Team 2"], 
+                ["Team 3", "Team 4"] 
+            ],
+            results: [[1, 0], [2, 7]]
+        };         
+        
+        //var bracketData = null;
+        bracketData = getBracket();
+        
+        var editor = $("#editor");
+        var view = $("#view");
+        
+        editor.empty();
+        editor.bracket(
+            { 
+                init: bracketData,
+                save: saveBracket
             }
         );
 
-        /* You can also inquiry the current data */
-        //var data = container.bracket('data');
+        view.empty();
+        view.bracket(
+            {
+                init: bracketData
+            }
+        );
 
     });
 

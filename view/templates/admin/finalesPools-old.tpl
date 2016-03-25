@@ -1,18 +1,17 @@
 {* Smarty *}
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
     <head>
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/finalesPools.css" >
-        <script type="text/javascript" src="{#adminAssets#}/js/finales.js"></script>
-	<script type="text/javascript" src="{#domain#}/lib/jQuery/bracket/jquery.gracket.js"></script>        
+        <script type="text/javascript" src="{#adminAssets#}/js/finales.js"></script>    
     </head>
     <body role="document">
         {include file="admin/header.tpl" con=$con }
         {include file="admin/nav.tpl"  con=$con }
         		
-        <div id="container">
-            <div id="contenu">
+        <div id="container" class="container">
+            <div id="contenu" class="row">
                 <h1>Finales de {$tournoi['nomTournoi']} {$gsb[$looser]}</h1>
                 <form method="POST" action="modules/finale_save.php">
                     <input type="hidden" name="id_tournoi" value="{$tournoi['id_tournoi']}">

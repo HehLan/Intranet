@@ -1,6 +1,6 @@
 {* Smarty *}
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/pick.css" />   
@@ -15,18 +15,21 @@
             <div class="container-fluid">
                 <div class="navbar-header" style="width:100%; height:50px;"/>
                 <div class="collapse navbar-collapse"/>
-            </div>			
+            </div>		
         </nav>
 
-        <div class="container-fluid">
+        <div class="container-fluid" id="container">
             <h2> </h2>
-            <div class="row">
+            <div class="row" id="contenu">
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
                     <div id="iconPlayer1" class="glyphicon glyphicon-user" style="font-size:3em;" ></div> 
                     <div>{$playerNickname}</div>
                     <br>
                     <br>
-                    <button onclick="phpToJavascript();">simulate receiving "mapKicked" message</button>
+                    <br>
+                    <br>
+                    <button onclick="hideBox();">hide grayBox</button>
+                    <button onclick="showResultsOfPick();">test</button>
                 </div>
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10" id="middleDiv">
@@ -42,18 +45,21 @@
                             </div>
                         {/foreach}
                     </div>
-                    
-                    <div class="row" id="championsContainer" style="display: none;">
-                        {foreach from=$maps item=map}
-                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg3">
-                                <div id="" onclick="kickMap(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
-                                    <img class="img-responsive" src="" alt=""/>
+                    <div class="row" id="heroesContainer" style="display: none;">
+                        {foreach from=$heroes item=hero}
+                            <div class="col-xs-3 col-sm-2 col-md-2 col-lg2">
+                                <div id="{$hero['id']}h" onclick="kickHero(this);" onmouseover="highlightUp(this);" onmouseout="highlightDown(this);" data-checked="0"> 
+                                    <img class="img-responsive" src="{$hero['imgPath']}" alt="{$hero['name']}"/>
                                     <div class="thumbnailText">
+                                        {$hero['name']}
                                     </div>
                                 </div>
                             </div>
                         {/foreach}
                     </div>
+                    <div class="row" id="pickResults" style="display: none;">
+                    </div>
+                    
                 </div>
 
                 <div id="iconPlayer2" class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
@@ -66,8 +72,8 @@
         {include file="default/footer.tpl"}
 
         {include file="default/assets/js/pick.js.tpl" playerId=$playerId playerNickname=$playerNickname 
-            opponentId=$opponentId opponentNickname=$opponentNickname pickState=$pickState 
-            idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise matchId=$matchId}
+            opponentId=$opponentId opponentNickname=$opponentNickname pickStateMaps=$pickStateMaps pickStateHeroes=$pickStateHeroes
+            idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise matchId=$matchId phase=$phase }
 
     </body>
 </html>

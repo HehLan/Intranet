@@ -1,14 +1,11 @@
 {* Smarty *}
 <!DOCTYPE HTML>
-<html>
+<html lang="fr">
     <head>
         {include file="default/meta.tpl"}
-	<link rel="stylesheet" type="text/css" href="{#assets#}/css/finalesRounds.css" />
-       
-        <link rel="stylesheet" type="text/css" href="{#domain#}/lib/jQuery/jquery.bracket.min.css" />
-        
+	<link rel="stylesheet" type="text/css" href="{#assets#}/css/finalesRounds.css" />    
     </head>
-    <body>
+    <body role="document">
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
         {include file="default/nav.tpl"  con=$con navTournois=$navTournois}	
         
@@ -54,7 +51,7 @@
                             <tr>
                                 {for $c=$niveau to 0 step -1}
                                     <td>
-                                        <table class="table_round">
+                                        <table>
                                             {for $m=1 to $match_par_niveau[$c]}
                                                 {for $j=1 to $matches[$tablo[$c][$m]]['maxj']}
                                                     {if $j==1}
@@ -131,16 +128,10 @@
                 </div>
             </div>
         </div>
-                
-             <div id="bracket-rounds" class="bracket"></div>    
-                
-                
-                
+                       
         {include file="default/footer.tpl"}
         
-        <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.bracket.min.js"></script>
-                <script type="text/javascript" src="{#assets#}/js/finalesRounds.js"></script>
-
+        <script type="text/javascript" src="{#assets#}/js/finalesRounds.js"></script>
 
     </body>
 </html>

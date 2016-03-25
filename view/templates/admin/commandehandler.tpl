@@ -50,7 +50,7 @@
 				</div>
             </div>
         </div>
-	{include file="admin/footer.tpl"}
-	<script type="text/javascript" src="{#adminAssets#}/js/commandHandler.js"></script> 
+        {include file="admin/footer.tpl"}
+        <script type="text/javascript" src="{#adminAssets#}/js/commandHandler.js"></script> 
     </body>
 </html>

@@ -26,6 +26,6 @@
 #navigation  li a.active 
 {
     color: #fff;
-    background: transparent url("../img/nav_hover.png") top center repeat-x;
+    background: transparent url("../img/navbar/nav_hover.png") top center repeat-x;
 }
 

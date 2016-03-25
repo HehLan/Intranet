@@ -16,18 +16,18 @@ $smarty = new Smarty_HEHLan();
 
 
 
-if(isset($_GET['id_tournoi']) && isset($_GET['group_number']))
+if(isset($_GET['id_tournoi']) && isset($_GET['type']) && isset($_GET['number']))
 {
     // Get bracket for group
     $sql = 'SELECT json
             FROM brackets
             WHERE id_tournoi = :id_tournoi
             AND type = :type
-            AND group_number = :group_number';
+            AND number = :number';
     $query = new Query($database, $sql);
     $query->bind(':id_tournoi', $_GET['id_tournoi'], PDO::PARAM_INT);
     $query->bind(':type', $_GET['type'], PDO::PARAM_INT);
-    $query->bind(':group_number', $_GET['group_number'], PDO::PARAM_INT);
+    $query->bind(':number', $_GET['number'], PDO::PARAM_INT);
     $query->execute();
     $data = $query->getResult();
     if(!empty($data))
@@ -38,24 +38,6 @@ if(isset($_GET['id_tournoi']) && isset($_GET['group_number']))
     {
         echo 'error';
     }
-}
-
-if(isset($_GET['id_tournoi']) && isset($_GET['finales_number']))
-{
-    // Get bracket for finales
-    $sql = 'SELECT json
-            FROM brackets
-            WHERE id_tournoi = :id_tournoi
-            AND type = :type
-            AND finales_number = :finales_number';
-    $query = new Query($database, $sql);
-    $query->bind(':id_tournoi', $_GET['id_tournoi'], PDO::PARAM_INT);
-    $query->bind(':type', $_GET['type'], PDO::PARAM_INT);
-    $query->bind(':finales_number', $_GET['finales_number'], PDO::PARAM_INT);
-    $query->execute();
-    $data = $query->getResult()[0];
-
-    echo $data['json'];
 }
 
 

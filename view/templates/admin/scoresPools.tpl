@@ -16,7 +16,7 @@
                 <h1>Qualifications de {$tournoi['nomTournoi']}</h1> 
                 
 
-                {if $tournoi.id_tournoi != 2}                    
+                {* <!-- no groups --> {if $tournoi.id_tournoi != 2} *}
                     <div id="bloc_tab">
                         <ul class="nav nav-tabs" role="tablist">
                             {foreach name=groupLoop from=$groupes item=groupe}
@@ -41,12 +41,24 @@
                                 <div role="tabpanel" class="tab-pane" id="tab-{$groupe['id_groupe']}">
                             {/if}
                                     <div class="row">
-                                        <div id="components" class="col-lg-6">
-                                            <h2>Editeur</h2>
-                                            <div id="editor-{$groupe['id_groupe']}"></div>
-                                            <h2>Aperçu</h2>
-                                            <div id="view-{$groupe['id_groupe']}"></div>
-                                        </div>  
+                                        <div class="col-lg-6">
+                                            <h2>Liste des équipes sélectionnables</h2>
+                                            <ul>                                                 
+                                            {if $groupe.teams|is_array}
+                                                {foreach from=$groupe.teams item=team}
+                                                    <li>{$team.nom}</li>
+                                                 {/foreach}
+                                            {else}
+                                                No teams available.
+                                            {/if} 
+                                            </ul>
+                                            <div id="components">
+                                                <h2>Editeur</h2>
+                                                <div id="editor-{$groupe['id_groupe']}"></div>
+                                                <h2>Aperçu</h2>
+                                                <div id="view-{$groupe['id_groupe']}"></div>
+                                            </div>
+                                        </div>
                                         <div id="data-{$groupe['id_groupe']}" class="col-lg-6">
                                             <h2>Code JSON</h2>
                                             <p>Code JSON pour le stockage dans la base de données.</p>
@@ -56,21 +68,22 @@
                                 </div>
                         {/foreach}
                     </div>
+                {* <!-- no groups --> 
                 {else}
                     <div class="row">
                         <div id="components" class="col-lg-6">
                             <h2>Editeur</h2>
-                            <div id="editor1"></div>
+                            <div id="editor"></div>
                             <h2>Vue de l'utilisateur</h2>
-                            <div id="view1"></div>
+                            <div id="view"></div>
                         </div>  
-                        <div id="data1" class="col-lg-6">
+                        <div id="data" class="col-lg-6">
                             <h2>Code JSON</h2>
                             <p>Code JSON pour le stockage dans la base de données.</p>
-                            <pre id="state1">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
+                            <pre id="state">&lt;-- Utilisez l'éditeur de gauche afin de voir le code généré.</pre>                        
                         </div>                                      
                     </div> 
-                {/if}
+                {/if} *}
             </div>
         </div>
         
