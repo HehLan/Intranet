@@ -2,29 +2,46 @@
 
 require_once('common/head.php');
 
-// protection ici pour voir si le match "matche" (vive la tautologie) bien avec le joueur
-// TODO
-// aller chequer dans la db si idPlayer&&idMatch "exists" or smth like that
-
 $connexion = $database->getConnection();
 $matchId = $_GET['idMatch'];
 $playerId = $_GET['id'];
 $playerNickname;
-$opponentId;
-$opponentNickname;
+$opponentId = '';
+$opponentNickname = '';
 $maps;
 $heroes;
 $tableExist;
 $pickStateMaps;
 $idPlayerWhoMakeChoise = '';
 
+// protection ici pour voir si le match "matche" (vive la tautologie) bien avec le joueur
+// TODO
+// aller chequer dans la db si idPlayer&&idMatch "exists" or smth like that
+$sql = "SELECT * FROM matchs_joueurs WHERE id_match=:matchId AND id_joueur=:playerId";
+$query = new Query($database, $sql);
+$query->bind(':matchId', $matchId, PDO::PARAM_INT);
+$query->bind(':playerId', $playerId, PDO::PARAM_INT);
+if ($query->execute()) {
+    $nbr = $query->getResult();
+    if(!count($nbr) > 0)
+    {
+        echo "nice try... mais non ^^ <br>get out from here... <br>I see you.<br>With LoVe, your admin <3";
+        die();
+    }
+} else {
+    global $glob_debug;
+    if ($glob_debug) {
+        echo 'ERREUR SQL MAPS';
+    }
+    exit;
+}
 
 // si pick terminé rediriger vers les resultats
 $sql = "SELECT heroes FROM matchs WHERE id_match=:idMatch";
 $query = new Query($database, $sql);
 $query->bind(':idMatch', $matchId, PDO::PARAM_INT);
 if ($query->execute()) {
-    $truc = $query->getResult();
+    $truc = $query->getResult()[0]['heroes'];
     if($truc != NULL)
         header('Location: pickResults.php?matchId='.$matchId);
 } else {
