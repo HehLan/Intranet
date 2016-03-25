@@ -135,15 +135,14 @@ if ($creer) {
 }
 ?>
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
     <head>
 
         <title>HEHLan</title>
 
-        <link rel="icon" href="../img/logoheh.ico" />
 
 
-        <script type="text/javascript" src="finales.js"></script>
+        <a href="../../index.php" > BACK TO THE ADMIN</a>
 
 
         <script type="text/javascript">
