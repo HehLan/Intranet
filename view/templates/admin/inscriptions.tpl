@@ -1,5 +1,5 @@
 {* Smarty *}
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         {include file="admin/meta.tpl"} 

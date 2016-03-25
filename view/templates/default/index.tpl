@@ -9,7 +9,7 @@
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
         {include file="default/nav.tpl"  con=$con navTournois=$navTournois}
         <div id="container" class="container-fluid">
-            <div class="row">
+            <div class="row" id="contenu">
                 <div id="bloc_news" class="col-lg-6 col-xs-12">
                     <h3>News</h3>
                     {section name=sec1 loop=$newsList}    

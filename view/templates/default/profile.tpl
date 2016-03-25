@@ -1,6 +1,6 @@
 {* Smarty *}
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/profile.css" />
@@ -219,17 +219,13 @@
                             {/if}
                         </div>
                         
-                        
                         <!-- tab-stats -->
                         <div role="tabpanel" class="tab-pane" id="tab-stats">
                             Vos statistiques ne sont pas disponibles dans cette version.
                         </div>
-
-                        
+  
                     </div>
-                               
-                    
-                    
+  
                 </form>
 
             </div>
@@ -243,18 +239,13 @@
                 $("#password-change").click(function() {
                     $("#password-editing").css({ display: block });
                 });
-                
-                
-                
+
                 $("form").on("submit", function() {
                     if($("#pseudo").val().length() < 2) {
                         $(".form-group").addClass("has-error");
                         return false;
                     }
                 });
-                
-                
-                
                 
             });
         </script>

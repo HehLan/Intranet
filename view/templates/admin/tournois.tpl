@@ -1,5 +1,5 @@
 {* Smarty *}
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         {include file="admin/meta.tpl"}
@@ -12,7 +12,6 @@
         <div class="container" id="container">
             <div class="row" id="contenu">
                     
-                
                 <div id="bloc_tab">
                     <ul class="nav nav-tabs" role="tablist">
                         {foreach name=playerLoop from=$tournois item=tournoi}

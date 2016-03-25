@@ -1,3 +1,4 @@
+{* Smarty *}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -9,14 +10,13 @@
         {include file="admin/header.tpl" con=$con }
         {include file="admin/nav.tpl"  con=$con }	
 
-        <div id="container">
-            <div id="contenu">
+        <div id="container" class="container">
+            <div id="contenu" class="row">
                 <h1>Qualifications {$tournoi['nomTournoi']}</h1>
                 <form method="POST" action="modules/scores_save.php">
                     <input type="hidden" name="id_tournoi" value="{$tournoi.id_tournoi}">
                     <input type="SUBMIT" value="Enregistrer">
                     <br>
-                    <!-- Début du caca cloné -->
                     {foreach from=$groupes item=groupe}
                         <table class="table_pool_tm">
                             <tr>
@@ -36,7 +36,7 @@
                             {foreach from=$groupe.totaux item=joueur}
                                 <tr class="tr_pool_tm">
                                     <th class="th_team_pool_tm">{$joueur['pseudo']}</th>
-                                        {for $i=1 to $groupe.nbr_manches}
+                                    {for $i=1 to $groupe.nbr_manches}
                                         <td class="td_score_pool_tm">
                                             <input type="checkbox" 
                                                    name="cb_m_{$groupe['id_match']}_ma_{$i}_p_{$joueur['id_joueur']}" value="1" 
@@ -74,15 +74,12 @@
                         </table>
                         <br><br>
                     {/foreach}
-                    <!-- Fin du caca cloné -->
                 </form>
             </div>
         </div>
-        <!-- gap to have the footer in the bottom of the window -->
-        <div style="height: 55px;">
 
-        </div>
         {include file="admin/footer.tpl"}
+        
         <div id="shadowing"></div>
 
         <div id="div_popup" class="popup_centree" style="height:200px;width:600px;margin-top:-100px;margin-left:-300px;">
@@ -109,6 +106,8 @@
                 </select>
                 <br />
                 <input type="submit" value="Modifier" /><br>
-                </div>
-                </body>
-                </html>
+            </form>
+        </div>
+    
+    </body>
+</html>

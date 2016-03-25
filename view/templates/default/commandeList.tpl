@@ -1,6 +1,6 @@
 {* Smarty *}
 {foreach $commandes item=commande}
-	<div class="commandRow">
-		
-	</div>
+    <div class="commandRow">
+
+    </div>
 {/foreach}

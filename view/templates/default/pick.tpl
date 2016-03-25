@@ -1,6 +1,6 @@
 {* Smarty *}
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/pick.css" />   
@@ -18,9 +18,9 @@
             </div>		
         </nav>
 
-        <div class="container-fluid">
+        <div class="container-fluid" id="container">
             <h2> </h2>
-            <div class="row">
+            <div class="row" id="contenu">
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
                     <div id="iconPlayer1" class="glyphicon glyphicon-user" style="font-size:3em;" ></div> 
                     <div>{$playerNickname}</div>

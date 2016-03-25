@@ -1,6 +1,6 @@
 {* Smarty *}
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>    
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/groupes.css" >

@@ -1,6 +1,6 @@
 {* Smarty *}
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/places.css" />
@@ -76,15 +76,15 @@
                         {foreach name=playerLoop from=$joueurs item=joueur}
                             {if $smarty.foreach.playerLoop.first}
                                 <ul id="liste_joueur">
-							{/if}
-							<li>
-								<a class='ClassPseudo entry_tab_list {if $smarty.foreach.playerLoop.index % 2 == 0}even_entry_tab_list{else}odd_entry_tab_list{/if}'
-								   value='{$joueur.id_emplacement}'>
-								   {$joueur.pseudo}
-								</a>
-							</li>
-							{if $smarty.foreach.playerLoop.last}
-								</ul>
+                                {/if}
+                                <li>
+                                    <a class='ClassPseudo entry_tab_list {if $smarty.foreach.playerLoop.index % 2 == 0}even_entry_tab_list{else}odd_entry_tab_list{/if}'
+                                       value='{$joueur.id_emplacement}'>
+                                        {$joueur.pseudo}
+                                    </a>
+                                </li>
+                                {if $smarty.foreach.playerLoop.last}
+                                </ul>
                             {/if} 
                         {foreachelse}
                             <p>Pas de joueur !</p>
@@ -99,23 +99,23 @@
                             <input type="text" name="recherche_equipe" id="recherche_equipe" />
                         </form>
 
-						<!-- Result Displaying -->
+                        <!-- Result Displaying -->
                         <div id="results_equipe" style="display: none">
                             <strong>Pas de résultat</strong>
                         </div>
 
-						<!-- Equipe List -->
-						{foreach name=equipeLoop from=$equipes item=equipe}
+                        <!-- Equipe List -->
+                        {foreach name=equipeLoop from=$equipes item=equipe}
                             {if $smarty.foreach.equipeLoop.first}
                                 <ul id="liste_equipe">
-							{/if}
-							<li>
-								<a class='ClassEquipe entry_tab_list {if $smarty.foreach.equipeLoop.index % 2 == 0}even_entry_tab_list{else}odd_entry_tab_list{/if}'
-									value='{$equipe.id_equipes}'>
-									{$equipe.nom}
-								</a>
-							</li>
-							{if $smarty.foreach.equipeLoop.last}
+                                {/if}
+                                <li>
+                                    <a class='ClassEquipe entry_tab_list {if $smarty.foreach.equipeLoop.index % 2 == 0}even_entry_tab_list{else}odd_entry_tab_list{/if}'
+                                       value='{$equipe.id_equipes}'>
+                                        {$equipe.nom}
+                                    </a>
+                                </li>
+                                {if $smarty.foreach.equipeLoop.last}
                                 </ul>
                             {/if} 
                         {foreachelse}
@@ -129,6 +129,6 @@
 
         </div>
         {include file="default/footer.tpl"}
-		<script type="text/javascript" src="{#assets#}/js/places.js"></script>
+        <script type="text/javascript" src="{#assets#}/js/places.js"></script>
     </body>
 </html>

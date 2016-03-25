@@ -1,6 +1,6 @@
 {* Smarty *}
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head> 
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/joueurs.css" >
@@ -11,7 +11,7 @@
         {include file="admin/nav.tpl"  con=$con } 
 
         <div id="container" class="container-fluid">
-            <div id="contenu">
+            <div id="contenu" class="row">
                 <div id="ListejoueurAdmin">
                     <fieldset>
                         <legend>Liste des joueurs</legend>
@@ -57,12 +57,9 @@
             </div>	
         </div> 
 
-        <!-- gap to have the footer in the bottom of the window -->
-        <div style="height: 150px;">
-
-        </div>
-
         {include file="admin/footer.tpl"  con=$con } 
-		<script type="text/javascript" src="{#adminAssets#}/js/joueurs.js"></script> 
-	</body>
+        
+        <script type="text/javascript" src="{#adminAssets#}/js/joueurs.js"></script> 
+        
+    </body>
 </html>

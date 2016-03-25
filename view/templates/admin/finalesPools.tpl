@@ -1,13 +1,11 @@
 {* Smarty *}
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
     <head>
         {include file="admin/meta.tpl"} 
         <link rel="stylesheet" type="text/css" href="{#adminAssets#}/css/finalesPools.css" >
         <!-- jquery-bracket -->
         <link rel="stylesheet" type="text/css" href="{#domain#}/lib/jQuery/jquery.bracket.min.css" />
-
-
     </head>
     <body role="document">
         {include file="admin/header.tpl" con=$con }
@@ -17,7 +15,6 @@
             <div id="contenu" class="row">
                 
                 <h1>Finales de {$tournoi['nomTournoi']} {$gsb[$looser]}</h1>      
-                
                 
                 <div id="bloc_tab">
                     <ul class="nav nav-tabs" role="tablist">
@@ -52,10 +49,8 @@
                 
             </div>
         </div>
-                
-        
+                       
         {include file="admin/footer.tpl"}
-
 
         <!-- jquery-bracket -->
         <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.bracket.min.js"></script>

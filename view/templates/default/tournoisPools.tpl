@@ -1,12 +1,12 @@
 {* Smarty *}
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
     <head>
         {include file="default/meta.tpl"}  
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/tournoisPools.css" />
         <link type="text/css" rel="stylesheet" href="{#domain#}/lib/jQuery/jquery.group.min.css" />
     </head>
-    <body>
+    <body role="document">
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
         {include file="default/nav.tpl"  con=$con navTournois=$navTournois}
         

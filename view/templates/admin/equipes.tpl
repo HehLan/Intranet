@@ -11,10 +11,8 @@
         {include file="admin/header.tpl" con=$con }
         {include file="admin/nav.tpl"  con=$con }
 
-
         <div id="container" class="container-fluid">
-
-            <div id="contenu">
+            <div id="contenu" class="row">
                 <div id="ListeEquipeAdmin">
                     <fieldset>
                         <legend>Liste des équipes</legend>
