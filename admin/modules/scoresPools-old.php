@@ -103,8 +103,34 @@ foreach($groupes as $keyGroupe => $groupe)
         $groupes[$keyGroupe]['teams'][$keyTeam]['total'] = $totaux[$team['id']];
     }
 }
+
+
+// 
+$finishedPicks = array();
+foreach ($matchs as $val1) {
+    foreach ($val1 as $val2) {
+        $sql = 'SELECT heroes FROM matchs WHERE id_match=:matchId';
+        $query = new Query($database, $sql);
+        $query->bind(':matchId',$val2['id_match'], PDO::PARAM_INT);
+        if($query->execute())
+        {
+            $terminated = $query->getResult()[0]['heroes'];
+            if($terminated != NULL)
+                if (!in_array($val2['id_match'], $finishedPicks))
+                    array_push ($finishedPicks, $val2['id_match']);
+        }
+        else 
+        {
+            global $glob_debug;
+            if($glob_debug)
+                echo 'ERREUR - SQL SCORES TEAM 1';
+        }
+    }
+}
+
 // send to the template
 $smarty->assign('con', $connected);
+$smarty->assign('finishedPicks', $finishedPicks);
 $smarty->assign('participants', $participants);
 $smarty->assign('tournoi', $tournoi);
 $smarty->assign('groupes', $groupes);
@@ -112,6 +138,5 @@ $smarty->assign('matchs', $matchs);
 $smarty->assign('totaux', $totaux);
 $smarty->assign('couleur', $couleur);
 $smarty->display(DOCUMENT_ROOT.'/view/templates/admin/scoresPools-old.tpl');
-
 
 ?>

@@ -17,12 +17,12 @@
                     <input type="submit" value="Enregistrer">
                     <br>
                     {foreach from=$groupes item=groupe}
-                        <table class="table_pool_lol">
+                        <table class="table_pool_lol" >
                             <tr>
                                 <th class="th_titre_pool_lol" colspan="{($groupe['nbrteam']+2)}">{$groupe['nom_groupe']}</th>
                             </tr>
                             <tr>
-                                <td class="td_vide_pool_lol"></td>
+                                <td class="td_vide_pool_lol" style="padding: 5px"></td>
                                 {for $i=0 to $groupe['nbrteam']-1}
                                     <th class="th_team2_pool_lol">{$groupe.teams[$i]['nom']}</th>
                                     {/for}
@@ -33,22 +33,22 @@
                                     <th class="th_team_pool_lol">{$team['nom']}</th>
                                         {foreach from=$groupe.teams item=team2}
                                             {if $team.id == $team2.id}
-                                            <td class="td_X_pool_lol">X</td>
+                                            <td class="td_X_pool_lol" style="padding: 5px">X</td>
                                         {else}
-                                            <td class="td_{$couleur}pool_lol">
-                                                <a href="#" onclick="popup_heure({$matchs[$team['id']][$team2['id']]['id_match']})">
-                                                    {$matchs[$team.id][$team2.id].heure}
-                                                </a>
-                                                <br />
-                                                <input type="checkbox" name="cb_m_{$matchs[$team['id']][$team2['id']]['id_match']}_p_{$team['id']}" 
-                                                       value="1" onclick="active_score({$matchs[$team['id']][$team2['id']]['id_match']},{$team['id']})" />
-                                                <input type="text" name="score_m_{$matchs[$team['id']][$team2['id']]['id_match']}_p_{$team['id']}" 
-                                                       id="score_m_{$matchs[$team['id']][$team2['id']]['id_match']}_p_{$team['id']}" 
-                                                       value="{$matchs[$team['id']][$team2['id']]['score']}" size="4" />
-                                            </td>
+                                            {if $tournoi.id_tournoi == 1}
+                                                {if in_array($matchs[$team['id']][$team2['id']]['id_match'],$finishedPicks)}
+                                                    <td class="td_{$couleur}pool_lol">
+                                                        <a target="_blank" href="../pickresults.php?matchId={$matchs[$team['id']][$team2['id']]['id_match']}" style="color : greenyellow;">Pick</a> 
+                                                    </td>
+                                                {else}
+                                                    <td class="td_{$couleur}pool_lol">
+                                                        <a href="#" style="color : #FF0000;">Pick</a> 
+                                                    </td>
+                                                {/if}
+                                            {/if}
                                         {/if}
                                     {/foreach}	
-                                    <td class="td_score_pool_lol">{$team.total}</td>
+                                    <td class="td_score_pool_lol" style="padding: 5px">{$team.total}</td>
                                 </tr>	
                             {/foreach}
                         </table>
