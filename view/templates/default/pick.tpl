@@ -27,6 +27,7 @@
                     <br>
                     <br>
                     <br>
+                    <br>
                     <button onclick="hideBox();">hide grayBox</button>
                 </div>
 
