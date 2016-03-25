@@ -404,6 +404,21 @@ function getRelativeTime($chaine)
 		return $retour['s'].'s';
 }
 
-
+function getTeamName($userId, $database){
+    $sql_func = 'SELECT nom FROM equipes_joueur LEFT JOIN equipes ON equipes_joueur.id_equipes=equipes.id_equipes WHERE id_joueur=:userId';
+    $query_func = new Query($database, $sql_func);
+    $query_func->bind(':userId', $userId, PDO::PARAM_STR);
+    if (!$query_func->execute())
+    {
+        global $glob_debug;
+        if($glob_debug)
+        {
+            echo 'ERREUR - SELECT VALEUR';
+        }
+        return "sans equipe";
+    }
+    $nom = $query_func->getResult()[0]['nom'];
+    return $nom;
+}
 ?>
  
