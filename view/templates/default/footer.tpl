@@ -32,6 +32,7 @@
 
 
 <script type="text/javascript" src="{#domain#}/src/js/menu.js"></script>
+<script type="text/javascript" src="{#domain#}/src/js/getXhr.js"></script>
 <script type="text/javascript" src="{#domain#}/src/js/init.js"></script>
 
 

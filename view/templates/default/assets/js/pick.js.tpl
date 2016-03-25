@@ -16,6 +16,7 @@
     var pickStateMaps;
     var pickStateHeroes;
     var matchId;
+    var pickDone;
 
     $(document).ready(function () {
         matchId = "{$matchId}"; // initMatchID
@@ -31,6 +32,11 @@
         if (idPlayerWhoMakeChoise !== playerId) {
             showGrayBox();
         }
+        
+        window.onbeforeunload = function() {
+            if(pickDone)
+                deleteTempTables();
+        };
     });
 
     function initPlayers() {
@@ -154,7 +160,7 @@
                     message = ['pickTerminated', playerId, matchId];
                     socket.send(message);
                     
-                    deleteTempTables();
+                    pickDone = true;
                     closeSocketConnection();
                     showResultsOfPick();
                 });

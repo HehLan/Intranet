@@ -1,0 +1,26 @@
+.panel-body {
+	color: #000;
+}
+.remove {
+	float: right;
+}
+.article-description textarea {
+	width: 100%;
+}
+.article_price {
+	color: #000;
+}
+.commande-closing-items {
+}
+.glyphicon {
+	cursor: pointer;
+}
+
+#side_command_group {
+}
+.float-me {
+	float: right;
+}
+.float-me span {
+	padding: 0 10px;
+}
