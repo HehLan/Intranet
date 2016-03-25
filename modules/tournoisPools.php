@@ -236,7 +236,7 @@ foreach ($groupes as $itGroupe => $groupe)
 
 
 // ***************************************************************************
-//$userId = $_GET['user'];
+//$userId = $_GET['user'];  //debug
 $userId = $_SESSION['id_joueur'];
 
 // faire la fonc ici qui va aller recuperer cette info dans la db

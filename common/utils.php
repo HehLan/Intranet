@@ -349,11 +349,14 @@ function get_day_from_string($chaine)
 function checkIsPickActive($dateTime_DebutMatch)
 { 
     // ********************************** test proposals
-                        return true;
+    //                  return true;
     // *************************************************
 
     // recuperer les valeures des jours et des heures
     $dateTime_Maintenant = date('Y-m-j H:i:s');
+    // debug to see it works    
+    //$dateTime_Maintenant = "2016-03-26 16:59:00";
+    //$dateTime_DebutMatch = "2016-03-26 17:00:00";
     $heure_DebutMatch = get_hour_from_string($dateTime_DebutMatch);
     $heure_Maintenant = get_hour_from_string($dateTime_Maintenant);
     $jour_DebutMatch = get_day_from_string($dateTime_DebutMatch);
