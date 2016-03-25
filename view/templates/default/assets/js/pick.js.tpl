@@ -283,8 +283,11 @@
     }
 
     function showResultsOfPick() {
-        hideHeroes();
-        hideGrayBox();
+        setTimeout(function () {
+            hideHeroes();
+            hideGrayBox();
+        }, 1500);
+        
 
         $.ajax({
             type: "POST",
@@ -302,9 +305,8 @@
     }
 
     function callback(paths) {
-        // freestyle here --> no more time :(
+        // freestyle here --> no more time to code clean :(
         var pickResultsDiv = $('#pickResults');
-
         var heroesPaths = paths;
         var mapPath = heroesPaths.pop();
 
@@ -324,7 +326,6 @@
         });
         
         pickResultsDiv.show();
-
     }
 
 
