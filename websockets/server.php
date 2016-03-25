@@ -118,8 +118,8 @@ class CustomServer extends WebSocketServer {
                     }
                 }
                 
-                echo "\n berore cleaning matchs\n";
-                echo count($this->match_playersArray);
+//                echo "\n berore cleaning matchs\n";
+//                echo count($this->match_playersArray);
                 
                 // supprimer les info concernant match
                 foreach ($this->match_playersArray as $key => $match) {
@@ -129,11 +129,11 @@ class CustomServer extends WebSocketServer {
                     }
                 }
                 
-                echo "\n after cleaning matchs\n";
-                echo count($this->match_playersArray);
-                
-                echo "\n berore cleaning players\n";
-                echo count($this->connectedUsersArray);
+//                echo "\n after cleaning matchs\n";
+//                echo count($this->match_playersArray);
+//                
+//                echo "\n berore cleaning players\n";
+//                echo count($this->connectedUsersArray);
                 
                 foreach ($this->connectedUsersArray as $key => $player) {
                     if($player['userId'] === $player1 || $player['userId'] === $player2){
@@ -141,8 +141,8 @@ class CustomServer extends WebSocketServer {
                     }
                 }
                 
-                echo "\nplayers deleted\n";
-                echo count($this->connectedUsersArray);
+//                echo "\nplayers deleted\n";
+//                echo count($this->connectedUsersArray);
                 
                 break;
 

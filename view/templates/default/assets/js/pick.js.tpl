@@ -153,7 +153,8 @@
                     // terminer la session de pick pour les deux users
                     message = ['pickTerminated', playerId, matchId];
                     socket.send(message);
-
+                    
+                    deleteTempTables();
                     closeSocketConnection();
                     showResultsOfPick();
                 });
@@ -245,6 +246,22 @@
                 // do nothing, just for waiting call ends
             },
             cache: false
+        });
+    }
+    
+    function deleteTempTables(){
+        $.ajax({
+            type: "POST",
+            url: "common/pickTools.php",
+            data: {
+                req: "deleteTempTables",
+                matchId: matchId
+            },
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                // do nothing, just for waiting call ends
+            }
         });
     }
 
