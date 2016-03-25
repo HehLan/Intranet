@@ -50,6 +50,7 @@
                 async: false
             }
         );
+        //$('header').text('coucou');
         
     });
 

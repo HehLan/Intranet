@@ -33,7 +33,7 @@ $(document).ready(function()
     });
     $("#infoEquipeAdmin").dialog({
         autoOpen: false,
-        title: "joueur � ajouter",
+        title: "joueur à ajouter",
         height: 300,
         width: 350,
         modal: true,
@@ -141,7 +141,7 @@ $(document).ready(function()
         else if ($('#pseudoboxTeam').css('color') != 'rgb(0, 255, 0)') {
             valid = false;
             $("#Team").css({backgroundColor: "rgba(200, 0, 0, 0.2)"});
-            erreur += "Le nom de team est d�j� pris!<br \>";
+            erreur += "Le nom de team est déjà pris!<br \>";
         }
 
         //tag de la team

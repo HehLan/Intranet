@@ -291,7 +291,7 @@ foreach ($groupes as $itGroupe => $groupe)
         global $glob_debug;
         if ($glob_debug)
         {
-            echo 'ERROR - teams is not an array';
+            echo 'ERROR - teams is not an array: no teams in groups';
         }
         exit;
     }

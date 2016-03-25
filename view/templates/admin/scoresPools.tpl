@@ -43,10 +43,14 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <h2>Liste des équipes sélectionnables</h2>
-                                            <ul>
-                                            {foreach from=$groupe.teams item=team}
-                                                <li>{$team.nom}</li>
-                                            {/foreach}
+                                            <ul>                                                 
+                                            {if $groupe.teams|is_array}
+                                                {foreach from=$groupe.teams item=team}
+                                                    <li>{$team.nom}</li>
+                                                 {/foreach}
+                                            {else}
+                                                No teams available.
+                                            {/if} 
                                             </ul>
                                             <div id="components">
                                                 <h2>Editeur</h2>

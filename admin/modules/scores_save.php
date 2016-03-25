@@ -150,6 +150,6 @@ else
     }
 }
 
-header('Location: scores.php?id='.$id_tournoi);
+header('Location: ../scores.php?id='.$id_tournoi);
 
 ?>

@@ -1,6 +1,6 @@
 {* Smarty *}
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         {include file="default/meta.tpl"}
         <link rel="stylesheet" type="text/css" href="{#assets#}/css/profile.css" />
@@ -79,7 +79,9 @@
                             </div>
                             
                             <div class="col-lg-6">
-                                <button id="password-change" class ="btn btn-primary">Changer de mot de passe</button>
+                                <button disabled class ="btn btn-primary" type="submit">Enregistrer</button>
+                                <button disabled id="password-change" class ="btn btn-primary">Changer de mot de passe</button>
+                                
                                 <fieldset id="password-editing" style="display: none">
                                     <legend>Modification de mot de passe</legend>
                                     <div class="row">
@@ -106,7 +108,7 @@
                                             </div>
                                         </div>
                                     </div> 
-                                    <button id="validate-password" class ="btn btn-primary">Valider</button>
+                                    <button disabled id="validate-password" class ="btn btn-primary">Valider</button>
                                 </fieldset>
                             </div>                            
 
@@ -194,7 +196,7 @@
                                     <label for="psw_equipe">Mot de passe :</label>
                                     <input type="password" name="psw_equipe" id="psw_equipe" ><br />
                                     <div id="infoJoinTeam" style="border: none"></div>
-                                    <input id="submitRejoindreTeam" type="button" value="Rejoindre cette team">
+                                    <input disabled id="submitRejoindreTeam" type="button" value="Rejoindre cette team">
                                 </div>
                             {else}
                                 <p>Votre team est : <strong id='votreTeam'>"{$joueur.team}"</strong><br>
@@ -212,22 +214,18 @@
                                     <label for="psw_equipe">Mot de passe :</label>
                                     <input type="password" name="psw_equipe" id="psw_equipe" ><br />
                                     <div id="infoJoinTeam" style="border: none"></div>
-                                    <input id="submitRejoindreTeam" type="button" value="Rejoindre cette team">
+                                    <input disabled id="submitRejoindreTeam" type="button" value="Rejoindre cette team">
                                 </div>
                             {/if}
                         </div>
                         
-                        
                         <!-- tab-stats -->
                         <div role="tabpanel" class="tab-pane" id="tab-stats">
-                            stats not implemented yet !
+                            Vos statistiques ne sont pas disponibles dans cette version.
                         </div>
-
-                        
+  
                     </div>
-                               
-                    <button class ="btn btn-primary" type="submit">Enregistrer</button>
-                    
+  
                 </form>
 
             </div>
@@ -241,18 +239,13 @@
                 $("#password-change").click(function() {
                     $("#password-editing").css({ display: block });
                 });
-                
-                
-                
+
                 $("form").on("submit", function() {
                     if($("#pseudo").val().length() < 2) {
                         $(".form-group").addClass("has-error");
                         return false;
                     }
                 });
-                
-                
-                
                 
             });
         </script>

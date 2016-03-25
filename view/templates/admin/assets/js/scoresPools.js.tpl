@@ -1,7 +1,7 @@
 {* Smarty *}
 <script>
 
-    {* /*groups*/ {if $tournoi.id_tournoi != 2} *}
+    {* {if $tournoi.id_tournoi != 2} *}
             
     {foreach from=$groupes item=groupe}
         function getBracket_{$groupe.id_groupe}()
@@ -17,14 +17,16 @@
                     dataType: 'text',
                     success: function (text_{$groupe.id_groupe}, status)
                     {
-                        if(text_{$groupe.id_groupe}.contains("error"))
-                        {
-                            result_{$groupe.id_groupe} = null;
-                        }
-                        else
-                        {
+                        
+                        //if(text_{$groupe.id_groupe}.contains("error"))
+                        //{
+                            //alert(text_{$groupe.id_groupe});
+                            //result_{$groupe.id_groupe} = null;
+                        //}
+                        //else
+                        //{ 
                             result_{$groupe.id_groupe} = JSON.parse(text_{$groupe.id_groupe});
-                        }
+                        //}
                     },
                     error: function (resultat, statut, erreur)
                     {
@@ -73,8 +75,8 @@
             groupData_{$groupe.id_groupe} = getBracket_{$groupe.id_groupe}();
         {/foreach}  
             
-        {foreach from=$groupes item=groupe}  
-            $("#nav-tab-{$groupe.id_groupe}").click(function()
+        {foreach name=groupLoop from=$groupes item=groupe}
+            $("#nav-tab-{$groupe.id_groupe}").click(function ()
                 {
                     var groupData_{$groupe.id_groupe} = null;
                     groupData_{$groupe.id_groupe} = getBracket_{$groupe.id_groupe}();
@@ -98,6 +100,7 @@
                 }
             ); 
         {/foreach}
+    
     }); 
     
     {* //no groups 

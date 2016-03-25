@@ -14,6 +14,10 @@
                    data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" notif-lastUpdate="0" data-content='<div id="notifPane">Aucune notification</div>'>
                     <img src="{#assets#}/img/userbar/notif_off.png" alt="Vos Notifications" data-toggle="tooltip" data-placement="bottom" title="Vos notifications">
                 </a>
+                <a href="#" id="downloadBlock"
+                   data-container="body" data-toggle="popover" data-placement="bottom" title="Téléchargements" data-content='<div id="downloadPane" class="list-group">Aucun téléchargement</div>'>
+                     <img src="{#assets#}/img/userbar/download.png" alt="Téléchargements" data-toggle="tooltip" data-placement="bottom" title="Téléchargements"> 
+                </a>
                 <a href="#" class=""
                    data-container="body" data-toggle="popover" data-placement="bottom" title="Votre adresse IP est" data-content="{$smarty.server.REMOTE_ADDR}">
                     <img src="{#assets#}/img/userbar/ip.png" alt="Votre adresse IP" data-toggle="tooltip" data-placement="bottom" title="Votre adresse IP">

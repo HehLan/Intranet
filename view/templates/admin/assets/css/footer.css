@@ -4,7 +4,10 @@
 
 #footer 
 {
-    margin-top: 50px;
+    position: relative;
+    clear: both;
+    margin-top: -150px;
+    height: 150px;
     border-top: 8px solid #151515;
     background-color: #000000;
     padding-top: 25px;

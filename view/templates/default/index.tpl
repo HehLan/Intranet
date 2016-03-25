@@ -9,21 +9,21 @@
         {include file="default/header.tpl" con=$con next_matches=$next_matches}
         {include file="default/nav.tpl"  con=$con navTournois=$navTournois}
         <div id="container" class="container-fluid">
-            <div class="row">
+            <div class="row" id="contenu">
                 <div id="bloc_news" class="col-lg-6 col-xs-12">
                     <h3>News</h3>
-                    {section name=sec1 loop=$newsList}
-                        <div class="une_news" id="bloc_news_{$newsList[sec1].id_news}">
-                            <div class="titre_news" id="titre_news_{$newsList[sec1].id_news}" onclick="news_toggle({$newsList[sec1].id_news});">
-                                {$newsList[sec1].titre|nl2br}
-                                <div class="date_news" id="footer_news_{$newsList[sec1].id_news}">
-                                    {$newsList[sec1].quand}
-                                </div>
-                            </div>
-                            <div class="contenu_news" id="contenu_news_{$newsList[sec1].id_news}">
+                    {section name=sec1 loop=$newsList}    
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_{$newsList[sec1].id_news}">
+                            <header class="panel-heading header_news" id="titre_news_{$newsList[sec1].id_news}" onclick="news_toggle({$newsList[sec1].id_news});">
+                                <h2 class="panel-title titre_news">{$newsList[sec1].titre|nl2br}</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_{$newsList[sec1].id_news}">
                                 {$newsList[sec1].texte|nl2br}
                             </div>
-                        </div>
+                            <footer class="panel-footer date_news" id="footer_news_{$newsList[sec1].id_news}">
+                                <small class="pull-right">{$newsList[sec1].quand}</small>	
+                            </footer>
+			</article>
                     {/section}
                 </div>		
                 <div id="bloc_chat" class="col-lg-6 col-xs-12">

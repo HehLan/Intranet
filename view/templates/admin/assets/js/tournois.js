@@ -1,6 +1,6 @@
 function go_groupes(id)
 {
-    document.location='groupes.php?id='+id;
+    document.location='groupes.php?id_tournoi='+id;
 }
 function go_finales(id,parts,lb)
 {
@@ -33,7 +33,7 @@ function popup_close()
     document.getElementById('div_popup3').style.visibility = 'hidden';		
 }
 
-function erase_tournoi(var idt)
+function erase_tournoi(idt)
 {
     var r = confirm("Voulez-vous vraiment supprimer le tournoi ayant l'id " + idt + " ?");
     if (r == true)

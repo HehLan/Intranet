@@ -232,6 +232,9 @@ foreach ($groupes as $itGroupe => $groupe)
     $groupes[$itGroupe]['resultTeams'] = $resultTeams;
 }
 
+
+
+
 // ***************************************************************************
 $userId = $_GET['id'];
 // faire la fonc ici qui va aller recuperer cette info dans la db

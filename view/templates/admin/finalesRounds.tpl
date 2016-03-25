@@ -1,5 +1,5 @@
 {* Smarty *}
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
     <head>
         {include file="admin/meta.tpl"} 
@@ -11,8 +11,8 @@
         {include file="admin/header.tpl" con=$con }
         {include file="admin/nav.tpl"  con=$con }	
         
-        <div id="container">
-            <div id="contenu">
+        <div id="container" class="container">
+            <div id="contenu" class="row">
 		<h1>Finales de {$tournoi['nomTournoi']} {$gsb[$looser]}</h1>
                 <form>
                     {if {$matches|@count} > 0}
@@ -122,10 +122,7 @@
                 </form>
             </div>
         </div>
-        <!-- gap to have the footer in the bottom of the window -->
-	<div style="height: 450px;">
-	
-	</div>
+
         {include file="admin/footer.tpl"}
         
         <div id="shadowing"></div>

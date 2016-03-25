@@ -3,8 +3,35 @@
 /*----------------------------------------------------------------------*/
 
 
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+#container {
+    min-height: 100%
+}
+
+#contenu {
+    overflow: auto;
+    padding-bottom: 150px;
+}
+
 body
 {
-    background: url("../img/bgAdmin.jpg");
+    background: url("../img/background.jpg");
+}
+
+/*Opera Fix*/
+body:before {
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px
 }
 

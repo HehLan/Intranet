@@ -28,8 +28,6 @@
             
         </div>
 
-        <!-- gap to have the footer in the bottom of the window -->
-        <div style="height: 180px;"></div>
         
         {include file="admin/footer.tpl"}
 
