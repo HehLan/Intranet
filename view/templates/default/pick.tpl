@@ -24,12 +24,10 @@
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
                     <div id="iconPlayer1" class="glyphicon glyphicon-user" style="font-size:3em;" ></div> 
                     <div>{$playerNickname}</div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                    <!--
                     <button onclick="hideBox();">hide grayBox</button>
                     <button onclick="showResultsOfPick();">test</button>
+                    -->
                 </div>
 
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg10" id="middleDiv">
@@ -59,7 +57,7 @@
                     </div>
                     <div class="row" id="pickResults" style="display: none;">
                     </div>
-                    
+
                 </div>
 
                 <div id="iconPlayer2" class="col-xs-1 col-sm-1 col-md-1 col-lg1" style="text-align: center">
@@ -72,7 +70,7 @@
         {include file="default/footer.tpl"}
 
         {include file="default/assets/js/pick.js.tpl" playerId=$playerId playerNickname=$playerNickname 
-            opponentId=$opponentId opponentNickname=$opponentNickname pickStateMaps=$pickStateMaps pickStateHeroes=$pickStateHeroes
+             pickStateMaps=$pickStateMaps pickStateHeroes=$pickStateHeroes
             idPlayerWhoMakeChoise=$idPlayerWhoMakeChoise matchId=$matchId phase=$phase }
 
     </body>
