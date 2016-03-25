@@ -68,6 +68,11 @@ class Query
         return $this->output_array;
     }
     
+	public function getLastId()
+	{
+		return $this->executed_query->lastInsertId();
+	}
+	
     public function getObject()
     {
         return $this->output_object;

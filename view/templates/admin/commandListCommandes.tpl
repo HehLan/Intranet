@@ -16,7 +16,7 @@
 					{if $commande.paye}style="color:goldenrod"{/if}>
 				</span>
 				<span class="commanded glyphicon glyphicon-earphone" commande-status="{$commande.commanded}"
-					{if $commande.commanded}style="color:darkblue"{/if}>
+					{if $commande.commanded}style="color:blue"{/if}>
 				</span>
 				<span class="received glyphicon glyphicon-ok" commande-status="{$commande.disponible}"
 					{if $commande.disponible}style="color:darkgreen"{/if}>

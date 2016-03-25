@@ -216,7 +216,7 @@ Contribute
 People who directly contributed to the project are :
 - El Mouhafidi Youness
 - [Maigre Corky] (https://github.com/CorkyMaigre)
-- Okulichev Youness
+- Okulichev Ivan
 
 People who helped us solving some bugs during the project are :
 - Jacquemin Geoffrey

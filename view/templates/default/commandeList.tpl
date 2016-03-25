@@ -1,6 +1,6 @@
 {* Smarty *}
 {foreach $commandes item=commande}
-	<div class="panel panel-default" id-commande="{$commande.id_commande}">
+	<div class="panel panel-default commande-row" id-commande="{$commande.id_commande}">
 		<div class="panel-heading">
 		  <h4 class="panel-title">
 			<span class="glyphicon glyphicon-chevron-down commandeExpander glyphicon-white" 
@@ -16,13 +16,13 @@
 					{if $commande.paye}style="color:goldenrod"{/if}>
 				</span>
 				<span class="commanded glyphicon glyphicon-earphone" commande-status="{$commande.commanded}"
-					{if $commande.commanded}style="color:darkblue"{/if}>
+					{if $commande.commanded}style="color:blue"{/if}>
 				</span>
 				<span class="received glyphicon glyphicon-ok" commande-status="{$commande.disponible}"
 					{if $commande.disponible}style="color:darkgreen"{/if}>
 				</span>
 				{if !$commande.commanded}
-					<span class="remove glyphicon glyphicon-remove-sign"></span>
+					<span class="remove-commande glyphicon glyphicon-remove-sign"></span>
 				{/if}
 			</span>
 		  </h4>
@@ -34,7 +34,7 @@
 					<div class="commande-items">
 					{foreach $commande.commande item=item}
 						<div class="commande-item">
-							<div class="commande-item-quantite col-md-2">{$item.quantite}X</div>
+							<div class="commande-item-quantite col-md-2">{$item.quantite}x</div>
 							<div class="commande-item-nom col-md-4">{$item.nom}</div>
 							<div class="commande-item-grp col-md-4">{$item.grp}</div>
 							<div class="commande-item-prix col-md-2">{$item.prix} €</div>

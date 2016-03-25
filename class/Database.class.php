@@ -704,6 +704,23 @@ class Database
 			return 0;
 		}
 	}
+	public function removeCommande($idCommande)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/removeCommande.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idc', $idCommande, PDO::PARAM_INT);
+		if ($query->execute())
+		{
+			return $query->getResult();
+		}
+		else
+		{
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL REMOVE COMMANDE FROM ID';
+			return 0;
+		}
+	}
 	public function getJoueurCommandes($idJoueur)
 	{
 		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/getJoueurCommandes.sql');
@@ -819,6 +836,39 @@ class Database
 			if ($glob_debug)
 					echo 'ERREUR SQL MARK COMMANDE AS COMMANDED';
 			return 0;
+		}
+	}
+	
+	public function insertCommande($idJoueur, $comment, $total)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/insertCommande.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idj', $idJoueur, PDO::PARAM_INT);
+		$query->bind(':com', $idCommande, PDO::PARAM_STR);
+		$query->bind(':tot', $idCommande, PDO::PARAM_STR);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL INSERT COMMANDE';
+			return 0;
+		} else {
+			return $query->getLastId();
+		}
+	}
+	public function insertCommandeArticle($idCommande, $quantite, $idGroupeArticle)
+	{
+		$sql = file_get_contents(DOCUMENT_ROOT.'/src/sql/commandes/insertCommande.sql');
+		$query = new Query($this,$sql);
+		$query->bind(':idc', $idJoueur, PDO::PARAM_INT);
+		$query->bind(':quant', $idCommande, PDO::PARAM_INT);
+		$query->bind(':idaga', $idCommande, PDO::PARAM_INT);
+		if (!$query->execute()) {
+			GLOBAL $glob_debug;
+			if ($glob_debug)
+					echo 'ERREUR SQL INSERT ARTICLE IN COMMANDE';
+			return 0;
+		} else {
+			return $query->getLastId();
 		}
 	}
 }

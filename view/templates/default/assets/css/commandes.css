@@ -12,15 +12,24 @@
 }
 .commande-closing-items {
 }
-.glyphicon {
+.commandeExpander, .remove-commande {
 	cursor: pointer;
 }
 
 #side_command_group {
+	display: inherit;
 }
 .float-me {
 	float: right;
 }
-.float-me span {
+.float-me .commandeExpander {
 	padding: 0 10px;
+}
+
+#commande-form {
+	color: #000;
+}
+
+.panel-title .glyphicon {
+	margin: 0 10px;
 }
