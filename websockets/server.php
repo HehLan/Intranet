@@ -256,11 +256,8 @@ class CustomServer extends WebSocketServer {
 
 
 
-
-
-
 // launch websockets server
-$server = new CustomServer("127.0.0.1", "9000");
+$server = new CustomServer("10.10.10.220", "8686");
 try {
     $server->run();
 } catch (Exception $e) {
