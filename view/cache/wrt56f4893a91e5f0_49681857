@@ -1,0 +1,404 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-03-25 01:41:30
+  from "E:\wamp\www\Intranet\view\templates\default\index.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_56f4893a9168f3_53843643',
+  'file_dependency' => 
+  array (
+    '50dbe11ea4d13b924c1b789ce0ec2821a8872026' => 
+    array (
+      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\index.tpl',
+      1 => 1458863757,
+      2 => 'file',
+    ),
+    'ed988336c4343083b0c42e2ff20b9d17b41f4bae' => 
+    array (
+      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\meta.tpl',
+      1 => 1458864197,
+      2 => 'file',
+    ),
+    '38b87550390b4498246829deafc9d57640d6d43a' => 
+    array (
+      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\header.tpl',
+      1 => 1458856528,
+      2 => 'file',
+    ),
+    'eb253ea85fa0c415276f6fd713630b1f49745222' => 
+    array (
+      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\nav.tpl',
+      1 => 1458856647,
+      2 => 'file',
+    ),
+    'c083a58202c533e2b690828b2c323e50174f0471' => 
+    array (
+      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\footer.tpl',
+      1 => 1458866132,
+      2 => 'file',
+    ),
+  ),
+  'cache_lifetime' => 0,
+),true)) {
+function content_56f4893a9168f3_53843643 ($_smarty_tpl) {
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        
+<title>HEHLan</title>
+<meta charset="utf-8" />
+
+<meta http-equiv="Content-Type" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+<meta http-equiv="content-language" content="fr" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta http-equiv="expires" content="never" />
+<meta http-equiv="window-target" content="_top" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="none">
+<meta name="rating" content="general" />	
+<meta name="author" lang="fr" content="HeHLan" />	
+<meta name="category" content="Gaming" />
+<meta name="distribution" content="global" />
+<meta name="generator" content="Notepad++" />
+<meta name="publisher" content="HeHLan" />	
+<meta name="revisit-after" content="0 days" />
+<meta name="reply-to" content="info@hehlan.be" />
+<meta name="location" content="Mons, BELGIUM" />
+<meta name="geo.region" content="BE-WHT" />
+<meta name="geo.placename" content="Mons, Hainaut" />
+
+<link rel="shortcut icon" href="/Intranet/view/templates/default/assets/img/logos/logo-lan.ico" />
+<link rel="icon" href="/Intranet/view/templates/default/assets/img/logos/logo-lan.ico" />
+
+<!-- CSS STYLESHEETS BASE -->
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/jQuery/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/Bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/lib/FontAwesome/css/font-awesome.min.css" />
+
+<!-- CSS STYLESHEETS LAYERS -->
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/footer.css" />
+<link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/notif.css" />
+
+
+<!--[if !IE 7]>
+    <style type="text/css">
+        #container { display:table;height:100% }
+    </style>
+<![endif]--> 
+        <link rel="stylesheet" type="text/css" href="/Intranet/view/templates/default/assets/css/index.css" />
+    </head>
+    <body role="document">
+        
+<header id="header" class="row" >
+    <div id="logo" class="col-lg-9 col-sm-9 col-xs-12" >
+        <a href="index.php">
+            <img src="/Intranet/view/templates/default/assets/img/logos/logo-hehlan.png" alt="HEHLan" width="250px">
+        </a>
+    </div>
+    <div id="login" class="col-lg-3 col-sm-3 col-xs-12" >
+                    <p id="welcome">Bienvenue <span id="user-login">admin</span> !</p>
+            <div id="userbar">
+                <a href="profile.php"><img src="/Intranet/view/templates/default/assets/img/userbar/profile.png" alt="Votre profil" data-toggle="tooltip" data-placement="bottom" title="Votre profil"></a>
+                <a href="#" id="notifBlock"
+                   data-container="body" data-toggle="popover" data-placement="bottom" title="Vos notifications" notif-lastUpdate="0" data-content='<div id="notifPane">Aucune notification</div>'>
+                    <img src="/Intranet/view/templates/default/assets/img/userbar/notif_off.png" alt="Vos Notifications" data-toggle="tooltip" data-placement="bottom" title="Vos notifications">
+                </a>
+                <a href="#" id="downloadBlock"
+                   data-container="body" data-toggle="popover" data-placement="bottom" title="Téléchargements" data-content='<div id="downloadPane" class="list-group">Aucun téléchargement</div>'>
+                     <img src="/Intranet/view/templates/default/assets/img/userbar/download.png" alt="Téléchargements" data-toggle="tooltip" data-placement="bottom" title="Téléchargements"> 
+                </a>
+                <a href="#" class=""
+                   data-container="body" data-toggle="popover" data-placement="bottom" title="Votre adresse IP est" data-content="::1">
+                    <img src="/Intranet/view/templates/default/assets/img/userbar/ip.png" alt="Votre adresse IP" data-toggle="tooltip" data-placement="bottom" title="Votre adresse IP">
+                </a>
+                <a href="commande.php"><img src="/Intranet/view/templates/default/assets/img/userbar/command.png" alt="Passer une commande" data-toggle="tooltip" data-placement="bottom" title="Passer une commande"></a>
+                <a href="common/logout.php"><img src="/Intranet/view/templates/default/assets/img/userbar/logout.png" alt="Se déconnecter" data-toggle="tooltip" data-placement="bottom" title="Se déconnecter"></a>
+            </div>
+                       
+    </div>	     
+</header>
+
+        
+<nav id="navigation" class="navbar navbar-inverse" role="navigation" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/Intranet/index.php">Accueil</a></li>
+                <li><a href="/Intranet/places.php">Places</a></li>         
+                                    <li><a href="/Intranet/tournois.php?id=1">HOTS</a></li>
+                                    <li><a href="/Intranet/tournois.php?id=2">COD4</a></li>
+                                    <li><a href="/Intranet/tournois.php?id=3">TMNF</a></li>
+                                    <li><a href="/Intranet/tournois.php?id=5">HS</a></li>
+                                      
+                                <li><a href="profile.php">Mon profil</a></li>
+                                            <li><a href="/Intranet/admin/index.php">Admin</a></li>
+                                                </ul>
+        </div>
+    </div>			
+</nav>
+
+        <div id="container" class="container-fluid">
+            <div class="row" id="contenu">
+                <div id="bloc_news" class="col-lg-6 col-xs-12">
+                    <h3>News</h3>
+                        
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_13">
+                            <header class="panel-heading header_news" id="titre_news_13" onclick="news_toggle(13);">
+                                <h2 class="panel-title titre_news">gdfgfd</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_13">
+                                
+                            </div>
+                            <footer class="panel-footer date_news" id="footer_news_13">
+                                <small class="pull-right">jeudi à 01h07</small>	
+                            </footer>
+			</article>
+                        
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_12">
+                            <header class="panel-heading header_news" id="titre_news_12" onclick="news_toggle(12);">
+                                <h2 class="panel-title titre_news">gfgf</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_12">
+                                
+                            </div>
+                            <footer class="panel-footer date_news" id="footer_news_12">
+                                <small class="pull-right">jeudi à 01h06</small>	
+                            </footer>
+			</article>
+                        
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_10">
+                            <header class="panel-heading header_news" id="titre_news_10" onclick="news_toggle(10);">
+                                <h2 class="panel-title titre_news">Résultat Trackmania</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_10">
+                                <IMG SRC="resultTM.png" WIDTH=100<?php echo '%>'; ?>
+
+                            </div>
+                            <footer class="panel-footer date_news" id="footer_news_10">
+                                <small class="pull-right">dimanche à 02h46</small>	
+                            </footer>
+			</article>
+                        
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_9">
+                            <header class="panel-heading header_news" id="titre_news_9" onclick="news_toggle(9);">
+                                <h2 class="panel-title titre_news">Gagnants COD</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_9">
+                                1. BIT1<br /><br />
+2. NIP TA MERE<br /><br />
+3. Don't feed the ginger
+                            </div>
+                            <footer class="panel-footer date_news" id="footer_news_9">
+                                <small class="pull-right">dimanche à 02h33</small>	
+                            </footer>
+			</article>
+                        
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_6">
+                            <header class="panel-heading header_news" id="titre_news_6" onclick="news_toggle(6);">
+                                <h2 class="panel-title titre_news">Horaire soirée de samedi</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_6">
+                                22H00 :<br /><br />
+Tournoi Trackmania<br /><br />
+23h00 : <br /><br />
+Tournoi COD4<br /><br />
+<br /><br />
+Serveur tournoi 1(IP : 192.168.10.211) -> BIT2 vs Belgian Rape Squad<br /><br />
+Serveur tournoi 2 (IP : 192.168.10.212) -> Don't feed the ginger vs BIT1<br /><br />
+Serveur tournoi 3 (IP : 192.168.10.213) -> Go Nerf Karma vs NIP TA MERE<br /><br />
+<br /><br />
+00h00 :<br /><br />
+- Tournoi UT3 <br /><br />
+- BO3 de League Of Legend<br /><br />
+
+                            </div>
+                            <footer class="panel-footer date_news" id="footer_news_6">
+                                <small class="pull-right">samedi à 22h49</small>	
+                            </footer>
+			</article>
+                        
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_7">
+                            <header class="panel-heading header_news" id="titre_news_7" onclick="news_toggle(7);">
+                                <h2 class="panel-title titre_news">Clé Unreal Tournament 3</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_7">
+                                CD KEY LIST:<br /><br />
+ZJ3P-TUDF-LHKT-4GK2<br /><br />
+E8ML-6ZA7-ZZA4-DW4D<br /><br />
+PHM3-QYC3-LEWY-VCC4<br /><br />
+HPAP-4AUU-BBTD-YE6R<br /><br />
+M3YX-UPD2-JGZK-7TAB<br /><br />
+CLAG-WAJD-NWDA-GLCQ<br /><br />
+4X7Y-M5KD-TS99-JECJ<br /><br />
+W8EL-7KJZ-52JL-EQ6U<br /><br />
+WMEM-ZJUT-992A-WQTC<br /><br />
+VKJF-VSL8-WE5B-CB95<br /><br />
+FBGK-CNU3-SMSF-FHM2<br /><br />
+T64B-3XVJ-CLLM-5XKQ<br /><br />
+Z8NN-73SC-QEKL-ACBK<br /><br />
+FARK-A8US-CAAX-BAKS<br /><br />
+YX6Q-M3T3-M33R-J8W7<br /><br />
+V23F-TVVW-GLM3-4QUH<br /><br />
+2BWV-DJVM-P28F-6HVQ<br /><br />
+N54Q-UZJJ-A5KU-LRFX<br /><br />
+PGT3-NCVV-QLEY-QB77<br /><br />
+NJP4-S42S-RXET-SA2D<br /><br />
+DF5E-LY33-KKVZ-MTW2<br /><br />
+XDCJ-HESN-4K2E-ZZXR<br /><br />
+9RE7-9JUV-EK7C-W76Z<br /><br />
+BTQB-C7UT-KNUP-T96A<br /><br />
+XGBJ-PCSW-BEJY-G5J3<br /><br />
+XMNJ-Z2JM-PF2A-A922<br /><br />
+KYXP-NMVZ-UGG8-N7SE<br /><br />
+FT3J-CV3P-9QS7-LFPQ<br /><br />
+FNZJ-2Q3K-URAV-7U36<br /><br />
+6QQ5-76LD-SXNC-B475<br /><br />
+US3G-HUTN-HV5W-44T5<br /><br />
+FRXJ-8LTQ-6KSU-6BPZ<br /><br />
+2NEV-3JUN-l3QD-ENNT<br /><br />
+XTHJ-DR2A-BQ27-F9JD
+                            </div>
+                            <footer class="panel-footer date_news" id="footer_news_7">
+                                <small class="pull-right">samedi à 21h39</small>	
+                            </footer>
+			</article>
+                        
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_5">
+                            <header class="panel-heading header_news" id="titre_news_5" onclick="news_toggle(5);">
+                                <h2 class="panel-title titre_news">Un peu de pub</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_5">
+                                Tu aimes le heavy metal et tu as l'humour lourd?<br /><br />
+<br /><br />
+<br /><br />
+https://www.facebook.com/pages/Tr%C3%BCe-Funny-Mayhem/261538330566866<br /><br />
+<br /><br />
+Cette page est pour toi ;-)
+                            </div>
+                            <footer class="panel-footer date_news" id="footer_news_5">
+                                <small class="pull-right">samedi à 14h07</small>	
+                            </footer>
+			</article>
+                        
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_4">
+                            <header class="panel-heading header_news" id="titre_news_4" onclick="news_toggle(4);">
+                                <h2 class="panel-title titre_news">Horaire début des tournois</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_4">
+                                <u>League Of legend :</u> 9h00<br /><br />
+<u>Call Of duty 4 :</u> 10h00<br /><br />
+<u>Unreal Tournament 3 :</u> 12h00<br /><br />
+<u>Trackmania :</u> 18h00
+                            </div>
+                            <footer class="panel-footer date_news" id="footer_news_4">
+                                <small class="pull-right">samedi à 05h15</small>	
+                            </footer>
+			</article>
+                        
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_2">
+                            <header class="panel-heading header_news" id="titre_news_2" onclick="news_toggle(2);">
+                                <h2 class="panel-title titre_news">Gagnant de Hearthstone</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_2">
+                                Félicitation à Echofox pour sa victoire ! Il a gagné un déjeuner gratuit ce samedi matin !  
+                            </div>
+                            <footer class="panel-footer date_news" id="footer_news_2">
+                                <small class="pull-right">samedi à 04h38</small>	
+                            </footer>
+			</article>
+                        
+                        <article class="panel panel-default une_news" role="article" id="bloc_news_1">
+                            <header class="panel-heading header_news" id="titre_news_1" onclick="news_toggle(1);">
+                                <h2 class="panel-title titre_news">Serveur fun en ligne</h2>
+                            </header>
+                            <div class="panel-body contenu_news" id="contenu_news_1">
+                                <H3>COD4 : </H3><br /><br />
+IP : 192.168.10.210<br /><br />
+<h3>Unreal Tournament 3 :</h3><br /><br />
+Opérationnel (afficher dans le jeu multijoueur -> LAN)<br /><br />
+<h3>Trackamnia :</h3><br /><br />
+Opérationnel
+                            </div>
+                            <footer class="panel-footer date_news" id="footer_news_1">
+                                <small class="pull-right">vendredi à 22h44</small>	
+                            </footer>
+			</article>
+                                    </div>		
+                <div id="bloc_chat" class="col-lg-6 col-xs-12">
+                                            <h3>HEHLan Tchat</h3>
+                                                    <div id="bloc_chat_box">
+                                <div id="bloc_chat_texte"></div>
+                                <div id="bloc_chat_users">
+                                    <strong>Connectés :</strong><br>				
+                                </div>
+                                <div id="bloc_chat_send">
+                                    <input type="text" name="message" id="bloc_chat_message" />
+                                    <input type="button" value="Envoyer" id="bloc_chat_bouton" onclick="ecrire();" />
+                                </div>
+                            </div>
+                                                            </div>
+            </div>			
+        </div>
+        
+<footer id="footer" class="row">
+    <div id="copyright" class="col-lg-3 col-sm-12 col-xs-12">
+        <p>HEHLan All Rights Reserved Copyright <i class="fa fa-copyright"></i> 2016</p>
+    </div>
+    <div id="ceheh" class="col-lg-offset-2 col-lg-2 col-sm-12 col-xs-12">
+        <img src="/Intranet/view/templates/default/assets/img/logos/logo-ceheh.png" alt="CEHECOFH" />
+    </div>
+    <div id="campus_technique" class="col-lg-offset-3 col-lg-2 col-sm-12 col-xs-12">
+        <a href="http://www.heh.be" target="_blank">
+            <img src="/Intranet/view/templates/default/assets/img/logos/logo-campus-technique.png" alt="HeH" />
+        </a>
+    </div>
+</footer>
+
+
+
+<!-- JAVASCRIPT LIBRARIES -->
+<script type="text/javascript" src="/Intranet/lib/jQuery/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="/Intranet/lib/jQuery/jquery-ui.js"></script>
+<script type="text/javascript" src="/Intranet/lib/jQuery/jquery.media.js"></script>
+<script type="text/javascript" src="/Intranet/lib/Bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/Intranet/lib/Less/less.js"></script>
+
+
+<script type="text/javascript" src="/Intranet/lib/baconjs/Bacon-1ab32ffb.min.js"></script>
+<script type="text/javascript" src="/Intranet/lib/lodash/lodash-2.2.1.min.js"></script>
+<script type="text/javascript" src="/Intranet/lib/live/live.js"></script>
+<script type="text/javascript" src="/Intranet/lib/handlebars/handlebars.1.0.0.js"></script>
+<script type="text/javascript" src="/Intranet/lib/jquery.group.min.js"></script>
+
+
+
+<script type="text/javascript" src="/Intranet/src/js/menu.js"></script>
+<script type="text/javascript" src="/Intranet/src/js/init.js"></script>
+
+
+<script type="text/javascript" src="/Intranet/view/templates/default/assets/js/notifications.js"></script>
+<script type="text/javascript" src="/Intranet/view/templates/default/assets/js/downloads.js"></script>
+
+
+        <script type="text/javascript" src="/Intranet/view/templates/default/assets/js/index.js"></script>
+                    <script type="text/javascript" src="/Intranet/view/templates/default/assets/js/chat.js"></script>
+            </body>
+</html><?php }
+}

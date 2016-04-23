@@ -1,0 +1,85 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-03-24 21:51:44
+  from "E:\wamp\www\Intranet\view\templates\default\downloads.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_56f45360ec5aa7_52480596',
+  'file_dependency' => 
+  array (
+    '12fc3aa5fcca18b8fb6170afe105781f2ea91a9b' => 
+    array (
+      0 => 'E:\\wamp\\www\\Intranet\\view\\templates\\default\\downloads.tpl',
+      1 => 1458511819,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:default/meta.tpl' => 1,
+    'file:default/header.tpl' => 1,
+    'file:default/nav.tpl' => 1,
+    'file:default/footer.tpl' => 1,
+  ),
+),false)) {
+function content_56f45360ec5aa7_52480596 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '1220156f45360e0e0f6_64163415';
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:default/meta.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+ 
+        <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'assets');?>
+/css/downloads.css" />
+    </head>
+    <body role="document">
+        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:default/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'next_matches'=>$_smarty_tpl->tpl_vars['next_matches']->value), 0, false);
+?>
+
+        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:default/nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array('con'=>$_smarty_tpl->tpl_vars['con']->value,'navTournois'=>$_smarty_tpl->tpl_vars['navTournois']->value), 0, false);
+?>
+
+        <div id="container" class="container-fluid">
+            <div class="row">
+                <h2>Downloads</h2>	
+                <ul class ="fa-ul">
+                    <?php
+$_from = $_smarty_tpl->tpl_vars['downloads']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_download_0_saved_item = isset($_smarty_tpl->tpl_vars['download']) ? $_smarty_tpl->tpl_vars['download'] : false;
+$_smarty_tpl->tpl_vars['download'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['download']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['download']->value) {
+$_smarty_tpl->tpl_vars['download']->_loop = true;
+$__foreach_download_0_saved_local_item = $_smarty_tpl->tpl_vars['download'];
+?>
+                        <li>
+                            <a href="<?php echo $_smarty_tpl->smarty->ext->configLoad->_getConfigVariable($_smarty_tpl, 'src');?>
+/<?php echo $_smarty_tpl->tpl_vars['download']->value['src'];?>
+"><i class="fa-li fa fa-download"></i><?php echo $_smarty_tpl->tpl_vars['download']->value['title'];?>
+</a>
+                        </li>
+                    <?php
+$_smarty_tpl->tpl_vars['download'] = $__foreach_download_0_saved_local_item;
+}
+if ($__foreach_download_0_saved_item) {
+$_smarty_tpl->tpl_vars['download'] = $__foreach_download_0_saved_item;
+}
+?>
+                </ul>
+            </div>
+        </div>                
+                
+        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:default/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+        
+    </body>
+</html><?php }
+}
