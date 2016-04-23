@@ -31,7 +31,14 @@
 								<!-- Modal Body -->
 								<div class="modal-body">
 									<form class="form-horizontal" role="form">
-									  <div class="form-group">
+										<div class="form-group commandeArticlesList">
+										
+										</div>
+										<div class="form-group">
+										  <label for="comment">Comment:</label>
+										  <textarea class="form-control" rows="5" id="comment"></textarea>
+										</div>
+									  <!--<div class="form-group">
 										<label  class="col-sm-2 control-label"
 												  for="inputEmail3">Email</label>
 										<div class="col-sm-10">
@@ -60,7 +67,7 @@
 										<div class="col-sm-offset-2 col-sm-10">
 										  <button type="submit" class="btn btn-default">Sign in</button>
 										</div>
-									  </div>
+									  </div>-->
 									</form>
 								</div>
 								<div class="modal-footer">

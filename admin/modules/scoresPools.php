@@ -334,8 +334,6 @@ foreach ($groupes as $itGroupe => $groupe)
 
                         // recuperer le dateTime du match
                         $dateTime_DebutMatch = $heures[$team['id']][$team2['id']];
-                        // chequer en fct du temps si on peut afficher le link (1h avant que match commence)
-                        $isPickActive = checkIsPickActive($dateTime_DebutMatch);
                     }
                 }
                 // recuperer l'id du match
@@ -350,8 +348,7 @@ foreach ($groupes as $itGroupe => $groupe)
                 $resultTeam[] = array(
                     "id_match" => $database->getIdMatchEquipe($groupe['id_groupe'], $team['id'], $team2['id']),
                     "couleur" => $couleur,
-                    "valeur" => $valeur,
-                    "isPickActive" => $isPickActive);
+                    "valeur" => $valeur);
             }
             else
             {
@@ -364,21 +361,6 @@ foreach ($groupes as $itGroupe => $groupe)
 }
 
 
-
-
-
-// ***************************************************************************
-$userId = $_GET['id_tournoi'];
-// faire la fonc ici qui va aller recuperer cette info dans la db
-$isChiefOfTeam = true; // pour l'intant true pour les tests
-// faire la fonc qui va aller recuperer le nom de la team du gars en fct de son ID
-$teamName = 'BIT1';
-
-$peekData = array(
-    "userId" => $userId,
-    "isChief" => $isChiefOfTeam,
-    "teamName" => $teamName);
-// ***************************************************************************
 // Applying Template
 $smarty->assign("con", $connected);
 $smarty->assign("next_matches", $database->getNextMatches($connected));
@@ -390,7 +372,6 @@ $smarty->assign("nbrteam", $nbrteam);
 $smarty->assign("groupes", $groupes);
 $smarty->assign("resultTeams", $resultTeams);
 $smarty->assign("totaux", $totaux);
-$smarty->assign("peekData", $peekData);
 
 $smarty->display(DOCUMENT_ROOT.'/view/templates/admin/scoresPools.tpl');
 

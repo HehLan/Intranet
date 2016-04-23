@@ -362,7 +362,7 @@
     // *************************************************************
 
     function connectToSocketsServer() {
-        var host = "ws://127.0.0.1:9000/websockets"; // SET THIS TO YOUR SERVER
+        var host = "ws://10.10.10.220:8686/websockets"; // SET THIS TO YOUR SERVER
         try {
             socket = new WebSocket(host);
 
