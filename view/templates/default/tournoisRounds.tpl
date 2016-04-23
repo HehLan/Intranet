@@ -71,15 +71,17 @@
                                         {for $idManche=1 to $tournoi.nombreManche}
                                             <th class="th_manche_round">Manche {$idManche}</th>
                                             {/for}
-                                        <th class="th_points_round">Points</th>
+                                        {* <th class="th_points_round">Points</th> *}
                                     </tr>
-                                    {foreach from=$groupe.joueurs item=joueur}
-                                        <tr>
+									
+									
+                                    {foreach from=$groupe.joueurs item=joueur name=itJ}
+                                        <tr {if $smarty.foreach.itJ.index < 8} class="tR-qualif"{/if}>
                                             <td class="td_pseudo_round">{$joueur.pseudo}</td>
                                             {for $idManche=1 to $tournoi.nombreManche}
                                                 <td class="td_score_round">{$joueur.scores[$idManche]}</td>
                                             {/for}
-                                            <td class="td_total_round">{$joueur.total}</td>
+                                            {* <td class="td_total_round">{$joueur.total}</td> *}
                                         </tr>
                                     {/foreach}
                                 </table>                                

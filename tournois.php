@@ -1,17 +1,14 @@
 <?php
 require_once('common/head.php');
-
 $nbrteam = 0;
 $id_tournoi = 1;
 if (isset($_GET['id']))
 {
     $id_tournoi = $_GET['id'];
 }
-
-
 //SQL Query to select pools for this tournament
 $groupes = '';
-$sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id';
+$sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id ORDER BY nom_groupe';
 $query = new Query($database, $sql);
 $query->bind(':id', $id_tournoi, PDO::PARAM_INT);
 if ($query->execute())
@@ -27,8 +24,6 @@ else
     }
     exit; 
 }
-
-
 //SQL Query to count the number of matchs for a tournament and a looser bracket
 $sql = 'SELECT COUNT(*) AS nbr
         FROM matchs
@@ -49,12 +44,9 @@ else
     $nbr_lb2 = $query->getResult()[0];
     $nbr_lb2 = $nbr_lb2['nbr'];
 }
-
-
 // Setting the loser brackets
 $nbr_lb2 = 0;
 $nbr_lb3 = 0;
-
 //SQL Query to count the number of matchs for a tournament and a double looser bracket
 $sql = 'SELECT COUNT(*) AS nbr
         FROM matchs
@@ -75,11 +67,10 @@ else
     $nbr_lb3 = $query->getResult()[0];
     $nbr_lb3 = $nbr_lb3['nbr'];
 }
-
 // Select the Pool or Round mode
 $tournoi = $database->getTournament($id_tournoi);
-
-if( $tournoi['joueurParTeam'] > 1)
+//if( $tournoi['joueurParTeam'] > 1)
+if ( $id_tournoi != 3)
 {
     include_once(DOCUMENT_ROOT.'/modules/tournoisPools.php');
 }
@@ -87,5 +78,4 @@ else
 {
     include_once(DOCUMENT_ROOT.'/modules/tournoisRounds.php');
 }
-
 ?>

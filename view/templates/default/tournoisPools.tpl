@@ -56,7 +56,7 @@
                                 <div role="tabpanel" class="tab-pane" id="tab-{$groupe['id_groupe']}">
                             {/if}
                                     <div class="row">    
-                                        
+                                       
                                         <!-- Old system -->
                                         <div class="col-lg-12">
                                             {* <h4>Informations pratiques</h4> *}
@@ -110,7 +110,10 @@
                                                                         <div>
                                                                             <a target="_blank" href="pick.php?id={$peekData.userId}&idMatch={$groupe.resultTeams[sec1][sec2].id_match}" style="color : red;">Pick</a>
                                                                         </div>
-                                                                    {/if}
+                                                                    {/if} 
+																	 <div>
+                                                                            <a target="_blank" href="pick.php?id={$peekData.userId}&idMatch={$groupe.resultTeams[sec1][sec2].id_match}" style="color : red;">Pick</a>
+                                                                        </div>
                                                                 </td>
                                                             {/if}
                                                         {/section}
@@ -118,6 +121,7 @@
                                                 {/section}
                                             </table>
                                         </div>
+									
                                            
                                         <!-- New System -->
                                         <div id="components" class="col-lg-12">
@@ -134,16 +138,25 @@
 
         {include file="default/footer.tpl"}
 
-          
-        <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.group.min.js"></script>
+         
+        <script type="text/javascript" src="{#domain#}/lib/baconjs/Bacon-1ab32ffb.min.js"></script>
+        <script type="text/javascript" src="{#domain#}/lib/lodash/lodash-2.2.1.min.js"></script>
+        <script type="text/javascript" src="{#domain#}/lib/live/live.js"></script>
+        <script type="text/javascript" src="{#domain#}/lib/handlebars/handlebars.1.0.0.js"></script>
+        <script type="text/javascript" src="{#domain#}/lib/jQuery/jquery.group.min.js"></script> 
      
-        
+        {*
         {foreach from=$groupes item=groupe}
             {include file="default/assets/js/tournoisPools.js.tpl"
                 tournoi=$tournoi
                 groupe=$groupe
             }
-        {/foreach}
+        {/foreach}*}
+		
+		{include file="default/assets/js/tournoisPools.js.tpl"
+                tournoi=$tournoi
+                groupes=$groupes
+            } 
         
     </body>
 </html>

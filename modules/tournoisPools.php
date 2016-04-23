@@ -1,27 +1,58 @@
 <?php
 
+if($id_tournoi != 5) //si pas HS
+{
 if (is_array($groupes))
 {
     foreach ($groupes as $groupe)
     {
-        $sql = 'SELECT e.id_equipes AS id, e.nom AS nom
+	
+		if($id_tournoi != 5) //si pas HS
+		{
+			$sql = 'SELECT e.id_equipes AS id, e.nom AS nom
                 FROM equipes AS e, equipes_groupes AS g
                 WHERE g.id_groupe=:idg AND e.id_equipes=g.id_equipe';
-        $query = new Query($database, $sql);
-        $query->bind(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
-        if ($query->execute())
-        {
-            $participants[$groupe['id_groupe']] = $query->getResult();
-        }
-        else
-        {
-            global $glob_debug;
-            if ($glob_debug)
-            {
-                echo 'ERREUR SQL EQUIPES';
-            }
-            exit;
-        }
+			$query = new Query($database, $sql);
+			$query->bind(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
+			if ($query->execute())
+			{
+				$participants[$groupe['id_groupe']] = $query->getResult();
+			}
+			else
+			{
+				global $glob_debug;
+				if ($glob_debug)
+				{
+					echo 'ERREUR SQL EQUIPES';
+				}
+				exit;
+			}
+		}
+		else
+		{ //si HS
+		
+			$sql = 'SELECT j.id_joueur AS id, j.pseudo AS nom
+					FROM joueurs AS j, joueurs_groupes AS g
+					WHERE g.id_groupe=:idg AND j.id_joueur=g.id_equipes';
+			$query = new Query($database, $sql);
+			$query->bind(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
+			if ($query->execute())
+			{
+				$participants[$groupe['id_groupe']] = $query->getResult();
+			}
+			else
+			{
+				global $glob_debug;
+				if ($glob_debug)
+				{
+					echo 'ERREUR SQL joueur'; //erroroororooror
+				}
+				exit;
+			}
+		
+		}
+		
+		
     }
 }
 else
@@ -33,6 +64,11 @@ else
     }
     exit;
 }
+
+}
+
+if($id_tournoi != 5)
+{
 $nbr_lb2 = 0;
 $nbr_lb3 = 0;
 
@@ -204,7 +240,7 @@ foreach ($groupes as $itGroupe => $groupe)
                         // recuperer le dateTime du match
                         $dateTime_DebutMatch = $heures[$team['id']][$team2['id']];
                         // chequer en fct du temps si on peut afficher le link (1h avant que match commence)
-                        $isPickActive = checkIsPickActive($dateTime_DebutMatch);
+                        $isPickActive = false; //checkIsPickActive($dateTime_DebutMatch);
                     }
                 }
                 // recuperer l'id du match
@@ -238,7 +274,7 @@ foreach ($groupes as $itGroupe => $groupe)
 $userId = $_SESSION['id_joueur'];
 
 // faire la fonc ici qui va aller recuperer cette info dans la db
-$isChiefOfTeam = isChiefOfTeam($_SESSION['level']); //pour l'intant true pour les tests
+$isChiefOfTeam = true; //isChiefOfTeam($_SESSION['level']); //pour l'intant true pour les tests
 
 // faire la fonc qui va aller recuperer le nom de la team du gars en fct de son ID
 $teamName = getTeamName($userId, $database);
@@ -261,6 +297,17 @@ $smarty->assign("groupes", $groupes);
 $smarty->assign("resultTeams", $resultTeams);
 $smarty->assign("totaux", $totaux);
 $smarty->assign("peekData", $peekData);
+
+
+}
+else{
+$smarty->assign("con", $connected);
+$smarty->assign("next_matches", $database->getNextMatches($connected));
+$smarty->assign("navTournois", $database->getNavTournois());
+$smarty->assign("tournoi", $tournoi);
+$smarty->assign("groupes", $groupes);
+}
+
 
 $smarty->display('default/tournoisPools.tpl');
 ?>

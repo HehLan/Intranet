@@ -21,11 +21,11 @@ class Smarty_HEHLan extends Smarty
         $this->configLoad('paths.conf');
               
         
-        $this->compile_check = true;    // put to false for maximal performance when it is into production
-        $this->force_compile = true;    // should never be used in a production environment
-        $this->debugging = true;
+        $this->compile_check = false;    // put to false for maximal performance when it is into production
+        $this->force_compile = false;    // should never be used in a production environment
+        $this->debugging = false;
         //$this->debugging_ctrl = ($_SERVER['SERVER_NAME'] == 'localhost')
-        $this->caching = 2;
+        $this->caching = 0;
         $this->cache_lifetime = 0;
         
         

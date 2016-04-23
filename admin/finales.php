@@ -95,7 +95,8 @@ $nomt = $tournoi['nomTournoi'];
 
 if($creer)
 {	
-    if($jpt>1)
+    //if( $tournoi['joueurParTeam'] > 1 && $tournoi['id_tournoi'] != 3 )
+    if( $tournoi['id_tournoi'] != 3 )
     {
         if($nbr_qualifs!=2 && $nbr_qualifs!=4 && $nbr_qualifs!=8 && $nbr_qualifs!=16 && $nbr_qualifs!=32 &&  $nbr_qualifs!=64 &&  $nbr_qualifs!=128)
         {
@@ -470,7 +471,8 @@ $nbrmatch = 0;
 
 
 
-if( $tournoi['joueurParTeam'] > 1)
+//if( $tournoi['joueurParTeam'] > 1)
+if( $tournoi['id_tournoi'] != 3 )
 {
     include_once('modules/finalesPools.php');
 }

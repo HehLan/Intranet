@@ -126,7 +126,6 @@ else
     {
         for($i=1; $i<=$manche['nbr_manche']; $i++)
         {
-				print $_POST['score_m_'.$manche['id_match'].'_ma_'.$i.'_p_'.$manche['id_joueur']];
             if(isset($_POST['score_m_'.$manche['id_match'].'_ma_'.$i.'_p_'.$manche['id_joueur']]))
             {
                 $sql = 'INSERT INTO manches_joueurs (id_match, numero_manche, id_joueur,score)

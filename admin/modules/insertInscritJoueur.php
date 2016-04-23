@@ -30,7 +30,7 @@ if (Auth::isLogged())
             
                 //on lance la transaction
                 $connexion->beginTransaction();
-                //supprime toutes les lignes la table
+                supprime toutes les lignes la table
                 $sql="DELETE FROM joueurtournoi WHERE id_tournoi = :id_tournoi";
                 $req = $connexion->prepare($sql);
                 $req->bindValue("id_tournoi",$_POST['id_tournoi'],PDO::PARAM_INT);

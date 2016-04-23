@@ -50,9 +50,10 @@ if($id_tournoi == 3)
     }
 }
 
+
 //SQL Query to select pools for this tournament
 $groupes = '';
-$sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id';
+$sql = 'SELECT * FROM groupes_pool WHERE id_tournoi=:id ORDER BY nom_groupe';
 $query = new Query($database, $sql);
 $query->bind(':id', $id_tournoi, PDO::PARAM_INT);
 if ($query->execute())
@@ -70,7 +71,8 @@ else
 }
 
 
-
+if( $tournoi['id_tournoi'] != 5 )
+{
 //SQL Query to count the number of matchs for a tournament and a looser bracket
 $sql = 'SELECT COUNT(*) AS nbr
         FROM matchs
@@ -117,13 +119,16 @@ else
     $nbr_lb3 = $query->getResult()[0];
     $nbr_lb3 = $nbr_lb3['nbr'];
 }
+}
+
 
 // Select the Pool or Round mode
 $tournoi = $database->getTournament($id_tournoi);
 
 
 
-if ($tournoi['joueurParTeam'] > 1)
+//if( $tournoi['joueurParTeam'] > 1 && $tournoi['id_tournoi'] != 3 )
+if( $tournoi['id_tournoi'] != 3 )
 {
     include_once(DOCUMENT_ROOT.'/admin/modules/scoresPools.php');
 }

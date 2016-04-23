@@ -80,7 +80,8 @@ foreach ($groupes as $itGroupe => $groupe)
             RIGHT JOIN joueurs as j ON jg.id_joueur = j.id_joueur
             LEFT JOIN manches_joueurs as mj ON j.id_joueur=mj.id_joueur
             WHERE jg.id_groupe=:idg 
-            GROUP BY j.id_joueur';
+            GROUP BY j.id_joueur
+			ORDER BY score';
     $query = new Query($database, $sql);
     $query->bind(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
     if ($query->execute())
@@ -123,6 +124,11 @@ foreach ($groupes as $itGroupe => $groupe)
         exit;
     }
 }
+
+
+
+
+
 
 // Applying Template
 $smarty->assign("con", $connected);

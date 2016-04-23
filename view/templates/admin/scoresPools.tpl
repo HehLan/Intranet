@@ -42,6 +42,8 @@
                             {/if}
                                     <div class="row">
                                         <div class="col-lg-6">
+										
+										{if $tournoi.id_tournoi != 5 }
                                             <h2>Liste des équipes sélectionnables</h2>
                                             <ul>                                                 
                                             {if $groupe.teams|is_array}
@@ -52,6 +54,7 @@
                                                 No teams available.
                                             {/if} 
                                             </ul>
+										{/if}
                                             <div id="components">
                                                 <h2>Editeur</h2>
                                                 <div id="editor-{$groupe['id_groupe']}"></div>

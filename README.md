@@ -54,6 +54,7 @@ Table of contents
 - [Compatibility with browsers](#compatibility-with-browsers)
 - [Contribute](#contribute)
 - [Sponsors](#sponsors)
+- [Bugs](#bugs)
 
 
 Install
@@ -228,5 +229,16 @@ Sponsors
 ========
 
 
+
+Bugs
+====
+
+In the Intranet v4.0 HS tournament was played in team with pools brackets.
+Now it is played in solo and not with a team and uses pools too.
+So the conditional structure of "jpt>1" comes "id_tournoi != 3" in the new Intranet.
+
+
+The inscriptions of players to solo tournament (TM and HS) do not working, it erase all but
+it inserts nothing.
 
 

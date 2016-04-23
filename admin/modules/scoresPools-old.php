@@ -3,24 +3,49 @@
     
 foreach($groupes as $groupe)
 {
-    $sql = 'SELECT e.id_equipes as id, e.nom as nom
-            FROM equipes as e, equipes_groupes as g
-            WHERE g.id_groupe=:idg and e.id_equipes=g.id_equipe';
-    $query = new Query($database, $sql);
-    $query->bind(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
-    if($query->execute())
-    {
-        $participants[$groupe['id_groupe']] = $query->getResult();
-    }
-    else 
-    {
-        global $glob_debug;
-        if($glob_debug)
-        {
-            echo 'ERREUR - SQL EQUIPES';
-        }
-        exit; 
-    }
+    if($id_tournoi != 5) //si pas HS
+		{
+			$sql = 'SELECT e.id_equipes AS id, e.nom AS nom
+					FROM equipes AS e, equipes_groupes AS g
+					WHERE g.id_groupe=:idg AND e.id_equipes=g.id_equipe';
+			$query = new Query($database, $sql);
+			$query->bind(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
+			if ($query->execute())
+			{
+				$participants[$groupe['id_groupe']] = $query->getResult();
+			}
+			else
+			{
+				global $glob_debug;
+				if ($glob_debug)
+				{
+					echo 'ERREUR SQL EQUIPES';
+				}
+				exit;
+			}
+		}
+		else{ //si HS
+		
+		$sql = 'SELECT j.id_joueur AS id, j.pseudo AS nom
+					FROM joueurs AS j, joueurs_groupes AS g
+					WHERE g.id_groupe=:idg AND j.id_joueur=g.id_equipes';
+			$query = new Query($database, $sql);
+			$query->bind(':idg', $groupe['id_groupe'], PDO::PARAM_INT);
+			if ($query->execute())
+			{
+				$participants[$groupe['id_groupe']] = $query->getResult();
+			}
+			else
+			{
+				global $glob_debug;
+				if ($glob_debug)
+				{
+					echo 'ERREUR SQL EQUIPES';
+				}
+				exit;
+			}
+		
+		}
 }
 //------------ KILL THEM BEFORE THEY LAY EGGS!!!!!!!!!!!! ------------
 foreach($groupes as $keyGroupe => $groupe)
@@ -103,34 +128,8 @@ foreach($groupes as $keyGroupe => $groupe)
         $groupes[$keyGroupe]['teams'][$keyTeam]['total'] = $totaux[$team['id']];
     }
 }
-
-
-// 
-$finishedPicks = array();
-foreach ($matchs as $val1) {
-    foreach ($val1 as $val2) {
-        $sql = 'SELECT heroes FROM matchs WHERE id_match=:matchId';
-        $query = new Query($database, $sql);
-        $query->bind(':matchId',$val2['id_match'], PDO::PARAM_INT);
-        if($query->execute())
-        {
-            $terminated = $query->getResult()[0]['heroes'];
-            if($terminated != NULL)
-                if (!in_array($val2['id_match'], $finishedPicks))
-                    array_push ($finishedPicks, $val2['id_match']);
-        }
-        else 
-        {
-            global $glob_debug;
-            if($glob_debug)
-                echo 'ERREUR - SQL SCORES TEAM 1';
-        }
-    }
-}
-
 // send to the template
 $smarty->assign('con', $connected);
-$smarty->assign('finishedPicks', $finishedPicks);
 $smarty->assign('participants', $participants);
 $smarty->assign('tournoi', $tournoi);
 $smarty->assign('groupes', $groupes);
@@ -138,5 +137,6 @@ $smarty->assign('matchs', $matchs);
 $smarty->assign('totaux', $totaux);
 $smarty->assign('couleur', $couleur);
 $smarty->display(DOCUMENT_ROOT.'/view/templates/admin/scoresPools-old.tpl');
+
 
 ?>

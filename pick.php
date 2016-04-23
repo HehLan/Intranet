@@ -17,6 +17,7 @@ $idPlayerWhoMakeChoise = '';
 // protection ici pour voir si le match "matche" (vive la tautologie) bien avec le joueur
 // TODO
 // aller chequer dans la db si idPlayer&&idMatch "exists" or smth like that
+
 $sql = "SELECT * FROM matchs_joueurs WHERE id_match=:matchId AND id_joueur=:playerId";
 $query = new Query($database, $sql);
 $query->bind(':matchId', $matchId, PDO::PARAM_INT);
@@ -35,6 +36,7 @@ if ($query->execute()) {
     }
     exit;
 }
+
 
 // si pick terminé rediriger vers les resultats
 $sql = "SELECT heroes FROM matchs WHERE id_match=:idMatch";
